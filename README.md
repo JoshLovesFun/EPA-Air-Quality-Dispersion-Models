@@ -7,14 +7,14 @@ Every effort has been made to ensure that the code of the models provided here i
 
 ## Repository Purpose
 
-This repository is strictly an archive of the models. As such, while pull requests are allowed, they will **NEVER** be merged into the main branch and will be closed. The primary reason for this is to ensure the accuracy and integrity of the model archives. The repository will be updated only when the EPA releases new versions of the models.
+The main branch of this repository is strictly an archive of the models. As such, while pull requests are allowed, they will **NEVER** be merged into the main branch and will be closed. The primary reason for this is to ensure the accuracy and integrity of the model archives. The repository will be updated only when the EPA releases new versions of the models.
 
 > **Note:** This repository does not include the PDF documents associated with each model version. These will be stored in a separate repository:  
 > [**Repository for Model Documentation**](#)
 
 ## Contribution Guidelines
 
-Anyone is welcome to fork this repository and make changes. However, please note that code in the main branch will **NEVER** be modified. The only exceptions to this rule are:
+Anyone is welcome to fork this repository and make changes. However, please note that code in the main branch of this repository will **NEVER** be modified. The only exceptions to this rule are:
 - Updates to the `README.md` document.
 - Adding the latest EPA model versions.
 
@@ -37,4 +37,4 @@ If you would like to contribute and further develop the EPA models, please follo
 
 ## Disclaimer
 
-This repository is not affiliated with or endorsed by the EPA. It serves solely as an archive of the models for community use.
+This repository is not affiliated with or endorsed by the EPA. It serves solely as an archive of the models for community use and as a reference point for proposed changes that are not in the main branch.

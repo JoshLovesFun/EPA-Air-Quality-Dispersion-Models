@@ -1,0 +1,38 @@
+                        Model Change Bulletin
+
+                                MCB#4                       09/29/2015
+
+                        AERMINUTE (dated 15272)
+
+This Model Change Bulletin (MCB) documents changes made to the AERMINUTE 
+1-minute ASOS wind data processor.  A brief description of the changes  
+is provided below.Additional details are available in the FORTRAN source code 
+and in the AERMINUTE user's guide.
+
+
+This revised version of AERMINUTE (dated 14337) includes the following
+modifications relative to the previous version (14337):
+
+Enhancements
+
+1. Modified subroutine USERINP to read in optional 5-minute data ASOS files
+2. Modified subroutine USERINP to allow for no-1minute data listing as long as
+   opotinal 5-minute data files are listed.
+3. Modified subroutine USERINP to allow for optional output files, SUB5FILE and
+   1_5_FILE.
+4, Added subroutine CHECKWBAN to check WBAN numbers for non-numeric characters in
+   1-minute and 5-minute data files
+5. Added subroutine SUB5 to substitute missing 1-minute data values with corresponding
+   5-minute data values
+Modifications
+
+1. Modified subroutine CHECKFILES to perform QA on 1-minute or optional 5-minute
+   data files.
+2. Modified subroutine WRITEOUT to include 5-minute data summaries in SUMMARY file
+   and output file.
+3. Modified subroutine MINMAXONE to include source of minimum and maximum 2-minute
+   winds, i.e. 1-minute or 5-minute data file.
+4. Modified subroutine HOURLYMINMAX to include source of data (1-minute or 5-minute)
+   for hourly minimum and maximum 2-minute wind speeds and directions.
+5. Modified module MAIN1, subroutine INITIAL, and subroutine CLEANUP to include 
+   5-minute data variables.

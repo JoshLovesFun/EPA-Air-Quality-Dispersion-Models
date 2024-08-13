@@ -27,7 +27,7 @@ If you would like to contribute and further develop the EPA models, please follo
    Modify the code as needed in your forked repository.
 
 3. **Create a pull request.**  
-   Submit a pull request from your development branch in your forked repository to the main branch.
+   Submit a pull request from your development branch in your forked repository to the main branch of your forked repository.
 
 4. **Alert me.**  
    Add me as a contributor to your forked repository. I will approve the pull request (even if the code is incorrect or inappropriate) and create a new branch in this repository with a fitting name.

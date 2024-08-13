@@ -1,21 +1,40 @@
 # EPA-Air-Quality-Dispersion-Models
-This repository contains an UNOFFICIAL archive of the United States Environmental Protection Agency air quality dispersion models.
-The goal here is to provide the community with easy access to the model code, and maintain an archive of old versions of the models.
 
-Every effort has been made to ensure that the code of the models provided here is identical to the code contained on the EPA's website:
-https://www.epa.gov/scram/air-quality-dispersion-modeling
+This repository contains an **UNOFFICIAL** archive of the United States Environmental Protection Agency (EPA) air quality dispersion models. The goal is to provide the community with easy access to the model code and maintain an archive of old versions of the models.
 
-This repository is an archive of the models. As such, pull requests are allowed, but will **NEVER** be merged into the main branch and will be closed.
-The reason for this, is because I want to ensure the accuracy and integrity of the model archives.
-This repository will be updated when the EPA releases new versions of the models.
+Every effort has been made to ensure that the code of the models provided here is identical to the code available on the EPA's website:  
+[Air Quality Dispersion Modeling - EPA](https://www.epa.gov/scram/air-quality-dispersion-modeling)
 
-Anyone is allowed to make Forks of this repository, and do as they wish. Anyone can also open issues, but note that code in the main branch
-will **NEVER** be modififed. They only changes that are allowed in the main branch are updates to the "README.md" document, and adding the
-latest EPA model versions to the main branch.
+## Repository Purpose
 
-If you would like to contribute and further develop the EPA models, here is a suggested course of action:
-1. Start by creating a fork of this repository.
-2. Make changes to the code as you wish.
-3. Create a pull request from within your forked repository from the branch that is in development, to the main branch.
-4. Alert me, by adding me as a contributor to your forked repository. I will approve the pull request (even if the code is wrong
-5. or inappropriate), and make a new branch in my repository that will be named appropriately.
+This repository is strictly an archive of the models. As such, while pull requests are allowed, they will **NEVER** be merged into the main branch and will be closed. The primary reason for this is to ensure the accuracy and integrity of the model archives. The repository will be updated only when the EPA releases new versions of the models.
+
+> **Note:** This repository does not include the PDF documents associated with each model version. These will be stored in a separate repository:  
+> [**Repository for Model Documentation**](#)
+
+## Contribution Guidelines
+
+Anyone is welcome to fork this repository and make changes. However, please note that code in the main branch will **NEVER** be modified. The only exceptions to this rule are:
+- Updates to the `README.md` document.
+- Adding the latest EPA model versions.
+
+If you would like to contribute and further develop the EPA models, please follow the steps below:
+
+1. **Fork this repository.**  
+   Create a fork of this repository in your GitHub account.
+
+2. **Make changes to the code.**  
+   Modify the code as needed in your forked repository.
+
+3. **Create a pull request.**  
+   Submit a pull request from your development branch in your forked repository to the main branch.
+
+4. **Alert me.**  
+   Add me as a contributor to your forked repository. I will approve the pull request (even if the code is incorrect or inappropriate) and create a new branch in this repository with a fitting name.
+
+5. **Propose changes to the EPA.**  
+   I do not have the authority to recommend any changes to the EPA. If you wish to propose your modifications, you can contact the EPA directly and provide a link to the branch containing your changes. Note that the EPA is not using this repository for their model development, so you will need to coordinate with them to determine if your changes align with their updates.
+
+## Disclaimer
+
+This repository is not affiliated with or endorsed by the EPA. It serves solely as an archive of the models for community use.

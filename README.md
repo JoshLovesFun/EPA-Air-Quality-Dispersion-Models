@@ -31,8 +31,9 @@ If you would like to contribute and further develop the EPA models, please follo
 
 4. **Alert me.**  
    Add me as a contributor to your forked repository. I will approve the pull request (even if the code is incorrect or inappropriate) and create a new branch in this repository with a fitting name.
+A pull request can then be made from the main branch of your repository to the new branch of this repository.
 
-5. **Propose changes to the EPA.**  
+6. **Propose changes to the EPA.**  
    I do not have the authority to recommend any changes to the EPA. If you wish to propose your modifications, you can contact the EPA directly and provide a link to the branch containing your changes. Note that the EPA is not using this repository for their model development, so you will need to coordinate with them to determine if your changes align with their updates.
 
 ## Disclaimer

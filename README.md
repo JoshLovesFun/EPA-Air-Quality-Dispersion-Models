@@ -38,4 +38,4 @@ A pull request can then be made from the main branch of your forked repository t
 
 ## Disclaimer
 
-This repository is not affiliated with or endorsed by the EPA. It serves solely as an archive of the models for community use and as a reference point for proposed changes that are not in the main branch.
+This repository is not affiliated with or endorsed by the EPA. It serves solely as an archive of the models for community use and as a reference point for proposed or suggested changes in a development branch.

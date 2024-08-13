@@ -1,6 +1,6 @@
 # EPA-Air-Quality-Dispersion-Models
 
-This repository contains an **UNOFFICIAL** archive of the United States Environmental Protection Agency (EPA) air quality dispersion models. The goal is to provide the community with easy access to the model code and maintain an archive of old versions of the models.
+This repository contains an **UNOFFICIAL** archive of the United States Environmental Protection Agency (EPA) air quality dispersion models. The goal is to provide the community with easy access to the model code, maintain an archive of old versions of the models, and provide a reference point for proposed changes to the models.
 
 Every effort has been made to ensure that the code of the models provided here is identical to the code available on the EPA's website:  
 [Air Quality Dispersion Modeling - EPA](https://www.epa.gov/scram/air-quality-dispersion-modeling)

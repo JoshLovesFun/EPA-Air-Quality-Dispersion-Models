@@ -1,0 +1,36 @@
+version=1
+; (That line must be the first non-comment.)
+
+; run time parameters
+
+altitudeChoice=relativeToGround
+;altitudeChoice=absolute
+
+altitude=0
+
+easting=0
+northing=0
+utmZone=17
+; This needs to know if this run is in the Southern Hemisphere or not.
+; If right on the equator, set this to True
+inNorthernHemisphere=True
+
+NameDisplayedInGoogleEarth=jeff
+PlotFileName=jeff.plt
+OutputFileNameBase=jeff
+
+binningChoice=Log
+
+sIconSetChoice=redBlue
+;sIconSetChoice=redGreen
+IconScale = 0.70
+minbin=DATA
+maxbin=DATA
+sDisableEarthBrowser= false
+
+makeContours                       = True
+numberOfTimesToSmoothContourSurface= 1
+numberOfGridCols                   = 400
+numberOfGridRows                   = 400
+
+; end

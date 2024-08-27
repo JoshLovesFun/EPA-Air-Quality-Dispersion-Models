@@ -1,0 +1,1 @@
+IFORT AERSCREEN.FOR /optimize:2 /traceback  /check:all /assume:byterecl 

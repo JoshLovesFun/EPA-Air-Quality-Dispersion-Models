@@ -1,0 +1,796 @@
+ BPIP users guide test case #1 - input file with 1 bldg and 4 stacks.          
+
+                              BPIP (Dated: 04274)
+ DATE : 12/ 7/2004
+ TIME : 16:14:10
+ BPIP users guide test case #1 - input file with 1 bldg and 4 stacks.          
+
+ ============================
+ BPIP PROCESSING INFORMATION:
+ ============================
+
+   The LT flag has been set for preparing downwash data for an ISCLT run.
+
+   Inputs entered in METERS     will be converted to meters using 
+    a conversion factor of    1.0000.  Output will be in meters.
+
+   UTMP is set to UTMN.  The input is assumed to be in a local
+    X-Y coordinate system as opposed to a UTM coordinate system.
+    True North is in the positive Y direction.
+
+   Plant north is set to 210.00 degrees with respect to True North.  
+
+
+    The plant coordinates will appear as entered in the Summary output
+    file and they will be adjusted to True North prior to processing.
+    The True North oriented coordinates appear below between
+    the square brackets.
+
+
+
+
+ ==============
+ INPUT SUMMARY:
+ ==============
+
+
+ Number of buildings to be processed :   1
+
+
+ L-Shape  has 1 tier(s) with a base elevation of   13.00 METERS    
+ BUILDING  TIER  BLDG-TIER  TIER   NO. OF      CORNER   COORDINATES
+   NAME   NUMBER   NUMBER  HEIGHT  CORNERS        X           Y
+
+ L-Shape     1        1     26.00     6
+                                                -10.00      -20.00 meters
+                                         [       18.66       12.32] meters
+                                                -10.00       80.00 meters
+                                         [      -31.34      -74.28] meters
+                                                 40.00       80.00 meters
+                                         [      -74.64      -49.28] meters
+                                                 40.00       30.00 meters
+                                         [      -49.64       -5.98] meters
+                                                 90.00       30.00 meters
+                                         [      -92.94       19.02] meters
+                                                 90.00      -20.00 meters
+                                         [      -67.94       62.32] meters
+
+ Number of stacks to be processed :   4
+
+                    STACK            STACK   COORDINATES
+  STACK NAME     BASE  HEIGHT          X           Y
+
+  Stk100        11.00   25.00 METERS    
+                                     -10.00      -20.00 meters
+                              [       18.66       12.32] meters
+  Stk101        12.00   25.00 METERS    
+                                     164.00      159.00 meters
+                              [     -221.53      -55.70] meters
+  Stk102        13.00   25.00 METERS    
+                                     136.00      121.00 meters
+                              [     -178.28      -36.79] meters
+  Stk103        14.00   25.00 METERS    
+                                     118.00      103.00 meters
+                              [     -153.69      -30.20] meters
+
+
+ The following lists the stacks that have been identified
+ as being atop the noted building-tiers.
+
+          STACK            BUILDING         TIER
+          NAME      NO.    NAME        NO.  NO.
+          Stk100     1     L-Shape      1     1
+
+
+                     Overall GEP Summary Table
+                          (Units: meters)
+
+
+ StkNo:  1  Stk Name:Stk100   Stk Ht:  25.00 Prelim. GEP Stk.Ht:   67.00
+            GEP:  BH:  26.00  PBW:  100.00             *Eqn1 Ht:   67.00
+          *adjusted for a Stack-Building elevation difference of   -2.00
+  No. of Tiers affecting Stk:  1  Direction occurred:   30.00
+   Bldg-Tier nos. contributing to GEP:   1
+
+
+ StkNo:  2  Stk Name:Stk101   Stk Ht:  25.00 Prelim. GEP Stk.Ht:   65.00
+            GEP:  BH:   0.00  PBW:    0.00             *Eqn1 Ht:    0.00
+      No tiers affect this stack.
+
+
+ StkNo:  3  Stk Name:Stk102   Stk Ht:  25.00 Prelim. GEP Stk.Ht:   65.00
+            GEP:  BH:  26.00  PBW:  126.56             *Eqn1 Ht:   65.00
+          *adjusted for a Stack-Building elevation difference of    0.00
+  No. of Tiers affecting Stk:  1  Direction occurred:  281.50
+   Bldg-Tier nos. contributing to GEP:   1
+
+
+ StkNo:  4  Stk Name:Stk103   Stk Ht:  25.00 Prelim. GEP Stk.Ht:   65.00
+            GEP:  BH:  26.00  PBW:  116.20             *Eqn1 Ht:   64.00
+          *adjusted for a Stack-Building elevation difference of    1.00
+  No. of Tiers affecting Stk:  1  Direction occurred:  289.75
+   Bldg-Tier nos. contributing to GEP:   1
+
+
+
+
+                     Summary By Direction Table
+                          (Units:  meters)
+
+ Dominate stand alone tiers:
+
+
+ Drtcn:  11.25
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 110.76  PBL: 126.84  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -94.69  YADJ:   55.38
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn:  22.50
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 105.67  PBL: 112.20  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -99.14  YADJ:   52.84
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn:  33.75
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 106.33  PBL: 103.06  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -103.06  YADJ:   46.62
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn:  45.00
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 122.47  PBL: 109.53  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -109.53  YADJ:   35.36
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     Single tier MAX:  BH:  26.00  PBW: 122.47  PBL: 109.53  *Wake Effect Ht:   64.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:   42.40  YADJ:  -56.45
+
+          *adjusted for a Stack-Building elevation difference of    1.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+
+ Drtcn:  56.25
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 133.92  PBL: 111.80  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -111.80  YADJ:   22.73
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn:  67.50
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 140.21  PBL: 109.77  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -109.77  YADJ:    9.23
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn:  78.75
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 141.12  PBL: 108.15  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -108.15  YADJ:   -4.62
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn:  90.00
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 136.60  PBL: 111.60  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -111.60  YADJ:  -18.30
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 101.25
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 126.84  PBL: 110.76  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -110.76  YADJ:  -31.27
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     Single tier MAX:  BH:  26.00  PBW: 126.84  PBL: 110.76  *Wake Effect Ht:   64.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:   49.98  YADJ:   44.05
+
+          *adjusted for a Stack-Building elevation difference of    1.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+
+ Drtcn: 112.50
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 112.20  PBL: 105.67  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -105.67  YADJ:  -43.05
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     Single tier MAX:  BH:  26.00  PBW: 112.20  PBL: 105.67  *Wake Effect Ht:   64.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:   37.29  YADJ:   62.19
+
+          *adjusted for a Stack-Building elevation difference of    1.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+
+ Drtcn: 123.75
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 103.06  PBL: 106.33  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -99.79  YADJ:  -51.53
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 135.00
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 109.53  PBL: 122.47  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -96.59  YADJ:  -54.77
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 146.25
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 111.80  PBL: 133.92  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -89.69  YADJ:  -55.90
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 157.50
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 109.77  PBL: 140.21  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -79.34  YADJ:  -54.89
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 168.75
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 108.15  PBL: 141.12  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -65.93  YADJ:  -54.08
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 180.00
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 111.60  PBL: 136.60  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -50.00  YADJ:  -55.80
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 191.25
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 110.76  PBL: 126.84  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -32.14  YADJ:  -55.38
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 202.50
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 105.67  PBL: 112.20  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -13.05  YADJ:  -52.84
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 213.75
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 106.33  PBL: 103.06  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:    0.00  YADJ:  -46.62
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 225.00
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 122.47  PBL: 109.53  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:    0.00  YADJ:  -35.36
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     Single tier MAX:  BH:  26.00  PBW: 122.47  PBL: 109.53  *Wake Effect Ht:   65.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -173.98  YADJ:   69.18
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     Single tier MAX:  BH:  26.00  PBW: 122.47  PBL: 109.53  *Wake Effect Ht:   64.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -151.94  YADJ:   56.45
+
+          *adjusted for a Stack-Building elevation difference of    1.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+
+ Drtcn: 236.25
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 133.92  PBL: 111.80  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:    0.00  YADJ:  -22.73
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     Single tier MAX:  BH:  26.00  PBW: 133.92  PBL: 111.80  *Wake Effect Ht:   65.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -191.03  YADJ:   45.85
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     Single tier MAX:  BH:  26.00  PBW: 133.92  PBL: 111.80  *Wake Effect Ht:   64.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -166.93  YADJ:   37.67
+
+          *adjusted for a Stack-Building elevation difference of    1.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+
+ Drtcn: 247.50
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 140.21  PBL: 109.77  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:    0.00  YADJ:   -9.23
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     Single tier MAX:  BH:  26.00  PBW: 140.21  PBL: 109.77  *Wake Effect Ht:   65.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -200.74  YADJ:   20.76
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     Single tier MAX:  BH:  26.00  PBW: 140.21  PBL: 109.77  *Wake Effect Ht:   64.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -175.50  YADJ:   17.44
+
+          *adjusted for a Stack-Building elevation difference of    1.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+
+ Drtcn: 258.75
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 141.12  PBL: 108.15  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:    0.00  YADJ:    4.62
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     Single tier MAX:  BH:  26.00  PBW: 141.12  PBL: 108.15  *Wake Effect Ht:   65.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -202.74  YADJ:   -5.12
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     Single tier MAX:  BH:  26.00  PBW: 141.12  PBL: 108.15  *Wake Effect Ht:   64.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -177.34  YADJ:   -3.46
+
+          *adjusted for a Stack-Building elevation difference of    1.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+
+ Drtcn: 270.00
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 136.60  PBL: 111.60  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:    0.00  YADJ:   18.30
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     Single tier MAX:  BH:  26.00  PBW: 136.60  PBL: 111.60  *Wake Effect Ht:   65.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -196.94  YADJ:  -30.81
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     Single tier MAX:  BH:  26.00  PBW: 136.60  PBL: 111.60  *Wake Effect Ht:   64.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -172.35  YADJ:  -24.22
+
+          *adjusted for a Stack-Building elevation difference of    1.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+
+ Drtcn: 281.25
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 126.84  PBL: 110.76  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:    0.00  YADJ:   31.27
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     Single tier MAX:  BH:  26.00  PBW: 126.84  PBL: 110.76  *Wake Effect Ht:   65.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -183.57  YADJ:  -55.31
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     Single tier MAX:  BH:  26.00  PBW: 126.84  PBL: 110.76  *Wake Effect Ht:   64.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -160.74  YADJ:  -44.05
+
+          *adjusted for a Stack-Building elevation difference of    1.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+
+ Drtcn: 292.50
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 112.20  PBL: 105.67  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:    0.00  YADJ:   43.05
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     Single tier MAX:  BH:  26.00  PBW: 112.20  PBL: 105.67  *Wake Effect Ht:   64.00
+     Relative Coordinates of Projected Width Mid-point: XADJ: -142.96  YADJ:  -62.19
+
+          *adjusted for a Stack-Building elevation difference of    1.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+
+ Drtcn: 303.75
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 103.06  PBL: 106.33  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:   -6.54  YADJ:   51.53
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 315.00
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 109.53  PBL: 122.47  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -25.88  YADJ:   54.77
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 326.25
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 111.80  PBL: 133.92  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -44.23  YADJ:   55.90
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 337.50
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 109.77  PBL: 140.21  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -60.88  YADJ:   54.89
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 348.75
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 108.15  PBL: 141.12  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -75.18  YADJ:   54.08
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+ Drtcn: 360.00
+
+ StkNo:  1  Stk Name:Stk100                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 100.00   *Equation 1 Ht:   67.00
+     Single tier MAX:  BH:  26.00  PBW: 111.60  PBL: 136.60  *Wake Effect Ht:   67.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -86.60  YADJ:   55.80
+
+          *adjusted for a Stack-Building elevation difference of   -2.00
+                BldNo:  1  Bld Name:L-Shape   TierNo:  1
+ StkNo:  2  Stk Name:Stk101                            Stack Ht:   25.00
+                 GEP:  BH:   0.00  PBW:   0.00   *Equation 1 Ht:    0.00
+     No single tier affects this stack for this direction.
+ StkNo:  3  Stk Name:Stk102                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 126.56   *Equation 1 Ht:   65.00
+     No single tier affects this stack for this direction.
+ StkNo:  4  Stk Name:Stk103                            Stack Ht:   25.00
+                 GEP:  BH:  26.00  PBW: 116.20   *Equation 1 Ht:   64.00
+     No single tier affects this stack for this direction.
+
+
+ Dominant combined buildings:  None

@@ -1,0 +1,195 @@
+ BPIP users guide test case #1 - input file with 1 bldg and 4 stacks.          
+
+                              BPIP (Dated: 04274)
+ DATE : 12/ 7/2004
+ TIME : 16: 5:40
+ BPIP users guide test case #1 - input file with 1 bldg and 4 stacks.          
+
+ ============================
+ BPIP PROCESSING INFORMATION:
+ ============================
+
+   The P  flag has been set for preparing downwash related data
+          for a model run utilizing the PRIME algorithm.
+
+   Inputs entered in METERS     will be converted to meters using 
+    a conversion factor of    1.0000.  Output will be in meters.
+
+   UTMP is set to UTMN.  The input is assumed to be in a local
+    X-Y coordinate system as opposed to a UTM coordinate system.
+    True North is in the positive Y direction.
+
+   Plant north is set to 210.00 degrees with respect to True North.  
+
+
+
+
+ BPIP users guide test case #1 - input file with 1 bldg and 4 stacks.          
+
+
+
+                PRELIMINARY* GEP STACK HEIGHT RESULTS TABLE
+                         (Output Units: meters)
+
+                            Stack-Building            Preliminary*
+         Stack    Stack     Base Elevation    GEP**   GEP Stack
+         Name     Height    Differences       EQN1    Height Value
+
+
+        Stk100     25.00        -2.00        67.00        67.00
+        Stk101     25.00          N/A         0.00        65.00
+        Stk102     25.00         0.00        65.00        65.00
+        Stk103     25.00         1.00        64.00        65.00
+
+   * Results are based on Determinants 1 & 2 on pages 1 & 2 of the GEP
+     Technical Support Document.  Determinant 3 may be investigated for
+     additional stack height credit.  Final values result after
+     Determinant 3 has been taken into consideration.
+  ** Results were derived from Equation 1 on page 6 of GEP Technical
+     Support Document.  Values have been adjusted for any stack-building
+     base elevation differences.
+
+     Note:  Criteria for determining stack heights for modeling emission
+     limitations for a source can be found in Table 3.1 of the
+     GEP Technical Support Document.
+
+
+
+
+
+                              BPIP (Dated: 04274)
+ DATE : 12/ 7/2004
+ TIME : 16: 5:40
+
+
+ BPIP users guide test case #1 - input file with 1 bldg and 4 stacks.          
+
+  BPIP output is in meters
+
+
+     SO BUILDHGT Stk100     26.00   26.00   26.00   26.00   26.00   26.00
+     SO BUILDHGT Stk100     26.00   26.00   26.00   26.00   26.00   26.00
+     SO BUILDHGT Stk100     26.00   26.00   26.00   26.00   26.00   26.00
+     SO BUILDHGT Stk100     26.00   26.00   26.00   26.00   26.00   26.00
+     SO BUILDHGT Stk100     26.00   26.00   26.00   26.00   26.00   26.00
+     SO BUILDHGT Stk100     26.00   26.00   26.00   26.00   26.00   26.00
+     SO BUILDWID Stk100    111.07  107.16  100.00  115.85  128.17  136.60
+     SO BUILDWID Stk100    140.88  140.88  136.60  128.17  115.85  100.00
+     SO BUILDWID Stk100    107.16  111.07  111.60  108.74  108.74  111.60
+     SO BUILDWID Stk100    111.07  107.16  100.00  115.85  128.17  136.60
+     SO BUILDWID Stk100    140.88  140.88  136.60  128.17  115.85  100.00
+     SO BUILDWID Stk100    107.16  111.07  111.60  108.74  108.74  111.60
+     SO BUILDLEN Stk100    128.17  115.85  100.00  107.16  111.07  111.60
+     SO BUILDLEN Stk100    108.74  108.74  111.60  111.07  107.16  100.00
+     SO BUILDLEN Stk100    115.85  128.17  136.60  140.88  140.88  136.60
+     SO BUILDLEN Stk100    128.17  115.85  100.00  107.16  111.07  111.60
+     SO BUILDLEN Stk100    108.74  108.74  111.60  111.07  107.16  100.00
+     SO BUILDLEN Stk100    115.85  128.17  136.60  140.88  140.88  136.60
+     SO XBADJ    Stk100    -93.97  -98.48 -100.00 -107.16 -111.07 -111.60
+     SO XBADJ    Stk100   -108.74 -108.74 -111.60 -111.07 -107.16 -100.00
+     SO XBADJ    Stk100    -98.48  -93.97  -86.60  -76.60  -64.28  -50.00
+     SO XBADJ    Stk100    -34.20  -17.36    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk100      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk100    -17.36  -34.20  -50.00  -64.28  -76.60  -86.60
+     SO YBADJ    Stk100     55.54   53.58   50.00   40.56   29.88   18.30
+     SO YBADJ    Stk100      6.16   -6.16  -18.30  -29.88  -40.56  -50.00
+     SO YBADJ    Stk100    -53.58  -55.54  -55.80  -54.37  -54.37  -55.80
+     SO YBADJ    Stk100    -55.54  -53.58  -50.00  -40.56  -29.88  -18.30
+     SO YBADJ    Stk100     -6.16    6.16   18.30   29.88   40.56   50.00
+     SO YBADJ    Stk100     53.58   55.54   55.80   54.37   54.37   55.80
+
+
+     SO BUILDHGT Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk101      0.00    0.00    0.00    0.00    0.00    0.00
+
+
+     SO BUILDHGT Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT Stk102      0.00    0.00    0.00    0.00   26.00   26.00
+     SO BUILDHGT Stk102     26.00   26.00   26.00   26.00    0.00    0.00
+     SO BUILDHGT Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk102      0.00    0.00    0.00    0.00  128.17  136.60
+     SO BUILDWID Stk102    140.88  140.88  136.60  128.17    0.00    0.00
+     SO BUILDWID Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk102      0.00    0.00    0.00    0.00  111.07  111.60
+     SO BUILDLEN Stk102    108.74  108.74  111.60  111.07    0.00    0.00
+     SO BUILDLEN Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk102      0.00    0.00    0.00    0.00 -182.43 -195.11
+     SO XBADJ    Stk102   -201.86 -202.48 -196.94 -185.42    0.00    0.00
+     SO XBADJ    Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk102      0.00    0.00    0.00    0.00   59.09   37.64
+     SO YBADJ    Stk102     15.05   -8.00  -30.81  -52.68    0.00    0.00
+     SO YBADJ    Stk102      0.00    0.00    0.00    0.00    0.00    0.00
+
+
+     SO BUILDHGT Stk103      0.00    0.00    0.00   26.00   26.00    0.00
+     SO BUILDHGT Stk103      0.00    0.00    0.00   26.00   26.00    0.00
+     SO BUILDHGT Stk103      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT Stk103      0.00    0.00    0.00   26.00   26.00   26.00
+     SO BUILDHGT Stk103     26.00   26.00   26.00   26.00   26.00    0.00
+     SO BUILDHGT Stk103      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk103      0.00    0.00    0.00  115.85  128.17    0.00
+     SO BUILDWID Stk103      0.00    0.00    0.00  128.17  115.85    0.00
+     SO BUILDWID Stk103      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID Stk103      0.00    0.00    0.00  115.85  128.17  136.60
+     SO BUILDWID Stk103    140.88  140.88  136.60  128.17  115.85    0.00
+     SO BUILDWID Stk103      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk103      0.00    0.00    0.00  107.16  111.07    0.00
+     SO BUILDLEN Stk103      0.00    0.00    0.00  111.07  107.16    0.00
+     SO BUILDLEN Stk103      0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN Stk103      0.00    0.00    0.00  107.16  111.07  111.60
+     SO BUILDLEN Stk103    108.74  108.74  111.60  111.07  107.16    0.00
+     SO BUILDLEN Stk103      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk103      0.00    0.00    0.00   36.20   48.29    0.00
+     SO XBADJ    Stk103      0.00    0.00    0.00   51.28   40.25    0.00
+     SO XBADJ    Stk103      0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    Stk103      0.00    0.00    0.00 -143.36 -159.36 -170.52
+     SO XBADJ    Stk103   -176.50 -177.12 -172.35 -162.35 -147.41    0.00
+     SO XBADJ    Stk103      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk103      0.00    0.00    0.00  -64.14  -48.33    0.00
+     SO YBADJ    Stk103      0.00    0.00    0.00   41.92   58.35    0.00
+     SO YBADJ    Stk103      0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    Stk103      0.00    0.00    0.00   64.14   48.33   31.05
+     SO YBADJ    Stk103     12.83   -5.78  -24.22  -41.92  -58.35    0.00
+     SO YBADJ    Stk103      0.00    0.00    0.00    0.00    0.00    0.00

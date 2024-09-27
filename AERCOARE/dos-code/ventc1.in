@@ -1,0 +1,21 @@
+'ventmet.csv'           / input met file (up to 80 characters); def 'aercoare.in'
+'ventc1.sfc'            / output sfc file with for AERMOD (up to 80 characters); def 'aercoare'sfc'
+'ventc1.pfl'            / output pfl file for AERMOD (up to 80 characters); 'aercoare.pfl'
+'ventc1.out'            / output listing & debug file (up to 80 characters); 'aercoare.out'
+34.3                    / lat (degN) 
+119.2                   / long (degW)
+8                       / met data time zone (0-GMT .. 5-EST .. 8-PST) (def 0)
+600.                    / mix height for COARE gustiness calc (if<0 use 600m) (m); def (600m)
+25.                     / min mix ht (m); def 25 m
+5.                      / min abs(L)(m); def 5 m
+.5                      / calms threshold, winds lt this value are calm (m/s); def 0.5 m
+.01                     / def vert pot temp gradient (degC/m; def 0.01 DegC/m
+20.5                    / def buoy wind measurement height (m); def 3.5 m
+7.0                     / def buoy temp measurement height (m); def 3.5 m
+7.0                     / def buoy RH measurement height (m); def 3.5 m
+0.5                     / def buoy water temp depth (m); def 0.5m
+1                       / mix ht opt (0-obs for zic & zim),1-obs for zic, venk zim; 2-venk zi for zic & zim); def 0 
+0                       / warm layer (1-yes, 0-no); def 0
+0                       / cool skin (1-yes, 0-no); def 0
+0                       / 0=Charnock,1=Oost et al,2=Taylor and Yelland; def 0
+'end',1,0,0             / 'variable', scale, min, max (as many as needed)

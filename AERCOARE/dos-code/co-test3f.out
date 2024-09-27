@@ -1,0 +1,73 @@
+AERCOARE Summary
+------------------------------ ----------
+ AERCOARE Version             : D13108
+
+ Run Date                     : 20130516  
+ Run Time (hour:min:sec)      : 08:14:40.834
+ Run Time Zone                : -0700     
+ Control/Option file          : co-test3f.in                                                                    
+ Overwater meteorological file: co-test3f.csv                                                                   
+ Output SFC file for AERMOD   : co-test3f.sfc                                                                   
+ Output PFL file for AERMOD   : co-test3f.pfl                                                                   
+
+
+Control File Options
+------------------------------- ----------
+ Latitude (degN)              :    -1.7200
+ Longitude (degW)             :  -156.0000
+ Time Zone (5-EST.. 8-PST)    :          0
+ COARE Gust Mix Ht (m)        :      600.0
+ Mininum Overwater Mix Ht (m) :       25.0
+ Min Abs(L) allowed           :        5.0
+ Calm Threshold (m/s)         :       0.50
+ Default VPTG (degC/m)        :      0.010
+ Default Wind Meas. Ht (m)    :      15.00
+ Default Temp Meas. Ht (m)    :      15.00
+ Default RelH Meas. Ht (m)    :      15.00
+ Default Sea Temp Depth (m)   :      0.050
+ Mix Ht Option (-2 to 2)      :          2
+ COARE Warm Layer Option (0-1):          1
+ COARE Cool Skin Option (0-1) :          1
+ COARE Wave Option (0-2)      :          0
+
+
+Overwater Input File Variables and Limits
+  n name column     scale       min       max
+ -- ---- ------ --------- --------- ---------
+  1 wspd      6  1.00      0.00      50.0    
+  2 wdir     15  1.00      0.00      360.    
+  3 tsea      7  1.00     -3.00      50.0    
+  4 tair      8  1.00     -30.0      50.0    
+  5 relh      9  1.00      0.00      100.    
+  6 pres     16  1.00      900.     0.110E+04
+  7 srad     10  1.00      0.00     0.150E+04
+ 10 rain     12  1.00      0.00      254.    
+ 19 rdow     11  1.00      0.00     0.100E+04
+ 22 latn     13  1.00     -90.0      90.0    
+ 23 lonw     14  1.00     -180.      180.    
+ 24 xtim      5  1.00     0.190E+14 0.300E+14
+
+
+Missing Data Summary by Variable (1)
+ Vname   No. Miss
+ ----- ----------
+  wspd          0
+  wdir          0
+  tsea          0
+  tair          0
+  relh          0
+  pres          0
+  srad          0
+  rain          0
+  rdow          0
+  latn          0
+  lonw          0
+  xtim          0
+
+(1) - does not include whole missing hours caused
+      by non-sequential data.
+  
+  
+ AERCOARE processed  116  records
+ number of records with insufficient data :  0
+ number of calm records                   :  0

@@ -1,0 +1,217 @@
+
+                        Model Change Bulletin
+
+                                MCB#1                       12/07/2006
+
+                        AERMAP (dated 06341)
+
+This Model Change Bulletin documents changes made to the AERMAP Terrain 
+Preprocessor for the AERMOD Dispersion Model.  A brief description of 
+the changes is provided below.  Additional details are also available 
+in the Fortran source code.  Changes to the user instructions associated
+with this update are documented in a separate AERMAP User's Guide 
+Addendum.
+
+
+   This revised version of AERMAP (dated 06341) includes the following
+   modifications relative to the previous version (dated 04300):                                                       
+                                                                        
+   Bug Fixes:                                                           
+
+   1.  Corrected several problems associated with the process for 
+       converting coordinates to account for differences in the 
+       reference datums between receptors (and sources) and DEM 
+       files.  One component of the coordinate conversion process 
+       is the conversion of geographic coordinates (Latitude and 
+       Longitude) between the two reference datums.  The datum 
+       shift is performed by the NGS NADCON program, version 2.1, 
+       incorporated into AERMAP.  However, previous versions of 
+       AERMAP did not properly account for the shift in Universal 
+       Transverse Mercator (UTM) coordinates due to the different 
+       ellipsoids used to convert from Lat/Long to UTM coordinates 
+       for the different datums, which is typically about 200m in 
+       the Northing coordinate for the conversion from NAD27 to 
+       NAD83.  The revised AERMAP program accounts for both the 
+       datum shift and the shift due to the projection from 
+       geographic to UTM coordinates.  The incorporation of the 
+       NADCON program in AERMAP was also modified to use an iterative
+       calculation for conversions from NAD83 to NAD27, while the 
+       conversions from NAD27 to NAD83 do not require an iterative 
+       process. 
+       
+       Other issues related to NAD conversion have also been 
+       addressed, including:
+       
+       a) Incorporated NAD conversion into defining the extent of
+          the user-specified domain (DOMAINLL or DOMAINXY);
+          
+       b) Modified the procedure used to assign receptors and sources 
+          to specific DEM files;
+          
+       c) Corrected NAD conversion for applications that cross UTM 
+          zones; and 
+          
+       d) Modified the treatment of receptors and sources located 
+          within "gaps" that may occur between adjoining DEM files 
+          with different datums.
+       
+       Given a number of issues associated with NAD conversions, 
+       especially the issue of "gap" receptors, users are encouraged 
+       to avoid using DEM files with different datums within the same 
+       application if possible.
+
+   2.  Corrected a bug that resulted in erroneous calculations for 
+       the elevation of the first receptor in the AERMAP input file, 
+       or the first source, if source locations were included.  This 
+       bug was manifested when another receptor was entered using the 
+       same coordinates as the first receptor, resulting in different 
+       receptor elevations. This problem was due to the UTM zone for 
+       the DEM file not being properly initialized for the first 
+       elevation calculation, whether that calculation was for a 
+       source or receptor.
+       
+   3.  Corrected a bug related to the method for optimizing hill height
+       scale calculations.  To speed up execution, AERMAP would try 
+       to determine whether adjacent DEM files contained any critical 
+       hill heights by reading the maximum elevation for the adjacent 
+       DEM and determining the shortest distance from the receptor to
+       that adjacent DEM file.  Due to errors in the calculation of the
+       closest distance to the DEM file, critical DEM files may have
+       been skipped in some cases.  The distance calculations have
+       been corrected to ensure that all DEM files that potentially
+       contain critical hill heights will be processed.
+       
+   4.  Corrected a problem with reading certain profiles within some
+       7.5-minute DEM files.  In DEMCHK, the program would not execute 
+       properly if a DEM profile ended right on an index of 146 for the 
+       first record of a profile or a multiple of  146 + 170*n for each 
+       additional record of a profile.  The code was modified to read 
+       these records correctly.
+       
+   5.  Corrected a bug resulting in array out-of-bounds runtime errors
+       with some 1-degree DEM files.  The runtime error would occur when 
+       the DEM NAD field was blank. AERMAP would read the missing value 
+       as "0" in the NADD array, and would attempt to write an array with 
+       NADD=0 as the array index.  The NADD array indexing was adjusted 
+       to accommodate this situation.
+              
+   6.  Corrected a bug that would sometimes cause runtime errors when a 
+       receptor was collocated with a DEM node location. The runtime
+       error was traced to the arc-cosine calculation (DACOS) in
+       subroutine DISTLL being applied to a value that was slightly
+       greater than 1.  The code was modified to include an upper
+       limit on the argument for the DACOS function to avoid these
+       runtime errors.
+
+
+   Enhancements:
+
+   1.  Added user options to control "debug" output files on a new
+       CO DEBUGOPT card.  Debug output options include "HILL" for
+       hill height scale calculations (performed in subroutine
+       CALCHC), "RECEPTOR" for receptor related information, and
+       "SOURCE" for source related information.  The user can also
+       specify "ALL" to request all three types of debug outputs.
+       Default filenames for these debug output files match the
+       filenames used internally in the previous version of AERMAP,
+       but the user can also specify filenames with new keywords
+       on the OU pathway (with new DEBUGHIL, DEBUGREC, and DEBUGSRC
+       keywords).  Previous informational files regarding DEM files 
+       and domain setup (MAPDETAIL.OUT, MAPPARAMS.OUT, and 
+       DOMDETAIL.OUT) are automatically generated with hard-coded 
+       filenames. The content of debug files has also been modified 
+       to be more useful in documenting and resolving problems with 
+       the code or with the setup of the input data.
+
+   2.  An optional "CHECK" parameter has been added to the
+       CO DATAFILE keyword, following the DEM filename.  The new
+       default operation of AERMAP will be to perform a partial
+       check of the DEM file structure in subroutine DEMCHK based
+       on the first 20480 characters of the DEM file.  This partial
+       check will allow AERMAP to document the contents of the DEM
+       file as summarized in the MAPDETAIL.OUT and MAPPARAMS.OUT
+       files and determine whether the DEM computer system file 
+       structure (DOS, UNIX, Binary, Contiguous) includes carriage-
+       returns (CR) and/or line-feeds (LF), and check for non-
+       printable characters that might indicate a binary file.
+       Inclusion of the optional CHECK parameter (case-insensitive)
+       after the filename will activate a check of the full DEM
+       file in DEMCHK.
+
+   3.  Incorporated additional optimizations for calculation of
+       critical hill height scales by skipping profiles within DEM
+       files in CALCHC based on the maximum elevation within the
+       profile and the closest distance between receptor and DEM
+       file for non-local DEMs and the closest distance between
+       receptor and profile for local DEMs.  The maximum elevation
+       within a profile required for this optimization was added
+       to the index file for the direct access files containing
+       DEM nodes within the domain.
+       
+   4.  Added an "Input Options Summary" page to the main AERMAP.OUT
+       file, summarizing the number of sources, receptors and DEM
+       files included in the AERMAP run, as well as other input
+       data.
+       
+   5.  The data storage array indices have been increased to allow
+       for more receptors, sources, and DEM files to be used in 
+       a single AERMAP run.  The new array storage limits can be
+       found in the MODULE.FOR Fortran source code file.
+
+
+   Miscellaneous:
+
+   1.  Reinserted code for subroutine DATTYP to process the
+       DATATYPE keyword (current options include DEM1 or DEM7),
+       and incorporated error checking for inconsistencies between
+       the DATATYPE card and input DEM files.
+
+   2.  Modified the procedure for calculating receptor and source
+       elevations to use the four closest nodes within the DEM file
+       containing the source or receptor.  Also modified procedure
+       for assigning elevations to receptors located beyond the
+       range of profiles along the edges of 7.5-minute DEM files
+       to account for proximity to nodes in the Northing as well
+       the Easting directions.  The datum "gap" receptors are also
+       treated as "extended edge" receptors by calculating elevations
+       based on the closest nodes within the DEM file closest to the 
+       "gap" receptor.  Also reverted to the original 2-D (bilinear) 
+       interpolation for calculating source and receptor elevations 
+       based on up to four closest nodes.
+
+   3   The CALCHC subroutine was modified to calculate the distances
+       between receptors and DEM nodes based on the DEM file type
+       (7.5-minute vs. 1-degree).  For 7.5-minute DEMs, the receptor-
+       node distances are now calculated in meters.  For 1-degree 
+       DEMs, the receptor-node distances are still calculated in 
+       arc-seconds, as in previous versions.
+
+   4.  A number of miscellaneous changes to the code have been made
+       to provide better documentation of the processing steps and
+       better structure to the code.  Some extraneous code has also
+       been deleted.  The number of miscellaneous changes is too
+       numerous to list in detail, but an effort has been made to
+       include documentation within the code where needed.
+
+   5.  Users preparing DEM files using GIS software are cautioned to 
+       make sure the proper units are adhered to, as documented in the 
+       USGS Standards for Digital Elevation Models for logical record 
+       type A.  We have received several files where certain units 
+       were not consistent with the USGS standards.  AERMAP only 
+       supports standard units.
+                                                                        
+                                                                        
+                                                                               
+                       *****************
+                       *   IMPORTANT   *
+                       *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMAP (dated 06341).  Future changes to this model will be 
+identified by an updated Julian date found at the beginning of the model
+source code and followed by a reference to a SCRAM Model Change Bulletin
+(MCB#n) which will explain the nature and content of the changes.  All 
+Model Change Bulletins for this program will always be available for back
+reference on this website.  In the future, notification of changes (MCBs)
+to this program will be made in the SCRAM ALERTS section of this website.
+                                                                 

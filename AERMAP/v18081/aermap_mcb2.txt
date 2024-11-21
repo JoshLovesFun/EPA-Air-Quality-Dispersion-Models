@@ -1,0 +1,321 @@
+
+                        Model Change Bulletin
+
+                                MCB#2                       02/09/2009
+
+                        AERMAP (dated 09040)
+
+This Model Change Bulletin documents changes made to the AERMAP Terrain 
+Preprocessor for the AERMOD Dispersion Model.  A brief description of 
+the changes is provided below.  Additional details are also available 
+in the Fortran source code.  Changes to the user instructions associated
+with this update are documented in an updated AERMAP User's Guide 
+Addendum.
+
+
+This revised version of AERMAP (dated 09040) includes the following
+modifications relative to the previous version (dated 06341):
+
+-- Bug Fixes:
+
+   1.  Corrected errors with processing of DEM data for Alaska,
+       including handling of non-uniform delta-x and delta-y DEM 
+       node spacing.  These corrections also permit use of all 
+       types of Alaska DEM data, including 1-Degree, 15-Minute, 
+       and 7.5-Minute data.
+
+   2.  Corrected error that may occur with some cross-UTM zone
+       applications when NAD (datum) conversions are performed.
+
+   3.  Modified several subroutines to address errors and potential
+       issues associated with receptors and sources located beyond 
+       the range of DEM profiles that are not accounted for by checks
+       included in previous versions. These problems have primarily 
+       been associated with non-standard (non-USGS) DEM files that
+       were converted from other data formats.  Receptors located 
+       in gaps between terrain files due to NAD conversions and 
+       receptors located within gaps inside terrain files are more 
+       clearly identified and documented.  Receptor (and source) 
+       elevations for gap locations are assigned a missing code 
+       of -9999.0, unless the new 'FILLGAPS' option on the DATAFILE
+       keyword for DEM files is specified. Modified the MAIN 
+       program unit to loop through all terrain files until a 
+       non-missing (non-gap) elevation is determined. Also improved 
+       the handling of "edge receptors" beyond the range of profiles 
+       within 7.5-minute DEM files to check for the north-south 
+       displacement in selecting the closest elevation nodes.  
+       These issues with edge and gap receptors should be eliminated 
+       with the enhancements to AERMAP to support the use of USGS 
+       National Elevation Dataset (NED) input data (see item #1 
+       below under Enhancements).  Note that the 'FILLGAPS' option
+       is not available for NED files since these gaps should
+       not occur with the use of NED data. 
+
+   4.  Modified subroutine OUCARD to correct errors with OU 
+       pathway options, which required that RECEPTOR keyword 
+       precede the SOURCLOC keyword in the input file.
+
+   5.  Modified subroutine SOLOCA to recognize all source types
+       currently supported by AERMOD on the SO pathway, including
+       POINTCAP, POINTHOR, and OPENPIT.
+
+   6.  Fixed bug related to assignment of domain for cases with
+       7.5-minute DEM files based on UTM coordinates and domain
+       based on geographic coordinates using the DOMAINLL keyword.  
+       This bug could have resulted in AERMAP errors for domain 
+       outside the range of DEM data for applications where the 
+       domain extends close to the edge of the data.
+
+   7.  Modified subroutines DEMREC, DEMSRC, and CHKEXT to allow
+       for non-standard (non-USGS) terrain files with boundaries 
+       that follow UTM lines rather than latitude/longitude lines 
+       in assigning receptors, sources, and domain corners to 
+       terrain files.
+
+   8.  Modified subroutine INITER_DEM to correct the application 
+       of the adjustment for elevation of local datum (LOCEL) for
+       DEM files.
+
+   9.  Modified subroutines INITER_DEM, RECELV, and SRCELV
+       to address potential problems with handling of nodes
+       assigned missing elevations in DEM and NED files.
+
+
+-- Enhancements:
+
+   1.  Added capability to process USGS National Elevation Dataset
+       (NED) input data in place of DEM data.  AERMAP currently
+       supports NED data files in the GeoTIFF format, requiring
+       only the *.tif file downloaded from the USGS Seamless 
+       Data Server (http://seamless.usgs.gov/).  AERMAP allows
+       for multiple NED files, and supports GeoTIFF files
+       in geographic or UTM projected coordinates, although NED
+       data from the USGS Seamless Data Server should be in 
+       geographic coordinates.  Note that GeoTIFF is NOT the 
+       default data format for NED data downloaded from the 
+       Seamless Data Server.  The user must modify the download 
+       request to specify the format as GeoTIFF.
+
+   2.  Incorporated capability for processing "mixed" DEM files
+       in a single AERMAP run, including all types of Alaska DEMs, 
+       as well as non-Alaskan 1-Degree and 7.5-Minute DEMs.
+       Receptor elevations are assigned based on the first 
+       DEM file encountered that contains the receptor, unless
+       the receptor is located within a data gap inside the file.
+       Users are required to identify more refined, higher 
+       resolution data first in the runstream input file
+       if a receptor is located within more than one DEM file.
+       This permits the use of the highest resolution data 
+       available to estimate elevations, even though the higher
+       resolution data may not be available for the entire modeling 
+       domain.  This enhancement allows the use of 1-degree DEM 
+       data to fill in gaps within the coverage of 7.5-minute DEM 
+       data, such as 7.5-minute quadrangles that are entirely over 
+       water.  AERMAP also allows "mixed" resolution NED files, 
+       with the same restrictions as for DEM files.  However, 
+       AERMAP does NOT support both DEM and NED files in the same 
+       AERMAP run.  
+
+   3.  The DOMAINXY or DOMAINLL keyword is no longer required 
+       on the CO pathway.  When the user-specified domain is 
+       omitted, AERMAP will use all of the elevation data 
+       included in the input files in the calculation of 
+       critical hill height scales.
+
+   4.  Array storage limits in AERMAP are now dynamically 
+       allocated at runtime, based on the data requirements
+       of the specific application.  This includes explicit
+       treatment of the number of DEM/NED files, sources, 
+       receptors, profiles per data file and the maximum 
+       number of nodes per profile.
+
+   5.  Added support for the INCLUDED keyword on the SO and
+       RE pathways to allow source and receptor data from
+       separate files to be included in the AERMAP input.
+
+   6.  Modified subroutine CALCHC to use a more accurate 
+       approach for calculating distances based on 
+       geographic coordinates, from the NGS INVERSE program.
+       Modified code for optimizing hill height calculation
+       by skipping DEM or NED files when possible to be more 
+       generic in order to support the use of mixed and 
+       non-standard DEM files. Also modified subroutine 
+       CALCHC to improve optimization for processing hill
+       height calculations, including changes to take 
+       advantage of more accurate distance calculation 
+       for geographic files to calculate distances between
+       profiles.
+
+   7.  Modified subroutine DATFIL to include an option on the
+       DATAFILE keyword for NED data to generate a GeoTIFF debug 
+       output file containing results for all TIFFTags and GeoKeys 
+       contained within the file.  The DATAFILE keyword for NED
+       data also includes an option for user-specified elevation 
+       units for NED data on the DATAFILE keyword.
+
+       The optional keyword for the TIFF debug file is 
+       'TIFFDEBUG'.  AERMAP generates a hard-coded filename
+       for the TiffDebug file as 'TiffDebugFile_nnnnn.dbg',
+       where 'nnnnn' is the NED file number based on the
+       order listed in the AERMAP.INP file.  The optional
+       user-specified elevation units can be specified as 
+       'FEET', 'METERS', 'DECIFEET', 'DECIMETERS', 'DECAFEET',
+       or 'DECAMETERS' (note that secondary keywords are not
+       case-sensitive).  Most NED GeoTIFF files currently do 
+       not include the GeoKey to identify the elevation units.  
+       The default assumed by AERMAP in those cases is 'METERS', 
+       based on documentation provided by the USGS for NED 
+       data.  If elevations units are specified within the
+       GeoTIFF file and a conflict is found between the GeoKey 
+       in the NED file and the user-specified units, a  
+       fatal error message is generated to abort processing.
+       Also note that the optional 'CHECK' parameter available 
+       on the DATAFILE keyword for DEM files is not applicable 
+       to NED data.
+
+   8.  Increased maximum length for filenames to 200 (controlled 
+       by the ILEN_FLD parameter in mod_main1.f), and the maximum 
+       input string length to 512 (controlled by the ISTRG 
+       parameter in mod_main1.f).  Also modified subroutine DEFINE 
+       to allow double quotes (") as field delimiters in the 
+       AERMAP.INP file to support filenames with embedded spaces.
+       Note that the double quotes do not count toward the limit
+       for the maximum field length.
+
+   9.  Added an optional keyword for the CO pathway to allow 
+       the user to specify a pathname for the NADCON grid shift
+       files (such as CONUS.LAS and CONUS.LOS).  The optional 
+       keyword is NADGRIDS.  The pathname can include embedded 
+       spaces if double quotes (") are used as field delimiters.  
+       The default path for the NADCON grid shift files without
+       the NADGRIDS keyword is the local folder containing the
+       AERMAP.INP file.  Also moved the call to subroutine
+       NGRIDS to follow calls to subroutines DEMCHK and NEDCHK 
+       such that the NADCON grid shift files are only accessed 
+       if needed, based on the value of NADA specified by the 
+       user and the reference datums for all of the terrain files.
+
+
+-- Miscellaneous:
+
+   1.  Modified several subroutines, including UTMGEO, NADCON, 
+       DEMREC, DEMSRC, RECCNV, SRCCNV, RECELV, and SRCELV, to 
+       use standard convention of negative values for West 
+       longitude.  This simplifies some aspects of the code, 
+       improves consistency with other tools, such as AERSURFACE, 
+       improves ability to support alternative elevation data
+       sources, such as NED, and improves portability of AERMAP 
+       for applications beyond the Northern/Western hemispheres.
+
+       As part of these modifications, the DOMAINLL and DOMAINXY
+       keywords both expect the domain to be defined by the 
+       coordinates for the lower-left and upper-right corners of
+       the domain.  The DOMAINLL keyword in previous versions
+       required the domain to be specified based on the lower-
+       right and upper-left.  Code has been included in AERMAP
+       to support older AERMAP.INP files by adjusting the 
+       DOMAINLL inputs as necessary to conform with the new 
+       convention.  A warning message is generated in these cases,
+       and the adjusted DOMAINLL inputs are included in the 
+       AERMAP.OUT file, as well as the RECEPTOR and SOURCLOC
+       output files.  The direct access terrain file format
+       has also been modified to use I3 for the UTM zone field,
+       to accommodate negative UTM zones, which are used to
+       indicate Southern Hemisphere coordinates.
+
+   2.  Adjusted "map array" outputs in MAPPARAMS.OUT debug
+       file to accommodate mixed DEM files and to improve
+       handling of non-standard DEM files, coverted from 
+       other formats.
+
+   3.  Modified data structures for storing DEM file corner
+       coordinates (new subroutine CNRCNV) to improve the 
+       readability of code, eliminate redundancy, and to 
+       use consistent reference points for domain.
+
+   4.  Modified subroutine OPENFL in NADCON.F to assume
+       record length based on bytes rather than words
+       when reading the binary NAD grid files (*.las and 
+       *.los files).  This will improve the portability of 
+       AERMAP to other platforms and compilers, but may 
+       require inclusion of compiler options to specify the 
+       record length based on bytes for some compilers, such 
+       as the /assume:byterecl option for the Intel Fotran 
+       compiler used to generate the Windows-based executable 
+       for AERMAP.
+
+   5.  Modified subroutine SOCARD to ignore the SRCPARAM
+       keyword on the SO pathway, but issue a warning message. 
+       Previous versions of AERMAP did not allow for the
+       SRCPARAM keyword, causing a fatal error.  This may
+       facilitate the inclusion of portions of AERMOD input
+       files with source locations into the AERMAP.INP file 
+       more easily in some cases.
+
+   6.  Replaced ELEV logical variable, used to specify that
+       terrain elevations would be provided by the user, with
+       new EXTRACT logical variable to specify that terrain
+       elevations will be extracted from DEM data (the default
+       option).  EXTRACT=.true. in version 09040 code is 
+       equivalent with ELEV=.false. in previous versions.
+
+   7.  Modified subroutines SRCOUT and RECOUT to include
+       model rundate and runtime in the header of the 
+       source and receptor output files.  Also modified 
+       appropriate subroutines to include a header with 
+       version date, rundate and runtime in the debug 
+       output files.
+
+   8.  Modified data structures and formats to support use
+       of double precision for elevation variables.
+
+   9.  Modified subroutine HEADER in aermap.f to use ASCII
+       form feed character [ACHAR(12)] to eliminate need for
+       non-standard option of CARRIAGECONTROL = 'FORTRAN' in
+       OPEN statement for 'aermap.out' file, and modified 
+       subroutine FILOPN to eliminate the use of the 
+       CARRIAGECONTROL = 'Fortran' option when opening the
+       aermap.out file.  This improves the portability of the
+       AERMAP code.  Also modified subroutines SETUP and COCARD 
+       to remove '1X' from format statements for echoing runstream 
+       inputs to output file since Fortran carriage-control is no 
+       longer applied.  This eliminates the column shift in the 
+       input portion of the aermap.out file.
+
+  10.  Miscellaneous code clean-up, including;
+       
+       a. modifying subroutine DEMCHK to eliminate redundant 
+          information in the MAPDETAIL.OUT debug file, eliminate
+          reading of the Record B data to optimize runtime, and
+          simplify logic related to determining the file record type; 
+       b. modify the DOMDETAIL.OUT debug file to include 
+          information on the direct access files used to store
+          elevations for the portion of each terrain file that
+          falls within the user-specified domain; 
+       c. including error checking on the length of user-specified 
+          filenames to trap on filenames that the limit based on the
+          ILEN_FLD parameter; 
+       d. modifying criterion for "latitude out-of-range" warning 
+          from 60 to 66 degrees; 
+       e. cleaning up unused portions of NADCON code; 
+       f. additional initialization of variables where needed; 
+       g. error checking on consistency between UTM zone on ANCHORXY 
+          keyword and the UTM zone(s) based on the domain or 
+          range of data; and 
+       h. cleanup of unused error and warning messages and 
+          reordering of messages.
+
+
+
+                       *****************
+                       *   IMPORTANT   *
+                       *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMAP (dated 09040).  Future changes to this model will be 
+identified by an updated Julian date found at the beginning of the model
+source code and followed by a reference to a SCRAM Model Change Bulletin
+(MCB#n) which will explain the nature and content of the changes.  All 
+Model Change Bulletins for this program will always be available for back
+reference on this website.  In the future, notification of changes (MCBs)
+to this program will be made in the SCRAM ALERTS section of this website.

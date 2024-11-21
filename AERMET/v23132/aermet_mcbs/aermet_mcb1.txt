@@ -1,0 +1,159 @@
+
+                        Model Change Bulletin
+
+                                MCB#1                       12/07/2006
+
+                        AERMET (dated 06341)
+
+This Model Change Bulletin documents changes made to the AERMET 
+Meteorological Preprocessor for the AERMOD Dispersion Model.  A brief 
+description of the changes is provided below.  Additional details are 
+also available through comments imbedded in the Fortran source code; 
+the latter are cross referenced in an annotated list of changes which 
+accompanies the source code. Changes to the user instructions associated
+with this update are documented in a separate AERMET User's Guide 
+Addendum.
+
+
+   This revised version of AERMET (dated 06341) includes the following
+   modifications relative to the previous version (dated 04300):                                                       
+                                                                        
+   Bug Fixes:                                                           
+
+   1.  Corrected several problems associated with the extraction and 
+       processing of Integrated Surface Hourly Data (a.k.a., ISHD, ISH, 
+       ISD, TD-3505), including:
+       
+       a) Modified the procedure for selecting which record to process
+          for hours with multiple records, including treatment of 
+          "special" observation records - AERMET now uses the last
+          record up to and including the hour, but will only use a
+          "special" observation (types FM-15 or SAOSP) if the only
+          observation available for the hour is a "special";
+          
+       b) Corrected code for processing of sky cover data fields;
+       
+       c) Corrected initialization of "additional" character variable 
+          to avoid data fields from previous hours being used;
+          
+       d) Added code for identifying "variable" winds with valid wind 
+          speed but missing wind direction (formerly flagged as calms);
+          
+       e) Modified to include additional observation types as acceptable
+          for processing to avoid skipping valid data;
+       
+       f) Corrected problem that would cause the observation hour to 
+          be incremented prematurely, resulting in valid data being
+          overwritten in some cases;
+          
+       g) Corrected the code for estimating station pressure and 
+          sea-level pressure when one or the other is missing;
+          
+       h) Added code to check for "missing" station elevation (9999)
+          for files that have been expanded to include location fields
+          using the National Climatic Data Center (NCDC) utility
+          program.  If a missing elevation is found, then AERMET will
+          use the assigned value based on the optional elevation field
+          on the LOCATION card, if available.  If the LOCATION 
+          elevation field is omitted, the assigned value is defaulted 
+          to 100m .  See Items 2 and 3a under "Enhancements" below 
+          for related information.
+
+       i) Modified subroutines RDISHD and ISHWX for processing of ISHD 
+          surface format "present weather" data codes to determine 
+          precipitation type code (liquid or frozen).
+          
+   2.  Modified the upper and lower bounds for the surface level 
+       pressure in subroutine GETFSL to avoid skipping valid upper 
+       air soundings for stations located at high or low elevations.
+       
+   3.  Modified subroutine RDHUSW to correct the missing data codes for 
+       wind speed and direction for HUSWO surface data.
+       
+   4.  Modified subroutine D3280L to assign the correct missing data 
+       code for missing wind direction, and to also process variable 
+       wind code with valid wind speed but missing wind direction.
+       
+   5.  Modified subroutines MPPBL and NR_ANG to correct problems with 
+       calculation of critical solar angle (ACRIT), including modifications 
+       to handling of missing data in the calculation of ACRIT.
+       
+   6.  Revised format statement in subroutine REALQA to avoid overflowing
+       the message field.
+       
+   7.  Revised subroutine SMTHZI to include a limit on the exponential 
+       argument to avoid a runtime underflow and to use the correct
+       missing data code for ustar.
+       
+   8.  Revised subroutine RDSAMS to correct the format statement for a 
+       character variable.
+   
+   Enhancements:                                                        
+                                                                        
+   1.  Modified code to use a single AERMET.EXE executable file, 
+       replacing the separate STAGE1N2 and STAGE3 executables.  Note
+       this only affects the number of executables; users must still 
+       run each stage separately.  The new AERMET executable is also 
+       hardcoded to read the input data from an 'AERMET.INP' file, but
+       the format of the input files has not changed, other than the
+       enhancement noted in Item 2 below.
+
+   2.  The code for processing the 'LOCATION' input image has been 
+       revised to allow users the option of including station elevation 
+       in the last field of the input image. This addresses potential
+       problems related to the estimation of surface pressure from 
+       sea-level pressure when processing surface data in the ISHD
+       format.  The optional user-specified elevation from the 
+       LOCATION card is currently used only to substitute for 
+       missing elevation values in the ISHD data format for the
+       SURFACE pathway.  Optional elevation values input for other
+       surface data formats or for the UPPERAIR, ONSITE and METPREP
+       pathways are currenlty ignored.
+
+   3.  Revised code for extracting and processing surface data in the
+       ISHD format as follows:
+       
+       a) The format of every record is checked to determine whether 
+          the record includes station location and elevation.  This will 
+          allow users to process 'mixed-format' files, such as would be 
+          created by appending records in one format to a data file 
+          comprised of records in the other format;
+          
+       b) Overwritten hourly records are saved by writing them to the 
+          error/message file; and
+       
+       c) Added a counter to track the number of hourly records with 
+          a variable wind direction flag.
+
+   Miscellaneous:                                                       
+                                                                        
+   1.  Modified several subroutines to impose a lower limit on the
+       value of surface roughness length of 0.001 meters, for consistency
+       with the AERMOD dispersion model.
+       
+   2.  The optional user-specified time window for extracting and
+       processing ISHD surface data has been removed, and the default
+       extraction window has been increased from 10 minutes to 30
+       minutes preceding the hour.
+       
+   3.  Added code to subroutines SUBST and MPPBL to trap on problem with
+       determining the wind direction sector for surface characteristics
+       to avoid compiler runtime errors. Such a condition should not occur, 
+       but could indicate a problem with data formatting or with the 
+       AERMET code.
+       
+       
+       
+                       *****************
+                       *   IMPORTANT   *
+                       *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMET (dated 06341).  Future changes to AERMET will be identified
+by an updated Julian date found at the beginning of the source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the SCRAM ALERTS section of this website.
+                                                                           

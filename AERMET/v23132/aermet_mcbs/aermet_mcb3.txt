@@ -1,0 +1,149 @@
+                               
+                        Model Change Bulletin
+
+                               MCB#3                       12/10/2012
+
+                        AERMET (dated 12345)
+
+This Model Change Bulletin (MCB) documents changes made to the AERMET 
+Meteorological Preprocessor for the AERMOD Dispersion Model.  A brief 
+description of the changes is provided below.  Additional details are 
+also available through comments embedded in the Fortran source code. 
+Changes to the user instructions associated with this update are 
+documented in a separate AERMET User's Guide Addendum.
+
+
+This revised version of AERMET (dated 12345) includes the following
+modifications relative to the previous version (dated 11059):
+
+                                                                        
+-- Bug Fixes:                                                           
+
+   1.  Modified subroutine DOCLDS to correct for errors that 
+       result when blank spaces occur between the cloud cover 
+       and ceiling height fields for HUSWO surface data. Also 
+       modified DOCLDS to no longer accept invalid ASOS cloud 
+       cover codes for HUSWO surface data. These bug fixes 
+       should not affect results for HUSWO surface data that
+       were extracted from the HUSWO CD, but could affect 
+       results significantly for applications using surface
+       data that were reformatted to the HUSWO format from
+       another data format.
+
+   2.  Modified subroutine CBLHT to correct an error in the
+       calculation of the convective mixing height. Previous
+       versions of AERMET may have underestimated convective
+       mixing heights, and in turn the convective velocity
+       scale (w*), due to this error. The magnitude of the
+       errors would tend to be larger for cases where the
+       vertical temperature profile based on the upper air
+       sounding was based on fewer sounding levels. However,
+       due to the widespread nature of these convective mixing
+       height errors, AERMOD modeling results are likely to
+       be affected to some degree by this AERMET bug fix in 
+       most cases.
+       
+       The magnitude and direction of changes in AERMOD model
+       results due to this convective mixing height bug fix
+       will vary depending on the resolution of the upper
+       air data and the characteristics of the sources and
+       terrain included in the AERMOD model application. Also,
+       as noted in Section 3.2 of the "AERMOD Implementation 
+       Guide," upper air data input to AERMET should be based
+       on "all levels" or "mandatory and significant levels" 
+       to ensure adequate resolution of the vertical profile;
+       use of upper air data based on "mandatory levels only"
+       is not acceptable for AERMOD modeling applications.
+
+   3.  Modified subroutines CBLHT, MPPBL, MPMET, and SETUP
+       to check for ONSITE mixing heights (OSMIX) in the
+       determination of data completeness, and adjusted
+       warning messages to account for possible presence
+       of both ONSITE mixing heights and UPPERAIR data.
+
+
+-- Enhancements:
+
+   1.  Added a new THRESH_1MIN keyword to Stage 3 processing. 
+       This optional keyword allows the user to specify a threshold 
+       wind speed below which winds reported in the 1-minute ASOS
+       data processed through AERMINUTE, if in use, are considered 
+       calm. There is no default value; however, a warning message
+       will be generated if the user-specified threshold is greater
+       than 0.5 m/s, and a fatal error message will be generated 
+       if the user-specified threshold is less than zero or greater
+       than 1.0.  
+
+       This new keyword also required that the length of the 
+       KEYWRD variable be increased from 10 to 12 characters, 
+       resulting in modifications to several subroutines.
+
+   2.  Incorporated a new "BETA" option to adjust u* (ustar) 
+       for low wind speed stable conditions, based on Qian, W., 
+       and A. Venkatram, 2011: Performance of Steady-State 
+       Dispersion Models Under Low Wind-Speed Conditions. 
+       Boundary-Layer Meteorology, 138, 475-491. The new option
+       is selected by including the METHOD STABLEBL ADJ_U* 
+       keyword on the METPREP pathway in the Stage 3 input file.
+
+       The ADJ_U* "BETA" option is considered to be a non-Default 
+       option and is therefore subject to the alternative model 
+       provisions in Section 3.2 of Appendix W (40 CFR Part 51). 
+       Users should coordinate with the appropriate reviewing 
+       authority regarding the procedures and requirements for 
+       approval of this BETA option for regulatory modeling 
+       applications.  Use of this option also requires the user 
+       to include the BETA option on the CO MODELOPT keyword in 
+       the AERMOD input file.
+
+   3.  Arrays for storing upper air soundings were increased to 
+       accommodate up to 48 soundings, including the current
+       day and the previous day.
+
+
+-- Miscellaneous:
+
+   1.  The value used to adjust ASOS wind speeds to account for 
+       bias due to wind speeds being truncated to whole knots was 
+       modified to include three significant digits (from 0.26 m/s 
+       to 0.257 m/s, based on 0.5 kt). This modification avoids 
+       potential for mis-characterization of calm vs. non-calm 
+       due to precision issues associated with the truncation 
+       adjustment under the new THRESH_1MIN option.
+
+   2.  Modified subroutine GETFSL to issue a non-fatal warning 
+       instead of a fatal error message when the UA station ID
+       specified on the UA LOCATION keyword does not match the
+       UA station ID in the data file. This change will accommodate 
+       substitutions for missing UA soundings using data from other 
+       representative UA stations, and will document when such 
+       substitutions were made in the Stage 1 report file. 
+       Since all convective hours will be missing on days when the
+       UA sounding is missing, this will allow users to minimize 
+       the number of missing hours in the AERMET-processed surface 
+       file due to missing UA soundings, while maintaining a record 
+       of when such substitutions were made and identifying which 
+       alternative sites were used.
+
+   3.  Modified subroutine RDHUSW for processing HUSWO surface 
+       data to change the "no records extracted" warning message 
+       to a fatal error.
+
+   4.  Modified subroutines EQ_CCVR and INCRAD to remove a trailing
+       period within the single quotes in the INCLUDE 'WORK1.INC' 
+       statements. 
+
+
+                       *****************
+                       *   IMPORTANT   *
+                       *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMET (dated 12345).  Future changes to AERMET will be identified
+by an updated Julian date found at the beginning of the source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the SCRAM ALERTS section of this website.
+                                                                           

@@ -1,0 +1,35 @@
+                        Model Change Bulletin
+
+                                MCB#3                       12/03/2014
+
+                        AERMINUTE (dated 14337)
+
+This Model Change Bulletin (MCB) documents changes made to the AERMINUTE 
+1-minute ASOS wind data processor.  A brief description of the changes  
+is provided below.Additional details are available in the FORTRAN source code 
+and in the AERMINUTE user's guide.
+
+
+This revised version of AERMINUTE (dated 14337) includes the following
+modifications relative to the previous version (14237):
+
+Modifications
+
+1. Modified subroutine CHECKWIND to remove the check on column 67 for non-blank 
+   character and columns 64-68 for non-blank characters.  Flags 6-12 were 
+   renumbered accordingly, flags 6-9 became flags 5-8 and flags 11 and 12 
+   became flags 9 and 10.
+
+2. Modified subroutine CHECKWIND to search columns 68-90 for non-numeric columns 
+   for flag 1.  The check was originally columns 67-90.
+
+3. Modified subroutine CHECKWIND to decrease the size of variables aflag 
+   and iflag1 from 13 to 11.
+
+4. Modified module MAIN1 to reset variable flagcounts from size 14 to 12
+
+5. Modified subroutine READONE to reset variable flagstr from size 14 to 12 
+   and included descriptions of modified flags.
+
+6. Modified subroutine READLINE to decrease length of variable aflag from 
+   13 to 11 to accommodate new flags.  

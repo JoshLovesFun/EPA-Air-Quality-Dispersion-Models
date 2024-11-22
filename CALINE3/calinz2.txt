@@ -1,0 +1,106 @@
+                          Model Change Bulletin
+              
+                                 MCB#2                08/07/89
+
+                          CALINE3 (dated 89219)
+
+
+     The CALINE3 model code (dated 86100, MCB#1) has been modified to operate
+on a PC, using the Microsoft compiler, VAX and SUN UNIX computers in addition
+to the IBM 3090 mainframe.  This version of the model is dated  89219  and
+further identified thru this MCB#2.
+
+     The code will compile error free on all of the above mentioned computers.
+The following modifications have been made and are present in the current
+version of CALINE3 (dated 89219):
+
+     NOTE: The changes made to the source code do not in any way affect the
+     concentrations calculated by the model.  The only reason for the changes
+     was to acquire compatibility among the above mentioned computers and to
+     allow operation on the same.
+
+The following line was changed from:
+    *    INC,LINE(102),TYP(20),MIXH                                    CLN00370
+To:
+    *    INC,MIXH                                                      XXX00370
+The following line was changed from:
+     DOUBLE PRECISION STB(6),COD(20),JOB(5),RUN(5)                     CLN00390
+To:
+     DOUBLE PRECISION JOB(5),RUN(5)                                    XXX00390
+The following lines were added after CLN00430:
+     CHARACTER*4 FMT,FMT1,FMT2,FMT3,FMT4,VFM,VFM1,VFM2                 XXX00435
+     CHARACTER*2 AG,DP,FL,BR,TYP                                       XXX00436
+     CHARACTER*1 STB,COD,DASH,LINE                                     XXX00437
+The following line was changed from:
+    *    AY2(6),Y(6),WT(5)                                             CLN00490
+To:
+    *    AY2(6),Y(6),WT(5),FMT(6),FMT1(16),FMT2(4),FMT3(6),FMT4(4),    XXX00490
+The following line was added:
+    *    VFM(20),VFM1(20),VFM2(20),STB(6),COD(20),LINE(102),TYP(20)    XXX00491
+
+The following lines CLN00530 - CLN00710 were changed from:
+     INTEGER   FMT(6)  /4H(1H+,4H    ,4H,70X,4H,7HC,4HO/LI,4HNK) /     CLN00530
+     INTEGER   FMT1(16)/4H(29X,4H   ,,4H1H*,,4H08X,,4H 15H,4HCOOR,     CLN00540
+    *     4HDINA,4HTES ,4H(M),,4H08X,,4H9H* ,4H+ AM,4HB *,,4H01X,,     CLN00550
+    *     4H5H(P,4HPM))/                                               CLN00560
+     INTEGER   FMT2(4) /4H(1H+,4H,69X,4H,01A,4H1)  /                   CLN00570
+     INTEGER   FMT3(6) /4H(29X,4H   ,,4H1H*,,4H25X,,4H5H(P,4HPM))/     CLN00580
+     INTEGER   FMT4(4) /4H(1H+,4H,29X,4H, 57,4HA1) /                   CLN00590
+     INTEGER   VFM(20) /4H,70X,4H,72X,4H,74X,4H,77X,4H,79X,            CLN00600
+    *                   4H,82X,4H,84X,4H,87X,4H,89X,4H,92X,            CLN00610
+    *                   4H,53X,4H,55X,4H,58X,4H,60X,4H,63X,            CLN00620
+    *                   4H,65X,4H,68X,4H,70X,4H,73X,4H,75X/            CLN00630
+     INTEGER   VFM1(20)/4H01X,,4H04X,,4H06X,,4H09X,,4H11X,,            CLN00640
+    *                   4H14X,,4H16X,,4H19X,,4H21X,,4H24X,,            CLN00650
+    *                   4H25X,,4H27X,,4H30X,,4H32X,,4H35X,,            CLN00660
+    *                   4H37X,,4H40X,,4H42X,,4H45X,,4H47X,/            CLN00670
+     INTEGER   VFM2(20)/4H,01A,4H,12A,4H,17A,4H,22A,4H,27A,            CLN00680
+    *                   4H,32A,4H,37A,4H,42A,4H,47A,4H,52A,            CLN00690
+    *                   4H, 57,4H, 62,4H, 67,4H, 72,4H, 77,            CLN00700
+    *                   4H, 82,4H, 87,4H, 92,4H, 97,4H,102/            CLN00710
+To:
+     DATA FMT  /'(1H+','    ',',70X',',7HC','O/LI','NK) '/             XXX00530
+     DATA FMT1 /'(29X','   ,','1H*,','08X,',' 15H','COOR',             XXX00540
+    *     'DINA','TES ','(M),','08X,','9H* ','+ AM','B *,','01X,',     XXX00550
+    *     '5H(P','PM))'/                                               XXX00560
+     DATA FMT2 /'(1H+',',69X',',01A','1)  '/                           XXX00570
+     DATA FMT3 /'(29X','   ,','1H*,','25X,','5H(P','PM))'/             XXX00580
+     DATA FMT4 /'(1H+',',29X',', 57','A1) '/                           XXX00590
+     DATA VFM /',70X',',72X',',74X',',77X',',79X',                     XXX00600
+    *                   ',82X',',84X',',87X',',89X',',92X',            XXX00610
+    *                   ',53X',',55X',',58X',',60X',',63X',            XXX00620
+    *                   ',65X',',68X',',70X',',73X',',75X'/            XXX00630
+     DATA VFM1 /'01X,','04X,','06X,','09X,','11X,',                    XXX00640
+    *                   '14X,','16X,','19X,','21X,','24X,',            XXX00650
+    *                   '25X,','27X,','30X,','32X,','35X,',            XXX00660
+    *                   '37X,','40X,','42X,','45X,','47X,'/            XXX00670
+     DATA VFM2 /',01A',',12A',',17A',',22A',',27A',                    XXX00680
+    *                   ',32A',',37A',',42A',',47A',',52A',            XXX00690
+    *                   ', 57',', 62',', 67',', 72',', 77',            XXX00700
+    *                   ', 82',', 87',', 92',', 97',',102'/            XXX00710
+The following lines CLN00800 - CLN00840 were changed from:
+     DATA AG,DP,FL,BR/2HAG,2HDP,2HFL,2HBR/                             CLN00800
+     DATA STB/1HA,1HB,1HC,1HD,1HE,1HF/                                 CLN00810
+     DATA COD/1HA,1HB,1HC,1HD,1HE,1HF,1HG,1HH,1HI,1HJ,                 CLN00820
+    *         1HK,1HL,1HM,1HN,1HO,1HP,1HQ,1HR,1HS,1HT/                 CLN00830
+     DATA DASH/1H-/                                                    CLN00840
+To:
+     DATA AG,DP,FL,BR/'AG','DP','FL','BR'/                             XXX00800
+     DATA STB/'A','B','C','D','E','F'/                                 XXX00810
+     DATA COD/'A','B','C','D','E','F','G','H','I','J',                 XXX00820
+    *         'K','L','M','N','O','P','Q','R','S','T'/                 XXX00830
+     DATA DASH/'-'/                                                    XXX00840
+The following line was changed from:
+     LB=DEG*(DARCOS(DABS(XD)/LL(IL)))                                  CLN02400
+To:
+     LB=DEG*(DACOS(DABS(XD)/LL(IL)))                                   XXX02400
+The following line was changed from:
+     DO 1680 I=1,NR                                                    CLN06400
+To:
+     DO 1670 I=1,NR                                                    XXX06400
+The following line was changed from:
+1680     CONTINUE                                                      CLN06520
+To:
+1680 CONTINUE                                                          XXX06520
+
+

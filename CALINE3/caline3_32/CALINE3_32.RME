@@ -1,0 +1,29 @@
+CALINE3    CALIFORNIA LINE SOURCE MODEL
+November 13, 2012
+
+************ DOCUMENTATION
+
+Please read this file, the source code comments and the CALINE3 
+documentation availalbe from SCRAM.  The full User's Guide is entitled:
+CALINE3-A VERSATILE DISPERSION MODEL INTERIM RPT NOV. 1979
+
+************ DESCRIPTION OF FILES:
+
+     CALINE3.FOR - Fortran source code (Dated 12317)
+     CALINE3_32.EXE - PC 32-bit executable, compiled  
+                      using Intel Visual Fortran Composer XE 2011
+     CALINES.EXP - Example input data case
+     CALINE3.LST - Example output using CALINE3.EXP as input
+     CALINE3_32.RME - This (read me) file.
+
+************ PC EXECUTION using the Command Prompt window:
+
+     CALINE3_32 < CALINE3.EXP > CALINE3.PRT
+
+     where CALINE3.PRT is the printed output file.
+     
+The CALINE3.PRT can be compared to the slightly reformatted CALINE3.LST 
+file.  The CALINE3.LST file was modified by adding "0"'s to " .0" 
+to create "0.0"'s.  This was done so that the File Compare would not
+generate false differences.  Also the columns were aligned by deleting
+the first column so the data lined up between the old and new output.

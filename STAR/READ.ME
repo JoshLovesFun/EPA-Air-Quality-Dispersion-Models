@@ -1,0 +1,173 @@
+                       STAR (Dated 90193)
+
+
+      The STAR program summarizes National Weather Service (NWS)
+meteorological data, CD-144 format, by generating joint frequencies
+of 6 windspeeds, 16 wind directions and 6 stability categories
+(Pasquill - Gifford: A through F) for the station and time period
+desired. The program generates both count of the number of entries
+for each windspeed/wind direction category by each stability class
+and the percent frequency for each windspeed/wind direction
+category by each stability class.
+
+      For use by the STAR program, meteorological data are broken
+into yearly station files consisting of hourly windspeed, wind
+direction, cloud height and total cloud cover. Program output
+provides columns displaying the number of occurrences within each
+windspeed category for each wind direction and each stability
+class, respectively.
+
+      The six windspeed categories are defined as follows: 1 to 3
+mi/hr, 4 to 7 mi/hr, 8 to 12 mi/hr, 13 to 18 mi/hr, 19 to 24 mi/hr,
+and greater then 24 mi/hr. The 16 wind directions are as follows:
+N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW and
+NNW. The total number of observations for each stability class are
+calculated for each stability class. Within each stability class,
+calms are distributed among the directions within the first
+windspeed class in proportion to the sum of the frequencies of
+winds on the first two classes for each direction.
+
+      Stability classes used for the ISC, VALLEY and LONG-Z
+dispersion models are defined as follows:
+  
+                      A    Extremely unstable
+                      B    Unstable
+                      C    Slightly unstable
+                      D    Neutral
+                      E    Slightly stable
+                      F    Stable
+
+Stability classes for the CDM model are arranged differently. The
+neutral class, D, is divided into 'day' and 'night' D classes and
+the last two classes E and F,are combined into the class E+F.
+
+
+      The version of the program offered herein is PC compatible
+and has been compiled with the Microsoft FORTRAN compiler. The
+package includes the following files:
+
+                    STAR.FOR  Fortran source code
+                    STAR.EXE  Program executable
+                    TEST.IN   Test case input data
+                                control parameters
+                    SFC.DAT  Test meteorological data
+                               Pittsburgh 1964, NWS CD-144 format
+
+                    TEST.OUT  Test case output     
+                    READ.ME   Read me file
+
+      To operate the test case on a PC the following command
+statement should be typed on the screen followed by hitting the
+ENTER key:
+
+         Note: Before attempting to run the test case all files  
+               should be copied to the 'C' drive.
+
+                    STAR.EXE<TEST.IN SFC.DAT>PRN  'enter'
+
+This will execute the test case and send the results to the
+printer. These results can then be compared with the contents of
+the TEST.OUT file provided.
+                       
+       A few tips:
+                      1.  If output to the screen is desired then
+                          eliminate the >PRN from the above command 
+                          statement.
+
+                      2.  If the printed output is to be saved for
+                          future reference then replace the PRN in
+                          the above command statement with the name
+                          of the desired file into which the output
+                          is to be saved.
+
+                      3.  If it is necessary to create the output
+                          file (IOPT=1, see below) that contains
+                          the frequency  distribution for use as
+                          input to an air quality dispersion model
+                          then that file needs to be identified  
+                          after the printed output file identifier.
+                          The following two command statements are 
+                          examples of this using OUT.MOD as the  
+                          name of the output file: 
+               
+                          STAR.EXE<TEST.IN SFC.DAT>PRN OUT.MOD
+          
+                                           or
+
+                          STAR.EXE<TEST.IN SFC.DAT>FILE.OUT OUT.MOD
+
+
+
+
+IMPORTANT           IMPORTANT          IMPORTANT            IMPORTANT
+
+READ     READ    READ    READ    READ    READ    READ    READ   READ
+
+
+           If you are using meteorological data that has been
+           downloaded from this bulletin board, it MUST first
+           be processed through the MET 144 Program before being
+           input to the STAR Program.  The MET 144 Program as
+           well as the instructions for operating it can be found
+           in the same menu from which the surface meteoroligical
+           is offered.
+
+
+
+
+
+
+
+
+
+
+
+      The following layout defines the structure of the control
+parameter input file. The test case input file TEST.IN enclosed is
+an example of this file.
+
+
+ 
+         ******INPUT CONTROL PARAMETER LAYOUT - 1 RECORD****** 
+
+                                                                 
+        
+         PARAMETER      DESCRIPTION             FORMAT     CC   
+         *********      ***********             ******     **   
+                                                                 
+ 
+              NSTA:  NCDC STATION NUMBER         I5         1   
+             IYEAR:  YEAR OF RECORD              I2         6   
+              IOPT:  STAR OUTPUT FILE OPTION     I1         8   
+                        IOPT = 1    YES                         
+                        IOPT = 0    NO                          
+              LOCA:  RUN DESCRIPTION             20A1       9
+              ALAT:  STA LATITUDE   XX.XX DEG    F8.3      29   
+              ALON:  STA LONGITUDE XXX.XX DEG    F8.3      37   
+               ZON:  STATION ZONE                F3.0      45   
+                        ETZ = 075                               
+                        CTZ = 090                               
+                        MTZ = 105                               
+                        PTZ = 120                               
+              IMOD:  MODEL SELECTION             I1        48   
+                        CDM-2   = 1                             
+                        ISCLT   = 2                             
+                        LONGZ   = 2
+                        VALLEY  = 2
+              ITST:  MONTHLY SELECTION           I1        49   
+                        YES  =  1                               
+                         NO  =  0                               
+               IMO:  MONTHS SELECTED             12I1      50   
+                        YES  =  1                               
+                         NO  =  0                               
+                      ONE FIELD TO BE USED FOR EACH MONTH       
+                 NOTE: THIS ARRAY IS ONLY USED WHEN THE ABOVE   
+                       PARAMETER ITST = 1                        
+                  
+
+
+*** CAUTION:  BE SURE YOU ENTER THE CORRECT VALUE FOR IMOD (MODEL SELECTION)
+    AN INCORRECT ENTRY MAY CAUSE SERIOUS ERRORS IN THE MODEL RUN
+            
+      For questions regarding problems or the operation of the
+program call Jerry Mersch at 919-541-0288.

@@ -1,0 +1,110 @@
+                    Model Change Bulletin              
+              
+                            MCB#2                               1/8/91
+
+                    STAR  (dated 91008)
+
+
+
+      This Model Change Bulletin is formal notification of a correction to the
+STAR program.  The updated code is dated 91008 and is further identified by
+MCB#2.  This version replaces all previous versions of STAR for regulatory
+use.  Future changes to this program will be identified by an updated julian
+date found on the first line of the model source code and followed by a
+reference to a SCRAM BBS Model Change Bulletin (MCB#n) which will explain the
+nature and contents of the changes. All Model Change Bulletins for this
+program will always be available for back reference on this BBS.  In the
+future, notification of changes (MCBs) to this model will be made in the
+SCRAM ALERTS section of this BBS immediately following the LOGON procedure.
+
+      This revision of STAR corrects three errors found in the version of STAR
+dated 90193.
+
+1.    The first error allowed a blank entry for cloud cover to be
+treated as overcast (10/10 cloud cover) when a legal ceiling entry was
+present.  Any blank should cause the data to be treated as "missing".
+
+      To correct this problem, the following two lines of code following the
+line labeled 308 are DELETED:
+
+      IF(L-11)307,3399,450
+ 3399 IF(N-4)450,309,450
+
+
+and REPLACED by the following three lines of code:
+
+      IF ((L .EQ. 11) .AND. (N .NE. 4)) GO TO 450
+      IF (L .EQ. 11) GO TO 309
+      GO TO 307
+
+
+2.    The second error occasionally caused the stability class to be calculated
+as one class too unstable when (1) the sky is overcast and (2) the ceiling
+height is at least 7000 feet and less then 16000 feet.
+
+      To correct this problem, change the line labeled 100 to read:
+
+  100 CONTINUE
+
+and insert the following two lines of code after the line labeled 106:
+
+ 1068 IF (ICA-10) 107, 1069, 1069
+ 1069 IR = IR-1
+
+
+3.    The third error sets the variable MMM =O (the letter "oh") instead
+of 0 ("zero").
+
+      This problem is corrected by CHANGING the line after the line labeled
+47 from:
+
+      MMM=O
+
+to:
+
+      MMM=0
+
+
+4.    The version number on the third line is changed to 91008 as follows:
+
+C                           STAR (DATED 91008)
+
+
+      The effects of these changes are normally insignificant.  With respect
+to the first change, if cloud cover is missing in a data set, the ceiling
+height is normally missing also.  In such a case the missing data will be
+handled properly by either version.  The most likely case where the correction
+will cause changes is where STAR is reading the cloud cover from one column
+when the data were actually placed in another column.  In such a case, the
+old version will incorrectly use a small portion of the data, while the
+corrected version will correctly reject the entire data set.
+
+      With respect to the second change, a comparison was made between the
+corrected and uncorrected versions of STAR on the Pittsburgh data for the last
+three months of 1964.  Only five stability values were altered as a result of
+the code changes to STAR.  In each case, the stability changed from "D" to "C".
+We therefore believe the effect of this change to be insignificant.
+
+      The third change will have no effect if the compiler presets all
+variables to zero.  Most compilers, including the one used to prepare STAR.EXE,
+do this.
+
+      Note that the code on the BBS has been sequenced numbered.  Each line
+number begins with "STR" except for lines which have been altered or added
+by this change.  The line numbers for the altered and changed lines begin
+with "XXX".
+
+      The source code for this program has been compiled with the
+Microsoft 5.0 compiler and tested on an PC AT compatible computer.
+ 
+
+                       ******************
+                       * Important Note *  
+                       ******************
+   
+      New Model Change Bulletins will ONLY be issued when there is a change
+to the source code for this program. Changes to test cases and/or any pre and
+post processors that are included in the archived file for this program will
+be addressed and appropriately identified in an amendment to the program's
+latest MCB with notification posted in the SCRAM ALERTS section of the BBS.
+

@@ -1,0 +1,62 @@
+                    Model Change Bulletin              
+              
+                            MCB#3                               3/27/97
+
+                    STAR  (dated 97086)
+
+
+
+      This Model Change Bulletin is formal notification of a change to the
+STAR program.  The updated code is dated 97086 and is further identified by
+MCB#3.  This version replaces all previous versions of STAR for regulatory
+use.  Future changes to this program will be identified by an updated julian
+date found on the first line of the model source code and followed by a
+reference to a SCRAM BBS Model Change Bulletin (MCB#n) which will explain the
+nature and contents of the changes. All Model Change Bulletins for this
+program will always be available for back reference on this BBS.  In the
+future, notification of changes (MCBs) to this model will be made in the
+SCRAM ALERTS section of this BBS immediately following the LOGON procedure.
+
+      This revision of STAR essentially modifies some variable declarations
+      to allow the code to be compiled on more up-to-date compilers.
+      The changes do not affect the operation or results of the
+      program. If one has no need to recompile the program, there is no
+      need to download this later version.  One other change corrects
+      two comment statements.
+
+1.    Change the following line of code:
+
+      CHARACTER*4 STAB(6,2), DRCTN(17)                    STR02500
+
+      to read:
+
+      CHARACTER*4 STAB(6,2), DRCTN(17),MONTH,MP,MPR       STR02500
+
+
+2.    Change the following lines of code:
+
+      C                        LONGZ  = 3                 STR21500
+      C                        VALLEY = 4                 STR21600
+
+      to read:
+
+      C                        LONGZ  = 2                 STR21500
+      C                        VALLEY = 2                 STR21600
+
+      This change makes these comments in the code compatible with the
+      control record layout in the READ.ME file for this program. If the
+      codes of "3" or "4" were used an error message would occur. This 
+      corrects a typographical error made when the program was modified 
+      several years ago.
+                         
+
+                           ******************
+                           * Important Note *  
+                           ******************
+   
+      New Model Change Bulletins will ONLY be issued when there is a change
+to the source code for this program. Changes to test cases and/or any pre and
+post processors that are included in the archived file for this program will
+be addressed and appropriately identified in an amendment to the program's
+latest MCB with notification posted in the SCRAM ALERTS section of the BBS.
+

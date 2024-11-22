@@ -1,0 +1,166 @@
+                  Note on Terrain input to CTDMPLUS/CTSCREEN
+
+                                 Donna Schwede
+
+                                August 9, 1993
+
+       The purpose of this note is to address the most commonly asked
+questions related to preparing the terrain file required by CTDMPLUS/CTSCREEN.  
+Topics include selecting the coordinate system, contour digitizing, judging 
+the fit, and obtaining a hard copy of your results.  A description of the
+required inputs and technical basis of the terrain preprocessor is provided in
+The Complex Terrain Dispersion Model Terrain Preprocessor System User's Guide
+(Mills et al., 1987).  Since the publication of this user's guide, the programs
+have been slightly modified in order to be compatible with the CTDMPLUS menu
+driver.  Users should refer to the User's Guide to the Complex Terrain
+Dispersion Model (Perry et al., 1989) for information about these changes.  We
+are currently reviewing all aspects of the terrain preprocessing procedures and
+expect to eliminate some of the below-mentioned concerns with future updates to
+the terrain preprocessing programs.
+
+1.  Coordinate system
+
+       The coordinate system used in CTDMPLUS/CTSCREEN is user defined.  Three 
+common coordinate systems are stack centered, hill centered, and Universal 
+Transverse Mercator (UTM). Users may use any coordinate system as long as the 
+same system is used for locating the terrain features, receptors, stack(s), 
+and meteorological tower.  A conversion factor is input to CTDMPLUS/CTSCREEN 
+to convert from user units to meters.  
+
+       Users have encountered problems with coordinates that have too many 
+significant figures. For example, mathematical errors, due to lack of 
+precision, can occur in the FITCON program when coordinates with many (6-7) 
+significant digits are used.  Also, the terrain preprocessor programs 
+currently output results in an E10.4 or E15.4 format.  If more than 4 
+significant digits were input to the FITCON, the contours drawn by PLOTCON may 
+appear as straight lines which bear little resemblance to the input contours.  
+Also, the parameters input to CTDMPLUS/CTSCREEN to describe the hill will not 
+be accurate.  Using the UTM coordinate system can cause problems such as 
+these.  With all coordinates, use no more than 4 significant figures (e.g. use 
+6453, 6462, 6537; not 706453, 706462, 706537). 
+
+2.  Contour Digitization
+
+2.1 Base elevation considerations
+
+       CTDMPLUS requires terrain information from the base elevation (i.e. 
+lowest ground elevation considering the ground elevations of all stacks and 
+the meteorological tower) to hill top.  This information can be obtained in 
+two ways: (1) digitize contours starting at the base elevation; keep in mind 
+that the lower contours can strongly influence the overall shape of the three-
+dimensional (3-D) terrain feature, or (2) digitize the upper part of the hill 
+(where the plume is expected to interact) and allow the terrain preprocessor 
+(HCRIT mode 2) to extrapolate the upper hill information down to the base 
+elevation.  The method chosen will depend on the terrain.  If terrain 
+information is not available down to base elevation or if inclusion of 
+contours down to the base elevation would significantly bias the fitted shape 
+of the hill at the important elevations of likely plume interaction, HCRIT 
+mode 2 should be selected.  Using this mode, the user must choose the lowest 
+critical elevation (at or below base elevation) and the number of critical 
+elevations.  The number of critical elevations should be greater than the 
+number of input contours, but no more than 20.  Since the HCRIT program 
+requires little time to run, selecting a large number of critical elevations 
+is not unreasonable.  Also, the number of critical elevations does not effect 
+the run-time for CTDMPLUS. 
+
+2.2 Vertical spacing of contours
+
+       The number of contours selected for digitization will depend on the 
+vertical resolution needed to capture significant changes in the slope and 
+shape of the terrain.  The terrain preprocessor does not require a constant 
+contour interval of input contours.  Since CTDMPLUS linearly interpolates 
+between levels where terrain is provided to it, it is important to provide 
+enough information, particularly at the heights where the plume will interact 
+with sections of the hill.  
+
+2.3  Complete vs. incomplete contours
+
+       A contour is considered to be complete when the distance between the 
+first and last points of the contour is less than 1.0 E-15 user units.  
+Therefore, when digitizing a complete contour, users should make the last 
+point on a contour a duplicate of the first point. 
+
+       In some cases, it may be inadvisable to digitize a complete contour.  
+An example of this is when a contour closes, on the lee-side of the hill, at a 
+considerable distance from the hill center; inclusion of the complete contour 
+would bias the fit of the hill on the important windward side.  However, users 
+should digitize at least a 180ø arc around the user specified hill center. The 
+terrain preprocessor will complete contours using a simple reflection process 
+about the input hill center.  
+
+       The location of the hill center is an input to the FITCON program that 
+is used in the contour completion process.  The input hill center does not 
+necessarily have to represent the true center of the hill or the top of the 
+actual hill; it is the point about which the reflection will occur for contour 
+completion.  Since the location of the input hill center influences the 
+contour completion, users should experiment with various locations for the 
+hill center before accepting the results from FITCON.  Also, note that, the 
+true hill top elevation should be input to FITCON, not the elevation at the 
+hill center.  The hill top elevation is used in obtaining the parameters for 
+the best-fit inverse polynomial. 
+
+       There may be contour shapes for which the reflection process (contour 
+completion) does not provide a good completion of the contour.  For these 
+cases, the user may want to complete the contour manually.  To complete a
+contour manually, one can follow the trend of existing closed contours and
+natural divisions of the topography such as stream beds. 
+
+2.4  Multiple contours at the same elevation
+
+       Some terrain features include multiple peaks and therefore multiple 
+contours at the same elevation.  Each contour of the set of multiple contours 
+must be input as a complete contour (i.e. distance between first and last 
+point of the contour must be less than 1.0 E-15 user units).  The terrain 
+preprocessor will connect the contours with a zero area segment and fit the 
+set to one ellipse.  If PLOTCON shows a line segment connecting the contours 
+in the set, then they have not been input as closed contours and the resulting 
+fit will be incorrect. 
+
+3.  Judging the fit
+
+       The PLOTCON program is designed to give users a graphical 
+representation of the input terrain and the results of the terrain fitting 
+process.  Users should use this program to judge the mathematical fit to the 
+actual terrain.  First, the user should look at the results from FITCON. The 
+elliptical representations should be reasonable approximations of the input 
+contours.  An ellipse should have the same orientation and total area as the 
+input contour that it is approximating.  The spatial relationship between 
+individual ellipses is not important.  It does not matter if individual 
+ellipses cross each other.  The appearance of the completed contours (e.g. 
+overlap) is also of little concern as long as the elliptical representations 
+adequately fit the input part of the contour.  After the elliptical 
+representations have been judged to be acceptable, then the 3-D fit to the 
+hill should be assessed.  Users should compare the lengths of the major and 
+minor axes and the orientation of the axes (represented by the hill base 
+shape) at each critical elevation with those of the actual terrain above that 
+height.  The 2-D "shape" of the hill base (elliptical, diamond, square) that 
+appears on the screen is otherwise of no importance in judging the fit.  The 
+only parameters for the 3-D fit that are used by CTDMPLUS are the hill 
+centers, length scales and the profile exponents. 
+
+4.  Hard copy output from PLOTCON
+
+       The options available for obtaining a hard copy of the plots displayed 
+by PLOTCON vary depending on the hardware of the computer system and the 
+printer.  On some systems, users may run GRAPHICS.COM before starting the menu 
+driver, and then hit the Shift and PrtScr keys when it is time to print.  If 
+this does not work for your system, try using a screen capture utility.  A 
+screen capture utility saves the screen to a file which can be printed or 
+incorporated into a document.  The utility should be activated before starting 
+the menu driver. Note that some screen capture programs save the screen as it 
+appears, e.g. white on a black background.  Since printing a black background 
+would use a significant amount of ink, you may want to invert the image to 
+black on white. 
+
+5.  References
+
+Mills, M.T., R. Paine, E. Insley, B. Egan. 1987.  The complex terrain 
+  dispersion model Terrain preprocessor system --user's guide and program 
+  description. EPA/600/8-88/003, U.S. Environmental Protection Agency, 
+  Research Triangle Park, NC. 
+
+Perry, S.G., D. Schwede, L. Adams, R. Paine, M. Dennis, M. Mills, D.
+  Strimaitis, R. Yamartino, E. Insley. 1989.  User's Guide to the Complex
+  Terrain Dispersion Plus Algorithms for Unstable Situations (CTDMPLUS):
+  Volume 1.  EPA/600/8-89/041, U.S. Environmental Protection Agency, Research
+  Triangle Park, NC.

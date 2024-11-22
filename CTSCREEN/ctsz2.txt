@@ -1,0 +1,208 @@
+
+
+
+                            Model Change Bulletin              
+              
+                                   MCB#2                         7/18/91
+
+                           CTSCREEN (dated 91107)
+
+
+     This Model Change Bulletin documents the changes made to the CTSCREEN 
+model and its associated programs since their original installation as
+CTSCREEN (dated 91051) on the SCRAM bulletin board.  In the earlier
+model version, the effective stack height was not being reset to its initial
+value.  This occurred after finishing calculations for receptors utilizing
+transitional plume rise.  These changes correct that problem.  Concentration
+results should vary from previous model version results depending upon the
+height of the receptor with respect to the plume height.  Also, several
+improvements have been made to the menu driven program used in running the
+model.  
+
+Model Changes Implemented:
+=========================
+
+CTSCREEN: 
+
+1.   In the main program, CTSCREEN, two of the header lines were changed to
+reflect the new CTSCREEN julian date and model change bulletin number.  The
+following two lines were changed from:
+
+C                          CTSCREEN (DATED 91051)                           *
+C             *** SEE CTSCREEN MODEL CHANGE BULLETIN MCB#1 ***              *
+
+to:
+
+C                          CTSCREEN (DATED 91107)                           *
+C             *** SEE CTSCREEN MODEL CHANGE BULLETIN MCB#2 ***              *
+
+
+2.  In the DAYSCR.FOR subroutine, the following changes were made to 
+correctly model situations in which transitional plume rise is used.
+
+        a) The coding was changed from:
+
+C  RISE, XFIN ARE RETURNED
+
+to:
+
+C  ADDED FLAG ITRANPR - A 1 MEANS THAT TRANPR WAS CALLED.  THIS IS 
+C  NECESSARY BECAUSE IF WE RESET THE EFFECTIVE STACK HEIGHT ARRAY,
+C  WE NEED TO RESET IT AFTER OUR CALCULATIONS FOR THIS RECEPTOR ARE
+C  COMPLETED -DJB 4/16/91
+
+C  RISE, XFIN ARE RETURNED
+
+
+        b) The coding was changed from:
+
+       IF (XP .GE. XF .OR. FB .EQ. 0.0) THEN
+         TRISE = -999.0
+
+to:
+
+       IF (XP .GE. XF .OR. FB .EQ. 0.0) THEN
+         ITRANPR = 0
+         TRISE = -999.0
+
+
+        c) The coding was changed from:
+
+       ELSE 
+         CALL TRANPR(XP,TRISE)
+
+to:
+
+       ELSE 
+         ITRANPR = 1
+         CALL TRANPR(XP,TRISE)
+
+
+        d) The coding was changed from:
+
+         IF (RISE .NE. TRISE) XF = XP
+         HPL = HS + RISE
+         EFFSH(1) = HPL
+         EFFSH(2) = HPL
+         EFFSH(3) = 2.0*XMH - HPL
+         EFFSH(4) = 2.0*XMH - HPL
+         EFFSH(5) = 2.0*XMH + HPL
+         EFFSH(6) = 2.0*XMH + HPL
+       ENDIF            
+
+to:
+
+         IF (RISE .NE. TRISE) XF = XP
+         HPLTR = HS + RISE
+         EFFSH(1) = HPLTR
+         EFFSH(2) = HPLTR
+         EFFSH(3) = 2.0*XMH - HPLTR
+         EFFSH(4) = 2.0*XMH - HPLTR
+         EFFSH(5) = 2.0*XMH + HPLTR
+         EFFSH(6) = 2.0*XMH + HPLTR
+       ENDIF            
+
+
+        e) The coding was changed from:
+
+260    CONTINUE
+
+to:
+
+C IF WE CALLED TRANPR (ITRANPR = 1) THE RESET THE EFFSH ARRAY USING
+C FINAL PLUME HEIGHT (HPL) FOR NXT RECEPTOR 
+        IF (ITRANPR .GT. 0) THEN
+          EFFSH(1) = HPL
+          EFFSH(2) = HPL
+          EFFSH(3) = 2.0*XMH - HPL
+          EFFSH(4) = 2.0*XMH - HPL
+          EFFSH(5) = 2.0*XMH + HPL
+          EFFSH(6) = 2.0*XMH + HPL
+        ENDIF
+
+260    CONTINUE
+
+
+3.  In the PAGE.FOR subroutine the CTSCREEN julian date was updated to reflect 
+the model update. The coding was changed from: 
+
+6010   FORMAT('1','CTSCREEN Dated(91051)',T72,'PAGE',1X,I3/)
+
+to:
+
+6010   FORMAT('1','CTSCREEN Dated(91107)',T72,'PAGE',1X,I3/)
+
+
+
+4.  In the NITCALC subroutine the message indicating an endless loop in path 
+was corrected.  
+
+        a)  The code was changed from:
+
+365         CONTINUE
+        IF (IFLOW .EQ. 1) WRITE(IOUT,9365) JYR, JMO, JDY, KJCD, JHR
+        IF (IFLOW .EQ. 2) THEN
+          WRITE(IOUT,9366) NS,NHL,JYR,JMO,JDY,KJCD,JHR
+          WRITE(0,9366) NS,NHL,JYR,JMO,JDY,KJCD,JHR
+        ENDIF
+
+to:
+
+365         CONTINUE
+        IF (IFLOW .EQ. 1) THEN
+          IF (ISCRN .EQ. 0) THEN
+            WRITE(IOUT,9365) KYR, KMO, KDY, KJCD, KHR
+          ELSE
+            WRITE(IOUT,9364) ISIM
+          ENDIF
+        ENDIF
+        IF (IFLOW .EQ. 2) THEN
+          IF (ISCRN .EQ. 0) THEN
+            WRITE(IOUT,9366) NS,NHL,KYR,KMO,KDY,KJCD,KHR
+            WRITE(0,9366) NS,NHL,KYR,KMO,KDY,KJCD,KHR
+          ELSE
+            WRITE(IOUT,9367)NS,NHL,ISIM
+            WRITE(0,9367)NS,NHL,ISIM
+          ENDIF
+        ENDIF
+
+
+        b) The code was changed from:
+
+8020    FORMAT(1X,I3,' WRAP N/A (PLUME MISSES HILL)')
+9365    FORMAT(/' FLOW FIELD ALGORITHM SUBJECTED TO INPUT DATA BEYOND ',
+
+to:
+
+8020    FORMAT(1X,I3,' WRAP N/A (PLUME MISSES HILL)')
+9364    FORMAT(/' FLOW FIELD ALGORITHM SUBJECTED TO INPUT DATA BEYOND ',
+     *  'ITS DESIGN CRITERIA;',/,' NO PREDICTIONS: SIMULATION = ',I10/)
+9365    FORMAT(/' FLOW FIELD ALGORITHM SUBJECTED TO INPUT DATA BEYOND ',
+
+
+        c) The code was changed from:
+
+     *  I2,'  MONTH = ',I2,'  DAY = ',I2,'  JCD = ',I3,'  HOUR = ',I2/)
+9375    FORMAT(/' WIND SPEED LT 1 M/S, NO PREDICTIONS THIS HOUR',
+
+to:
+
+     *  I2,'  MONTH = ',I2,'  DAY = ',I2,'  JCD = ',I3,'  HOUR = ',I2/)
+9367    FORMAT(/' ENDLESS LOOP IN PATH; STACK ',I2,' HILL ',I2,
+     *  /' NO PREDICTIONS: SIMULATION = ',I10/)
+9375    FORMAT(/' WIND SPEED LT 1 M/S, NO PREDICTIONS THIS HOUR',
+
+
+
+5.  In the CONCALC.FOR subroutine the code was changed from:
+
+       ENDIF     
+
+to:
+
+C    IF CONC(1) = -999 THERE WAS A PROBLEM, GO ON TO NEXT WIND DIRECTION
+          IF (CONC(1) .LT. 0) GOTO 999
+
+       ENDIF     
+
+

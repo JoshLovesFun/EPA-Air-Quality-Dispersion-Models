@@ -1,0 +1,2 @@
+cd \ctdm\exe
+driveit

@@ -1,0 +1,216 @@
+                      Model Change Bulletin
+
+                              MCB#3                           3/18/93
+
+                      CTSCREEN (dated 93076)
+
+
+     This Model Change Bulletin is to notify users of changes
+made to correct problems in CTSCREEN (dated 91107).  The specific
+changes, the problems addressed, and the consequences of the
+changes are summarized in the following.  Reevaluation of the
+revised models demonstrated that these modifications did not
+affect design concentrations and, thus, should not have a
+significant regulatory impact.
+
+     These revisions constitute CTSCREEN (dated 93076) and
+completely replace CTSCREEN (dated 91107).  With this bulletin,
+the source codes and executables for CTSCREEN (dated 93076) are
+being made available for downloading from the Air Quality Models
+area of the File Transfer Section of SCRAM.  CTSCREEN (dated
+91107) is obsolete and, with this bulletin, will no longer be
+available on SCRAM.  All copies of such should be discarded.
+
+     Users of CTSCREEN are referred to a companion WordPerfect
+5.1 document (CTPLSMOD.WPF) "Modifications to the CTDMPLUS and
+CTSCREEN Models" for more detailed discussion of these problems
+(see Documention below).  This document addresses problems which
+are common to both CTDMPLUS (dated 91107) and CTSCREEN (dated
+91107) and those unique to CTSCREEN (dated 91107).  Sections 1
+and 2 below follow the outline of the companion WordPerfect
+document.  All of the problems described in the following have
+been corrected in CTDMPLUS (dated 93076) and CTSCREEN (dated
+93076).
+
+
+1. PROBLEMS COMMON TO BOTH CTDMPLUS (dated 91107) AND CTSCREEN    
+   (dated 91107)
+
+
+1.1  Wrap Calculations
+
+     Two problems are related to situations where a source is
+very close to the terrain feature:  1) model adjustment of WRAP
+ellipse size to prevent a source from being located inside the
+fitted ellipse (to prevent a mathematical error) and 2) a travel
+time problem for receptors located on actual terrain contours
+that 'jut out' in the upwind direction from the fitted ellipse. 
+Both problems may inappropriately affect concentrations during
+stable/neutral conditions.  The second problem, in particular,
+may result in significant overestimates.
+
+
+1.2  Convergence Problem
+
+     The algorithm in CTDMPLUS and CTSCREEN for computing the
+position of the streamline that passes through the source
+occasionally has problems converging on a solution.  This results
+in the error message "ENDLESS LOOP IN PATH" and a null
+concentration calculation for the given simulation.  Calculations
+for other simulations are not affected.  This error occurs only
+in stable/neutral conditions.
+
+
+1.3  Meteorological PROFILE file
+
+     CTDMPLUS and CTSCREEN expect that the instrumentation levels
+for the meteorological tower are entered in increasing order in
+the PROFILE file.  The check for this was coded incorrectly.  In
+some cases this may result in an abnormal termination with the
+error message "PROFILE HEIGHT VALUE INCORRECT ..."; this may
+occur even when the data are entered correctly.  This coding
+error does not affect concentration estimates.
+
+
+1.4  Limit on Convective Scaling Velocity
+
+     CTDMPLUS and CTSCREEN place a lower limit on the convective
+scaling velocity of 0.167 times the wind speed half-way between
+stack-top and plume height.  In multiple stack situations this
+algorithm may result in an incorrect scaling velocity.  This
+affects CTDMPLUS calculations in convective conditions only.  It
+has no affect on CTSCREEN estimates because wind speed is assumed
+to be constant with height; thus, in CTSCREEN, the minimum
+convective scaling velocity will be the same for all stacks
+regardless of final plume rise.
+
+
+1.5  Negative Emission Rates
+
+     The models do not currently allow negative emission rates. 
+This prevents the use of negative emission rates to estimate air
+quality improvement when an existing source is retired.
+
+
+1.6  Source Contribution Table
+
+     The CTDMPLUS and CTSCREEN option for source contribution
+tables potentially can result in an extremely large output file
+(CTDM.OUT).  To avoid this, source contribution tables in
+CTDMPLUS (dated 93076) and CTSCTEEN (dated 93076) are written to
+a separate file (ASCII or Binary).
+
+1.7  Special handling of receptors below stack top
+
+     An additional switch (ISTKTP) has been added to the CTDM.IN
+file. Setting this switch to 1 will cause the contribution from a
+particular source to be set to 0 for all receptors with
+elevations below stack-top for that source.  This switch will
+facilitate analysis of results for situations requiring both
+simple and complex terrain modeling.
+
+
+2.   PROBLEMS AFFECTING CTSCREEN (dated 91107) ONLY
+
+2.1  Calculation of Convective Scaling Velocity
+
+     CTSCREEN calculates an initial estimate of the convective
+scaling velocity (w*) using the default mixing height of 50
+meters obtained from the surface input file.  Later in the
+program when mixing heights are calculated as a function of hill
+height, CTSCREEN fails to recalculate w*.  This affects
+concentration calculations in convective conditions.
+
+2.2  Determination of Mixing Height
+
+     In CTSCREEN the mixing height is determined as a function of
+hill height.  This results in two problems.  First, in multiple
+hill situations, modeling is performed using mixing height
+estimates for all hills regardless of where the receptors may be
+located.  This is incorrect, modeling should only be performed
+using mixing height estimates for the hill on which the receptors
+reside.  Secondly, there are occasions when the effective plume
+height exceeds the maximum mixing height estimate for a given
+hill.  This results, erroneously, in a zero concentration
+estimate for the given simulation.
+
+
+2.3  CTSCREEN Output Files
+
+     As a result of our own experiences and those of many users,
+the output files from CTSCREEN (dated 91107) were determined to
+be inadequate for fully analyzing the model results.  CTSCREEN
+(dated 93076) provides improvements, including a separate
+meteorology file (METDAT) which provides a better summary of the
+meteorological conditions and facilitates postprocessing of
+concentration estimates.  In addition, the menu driver has been
+modified, as necessary, to accept this new (METDAT) file.
+
+
+2.4  CTSCREEN Error Messages
+
+     Diagnostic messages (in the CTDM.OUT file) are labeled with
+the wrong simulation number (one less than the correct number). 
+This is a result of the error message being written before the
+counter is incremented.  This error does not affect concentration
+estimates.
+
+
+3.   Documentation
+
+     Modifications to correct these problems have been completed
+and are described in a companion WordPerfect 5.1 document
+(CTPLSMOD.WPF) "Modifications to the CTDMPLUS and CTSCREEN
+Models".  This document provides detailed discussion of these
+problems, how they were resolved, the likely effect of the
+modifications on modeled concentrationss, and the results of a
+model reevaluation.  It is available for downloading from SCRAM
+as file CTPLSMOD.ZIP.  Additional material is provided in the
+WordPerfect 5.1 document (CTSCSUP.WPF) which describes
+modifications to the CTSCREEN user's guide.  The latter document
+is available for downloading from SCRAM as CTSCSUP.ZIP.
+
+
+4.   CTSCREEN Design Value Comparisons
+
+     CTSCREEN (dated 93076) was tested and reevaluated using the
+Lovett, Westvaco, and Widows Creek data sets from previous
+evaluations.  For the Lovett data base, the overall maximum
+concentration decreased by 8.7 percent but, remained well above
+the observed maximum at Lovett; for the Westvaco data base, there
+was no change in the overall maximum concentration; for the
+Widows Creek data base, the overall maximum concentration
+decreased by 14.1 percent but, remained well above the observed
+maximum at Widows Creek.
+
+
+5.   Contacts for Questions
+
+     Questions related to the use of CTDMPLUS in specific
+regulatory applications should be directed to the appropriate
+regulatory agency or Regional Modeling Contact (see State/Local
+Modeling Contacts in the Agency Communications Section of SCRAM).
+
+     Generic questions related to the use and regulatory
+applicability of the model should be directed to Desmond Bailey
+via SCRAM EMAIL or phone (919) 541-5248.
+
+     Questions or problems related to program execution should be
+reported to Donna Schwede via SCRAM EMAIL or phone (919) 541-3255
+or to Steve Perry phone (919) 541-1341.
+
+     Users who would like to share comments, suggestions, or
+helpful hints are encouraged to use the Model Conferencing area
+on the SCRAM Bulletin Board (see Model Conferencing area in the
+Public Communications Section of SCRAM).
+
+     Technical correspondence should be directed to:
+
+     Dr. Steven Perry or
+     Ms. Donna Schwede
+     Applied Modeling Research Branch
+     ACMD/AREAL/USEPA
+     MD-80
+     Research Triangle Park, NC  27711
+
+     Fax: (919) 541-1379

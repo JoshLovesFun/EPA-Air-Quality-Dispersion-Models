@@ -1,0 +1,46 @@
+
+
+                            Model Change Bulletin              
+              
+                                   MCB#1                         3/28/91
+
+                           CTSCREEN (dated 91051)
+
+
+     This Model Change Bulletin essentially initiates the activities of the
+SCRAM BBS for this model.
+
+      The CTSCREEN model code and supporting programs are available from this
+bulletin board and complete documentation is available from the National
+Technical Information Service.  For further details, read the README file that
+is part of the CTSCREEN archival file that has been uploaded to the Screening 
+Models section of the SCRAM BBS. 
+
+     This model will henceforth be identified by its name and a Julian date,
+i.e.: CTSCREEN (dated 91051). Future changes to this model will be identified
+by an updated Julian date found on the first line of the model source code and
+followed by a reference to a SCRAM BBS Model Change Bulletin (MCB#n) which
+will explain the nature and contents of the changes. All Model Change
+Bulletins for this model will always be available for back reference on this
+BBS. In the future, notification of changes (MCBs) to this model will be made
+in the SCRAM ALERTS section of this BBS immediately following the LOGON
+procedure.
+
+     The source code for this model has been compiled and tested on: 1) an IBM
+PC/386 compatible using Microsoft Fortran 5.0, and 2) a VAX 8650 running VMS.
+A math coprocessor chip was installed in the PC. Several accessory programs
+were written and tested in Borland International's Turbo PASCAL 5.0.  Note:
+The runtime for the test case was approximately 6 hours using a 386, 20 mHz
+PC.
+
+                             ******************
+                             * Important Note *
+                             ******************
+
+     New Model Change Bulletins will ONLY be issued when there is a change to
+the source code for this model. Changes to test cases and/or any pre and post
+processors that are included in the archival file for this model will be
+addressed and appropriately identified in an amendment to the model's latest
+MCB with notification posted in the SCRAM ALERTS section of the BBS. 
+
+

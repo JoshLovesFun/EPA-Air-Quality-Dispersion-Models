@@ -1,0 +1,243 @@
+1CTSCREEN Dated(91107)                                                 PAGE   1
+
+ CTSCREEN TEST RUN: Testcase Number 1 (TC1)                                      
+
+
+
+
+
+
+          INPUT/OUTPUT SWITCHES (1 = USE THIS OPTION, 0 = DO NOT USE OPTION )
+
+          ICASE:  INCLUDE CASE-STUDY PRINTOUT: 0 = NONE, 1 = STABLE ONLY, 
+                         2 = UNSTABLE ONLY  3 = ALL HOURS                    0
+          ITOPN:  CREATE TOP 4 TABLE AT END OF RUN                           0
+          ICONC:  CONCENTRATION OUTPUT:  0 = NONE, 1 = BINARY, 2/3 = TEXT    2
+
+
+          INTERNAL PROGRAM SWITCHES
+
+          IMIX: (IF 1, USE ON-SITE MIXING HEIGHT OBSERVATIONS       
+                (OFF-SITE IF NOT AVAILABLE); IF 0, VICE VERSA)               0
+          IWS1:  (IF 1, SET MINIMUM WIND SPEED TO 1.0 M/S)                   1
+          ISIGV: (HORIZ. TURB. INTENSITY DATA (0=SIGMA-THETA 1=SIGMA-V)      1
+          IWD:   (IF 1, SCALE WIND DIRECTION WITH HEIGHT)                    1
+          ICHIQ: (IF 1, MODEL OUTPUTS CHI/Q;  OTHERWISE IT OUTPUTS CHI)      1
+          ISOR: (IF 1, MODEL GIVES SOURCE CONTRIBUTION TABLE)                0
+          IUNSTA: (IF 0, MODEL WILL NOT READ RAWIN FILE OR CALCULATE 
+                         UNSTABLE HOURS)                                     1
+
+
+          SCREENING MODE SWITCHES
+
+          ISCRN:  (0=REGULAR MODE. 1=SCREENING MODE, STABLE HOURS ONLY.      3
+                   2=SCREENING MODE, UNSTABLE HOURS ONLY. 3=SCREENING
+                   MODE STABLE AND UNSTABLE HOURS)
+          IAUTO:  (0=NO, 1=AUTOMATE WIND DIRECTION SELECTION, 2=ALSO         1
+                  USE AVERAGE WIND DIRECTIONS)
+          IRANGE: (0=NO, 1=USE RANGE OF WIND DIRECTIONS)                     0
+          IDISCR: (0=NO, 1=USE DISCRETE WIND DIRECTIONS)                     0
+
+          FOR HORIZONTAL SCALE, MULTIPLY USER UNITS BY     1.0000 TO GET METERS.
+          FOR ELEVATION, MULTIPLY USER UNITS BY      .3048 TO GET METERS.
+
+          SITE LATITUDE (> 0 IF NORTH) = 39.591
+          SITE LONGITUDE (> 0 IF WEST) =  89.489
+          SITE TIME ZONE (> 0 IF WEST) =    6.
+          POLLUTANT # (FOR HOURLY EMISSIONS) =    1
+
+     METEOROLOGICAL TOWER COORDINATE INFORMATION:
+          X-COORD:    1260.000 (USER UNITS) *     1.0000 =       1260.0 (METERS)
+          Y-COORD:     200.000 (USER UNITS) *     1.0000 =        200.0 (METERS)
+          ELEVATION:  4251.000 (USER UNITS) *      .3048 =       1295.7 (METERS)
+1CTSCREEN Dated(91107)                                                 PAGE   2
+
+ CTSCREEN TEST RUN: Testcase Number 1 (TC1)                                      
+
+
+
+                * * * S O U R C E   I N F O R M A T I O N * * *
+
+
+                     EMISSION      LOCATION         STK   STK   GAS   EXIT
+ STK      NAME        RATE       X         Y        HT    DIA   TEMP  VEL 
+  #                   (G/S)     (M)       (M)       (M)   (M)   (K)  (M/S)
+ --- ---------------- -------- -------- ---------  ------ ----- ----- -----
+ 
+  1 STACK-1           1000.00      .00       .00   96.1*  2.00 400.0  5.00
+
+ ------------------------------------------
+
+   COMMON BASE ELEVATION =  1295.7 (METERS).
+   THIS BASE ELEVATION IS USED FOR ALL STACKS IN THIS RUN;
+   ALL STACK HEIGHTS MARKED WITH  *  HAVE BEEN ADJUSTED TO 
+   RETAIN THE ACTUAL ELEVATION OF THE TOP OF THE STACKS.
+   STACKS MARKED WITH  +  ARE SECONDARY SOURCES.
+
+   MULTIPLY HORIZONTAL USER UNITS BY: 1.000E+00 TO CONVERT TO METERS
+   MULTIPLY VERTICAL USER UNITS BY: 3.048E-01 TO CONVERT TO METERS
+1CTSCREEN Dated(91107)                                                 PAGE   3
+
+ CTSCREEN TEST RUN: Testcase Number 1 (TC1)                                      
+
+
+                                 RECEPTOR INFORMATION
+
+ REC   IDENTIFICATION    EAST      NORTH  HEIGHT  ABOVE   GRD LVL
+ NO.                     COORD     COORD  LOCAL GRD LVL  ELEVATION     HILL
+                           (USER UNITS)    (USER UNITS) (USER UNITS)  NUMBER
+ ---  ----------------  -------- -------- -------------  ----------   ------
+ 
+   1  221                2553.90  3126.91          .0      4256.6        1
+   2  222                1479.70  2739.79          .0      4442.0        1
+   3  223                2461.91  2889.50          .0      4241.6        1
+   4  224                1880.18  2235.35          .0      4216.3        1
+   5  231                1538.77  1627.80          .0      4249.2        1
+   6  232                1769.45  1528.55          .0      4222.2        1
+   7  233                1841.79  1524.76          .0      4332.2        1
+   8  322                   1.53  2499.06          .0      4862.2        1
+   9  323                 991.82  2684.42          .0      4512.7        1
+  10  324                  57.63  2139.38          .0      5141.8        1
+ 
+  11  325                 164.77  1957.66          .0      5228.1        1
+  12  326                 878.07  2173.61          .0      5122.0        1
+  13  327                 653.51  1962.28          .0      5220.4        1
+  14  331                1236.89  1905.03          .0      4861.8        1
+  15  332                    .74  1496.86          .0      4823.6        1
+  16  333                1270.29  1488.75          .0      4643.7        1
+  17  335                 816.54  1459.69          .0      4832.1        1
+  18  337                1067.34   299.40          .0      4235.9        1
+  19  422                    .54  2389.44          .0      4633.5        1
+  20  432                    .99  1496.73          .0      4811.6        1
+ 
+  21  221                5553.90  3126.91          .0      4256.6        2
+  22  222                4479.70  2739.79          .0      4442.0        2
+  23  223                5461.91  2889.50          .0      4241.6        2
+  24  224                4880.18  2235.35          .0      4216.3        2
+  25  231                4538.77  1627.80          .0      4249.2        2
+  26  232                4769.45  1528.55          .0      4222.2        2
+  27  233                4841.79  1524.76          .0      4332.2        2
+  28  322                2909.53  2499.06          .0      4862.2        2
+  29  323                3991.82  2684.42          .0      4512.7        2
+  30  324                3057.63  2139.38          .0      5141.8        2
+ 
+  31  325                3164.77  1957.66          .0      5228.1        2
+  32  326                3878.07  2173.61          .0      5122.0        2
+  33  327                3653.51  1962.28          .0      5220.4        2
+  34  331                4236.89  1905.03          .0      4861.8        2
+  35  332                2818.74  1496.86          .0      4823.6        2
+  36  333                4270.29  1488.75          .0      4643.7        2
+  37  335                3816.54  1459.69          .0      4832.1        2
+  38  337                4067.34   299.40          .0      4235.9        2
+  39  422                2341.54  2389.44          .0      4633.5        2
+  40  432                2687.99  1496.73          .0      4811.6        2
+ ---------------------------------------------
+   MULTIPLY HORIZONTAL USER UNITS BY: 1.000E+00 TO CONVERT TO METERS
+   MULTIPLY VERTICAL USER UNITS BY: 3.048E-01 TO CONVERT TO METERS
+1CTSCREEN Dated(91107)                                                 PAGE   4
+
+ CTSCREEN TEST RUN: Testcase Number 1 (TC1)                                      
+
+ TERRAIN INFORMATION (USER UNITS FOR ALL DATA)
+
+ HILL # 1  BEACON HILL MOVED WEST                  HILL TOP: 5252.0 (USER UNITS)
+
+ BEST FIT ELLIPSE INFORMATION FOR WRAP: BEACON HILL MOVED WEST                  
+  CONTOUR  X-COORD   Y-COORD   MAJOR  AXIS   ELLIPSE AXIS LENGTHS
+   HEIGHT    (HILL CENTER)     AZIM. FROM N    MAJOR      MINOR
+  -------  --------  --------  ------------  --------   --------
+   4200.0   203.000  1956.000       45.0     1653.000   1275.000
+   4400.0   203.000  1956.000       45.0     1653.000   1275.000
+   4600.0   233.000  1951.000      112.5     1273.000    995.500
+   4800.0   382.000  1916.000       90.0      904.200    541.700
+   5000.0   386.000  2024.000       90.0      686.500    237.200
+
+ Hc CUT-OFF HILL INFORMATION FOR LIFT:  BEACON HILL MOVED WEST                  
+  CONTOUR  X-COORD  Y-COORD  MAJOR  AXIS  <--- INVERSE POLYNOMIAL VARIABLES --->
+   HEIGHT    (HILL CENTER)  AZIM. FROM N  MAJ EXP MIN EXP   MAJ SCALE  MIN SCALE
+  -------  -------- ------- ------------  ------- -------   ---------  ---------
+   4200.0   323.000 1977.000      94.1      3.270   1.364     883.384    449.044
+   4400.0   323.000 1977.000      94.1      3.270   1.364     883.384    449.044
+   4600.0   353.000 1985.000      90.0      3.744   1.467     745.561    316.031
+   4800.0   339.000 2020.000      90.0      3.871   1.632     646.716    205.880
+   5000.0   291.000 2015.000      90.0      2.000   2.000     748.771    115.669
+
+ HILL # 2  BEACON HILL                             HILL TOP: 5252.0 (USER UNITS)
+
+ BEST FIT ELLIPSE INFORMATION FOR WRAP: BEACON HILL                             
+  CONTOUR  X-COORD   Y-COORD   MAJOR  AXIS   ELLIPSE AXIS LENGTHS
+   HEIGHT    (HILL CENTER)     AZIM. FROM N    MAJOR      MINOR
+  -------  --------  --------  ------------  --------   --------
+   4200.0  3203.000  1956.000       45.0     1653.000   1275.000
+   4400.0  3203.000  1956.000       45.0     1653.000   1275.000
+   4600.0  3233.000  1951.000      112.5     1273.000    995.500
+   4800.0  3382.000  1916.000       90.0      904.200    541.700
+   5000.0  3386.000  2024.000       90.0      686.500    237.200
+
+ Hc CUT-OFF HILL INFORMATION FOR LIFT:  BEACON HILL                             
+  CONTOUR  X-COORD  Y-COORD  MAJOR  AXIS  <--- INVERSE POLYNOMIAL VARIABLES --->
+   HEIGHT    (HILL CENTER)  AZIM. FROM N  MAJ EXP MIN EXP   MAJ SCALE  MIN SCALE
+  -------  -------- ------- ------------  ------- -------   ---------  ---------
+   4200.0  3323.000 1977.000      94.1      3.270   1.364     883.384    449.044
+   4400.0  3323.000 1977.000      94.1      3.270   1.364     883.384    449.044
+   4600.0  3353.000 1985.000      90.0      3.744   1.467     745.561    316.031
+   4800.0  3339.000 2020.000      90.0      3.871   1.632     646.716    205.880
+   5000.0  3291.000 2015.000      90.0      2.000   2.000     748.771    115.669
+ ---------------------------------------------
+   MULTIPLY HORIZONTAL USER UNITS BY: 1.000E+00 TO CONVERT TO METERS
+   MULTIPLY VERTICAL USER UNITS BY: 3.048E-01 TO CONVERT TO METERS
+
+------------------------------------------------------
+    SURFACE ROUGHNESS LENGTH OF EACH HILL:
+
+ HILL #        1       2
+ Z0 (M)     .300    .300
+
+
+1CTSCREEN Dated(91107)                                                 PAGE   5
+
+   MAP EDGES: XMIN =       0., XMAX =    5554., YMIN =    -751., YMAX =    3878.
+
+                 * = SOURCE, RECEPTORS SHOWN BY HILL # (0-9,A-Z)
+
+
+ + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                   1                                         2
+ |                                                                             |
+ |                                 1                                           2
+ |                   1                                           2             |
+ |             1                                         2                     |
+ 1                                       2                                     |
+ 1                               2                                             |
+ |                                                                             |
+ |           1             1                           2               2       |
+ 1                                           2                                 |
+ | 1     1                                   2       2                         |
+ |               1                                           2                 |
+ |                                                                             |
+ |                     1                                         2             |
+ 1         1       1     1 1           2 2             2     2       2         |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |             1                                           2                   |
+ |                                                                             |
+ |                                                                             |
+ *                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ |                                                                             |
+ + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +

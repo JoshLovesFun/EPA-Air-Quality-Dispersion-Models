@@ -1,0 +1,205 @@
+                       Model Change Bulletin
+
+                               MCB#4                       8/19/93
+
+                       CTSCREEN (dated 93228)
+
+
+     This Model Change Bulletin is to notify users of changes
+made to correct problems in CTSCREEN (dated 93076).  The specific
+changes, the problems addressed, and the consequences of the
+changes are summarized below.
+
+     These revisions constitute CTSCREEN (dated 93228) and
+completely replace CTSCREEN (dated 93076).  With this bulletin,
+the source codes and executables for CTSCREEN (dated 93228) are
+being made available for downloading from the Air Quality Models
+area of the File Transfer Section of SCRAM.  CTSCREEN (dated
+93076) is obsolete and, with this bulletin, will no longer be
+available on SCRAM.  All copies of such should be discarded.
+
+
+1.  Non-convergence in WPDF
+
+PROBLEM:
+
+      The WPDF subroutine determines the vertical velocity that connects
+the source to the receptor through the terrain-disturbed flow.  Thirty
+iterations are allowed to converge on a value for the vertical velocity.  The
+resulting vertical velocity (wprime) is used in the probability density
+function calculation and the y-coordinate of the position of the streamline is
+used in the calculation of sigma-y.  In CTSCREEN (dated 93076), when
+convergence was not obtained, the last value of wprime was retained
+correctly.  However, the position was incorrectly reset to the receptor
+location.
+
+SOLUTION:
+
+      In CTSCREEN (dated 93228), the position that is returned is the
+one corresponding to the last guess for wprime.  For most cases, this coding
+change will have no effect on predicted concentrations.  For cases in which
+the non-convergence occurred, we can not predict the magnitude or the
+direction of changes that could be expected.
+
+SUBROUTINES MODIFIED:
+
+      WPDF.FOR
+
+
+2.  Wind speed used in WPDF subroutine
+
+PROBLEM:
+
+      In CTSCREEN (dated 93076), the wind speed used in determining the
+vertical velocity needed to connect the source to the receptor through the
+terrain-disturbed flow was set to the wind speed at stack height.  This is
+inconsistant since the wind speed at half the plume height is used in the
+concentration equation.
+
+SOLUTION:
+
+      In CTSCREEN (dated 93228), the wind speed at half the plume height is
+used for all calculations.  This coding change will have no effect on results
+from CTSCREEN since the wind speed profile is constant with height.  The code
+was modified to maintain consistency with CTDMPLUS.
+
+SUBROUTINES MODIFIED:
+      WPDF.FOR, FLOWSP.FOR, DAYSCR.FOR
+
+
+3.  Problem with circular ellipses
+
+PROBLEM:
+
+      In CTSCREEN (dated 93076), the code for handling the special case of a
+circular ellipse did not account for a value of the variable ARSQ less than
+1.0.
+
+SOLUTION:
+
+      A check for a value of ARSQ greater than 1.0 has been added to
+CTSCREEN (dated 93228).  For most cases, this change will have no effect.  A
+runtime error would have been reported if this problem had been encountered in
+a particular run.
+
+SUBROUTINES MODIFIED:
+      SEQSCR.FOR
+
+
+4.  Error in DO loop
+
+PROBLEM:
+
+      In CTSCREEN (dated 93076), the "DO 110" loop contained a GO TO 300
+statement that caused the loop to be exited prematurely.
+
+
+SOLUTION:
+
+      The GO TO 300 statement has been moved outside of the loop in
+CTSCREEN (dated 93228).  The source contribution array is zeroed in the "DO
+110" loop.  There may be cases where the reported source contribution may
+differ from previous versions, although we have not observed any differences
+to date.
+
+SUBROUTINES MODIFIED:
+      CONCALC.FOR
+
+
+5.  Problems with non-buoyant releases
+
+PROBLEM:
+
+      In CTSCREEN (dated 93076) an error occurred when the stack exit
+temperature was less than the ambient temperature.
+
+SOLUTION:
+
+      A check was added to detect the case where the stack temperature is
+less than the ambient temperature and the stack temperature is set equal to
+the ambient temperature.  For most cases, this coding change will have no
+effect.  For non-buoyant releases, a runtime error will be eliminated.
+
+SUBROUTINES MODIFIED:
+      SEQSCR.FOR
+
+6.  Problems associated with the SUMRE file
+
+PROBLEM:
+
+      There were three problems with the SUMRE file produced by CTSCREEN
+(dated 93076) that were reported by users.  First, the source contribution
+reported in the receptor summary in the SUMRE file was incorrect.  Second, the
+format for writing concentrations did not allow for large values.  Third, a
+runtime error occurred if all concentrations were exactly 0.0.
+
+SOLUTION:
+
+      These problems have all been remedied in CTSCREEN (dated 93228).
+
+SUBROUTINES MODIFIED:
+      WRITSCR.FOR
+
+
+7.  New value for IUNSTA switch
+
+        A new value for the IUNSTA switch has been added that allows the
+user to model only unstable hours.  The possible values for this switch are
+now:
+         0 = model only stable hours
+         1 = model both stable and unstable hours
+         2 = model only unstable hours
+
+This change does not affect CTSCREEN runs since the IUNSTA switch is not
+used by CTSCREEN.  The code was modified to maintain consistency with
+CTDMPLUS.
+
+
+8.  Changes made to the menu driver
+
+      a.  DRIVEIT now deletes any existing output files (e.g. STCONC, SUMRE)
+          before a new model run begins.
+
+      b.  The error handling associated with running CTSCREEN has been
+          improved.  In addition to the detection of runtime errors that
+          was a part of the last version, DRIVEIT now indicates when
+          non-runtime errors (e.g.  lowest contour above base elevation) occur
+          and refers you to the CTDM.OUT file for more information.
+
+9.  Changes to RECGEN
+
+      In some cases (especially multiple contours), RECGEN did not correctly
+repaint the screen when the F2 key was pressed.  This has been corrected.
+
+
+10.  Contacts for Questions (NO CHANGE)
+
+     Questions related to the use of CTSCREEN in specific
+regulatory applications should be directed to the appropriate
+regulatory agency or Regional Modeling Contact (see State/Local
+Modeling Contacts in the Agency Communications Section of SCRAM).
+
+     Generic questions related to the use and regulatory
+applicability of the model should be directed to Desmond Bailey
+via SCRAM EMAIL or phone (919) 541-5248.
+
+     Questions or problems related to program execution should be
+reported to Donna Schwede via SCRAM EMAIL or phone (919) 541-3255
+or to Steve Perry phone (919) 541-1341.
+
+     Users who would like to share comments, suggestions, or
+helpful hints are encouraged to use the Model Conferencing area
+on the SCRAM Bulletin Board (see Model Conferencing area in the
+Public Communications Section of SCRAM).
+
+
+     Technical correspondence should be directed to:
+
+     Ms. Donna Schwede or
+     Dr. Steven Perry
+     Applied Modeling Research Branch
+     ACMD/AREAL/USEPA
+     MD-80
+     Research Triangle Park, NC  27711
+
+     Fax: (919) 541-1379

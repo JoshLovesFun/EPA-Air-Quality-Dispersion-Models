@@ -1,0 +1,34 @@
+1                    READ62   VERSION 2.0      LEVEL 870731
+
+
+0STARTING DATE:                ENDING DATE:
+0               YEAR =   84                  YEAR =   84
+          JULIAN DAY =   1            JULIAN DAY =   5
+                HOUR =   0                  HOUR =  12
+
+0PRESSURE LEVELS EXTRACTED:
+0                    SURFACE TO   500. MB
+
+0SWITCHES FOR DISCARDING PRESSURE LEVELS: 0=NO, 1=YES
+0DATA LEVEL ELIMINATED IF HEIGHT MISSING ?         1
+0DATA LEVEL ELIMINATED IF TEMPERATURE MISSING ?    1
+0DATA LEVEL ELIMINATED IF WIND DIRECTION MISSING ? 1
+0DATA LEVEL ELIMINATED IF WIND SPEED MISSING ?     1
+
+
+0THE FOLLOWING SOUNDINGS HAVE BEEN PROCESSED:
+0      YEAR   MONTH   DAY   JULIAN DAY   HOUR (GMT)   NO. LEVELS EXTRACTED
+
+        84      1       1         1          0                 20
+        84      1       1         1         12                 25
+        84      1       2         2          0                 18
+        84      1       2         2         12                 22
+        84      1       3         3          0                 23
+        84      1       3         3         12                 20
+        84      1       4         4          0                 22
+            TOP OF SOUNDING LISTED ABOVE IS BELOW THE  500.0-MB LEVEL 
+        84      1       4         4         12                 21
+        84      1       5         5          0                 22
+        84      1       5         5         12                 15
+                    EOF ON INPUT
+                    LAST DAY READ =  84  5

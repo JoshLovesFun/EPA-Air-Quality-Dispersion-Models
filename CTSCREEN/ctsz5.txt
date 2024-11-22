@@ -1,0 +1,70 @@
+                       Model Change Bulletin
+
+                               MCB#5                       3/29/94
+
+                       CTSCREEN (dated 94111)
+
+
+     This Model Change Bulletin is to notify users of changes
+made to correct problems in CTSCREEN (dated 93228).  The specific
+changes, the problems addressed, and the consequences of the
+changes are summarized below.
+
+     These revisions constitute CTSCREEN (dated 94111) and
+completely replace CTSCREEN (dated 93228).  With this bulletin,
+the source codes and executables for CTSCREEN (dated 94111) are
+being made available for downloading from the Air Quality Models
+area of the File Transfer Section of SCRAM.  CTSCREEN (dated
+93228) is obsolete and, with this bulletin, will no longer be
+available on SCRAM.  All copies of such should be discarded.
+
+
+1.   Problems associated with the SUMRE file
+
+PROBLEM:
+
+      There was a problem with the SUMRE file produced by CTSCREEN
+(dated 93228) that were reported by users.  The source contribution
+reported in the receptor summary in the SUMRE file was incorrect
+for unstable hours.  There was no problem with the source contribution
+for stable hours.
+
+SOLUTION:
+
+      This problem has been remedied in CTSCREEN (dated 94111).
+
+SUBROUTINES MODIFIED:
+      WRITSCR.FOR
+
+
+2.  Contacts for Questions (NO CHANGE)
+
+     Questions related to the use of CTSCREEN in specific
+regulatory applications should be directed to the appropriate
+regulatory agency or Regional Modeling Contact (see State/Local
+Modeling Contacts in the Agency Communications Section of SCRAM).
+
+     Generic questions related to the use and regulatory
+applicability of the model should be directed to Desmond Bailey
+via SCRAM EMAIL or phone (919) 541-5248.
+
+     Questions or problems related to program execution should be
+reported to Donna Schwede via SCRAM EMAIL or phone (919) 541-3255
+or to Steve Perry phone (919) 541-1341.
+
+     Users who would like to share comments, suggestions, or
+helpful hints are encouraged to use the Model Conferencing area
+on the SCRAM Bulletin Board (see Model Conferencing area in the
+Public Communications Section of SCRAM).
+
+
+     Technical correspondence should be directed to:
+
+     Ms. Donna Schwede or
+     Dr. Steven Perry
+     Applied Modeling Research Branch
+     ACMD/AREAL/USEPA
+     MD-80
+     Research Triangle Park, NC  27711
+
+     Fax: (919) 541-1379

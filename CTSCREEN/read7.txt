@@ -1,0 +1,54 @@
+                  TUTORIAL PACKAGE FOR THE CTSCREEN MODEL
+
+                                   READ.TXT
+
+     The CTSCREEN tutorial files are part of the "Instructional Package on
+Regulatory Air Quality Modeling - Part II:  Tutorials for Five PC-Based Air
+Quality Models and Two Utility Programs," EPA-454/C-92-003.  It contains
+instructional materials for the CTSCREEN model.
+
+     The CTSCREEN tutorial contains the following files:
+
+     (1) CTSCRND.ZIP - CTSCREEN demonstration
+     (2) EXES1.EXE - CTSCREEN model (self-extracting), file 1
+     (3) EXES2.EXE - CTSCREEN model (self-extracting), file 2
+     (4) FILES.EXE - Text editor file (self-extracting)
+     (5) TERRAIN.EXE - Terrain data file (self-extracting)
+     (6) BUCKBERG.XY - Terrain data file
+     (7) ORIG.XY - Terrain data file
+     (8) CTDM.BAT - CTDM batch file
+     (9) CTSCRTUT.ZIP - Tutorial documentation in WP51
+    (10) READ.TXT - Instructions on CTSCREEN tutorial.
+
+     In order to execute the CTSCREEN tutorial, all of the files listed above
+must be downloaded and stored in the same DOS directory (i.e., C:\CTDM) in the
+following manner:
+
+     (1) \CTDM\ subdirectory:  CTDM.BAT, CTSCRND.ZIP, READ.TXT
+     (2) \CTDM\EXE\ subdirectory:  EXES1.EXE, EXES2.EXE
+     (3) \CTDM\FILES\ subdirectory:  FILES.EXE
+     (4) \CTDM\TERRAIN\ subdirectory:  BUCKBERG.XY, ORIG.XY, TERRAIN.EXE
+
+
+****  A hard copy of this file (for downloading purposes) is suggested.  ****
+
+
+     All files with a "ZIP" extention name must then be unzipped (dearchived)
+using the unzip program available for downloading from the System Utilities
+menu of the TTN.  The unzip program "PKUNZIP.EXE" must also be stored in the
+same DOS directory with the tutorial ZIP files.  Simply type PKUNZIP followed
+by a space and the name of the ZIP file and the files included in the ZIP will
+be generaged in your DOS directory.  After dearchiving all of the above files,
+type CTSCRND to invoke the CTSCREEN demonstration.
+
+     Files with the "WPF" extention name are in WordPerfect format and must
+be imported into your WordPerfect word processor.  The original documentation
+was formatted for an HP LaserJet II series printer.  The pagination of your
+printed file may differ due to variations in printer and font types.
+
+     Any questions or comments concerning the CTSCREEN tutorial may be directed
+to Dennis Atkinson, U.S. EPA, MD-14, Research Triangle Park, N.C.  27711
+or call (919) 541-0518.  Technical questions concerning the CTSCREEN model may
+be directed to Desmond Bailey, U.S. EPA, MD-14, Research Triangle Park, N.C.
+27711, or call (919) 541-5248.
+

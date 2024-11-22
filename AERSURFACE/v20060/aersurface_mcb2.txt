@@ -1,0 +1,81 @@
+                         Model Change Bulletin (MCB) #2
+                       
+                         AERSURFACE version 19039_DRFT
+
+
+                               February 8, 2019
+
+       This draft version of AERSURFACE includes enhancements 
+       to support processing of 1992/2001/2006/2011 Land Cover data,  
+       including 2001/2006/2011 percent Impervious and Canopy data 
+       to supplement concurrent land cover data.
+
+       This version has been released primarily for review and comment 
+       and is not a replacement for version 13016.
+       The ZORAD option for determining roughness, provided in this 
+       version, is equivalent to the method available in AERSURFACE
+       version 13016 and may generally be appropriate for regulatory 
+       applications, provided that such applications are done in 
+       consultation with the appropriate reviewing authority, per 
+       Section 8.4.2(b) of the Guideline. However, the research-grade
+       ZOEFF option is the equivalent of an alpha option and is meant 
+       only for review and is not intended for regulatory 
+       applications at this time. 
+
+=======================================================================
+
+       This draft version of AERSURFACE includes the following 
+       modifications relative to the previous version (dated 13016):
+       
+-----  Enhancements:
+
+       1.  Path/Keyword interface similar to AERMOD, AERMET, and AERMAP. 
+           NOTE: This draft version is not compatible with the
+           redirected input from files generated with previous versions
+           AERSURFACE.
+
+       2.  Option to output surface values with appropriate AERMET
+           keywords for the PRIMARY or SECONDARY meteorological tower
+           location. (Default is PRIMARY.)
+           
+       3.  Option to separately characterize individual wind sectors as  
+           either airport or non-airport for determining surface roughness
+           length. Previous versions required all wind sectors to 
+           be characterized as either airport or non-airport.
+ 
+       4.  Option (ZOEFF) to compute surface roughness length based on the 
+           Effective Roughness Model Coding Abstract (MCA) in which  
+           an effective roughness is derived using an Internal Boundary 
+           Layer (IBL) method to estimate the appropriate fetch from 
+           the meteorological tower location based on the wind measurement 
+           height and local land cover characteristics. Default option (ZORAD)
+           uses a fixed radial distance from the tower (e.g., 1 km) 
+           as in previous versions of AERSURFACE.
+
+       5.  Option to supplement land cover data with percent impervious 
+           and/or percent canopy data to derive surface roughness length. 
+           Percent impervious and percent canopy data are supplied by the USGS 
+           as part of the National Land Cover Dataset and are only 
+           applicable to NLCD 2001, 2006, and 2011.
+
+-----  Miscellaneous:
+
+       1.  A valid range on the allowable height of the anemometer
+           representing surface wind measurements has been imposed. 
+           The valid range is 1.0 - 100.0 meters.
+
+       2.  Draft AERSURFACE assumes all NLCD data, including
+           land cover, percent impervious, and percent canopy are
+           provided in GeoTIFF format. State binary files cannot be 
+           processed with this draft version.
+
+       3.  Modified to account for non-standard pixel spacing in the
+           2001/2006/2011 NLCD products. Previous versions assumed a
+           constant pixel size of 30 meters. The pixel spacing in more
+           recent data may be slightly larger than 30 meters.
+
+ 
+
+-----  MODIFIED FROM:        AERSURFACE
+                       (Version Dated 13016)
+

@@ -1,0 +1,391 @@
+ BPIP users guide test case #2, 3-3 tiered bldgs w/ 10 stacks.                 
+
+                              BPIP (Dated: 04274)
+ DATE : 12/ 7/2004
+ TIME : 16: 5:32
+ BPIP users guide test case #2, 3-3 tiered bldgs w/ 10 stacks.                 
+
+ ============================
+ BPIP PROCESSING INFORMATION:
+ ============================
+
+   The p  flag has been set for preparing downwash related data
+          for a model run utilizing the PRIME algorithm.
+
+   Inputs entered in METERS     will be converted to meters using 
+    a conversion factor of    1.0000.  Output will be in meters.
+
+   UTMP is set to UTMN.  The input is assumed to be in a local
+    X-Y coordinate system as opposed to a UTM coordinate system.
+    True North is in the positive Y direction.
+
+   Plant north is set to 360.00 degrees with respect to True North.  
+
+
+ BPIP users guide test case #2, 3-3 tiered bldgs w/ 10 stacks.                 
+
+
+
+                PRELIMINARY* GEP STACK HEIGHT RESULTS TABLE
+                         (Output Units: meters)
+
+                            Stack-Building            Preliminary*
+         Stack    Stack     Base Elevation    GEP**   GEP Stack
+         Name     Height    Differences       EQN1    Height Value
+
+
+        s1H6.08    15.20         0.00        18.75        65.00
+        s2H7.08    17.70         0.00        18.75        65.00
+        s3H7.32    18.30         0.00        18.88        65.00
+        s4H6.08    15.20         0.00        18.94        65.00
+        s5H7.08    17.70         0.00        18.94        65.00
+        s6H7.32    18.30         0.00        18.94        65.00
+        s7H6.08    15.20         0.00        18.75        65.00
+        s8H6.08    15.20         0.00        18.75        65.00
+        s9H6.08    15.20         0.00        18.84        65.00
+        s10H6.08   15.20          N/A         0.00        65.00
+
+   * Results are based on Determinants 1 & 2 on pages 1 & 2 of the GEP
+     Technical Support Document.  Determinant 3 may be investigated for
+     additional stack height credit.  Final values result after
+     Determinant 3 has been taken into consideration.
+  ** Results were derived from Equation 1 on page 6 of GEP Technical
+     Support Document.  Values have been adjusted for any stack-building
+     base elevation differences.
+
+     Note:  Criteria for determining stack heights for modeling emission
+     limitations for a source can be found in Table 3.1 of the
+     GEP Technical Support Document.
+
+
+
+
+
+                              BPIP (Dated: 04274)
+ DATE : 12/ 7/2004
+ TIME : 16: 5:32
+
+
+ BPIP users guide test case #2, 3-3 tiered bldgs w/ 10 stacks.                 
+
+  BPIP output is in meters
+
+
+     SO BUILDHGT s1H6.08     7.20    6.20    6.20    6.20    6.20    6.20
+     SO BUILDHGT s1H6.08     7.20    7.50    7.30    7.50    7.50    7.50
+     SO BUILDHGT s1H6.08     7.30    7.60    7.50    7.50    7.50    7.60
+     SO BUILDHGT s1H6.08     7.20    6.20    6.20    6.20    6.20    6.20
+     SO BUILDHGT s1H6.08     7.20    7.50    7.30    7.50    7.50    7.50
+     SO BUILDHGT s1H6.08     7.30    7.60    7.50    7.50    7.50    7.60
+     SO BUILDWID s1H6.08     8.69   10.89   11.61   11.98   11.98   11.61
+     SO BUILDWID s1H6.08     9.61    8.11    7.50    7.44    7.56    7.45
+     SO BUILDWID s1H6.08     7.67    7.11    7.50    7.50    7.50    7.10
+     SO BUILDWID s1H6.08     8.69   10.89   11.61   11.98   11.98   11.61
+     SO BUILDWID s1H6.08     9.61    8.11    7.50    7.44    7.56    7.45
+     SO BUILDWID s1H6.08     7.67    7.11    7.50    7.50    7.50    7.10
+     SO BUILDLEN s1H6.08     7.91    9.36    9.36    9.49   10.23   10.66
+     SO BUILDLEN s1H6.08     8.54    7.44    7.50    8.11    8.97    9.56
+     SO BUILDLEN s1H6.08     9.86    6.48    5.72    4.78    3.69    2.60
+     SO BUILDLEN s1H6.08     7.91    9.36    9.36    9.49   10.23   10.66
+     SO BUILDLEN s1H6.08     8.54    7.44    7.50    8.11    8.97    9.56
+     SO BUILDLEN s1H6.08     9.86    6.48    5.72    4.78    3.69    2.60
+     SO XBADJ    s1H6.08    -8.61   -6.80   -4.79   -3.04   -2.10   -1.09
+     SO XBADJ    s1H6.08     0.89    2.47    3.50    3.99    4.37    4.61
+     SO XBADJ    s1H6.08     4.71    4.66    4.48    4.16    3.71    3.05
+     SO XBADJ    s1H6.08     0.70   -2.55   -4.57   -6.45   -8.13   -9.57
+     SO XBADJ    s1H6.08    -9.43   -9.91  -11.00  -12.10  -13.34  -14.17
+     SO XBADJ    s1H6.08   -14.57  -11.14  -10.19   -8.93   -7.40   -5.65
+     SO YBADJ    s1H6.08    -7.76   -7.89   -8.36   -8.58   -8.54   -8.23
+     SO YBADJ    s1H6.08    -8.32   -7.76   -6.40   -4.88   -3.02   -1.07
+     SO YBADJ    s1H6.08     1.20    2.60    3.93    5.14    6.19    7.05
+     SO YBADJ    s1H6.08     7.76    7.89    8.36    8.58    8.54    8.23
+     SO YBADJ    s1H6.08     8.32    7.76    6.40    4.88    3.02    1.07
+     SO YBADJ    s1H6.08    -1.20   -2.60   -3.93   -5.14   -6.19   -7.05
+
+
+     SO BUILDHGT s2H7.08     7.50    7.20    7.20    7.20    7.20    7.20
+     SO BUILDHGT s2H7.08     7.50    7.50    7.30    7.50    7.50    7.50
+     SO BUILDHGT s2H7.08     7.30    7.60    7.50    7.50    7.50    7.60
+     SO BUILDHGT s2H7.08     7.50    7.20    7.20    7.20    7.20    7.20
+     SO BUILDHGT s2H7.08     7.50    7.50    7.30    7.50    7.50    7.50
+     SO BUILDHGT s2H7.08     7.30    7.60    7.50    7.50    7.50    7.60
+     SO BUILDWID s2H7.08     8.11    9.61   10.25   10.57   10.57   10.25
+     SO BUILDWID s2H7.08     8.97    8.11    7.50    7.44    7.56    7.45
+     SO BUILDWID s2H7.08     7.67    7.11    7.50    7.50    7.50    7.10
+     SO BUILDWID s2H7.08     8.11    9.61   10.25   10.57   10.57   10.25
+     SO BUILDWID s2H7.08     8.97    8.11    7.50    7.44    7.56    7.45
+     SO BUILDWID s2H7.08     7.67    7.11    7.50    7.50    7.50    7.10
+     SO BUILDLEN s2H7.08     7.44    8.07    8.00    7.67    8.06    8.43
+     SO BUILDLEN s2H7.08     7.56    7.44    7.50    8.11    8.97    9.56
+     SO BUILDLEN s2H7.08     9.86    6.48    5.72    4.78    3.69    2.60
+     SO BUILDLEN s2H7.08     7.44    8.07    8.00    7.67    8.06    8.43
+     SO BUILDLEN s2H7.08     7.56    7.44    7.50    8.11    8.97    9.56
+     SO BUILDLEN s2H7.08     9.86    6.48    5.72    4.78    3.69    2.60
+     SO XBADJ    s2H7.08    -8.16   -6.45   -4.54   -2.49   -1.31   -0.31
+     SO XBADJ    s2H7.08     1.16    2.16    3.10    3.51    3.81    4.00
+     SO XBADJ    s2H7.08     4.07    4.01    3.83    3.53    3.13    2.53
+     SO XBADJ    s2H7.08     0.72   -1.62   -3.46   -5.18   -6.75   -8.11
+     SO XBADJ    s2H7.08    -8.72   -9.61  -10.60  -11.62  -12.78  -13.56
+     SO XBADJ    s2H7.08   -13.93  -10.49   -9.54   -8.31   -6.82   -5.13
+     SO YBADJ    s2H7.08    -7.56   -7.98   -8.44   -8.64   -8.59   -8.27
+     SO YBADJ    s2H7.08    -8.02   -7.18   -5.88   -4.44   -2.67   -0.82
+     SO YBADJ    s2H7.08     1.35    2.63    3.84    4.94    5.88    6.65
+     SO YBADJ    s2H7.08     7.56    7.98    8.44    8.64    8.59    8.27
+     SO YBADJ    s2H7.08     8.02    7.18    5.88    4.44    2.67    0.82
+     SO YBADJ    s2H7.08    -1.35   -2.63   -3.84   -4.94   -5.88   -6.65
+
+
+     SO BUILDHGT s3H7.32     7.50    7.60    7.50    7.50    7.50    7.50
+     SO BUILDHGT s3H7.32     7.50    7.50    7.30    7.50    7.50    7.50
+     SO BUILDHGT s3H7.32     7.30    7.60    7.60    7.60    7.60    7.60
+     SO BUILDHGT s3H7.32     7.50    7.60    7.50    7.50    7.50    7.50
+     SO BUILDHGT s3H7.32     7.50    7.50    7.30    7.50    7.50    7.50
+     SO BUILDHGT s3H7.32     7.30    7.60    7.60    7.60    7.60    7.60
+     SO BUILDWID s3H7.32     8.11    7.52    9.56    9.86    9.86    9.56
+     SO BUILDWID s3H7.32     8.97    8.11    7.50    7.44    7.56    7.45
+     SO BUILDWID s3H7.32     7.67    7.11    7.45    7.52    7.44    7.10
+     SO BUILDWID s3H7.32     8.11    7.52    9.56    9.86    9.86    9.56
+     SO BUILDWID s3H7.32     8.97    8.11    7.50    7.44    7.56    7.45
+     SO BUILDWID s3H7.32     7.67    7.11    7.45    7.52    7.44    7.10
+     SO BUILDLEN s3H7.32     7.44    4.87    7.45    7.11    7.11    7.45
+     SO BUILDLEN s3H7.32     7.56    7.44    7.50    8.11    8.97    9.56
+     SO BUILDLEN s3H7.32     9.86    6.48    5.72    4.78    3.69    2.60
+     SO BUILDLEN s3H7.32     7.44    4.87    7.45    7.11    7.11    7.45
+     SO BUILDLEN s3H7.32     7.56    7.44    7.50    8.11    8.97    9.56
+     SO BUILDLEN s3H7.32     9.86    6.48    5.72    4.78    3.69    2.60
+     SO XBADJ    s3H7.32    -7.70   -3.48   -4.44   -2.59   -1.21   -0.34
+     SO XBADJ    s3H7.32     0.53    1.39    2.20    2.51    2.75    2.91
+     SO XBADJ    s3H7.32     2.97    2.95    2.83    2.63    2.35    1.90
+     SO XBADJ    s3H7.32     0.26   -1.40   -3.00   -4.52   -5.90   -7.10
+     SO XBADJ    s3H7.32    -8.09   -8.83   -9.70  -10.62  -11.72  -12.47
+     SO XBADJ    s3H7.32   -12.83   -9.43   -8.55   -7.41   -6.05   -4.50
+     SO YBADJ    s3H7.32    -6.57   -6.51   -7.69   -7.90   -7.88   -7.61
+     SO YBADJ    s3H7.32    -7.12   -6.41   -5.25   -3.98   -2.39   -0.72
+     SO YBADJ    s3H7.32     1.25    2.35    3.38    4.31    5.11    5.75
+     SO YBADJ    s3H7.32     6.57    6.51    7.69    7.90    7.88    7.61
+     SO YBADJ    s3H7.32     7.12    6.41    5.25    3.98    2.39    0.72
+     SO YBADJ    s3H7.32    -1.25   -2.35   -3.38   -4.31   -5.11   -5.75
+
+
+     SO BUILDHGT s4H6.08     7.10    6.10    6.10    6.10    6.10    6.10
+     SO BUILDHGT s4H6.08     6.10    7.10    7.30    7.50    7.50    7.50
+     SO BUILDHGT s4H6.08     7.30    7.60    7.60    7.60    7.60    7.60
+     SO BUILDHGT s4H6.08     7.10    6.10    6.10    6.10    6.10    6.10
+     SO BUILDHGT s4H6.08     6.10    7.10    7.30    7.50    7.50    7.50
+     SO BUILDHGT s4H6.08     7.30    7.60    7.60    7.60    7.60    7.60
+     SO BUILDWID s4H6.08     8.69   10.89   11.61   11.98   11.98   11.61
+     SO BUILDWID s4H6.08    10.89    8.69    7.50    7.44    7.56    7.45
+     SO BUILDWID s4H6.08     7.67    7.11    7.45    7.56    7.44    7.10
+     SO BUILDWID s4H6.08     8.69   10.89   11.61   11.98   11.98   11.61
+     SO BUILDWID s4H6.08    10.89    8.69    7.50    7.44    7.56    7.45
+     SO BUILDWID s4H6.08     7.67    7.11    7.45    7.56    7.44    7.10
+     SO BUILDLEN s4H6.08     8.40   10.77   10.66   10.23    9.49    9.36
+     SO BUILDLEN s4H6.08     9.36    7.91    7.50    8.11    8.97    9.56
+     SO BUILDLEN s4H6.08     9.86    6.48    5.72    4.78    3.69    2.60
+     SO BUILDLEN s4H6.08     8.40   10.77   10.66   10.23    9.49    9.36
+     SO BUILDLEN s4H6.08     9.36    7.91    7.50    8.11    8.97    9.56
+     SO BUILDLEN s4H6.08     9.86    6.48    5.72    4.78    3.69    2.60
+     SO XBADJ    s4H6.08     1.75   -0.35   -1.45   -2.50   -3.48   -5.25
+     SO XBADJ    s4H6.08    -7.28   -9.08  -10.60  -12.24  -13.50  -14.35
+     SO XBADJ    s4H6.08   -14.77  -14.74  -14.26  -13.35  -12.03  -10.45
+     SO XBADJ    s4H6.08   -10.15  -10.42   -9.21   -7.73   -6.01   -4.11
+     SO XBADJ    s4H6.08    -2.08    1.17    3.10    4.13    4.53    4.79
+     SO XBADJ    s4H6.08     4.91    8.26    8.55    8.57    8.34    7.85
+     SO YBADJ    s4H6.08     7.89    8.05    8.55    8.79    8.75    8.46
+     SO YBADJ    s4H6.08     7.90    7.69    7.10    5.96    4.84    3.58
+     SO YBADJ    s4H6.08     2.48    0.48   -1.53   -3.50   -5.35   -7.05
+     SO YBADJ    s4H6.08    -7.89   -8.05   -8.55   -8.79   -8.75   -8.46
+     SO YBADJ    s4H6.08    -7.90   -7.69   -7.10   -5.96   -4.84   -3.58
+     SO YBADJ    s4H6.08    -2.48   -0.48    1.53    3.50    5.35    7.05
+
+
+     SO BUILDHGT s5H7.08     7.50    7.10    7.10    7.10    7.10    7.10
+     SO BUILDHGT s5H7.08     7.50    7.50    7.30    7.50    7.50    7.50
+     SO BUILDHGT s5H7.08     7.30    7.60    7.60    7.60    7.60    7.60
+     SO BUILDHGT s5H7.08     7.50    7.10    7.10    7.10    7.10    7.10
+     SO BUILDHGT s5H7.08     7.50    7.50    7.30    7.50    7.50    7.50
+     SO BUILDHGT s5H7.08     7.30    7.60    7.60    7.60    7.60    7.60
+     SO BUILDWID s5H7.08     8.11    9.61   10.25   10.57   10.57   10.25
+     SO BUILDWID s5H7.08     8.97    8.11    7.50    7.44    7.56    7.45
+     SO BUILDWID s5H7.08     7.67    7.11    7.45    7.56    7.44    7.10
+     SO BUILDWID s5H7.08     8.11    9.61   10.25   10.57   10.57   10.25
+     SO BUILDWID s5H7.08     8.97    8.11    7.50    7.44    7.56    7.45
+     SO BUILDWID s5H7.08     7.67    7.11    7.45    7.56    7.44    7.10
+     SO BUILDLEN s5H7.08     7.44    8.54    8.43    8.06    7.67    8.00
+     SO BUILDLEN s5H7.08     7.56    7.44    7.50    8.11    8.97    9.56
+     SO BUILDLEN s5H7.08     9.86    6.48    5.72    4.78    3.69    2.60
+     SO BUILDLEN s5H7.08     7.44    8.54    8.43    8.06    7.67    8.00
+     SO BUILDLEN s5H7.08     7.56    7.44    7.50    8.11    8.97    9.56
+     SO BUILDLEN s5H7.08     9.86    6.48    5.72    4.78    3.69    2.60
+     SO XBADJ    s5H7.08     1.81    0.26   -0.81   -1.85   -3.06   -5.13
+     SO XBADJ    s5H7.08    -7.03   -8.72  -10.15  -11.70  -12.90  -13.71
+     SO XBADJ    s5H7.08   -14.09  -14.05  -13.59  -12.71  -11.44   -9.93
+     SO XBADJ    s5H7.08    -9.25   -8.80   -7.62   -6.21   -4.61   -2.87
+     SO XBADJ    s5H7.08    -0.53    1.28    2.65    3.59    3.93    4.14
+     SO XBADJ    s5H7.08     4.23    7.58    7.87    7.93    7.75    7.33
+     SO YBADJ    s5H7.08     7.65    8.09    8.58    8.81    8.77    8.47
+     SO YBADJ    s5H7.08     8.22    7.39    6.58    5.53    4.51    3.35
+     SO YBADJ    s5H7.08     2.37    0.49   -1.40   -3.25   -5.00   -6.60
+     SO YBADJ    s5H7.08    -7.65   -8.09   -8.58   -8.81   -8.77   -8.47
+     SO YBADJ    s5H7.08    -8.22   -7.39   -6.58   -5.53   -4.51   -3.35
+     SO YBADJ    s5H7.08    -2.37   -0.49    1.40    3.25    5.00    6.60
+
+
+     SO BUILDHGT s6H7.32     7.50    7.50    7.50    7.50    7.50    7.50
+     SO BUILDHGT s6H7.32     7.50    7.50    7.30    7.50    7.50    7.50
+     SO BUILDHGT s6H7.32     7.30    7.60    7.60    7.60    7.60    7.60
+     SO BUILDHGT s6H7.32     7.50    7.50    7.50    7.50    7.50    7.50
+     SO BUILDHGT s6H7.32     7.50    7.50    7.30    7.50    7.50    7.50
+     SO BUILDHGT s6H7.32     7.30    7.60    7.60    7.60    7.60    7.60
+     SO BUILDWID s6H7.32     8.11    8.97    9.56    9.86    9.86    9.56
+     SO BUILDWID s6H7.32     8.97    8.11    7.50    7.44    7.56    7.45
+     SO BUILDWID s6H7.32     7.67    7.11    7.45    7.56    7.44    7.10
+     SO BUILDWID s6H7.32     8.11    8.97    9.56    9.86    9.86    9.56
+     SO BUILDWID s6H7.32     8.97    8.11    7.50    7.44    7.56    7.45
+     SO BUILDWID s6H7.32     7.67    7.11    7.45    7.56    7.44    7.10
+     SO BUILDLEN s6H7.32     7.44    7.56    7.45    7.11    7.11    7.45
+     SO BUILDLEN s6H7.32     7.56    7.44    7.50    8.11    8.97    9.56
+     SO BUILDLEN s6H7.32     9.86    6.48    5.72    4.78    3.69    2.60
+     SO BUILDLEN s6H7.32     7.44    7.56    7.45    7.11    7.11    7.45
+     SO BUILDLEN s6H7.32     7.56    7.44    7.50    8.11    8.97    9.56
+     SO BUILDLEN s6H7.32     9.86    6.48    5.72    4.78    3.69    2.60
+     SO XBADJ    s6H7.32     1.14    0.24   -0.67   -1.55   -2.95   -4.80
+     SO XBADJ    s6H7.32    -6.52   -8.03   -9.30  -10.72  -11.82  -12.55
+     SO XBADJ    s6H7.32   -12.91  -12.87  -12.44  -11.64  -10.48   -9.10
+     SO XBADJ    s6H7.32    -8.58   -7.80   -6.78   -5.56   -4.16   -2.64
+     SO XBADJ    s6H7.32    -1.05    0.59    1.80    2.61    2.85    2.99
+     SO XBADJ    s6H7.32     3.05    6.39    6.73    6.86    6.78    6.50
+     SO YBADJ    s6H7.32     6.67    7.33    7.77    7.98    7.94    7.66
+     SO YBADJ    s6H7.32     7.15    6.42    5.75    4.86    4.02    3.06
+     SO YBADJ    s6H7.32     2.28    0.61   -1.08   -2.74   -4.31   -5.75
+     SO YBADJ    s6H7.32    -6.67   -7.33   -7.77   -7.98   -7.94   -7.66
+     SO YBADJ    s6H7.32    -7.15   -6.42   -5.75   -4.86   -4.02   -3.06
+     SO YBADJ    s6H7.32    -2.28   -0.61    1.08    2.74    4.31    5.75
+
+
+     SO BUILDHGT s7H6.08     0.00    0.00    7.50    7.50    7.50    0.00
+     SO BUILDHGT s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s7H6.08     0.00    0.00    9.56    9.86    9.86    0.00
+     SO BUILDWID s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s7H6.08     0.00    0.00    7.45    7.11    7.11    0.00
+     SO BUILDLEN s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s7H6.08     0.00    0.00  -43.86  -44.09  -43.53    0.00
+     SO XBADJ    s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s7H6.08     0.00    0.00    7.78    0.48   -6.82    0.00
+     SO YBADJ    s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s7H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+
+
+     SO BUILDHGT s8H6.08     0.00    0.00    0.00    0.00    6.20    7.50
+     SO BUILDHGT s8H6.08     7.50    7.50    7.30    7.50    7.50    0.00
+     SO BUILDHGT s8H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s8H6.08     0.00    0.00    0.00    0.00    6.20    7.50
+     SO BUILDHGT s8H6.08     7.50    7.50    7.30    7.50    7.50    0.00
+     SO BUILDHGT s8H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s8H6.08     0.00    0.00    0.00    0.00   11.98    9.56
+     SO BUILDWID s8H6.08     8.97    8.11    7.50    7.44    7.56    0.00
+     SO BUILDWID s8H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s8H6.08     0.00    0.00    0.00    0.00   11.98    9.56
+     SO BUILDWID s8H6.08     8.97    8.11    7.50    7.44    7.56    0.00
+     SO BUILDWID s8H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s8H6.08     0.00    0.00    0.00    0.00   10.23    7.45
+     SO BUILDLEN s8H6.08     7.56    7.44    7.50    8.11    8.97    0.00
+     SO BUILDLEN s8H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s8H6.08     0.00    0.00    0.00    0.00   10.23    7.45
+     SO BUILDLEN s8H6.08     7.56    7.44    7.50    8.11    8.97    0.00
+     SO BUILDLEN s8H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s8H6.08     0.00    0.00    0.00    0.00    8.30   10.46
+     SO XBADJ    s8H6.08    11.15   11.50   11.50   10.72    9.61    0.00
+     SO XBADJ    s8H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s8H6.08     0.00    0.00    0.00    0.00  -18.53  -17.91
+     SO XBADJ    s8H6.08   -18.71  -18.94  -19.00  -18.83  -18.58    0.00
+     SO XBADJ    s8H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s8H6.08     0.00    0.00    0.00    0.00   -8.59   -7.50
+     SO YBADJ    s8H6.08    -5.13   -2.60    0.25    3.05    5.96    0.00
+     SO YBADJ    s8H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s8H6.08     0.00    0.00    0.00    0.00    8.59    7.50
+     SO YBADJ    s8H6.08     5.13    2.60   -0.25   -3.05   -5.96    0.00
+     SO YBADJ    s8H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+
+
+     SO BUILDHGT s9H6.08     7.50    7.60    7.50    6.10    0.00    0.00
+     SO BUILDHGT s9H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s9H6.08     0.00    0.00    0.00    7.60    7.60    7.60
+     SO BUILDHGT s9H6.08     7.50    7.60    7.50    6.10    0.00    0.00
+     SO BUILDHGT s9H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s9H6.08     0.00    0.00    0.00    7.60    7.50    7.30
+     SO BUILDWID s9H6.08     8.11    7.49    9.56   11.98    0.00    0.00
+     SO BUILDWID s9H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s9H6.08     0.00    0.00    0.00    7.49    7.44    7.10
+     SO BUILDWID s9H6.08     8.11    7.49    9.56   11.98    0.00    0.00
+     SO BUILDWID s9H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s9H6.08     0.00    0.00    0.00    7.49    7.44    7.50
+     SO BUILDLEN s9H6.08     7.44    4.87    7.45   10.23    0.00    0.00
+     SO BUILDLEN s9H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s9H6.08     0.00    0.00    0.00    4.78    3.69    2.60
+     SO BUILDLEN s9H6.08     7.44    4.87    7.45   10.23    0.00    0.00
+     SO BUILDLEN s9H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s9H6.08     0.00    0.00    0.00    4.78    8.11    7.50
+     SO XBADJ    s9H6.08    11.50   13.84   10.46    8.30    0.00    0.00
+     SO XBADJ    s9H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s9H6.08     0.00    0.00    0.00  -18.58  -18.83  -18.60
+     SO XBADJ    s9H6.08   -18.94  -18.71  -17.91  -18.53    0.00    0.00
+     SO XBADJ    s9H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s9H6.08     0.00    0.00    0.00   13.80   10.72   11.50
+     SO YBADJ    s9H6.08     2.60    5.85    7.50    8.59    0.00    0.00
+     SO YBADJ    s9H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s9H6.08     0.00    0.00    0.00    5.96    3.05    0.05
+     SO YBADJ    s9H6.08    -2.60   -5.85   -7.50   -8.59    0.00    0.00
+     SO YBADJ    s9H6.08     0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s9H6.08     0.00    0.00    0.00   -5.96   -3.05   -0.25
+
+
+     SO BUILDHGT s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDHGT s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDWID s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO BUILDLEN s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO XBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00
+     SO YBADJ    s10H6.08    0.00    0.00    0.00    0.00    0.00    0.00

@@ -1,0 +1,1213 @@
+                             Model Change Bulletin
+
+                                     MCB#1
+
+                             BPIPPRM (dated 04274)
+
+     This is a formal notification of changes made to the Building Profile
+Input Program for PRIME (BPIPPRM) source code.  The changes result from two
+verified problems.  Both were related to the wrong variable being equated to
+another variable.  Both problems and solutions are identified below.  
+
+The changes are discussed first and are the then followed by a list of changes
+made to the source code.  The model is available for downloading under the 
+Related Programs menu of the Air Quality Models area of SCRAM BBS.
+
+
+The header was altered to differentiate BPIP from BPIPPRM and to update 
+addresses, standards, modification statements and to add definitions of
+variables that were created for BPIPPRM.
+
+The header was changed from:
+C  *              BUILDING PROFILE INPUT PROGRAM (DATED 95086)              *
+to:
+C  *         BUILDING PROFILE INPUT PROGRAM for PRIME(DATED 04274)          *
+
+BPIPPRM was given its own name and an initial Model Change Bulletin number by 
+changing:
+C  *              *** SEE BPIP MODEL CHANGE BULLETIN MCB#4 ***              *
+to:
+C  *            *** SEE BPIPPRM MODEL CHANGE BULLETIN MCB#1 ***             *
+
+SCRAM access information was changed from the old defunct BBS number: 
+C  *                        (919) 541-5742 (8-N-1)                          *
+to our website address:
+C  *                      http://www.epa.gov/scram001                       *
+
+The SCRAM mailing address was changed from:
+C                       EPA
+C                       MD-14
+to:
+C                       US EPA
+C                       4930 Page Rd, D243-01
+
+The source code standard was upgraded from FORTRAN 77 to FORTRAN 90 and the
+following line was thusly changed from:
+C           Written to: FORTRAN 77 Standards
+to:
+C        Written to: FORTRAN 90 Standards
+
+BPIPPRM is built from the BPIP program.  Some of the BPIP modification 
+statements are intertwined with the modification statements of BPIPPRM.
+The original BPIP messages were deleted.  The message list was changed from:
+
+C        Modifications: November 16, 1993 - Original Code
+C
+C                       March 14, 1994 - Corrections/Updates (See MCB #2)
+C
+C                       February 8, 1995 - Algorithm added to automatically
+C                                          process stacks on large roofs.
+C                                          Initialize array for summary table.
+C                                          Other correction/updates.
+C                       March 27, 1995 - To fix a problem with the roof stack
+C                                        algorithm when tier coordinates are
+C                                        entered in a counterclock-wise
+C                                        direction.  Some stacks were not
+C                                        detected as being on a roof.
+
+to:
+
+C        Modifications: June 9, 1995 - Created using BPIP code base. 
+C                                    - Being treated as separate from BPIP
+C                       January 23, 2004 - Added allocatable arrays.
+C                                        - No IMPLICIT variables;  
+C                                            all variables defined.
+C                                        - Added a switch to calculate downwash
+C                                            values for the PRIME algorithm
+C                                            in ISCPRIME and AERMOD, etc. or
+C                                            values for legacy ISCST, -LT runs.
+C                                        - Reedited to Fortran 90 stds. using 
+C                                            Compaq Visual Fortran version 6.6.
+C                                          Peter Eckhoff - US EPA
+C
+C                       October 1, 2004 - Corrected code in Subroutine MXBWH where
+C                                         three different variables were equated,
+C                                         in error, to PBL.
+C
+
+Two new processing switches were added so that BPIPPRM could also output BPIP
+output in ST and LT formats.  The new switch codes are 'P' and 'NP' and stand 
+for PRIME and non-PRIME processing.  Non-PRIME processing is the same as 'ST' 
+(ISCST) processing.  The following line was changed from:
+
+C   'ST' or 'LT' processing
+to:
+C   'P', 'NP', 'ST', or 'LT' processing for PRIME, no PRIME, 
+C                                           ISCST, or ISCLT algorithms 
+
+Single quotes were placed around proper input names changing the format from:
+
+C   Number of Buildings
+C     Building 1 Name, Number of Tiers for Building 1, Base Elevation
+to:
+C    Number of Buildings
+C     'Building 1 Name', Number of Tiers for Building 1, Base Elevation
+
+and from:
+C     Building x Name, Number of Tiers for Building x
+to:
+C     'Building x Name', Number of Tiers for Building x
+
+and from:
+C    Stack 1 name, Base Elevation, Height, Stack 1 X -, and Y - Coordinates
+C     .
+C     .
+C     .
+C    Stack s name, Base Elevation, Height, Stack s X -, and Y - Coordinates
+to:
+C    'Stack 1 name', Base Elevation, Height, Stack 1 X -, and Y - Coordinates
+C     .
+C     .
+C     .
+C    'Stack s name', Base Elevation, Height, Stack s X -, and Y - Coordinates
+
+Execution line has been updated from:
+
+C   DOS Prompt> BPIP  Input_filename  Output_filename  Summary_filename
+to:
+C   DOS Prompt> BPIPPRM  Input_filename  Output_filename  Summary_filename
+
+Some definitions were added, others were modificed.  Definitions pertaining
+to COMMON statements were deleted as allocatable arrays are now used instead.
+
+deleted:
+C   BLDGIN - LABELLED COMMON CONTAINING ARRAYS OF BUILDING INPUT VALUES
+C   BLDOUT - LABELLED COMMON CONTAINING TRANSLATED CORNER COORDINATES
+
+modified from:
+C   BELEV  - BASE ELEVATION OF A BUILDING
+  to:
+C   BELEV  - ARRAY OF BUILDING BASE ELEVATIONS
+
+added:
+C   D1     - DOWNWIND DISTANCE FROM A CORNER TO A STACK 
+C   D2     - DOWNWIND DISTANCE FROM A ANOTHER CORNER TO A STACK 
+
+modified form:
+C   DDEG   - INC'ENTAL WIND DIRECTION AND INITIAL WIND DIRECTION
+to:
+C   DDEG   - INCREMENTAL WIND DIRECTION AND INITIAL WIND DIRECTION
+
+modified from:
+C   DPADX  - X COORDINATE OF PROJECTED FACE MIDPOINT
+C   DPADY  - Y COORDINATE OF PROJECTED FACE MIDPOINT
+to:
+C   DPADX  - X COORDINATE OF PROJECTED FACE MIDPOINT FOR MULIPLE TIERS
+C   DPADY  - Y COORDINATE OF PROJECTED FACE MIDPOINT FOR MULIPLE TIERS
+
+deleted:
+C   ELEV   - LABELLED COMMON CONTAINING BUILDING AND STACK BASE ELEVATIONS
+C   GETDAT - GET DATE MICROSOFT LIBRARY FUNCTION
+C   GETTIM - GET TIME MICROSOFT LIBRARY FUNCTION
+C   GP     - LABELLED COMMON CONTAINING GEP DATA
+C   GTNM   - LABELLED COMMON CONTAINING TIERS AFFECTING STACKS
+C   INTRCP - LABELLED COMMON CONTAINING THE INTERCEPT COORDINATES BETWEEN A
+C              STACK AND THE SIDE OF A TIER
+C   MIJ    - LABELLED COMMON CONTAINING BUILDING TIER NUMBER
+C   MTNM   - LABELLED COMMON CONTAINING TIER(S) PRODUCING MAXIMUM WAKE EFFECT
+C             HEIGHT
+C   MXB    - LABELLED COMMON CONTAINING MAXIMUM WAKE EFFECT VALUES
+C   MXN    - LABELLED COMMON CONTAINING TIER MAX/MIN CORNERS
+
+added:
+C   IFILE  - UNIT NUMBER USED IN DEBUGGING STACK - DIRECTION RELATIONSHIPS
+C   IGMT   - DIFFERENCE BETWEEN LOCAL AND GREENWICH(UNIVERSAL) MEAN TIME 
+C   MPADX  - X COORDINATE OF PROJECTED FACE MIDPOINT
+C   MPADY  - Y COORDINATE OF PROJECTED FACE MIDPOINT
+
+Counters for sizing the allocatable arrays were created by adding a "V" to the
+end of already existing variables that parallel the same function.  These new 
+variables are:
+C   BELEVV - DUMMY VARIABLE USED DURING INITIAL READ TO MIMIC BELEV
+C   BTNV   - USED AS DUMMY VARIABLE IN INITIAL READ
+C   NDV    - NUMBER OF SIDES TO A TIER ENTERED
+C   NTRSV  - NUMBER OF TIERS PER BUILDING
+C   SBV    - USED AS DUMMY VARIABLE DURING INITIAL READ
+C   SHV    - USED AS DUMMY VARIABLE DURING INITIAL READ
+C   STKNV  - USED AS DUMMY VARIABLE DURING INITIAL READ
+C   THV    - USED AS DUMMY VARIABLE DURING INITIAL READ
+
+These two variables are not used and were deleted from the definitions list:
+C   KXMAX  - (KXMIN) ARRAY INDEX OF X FOR YMAX (YMIN)
+C   KPT    - NUMBER OF POINTS DEFINING UPWIND FACES
+
+C   NTRS   - NUMBER OF TIERS (MAXIMUM OF 4) / BUILDING
+to:
+C   NTRS   - NUMBER OF TIERS PER BUILDING
+
+modified from:
+C   SWT    - FLAG INDICATING WHETHER TO CALCULATE VALUES FOR ISCST OR ISCLT
+to:
+C   SWT    - FLAG INDICATING WHETHER TO CALCULATE VALUES FOR ISCLT OR FOR A
+C              MODEL UTILIZING OR NOT UTILIZING THE PRIME ALGORITHM SUCH AS
+C              ISCST OR AERMOD
+
+modified from:
+C   SWTN   - OUTPUT FOR 'ST' OR 'LT' VARIABLE
+to:
+C   SWTN   - FLAG INDICATING OUTPUT FOR A MODEL WITH THE PRIME ALGORITHM, 'P';
+C              OR NOT, 'NP' (ISCST - 'ST'); OR ISCLT 'LT' 
+
+Modified/rearranged from:
+C   XC     - X COORDINATE OF A CORNER BY NUMBER
+C   XP     - X COORDINATE OF A TRANSLATED TIER CORNER
+C   Y2     - SECOND OF TWO CONSECUTIVE TIER CORNER Y-COORDINATES
+C   YC     - Y COORDINATE OF A CORNER BY NUMBER
+to:
+C   XC     - X COORDINATE OF A TRANSLATED TIER CORNER
+C   Y2     - SECOND OF TWO CONSECUTIVE TIER CORNER Y-COORDINATES
+C   YC     - Y COORDINATE OF A TRANSLATED TIER CORNER
+C   YP     - Y COORDINATE OF A TRANSLATED TIER CORNER
+
+
+IMPLICIT NONE was added to that every variable has to be defined.
+
+      IMPLICIT NONE
+
+The old definitions were expanded and rearranged from:
+cvrt  REAL        L2, L5, MHWE, MXPBH, MXPBW, MH, MW, LTN1, LTN2, LTN
+      REAL        L2, L5, MHWE, MXPBH, MXPBW, MXPBL, MH, MW, MBL, LTN1,
+     &            LTN2,LTN,MPADX,MPADY,MADX,MADY
+      INTEGER     IHR, IMIN, ISEC, IX, IYR, IMON, IDAY, C, C1, C2, CH,
+     *            CNVFLG, D, DE, GEPIN, GTLIST, GTNUM, MTNUM, MTLIST, S,
+to:
+      INTEGER     C, C1, C2, CH, CNVFLG, 
+     *            D, DE, DFLG, GEPIN, GTLIST, GTNUM 
+      INTEGER     IDAY, IMON, IYR, 
+     *            IGMT, IHR, IMIN, ISEC, IX, DATE_TIME(8) 
+      INTEGER     I, IBET, ICF, IFILE, IG, 
+     *            II, ISF, ISS, IZ,
+     *            J, JJ, K, K1, K2, KK, L, L5SQAT, LB, LD, LD1, LD2, LT,
+     *            LFLAT, LS
+      INTEGER     M, MB, MBT, MD, MI, MJ, ML, MSK, 
+     *            MT, MTNUM, MTLIST, MTS, MXTRS  
+      INTEGER     NB, ND, ND16, NDIR, NDV,
+     *            NS, NTRS, NTRSV, PN, 
+     *            S, SWT,
+      REAL        BL, DPADX, DPADY, DPBL, MXPBL, 
+     &            MADX, MADY, MBL, MPADX, MPADY,
+     &            XBADJ, YBADJ
+
+      REAL        ADJ, ANG, AP, AU, BELEV, BELEVV, BET, BP, BU, 
+     &            CONV, CSA, CXMN, CXMX, CYMN, CYMX, DDEG, DIF, 
+     &            DHWE, DIST, DISTMN,
+     &            DPBH, DPBW, DTR,
+     &            G65, GDIRS, GEP, GEPBH, GEPBW 
+      REAL        HT, HTA, HTC, 
+     &            L2, L5,  LTN1, LTN2, LTN,
+     &            MH, MHWE,
+     &            MW, MXPBH, MXPBW, PNORTH, PV, R,
+     &            SB, SBV, SH, SHV, SNA, TH, THV, TW, W, WS 
+      REAL        X1, X11, X12, X2, X21, X22,
+     &            XC, XI, XMAX, XMIN, XMN, XMX, XPSTK, XS, 
+     &            Y1, Y11, Y12, Y2, Y21, Y22,
+     &            YC, YI, YMAX, YMIN, YMN, YMX, YPSTK, YS
+
+
+and from:
+     +                 UEAST, UNORTH, XCOMP, YCOMP
+  
+  
+      CHARACTER*2  SWTN
+      CHARACTER*4  UTMP
+      CHARACTER*8  BTN, STKN, SNM
+      CHARACTER*10 UNTS
+      CHARACTER*78 TITLE
+   
+
+to:
+     +                 UEAST, UNORTH, X, XCOMP, Y, YCOMP
+
+      CHARACTER(LEN=2)  SWTN
+      CHARACTER(LEN=4)  UTMP
+      CHARACTER(LEN=8)  BTN, BTNV, STKN, STKNV, SNM
+      CHARACTER(LEN=10) UNTS
+      CHARACTER(LEN=12) REAL_CLOCK(3)
+      CHARACTER(LEN=78) TITLE
+
+
+
+Allocatable arrays were added:
+C
+C ALLOCATABLE SUBSCRIPT FORMAT: (BUILDING OR STACK #, WD OR TIER #, SIDE #)
+C
+      ALLOCATABLE :: X(:,:,:), Y(:,:,:), ND(:,:)
+      ALLOCATABLE :: XC(:,:), YC(:,:)
+      ALLOCATABLE :: DFLG(:,:), DHWE(:), DPBH(:), DPBW(:)
+      ALLOCATABLE :: BELEV(:)
+      ALLOCATABLE :: GEP(:), GEPBH(:), GEPBW(:),
+     +               GEPIN(:,:,:,:)
+      ALLOCATABLE :: MHWE(:,:), MXPBH(:,:), MXPBW(:,:)
+      ALLOCATABLE :: XMAX(:), XMIN(:), YMAX(:), YMIN(:)
+      ALLOCATABLE :: MI(:,:), MJ(:,:)
+      ALLOCATABLE :: TNUM2(:), TLIST2(:,:)
+      ALLOCATABLE :: GTNUM(:), GTLIST(:,:), GDIRS(:)
+      ALLOCATABLE :: MTNUM(:,:), MTLIST(:,:,:)
+      ALLOCATABLE :: BTN(:), NTRS(:), W(:), HT(:), TH(:,:)
+      ALLOCATABLE :: STKN(:), SB(:), SH(:), XS(:), YS(:)
+      ALLOCATABLE :: DIRT(:), DISTMN(:,:), LFLAT(:,:)
+      ALLOCATABLE :: TNUM(:), TLIST(:,:)
+      ALLOCATABLE :: MH(:,:), MW(:,:)
+
+      ALLOCATABLE :: DPADX(:), DPADY(:), DPBL(:)
+      ALLOCATABLE :: MPADX(:,:), MPADY(:,:), MXPBL(:,:)
+      ALLOCATABLE :: MBL(:,:), MADX(:,:), MADY(:,:)
+	 
+As a result of adding Allocatable Arrays, the Parameter and Common statements, 
+etc. lines of comments and code were deleted:
+C       MAX NUMBER OF BUILDINGS       MB  =  8
+C       MAX NUMBER OF TIERS/BUILDING  MT  =  4
+C       MAX NUMBER OF SIDES/TIER      MTS =  8
+C       MAX NUMBER OF STACK SOURCES   MSK = 14
+C       MAX BUILDING TIER NUMBER      MBT = 32 (MB * MT)
+C       MAX NUMBER OF SECTORS - ST    MD  = 36
+C       MAX NUMBER OF SECTORS - LT    ML  = 16
+C
+C    ********************************************************************
+      PARAMETER (MB =20,  MT = 4, MTS = 10,  MBT = MB*MT , MSK = 14,    *
+     *           MD = 36, ML = 16)                                      *
+C    *                                                                  *
+C    *   Remember to also change the parameter settings in the          *
+C    *    subroutines !                                                 *
+C    ********************************************************************
+C
+C DIMENSION SUBSCRIPT FORMAT: (BUILDING OR STACK #, WD OR TIER #, SIDE #)
+C
+      COMMON /BLDGIN/ X(MB, MT, MTS), Y(MB, MT, MTS), ND(MB, MT)
+      COMMON /BLDOUT/ XC(MBT, MTS), YC(MBT, MTS)
+cvrt  COMMON /DE/ DE, DFLG(MSK, MD), DHWE(MSK), DPBH(MSK), DPBW(MSK)
+      COMMON /DE/ DE, DFLG(MSK, MD), DHWE(MSK), DPBH(MSK), DPBW(MSK),
+CDJM &            DPBL(MSK)
+     &            DPBL(MSK),DPADX(MSK),DPADY(MSK)
+      COMMON /ELEV/ BELEV(MB), SB(MSK)
+      COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     +            GEPIN(MSK,MBT,MBT,2)
+      COMMON /INTRCP/ XI,YI
+cvrt  COMMON /MXB/ MHWE(MSK, MD), MXPBH(MSK, MD), MXPBW(MSK, MD)
+      COMMON /MXB/ MHWE(MSK, MD), MXPBH(MSK, MD), MXPBW(MSK, MD),
+CDJM &             MXPBL(MSK, MD)
+     &             MXPBL(MSK, MD),MPADX(MSK, MD), MPADY(MSK, MD)
+      COMMON /MXN/ XMAX(MBT), XMIN(MBT), YMAX(MBT), YMIN(MBT)
+      COMMON /MIJ/ MI(MSK,2), MJ(MSK,2)
+      COMMON /TNM/ TNUM2(MBT), TLIST2(MBT,MBT)
+      COMMON /GTNM/ GTNUM(MSK), GTLIST(MSK,MBT), GDIRS(MSK)
+      COMMON /MTNM/ MTNUM(MSK,2), MTLIST(MSK,MBT,2)
+
+      DIMENSION BTN(MB), NTRS(MB), W(MBT), HT(MBT), TH(MB, MT)
+      DIMENSION STKN(MSK), SH(MSK), XS(MSK), YS(MSK)
+      DIMENSION DIRT(MTS), DISTMN(MBT, MBT), LFLAT(MSK, MBT)
+      DIMENSION TNUM(MBT), TLIST(MBT,MBT)
+CVRT  DIMENSION MH(MSK, ML), MW(MSK, ML)
+      DIMENSION MH(MSK, ML), MW(MSK, ML),MBL(MSK,ML),
+     *MADX(MSK,ML),MADY(MSK,ML)
+      DIMENSION XP(MSK), YP(MSK)
+
+The variables, MD, ML, MT, MTS were part of the previous version's Parameter
+statement and they are still needed. Initialization is performed after the 
+DIMENSION statements above.  Initialization is performed along with other 
+constants:
+C
+       IG = 1
+       MD = 36
+       ML = 16 
+       MT = 0
+       MTS = 0
+       DE = 0
+       DTR = 3.141593 / 180.
+       DTR2 = 3.141593 / 180.
+       G65 = 65.
+
+
+The following constants were below a set of OPEN statements but were moved 
+above the set of OPEN statements and combined with the MD, ML, MT, and MTS 
+variable initializations.  DTR and DTR2 are defined as REAL and DOUBLE
+PRECISION respectively.
+       DE = 0
+       DTR = 3.141593 / 180.
+       DTR2 = 3.141593 / 180.
+       G65 = 65.
+
+This line was incorporated into the general read statements below.
+       MXTRS = MT
+
+An algorithm was added to read the input file to count the number of 
+buildings, tiers, stacks, sides/tier, etc. and then initialize the
+array dimensions based on those counts.  The following code was added:
+C  READ THE INPUT FILE TO FIND THE MAXIMUM VALUES
+
+        READ(10,*) TITLE
+          WRITE (12,1) TITLE
+          WRITE (14,1) TITLE
+        READ(10,*) SWTN
+        READ(10,*) UNTS, CONV
+        READ(10,*) UTMP, PNORTH
+        READ(10,*) NB
+        MB = NB
+        DO 10 I = 1, NB
+           READ(10,*) BTNV, NTRSV, BELEVV
+             IF (NTRSV .GE. MT) THEN 
+               MT = NTRSV
+             END IF
+         DO 20 J = 1, NTRSV
+            READ(10,*) NDV, THV
+              IF (NDV .GE. MTS) THEN 
+                MTS = NDV
+              END IF
+          DO 30 K = 1, NDV
+             READ(10,*) AA, BB
+30        CONTINUE
+20       CONTINUE
+10      CONTINUE
+        MBT = MB * MT
+        MXTRS = MT
+
+        READ(10,*) NS
+        MSK = NS
+        DO 40 S = 1, NS
+           READ (10,*) STKNV, SBV, SHV, AA, BB
+40      CONTINUE
+        REWIND (10)
+
+C  ALLOCATE AND INITIALIZE THE ARRAYS BASED ON 
+C    THE MAXIMUM PARAMETER VALUES FOUND
+
+      ALLOCATE (X(MB, MT, MTS), Y(MB, MT, MTS), ND(MB, MT))
+        DO I = 1, MB; DO J = 1, MT; ND(I,J) = 0; 
+        DO K = 1, MTS; X(I,J,K) = 0.0; Y(I,J,K) = 0.0; 
+        END DO; END DO; END DO
+
+      ALLOCATE (XC(MBT,MTS), YC(MBT,MTS))
+        DO I = 1, MBT; DO J = 1, MTS; XC(I,J) = 0.0; YC(I,J) = 0.0
+        END DO; END DO
+
+      ALLOCATE (DFLG(MSK, MD), DHWE(MSK), DPBH(MSK),DPBL(MSK),DPBW(MSK))
+        DO I = 1, MSK; DHWE(I) = 0.0; DPBH(I) = 0.0; DPBL(I) = 0.0;
+                    DPBW(I) = 0.0;
+        DO J = 1, MD; DFLG (I,J) = 0; 
+        END DO; END DO
+
+      ALLOCATE (BELEV(MB))
+        DO I = 1, MB; BELEV(I) = 0.0;END DO 
+
+      ALLOCATE (GEP(MSK), GEPBH(MSK), GEPBW(MSK))                 
+        DO I = 1, MSK; GEP(I) = 0.0; GEPBH(I) = 0.0; GEPBW(I) = 0.0
+        END DO
+
+      ALLOCATE (GEPIN(MSK,MBT,MBT,2))
+        DO I = 1, MSK; DO J = 1, MBT; DO K = 1, MBT; DO L = 1, 2
+          GEPIN(I,J,K,L) = 0; 
+        END DO; END DO; END DO; END DO 
+      
+      ALLOCATE (MHWE(MSK, MD), MXPBH(MSK, MD), MXPBL(MSK,MD),
+     *   MXPBW(MSK, MD))
+        DO I = 1, MSK; DO J = 1, MD; 
+         MHWE(I,J) = 0.0; MXPBH(I,J) = 0.0;
+            MXPBL(I,J) = 0.0; MXPBW(I,J) = 0.0;
+        END DO; END DO    
+
+      ALLOCATE (XMAX(MBT), XMIN(MBT), YMAX(MBT), YMIN(MBT))       
+        DO I = 1 , MBT; 
+          XMAX(I) = 0.0; XMIN(I) = 0.0; YMAX(I) = 0.0
+          YMIN(I) = 0.0
+        END DO
+
+      ALLOCATE (MI(MSK,2), MJ(MSK,2))  
+        DO I = 1, MSK; DO J = 1,2; MI(I,J) = 0; MJ(I,J) = 0;
+        END DO; END DO
+
+      ALLOCATE (TNUM2(MBT), TLIST2(MBT,MBT))                      
+        DO I = 1, MBT; TNUM2(I) = 0; 
+        DO J = 1,MBT; TLIST2(I,J) = 0; END DO; END DO
+
+      ALLOCATE (GTNUM(MSK), GTLIST(MSK,MBT), GDIRS(MSK))         
+        DO I = 1, MSK; GTNUM(I) = 0; GDIRS(I) = 0.0; 
+        DO J = 1, MBT; GTLIST(I,J) = 0; END DO; END DO
+
+      ALLOCATE (MTNUM(MSK,2), MTLIST(MSK,MBT,2))                 
+        DO I = 1, MSK; DO J = 1, 2; MTNUM(I,J) = 0; 
+        DO K = 1, MBT; MTLIST(I,K,J) = 0; END DO; END DO; END DO
+
+      ALLOCATE (BTN(MB), NTRS(MB), W(MBT), HT(MBT), TH(MB, MT))
+        DO I = 1, MB; BTN(I) = "        "; NTRS(I) = 0; END DO
+        DO I = 1, MBT; W(I) = 0.0; HT(I) = 0.0; END DO
+        DO I = 1, MB; DO J = 1, MT; TH(I,J) = 0.0; END DO; END DO
+      
+      ALLOCATE (STKN(MSK), SB(MSK), SH(MSK), XS(MSK), YS(MSK))
+        DO I = 1 , MSK; STKN(I) = "        "; 
+          SB(I) = 0.0; SH(I) = 0.0
+          XS(I) = 0.0; YS(I) = 0.0; 
+        END DO
+
+      ALLOCATE (DIRT(MTS), DISTMN(MBT, MBT), LFLAT(MSK, MBT))
+        DO I = 1, MTS; DIRT(I) = 0.0; END DO
+        DO I = 1, MBT; DO J = 1, MBT; DISTMN(I,J) = 0.0; END DO;END DO
+        DO I = 1, MSK; DO J = 1, MBT; LFLAT(I,J) = 0; END DO; END DO
+      
+      ALLOCATE (TNUM(MBT), TLIST(MBT,MBT))
+        DO I = 1, MBT; TNUM(I) = 0; 
+        DO J = 1, MBT; TLIST(I,J) = 0; END DO; END DO
+
+      ALLOCATE (MH(MSK, ML), MW(MSK, ML))
+      ALLOCATE (MBL(MSK,ML), MADX(MSK,ML), MADY(MSK,ML))
+        DO I = 1, MSK; DO J = 1, ML; MH(I,J) = 0.0; MW(I,J) = 0.0;
+                 MBL(I,J) = 0.0; MADX(I,J) = 0.0; MADY(I,J) = 0.0;
+        END DO; END DO
+
+      ALLOCATE (DPADX(MSK), DPADY(MSK))
+        DO I = 1, MSK; DPADX(I) = 0.0; DPADY(I) = 0.0;
+        END DO
+
+      ALLOCATE (MPADX(MSK,MD), MPADY(MSK,MD))
+        DO I = 1, MSK; DO J = 1, MD; MPADX(I,J) = 0.0; MPADY(I,J) = 0.0
+        END DO; END DO
+	 
+The Microsoft related DATE and TIME functions were deleted:	 
+CVRT        CALL GETTIM (IHR, IMIN, ISEC, IX)
+CVRT        CALL GETDAT (IYR, IMON, IDAY)
+CVRT          IYR = MOD(IYR,100)
+
+They were replaced by a FORTRAN standard call to DATE_AND_TIME:
+Note that IGMT and IX can be equated from DATE_TIME (4 & 8) but
+they are not used.
+            CALL DATE_AND_TIME (REAL_CLOCK (1), REAL_CLOCK (2),
+     *                          REAL_CLOCK (3), DATE_TIME) 
+              IYR = DATE_TIME(1)
+              IMON = DATE_TIME(2)
+              IDAY = DATE_TIME(3) 
+C              IGMT = DATE_TIME(4) !C TIME DIFFERENCE 
+C                                     WRT COORDINATED UNIVERSAL TIME (UTC)
+              IHR = DATE_TIME(5)
+              IMIN = DATE_TIME(6) 
+              ISEC = DATE_TIME(7)
+C              IX = DATE_TIME(8)   !C MILLISECONDS
+
+
+
+The date and time print statements were uncommented from:
+CVRT            WRITE (12, 462) IMON, IDAY, IYR
+CVRT            WRITE (12, 463) IHR, IMIN, ISEC
+to:
+            WRITE (12, 462) IMON, IDAY, IYR
+            WRITE (12, 463) IHR, IMIN, ISEC
+and from:
+CVRT            WRITE (14, 462) IMON, IDAY, IYR
+CVRT            WRITE (14, 463) IHR, IMIN, ISEC
+to:
+            WRITE (14, 462) IMON, IDAY, IYR
+            WRITE (14, 463) IHR, IMIN, ISEC
+
+New switches were added so output for the PRIME algorithm could be processed
+while retaining the functionality of the BPIP program.  In other words, 
+BPIPPRM can be used to output BPIP ST and LT formats.
+The code was changed form:
+           SWT = 2
+            IF(SWTN(1:1) .EQ. 's') SWT = 0
+            IF(SWTN(1:1) .EQ. 'S') SWT = 0
+to:
+ 
+           SWT = 3
+            IF(SWTN(1:1) .EQ. 'p') SWT = 0
+            IF(SWTN(1:1) .EQ. 'P') SWT = 0
+            IF(SWTN(1:1) .EQ. 'n') SWT = 2
+            IF(SWTN(1:1) .EQ. 'N') SWT = 2
+ C          LEGACY SWITCHES FOR ISCST AND ISCLT RESPECTIVELY
+            IF(SWTN(1:1) .EQ. 's') SWT = 2
+            IF(SWTN(1:1) .EQ. 'S') SWT = 2
+            
+Two pairs of END IF staements were syntactically changed from:
+          ENDIF
+to:
+          END IF
+to comply with Fortran 90 syntactic standards.
+
+
+A processing switch error message statement was added by changing:
+
+            WRITE(*,*) 'The SWTN variable, ',SWTN,' is incorrectly ',
+     +       'entered.'
+to:
+            WRITE(12,16) SWTN
+            WRITE(14,16) SWTN
+          END IF
+          IF(SWT .EQ. 3) THEN
+            WRITE(*,*) '**ERR: The SWTN variable, ',SWTN,' is',
+     +       ' incorrectly entered.'
+            WRITE(*,*) '         Please use P, NP, or L as input.'
+
+
+The Do loop labels were modified to keep the sequence of lables in order.
+The labels were changed from 10, 20, and 30 to 15, 25, and 35, respectively.
+The labels 10, 20, and 30 were moved up to the new counting algorithm.
+The lines of code were changed from:
+        DO 10 I = 1, NB
+to:
+        DO 15 I = 1, NB
+and from:
+         DO 20 J = 1, NTRS(I)
+         DO 25 J = 1, NTRS(I)
+
+and from:
+          DO 30 K = 1, ND(I, J)
+          DO 35 K = 1, ND(I, J)
+and from:
+30        CONTINUE
+20       CONTINUE
+10    CONTINUE
+to:
+35        CONTINUE
+25       CONTINUE
+15    CONTINUE
+and from:
+      DO 40 S = 1, NS
+to:
+      DO 55 S = 1, NS
+and from:
+                  GO TO 40
+to:
+                  GO TO 55
+and from:
+40    CONTINUE
+to:
+55    CONTINUE
+
+and from:
+        DO 70 LS = 1, NS
+          DO 70 LB = 1, NB
+            DO 70 LT = 1, NTRS(LB)
+to:
+        DO LS = 1, NS
+          DO LB = 1, NB
+            DO LT = 1, NTRS(LB)
+and from:
+              DO 74 LD = 1, ND(LB, LT)
+to:
+              DO LD = 1, ND(LB, LT)
+and from:
+   74         CONTINUE
+            DO 76 LD = 1, ND(LB,LT)
+to:
+              END DO
+            DO LD = 1, ND(LB,LT)
+and from:
+   76       CONTINUE
+to:
+            END DO
+and from:
+70      CONTINUE
+to:
+            END DO
+          END DO
+        END DO
+
+A switch was reprogrammed to accommodate the new PRIME supporting algorithm.
+The code was changed from:
+       IF (SWT .EQ. 0) THEN
+to:
+       IF (SWT .EQ. 0 .OR. SWT .EQ. 2) THEN
+
+The following variables are not used and thus deleted.
+        DMD8 = 8
+        DMD12 = 12
+
+Due to Allocatable Arrays, the subroutines and their respective call 
+statements had to be modified.  This included changing the structure of the 
+arguments in the call and subroutine headers, deleting common, parameter and 
+dimension statements, adding and rearranging variable definitions. 
+Arguments in the following call statements were changed from:
+               CALL CNRLIN(X21, Y21, X22, Y22, BET, DIST, X11, Y11)
+to:
+               CALL CNRLIN(XI, YI, X21, Y21,X22,Y22,BET,DIST,X11,Y11)
+and from:
+               CALL CNRLIN(X11, Y11, X12, Y12, BET, DIST, X21, Y21)
+to:
+               CALL CNRLIN(XI,YI,X11,Y11,X12,Y12,BET, DIST, X21, Y21)
+and from:
+          CALL WIDTH(ANG, I, J, C, TW, BL)
+to:
+          CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                  XMAX, XMIN, YMAX, YMIN, ANG, I, J, C, TW, BL)
+and from:
+               CALL GPC (D, I, C, S, TW, WS, HTA, C, 1)
+to:
+               CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                   SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                   GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                   D, I, C, S, TW, WS, HTA, C, 1)
+
+and from:
+          CALL WIDTH(ANG, I, J, C1, TW, BL)
+to:
+          CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                XMAX, XMIN, YMAX, YMIN, ANG, I, J, C1, TW, BL)
+and from:
+           CALL WIDTH(ANG, II, JJ, C2, TW, BL)
+to:
+           CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                  XMAX, XMIN, YMAX, YMIN, ANG, II, JJ, C2, TW, BL)
+
+
+The following comment and statement were indented less from: 
+C                R is 'L'; combinable if distance between tiers is < L
+C                 If yes, add tier number to TLIST and increment counter TNUM
+               R = MIN(W(C1), HT(C1))
+to:
+C            R is 'L'; combinable if distance between tiers is < L
+C              If yes, add tier number to TLIST and increment counter TNUM
+             R = MIN( W(C1), HT(C1) )
+
+The arguments in the following call statements were changed from:
+                  CALL GPC (D, I, C1, S, TW, WS, HTA, TL1,2)
+to:
+                  CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                      SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                      GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                D, I, C1, S, TW, WS, HTA, TL1,2)
+
+and from:
+                   CALL GPC (D, I, C1, S, TW, WS, HTA, TL1, 2)
+to:
+                   CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                       SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                       GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                D, I, C1, S, TW, WS, HTA, TL1, 2)
+
+
+The Do Loop labels were deleted in the following loops.  The code was changed 
+from:
+               DO 133 K = 1, ND(I, J)
+to:
+               DO K = 1, ND(I, J)
+and from:
+               DO 133   L = 1, ND(II,JJ)
+to:
+               DO L = 1, ND(II,JJ)
+
+The arguments in the following call statements were changed from:
+                     CALL GPC (D, I, C1, S, TW, WS, HTA, TL1, 2)
+to:
+                     CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                         SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                         GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                         D, I, C1, S, TW, WS, HTA, TL1, 2)
+
+and from:
+                CALL CNRLIN(X11, Y11, X12, Y12, BET, DIST, X21, Y21)
+to:
+                CALL CNRLIN(XI,YI,X11,Y11,X12,Y12,BET, DIST, X21, Y21)
+
+and from:
+                     CALL GPC (D,I,C1,S,TW,WS, HTA, TL1, 2)
+to:
+                     CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                         SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                         GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                         D,I,C1,S,TW,WS, HTA, TL1, 2)
+
+and from:
+                CALL CNRLIN(X21, Y21, X22, Y22, BET, DIST, X11, Y11)
+to:
+                CALL CNRLIN(XI,YI,X21,Y21,X22,Y22,BET, DIST, X11, Y11)
+
+and from:
+                     CALL GPC (D, I, C1, S, TW, WS, HTA, TL1, 2)
+to:
+                     CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                         SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                         GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                         D, I, C1, S, TW, WS, HTA, TL1, 2)
+
+The Continue statement was dropped in synchronization with the Do Loop label 
+drop.  The code was changed from:
+ 133            CONTINUE
+to:
+               END DO 
+               END DO
+
+The following comments in the following WRITE statements were shifted for 
+better alignment in the printout.  The code was changed from:
+           WRITE(14,*) '      No tiers affect this stack.'
+to:
+           WRITE(14,*) '     No tiers affect this stack.'
+
+The following two equations were not needed and were therefore deleted:
+         XP(S) = XPSTK
+         YP(S) = YPSTK
+
+The arguments in the following call statements were changed from:
+           CALL WIDTH (ANG, I, J, C, TW, BL)
+to:
+           CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                  XMAX, XMIN, YMAX, YMIN, ANG, I, J, C, TW, BL)
+and from:
+                 CALL MXBWH(D, I, S, C, TW, HTA, WS, CH, 1, BL,
+to:
+                 IG = 1
+                 CALL MXBWH(MB, MXTRS, MBT, MSK, MD, DPADX, DPADY, DFLG, 
+     *                 DE, DHWE, DPBH, DPBL, DPBW, BELEV, SB,
+     *                 GEP, GEPBH, GEPBW, GEPIN, MPADX, MPADY,
+     *                 MI, MJ, TNUM2, TLIST2, MTNUM, MTLIST,
+     *                 D, I, S, C, TW, HTA, WS, CH, IG, BL,
+
+The following comments in the following WRITE statements were shifted for 
+better alignment in the printout.  The code was changed from:
+           WRITE(14,*) '     No single tier affects this stack for ',
+to:
+           WRITE(14,*) '    No single tier affects this stack for ',
+
+The Do Loop labels were dropped changing the code from:
+      DO 345 ISS = 1, NS
+        DO 345 D = 1, NDIR
+to:
+      DO ISS = 1, NS
+        DO D = 1, NDIR
+and from:
+ 345  CONTINUE
+to:
+        END DO
+      END DO
+
+
+The arguments in the following call statements were changed from:
+           CALL WIDTH(ANG, I, J, C1, TW, BL)
+to:
+           CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                 XMAX, XMIN, YMAX, YMIN, ANG, I, J, C1, TW, BL)
+
+and from:
+            CALL WIDTH(ANG, II, JJ, C2, TW, BL)
+to:
+            CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                  XMAX, XMIN, YMAX, YMIN, ANG, II, JJ, C2, TW, BL)
+
+and from:
+          IG = 2 
+               CALL MXBWH(D, I, S, C, TW, HTA, WS, CH, 2, BL,
+to:	 
+               IG = 2
+               CALL MXBWH(MB, MXTRS, MBT, MSK, MD, DPADX, DPADY, DFLG,
+     *                 DE, DHWE, DPBH, DPBL, DPBW, BELEV, SB,
+     *                 GEP, GEPBH, GEPBW, GEPIN, MPADX, MPADY,
+     *                 MHWE, MXPBH, MXPBL, MXPBW,
+     *                 MI, MJ, TNUM2, TLIST2, MTNUM, MTLIST,
+     *                 D, I, S, C, TW, HTA, WS, CH, IG, BL,
+
+The text in this format statement was shifted for formatting purposes.  The
+code was changed from:
+           WRITE(14,*) '      No combined tiers affect this stack for ',
+     +                 'this direction.'
+to:
+           WRITE(14,*)   '     No combined tiers affect this stack ',
+     +                 'for this direction.'
+
+An error was found where DPADY(S) was repeated twice instead of 
+as DPADX(S), DPADY(S).  The code was changed from:
+     +                     DPADY(S),DPADY(S)
+to:
+     +                     DPADX(S),DPADY(S)
+
+
+The text in this format statement was shifted for formatting purposes.  The
+code was changed from:
+             WRITE(14,*) '      No combined tiers affect this stack ',
+to:
+             WRITE(14,*) '     No combined tiers affect this stack ',
+
+A switch was reprogrammed to accommodate the new PRIME supporting algorithm.
+The code was changed from:
+        IF (SWT .EQ. 0) THEN
+to:
+        IF (SWT .EQ. 0 .OR. SWT .EQ. 2) THEN
+
+The Do Loop labels were dropped changing the code from:
+            DO 512 I = 1, 6
+              J = (I-1) * 6 + 1
+              K = I * 6
+             WRITE (12,293) STKN(S), (MXPBH(S,D) , D = J,K)
+512         CONTINUE
+            DO 514 I = 1, 6
+              J = (I-1) * 6 + 1
+              K = I * 6
+             WRITE (12,296) STKN(S), (MXPBW(S,D) , D = J,K)
+514         CONTINUE
+to:
+            DO I = 1, 6
+              J = (I-1) * 6 + 1
+              K = I * 6
+              WRITE (12,293) STKN(S), (MXPBH(S,D) , D = J,K)
+            END DO
+            DO I = 1, 6
+              J = (I-1) * 6 + 1
+              K = I * 6
+              WRITE (12,296) STKN(S), (MXPBW(S,D) , D = J,K)
+            END DO  
+
+The Do Loop labels were dropped changing the code from:
+            DO 516 I = 1, 6
+              J = (I-1) * 6 + 1
+              K = I * 6
+             WRITE (12,299) STKN(S), (MXPBL(S,D) , D = J,K)
+CDJM
+516         CONTINUE
+            DO 517 I = 1, 6
+              J = (I-1) * 6 + 1
+              K = I * 6
+             WRITE (12,290) STKN(S), (MPADX(S,D) , D = J,K)
+517         CONTINUE
+            DO 518 I = 1, 6
+              J = (I-1) * 6 + 1
+              K = I * 6
+             WRITE (12,291) STKN(S), (MPADY(S,D) , D = J,K)
+518         CONTINUE
+to:
+            IF (SWT .EQ. 0) THEN
+              DO I = 1, 6
+                J = (I-1) * 6 + 1
+                K = I * 6
+                WRITE (12,299) STKN(S), (MXPBL(S,D) , D = J,K)
+              END DO
+            
+              DO I = 1, 6
+                J = (I-1) * 6 + 1
+                K = I * 6
+                WRITE (12,290) STKN(S), (MPADX(S,D) , D = J,K)
+              END DO
+              DO I = 1, 6
+                J = (I-1) * 6 + 1
+                K = I * 6
+                WRITE (12,291) STKN(S), (MPADY(S,D) , D = J,K)
+              END DO
+            END IF
+            
+PRIME output was added to the ISCLT2 Section and then bypassed with an
+IF statement.  The following lines were added to the section:
+
+C           PRIME in LT or an LT like model? If should happen, ready.
+            IF (SWT .EQ. 0) THEN
+            DO 586 I = 1, 2
+            .
+            .
+            .
+589         CONTINUE
+            END IF
+
+Because BPIPPRM has been enhanced to process downwash output for the PRIME 
+  2   FORMAT(/3X,'The ',A2,' flag has been set for processing for an ',
+     +'ISCST2 run.'/)
+to:
+  2   FORMAT(/3X,'The ',A2,' flag has been set for preparing downwash',
+     +       ' related data'
+     +       /10X,'for a model run utilizing the PRIME algorithm.'/)
+and from:
+  9   FORMAT(/3X,'The ',A2,' flag has been set for processing for an',
+     *' ISCLT2 run.'/)
+to:
+  9   FORMAT(/3X,'The ',A2,' flag has been set for preparing downwash',
+     +           ' data for an ISCLT run.'/)
+ 16   FORMAT(/3X,'The ',A2,' flag has been set for preparing downwash',
+     +       ' related data'/10X,
+     +       'for a model run **not** utilizing the PRIME algorithm.'/)
+
+
+The creation date was changed from:
+461   FORMAT(30X,'BPIP (Dated: 95086)')
+to:
+461   FORMAT(30X,'BPIP (Dated: 04274)')
+
+They year format was changed to accomodate a 4-digit year by changing:
+462   FORMAT(1X,'DATE : ',I2,'/',I2,'/',I2)
+to:
+462   FORMAT(1X,'DATE : ',I2,'/',I2,'/',I4)
+
+
+The compiler detected a comma just the "/" and flagged it as an error.
+The following statements were changed from:
+     * '  PBL:',F7.2,'  *Wake Effect Ht:', F8.2,/,5X,
+     * F7.2,'  YADJ: ',F7.2,/,5X,)
+     * '  PBL:',F7.2,'  *WE Ht:', F8.2,/,5X,
+     * F7.2,'  YADJ: ',F7.2,/,5X,)
+to:
+     * '  PBL:',F7.2,'  *Wake Effect Ht:', F8.2/5X,
+     * F7.2,'  YADJ: ',F7.2/5X)
+     * '  PBL:',F7.2,'  *WE Ht:', F8.2/5X,
+     * F7.2,'  YADJ: ',F7.2/5X)
+
+Due to Allocatable Arrays, the subroutines had to be modified.  This included
+changing the structure of the arguments in the subroutine header, 
+deleting common, parameter and dimension statements, 
+adding and rearranging variable definitions, arguments were changed from:
+        SUBROUTINE CNRLIN (X1, Y1, X2, Y2, BET, DIST, XKP, YKP)
+to:
+        SUBROUTINE CNRLIN (XI,YI,X1, Y1, X2, Y2, BET, DIST, XKP, YKP)
+
+The following Common statement was deleted:
+          COMMON /INTRCP/ XI, YI
+
+
+The IMPLICIT NONE statement was added to all subroutines:
+
+        IMPLICIT NONE
+
+The following definitions were added to CNRLIN:
+
+        REAL A1, A2, BET, DIST, SM, X1, X2, XI, XKP, Y1, Y2, YI, YKP
+
+
+The following definition in Subroutine DISLIN was expanded from:
+          REAL L5
+to:
+          INTEGER IBET
+
+          REAL D1, D2, DIST, DX1, DX2, L5, X1, X2, XSP, Y1, Y2, YI, YSP
+
+
+The subroutine arguments were changed from:
+      SUBROUTINE GPC (D, I, C, S, TW, WS, HTA, CH, IG)
+to:
+      SUBROUTINE GPC (MB, MBT, MT, MSK, BELEV,
+     *                SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                GTNUM, GTLIST, GDIRS, MI, MJ,
+     *                D, I, C, S, TW, WS, HTA, CH, IG)
+
+The following definitions were modified from:
+        INTEGER C, CH, D, S, GEPIN, TNUM2, TLIST2, GTNUM, GTLIST
+
+to:
+        INTEGER C, CH, D, GEPIN, GTLIST, GTNUM,
+     *          I, IG, M, MB, MBT, MSK, MT, MI, MJ, S, TNUM2, TLIST2
+
+        REAL BELEV, GDIRS, GEP, GEPBH, GEPBW, HTA, HWE, SB, TW, WS
+
+
+The parameter and common statements were deleted:
+        PARAMETER (MB =20,  MT = 4, MTS = 10,  MBT = MB*MT, MSK = 14,
+     *             MD = 36, ML = 16)
+
+        COMMON /ELEV/ BELEV(MB), SB(MSK)
+        COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     *              GEPIN(MSK,MBT,MBT,2)
+        COMMON /TNM/ TNUM2(MBT), TLIST2(MBT,MBT)
+        COMMON /GTNM/ GTNUM(MSK), GTLIST(MSK,MBT), GDIRS(MSK)
+        COMMON /MIJ/ MI(MSK,2), MJ(MSK,2)
+but the following dimension statements were added to take the place of the 
+Common Statements:
+        DIMENSION BELEV(MB), SB(MSK)
+        DIMENSION GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     *            GEPIN(MSK,MBT,MBT,2)
+        DIMENSION TNUM2(MBT), TLIST2(MBT,MBT)
+        DIMENSION GTNUM(MSK), GTLIST(MSK,MBT), GDIRS(MSK)
+        DIMENSION MI(MSK,2), MJ(MSK,2)
+
+The subroutine arguments were changed from:
+      SUBROUTINE MXBWH(D, I, S, C, TW, HTA, WS, TL1, IG, BL,
+to:
+      SUBROUTINE MXBWH(MB, MT, MBT, MSK, MD, DPADX, DPADY, DFLG,
+     *                 DE, DHWE, DPBH, DPBL, DPBW, BELEV, SB,
+     *                 GEP, GEPBH, GEPBW, GEPIN, MPADX, MPADY,
+     *                 MHWE, MXPBH, MXPBL, MXPBW, 
+     *                 MI, MJ, TNUM2, TLIST2, MTNUM, MTLIST,
+     *                 D, I, S, C, TW, HTA, WS, TL1, IG, BL,
+
+The following Parameter and Common Statements were deleted:
+C    ********************************************************************
+      PARAMETER (MB =20,  MT = 4, MTS = 10, MBT = MB*MT , MSK = 14,     *
+     *           MD = 36, ML = 16)                                      *
+C    ********************************************************************
+      COMMON /DE/ DE, DFLG(MSK, MD), DHWE(MSK), DPBH(MSK), DPBW(MSK),
+     &            DPBL(MSK),DPADX(MSK),DPADY(MSK)
+      COMMON /ELEV/ BELEV(MB), SB(MSK)
+      COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     +            GEPIN(MSK,MBT,MBT,2)
+      REAL         MHWE, MXPBH, MXPBW, MXPBL,MPADX,MPADY
+      INTEGER      C, D, DE, GEPIN, S, SS, TNUM2, TLIST2, TL1
+      COMMON /BLDOUT/ XC(MBT, MTS), YC(MBT, MTS)
+      COMMON /MXB/ MHWE(MSK, MD), MXPBH(MSK, MD), MXPBW(MSK, MD),
+      COMMON /MIJ/ MI(MSK,2), MJ(MSK,2)
+      COMMON /TNM/ TNUM2(MBT), TLIST2(MBT,MBT)
+      COMMON /MTNM/ MTNUM(MSK,2), MTLIST(MSK,MBT,2)
+
+The following variable definitions were added:
+      INTEGER C, D, DE, DFLG, GEPIN, I, IG, 
+     *        M, MB, MBT, MD, MFLG, MI, MJ, MSK, MT, MTLIST, MTNUM,
+     *        S, SS, TNUM2, TLIST2, TL1
+
+      REAL BELEV, BL, DHWE, DPADX, DPADY, DPBL, DPBH, DPBW,
+     *     GEP, GEPBH, GEPBW, HWE, HTA,
+     *     MHWE, MXPBH, MXPBW, MXPBL, MPADX, MPADY,
+     *     PBH, PBL, PBW, SB, TW, WS,
+     *     XBADJ, YBADJ
+
+      DIMENSION DFLG(MSK, MD), DHWE(MSK), DPBH(MSK), DPBW(MSK),
+     &          DPBL(MSK),DPADX(MSK),DPADY(MSK)
+      DIMENSION BELEV(MB), SB(MSK)
+      DIMENSION GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     +          GEPIN(MSK,MBT,MBT,2)
+      DIMENSION MHWE(MSK, MD), MXPBH(MSK, MD), MXPBW(MSK, MD),
+      DIMENSION MI(MSK,2), MJ(MSK,2)
+      DIMENSION TNUM2(MBT), TLIST2(MBT,MBT)
+      DIMENSION MTNUM(MSK,2), MTLIST(MSK,MBT,2)
+        MFLG = 0
+
+
+The following loop was modified by deleting the loop label and adding an
+initialize of the MHWE, MXPBH and MXPBW variables.  The loop was changed from:
+         DO 577 SS = 1, MSK
+         DHWE(SS) = 0.0
+         DPBH(SS) = 0.0
+         DPBW(SS) = 0.0
+CVRT
+         DPBL(SS) = 0.0
+CVRT
+CDJM
+         DPADX(SS) = 0.0
+         DPADY(SS) = 0.0
+CDJM
+         MTNUM(SS,IG) = 0
+577      DFLG(SS, D) = 0
+to:
+         DO SS = 1, MSK
+           DHWE(SS) = 0.0
+           DPBH(SS) = 0.0
+           DPBW(SS) = 0.0
+           MHWE(SS, D) = 0.00
+           MXPBH(SS, D) = 0.00
+           MXPBW(SS, D) = 0.00
+CVRT
+           DPBL(SS) = 0.0
+CVRT
+CDJM
+           DPADX(SS) = 0.0
+           DPADY(SS) = 0.0
+CDJM
+           MTNUM(SS,IG) = 0
+           DFLG(SS, D) = 0
+         END DO
+
+The following two variables were erroneously equated and were changed from:
+            MPADX(S,D) = PBL
+            MPADY(S,D) = PBL
+to:
+            MPADX(S,D) = XBADJ
+            MPADY(S,D) = YBADJ
+
+The following loops were modified by deleting the loop labels.  
+They were changed from:
+             DO 578 M = 1, MTNUM(S,IG)
+578          CONTINUE
+to:
+             DO M = 1, MTNUM(S,IG)
+             END DO
+and from:
+            DO 579 M = 1, MTNUM(S,IG)
+579         CONTINUE
+to:
+            DO M = 1, MTNUM(S,IG)
+            END DO
+
+The END IF statement was syntactically changed from:
+         ENDIF
+to:
+         END IF
+
+The subroutine arguments were modified from:
+      SUBROUTINE WIDTH (ANG, I, J, C, TW, BL)
+to:
+      SUBROUTINE WIDTH (MB, MT, MTS, MBT, X, Y, ND, XC, YC,
+     *                  XMAX, XMIN, YMAX, YMIN, ANG, I, J, C, TW, BL)
+
+The variable definitons were modified and the Parameter and Common Statements 
+were deleted.  The code was changed from:
+        INTEGER C
+        PARAMETER (MB =20,  MT = 4, MTS = 10,  MBT = MB*MT, MSK = 14,
+     *             MD = 36, ML = 16)
+        COMMON /BLDGIN/ X(MB, MT, MTS), Y(MB, MT, MTS), ND(MB, MT)
+        COMMON /BLDOUT/ XC(MBT, MTS), YC(MBT, MTS)
+        COMMON /MXN/ XMAX(MBT), XMIN(MBT), YMAX(MBT), YMIN(MBT)
+
+to:
+
+        INTEGER C, I, J, K, MB, MBT, MT, MTS, ND
+
+        REAL ANG, BL, TW, XC, XMAX, XMIN, YC, YMAX, YMIN
+
+        DOUBLE PRECISION X, Y, CSA, SNA
+
+        DIMENSION X(MB, MT, MTS), Y(MB, MT, MTS), ND(MB, MT)
+        DIMENSION XC(MBT, MTS), YC(MBT, MTS)
+        DIMENSION XMAX(MBT), XMIN(MBT), YMAX(MBT), YMIN(MBT)
+
+
+The SIN and COS functions were changed from single precision to double 
+precision by changing the code from:
+            CSA = COS(ANG)
+            SNA = -SIN(ANG)
+to:
+            CSA = DCOS(DBLE(ANG))
+            SNA = -DSIN(DBLE(ANG))
+
+Other variables were changed from double to single precision by changing the
+code from:
+             XC(C, K) = X(I, J, K) * CSA + Y(I, J, K) * SNA
+             YC(C, K) = Y(I, J, K) * CSA - X(I, J, K) * SNA
+to:
+             XC(C, K) = SNGL(X(I, J, K) * CSA + Y(I, J, K) * SNA)
+             YC(C, K) = SNGL(Y(I, J, K) * CSA - X(I, J, K) * SNA)

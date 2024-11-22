@@ -1,0 +1,102 @@
+                               Model Change Bulletin
+
+                                       MCB # 3             (1/6/00)
+
+                                   OCD5  (00006)
+
+
+An error was found in the calculation of the virtual source distance for sigma-z for the case where neutral or unstable conditions at a source over water coincide with stable conditions at a receptor over land.  The calculation scheme in lines VIR01040 through VIR01100 in the VIRTUAL subroutine in OCD did not present a valid solution for those cases.  This is due to the fact that under stable conditions the value of sigma-z reaches a maximum value at a certain downwind distance.  If the value of sigma-z at the point where the plume enters the thermal internal boundary layer (TIBL) is higher than this maximum value, there can be no solution for the virtual distance calculation.  The routine used in the program therefore resulted in an incorrect values, ones which are lower than what is physically possible.
+
+The problem with the virtual distance calculation was solved by applying instead the scheme in lines VIR01120 through VIR01240.  This routine uses the Briggs default turbulent intensity values for the onshore stability and obtains the virtual distance by solving a quadratic equation. If no solution is reached in the stable case, VIRTZ is set to zero and the value of sigma-z at the receptor is forced to be the same as the sigma-z value at the TIBL interface.  This is because when sigma-z at the TIBL interface exceeds the highest value that can be realized over land for the given stability category, the plume cannot grow any further once it enters the TIBL.
+
+Since this virtual distance calculation was written for use in the cases where the overland turbulent intensity is given in the meteorological input file, a dummy variable had to be introduced so that this routine could also be applied to the case where the Briggs default values had to be used.
+
+An error was also found in the calculation of the stable layer mixing height cap in the MIXT (mixing height) subroutine.  The code incorrectly applied the mixing height cap to stability categories less than or equal to 5 instead of to categories equal to or greater than 5.
+
+The following changes were made in the VIRT Subroutine:
+
+1. A dummy variable was introduced by adding a new line of code after line VIR00420 that reads:
+
+       REAL  izlstemp                                                  xxx00420
+
+
+
+2. The invalid virtual distance routine was removed by commenting out the following lines of code:
+
+        IF(IZLS.LE.0.0) THEN                                           VIR01040
+           M = IA(KST)                                                 VIR01050
+           L = IA(KST+1) - 1                                           VIR01060
+           DO 560 KK = M,L                                             VIR01070
+              IF(SIGZS(KK).GT.SIGZWA) GO TO 570                        VIR01080
+560        CONTINUE                                                    VIR01090
+570        VIRTZ = (SIGZWA*ASI(KK))**BSI(KK)                           VIR01100
+        ELSE
+
+The revised lines read as follows:
+
+c        IF(IZLS.LE.0.0) THEN                                           VIR01040
+c           M = IA(KST)                                                 VIR01050
+c           L = IA(KST+1) - 1                                           VIR01060
+c           DO 560 KK = M,L                                             VIR01070
+c              IF(SIGZS(KK).GT.SIGZWA) GO TO 570                        VIR01080
+c560        CONTINUE                                                    VIR01090
+c570        VIRTZ = (SIGZWA*ASI(KK))**BSI(KK)                           VIR01100
+c        ELSE                                                           VIR01110
+
+
+
+3. New lines of code were added to assign appropriate values to the dummy variable for use in the revised virtual source routine.  The following new lines of code were introduced after line VIR01110:
+
+        IF(IZLS.LE.0.0)  THEN                                           XXX01110
+          izlstemp = BRIGGS(KST)                                        XXX01111
+        ELSE                                                            XXX01112
+          izlstemp = IZLS                                               XXX01113
+        ENDIF                                                           XXX01114
+
+
+
+4.  The variable, IZLS, was replaced by the new dummy variable, izlstemp, in the following lines of code:
+
+        FRAC = SIGZWA/IZLS                                              VIR01120
+        DENOM = IZLS - C1S*SIGZWA                                       VIR01190
+
+The lines were replaced with the following:
+
+c       FRAC = SIGZWA/IZLS                                              VIR01120
+        FRAC = SIGZWA/izlstemp                                          XXX01120
+
+and
+
+c       DENOM = IZLS - C1S*SIGZWA                                       VIR01190
+        DENOM = izlstemp - C1S*SIGZWA                                   XXX01190
+
+
+
+5. The ENDIF statement on line VIR01270 was commented out.  
+The revised LINE of code is:
+
+C     ENDIF                                                             XXX01270
+
+
+
+6. The following IF statement was commented out and replaced with a new line of code:
+
+600   IF(IZLS.GT.0.0.AND.DENOM.LE.0.0.AND.KST.GT.4) THEN                VIR01290
+
+The revised code is:
+
+C600  IF(IZLS.GT.0.0.AND.DENOM.LE.0.0.AND.KST.GT.4) THEN                VIR01290
+600   IF(DENOM.LE.0.0.AND.KST.GT.4)  THEN                               XXX01290
+
+
+
+7. The error in the mixing height subroutine was corrected by replacing the following line of code:
+
+            IF(KST.LE.5) HTX2=AMIN1(HTX2,CAP)                           MIX00661
+
+The line was replaced by the following:
+
+c           IF(KST.LE.5) HTX2=AMIN1(HTX2,CAP)                           MIX00660
+c      The mixing height is capped if KST is 5 or 6 (stable)            XXX00660
+            IF(KST.GE.5) HTX2=AMIN1(HTX2,CAP)                           XXX00661
+

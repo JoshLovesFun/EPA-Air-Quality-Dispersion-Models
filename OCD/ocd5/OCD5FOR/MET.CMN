@@ -1,0 +1,28 @@
+C  MET Common Include File                                              MET00010
+C                                                                       MET00020
+C  Contents:  Meteorological Input Data                                 MET00030
+C                                                                       MET00040
+C  Parameters:                                                          MET00050
+C                                                                       MET00060
+C      UPL   :  Stack height wind speed                                 MET00070
+C      Z     :  Receptor height above ground (i.e., flagpole receptor)  MET00080
+C      H     :  Effective stack height (plume height above receptor)    MET00090
+C      HL    :  Mixing height - top of neutral or unstable layer        MET00100
+C      X     :  Distance receptor is downwind of source                 MET00110
+C      Y     :  Distance receptor is crosswind of source                MET00120
+C      KST   :  Overland Stability class                                MET00130
+C      DELH  :  Plume rise                                              MET00140
+C      SY    :  Horizontal dispersion parameter                         MET00150
+C      SZ    :  Vertical dispersion parameter                           MET00160
+C      RC    :  Relative concentration                                  MET00170
+C      SIGY0 :  Initial sigma-y due to building downwash                MET00180
+C      SIGZ0 :  Initial sigma-z due to building downwash                MET00190
+C      XLAND :  Distance from source to shoreline closest to receptor   MET00200
+C      TAMTS :  Ambient minus surface temperature                       MET00210
+C      USTARL:  Friction velocity over land                             MET00220
+C      ZMIN  :  Minimum height of plume above terrain                   MET00230
+C      FCOR  :  Used in calc. of stable internal boundary layer cap     MET00240
+C      HLAND :  Mixing height over land                                 MET00250
+C                                                                       MET00260
+      COMMON /MET/ UPL,Z,H,HL,X,Y,KST,DELH,SY,SZ,RC,SIGY0,SIGZ0,XLAND,  MET00270
+     &  TAMTS,USTARL,ZMIN,FCOR,HLAND                                    MET00280

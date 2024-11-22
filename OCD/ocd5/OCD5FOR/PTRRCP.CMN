@@ -1,0 +1,28 @@
+C PTRRCP  Common Include File                                           PRR00010
+C                                                                       PRR00020
+C Contents:  Parameters passed from subroutine PTR to RECEP             PRR00030
+C                                                                       PRR00040
+C Parameters:                                                           PRR00050
+C                                                                       PRR00060
+C     K     :  Receptor number                                          PRR00070
+C     DECAYF:  Chemical transformation rate                             PRR00080
+C     Q     :  Source strength                                          PRR00090
+C     IYWS  :  Horizontal turbulence intensity over water used to       PRR00100
+C              calculate dispersion parameters                          PRR00110
+C     IZWS  :  Vertical turbulence intensity over water used to         PRR00120
+C              calculate dispersion parameters                          PRR00130
+C     IYLS  :  Horizontal turbulence intensity over land at stack top   PRR00140
+C     IZLS  :  Vertical turbulence intensity over land at stack top     PRR00150
+C     ZER   :  Receptor ground-level elevation (m)                      PRR00160
+C     HA    :  Plume height above stack base                            PRR00170
+C     S     :  Stability factor used in plume rise calculation          PRR00180
+C     SIGB  :  Sigma due to buoyancy induced dispersion                 PRR00190
+C     EPM   :  Receptor height above ground                             PRR00200
+C     IHR   :  Hour of day                                              PRR00210
+C     PMASS :  Fraction of plume mass (0-1)                             PRR00220
+C     JS    :  Source number
+C                                                                       PRR00230
+      REAL IYWS,IZWS,IYLS,IZLS                                          PRR00240
+C                                                                       PRR00250
+      COMMON /PTRRCP/K,DECAYF,Q,IYWS,IZWS,IYLS,IZLS,ZER,HA,S,           PRR00260
+     &        SIGB,EPM,IHR,PMASS,JS

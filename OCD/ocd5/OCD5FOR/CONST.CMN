@@ -1,0 +1,26 @@
+C  CONST COMMON INCLUDE FILE                                            CON00010
+C                                                                       CON00020
+C  CONTENTS:  CONSTANT DEFINITIONS                                      CON00030
+C                                                                       CON00040
+C  PARAMETERS:                                                          CON00050
+C                                                                       CON00060
+C      GRAV  :  Gravity                                                 CON00070
+C      MISS  :  Missing value indicator                                 CON00080
+C      RAD2DG:  Radians to degrees conversion                           CON00090
+C      DG2RAD:  Degrees to radians conversion                           CON00100
+C      KM2M  :  Kilometer to meter conversion                           CON00110
+C      RT2PI :  square root of two times pi                             CON00120
+C      PI    :  Value of pi                                             CON00130
+C      LETL  :  Letter L (specifies land)                               CON00140
+C      LETW  :  Letter W (specifies water)                              CON00150
+C      STR   :  Star                                                    CON00170
+C      BLNK  :  Blank                                                   CON00180
+C      TITLE :  Pollutant header titles                                 CON00190
+c      PB    :  Page break character                                    XXX00190
+C                                                                       CON00200
+      character*4 TITLE(5)                                              CON00210
+      character*1 pb,letl,letw,str,blnk                                 XXX00210
+      REAL GRAV, MISS,KM2M                                              CON00220
+C                                                                       CON00230
+      COMMON /CONST/ GRAV,MISS,RAD2DG,DG2RAD,KM2M,RT2PI,PI,LETL,LETW,   CON00240
+     &               STR,BLNK,TITLE,pb                                  CON00250

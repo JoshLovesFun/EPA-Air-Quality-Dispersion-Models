@@ -1,0 +1,45 @@
+                     Model Change Bulletin
+              
+                            MCB#1                7/1/93
+
+                       OCD (dated 93111)
+
+
+     This Model Change Bulletin essentially initiates the
+activities of the SCRAM BBS for the Offshore and Coastal
+Dispersion (OCD) model.  This model was developed through and is
+being maintained by Minerals Management Services (MMS) of
+Washington, DC.  The current code is slightly modified from MMS's
+OCD Version 4.0.  The changes are described in a memorandum from
+John Goll of MMS to Joseph Tikvart of EPA.  The contents of that
+memo are included with the OCD archival file as GOLLTIK.WPF and
+Attachment 2 to the memo is also included as ATTACH2.WPF.  The
+attachment contains the results of a model performace evaluation
+that was done to compare the current OCD model with OCD 4.0.
+
+     EPA will henceforth identify this model by its name and a
+julian date, i.e.: OCD (dated 93111).  Future changes to this
+model will be identified by an updated julian date in the
+the model source code header and followed by a reference
+to a SCRAM BBS Model Change Bulletin (MCB#n) which will explain
+the nature and contents of the changes.  All Model Change
+Bulletins for this model will always be available for back
+reference on this BBS.  In the future, notification of changes
+(MCBs) to this model will be made in the SCRAM ALERTS section
+of this BBS immediately following the LOGON procedure.
+
+     The source code for this model has been compiled and tested
+with the Lahey (v4.1), Microsoft(v5.0), and a SUN (v1.0) Fortran
+compilers by MMS.  Watch SCRAM ALERTS for notification of new
+MCBs about OCD. 
+
+                       ******************
+                       * Important Note *  
+                       ******************
+   
+      New Model Change Bulletins will ONLY be issued when there
+is a change to the source code for this model.  Changes to test
+cases and/or any pre and post processors that are included in the
+archived file for this model will be addressed and appropriately
+identified in an amendment to the model's latest MCB with
+notification posted in the SCRAM ALERTS section of the BBS.

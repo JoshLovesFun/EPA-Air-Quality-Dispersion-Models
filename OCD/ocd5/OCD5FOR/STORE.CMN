@@ -1,0 +1,147 @@
+C  STORE Common Include File
+c  -------------------------------------------------------------------------
+c  Combination of original STORE, CONC, REC, and TABLE common include files.
+c  This is to facilitate the use of PARAMETER statements to define various
+c  array limits.
+c  -------------------------------------------------------------------------
+c
+C  STORE Common Include File
+C
+C  Contents:  Stored Data
+C
+C  Parameters:
+C
+C      QTHETA:  Wind direction
+C      QU    :  Wind speed
+C      IKST  :  Stability class
+C      QHL   :  Mixing height
+C      QTEMP :  Ambient air temperature
+C      MPS   :  Point source numbers that the user wants to be
+C               considered as significant
+C      NSIGP :  Number of sources from which concentration
+C               contributions are desired
+C      IN    :  Input unit number
+C      IO    :  Output unit number (regular listing)
+C      IERR  :  Unit number for error message file
+C      LINE1 :  Alphanumeric data for titles
+C      LINE2 :  Alphanumeric data for titles
+C      LINE3 :  Alphanumeric data for titles
+C      RNAME :  Station identification
+C      IRANK :  Holds ranks of the concentrations
+C      STAR  :  Contains asterisks
+C      WU    :  Overwater wind speed
+C      WHL   :  Overwater mixing height
+C      WTAIR :  Overwater air temperature
+C      WTDIFF:  Overwater temperature difference
+C      WRH   :  Overwater relative humidity
+C      DECAY :  Decay rates for pollutants
+C      JOPT  :  Switches for use of additional meteorological parameters
+C      JAR   :  Number of internally-produced receptors
+C      WSH   :  Wind direction shear in the vertical
+C      WIY   :  Overwater horizontal turbulence intensity
+C      WIZ   :  Overwater vertical turbulence intensity
+C      QIY   :  Overland horizontal turbulence intensity
+C      QIZ   :  Overland vertical turbulence intensity
+C      HWANE :  Overwater anemometer height
+C      HWT   :  Overwater temperature sensor height
+C      WEL   :  Monin-Obukhov length over water
+C      WUSTAR:  Overwater friction velocity
+C      WZ0   :  Overwater roughness length
+C      Z0L   :  Surface roughness length over land near the shore
+C      WDTDZ :  Overwater change of temperature with height
+C      ELLAND:  Monin-Obukhov length over land
+C      KWST  :  Overwater stability category
+C      IMONTH:  Month of year
+C      HTER  :  Mountain/hill elevation in the vicinity of the receptor
+C      BVN   :  Brunt-Vaisala frequency
+C      WWDTHDZ: Input overwater change of temperature with height
+C      NTIME:   Averaging time constant (integer)
+C      ATIME:   Averaging time constant (real)
+C
+      character*8 rname
+      character*80 line1,line2,line3
+      character*1 star
+      COMMON /STORE/ QTHETA(24),QU(24),IKST(24),QHL(24),QTEMP(24),
+     &  MPS(25),NSIGP,IN,IO,IERR,LINE1,LINE2,LINE3,RNAME(maxrec),
+     &  IRANK(maxrec),STAR(5,maxrec),WU(24),WHL(24),WTAIR(24),
+     &  WTDIFF(24),
+     &  WRH(24),DECAY(12),JOPT(9),JAR,WSH(24),WIY(24),WIZ(24),QIY(24),
+     &  QIZ(24),HWANE,HWT,WEL(24),WUSTAR(24),WZ0(24),Z0L,WDTDZ(24),
+     &  ELLAND,KWST(24),IMONTH,HTER(maxrec),BVN,WWDTHDZ,
+     &  ntime(5),atime(5)
+c
+C  CONC Common Include File
+C
+C  Contents:  Concentration Information
+C
+C  Parameters:
+C
+C     HMAXA  :  Calculated concentrations; used to determine maximums
+C     NDAY   :  Days corresponding to the concentrations in HMAXA
+C     IHRARRAY :  Hours corresponding to the concentrations in HMAXA
+C     CONC   :  Stores accumulated concentrations
+C     JDAY   :  Used to store dates for which concentrations have been
+c               calculated
+C     NR     :  Number of concentrations to be written for each record
+C
+      COMMON /CONC/ HMAXA(5,maxrec,5),NDAY(5,maxrec,5),
+     &  IHRARRAY(5,maxrec,5),CONC(maxrec,5),JDAY,NR
+c
+C REC Common Include File
+C
+C  Contents:  Receptor Information
+C
+C  Parameters:
+C
+C      NRECEP:  Number of receptors
+C      NAVG  :  Number of hours in an averaging period
+C      NB    :  Starting hour value
+C      LH    :  Hour value
+C      NPT   :  Number of point sources
+C      IDATE :  Two digit year of run and startin Julian day
+C      RREC  :  East coordinates of receptors
+C      SREC  :  North coordinates of receptors
+C      ZR    :  Receptor height above local ground level
+C      ELR   :  Receptor ground level elevation
+C      PHCHI :  Partial concentrations for hourly periods
+C      PHSIGS:  Partial concentrations from significant sources for
+C               hourly periods
+C      HSAV  :  Temporary storage
+C      DSAV  :  Temporary storage
+C      PCHI  :  Partial concentrations for averaging periods
+C      PSIGS :  Partial concentrations from significant sources for
+C               averaging periods
+C      IPOL  :  Pollutant indicator
+C      ANGR2S:  Angle from source to receptor
+C      ILH   :  Hourly loop indicator
+C      NBB   :  Starting hour value which is not redefined
+C
+      COMMON /REC/ NRECEP,NAVG,NB,LH,NPT,IDATE(2),RREC(maxrec),
+     &  SREC(maxrec),
+     &  ZR(maxrec),ELR(maxrec),PHCHI(maxrec),PHSIGS(maxrec,26),
+     &  HSAV(maxrec),DSAV(maxtmp),
+     &  PCHI(maxrec),PSIGS(maxrec,26),IPOL,ANGR2S,ILH,NBB
+c
+C  TABLE Common Include File
+C
+C  Contents: Table Output Values
+C
+C  Parameters:
+C
+C     TABLE  :  Table of emission rates
+C     SUM    :  Sum of concentrations
+C
+      COMMON /TABLE/ TABLE(2,21),SUM(maxrec)
+c
+c  CARTSN Common Include File
+c
+c      X0_c  :  X coordinate of origin for Cartesian receptor grid
+c      Y0_c  :  Y coordinate of origin for Cartesian receptor grid
+c      NX_c  :  Number of Cartesian receptors along x-axis
+c      NY_c  :  Number of Cartesian receptors along y-axis
+c      DELX_c:  Distance between columns for Cartesian receptor grid
+c               (postive eastward)
+c      DELY_c:  Distance between rows for Cartesian receptor grid
+c               (postive northward)
+c
+      common /cartsn/ x0_c,y0_c,nx_c,ny_c,delx_c,dely_c

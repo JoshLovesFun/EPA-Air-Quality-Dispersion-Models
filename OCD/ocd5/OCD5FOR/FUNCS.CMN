@@ -1,0 +1,19 @@
+C  FUNCS Common Include File                                            FNC00010
+C                                                                       FNC00020
+C  Contents:  Function Data Used to Estimate Potential Impact From Each FNC00030
+C             source.                                                   FNC00040
+C                                                                       FNC00050
+C  Parameters:                                                          FNC00060
+C                                                                       FNC00070
+C     AS     :  Used to calculate SIGZS coefficient                     FNC00080
+C     BS     :  Used to calculate SIGZS exponent                        FNC00090
+C     PS,QS,ASI,BSI:                                                    FNC00100
+C               Pasquill-Gifford dispersion coefficients used to calc.  FNC00110
+C               virtual distances if the horizontal (PS, QS) or verticalFNC00120
+C               (ASI, BSI) turbulence intensity data is missing         FNC00130
+C     IA     :  Used to calculate SIGZS                                 FNC00140
+C     DST    :  Distance used to calculate SIGZS                        FNC00150
+C     SIGZS  :  Sigma-z used to est. potential impact from each source  FNC00160
+C                                                                       FNC00170
+      COMMON /FUNCS/ AS(37),BS(37),PS(6),QS(6),ASI(37),BSI(37),         FNC00180
+     &  IA(7),DST(37),SIGZS(37)                                         FNC00190

@@ -1,0 +1,13 @@
+C  EXPS  Common Include File                                            EXP00010
+C                                                                       EXP00020
+C  Contents:  Constants used to estimate the potential impact of each   EXP00030
+C             source:  Chi(Max) = (A*H**B)*Q/U                          EXP00040
+C                                                                       EXP00050
+C  Parameters:                                                          EXP00060
+C                                                                       EXP00070
+C      PXUCOF:  Coefficient A in above equation calculated from rural   EXP00080
+C               PG-sigmas                                               EXP00090
+C      PXUEXP:  Exponent B in above equation                            EXP00100
+C      HC1   :  Effective heights                                       EXP00110
+C                                                                       EXP00120
+      COMMON /EXPS/ PXUCOF(6,9),PXUEXP(6,9),HC1(10)                     EXP00130

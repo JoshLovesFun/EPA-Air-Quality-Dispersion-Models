@@ -1,0 +1,7 @@
+C  VERSION COMMON INCLUDE FILE
+C
+C  Contents: model version
+C
+      character*80 model_version
+      parameter (model_version=
+     & 'OFFSHORE AND COASTAL DISPERSION (OCD) MODEL, VERSION 5.0')

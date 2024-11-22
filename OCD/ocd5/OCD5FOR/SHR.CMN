@@ -1,0 +1,19 @@
+C  SHR  Common Include File                                             SHR00010
+C                                                                       SHR00020
+C  Contents:  Shoreline Data                                            SHR00030
+C                                                                       SHR00040
+C  Parameters:                                                          SHR00050
+C                                                                       SHR00060
+C      X0    :  X coordinate of NW corner of mapped area                SHR00070
+C      Y0    :  Y coordinate of NW corner of mapped area                SHR00080
+C      NX    :  Number of columns in the grid                           SHR00090
+C      NY    :  Number of rows in the grid                              SHR00100
+C      DELX  :  Distance between columns                                SHR00110
+C      DELY  :  Distance between rows                                   SHR00120
+C      XYMAP :  Shoreline X,Y coordinates                               SHR00130
+C      WMIN  :  Minimum along wind width of land or water bodies to be  SHR00140
+C               considered                                              SHR00150
+C                                                                       SHR00160
+c
+      character*1 xymap
+      COMMON /SHR/ X0,Y0,NX,NY,DELX,DELY,XYMAP(maxmap,maxmap),WMIN      SHR00170

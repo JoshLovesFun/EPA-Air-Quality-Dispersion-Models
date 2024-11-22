@@ -1,0 +1,23 @@
+C  SRC Common Include File                                              SRC00010
+C                                                                       SRC00020
+C  Contents:  Source Data                                               SRC00030
+C                                                                       SRC00040
+C  Parameters:                                                          SRC00050
+C                                                                       SRC00060
+C      SOURCE:  Source information                                      SRC00070
+C      CONTWO:  Multiplier to convert from user units to kilometers     SRC00080
+C      PSAV  :  Temporary storage for calculated concentrations         SRC00090
+C      IPSIGS:  Significant point source array                          SRC00100
+C      U     :  Wind speed                                              SRC00110
+C      TEMP  :  Temperature                                             SRC00120
+C      SINT  :  Sine of wind direction                                  SRC00130
+C      COST  :  Cosine of wind direction                                SRC00140
+C      ELP   :  Source ground level elevation                           SRC00150
+C      ELHN  :  Elevation of lowest stack top in inventory              SRC00160
+C      HANE  :  Land anemometer height                                  SRC00170
+C      CELM  :  Multiplier to convert from user height units to meters  SRC00180
+C      RATE  :  Chemical transformation rate                            SRC00190
+C       ZST  :  Physical stack height plus ground level elevation       SRC00200
+C                                                                       SRC00210
+      COMMON /SRC/SOURCE(11,maxp),CONTWO,PSAV(maxp),IPSIGS(maxp),U,     SRC00220
+     &  TEMP,SINT,COST,ELP(maxp),ELHN,HANE,CELM,RATE,ZST                SRC00230

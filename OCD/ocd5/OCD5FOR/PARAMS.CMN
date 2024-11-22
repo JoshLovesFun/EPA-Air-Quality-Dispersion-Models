@@ -1,0 +1,36 @@
+c  PARAMS Include File
+c
+c  Parameters for modeling: (Can be changed if necessary)
+c  ------------------------
+c     maxrec:   Maximum number of receptors
+c     maxp:     Maximum number of point sources
+c     maxmap:   Maximum no. of grids, in x- and y-directions, to
+c               represent shoreline geometry (recommended value=120)
+c     maxring:  Maximum number of rings for polar receptors
+c     maxcar:   Maximum number of Cartesian receptors along
+c               the x- and y-axis
+c
+c  Parameters for control file reader: (Normally do not change)
+c  -----------------------------------
+c     maxvar:   Maximum number of variables in each input group
+c     maxgrp:   Maximum number of data groups
+c     mxcol:    Maximum length (bytes) of a control file input record
+c
+      parameter (maxrec=3000)
+      parameter (maxp=8500)
+      parameter (maxmap=120)
+      parameter (maxring=20)
+      parameter (maxcar=40)
+c
+      parameter (maxvar=60)
+      parameter (maxgrp=30)
+      parameter (mxcol=132)
+c
+      parameter (max2  =5*maxrec)
+      parameter (maxmap2=maxmap*maxmap)
+      parameter (maxtmp=10000)    ! See notes below
+c
+c *** Note that MAXTMP must be at least equal to the larger of MAXREC
+c     and MAXP.
+c
+

@@ -1,0 +1,11 @@
+C  OPT Common Include File                                              OPT00010
+C                                                                       OPT00020
+C  Contents: Model Options                                              OPT00030
+C                                                                       OPT00040
+C  Parameters:                                                          OPT00050
+C                                                                       OPT00060
+C      IOPT  :  Model input/output options                              OPT00070
+C      INORMAL  :  1 = Perform normal run
+C                  0 = Perform test run
+C                                                                       OPT00080
+      COMMON /OPT/ IOPT(25),INORMAL                                     OPT00090

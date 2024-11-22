@@ -1,0 +1,19 @@
+C  LINESRC Common Include File                                          LIN00010
+C                                                                       LIN00020
+C  Contents:  Line Source Information                                   LIN00030
+C                                                                       LIN00040
+C  Parameters:                                                          LIN00050
+C                                                                       LIN00060
+C      NSEGS : Number of line source segments                           LIN00070
+C      XSTOP : East coordinate of line source end point in user units   LIN00080
+C      YSTOP : North coordinate of line source end point in user units  LIN00090
+C      MIDX  : Array containing east midpoint coordinate of each line   LIN00100
+C              segment                                                  LIN00110
+C      MIDY  : Array containing north midpoint coordinate of each line  LIN00120
+C              segment                                                  LIN00130
+C      SEGL  : Segment length from one midpoint to the next midpoint    LIN00140
+C              (km)                                                     LIN00150
+C                                                                       LIN00160
+      REAL MIDX(10), MIDY(10)                                           LIN00170
+C                                                                       LIN00180
+      COMMON /LINESRC/ NSEGS,XSTOP,YSTOP,MIDX,MIDY,SEGL                 LIN00190

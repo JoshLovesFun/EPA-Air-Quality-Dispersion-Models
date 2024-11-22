@@ -1,0 +1,16 @@
+C  COUNT Common Include File                                            CNT00010
+C                                                                       CNT00020
+C  Contents:  Model Counting Parameters                                 CNT00030
+C                                                                       CNT00040
+C  Parameters:                                                          CNT00050
+C                                                                       CNT00060
+C     IDAY   :  Julian day                                              CNT00070
+C     NHR    :  Hour of day                                             CNT00080
+C     NP     :  Counter for 1-hour averaging                            CNT00090
+C     NP3    :  Counter for 3-hour averaging                            CNT00100
+C     NP8    :  Counter for 8-hour averaging                            CNT00110
+C     NP24   :  Counter for 24-hour averaging                           CNT00120
+C     NPX    :  Counter for additional averaging period as specified    CNT00130
+C                                                                       CNT00140
+      COMMON /COUNT/ IDAY,NP,NHR,NP3,NP8,NP24,NPX                       CNT00150
+    

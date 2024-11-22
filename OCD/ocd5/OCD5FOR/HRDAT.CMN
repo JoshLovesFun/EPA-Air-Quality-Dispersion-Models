@@ -1,0 +1,31 @@
+C  HRDAT Common Include File                                            HRD00010
+C                                                                       HRD00020
+C  Contents:  Hourly Meteorological data and source data                HRD00030
+C                                                                       HRD00040
+C  Parameters:                                                          HRD00050
+C                                                                       HRD00060
+C     WDTHDZ :  Overwater vertical potential temperature gradient       HRD00070
+C     EL     :  Monin-Obukhov length                                    HRD00080
+C     Z0W    :  Roughness length over water                             HRD00090
+C     USTAR  :  Friction velocity                                       HRD00100
+C     TS     :  Stack gas temperature                                   HRD00110
+C     BUOY   :  Brigg's F without the temperature factor                HRD00120
+C     VS     :  Exit velocity                                           HRD00130
+C     D      :  Stack inner diameter                                    HRD00140
+C     HB     :  Height of building                                      HRD00150
+C     COMPON :  The cosine of the deviation of stack angle from the
+C               vertical
+C     EP     :  Source ground level elevation                           HRD00170
+C     THT    :  Physical stack height                                   HRD00180
+C     ILAND  :  Overland flag                                           HRD00190
+C     WTDIF  :  Overwater temperature difference                        HRD00200
+C     KWIST  :  Overwater stability class                               HRD00210
+C     IYW    :  Horizontal turbulence intensity over water              HRD00220
+C     IZW    :  Vertical turbulence intensity over water                HRD00230
+C     IYL    :  Horizontal turbulence intensity over land               HRD00240
+C     IZL    :  Vertical turbulence intensity over land                 HRD00250
+C                                                                       HRD00260
+      REAL IYW,IZW,IYL,IZL                                              HRD00270
+C                                                                       HRD00280
+      COMMON /HRDAT/ WDTHDZ,EL,Z0W,USTAR,TS,BUOY,VS,D,HB,COMPON,        HRD00290
+     &               EP,THT,ILAND,WTDIF,KWIST,IYW,IZW,IYL,IZL           HRD00300

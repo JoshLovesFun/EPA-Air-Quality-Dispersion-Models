@@ -1,0 +1,26 @@
+The self-extracting archive, OCDFOR.EXE, contains the source
+codes for the OCD/5 model and the processor programs.  To install, take the
+following steps:
+
+(1) Create a directory, e.g., OCDFOR, off the root directory.
+
+(2) Copy OCDFOR.EXE to that directory.
+
+(3) Change directory to that directory.
+
+(4) Type "OCDFOR" to extract files.
+
+Contents:
+
+OCD5.FOR       Source code for the OCD/5 model
+OCD4TO5.FOR    Source code for the OCD4TO5 processor
+OCDPRO.FOR     Source code for the OCDPRO processor
+MAKEGEO.FOR    Source code for the MAKEGEO processor
+MAKEUTM.FOR    Source code for the MAKEUTM processor
+ANALYSIS.FOR   Source code for the ANALYSIS processor
+ME2BIN.FOR     Source code for ME2BIN conversion utility
+*.CMN          Include files for the OCD/5 model
+README.1ST     This file
+
+Refer to Section 6 of the User's Guide for compiling
+instructions.

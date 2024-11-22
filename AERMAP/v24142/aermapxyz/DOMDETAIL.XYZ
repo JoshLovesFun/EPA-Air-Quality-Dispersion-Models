@@ -1,0 +1,33 @@
+DOMCNV/CHKEXT:
+
+        Domain              LAT        LONG
+
+  Corner coordinates:    129696.20   284288.55 seconds
+  Corner coordinates:    129763.49   284237.87 seconds
+  Corner coordinates:    36.026723   78.969041 deg.decimal
+  Corner coordinates:    36.045414   78.954964 deg.decimal
+
+  Domain corner inside DEM file: XYZ.DEM       
+
+       DEM corner Lat/Lon:         130043.4975         283949.9896
+    Domain corner Lat/Lon:         129696.2031         284237.8710
+       DEM corner Lat/Lon:         129593.5056         284399.9902
+  
+  Domain corner inside DEM file: XYZ.DEM       
+
+       DEM corner Lat/Lon:         130043.4975         283949.9896
+    Domain corner Lat/Lon:         129696.2031         284288.5473
+       DEM corner Lat/Lon:         129593.5056         284399.9902
+  
+  Domain corner inside DEM file: XYZ.DEM       
+
+       DEM corner Lat/Lon:         130043.4975         283949.9896
+    Domain corner Lat/Lon:         129763.4899         284288.5473
+       DEM corner Lat/Lon:         129593.5056         284399.9902
+  
+  Domain corner inside DEM file: XYZ.DEM       
+
+       DEM corner Lat/Lon:         130043.4975         283949.9896
+    Domain corner Lat/Lon:         129763.4899         284237.8710
+       DEM corner Lat/Lon:         129593.5056         284399.9902
+  

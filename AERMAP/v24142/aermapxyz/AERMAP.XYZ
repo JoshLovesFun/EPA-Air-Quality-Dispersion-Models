@@ -1,0 +1,178 @@
+ ** AERMAP - VERSION 04056
+ **
+ CO STARTING                                                                                                                         
+    TITLEONE  XYZ sample run                                                                                                         
+    DATATYPE  DEM7                                                                                                                   
+    DATAFILE XYZ.DEM                                                                                                                 
+    DOMAINXY  683000.0 3988620.00 17 684225.0 3990720.0 17                                                                           
+ **  lowr left easting  Northing Zn  easting  northing Zn of upper right                                                             
+    ANCHORXY  683010.0  3988630.0 683010.0  3988630.0  17 1                                                                          
+ **           X-point Y-point  easting North'g Zn of X, Y point                                                                      
+    RUNORNOT  run                                                                                                                    
+ CO FINISHED                                                                                                                         
+                                                                                                                                     
+ RE STARTING                                                                                                                         
+    ELEVUNIT METERS                                                                                                                  
+    DISCCART  683012.50 3988627.50                                                                                                   
+    DISCCART  683037.50 3988642.50                                                                                                   
+    DISCCART  683062.50 3988657.50                                                                                                   
+    DISCCART  683087.50 3988672.50                                                                                                   
+    DISCCART  683112.50 3988687.50                                                                                                   
+    DISCCART  683137.50 3988702.50                                                                                                   
+    DISCCART  683162.50 3988717.50                                                                                                   
+    DISCCART  683187.50 3988732.50                                                                                                   
+    DISCCART  683212.50 3988747.50                                                                                                   
+    DISCCART  683237.50 3988762.50                                                                                                   
+    DISCCART  683262.50 3988777.50                                                                                                   
+    DISCCART  683287.50 3988792.50                                                                                                   
+    DISCCART  683312.50 3988807.50                                                                                                   
+    DISCCART  683337.50 3988822.50                                                                                                   
+    DISCCART  683362.50 3988837.50                                                                                                   
+    DISCCART  683387.50 3988852.50                                                                                                   
+    DISCCART  683412.50 3988867.50                                                                                                   
+    DISCCART  683437.50 3988882.50                                                                                                   
+    DISCCART  683462.50 3988897.50                                                                                                   
+    DISCCART  683487.50 3988912.50                                                                                                   
+    DISCCART  683512.50 3988927.50                                                                                                   
+    DISCCART  683537.50 3988942.50                                                                                                   
+    DISCCART  683562.50 3988957.50                                                                                                   
+    DISCCART  683587.50 3988972.50                                                                                                   
+    DISCCART  683612.50 3988987.50                                                                                                   
+    DISCCART  683637.50 3989002.50                                                                                                   
+    DISCCART  683662.50 3989017.50                                                                                                   
+    DISCCART  683687.50 3989032.50                                                                                                   
+    DISCCART  683712.50 3989047.50                                                                                                   
+    DISCCART  683737.50 3989062.50                                                                                                   
+    DISCCART  683762.50 3989077.50                                                                                                   
+    DISCCART  683787.50 3989092.50                                                                                                   
+    DISCCART  683812.50 3989107.50                                                                                                   
+    DISCCART  683837.50 3989122.50                                                                                                   
+    DISCCART  683862.50 3989137.50                                                                                                   
+    DISCCART  683887.50 3989152.50                                                                                                   
+    DISCCART  683912.50 3989167.50                                                                                                   
+    DISCCART  683937.50 3989182.50                                                                                                   
+    DISCCART  683962.50 3989197.50                                                                                                   
+    DISCCART  683987.50 3989212.50                                                                                                   
+    DISCCART  684012.50 3989227.50                                                                                                   
+    DISCCART  684037.50 3989242.50                                                                                                   
+    DISCCART  684062.50 3989257.50                                                                                                   
+    DISCCART  684087.50 3989272.50                                                                                                   
+    DISCCART  684112.50 3989287.50                                                                                                   
+    DISCCART  684137.50 3989302.50                                                                                                   
+    DISCCART  684162.50 3989317.50                                                                                                   
+    DISCCART  684187.50 3989332.50                                                                                                   
+    DISCCART  684212.50 3989347.50                                                                                                   
+ RE FINISHED
+                                                                                                                                     
+ OU STARTING                                                                                                                         
+    RECEPTOR XYZ.REC                                                                                                                 
+ OU FINISHED                                                                                                                         
+ 
+ Finished Reading Input Data
+ 
+ NADCON is now opening the files containing the gridded data.
+ The areas listed below may be used for datum conversions
+   from NAD27 to NAD83.
+
+      Opening Default Data Grids
+   #  AREA NAME         Corner Coordinates
+ ===============================================================================
+   1  Conus             Lat :    50.0    20.0
+                        Long:   -63.0  -131.0
+
+   2  Hawaii            Lat :    23.0    18.0
+                        Long:  -154.0  -161.0
+
+   3  P.R. and V.I.     Lat :    19.0    17.0
+                        Long:   -64.0   -68.0
+
+   4  St. Laurence I.   Lat :    64.0    62.0
+                        Long:  -168.0  -172.0
+
+   5  St. George I.     Lat :    57.0    56.0
+                        Long:  -169.0  -171.0
+
+   6  St. Paul I.       Lat :    58.0    57.0
+                        Long:  -169.0  -171.0
+
+   7  Alaska            Lat :    77.0    46.0
+                        Long:  -128.0  -194.0
+
+
+ ***********************************
+ *** SETUP Finishes Successfully ***
+ ***********************************
+
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+ entering recelv
+1 *** AERMAP - VERSION 04056 ***    ***  XYZ sample run                                                      ***        12/21/05
+                                    ***                                                                      ***        15:26:20
+
+ *** Message Summary For AERMAP Execution ***
+
+  --------- Summary of Total Messages --------
+  
+ A Total of            0  Fatal Error Message(s)
+ A Total of            0  Warning Message(s)
+ A Total of            0  Informational Message(s)
+  
+  
+    ******** FATAL ERROR MESSAGES ******** 
+               ***  NONE  ***         
+  
+  
+    ********   WARNING MESSAGES   ******** 
+               ***  NONE  ***        
+  
+
+    ************************************
+    *** AERMAP Finishes Successfully ***
+    ************************************
+

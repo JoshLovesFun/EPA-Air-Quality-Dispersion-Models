@@ -1,0 +1,51 @@
+  
+ MAP PARAMETERS
+  
+ TYPDEM: UTM 
+  
+ XYZ data example based on the 7.5' Durha<-- Raw header data segment
+ XY                                      <-- Refined header data segment
+   Map Number:   1
+                SW Corner     NW Corner     NE Corner     SE Corner
+   Easting:     680271.012    679985.957    691236.627    691539.521
+   Northing:   3985598.085   3999464.824   3999703.777   3985836.701
+   DEM Level Code:  DEM-1 
+   Planimetric Ref: UTM Coordinates     
+     North-South Node separation:    25.00
+     East-West Node separation:    15.00
+   UTM/State Zone # 17
+   Original elevation units of nodes: deci-meters
+   Min. Elevation:     54. meters     
+   Max. Elevation:    229. meters     
+   Num. of Profiles:   50
+   Horizontal Datum: North American Datum of 1927            
+   SE Corner Lat/Lon:       35.998      78.875
+   XY                                      
+   Writing corner coords, secs then D.D
+     Southwest Corner       Northwest Corner       Northeast Corner       Southeast Corner
+     Easting   Northing     Easting   Northing     Easting   Northing     Easting   Northing  
+     680271.01 3985598.08   679985.96 3999464.82   691236.63 3999703.78   691539.52 3985836.70
+     Latitude  Longitude    Latitude  Longitude    Latitude  Longitude    Latitude  Longitude 
+     35.998     79.000      36.123     79.000      36.123     78.875      35.998     78.875
+
+  
+
+
+MAP ADJACENCY
+
+ No. Base Map Name             Adjacent map names and relative geographic location to Base Map.
+
+  1  XY                        NW:    No Map Present          N:    No Map Present         NE:    No Map Present       
+                                W:    No Map Present          C: XY                         E:    No Map Present       
+                               SW:    No Map Present          S:    No Map Present         SE:    No Map Present       
+
+
+
+MAPNAME ARRAY
+
+  Mapnames are laid out in relative geographical positions.
+  Look for "No Map" within the field of interest.
+  This will indicate missing files or files with errant data in their header records.
+
+  
+  

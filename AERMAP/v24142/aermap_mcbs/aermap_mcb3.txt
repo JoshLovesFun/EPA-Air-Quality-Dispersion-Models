@@ -1,0 +1,51 @@
+
+                        Model Change Bulletin
+
+                                MCB#3                       04/13/2011
+
+                        AERMAP (dated 11103)
+
+This Model Change Bulletin documents changes made to the AERMAP Terrain 
+Preprocessor for the AERMOD Dispersion Model.  A brief description of 
+the changes is provided below.  Additional details are also available 
+in the Fortran source code.  
+
+
+This revised version of AERMAP (dated 11103) includes the following
+modifications relative to the previous version (dated 11059):
+
+-- Bug Fixes:
+
+   1.  Corrected formatting issue for message indicating that 
+       source location is not assigned to a terrain file, in
+       sub_demsrc. This error condition resulted in a Fortran
+       runtime error with version 09040.
+
+
+-- Enhancements:
+
+   1.  Modified several subroutines to increase maximum length 
+       of source IDs from 8 to 12 characters, to be consistent
+       with enhancement introduced with version 11059 of AERMOD.
+
+
+-- Miscellaneous:
+
+   1.  Modified subroutine ERRHDL to set an upper limit on line 
+       number included in error messages to avoid overflowing 
+       the field.
+
+
+
+                       *****************
+                       *   IMPORTANT   *
+                       *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMAP (dated 11103).  Future changes to this model will be 
+identified by an updated Julian date found at the beginning of the model
+source code and followed by a reference to a SCRAM Model Change Bulletin
+(MCB#n) which will explain the nature and content of the changes.  All 
+Model Change Bulletins for this program will always be available for back
+reference on this website.  In the future, notification of changes (MCBs)
+to this program will be made in the SCRAM ALERTS section of this website.

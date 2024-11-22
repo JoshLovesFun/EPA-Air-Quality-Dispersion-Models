@@ -1,0 +1,33 @@
+C***********************************************************************
+C
+C                        Model Change Bulletin
+C
+C                                MCB#4                       03/22/2018
+C
+C                        AERMAP (dated 18081)
+C
+C This Model Change Bulletin documents changes made to the AERMAP Terrain 
+C Preprocessor for the AERMOD Dispersion Model.  A brief description of 
+C the changes is provided below.  Additional details are also available 
+C in the Fortran source code.  
+C
+C
+C This revised version of AERMAP (dated 18081) includes the following
+C modifications relative to the previous version (dated 11103):
+C
+C-- Bug Fixes:
+C
+C   1.  Made array RMIN allocatable in subroutine CALCHC to avoid
+C       gfortran errors on Linux systems
+C
+C
+C-- Enhancements:
+C
+C   1.  Modified several subroutines and main program AERMOD
+C       to allow for command line arguments for input runstream
+C       input filename and output filename.  If no arguments specified
+C       AERMAP uses aermap.inp and aermap.out as the default filenames
+C
+C
+C
+C***********************************************************************

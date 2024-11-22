@@ -1,0 +1,72 @@
+DEMFILZ Readme File
+
+DEMFILZ is a batch file.  It uses several programs to convert the new Spatial 
+Data Transfer Standard (SDTS) formatted DEM data back to the older "native"
+DEM file format.  This batch file is to be used only if you have DEM data 
+in the new SDTS format and you want to use it in AERMAP.  If you have your 
+DEM data in the older "native" format, you do NOT need to run this batch file.
+
+AERMAP does NOT read the new Spatial Data Transfer Standard (SDTS)
+formatted DEM data directly.  Instead DEMFILZ is designed as a batch file 
+for converting the SDTS data back to the older "native" format.  The SDTS is
+harder to work with and the SDTS data is not easily read with a text
+editor as was the older "native" DEM files.  However, SDTS is a standard
+and the data are readily available on the internet for "free".  How long the 
+SDTS will be offered for "free" is not known.  With the availability of the 
+SDTS2DEM conversion program, the complexity of the SDTS data, the myriad
+of SDTS files defining each DEM map, and other concerns, it was 
+decided to use SDTS2DEM to convert the SDTS data back to the "native" DEM 
+format outside of AERMAP.  
+
+Sources for SDTS formatted DEM files
+
+Several of the online commercial DEM data sites are offering "free" 
+downloads of SDTS formatted DEM files.  Several of these sites are hotlinked
+through the URL two paragraphs below.  The downloaded filenames do not make  
+it readily apparent as to the DEM map name the data belong to as there 
+are no DEM map names in the downloaded filenames.  Therefore, it is
+prudent to record the DEM map name from the commercial site as each SDTS 
+file is selected and downloaded.  Here an example of the DEM map name 
+as displayed by a commercial site followed by the downloaded filename: 
+
+           Lloyd Harbor, NY-CT  30_1_1_1007918_tar.gz
+           
+For a relatively nominal amount, the commercial sites will also allow you to 
+order a CD of DEM files in the old DEM "native" format.  The data can be 
+mailed to you or they may allow you to electronically download the data.
+
+Information on the SDTS2DEM program can be found at the commercial sites and
+on the Internet at: http://www.cs.arizona.edu/topovista/sdts2dem/
+DEMFILZ is currently using version 0.018 of SDTS2DEM.
+
+If you have any problems or would like to make comments on this program, 
+please email Peter Eckhoff at: eckhoff.peter@epa.gov or 
+by telephone at: (919) 541-5385. 
+
+
+Conversion Instructions:
+
+A recent revisit to this package, showed that different unZipping program give
+different results.  You may have to add a ".tar" extension after you 
+double click on the example SDTS file uploaded with this package, 
+30_1_1_1007918_tar.gz.  Double clicking on this file with WinZip installed
+produced a window where "tar" had to be added to : "30_1_1_1007918_tar." 
+Once that was done, a list of extracted files with the format of:
+nnnnaaaa.ddf were produced.  
+
+At this point, SDTS2DEM.EXE needs to be in the same subdirectory as the 
+extracted files.
+
+Double click on SDTS2DEM.
+
+In response to the first prompt in SDTS2DEM, enter the first four digits 
+common to the extracted files.  For 9194CATD.DDF, enter 9194.
+
+In response to the second prompt in SDTS2DEM, enter a mapname such as
+LloydHarborNY.
+
+Sometimes the program will ask for a third self explanatory response.
+
+YOU DO NOT NEED TO RUN the CRLF program that was in prior packages.
+
+Compare your result with the file LHDEM.tst.  They should be the same.

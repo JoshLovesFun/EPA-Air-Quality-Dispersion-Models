@@ -1,0 +1,53 @@
+ ADJT Array for receptor:          49
+           2           2           2
+           2           1           2
+           2           2           2
+
+RECELV:
+ IREC JDEM L J K ADJT ADJMAP NADD NADA ICV IZONR IZOND    EAST/LONG     NORTH/LAT
+ LJK            5           4           0
+ ADJT,ADJMAP:            1           1
+ NADD(JDEM),NADA:            1           1
+   49    1 5 4 0  1      1    1    1   0     17     17   684212.5000  3989347.5000
+      CALLING FIND4 w/IREC,JDEM,IERR: 49  1  0
+           Based on the DEM Coding of:
+
+             IP= 2----3
+                 |    |
+             IP= 1----4
+
+       RECELV
+         IP    JREC  DEM     XDM         YDM       ELEV
+          1    4110    1  684200.000 3989345.000   14.20
+          2    4111    1  684200.000 3989370.000   14.20
+          3    4196    1  684225.000 3989370.000   14.20
+          4    4195    1  684225.000 3989345.000   14.20
+ LJK            1           1           1
+ ADJT,ADJMAP:            2           2
+ LJK            2           2           1
+ ADJT,ADJMAP:            2           2
+ LJK            3           3           1
+ ADJT,ADJMAP:            2           2
+ LJK            4           1           2
+ ADJT,ADJMAP:            2           2
+ LJK            6           3           2
+ ADJT,ADJMAP:            2           2
+ LJK            7           1           3
+ ADJT,ADJMAP:            2           2
+ LJK            8           2           3
+ ADJT,ADJMAP:            2           2
+ LJK            9           3           3
+ ADJT,ADJMAP:            2           2
+ KK JDEM       DD        XDM           XR          YDM           YR      JJ IQD    D       Z
+  5    1       12.75  684200.0000  684212.5000 3989345.0000 3989347.5000  1   1   12.75   14.20
+  5    1       25.74  684200.0000  684212.5000 3989370.0000 3989347.5000  2   2   25.74   14.20
+  5    1       25.74  684225.0000  684212.5000 3989370.0000 3989347.5000  3   3   25.74   14.20
+  5    1       12.75  684225.0000  684212.5000 3989345.0000 3989347.5000  4   4   12.75   14.20
+
+   Node Elv    Dist    W    W-FACTOR
+      14.20   12.75  0.2346  0.3344
+      14.20   25.74  0.2346  0.1656
+      14.20   25.74  0.2346  0.1656
+      14.20   12.75  0.2346  0.3344
+Receptor:    49    Calculated receptor height:   14.20
+

@@ -1,0 +1,169 @@
+
+***********************
+ OPENING:
+                                                    XYZ.DEM                                                                         
+  Analyzing file structure on a byte by byte basis.
+
+ 
+ FN #:   1,   FN: XYZ.DEM                                 
+ 
+     Total File Length:        53344
+     File Type:         DOS                                                   
+     Number of Profiles           50
+     Record lengths are variable.
+          Minimum length: 1023 OCCURRED WITH RECORD #    1
+          Maximum length: 1024 OCCURRED WITH RECORD #    4
+ 
+  Attempt to read file using USGS Blue Book format.
+ 
+ 
+                                                  Record Length  Num of   Bin-
+  File:  Name                  Length  Type    Minimum   Maximum Profilz  ary?
+ 
+  XYZ.DEM                       53344  DOS        1023      1024      50   0
+ 
+    File:                                                          XYZ.DEM                                                                         
+    Map Name:    XYZ data example based on the 7.5' Durha
+    Addtl Data:  mNW.DEM file       SW=36 00,-79 00 E-W D
+    Filler:      ELTA = 25m,  N-S DELTA = 15m                           
+    Process Code:2
+    Filler:       
+    Sectional Indicator:          
+    Mapping Center origin Code: EPA
+    DEM Level Code:        1  :DEM-1
+    Elevation Pattern:     1  :regular
+    Planimetric Ref. Sys:  1  :UTM                 
+    Coordinate Zone:      17  :from  84W to  78W
+    Map Projection Params:
+            0.0000      0.0000      0.0000      0.0000      0.0000
+            0.0000      0.0000      0.0000      0.0000      0.0000
+            0.0000      0.0000      0.0000      0.0000      0.0000
+    Coordinate Units:    2  :meters     
+    Elevation Units:     2  :meter
+    Number of map sides: 4
+    SW Corner Easting  or Lon:  680271.0122  :meters     
+    SW Corner Northing or Lat: 3985598.0847  :meters     
+    NW Corner Easting  or Lon:  679985.9573  :meters     
+    NW Corner Northing or Lat: 3999464.8240  :meters     
+    NE Corner Easting  or Lon:  691236.6267  :meters     
+    NE Corner Northing or Lat: 3999703.7775  :meters     
+    SE Corner Easting  or Lon:  691539.5208  :meters     
+    SE Corner Northing or Lat: 3985836.7008  :meters     
+    Elevation - Min:        54.00  :meter
+    Elevation - Max:       229.00  :meter
+    CClockwise angle:        0.00  :radians    
+    Accuracy elevation code:  1  :See record type C for info
+    Spatial Res. X:       25.00  :meters     
+    Spatial Res. Y:       15.00  :meters     
+    Spatial Res. Z:        0.10  :meter
+    Number of Rows:              1
+    Number of Profiles in row:  50
+    Largest Primary Contour Interval:   10
+    Contour Unit:                        1  :feet 
+    Smallest Primary Contour Interval:   5
+    Contour Unit:                        1  :feet 
+    Data Source Date:        8304  :YYMM
+    Data Insp/Rev Date:      9406  :YYMM
+    Insp/Rev. Flag:          I
+    Data Validation Flg:        4
+    Suspect & Void area flag:   0  :none                  
+    Vertical Datum:             2  :National Geodetic Vertical Datum 1929 (NGVD 29)
+    Horizontal Datum:           1  :North American Datum 1927 (NAD 27) 
+    Data Edition:               1
+    Percent Void:               0  :If greater than zero, please refer to the USGS Blue Book
+   Begin reading elevation profiles:
+    Row  Col Nodes Cols  East/Long   North/Lat  LocElv  MinElv  MaxElv FirstZ Last
+      1    1  140    1   683000.00  3988620.00    0.00  151.00  167.00   151   152
+      1    2  140    1   683025.00  3988620.00    0.00  141.00  186.00   168   152
+      1    3  140    1   683050.00  3988620.00    0.00  140.00  190.00   185   155
+      1   48  140    1   684175.00  3988620.00    0.00  122.00  219.00   138   148
+      1   49  140    1   684200.00  3988620.00    0.00  119.00  221.00   141   148
+      1   50  140    1   684225.00  3988620.00    0.00  118.00  223.00   143   148
+ 
+ 
+                                                  Record Length  Num of   Bin-
+  File:  Name                  Length  Type    Minimum   Maximum Profilz  ary?
+  XYZ.DEM                       53344  DOS        1023      1024      50   0
+ 
+
+Filename:
+                                                      XYZ.DEM                                                                         
+
+ Appendix A Data read from above DEM files and written below by USGS Data Element
+  Map Name:
+    XYZ data example based on the 7.5' Durha
+
+  Addtl Data:
+    XYZ.DEM             mNW.DEM file       SW=36 00,-79 00 E-W D
+
+  Filler:
+    XYZ.DEM             ELTA = 25m,  N-S DELTA = 15m                           
+
+                     Process * Filler * Sectional * Center * DEM Lvl * Elev  * Plani  *  Coord
+                      Code:  *        * Indicator * Origin *   Code  * Patrn * RefSys *  Zone
+    XYZ.DEM             2                            EPA        1        1        1       17
+
+  Map Projection Params:
+      XYZ.DEM             
+        0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000
+        0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000
+
+                    Coordinate * Elevation * Number of 
+                      Units:   *   Units:  * map sides:
+    XYZ.DEM              2           2           4
+
+                         SW Corner    * SW Corner     *  NW Corner    * NW Corner     
+                         Easting/Lon: * Northing/Lat: *  Easting/Lon: * Northing/Lat: 
+    XYZ.DEM              680271.0122    3985598.0847     679985.9573    3999464.8240
+
+                         NE Corner    * NE Corner     *  SE Corner    * SE Corner     
+                         Easting/Lon: * Northing/Lat: *  Easting/Lon: * Northing/Lat: 
+    XYZ.DEM              691236.6267    3999703.7775     691539.5208    3985836.7008
+
+                                   Elevation                  CCW
+                             Minimum        Maximum          Angle
+    XYZ.DEM                    54.00         229.00           0.00
+
+                     Accuracy    Spatial Resolution    Number   Number
+                     Elevation     X       Y       Z   of Rows  Profiles
+    XYZ.DEM              1       25.00   15.00    0.10     1       50
+
+                                                         Data     Source     Data   Suspect
+                     Primary Contour Interval Contour   Source  Insp./Rev.  Validn  & Void
+                       Largest      Smallest    Unit     Date   Date  Flag   Flag   Area Flag
+    XYZ.DEM                10           1          5       1   8304   9406    I      4      0
+
+                       Vertical  Horizontal    Data   Percent
+                        Datum      Datum     Edition    Void
+    XYZ.DEM                2          1          1        0
+
+ Appendix B Raw Data:
+    First Row from each DEM file:
+
+                         Ident.  Number  Number   Columns/
+      Filename           Row #   Col. #  of Nodes Column #
+       XYZ.DEM              1       1      140       1
+
+      Filename           Easting/Lon. Coordinate   Northing/Lat. Coordinate
+       XYZ.DEM            0.683000000000000D+06     0.398862000000000D+07
+
+      Filename           Local Datum Elevation     Minimum Elevation         Maximum Elevation
+       XYZ.DEM            0.000000000000000D+00     0.151000000000000D+03     0.167000000000000D+03
+
+      Filename              Elev1  Elevz
+       XYZ.DEM               151    152
+
+    Last Row from each DEM file:
+
+                         Ident.  Number  Number   Columns/
+      Filename           Row #   Col. #  of Nodes Column #
+       XYZ.DEM              1      50      140       1
+
+      Filename           Easting/Lon. Coordinate   Northing/Lat. Coordinate
+       XYZ.DEM            0.684225000000000D+06     0.398862000000000D+07
+
+      Filename           Local Datum Elevation     Minimum Elevation         Maximum Elevation
+       XYZ.DEM            0.000000000000000D+00     0.118000000000000D+03     0.223000000000000D+03
+
+      Filename              Elev1  Elevz
+       XYZ.DEM               143    148

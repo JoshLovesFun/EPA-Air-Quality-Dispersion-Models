@@ -1,0 +1,35 @@
+                        Model Change Bulletin
+
+                                MCB#2                              11/02/95
+
+                        PCRAMMET (dated 95300)
+
+
+
+     This Model Change Bulletin essentially initiates the update of the
+PCRAMMET (dated 95300) program located on the SCRAM BBS.
+
+     PCRAMMET (dated 95300) corrects problems relating to the treatment of
+variable length TD3240 precipitation data.  Previously, PCRAMMET would abort
+in error when processing variable length precipitation data.  In addition,
+two files were added to the PCRMCODE.ZIP file, namely F77L-PCR.BAT and
+FLMS-PCR.BAT.  The F77L-PCR.BAT file is a batch file used to recompile the
+PCRAMMET source code and correctly link using the Lahey compiler.  Likewise,
+the FLMS-PCR.BAT file is a batch file used to recompile the PCRAMMET source
+code and correctly link using the Microsoft compiler.
+
+     PCRAMMET is now offered only in Lahey compiled format on the SCRAM BBS.
+The Lahey compiler optimizes available memory on newer computers and therefore
+decreases run-time.  This compiler also requires that a math co-processor be
+available on the computer.
+
+      This program will henceforth be identified by its name and a Julian
+date, i.e.: PCRAMMET (dated 95300).  Future changes to this program will be
+identified by an updated Julian date found on the first line of the model
+source code and followed by a reference to a SCRAM BBS Model Change Bulletin
+(MCB#n) which will explain the nature and contents of the changes.  All Model
+Change Bulletins for this program will always be available for back reference
+on this BBS.  In the future, notification of changes (MCBs) to this model will
+be made in the SCRAM ALERTS section of this BBS immediately following the
+LOGON procedure.
+              

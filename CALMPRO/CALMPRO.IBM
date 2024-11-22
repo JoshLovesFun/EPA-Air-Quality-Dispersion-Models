@@ -1,0 +1,501 @@
+C***********************************************************************CLM00005
+C                                                                       CLM00006
+C                         CALMPRO (DATED 84152)                         CLM00007
+C                                                                       CLM00008
+C             *** SEE CALMPRO MODEL CHANGE BULLETIN MCB#1 ***           CLM00009
+C                                                                       CLM00010
+C     ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS BULLETIN BOARD    CLM00011
+C                                                                       CLM00012
+C                             919-541-5742                              CLM00013
+C                                                                       CLM00014
+C***********************************************************************CLM00015
+      PROGRAM CALMPRO
+C                    CALMPRO               (DATED 84152)                CLM00020
+C                                                                       CLM00060
+C                                                                       CLM00070
+C     ABSTRACT:                                                         CLM00080
+C     CALMPRO READS DATA FROM A MET DATA FILE AND FROM                  CLM00090
+C     AN HOURLY CONC FILE (OUTPUT FROM MPTER, CRSTER,                   CLM00100
+C     RAM, COMPLEX 1, OR ISC).  THE INFLUENCE OF CALMS                  CLM00110
+C     IS ELIMINATED BY ZEROING HOURLY CONCENTRATIONS AT                 CLM00120
+C     ALL RECEPTORS WHEN THE CORRESPONDING HOUR OF                      CLM00130
+C     METEOROLOGICAL DATA IS CALM.                                      CLM00140
+C     THE PROGRAM OUTPUTS A MPTER FORMAT PRINTOUT OF                    CLM00150
+C     ANNUAL AVERAGES AND HIGH FIVE 1,3,8 AND 24 HOUR                   CLM00160
+C     AVERAGE CONCENTRATIONS AND AN ISC FORMAT TAPE.                    CLM00170
+C  AUTHOR:                                                              CLM00180
+C     M.Y. PERKINS                                                      CLM00190
+C     DATA MANAGEMENT SECTION                                           CLM00200
+C     REGION 1                                                          CLM00210
+C     ENVIRONMENTAL PROTECTION AGENCY                                   CLM00220
+C     JFK BLDG                                                          CLM00230
+C     BOSTON MA 02203                                                   CLM00240
+C        PHONE:  (617) 223-4931     FTS 223-4931                        CLM00250
+C                                                                       CLM00260
+C     INPUT INFORMATION:                                                CLM00270
+C         A) TAPE/DISK FILE OF HOURLY CONCS. ASSIGNED TO UNIT 12        CLM00280
+C         B) CARD INPUT (SEE BELOW)                                     CLM00290
+C         C) TAPE/DISK FILE OF MET DATA, ASSIGNED TO UNIT 11            CLM00300
+C
+C     EXTERNAL IBMBLK
+      COMMON /MR/ HMAXA(5,720,5),IDAY(5,720,5),IHR(5,720,5),CONC(720,5),CLM00310
+     1LH,JDAY,NR,NT,CHI(720),LINE1(20),LINE2(20),LINE3(20),RREC(720),   CLM00320
+     2SREC(720)                                                         CLM00330
+      COMMON /NOWIND/ ATM(4),N3HR(3),N24HR(24),ICLMHR,ICLM3,ICLM24      CLM00340
+     1,ZFLAG(5,720,5),ZERO(720,4)                                       CLM00350
+      DIMENSION TSUM(720),SUM(720), STAR(2,720), NATM(4)                CLM00360
+      DIMENSION YAVG(720)                                               CLM00370
+      DIMENSION IPER(8)                                                 CLM00380
+      DIMENSION KST(24),TITLE(2),SPEED(24),AFV(24),NCALM(366)           CLM00400
+      DIMENSION TEMP(24)                                                CLM00410
+      INTEGER CALM(366,24)                                              CLM00390
+      CHARACTER*1 ZERO, ZFLAG
+      CHARACTER*1 MODTYP                                                CLM00420
+      CHARACTER*1 STAR, STR, BLNK, YAVG
+      CHARACTER*4 TITLE
+      DATA NATM /1,3,8,24/
+      DATA TITLE /'SO2','PART'/                                         CLM00460
+      DATA CALM/8784*0/,NCALM/366*24/                                   CLM00470
+      DATA YAVG/720*' '/                                                CLM00480
+      DATA STR /'*'/, BLNK /' '/
+      WRITE (6,5432)                                                    CLM00490
+ 5432 FORMAT ('1',21X,'CALMPRO               (DATED 84152)  ',/)        CLM00500
+      NAVT=4                                                            CLM00550
+      IO=6                                                              CLM00560
+      IN=5                                                              CLM00570
+      OLDAFV=-1                                                         CLM00580
+      MET1=0                                                            CLM00590
+      WRITE(IO,2003)(I,I=1,8)                                           CLM00600
+C          READ MET DATA FILE-SKIP FIRST RECORD                         CLM00610
+      READ(11)IDUMMY                                                    CLM00620
+      DO 4 JDAY=1,366                                                   CLM00630
+      READ(11,END=5)IYEAR,IMONTH,DAY1,KST,SPEED,TEMP,AFV                CLM00640
+      I=0                                                               CLM00650
+C         CHECK FOR CALMS                                               CLM00660
+      DO 3 J=1,24                                                       CLM00670
+      IF (SPEED(J) .EQ. 1.0 .AND. OLDAFV .EQ. AFV(J)) THEN              CLM00680
+C      DECREMENT NUMBER OF NONCALM HOURS FOR THAT DAY                   CLM00690
+C      INCREMENT NUMBER CALM HOURS IN YEAR,                             CLM00700
+C           3 HRS AND 24 HRS PERIOD                                     CLM00710
+          CALM(JDAY,J)=1                                                CLM00720
+          NCALM(JDAY)=NCALM(JDAY)-1                                     CLM00730
+      ICLMHR=ICLMHR+1                                                   CLM00740
+      ICLM3=ICLM3+1                                                     CLM00750
+      ICLM24=ICLM24+1                                                   CLM00760
+      END IF                                                            CLM00770
+C      EVERY 3 HRS SAVE NUMBER CALMS FOR THAT PERIOD AND                CLM00780
+C      COMPUTE CALM STATISTICS                                          CLM00790
+      IF (MOD(J,3) .EQ. 0)THEN                                          CLM00800
+        I=I+1                                                           CLM00810
+        IPER(I)=ICLM3                                                   CLM00820
+        CALL CALMST(J)                                                  CLM00830
+      END IF                                                            CLM00840
+C      RESET LAST HOUR WIND DIRECTION                                   CLM00850
+        OLDAFV=AFV(J)                                                   CLM00860
+3     CONTINUE                                                          CLM00870
+C      WRITE OUT DAILY CALM STATISTICS                                  CLM00880
+      MCALM=24-NCALM(JDAY)                                              CLM00890
+      WRITE(IO,2004)JDAY,MCALM,(IPER(I),I=1,8)                          CLM00900
+    4 CONTINUE                                                          CLM00910
+    5 CONTINUE                                                          CLM00920
+C        WRITE YEARLY CALM HOUR STATISTICS                              CLM00930
+      WRITE (6,4999)                                                    CLM00940
+ 4999 FORMAT (' TOTAL NUMBER OF CALM HOURS')                            CLM00950
+      WRITE (IO,5000)ICLMHR                                             CLM00960
+C        WRITE 3-HR CALM STATISTICS                                     CLM00970
+      WRITE (IO,5001)(I,I=1,3)                                          CLM00980
+      WRITE (IO,5002)N3HR                                               CLM00990
+C        WRITE 24-HR CALM STATISTICS                                    CLM01000
+      WRITE (IO,5003)(J,J=1,24)                                         CLM01010
+      WRITE (IO,5004)N24HR                                              CLM01020
+C                                                                       CLM01030
+C        DETERMINE WHICH MODEL TYPE                                     CLM01040
+C      READ HEADER RECORDS                                              CLM01050
+C                                                                       CLM01060
+C      MODTYP IS MODEL TYPE (M FOR MPTER, C FOR CRSTER,                 CLM01070
+C                            I FOR ISC, S FOR MET STATISTICS)           CLM01080
+C      IP IS 1 FOR SO2, 2 FOR PARTICULATES                              CLM01090
+C      NT IS TOTAL NUMBER OF HOURS (ISC AND CRSTER ONLY)                CLM01100
+C      NR IS NUMBER OF RECEPTORS (ISC AND CRSTER ONLY)                  CLM01110
+C      NGROUP IS NUMBER OF GROUPS (ISC ONLY)                            CLM01120
+C      JTAP IS 1 IF TAPE OUTPUT DESIRED                                 CLM01130
+C      ISW15 IS 1 IF ANNUAL AVERAGES SHOULD BE WRITTEN TO TAPE          CLM01140
+      READ (IN,2002)MODTYP,IP,NT,NR,NGROUP,JTAP,ISW15                   CLM01150
+C      IF ONLY MET STATISTICS DESIRED, THEN END RUN                     CLM01160
+      IF(MODTYP .EQ. 'S') STOP                                          CLM01170
+      IF(MODTYP .EQ. 'M') CALL MINPUT(0)                                CLM01180
+C        WRITE THE NUMBER OF RECEPTORS, NR                              CLM01190
+      WRITE (IO,240) NR                                                 CLM01200
+C        INITIALIZE                                                     CLM01210
+      NGR=1                                                             CLM01220
+    7 JDAY=1                                                            CLM01230
+      NP3=0                                                             CLM01240
+      NP8=0                                                             CLM01250
+      NP24=0                                                            CLM01260
+      ICLM8=0                                                           CLM01270
+      NHR=0                                                             CLM01280
+      LCHK=0                                                            CLM01290
+      DO 30 K=1,720                                                     CLM01300
+      SUM(K)=0.                                                         CLM01310
+      DO 20 L=1,5                                                       CLM01320
+      CONC(K,L)=0.                                                      CLM01330
+      DO 10 J=1,5                                                       CLM01340
+      IHR(J,K,L)=0                                                      CLM01350
+      IDAY(J,K,L)=0                                                     CLM01360
+10    HMAXA(J,K,L)=0.                                                   CLM01370
+20    CONTINUE                                                          CLM01380
+30    CONTINUE                                                          CLM01390
+      DO 50 I=1,720                                                     CLM01400
+      DO 40 J=1,2                                                       CLM01410
+40    STAR(J,I)=BLNK                                                    CLM01420
+50    CONTINUE                                                          CLM01430
+   55 CONTINUE                                                          CLM01440
+C        START LOOP FOR ALL HOURS.                                      CLM01450
+      DO 120 IR=1,NT                                                    CLM01460
+C        SET UP CHECK VALUE.                                            CLM01470
+      LCHK=LCHK+1                                                       CLM01480
+      IF (LCHK.GT.24) LCHK=LCHK-24                                      CLM01490
+C        READ DATA FOR ONE HOUR                                         CLM01500
+      IF (MODTYP .EQ. 'M') CALL MINPUT(1)                               CLM01510
+      IF (MODTYP .EQ. 'I') CALL IINPUT(NGR)                             CLM01520
+      IF (MODTYP .EQ. 'C') CALL CINPUT                                  CLM01530
+      IF (JDAY .EQ. -1) GO TO 125                                       CLM01540
+C        CHECK TO SEE THAT HOUR MATCHES WHAT IS EXPECTED.               CLM01550
+      IF (LH.EQ.LCHK) GO TO 60                                          CLM01560
+C        WRITE ERROR MESSAGE.                                           CLM01570
+      WRITE (IO,250) LCHK,LH                                            CLM01580
+      STOP                                                              CLM01590
+C        INCREMENT COUNT OF HRS PROCESSED.                              CLM01600
+60    NHR=NHR+1                                                         CLM01610
+C                                                                       CLM01620
+C      FLAG EVERY AVERGE FOR ALL RECEPTORS FOR THIS HOUR.               CLM01630
+C      ZERO CONCENTRATION                                               CLM01640
+      IF (CALM(JDAY,LH) .EQ. 1) THEN                                    CLM01650
+C      IF THERE ARE ANY CALM HOURS, ALL ANNUAL AVERAGES                 CLM01660
+C      WILL BE FLAGGED.                                                 CLM01670
+         DO 65 I = 1,NR                                                 CLM01680
+         YAVG(I)='C'                                                    CLM01690
+            DO 63 M=1,4                                                 CLM01700
+            ZERO(I,M)='C'                                               CLM01710
+   63       CONTINUE                                                    CLM01720
+         CHI(I)=0.                                                      CLM01730
+   65    CONTINUE                                                       CLM01740
+      END IF                                                            CLM01750
+C      CONVERT TO MICROGRAMS, AND WRITE ISC FORMAT TAPE                 CLM01760
+      IF (JTAP .EQ. 1) THEN                                             CLM01770
+       DO 78 I=1,NR                                                     CLM01780
+       TSUM(I)=CHI(I)*1000000.                                          CLM01790
+  78   CONTINUE                                                         CLM01800
+       WRITE (13) LH,JDAY,NGR,(TSUM(I),I=1,NR)                          CLM01810
+      END IF                                                            CLM01820
+C        DO FOR ALL RECEPTORS                                           CLM01830
+      DO 80 K=1,NR                                                      CLM01840
+      A=CHI(K)                                                          CLM01850
+      DO 70 L=1,NAVT                                                    CLM01860
+70    CONC(K,L)=CONC(K,L)+A                                             CLM01870
+C        ADD FOR LENGTH-OF-RECORD AVERAGE.                              CLM01880
+80    SUM(K)=SUM(K)+A                                                   CLM01890
+C        CALL RANK AT END OF EACH PERIOD SO THAT HI-5 WILL BE STORED    CLM01900
+      CALL RNK5 (1)                                                     CLM01910
+      NP3=NP3+1                                                         CLM01920
+      IF (NP3.NE.3) GO TO 90                                            CLM01930
+      CALL RNK5 (2)                                                     CLM01940
+      NP3=0                                                             CLM01950
+90    NP8=NP8+1                                                         CLM01960
+C      INCREMENT NUMBER OF CALMS IN THE PERIOD                          CLM01970
+      IF (CALM(JDAY,LH) .EQ. 1)ICLM8=ICLM8+1                            CLM01980
+      IF (NP8.NE.8) GO TO 100                                           CLM01990
+      ATM(3)=AMAX0(6,(8-ICLM8))                                         CLM02000
+C      COMPUTE 8-HR AVERAGE BASED ON LARGER OF                          CLM02010
+C      6 HRS OR NUMBER OF NONCALM HOURS                                 CLM02020
+      CALL RNK5 (3)                                                     CLM02030
+      ICLM8=0                                                           CLM02040
+      NP8=0                                                             CLM02050
+  100 NP24=NP24+1                                                       CLM02060
+      IF (NP24 .NE. 24) GO TO 120                                       CLM02070
+      ATM(4)=AMAX0(18,NCALM(JDAY))                                      CLM02080
+C      COMPUTE 24-HR AVERAGE BASED ON LARGER OF                         CLM02090
+C      18 HRS OR NUMBER OF NONCALM HOURS                                CLM02100
+      CALL RNK5 (4)                                                     CLM02110
+      NP24=0                                                            CLM02120
+  120 CONTINUE                                                          CLM02130
+C          STORE HIGH 2 IN ARRAY FOR FUTURE YEARS                       CLM02140
+C                                                                       CLM02150
+C        END OF HOURLY LOOP                                             CLM02160
+C        START PRINTOUT OF TABLE.                                       CLM02170
+  125 CONTINUE                                                          CLM02180
+      IF (MODTYP .EQ. 'M') WRITE (IO,1400) LINE1,LINE2,LINE3            CLM02190
+C        DETERMINE AVG CONC FOR LENGTH OF RECORD                        CLM02200
+C         AND LABEL HIGHEST WITH AN ASTERISK.                           CLM02210
+C      BASED ON NUMBER OF NONCALM HOURS                                 CLM02220
+      SUM(1)=SUM(1)/(NHR-ICLMHR)                                        CLM02230
+      A=SUM(1)                                                          CLM02240
+      MX=1                                                              CLM02250
+      DO 130 K=2,NR                                                     CLM02260
+      SUM(K)=SUM(K)/(NHR-ICLMHR)                                        CLM02270
+      IF (SUM(K).LE.A) GO TO 130                                        CLM02280
+      MX=K                                                              CLM02290
+      A=SUM(K)                                                          CLM02300
+130   CONTINUE                                                          CLM02310
+      STAR(1,MX)=STR                                                    CLM02320
+C      THESE ARE HARD CODED FOR THE TIME BEING                          CLM02330
+C                                                                       CLM02340
+      DAY1A=1.                                                          CLM02350
+      HR1=1.                                                            CLM02360
+      DAY2=365.                                                         CLM02370
+      HR2=24.                                                           CLM02380
+C      WRITE LENGTH OF RECORD AVERAGES                                  CLM02390
+      WRITE (IO,1740) DAY1A,HR1,DAY2,HR2                                CLM02400
+      DO 140 K=1,NR                                                     CLM02410
+      WRITE (IO,1750) K,RREC(K),SREC(K),STAR(1,K),SUM(K),YAVG(K)        CLM02420
+  140 CONTINUE                                                          CLM02430
+C      CONVERT TO MICROGRAMS, AND WRITE ISC FORMAT TAPE                 CLM02440
+      IF (JTAP .EQ. 1) THEN                                             CLM02450
+       IF (ISW15 .EQ. 1) THEN                                           CLM02460
+        NHOURS=24                                                       CLM02470
+        NTDAY=NT/NHOURS                                                 CLM02480
+        DO 143 K=1,NR                                                   CLM02490
+        TSUM(K)=SUM(K)*1000000.                                         CLM02500
+  143   CONTINUE                                                        CLM02510
+        WRITE(13)NHOURS,NTDAY,NGROUP,(TSUM(K),K=1,NR)                   CLM02520
+       END IF                                                           CLM02530
+        ENDFILE 13                                                      CLM02540
+        ENDFILE 13                                                      CLM02550
+      END IF                                                            CLM02560
+      STAR(1,MX)=BLNK                                                   CLM02570
+C        WRITE TABLE OF HIGH-FIVE CONCENTRATIONS                        CLM02580
+C        FOR EACH AVERAGING TIME.                                       CLM02590
+      DO 210 L=1,NAVT                                                   CLM02600
+C        FIND RECEPTOR WITH HIGHEST CONCENTRATION AND RECEPTOR WITH     CLM02610
+C         SECOND HIGHEST CONC FOR EACH AVERAGING TIME AND LABEL EACH    CLM02620
+C         WITH AN ASTERISK.                                             CLM02630
+      K1=1                                                              CLM02640
+      K2=1                                                              CLM02650
+      A=HMAXA(1,1,L)                                                    CLM02660
+      B=HMAXA(2,1,L)                                                    CLM02670
+      DO 190 K=2,NR                                                     CLM02680
+      IF (HMAXA(1,K,L).LE.A) GO TO 180                                  CLM02690
+      A=HMAXA(1,K,L)                                                    CLM02700
+      K1=K                                                              CLM02710
+180   IF (HMAXA(2,K,L).LE.B) GO TO 190                                  CLM02720
+      B=HMAXA(2,K,L)                                                    CLM02730
+      K2=K                                                              CLM02740
+190   CONTINUE                                                          CLM02750
+      STAR(1,K1)=STR                                                    CLM02760
+      STAR(2,K2)=STR                                                    CLM02770
+C        PRINT TABLE OF HIGH-FIVE CONCENTRATIONS FOR THIS AVERAGING TIMECLM02780
+      WRITE (IO,1760) NATM(L),TITLE(IP),(I,I=1,5)                       CLM02790
+      DO 200 K=1,NR                                                     CLM02800
+      WRITE (IO,1770) K,RREC(K),SREC(K),(STAR(J,K),                     CLM02810
+     1 HMAXA(J,K,L),ZFLAG(J,K,L),IDAY(J,K,L),IHR(J,K,L),J=1,2),         CLM02820
+     2(HMAXA(J,K,L),ZFLAG(J,K,L),IDAY(J,K,L),IHR(J,K,L),J=3,5)          CLM02830
+200   CONTINUE                                                          CLM02840
+      STAR(1,K1)=BLNK                                                   CLM02850
+      STAR(2,K2)=BLNK                                                   CLM02860
+210   CONTINUE                                                          CLM02870
+C          DO NEXT GROUP OF RECEPTORS                                   CLM02880
+C          NOT TESTED FOR MORE THAN 1 GROUP                             CLM02890
+C                                                                       CLM02900
+      IF (NGR .LT. NGROUP) THEN                                         CLM02910
+        NGR=NGR+1                                                       CLM02920
+        REWIND 12                                                       CLM02930
+        GO TO 7                                                         CLM02940
+      ELSE                                                              CLM02950
+        STOP                                                            CLM02960
+      END IF                                                            CLM02970
+C                                                                       CLM02980
+220   FORMAT (1H0,T40,'CALMPRO  '/1X,T10,'PROGRAM DETERMIN              CLM02990
+     1ES AND OUTPUTS A TABLE OF ','CONCENTRATIONS FOR 4 OR 5 AVG TIMES.'CLM03000
+     2)                                                                 CLM03010
+240   FORMAT ('1',T10,I4,' STATIONS WILL BE PROCESSED ','IN THIS RUN OF CLM03020
+     1CALMPRO.')                                                        CLM03030
+250   FORMAT (1X,' HOUR EXPECTED - ',I4,' DOES NOT ','MATCH THE HOUR REACLM03040
+     1D OFF TAPE -',I4,'  EXECUTION TERMINATED|')                       CLM03050
+ 1001 FORMAT (I2,I2,I3,2I3)                                             CLM03060
+1400  FORMAT ('0',T40,'  '/1X,20A4/1X,20A4/1X,20                        CLM03070
+     1A4)                                                               CLM03080
+1740  FORMAT ('0',T9,'      RECEPTORS'//1X,'RECEPTOR    IDENTIFICATION  CLM03090
+     1EAST     NORTH     RECEPTOR HT     RECEPTOR GROUND LEVEL',T99,'AVGCLM03100
+     2 CONC FOR PERIOD'/1X,T30,'COORD',T39,'COORD  ABV LOCAL GRD LVL    CLM03110
+     3   ELEVATION',T94,'DAY',F4.0,'HR',F3.0,' TO DAY',F4.0,'HR',F3.0/1XCLM03120
+     4,T31,'(USER UNITS)        (METERS)         (USER HT UNITS)',T100,'CLM03130
+     5(MICROGRAMS/M**3)'/1X)                                            CLM03140
+1750  FORMAT (1X,T3,I3,23X,F8.2,2X,F8.2,T110,A1,6PF7.                   CLM03150
+     12,1X,A1)                                                          CLM03160
+1760  FORMAT (1H0,T41,'FIVE HIGHEST ',I2,'-HOUR ',A4,' CONCENTRATIONS((ECLM03170
+     1NDING ON JULIAN DAY, HOUR)'/1X,T55,'(MICROGRAMS/M**3)'//2X,'RECEPTCLM03180
+     2OR ',T38,4(I1,20X),I1,/1X)                                        CLM03190
+1770  FORMAT (1H ,2X,I3,'(',F7.2,',',F7.2,')',2(1X,A1,6PF9.2,A1,1X,'(', CLM03200
+     1I3,',',I2,')'),3(2X,6PF9.2,A1,1X,'(',I3,',',I2,')'))              CLM03210
+ 2002 FORMAT (A1,I1,3I6,2I1)                                            CLM03220
+ 2003 FORMAT(' DAY',' # CALMS ',8(' P',I1))                             CLM03230
+ 2004 FORMAT(1X,I3,6X,I2,1X,8(I3))                                      CLM03240
+ 5000 FORMAT(1X,T10,I4)                                                 CLM03250
+ 5001 FORMAT(1H0,' NUMBER OF 3-HR PERIODS WITH '/                       CLM03260
+     X 1X,T3,3I4,' CALM HRS')                                           CLM03270
+ 5002 FORMAT(1X,T3,3I4)                                                 CLM03280
+ 5003 FORMAT(1H0,' NUMBER OF 24-HR PERIODS WITH '/                      CLM03290
+     X 1X,T3,5I4,19I3,' CALM HRS')                                      CLM03300
+ 5004 FORMAT(1X,T3,5I4,19I3)                                            CLM03310
+C                                                                       CLM03320
+      END                                                               CLM03330
+C
+      BLOCK DATA
+      CHARACTER*1 ZERO, ZFLAG
+      COMMON /MR/ HMAXA(5,720,5),IDAY(5,720,5),IHR(5,720,5),CONC(720,5),CLM00310
+     1LH,JDAY,NR,NT,CHI(720),LINE1(20),LINE2(20),LINE3(20),RREC(720),   CLM00320
+     2SREC(720)                                                         CLM00330
+      COMMON /NOWIND/ ATM(4),N3HR(3),N24HR(24),ICLMHR,ICLM3,ICLM24      CLM00340
+     1,ZFLAG(5,720,5),ZERO(720,4)                                       CLM00350
+      DATA ATM /1.,3.,8.,24./                                           CLM00430
+      DATA LH/0/,JDAY/1/                                                CLM00440
+      DATA ICLMHR /0/, ICLM3 /0/,ICLM24 /0/,N3HR /3*0/,N24HR /24*0/     CLM00450
+      DATA ZERO /2880*' '/
+      END
+C
+      SUBROUTINE RNK5 (L)                                               CLM03340
+C                    SUBROUTINE RNK5   , PART OF CALMPRO.               CLM03350
+C        SUBROUTINE RNK5 IS CALLED BY CALMPRO AND IS DESIGNED           CLM03360
+C        TO ARRANGE CONCENTRATION ARRAYS SO THAT HIGH-FIVE              CLM03370
+C        CONCENTRATION TABLES CAN BE OUTPUT.                            CLM03380
+C              OUTPUT VARIABLES:                                        CLM03390
+C                  HMAXA(J,K,L) : CONCENTRATION ARRAY FOR               CLM03400
+C                        J - RANK OF THE CONCENTRATION (1 - 5)          CLM03410
+C                        K - RECEPTOR NUMBER                            CLM03420
+C                        L - AVERAGING TIME                             CLM03430
+C                  IDAY(J,K,L) : DAY OF CONCENTRATION                   CLM03440
+C                  IHR(J,K,L)  : HR OF ENDING CONC                      CLM03450
+C                  ZFLAG(J,K,L): ARRAY OF FLAGS OF ZEROED CONC          CLM03460
+C                                                                       CLM03470
+C     EXTERNAL IBMBLK
+      COMMON /MR/ HMAXA(5,720,5),IDAY(5,720,5),IHR(5,720,5),CONC(720,5),CLM03480
+     1LH,JDAY,NR,NT,CHI(720),LINE1(20),LINE2(20),LINE3(20),RREC(720),   CLM03490
+     2SREC(720)                                                         CLM03500
+      COMMON /NOWIND/ ATM(4),N3HR(3),N24HR(24),ICLMHR,ICLM3,ICLM24      CLM03510
+     1,ZFLAG(5,720,5),ZERO(720,4)                                       CLM03520
+      CHARACTER*1 ZERO, ZFLAG
+      IO=6                                                              CLM03530
+      DO 50 K=1,NR                                                      CLM03540
+C      COMPUTE AVERAGE CONCENTRATION                                    CLM03550
+      CONC(K,L) = CONC(K,L)/ATM(L)                                      CLM03560
+      IF (CONC(K,L).LE.HMAXA(5,K,L)) GO TO 50                           CLM03570
+      DO 10 J=1,5                                                       CLM03580
+      IF (CONC(K,L).GT.HMAXA(J,K,L)) GO TO 20                           CLM03590
+C           CONCENTRATION IS ONE OF THE TOP FIVE                        CLM03600
+10    CONTINUE                                                          CLM03610
+      WRITE (IO,70)                                                     CLM03620
+      GO TO 50                                                          CLM03630
+C        THE FOLLOWING DO-LOOP HAS THE EFFECT OF INSERTING A NEW        CLM03640
+C        CONCENTRATION ENTRY INTO ITS PROPER POSITION WHILE SHIFTING    CLM03650
+C        DOWN THE 'OLD' LOWER CONCENTRATIONS THUS ESTABLISHING THE      CLM03660
+C        'HIGH-FIVE' CONCENTRATION TABLE.                               CLM03670
+20    IF (J.EQ.5) GO TO 40                                              CLM03680
+      DO 30 IJ=4,J,-1                                                   CLM03690
+      IJP1=IJ+1                                                         CLM03700
+      HMAXA(IJP1,K,L)=HMAXA(IJ,K,L)                                     CLM03710
+      ZFLAG(IJP1,K,L)=ZFLAG(IJ,K,L)                                     CLM03720
+      IDAY(IJP1,K,L)=IDAY(IJ,K,L)                                       CLM03730
+30    IHR(IJP1,K,L)=IHR(IJ,K,L)                                         CLM03740
+C           INSERT LATEST CONC, DAY AND START HR INTO THE               CLM03750
+C           PROPER RANK IN THE HIGH-FIVE TABLE                          CLM03760
+40    HMAXA(J,K,L)=CONC(K,L)                                            CLM03770
+      ZFLAG(J,K,L)=ZERO(K,L)                                            CLM03780
+      IDAY(J,K,L)=JDAY                                                  CLM03790
+      IHR(J,K,L)=LH                                                     CLM03800
+50    CONTINUE                                                          CLM03810
+      DO 60 K=1,NR                                                      CLM03820
+      CONC(K,L)=0.                                                      CLM03830
+      ZERO(K,L)=' '                                                     CLM03840
+60    CONTINUE                                                          CLM03850
+      RETURN                                                            CLM03860
+C                                                                       CLM03870
+70    FORMAT (1X,'   ****ERROR IN FINDING THE MAX CONCENTRATION***')    CLM03880
+C                                                                       CLM03890
+      END                                                               CLM03900
+C
+      SUBROUTINE CALMST(J)                                              CLM03910
+C                                                                       CLM03920
+C      THIS ROUTINE COMPUTES THE NUMBER OF 3 AND 24 HOUR                CLM03930
+C      PERIODS WITH 1,2,3, OR 1-24 CALM HOURS, RESPECTIVELY,            CLM03940
+C      AND THE FREQUENCY OF CALMS                                       CLM03950
+C                                                                       CLM03960
+C     EXTERNAL IBMBLK
+      COMMON /NOWIND/ ATM(4),N3HR(3),N24HR(24),ICLMHR,ICLM3,ICLM24      CLM03970
+     1,ZFLAG(5,720,5),ZERO(720,4)                                       CLM03980
+      CHARACTER*1 ZERO, ZFLAG
+C                                                                       CLM03990
+C     INCREMENT NUMBER OF 3 HR PERIODS WITH NUMBER CALMS = ICLM3        CLM04000
+      IF (ICLM3 .NE. 0) THEN                                            CLM04010
+         N3HR(ICLM3)=N3HR(ICLM3)+1                                      CLM04020
+         ICLM3=0                                                        CLM04030
+      END IF                                                            CLM04040
+C      INCREMENT NUMBER OF 24 HR PERIODS WITH NUMBER CALMS = ICLM24     CLM04050
+      IF (ICLM24 .NE. 0 .AND. MOD(J,24) .EQ. 0) THEN                    CLM04060
+         N24HR(ICLM24)=N24HR(ICLM24)+1                                  CLM04070
+         ICLM24=0                                                       CLM04080
+      END IF                                                            CLM04090
+      RETURN                                                            CLM04100
+      END                                                               CLM04110
+C
+      SUBROUTINE IINPUT(NGR)                                            CLM04120
+C      THIS SUBROUTINE WILL READ ISC FORMAT INPUT TAPE                  CLM04130
+C     EXTERNAL IBMBLK
+      COMMON /MR/ HMAXA(5,720,5),IDAY(5,720,5),IHR(5,720,5),CONC(720,5),CLM04140
+     1LH,JDAY,NR,NT,CHI(720),LINE1(20),LINE2(20),LINE3(20),RREC(720),   CLM04150
+     2SREC(720)                                                         CLM04160
+   10 READ (12,END=100)LH,JDAY,IG,(CHI(I),I=1,NR)                       CLM04170
+C      IF WRONG GROUP, READ NEXT RECORD                                 CLM04180
+C                                                                       CLM04190
+      IF (NGR .NE. IG) GO TO 10                                         CLM04200
+C       CONVERT FROM MICROGRAMS TO GRAMS                                CLM04210
+      DO 50 I=1,NR                                                      CLM04220
+      CHI(I)=CHI(I)/1000000.                                            CLM04230
+   50 CONTINUE                                                          CLM04240
+      RETURN                                                            CLM04250
+  100 CONTINUE                                                          CLM04260
+      JDAY=-1                                                           CLM04270
+      END                                                               CLM04280
+C
+      SUBROUTINE MINPUT(ISTART)                                         CLM04290
+C                                                                       CLM04300
+C      THIS SUBROUTINE READS HOURLY CONCENTRATIONS FROM                 CLM04310
+C      MPTER FORMAT TAPE                                                CLM04320
+C                                                                       CLM04330
+C     EXTERNAL IBMBLK
+      COMMON /MR/ HMAXA(5,720,5),IDAY(5,720,5),IHR(5,720,5),CONC(720,5),CLM04340
+     1LH,JDAY,NR,NT,CHI(720),LINE1(20),LINE2(20),LINE3(20),RREC(720),   CLM04350
+     2SREC(720)                                                         CLM04360
+      IF (ISTART .EQ. 0) THEN                                           CLM04370
+C        READ FIRST TWO RECORDS FROM HOURLY FILE.                       CLM04380
+      READ (12,END=100) NPER,NAVG,LINE1,LINE2,LINE3                     CLM04390
+      READ (12,END=100) NR,(RREC(I),I=1,NR),(SREC(J),J=1,NR)            CLM04400
+C      NUMBER OF DAYS TIMES NUMBER OF AVERAGES PER DAY                  CLM04410
+      NT=NPER*NAVG                                                      CLM04420
+      ELSE                                                              CLM04430
+         READ (12,END=100) JDAY,LH,(CHI(I),I=1,NR)                      CLM04440
+      END IF                                                            CLM04450
+      RETURN                                                            CLM04460
+  100 CONTINUE                                                          CLM04470
+      JDAY=-1                                                           CLM04480
+      END                                                               CLM04490
+C
+       SUBROUTINE CINPUT                                                CLM04500
+C       THIS SUBROUTINE WILL READ CRSTER FORMAT                         CLM04510
+C            INPUT TAPE                                                 CLM04520
+C     EXTERNAL IBMBLK
+      COMMON /MR/ HMAXA(5,720,5),IDAY(5,720,5),IHR(5,720,5),CONC(720,5),CLM04530
+     1LH,JDAY,NR,NT,CHI(720),LINE1(20),LINE2(20),LINE3(20),RREC(720),   CLM04540
+     2SREC(720)                                                         CLM04550
+       LH=LH+1                                                          CLM04560
+       READ (12,END=100) (CHI(I),I=1,NR)                                CLM04570
+C      IF THIS IS DAILY AVERAGE RECORD, SKIP IT AND READ                CLM04580
+C     FIRST RECORD FOR NEXT DAY.                                        CLM04590
+       IF (MOD(LH,25) .EQ. 0) THEN                                      CLM04600
+          READ(12,END=100) (CHI(I),I=1,NR)                              CLM04610
+          LH=1                                                          CLM04620
+          JDAY=JDAY+1                                                   CLM04630
+      END IF                                                            CLM04640
+      RETURN                                                            CLM04650
+  100 CONTINUE                                                          CLM04660
+       JDAY=-1                                                          CLM04670
+       END                                                              CLM04680

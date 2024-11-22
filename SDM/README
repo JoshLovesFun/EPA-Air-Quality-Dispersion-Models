@@ -1,0 +1,110 @@
+
+                             SDM (Dated 90320)
+
+     The Shoreline Dispersion Model (SDM) is a multipoint Gaussian dispersion
+model that can be used to determine ground-level concentrations from tall
+stationary point source emissions near a shoreline environment where plumes
+emitted into stable air regimes are transported to and through shoreline
+thermal boundaries.  On the other side of the boundary, the plumes are rapidly
+diffused to the ground causing plume fumigation.  Ground-level concentrations
+can become very high for long periods of time.  SDM was designed to model
+these types of fumigation cases.  SDM is used in conjunction with MPTER
+algorithms to calculate concentrations when fumigation conditions do not
+exist.
+
+     SDM can model up to 250 sources and 180 receptors. Hourly meteorological
+data is needed from a tower located on or near the shoreline.  The
+meteorological data used are in both the standard RAMMET preprocessor format
+and a special format for the shoreline model.
+
+     The Shoreline Dispersion Model (SDM) was tested on an IBM PC/AT
+compatible with 640K memory and an Intel 80287 math coprocessor.  The model
+was compiled and tested with both Microsoft FORTRAN 77 (Version 5.0) and Lahey
+FORTRAN 77 (Version 4.0).  When using the Lahey FORTRAN 77 compiler, the /R/
+switch should be used when compiling and line SDM0101 needs to be uncommented.
+Instructions for executing SDM on an IBM 3090 are available in the user's
+guide.
+
+     In order to use SDM, the user should obtain the following:
+
+     User's Guide to SDM - A Shoreline Dispersion Model
+     EPA-450/4-88-017 (NTIS PB89-164305), September, 1988
+
+     Errata Sheets for the User's Guide to SDM 
+     (Available from NTIS after February 15, 1991)
+
+     Four Diskettes:
+         1) SDM      Fortran and Executable (Microsoft) Code
+         2) SDM      Test #1 Input and Output Files
+         3) SDM      Test #2 Input and Output Files
+         4) SDMMET   SDM Meteorological Data Preprocessor
+                     Fortran and Executable (Microsoft) Code
+                     Test Input and Output Files
+
+                              OR
+
+          Download the SDM code and files from the SCRAM BBS file transfer
+          section. The archival names are SDM01 and SDM02.
+
+
+     In order to run SDMMET (SDM Meteorological Data Preprocessor), two input
+files are required:
+
+          SDMMET.INP     SDMMET Input Control File (Mandatory)
+          TOWER.MET      Hourly Tower Meteorological Data (Mandatory)
+
+     Once the appropriate input files have been prepared, the user simply has
+to type SDMMET to activate the program.  SDMMET outputs one file in either
+binary or ascii depending upon the response given to the interactive
+question.  The output file is:
+
+          TOWER.ASC      Ascii SDM Tower Meteorological Data
+       OR
+          TOWER.BIN      Binary SDM Tower Meteorological Data
+
+
+     For the SDM test cases, the regulatory defaults were chosen for all
+input options except for IOPT(5).  IOPT(5) is set to 1 so that the surface
+meteorological data may be input in card image form.
+
+     Two SDM test cases are supplied:
+
+     Test #1  One Year of hourly meteorological data
+              Takes approximately 20 minutes to run on an IBM-PC/AT
+              compatible computer with a math coprocessor chip
+
+     Test #2  One Week of hourly meteorological data
+              Takes approximately 1 minute to run on an IBM-PC/AT
+              compatible computer with a math coprocessor chip
+
+     In order to run the SDM test case,
+
+       1) rename the input1 or input2 files to input
+       2) rename the tower1.asc or tower2.asc to tower.asc
+       3) type sdm
+
+     A summary of the input files which may be required (depending upon the
+options selected) to run SDM are listed below:
+
+          INPUT          SDM Input Control File (Mandatory)
+          TOWER.BIN OR TOWER.ASC
+                         Tower Meteorological File (Mandatory)
+          MET            Binary RAMMET Surface Meteorological Data ((IOPT(5)
+                           or IOPT(25) = 1)
+          EMISSIONS      Binary Hourly Emissions Data (IOPT(6) = 1)
+
+     Once the appropriate input files have been prepared, the user simply has
+to type SDM to activate the program.  A summary of output file names which
+may be produced (depending upon the options selected) are listed below:
+
+          SDM.OUT        SDM Output Listing
+          SDM.FUM        SDM Fumigation Summary
+          HRCONCS        Binary Concentration Data (IOPT(22) = 1)
+          PARTIAL        Binary Partial Concentration Data (IOPT(21) = 1)
+          AVGCONCS       Binary Averaging Time Concentrations (IOPT(23) = 1)
+          SUMMARY        Segmented Run (IOPT(20) = 1)
+          AVCONCS        ASCII Averaging Time Concentrations (IOPT(24) = 1)
+
+     If you have any questions, contact Joe Touma at (919) 541-5381 or call
+the 24-hour a day OAQPS Technology Transfer Network answering service at (919)
+541-5384 and leave a message.

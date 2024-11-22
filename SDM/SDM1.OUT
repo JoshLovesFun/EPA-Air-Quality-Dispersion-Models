@@ -1,0 +1,384 @@
+1                                  SDM (DATED 90320)
+                             AN AIR QUALITY DISPERSION MODEL 
+                                COMBINING MPTER AND SHORELINE FUMIGATION
+                      SOURCE: UNAMAP FILE ON EPA'S IBM 3090, RTP. NC.
+0                                 RURAL SDM - VERSION 90320
+ Shoreline Dispersion Model Test Case                                            
+ Boston Surface Data 1988                                                        
+ Derived Tower Data                                                              
+0                            GENERAL INPUT INFORMATION
+
+  THIS RUN OF SDM  -VERSION 90320 IS FOR THE POLLUTANT S02  FOR 366  24-HOUR PERIODS.
+  CONCENTRATION ESTIMATES BEGIN ON HOUR- 1, JULIAN DAY-  1, YEAR-1988.
+  A FACTOR OF      1.0000000 HAS BEEN SPECIFIED TO CONVERT USER LENGTH UNITS TO KILOMETERS.
+   1 SIGNIFICANT SOURCES ARE TO BE CONSIDERED.
+ THIS RUN WILL NOT CONSIDER ANY POLLUTANT LOSS.
+  HIGH-FIVE SUMMARY CONCENTRATION TABLES WILL BE OUTPUT FOR   4 AVERAGING PERIODS.
+  AVG TIMES OF 1,3,8, AND 24 HOURS ARE AUTOMATICALLY DISPLAYED.
+   A FACTOR OF      1.0000000 HAS BEEN SPECIFIED TO CONVERT USER HEIGHT UNITS TO METERS.
+0 OPTION       OPTION LIST                   OPTION SPECIFICATION : 0= IGNORE OPTION
+                                                                    1= USE OPTION
+                        TECHNICAL OPTIONS
+       1       TERRAIN ADJUSTMENTS                                   1
+       2       DO NOT INCLUDE STACK DOWNWASH CALCULATIONS            0
+       3       DO NOT INCLUDE GRADUAL PLUME RISE CALCULATIONS        1
+       4       CALCULATE INITIAL PLUME SIZE                          1
+                        INPUT OPTIONS
+       5       READ MET DATA FROM CARDS                              1
+       6       READ HOURLY EMISSIONS                                 0
+       7       SPECIFY SIGNIFICANT SOURCES                           0
+       8       READ RADIAL DISTANCES TO GENERATE RECEPTOR            0
+                        PRINTED OUTPUT OPTIONS
+       9       DELETE EMISSIONS WITH HEIGHT TABLE                    1
+      10       DELETE MET DATA SUMMARY FOR AVG PERIOD                1
+      11       DELETE HOURLY CONTRIBUTIONS                           1
+      12       DELETE MET DATA ON HOURLY CONTRIBUTIONS               1
+      13       DELETE FINAL PLUME RISE CALC ON HRLY CONTRIBUTIONS    1
+      14       DELETE HOURLY SUMMARY                                 1
+      15       DELETE MET DATA ON HRLY SUMMARY                       1
+      16       DELETE FINAL PLUME RISE CALC ON HRLY SUMMARY          1
+      17       DELETE AVG-PERIOD CONTRIBUTIONS                       1
+      18       DELETE AVERAGING PERIOD SUMMARY                       1
+      19       DELETE AVG CONCENTRATIONS AND HI-5 TABLES             0
+                        OTHER CONTROL AND OUTPUT OPTIONS
+      20       RUN IS PART OF A SEGMENTED RUN                        0
+      21       WRITE PARTIAL CONC TO DISK OR TAPE                    0
+      22       WRITE HOURLY CONC TO DISK OR TAPE                     0
+      23       WRITE AVG-PERIOD CONC TO DISK OR TAPE                 0
+      24       PUNCH AVG-PERIOD CONC ONTO CARDS                      0
+                        DEFAULT  OPTION 
+      25       USE DEFAULT OPTION                                    0
+      26       TOWER.BIN FORMAT (0=BINARY,1=ASCII)                   1
+0ANEMOMETER HEIGHT IS:     10.00
+ EXPONENTS FOR POWER- LAW WIND INCREASE WITH HEIGHT ARE: .07, .07, .10, .15, .35, .55
+ TERRAIN ADJUSTMENTS ARE:  .500, .500, .500, .500, .000, .000
+
+
+1                                      POINT SOURCE INFORMATION
+
+    SOURCE            EAST    NORTH   SO2(G/SEC)  PART(G/SEC)  STACK  STACK   STACK   STACK   POTEN. IMPACT  EFF   GRD-LVL BUOY FLUX
+                      COORD   COORD   EMISSIONS   EMISSIONS    HT(M) TEMP(K) DIAM(M)VEL(M/SEC)(MICRO G/M**3) HT(M)   ELEV      F
+                       (USER UNITS)                                                                                USER HT M**4/S**3
+                                                                                                                    UNITS
+
+   1 STACK #1           .00      .00     1000.00         .00  100.00  400.00    7.00   18.00       157.20   686.19     3.00   578.40
+   2 STACK #2          -.20      .30      300.00         .00  100.00  400.00    7.00   18.00        47.16   686.19     3.00   578.40
+   3 STACK #3          -.50      .10      400.00         .00  100.00  400.00    7.00   18.00        62.88   686.19     3.00   578.40
+   4 STACK #4          -.20     -.20      750.00         .00  100.00  400.00    7.00   18.00       117.90   686.19     3.00   578.40
+0 SIGNIFICANT S02  POINT SOURCES
+
+       RANK          CHI-MAX    SOURCE NO.
+                (MICROGRAMS/M**3)
+
+          1            157.20       1
+
+                                       SHORELINE DEFINITION
+
+ DESCRIPTOR         EAST       NORTH    BEGINNING     ENDING      FETCH
+                   COORD       COORD      ANGLE        ANGLE      (DEG)
+                      (USER UNITS)        (DEG)        (DEG)
+
+                    .500        .000      10.000     190.000      20.000
+
+
+
+0                     ADDITIONAL INFORMATION ON SOURCES.
+0  EMISSION INFORMATION FOR    4 (NPT) POINT SOURCES HAS BEEN INPUT
+   1 SIGNIFICANT POINT SOURCES(NSIGP) ARE TO BE USED FOR THIS RUN
+  THE ORDER OF SIGNIFICANCE(IMPS) FOR 25 OR LESS POINT SOURCES USED IN THIS RUN AS LISTED BY POINT SOURCE NUMBER:
+      1
+0                   RECEPTOR INFORMATION
+0 RECEPTOR    IDENTIFICATION  EAST     NORTH     RECEPTOR HT     RECEPTOR GROUND LEVEL
+                             COORD    COORD  ABV LOCAL GRD LVL        ELEVATION
+                              (USER UNITS)         (METERS)          (USER HT UNITS)
+
+    1          REC 1          -1.532     1.286        .0                 3.0
+    2          REC 2          -1.286     1.532        .0                 3.0
+    3          REC 3          -3.830     3.214        .0                11.0
+    4          REC 4          -7.660     6.428        .0                40.0
+    5          REC 5          -2.000      .000        .0                 3.0
+    6          REC 6         -10.000      .000        .0                15.0
+    7          REC 7          -4.330    -2.500        .0                 5.0
+    8          REC 8          -4.924      .868        .0                 7.0
+    9          REC 9          -9.848     1.736        .0                27.0
+   10          REC 10         -8.660    -5.000        .0                25.0
+0 * ONE ASTERISK INDICATES THAT THE ASSOCIATED RECEPTOR(S) HAVE A GROUND LEVEL ELEVATION LOWER THAN THE LOWEST SOURCE BASE ELEVATION.
+ CAUTION SHOULD BE USED IN INTERPRETING CONCENTRATIONS FOR THESE RECEPTORS.
+ **  TWO ASTERISKS INDICATE THAT THE ASSOCIATED RECEPTOR(S) HAVE GROUND LEVEL ELEVATIONS ABOVE THE LOWEST STACK TOP.
+    CONSEQUENTLY NO CALCULATIONS WILL BE PERFORMED WITH THIS RECEPTOR.A SERIES OF ASTERISKS WILL INSTEAD APPEAR IN THE OUTPUT.
+  SOURCE STACK #1     DAY 93SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY 93SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY 93SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY 93SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY100SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY100SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY100SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY100SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY133SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY133SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY133SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY133SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY135SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY135SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY135SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY135SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY136SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY136SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY136SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY136SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY143SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY143SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY143SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY143SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY150SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY150SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY150SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY150SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY163SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY163SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY163SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY163SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY165SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY165SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY165SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY165SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY169SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY169SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY169SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY169SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY170SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY170SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY170SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY170SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY171SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY171SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY171SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY171SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY176SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY176SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY176SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY176SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY179SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY179SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY179SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY179SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY180SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY180SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY180SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY180SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY181SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY181SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY181SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY181SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY185SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY185SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY185SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY185SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY186SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY186SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY186SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY186SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY187SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY187SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY187SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY187SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY188SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY188SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY188SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY188SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY189SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY189SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY189SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY189SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY190SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY190SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY190SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY190SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY191SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY191SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY191SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY191SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY192SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY192SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY192SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY192SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY195SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY195SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY195SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY195SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY197SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY197SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY197SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY197SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY199SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY199SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY199SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY199SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY200SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY200SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY200SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY200SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY202SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY202SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY202SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY202SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY208SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY208SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY208SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY208SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY210SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY210SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY210SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY210SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY211SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY211SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY211SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY211SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY212SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY212SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY212SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY212SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY213SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY213SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY213SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY213SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY214SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY214SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY214SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY214SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY215SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY215SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY215SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY215SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY224SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY224SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY224SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY224SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY227SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY227SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY227SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY227SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY231SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY231SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY231SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY231SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY232SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY232SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY232SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY232SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY233SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY233SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY233SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY233SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY238SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY238SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY238SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY238SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY240SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY240SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY240SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY240SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY243SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY243SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY243SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY243SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY245SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY245SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY245SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY245SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY247SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY247SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY247SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY247SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY263SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY263SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY263SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY263SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY271SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY271SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY271SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY271SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #1     DAY291SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #2     DAY291SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #3     DAY291SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  SOURCE STACK #4     DAY291SHORELINE FUMIGATION HOURS  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+1                                      RURAL SDM - VERSION 90320
+ Shoreline Dispersion Model Test Case                                            
+ Boston Surface Data 1988                                                        
+ Derived Tower Data                                                              
+0             RECEPTORS
+
+ RECEPTOR    IDENTIFICATION  EAST     NORTH     RECEPTOR HT     RECEPTOR GROUND LEVEL             AVG CONC FOR PERIOD
+                             COORD    COORD  ABV LOCAL GRD LVL       ELEVATION               DAY  1.HR 1. TO DAY366.HR24.
+                              (USER UNITS)        (METERS)         (USER HT UNITS)                 (MICROGRAMS/M**3)
+
+    1          REC 1           -1.53      1.29        .0                 3.0                                      .91
+    2          REC 2           -1.29      1.53        .0                 3.0                                      .66
+    3          REC 3           -3.83      3.21        .0                11.0                                     2.45
+    4          REC 4           -7.66      6.43        .0                40.0                                 *   2.57
+    5          REC 5           -2.00       .00        .0                 3.0                                      .47
+    6          REC 6          -10.00       .00        .0                15.0                                     1.64
+    7          REC 7           -4.33     -2.50        .0                 5.0                                      .82
+    8          REC 8           -4.92       .87        .0                 7.0                                     1.31
+    9          REC 9           -9.85      1.74        .0                27.0                                     1.53
+   10          REC 10          -8.66     -5.00        .0                25.0                                     1.36
+1                           FIVE HIGHEST  1-HOUR S02  CONCENTRATIONS((ENDING ON JULIAN DAY, HOUR)
+                                                      (MICROGRAMS/M**3)
+
+  RECEPTOR                           1                    2                    3                    4                    5
+
+     1(  -1.53,   1.29)     701.39  (215,12)     391.78  (186,10)     308.03  (126, 9)     301.77  (118,11)     285.24  (145,11)
+     2(  -1.29,   1.53) *   950.18  (215,12)     392.29  (187,10)     303.22  (145,11)     269.55  (186,10)     269.07  (126, 9)
+     3(  -3.83,   3.21)     477.45  (130, 9) *   460.83  (126, 9)     417.77  (188,12)     405.89  (208,12)     398.06  (170,11)
+     4(  -7.66,   6.43)     324.95  (220,17)     261.19  (  3,14)     256.74  (130, 9)     250.76  (231,17)     241.35  ( 29,14)
+     5(  -2.00,    .00)     542.28  (212,12)     316.14  (214,12)     208.39  (243,15)     164.17  (244,10)     154.48  (154,13)
+     6( -10.00,    .00)     460.11  (243,15)     323.25  (240,10)     248.12  (214,12)     232.22  (240,12)     227.14  (211,12)
+     7(  -4.33,  -2.50)     382.91  (163,12)     359.48  (269,10)     331.27  (151,10)     322.19  (195,10)     300.05  ( 58,12)
+     8(  -4.92,    .87)     362.20  (155,11)     348.85  ( 59,13)     341.66  (197, 8)     330.70  (187,12)     329.92  (236,10)
+     9(  -9.85,   1.74)     337.95  (243,15)     254.12  (197, 8)     248.00  (236,10)     215.32  (306,20)     212.53  ( 43, 4)
+    10(  -8.66,  -5.00)     374.22  (290,11)     233.97  (151,10)     222.93  ( 58,12)     222.17  (195,10)     219.83  (269,10)
+1                           FIVE HIGHEST  3-HOUR S02  CONCENTRATIONS((ENDING ON JULIAN DAY, HOUR)
+                                                      (MICROGRAMS/M**3)
+
+  RECEPTOR                           1                    2                    3                    4                    5
+
+     1(  -1.53,   1.29)     292.25  (215,12)     190.77  (186,12)     122.33  (233,12)     120.53  (118,12)     119.74  (145,12)
+     2(  -1.29,   1.53) *   331.78  (215,12)     131.58  (187,12)     103.68  (145,12)      96.79  (186,12)      89.69  (126, 9)
+     3(  -3.83,   3.21)     274.42  (233,12) *   263.28  (188,12)     213.47  (200,12)     204.29  (215,12)     181.51  (145,12)
+     4(  -7.66,   6.43)     153.93  (233,12)     151.63  (220,18)     132.84  ( 29,15)     129.44  (188,12)     121.68  (230,12)
+     5(  -2.00,    .00)     180.76  (212,12)     106.37  (214,12)      70.45  (150,12)      70.25  (243,15)      67.95  (126,12)
+     6( -10.00,    .00)     255.04  (240,12)     189.37  (243,15)     182.83  (306,18)     130.08  (306,21)     124.78  (296, 9)
+     7(  -4.33,  -2.50)     127.64  (163,12)     126.25  ( 58,12)     120.03  (269,12)     110.42  (151,12)     107.40  (195,12)
+     8(  -4.92,    .87)     172.16  (197, 9)     170.44  (240,12)     161.52  ( 83,12)     147.71  (214,12)     135.66  (136,12)
+     9(  -9.85,   1.74)     142.71  (243,15)     130.83  (240,12)     122.00  (197, 9)     101.97  (136,12)      98.57  ( 59,15)
+    10(  -8.66,  -5.00)     144.64  (290,12)     133.00  (104,18)     127.02  (161, 6)     104.75  ( 64, 6)     100.95  (278,18)
+1                           FIVE HIGHEST  8-HOUR S02  CONCENTRATIONS((ENDING ON JULIAN DAY, HOUR)
+                                                      (MICROGRAMS/M**3)
+
+  RECEPTOR                           1                    2                    3                    4                    5
+
+     1(  -1.53,   1.29)     109.59  (215,16)      71.83  (186,16)      48.06  (130,16)      46.02  (118,16)      45.96  (233,16)
+     2(  -1.29,   1.53) *   124.42  (215,16)      49.78  (187,16)      41.60  (186,16)      38.88  (145,16)      33.63  (126,16)
+     3(  -3.83,   3.21)     103.93  (233,16) *   101.10  (188,16)      97.94  (117,16)      87.49  (130,16)      81.74  (200,16)
+     4(  -7.66,   6.43)      71.24  (230,16)      61.60  (248,24)      60.78  (325,16)      60.40  (233,16)      58.66  (117,16)
+     5(  -2.00,    .00)      67.78  (212,16)      39.89  (214,16)      27.02  (150,16)      26.34  (243,16)      25.61  (126,16)
+     6( -10.00,    .00)     117.54  (306,24)      95.64  (240,16)      78.61  ( 43, 8)      71.01  (243,16)      67.29  (296, 8)
+     7(  -4.33,  -2.50)      48.85  ( 58,16)      47.86  (163,16)      45.01  (269,16)      43.51  (151,16)      42.85  (290,16)
+     8(  -4.92,    .87)      64.01  (240,16)      60.59  ( 83,16)      55.39  (214,16)      51.63  (236,16)      50.87  (136,16)
+     9(  -9.85,   1.74)      65.11  (237,16)      53.52  (243,16)      51.69  (295,24)      49.10  (240,16)      46.56  (197,16)
+    10(  -8.66,  -5.00)      74.07  (161, 8)      69.08  (290,16)      57.16  ( 64, 8)      56.06  (123,16)      47.66  ( 97,24)
+1                           FIVE HIGHEST 24-HOUR S02  CONCENTRATIONS((ENDING ON JULIAN DAY, HOUR)
+                                                      (MICROGRAMS/M**3)
+
+  RECEPTOR                           1                    2                    3                    4                    5
+
+     1(  -1.53,   1.29)      36.53  (215,24)      23.94  (186,24)      16.02  (130,24)      15.35  (118,24)      15.35  (233,24)
+     2(  -1.29,   1.53)      41.54  (215,24)      18.56  (187,24)      13.87  (186,24)      12.96  (145,24)      11.21  (114,24)
+     3(  -3.83,   3.21)      34.85  (233,24)      33.70  (188,24)      32.65  (117,24)      29.16  (130,24)      27.27  (200,24)
+     4(  -7.66,   6.43)      28.54  ( 89,24)      27.23  (348,24)      25.49  (220,24)      25.20  (230,24)      21.12  (325,24)
+     5(  -2.00,    .00)      22.59  (212,24)      13.30  (214,24)       9.22  (197,24)       9.10  (150,24)       8.78  (243,24)
+     6( -10.00,    .00) *    53.04  (306,24) *    34.12  (296,24)      31.88  (240,24)      26.20  ( 43,24)      24.99  (197,24)
+     7(  -4.33,  -2.50)      17.54  (278,24)      17.43  ( 58,24)      15.95  (163,24)      15.32  (290,24)      15.00  (269,24)
+     8(  -4.92,    .87)      27.72  (197,24)      21.34  (240,24)      20.20  ( 83,24)      18.63  (214,24)      17.33  (236,24)
+     9(  -9.85,   1.74)      30.61  (197,24)      21.70  (237,24)      17.84  (243,24)      17.33  (295,24)      16.48  (306,24)
+    10(  -8.66,  -5.00)      32.82  (278,24)      32.57  (123,24)      30.68  (161,24)      28.83  (104,24)      27.51  (290,24)

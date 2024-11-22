@@ -1,0 +1,49 @@
+ TIBL:SOURCE=   1 DAY= 240 HOUR= 13 HO=   45.70 UL=    8.97 US=    8.97 DTHDZ=    .5100 PTMOL=    297.5 PTMOW=    295.1
+ TIBL:SOURCE=   2 DAY= 240 HOUR= 13 HO=   45.70 UL=    8.97 US=    8.97 DTHDZ=    .5100 PTMOL=    297.5 PTMOW=    295.1
+ TIBL:SOURCE=   3 DAY= 240 HOUR= 13 HO=   45.70 UL=    8.97 US=    8.97 DTHDZ=    .5100 PTMOL=    297.5 PTMOW=    295.1
+ TIBL:SOURCE=   4 DAY= 240 HOUR= 13 HO=   45.70 UL=    8.97 US=    8.97 DTHDZ=    .5100 PTMOL=    297.5 PTMOW=    295.1
+ TIBL:SOURCE=   1 DAY= 240 HOUR= 15 HO=   98.72 UL=    8.97 US=    8.97 DTHDZ=    .4540 PTMOL=    296.8 PTMOW=    294.9
+ TIBL:SOURCE=   2 DAY= 240 HOUR= 15 HO=   98.72 UL=    8.97 US=    8.97 DTHDZ=    .4540 PTMOL=    296.8 PTMOW=    294.9
+ TIBL:SOURCE=   3 DAY= 240 HOUR= 15 HO=   98.72 UL=    8.97 US=    8.97 DTHDZ=    .4540 PTMOL=    296.8 PTMOW=    294.9
+ TIBL:SOURCE=   4 DAY= 240 HOUR= 15 HO=   98.72 UL=    8.97 US=    8.97 DTHDZ=    .4540 PTMOL=    296.8 PTMOW=    294.9
+ TIBL:SOURCE=   1 DAY= 243 HOUR= 15 HO=  150.33 UL=    2.34 US=    2.34 DTHDZ=    .0100 PTMOL=    292.4 PTMOW=    292.6
+ CONC:STACK #1           -1.532        1.286      .243
+ CONC:STACK #1           -1.286        1.532      .005
+ CONC:STACK #1           -3.830        3.214      .001
+ CONC:STACK #1           -2.000         .000   100.063
+ CONC:STACK #1          -10.000         .000   188.894
+ CONC:STACK #1           -4.330       -2.500      .003
+ CONC:STACK #1           -4.924         .868   131.911
+ CONC:STACK #1           -9.848        1.736   144.131
+ TIBL:SOURCE=   2 DAY= 243 HOUR= 15 HO=  150.33 UL=    2.34 US=    2.34 DTHDZ=    .0100 PTMOL=    292.4 PTMOW=    292.6
+ CONC:STACK #2           -1.532        1.286      .144
+ CONC:STACK #2           -1.286        1.532      .001
+ CONC:STACK #2           -2.000         .000    10.486
+ CONC:STACK #2          -10.000         .000    44.050
+ CONC:STACK #2           -4.924         .868    47.937
+ CONC:STACK #2           -9.848        1.736    52.981
+ TIBL:SOURCE=   3 DAY= 243 HOUR= 15 HO=  150.33 UL=    2.34 US=    2.34 DTHDZ=    .0100 PTMOL=    292.4 PTMOW=    292.6
+ CONC:STACK #3           -1.532        1.286      .018
+ CONC:STACK #3           -2.000         .000    29.100
+ CONC:STACK #3          -10.000         .000    70.604
+ CONC:STACK #3           -4.924         .868    51.649
+ CONC:STACK #3           -9.848        1.736    58.755
+ TIBL:SOURCE=   4 DAY= 243 HOUR= 15 HO=  150.33 UL=    2.34 US=    2.34 DTHDZ=    .0100 PTMOL=    292.4 PTMOW=    292.6
+ CONC:STACK #4           -1.532        1.286      .001
+ CONC:STACK #4           -2.000         .000    68.744
+ CONC:STACK #4          -10.000         .000   156.565
+ CONC:STACK #4           -4.330       -2.500      .003
+ CONC:STACK #4           -4.924         .868    61.983
+ CONC:STACK #4           -9.848        1.736    82.079
+ CONC:ALL SOURCES        -1.532        1.286      .407
+ CONC:ALL SOURCES        -1.286        1.532      .006
+ CONC:ALL SOURCES        -3.830        3.214      .001
+ CONC:ALL SOURCES        -2.000         .000   208.393
+ CONC:ALL SOURCES       -10.000         .000   460.113
+ CONC:ALL SOURCES        -4.330       -2.500      .006
+ CONC:ALL SOURCES        -4.924         .868   293.480
+ CONC:ALL SOURCES        -9.848        1.736   337.946
+ TIBL:SOURCE=   1 DAY= 245 HOUR= 15 HO=   96.78 UL=    8.97 US=    8.97 DTHDZ=    .3430 PTMOL=    294.6 PTMOW=    293.2
+ TIBL:SOURCE=   2 DAY= 245 HOUR= 15 HO=   96.78 UL=    8.97 US=    8.97 DTHDZ=    .3430 PTMOL=    294.6 PTMOW=    293.2
+ TIBL:SOURCE=   3 DAY= 245 HOUR= 15 HO=   96.78 UL=    8.97 US=    8.97 DTHDZ=    .3430 PTMOL=    294.6 PTMOW=    293.2
+ TIBL:SOURCE=   4 DAY= 245 HOUR= 15 HO=   96.78 UL=    8.97 US=    8.97 DTHDZ=    .3430 PTMOL=    294.6 PTMOW=    293.2

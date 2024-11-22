@@ -1,0 +1,1537 @@
+
+                             Model Change Bulletin
+              
+                                    MCB#4                          8/19/95
+
+                            CAL3QHC  (Dated 95221)
+                            CAL3QHCR (Dated 95221)
+
+     Both CAL3QHC and CAL3QHCR are covered by this Model Change Bulletin (MCB)
+under the CAL3QHC model name.  Since CAL3QHCR is an enhanced but separate
+version of CAL3QHC, both models will retain their respective Julian creation
+dates.  Under this MCB, both models, have the same creation date.
+
+     The user's guides to both models have been modified and are available
+under the CAL3QHC model name in the File Transfer area of the SCRAM BBS, under
+Regulatory Models, in the Documentation Section.  The CAL3QHC user's guide has
+been modified to reflect changes in the model from a fixed formated to a free
+formated input structure.  The Particulate Matter - 10 micron size (PM-10)
+nomenclature has been replaced with Particulate Matter (PM) nomenclature
+throughout both user's guides and models.  This is to allow for the possibility
+of modeling for other PM sizes than just PM-10.  The CAL3QHCR user's guide has
+been modified to reflect the input of wind flow values instead of wind
+direction values into CAL3QHCR.  Also, the input redirection symbol is no
+longer needed in the CAL3QHCR execution line.  Details concerning the user
+guide modifications are available in the general README file associated with
+this model.
+
+     The major change between CAL3QHC and CAL3QHCR is in the reading of the
+direction of the wind.  CAL3QHC requires wind direction input and CAL3QHCR
+requires wind flow input.  Wind direction is the angle the wind is coming from
+(i.e. a 90 degree is coming from the east).  Wind flow is the angle the wind is
+blowing toward (i.e. a 90 degree wind flow is a wind blowing toward the east).
+
+*** CAL3QHC CHANGES ***
+
+     Three significant changes have been made to CAL3QHC.  These changes are:
+
+     1. the added capability to perform PM calculations, 
+     2. the modification of the input format from a fixed to a free format,
+     3. the modification to allow use of a Microsoft compiler to compile the
+     source code, and
+     4. the saving of Lahey Fortran compiler specific code by commenting out
+     Lahey specific lines of code and by saving a Lahey specific subroutine as
+     a separate Fortran file.
+
+
+*** CAL3QHCR CHANGES ***
+
+     One significant correction and several formatting changes have been made
+to the CAL3QHCR source code.  These changes and updates consist of the
+following:
+
+     1.  Correction to read in wind flow values instead of wind direction
+     values from preprocessed meteorological data.  
+
+          The EPA PCRAMMET and MPRM meteorological preprocessor programs output
+          wind flow values as opposed to wind direction values.  The model was
+          changed to accept this as the primary source of meteorological data.
+
+     2.  Creation of source code compilable with a Microsoft Fortran Compiler.
+
+          Lahey specific source code has been retained but commented out with a
+          'CL' flag or saved in a separate file.  Microsoft specific functions
+          have been added to replace the Lahey specific functions.  The revised
+          code has been compiled and tested using Microsoft Fortran Compiler
+          Version 5.0.  No Lahey compilation testing has been done with this
+          revised code.
+
+
+*************************
+Source Code Modifications
+*************************
+
+*** CAL3QHC Model ****
+
+1.  A CAL3QHC Model header was added to reflect a new model creation date of
+95221 and MCB number.
+
+C  **************************************************************************
+C  *                                                                        *
+C  *                         CAL3QHC (DATED 95221)                          *
+C  *                                                                        *
+C  *                *** SEE CAL3QHC (DATED 95221) MCB #4 ***                *
+C  *                                                                        *
+C  *     ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS BULLETIN BOARD     *
+C  *                                                                        *
+C  *                        (919) 541-5742 (8-N-1)                          *
+C  *                                                                        *
+C  **************************************************************************
+C
+
+2.  A summary statement of program modifications was added just below the
+header.
+
+C     |                                                                |
+C     | CAL3QHC was modified to accept free format input, and to be    |
+C     |         compilable using a Microsoft Fortran compiler.  The    |
+C     |         program was recompiled using Microsoft Fortran.        |
+C     |         Some minor alterations were made to the READ, WRITE,   |
+C     |         and FORMAT statements and to the output file structure.|
+C     |         A Lahey Fortran File Input/Output file name processing |
+C     |         algorithm has been saved, in part, as a separate file  |
+C     |         and by commenting out Lahey specific code with 'CL'    |
+C     |         added to the first two columns of each respective line |
+C     |         of code.  Lahey date and time library functions have   |
+C     |         also been retained by commenting out these functions   |
+C     |         in the same manner.  A bubble sort subroutine was not  |
+C     |         being used and was therefore deleted.                  |
+C     |                                                                |
+C
+
+3.  The following section was added and details the new input format structure
+along with some cautionary notes.
+
+
+C                                INPUT FORMAT
+C
+C      Note:  Input is in free format.  Single quotes need to be placed around
+C             'character string input'.  All data that could be entered
+C             optionally under the old fixed input format, needs to be entered.
+C
+C           ***********************************************************
+C           ****       ALL OPTIONAL DATA NEEDS TO BE ENTERED.      ****
+C           ****   (eg saturation rates, wind range increments.)   ****
+C           ***********************************************************
+C
+C    'Title (up to 40 Char.)' ATIM, ZO, VS, VD, NR, SCAL, IOPT, IDEBUG.
+C    'Receptor name', X- and Y-coordinate, elevation.
+C      (The last line is repeated for each receptor)
+C    'Run name', number of links, lines of MET data, PRINT2 flag, 'mode'.
+C    One entry for each link:
+C    Link flow type (IQ, 1 - free flow, 2 - queue).
+C      For IQ = 1:
+C        'Link name', 'type', beginning X, Y-coords, ending X, Y-Coords,
+C           link volume, emission rate, source height, mixing zone width.
+C      For IQ = 2:
+C        'Link name', 'type', beginning X, Y-coords, ending X, Y-Coords,
+C          source height, mixing zone width, number of lanes.
+C        Traffic light cycle time, average red, yellow factor, approach volume,
+C          idle emiss. factor, saturation flow rate, signal type, arrival rate.
+C    Wind speed, actual wind direction, stability class, mixing height,
+C      ambient background concentration, 'wind direction variation flag',
+C      direction variation increment,
+C      lower boundary of the wind dir. range variation increment multiplier,
+C      upper boundary of the wind dir. range variation increment multiplier.
+C
+C ***************************************************************************
+
+4.  The following variable definition statements were modified for
+compatibility with Microsoft Fortran.  The statements were modified from:
+
+
+      CHARACTER    X1(60)*15,VAR*1,REC(60)*5,RUN(5)*8,JOB(5)*8,STB(6)*1,V2EC
+     +             TYP(120)*2,IDATE*8,ITIME*5,FILE5*40,FILE6*40         V2EC
+C
+      REAL         BRGV(361),MOWT,NE,LIM,KZ,LB,LBRG(120),RCP(5,60),     V2EC
+     +             LNK(5,120),INC,MIXH,K1,IDLFAC(120),PSCALE            V2ECF
+
+to:
+
+      CHARACTER    X1(60)*15,VAR*1,REC(60)*5,RUN*40,JOB*40,STB(6)*1,    V2EC
+     +             LNK(120)*20, MODE*1, RCP(60)*20, TYP(120)*2          V2EC
+
+CL      CHARACTER  IDATE*8, ITIME*5, FILE5*40, FILE6*40                 V2EC
+C
+      REAL         BRGV(361),MOWT,NE,LIM,KZ,LB,LBRG(120),               V2EC
+     +             INC,MIXH,K1,IDLFAC(120),PSCALE                       V2ECF
+
+
+5.  Microsoft date and time calls were added and the Lahey date and time calls
+were commented out.  In addition, the Lahey file name input statements were
+also commented out in the same manner.  Unit numbers were assigned to variable
+names.  The code was changed from:
+
+      MAXL=120                                                          V2EC
+C
+      CALL TIME(ITIME)                                                  V2EC
+      CALL DATE(IDATE)                                                  V2EC
+C
+      CALL GETFIL(FILE5,FILE6)                                          V2EC
+C
+      OPEN (5,FILE=FILE5 ,STATUS='OLD')                                 V2EC
+      OPEN (6,FILE=FILE6 ,STATUS='UNKNOWN')                             V2EC
+
+to:
+
+      MAXL=120                                                          V2EC
+      IN = 7
+      IOUT = 6
+      IPO = 8
+C
+        CALL GETDAT (IYR, IMON, IDAY)
+        CALL GETTIM (IIHR, IMIN, ISEC, IX)
+          IYR = MOD(IYR,100)
+CL
+CL      CALL TIME(ITIME)                                                  V2EC
+CL      CALL DATE(IDATE)                                                  V2EC
+CLC
+CL      CALL GETFIL(FILE5,FILE6)                                          V2EC
+CLC
+CL      OPEN (IN,FILE=FILE5 ,STATUS='OLD')                                V2EC
+CL      OPEN (IPO,FILE=FILE6 ,STATUS='UNKNOWN')
+CLC
+
+6.  The following statement was moved to a later section of code:
+    (Read Comment #9 for details.)
+
+      FPPM=0.0245/MOWT
+
+7.  The data input statements were modified from a fixed to a free format and
+the file unit numbers were changed to the unit number variables, IN, and IOUT. 
+A section of code was also added to detect when the old input format is
+possibly being used and to respond with a cautionary warning.  The code was
+modified from:
+
+
+   10 READ (5,120,END=9999) JOB,ATIM,Z0,VS,VD,NR,SCAL,IOPT,IDEBUG       V2ECF
+      IF(IDEBUG.EQ.1)WRITE(*,120)JOB,ATIM,Z0,VS,VD,NR,SCAL              V2EC
+
+to:
+
+   10 READ (IN,*,ERR=5,END=9999) JOB,ATIM,Z0,VS,VD,NR,SCAL,IOPT,IDEBUG  V2ECF
+        IF (JOB(1:1) .NE. CHAR(39)) GOTO 4
+    5 WRITE(IOUT,6)
+    6 FORMAT('                      NOTICE'/
+     +5x,'The format of CAL3QHC (Dated 95221) has been made user-',
+     +   'friendlier',/5X,
+     +'by using a free format.  However, the program has detected the',
+     +   ' possible use ',/5X,
+     +'of the old format.  If this is so, please review the Input ',
+     +   'Format section',/5X,
+     +'of the CAL3QHC source code AND Readme file.  The program will',
+     +   ' continue',/5X,
+     +'until another error is detected.'/)
+      PAUSE '            Please press any key to continue'
+    4 CONTINUE
+      IF(IDEBUG.EQ.1)WRITE(IOUT,120)JOB,ATIM,Z0,VS,VD,NR,SCAL
+
+8.  The following READ and WRITE statements were modified for free format input
+and the unit numbers were changed to the variables, IN and IOUT.  The
+statements are not contiguous as denoted by a double space.  The code was
+modified from:
+
+         WRITE(*,167)NR,MAXR                                            V2EC
+
+
+        READ (5,130) (RCP(J,I),J=1,5),XR(I),YR(I),ZR(I)                 V2EC
+        IF(IDEBUG.EQ.1)WRITE(*,130) (RCP(J,I),J=1,5),XR(I),YR(I),ZR(I)  V2EC
+
+
+to:
+
+         WRITE(IOUT,167)NR,MAXR                                         V2EC
+
+
+        READ (IN,*) RCP(I), XR(I),YR(I),ZR(I)                           V2EC
+          IF(IDEBUG.EQ.1) WRITE(IOUT,130) RCP(I), XR(I), YR(I), ZR(I)   V2EC
+
+9. The variable, MODE, used to enter a CO or PM concentrations processing
+indicator, was added to the end of the following READ statement.  An algorithm
+was added to generate a CO or PM processing flag, MODET, based on the MODE
+input indicator.  The FPPM statement was moved to this section and set to
+convert concentration output to PPM or micrograms per cubic meter based on the
+value of MODET.  Again, the format and unit numbers were modified as in Comment
+#8.
+
+      READ (5,150) RUN,NL,NM,PRINT2                                     V2EC
+      IF(IDEBUG.EQ.1)WRITE(*,150) RUN,NL,NM,PRINT2                      V2EC
+C                                                                       V2EC
+C    CHECK NUMBER OF LINKS INPUT DOES NOT EXCEED MAXIMUM ALLOWED.       V2EC
+C                                                                       V2EC
+      IF(NL.GT.MAXL)THEN                                                V2EC
+         WRITE(*,168)NL,MAXL                                            V2EC
+
+to:
+
+      READ (IN,*) RUN,NL,NM,PRINT2,MODE
+      IF(IDEBUG.EQ.1)WRITE(IOUT,150) RUN,NL,NM,PRINT2,MODE              V2EC
+
+        MODET = 2
+
+          IF (MODE .EQ. 'c') MODET = 0
+          IF (MODE .EQ. 'C') MODET = 0
+          IF (MODE .EQ. 'p') MODET = 1
+          IF (MODE .EQ. 'P') MODET = 1
+
+            IF (MODET .EQ. 2) THEN
+              WRITE(IOUT,*) 'The MODE variable, ',MODE,
+     +                      ' was incorrectly entered.'
+              STOP
+            END IF
+
+         IF (MODET .EQ. 0) THEN
+            FPPM=0.0245/MOWT
+          ELSE
+            FPPM = 1
+         END IF
+C
+C    CHECK NUMBER OF LINKS INPUT DOES NOT EXCEED MAXIMUM ALLOWED.
+C
+      IF(NL.GT.MAXL)THEN                                                V2EC
+         WRITE(IOUT,168)NL,MAXL                                         V2EC
+
+
+10.  The READ and WRITE unit numbers were changed as per Comment #8.  The code
+was changed from:
+
+        READ(5,14) IQ(I)                                                V2EC
+        IF(IDEBUG.EQ.1)WRITE(*,14) IQ(I)                                V2EC
+
+
+        READ(5,15) (LNK(J,I),J=1,5),TYP(I),XL1(I),YL1(I),XL2(I),YL2(I), V2EC
+     +              HL(I),WL(I),NLANES(I)                               V2EC
+        IF(IDEBUG.EQ.1)WRITE(*,15) (LNK(J,I),J=1,5),TYP(I),XL1(I),      V2EC
+     +              YL1(I),XL2(I),YL2(I),HL(I),WL(I),NLANES(I)          V2EC
+        READ(5,1)  CAVG(I),RAVG(I),YFAC(I),IV(I),IDLFAC(I)              V2
+     +             ,SFR(I),ST(I),AT(I)                                  V2
+        IF(IDEBUG.EQ.1)WRITE(*,1) CAVG(I),RAVG(I),YFAC(I),IV(I)         V2EC
+     +             ,IDLFAC(I),SFR(I),ST(I),AT(I)                        V2EC
+
+
+    2   READ(5,160) (LNK(J,I),J=1,5),TYP(I),XL1(I),YL1(I),XL2(I),YL2(I),
+     +               VPHL(I),EFL(I),HL(I),WL(I)
+        IF(IDEBUG.EQ.1)WRITE(*,160)(LNK(J,I),J=1,5),TYP(I),XL1(I),      V2EC
+     +               YL1(I),XL2(I),YL2(I),VPHL(I),EFL(I),HL(I),WL(I)    V2EC
+
+        WRITE (6,170)
+
+        WRITE (6,180)
+
+ 9060   READ (5,190) U,BRG,CLAS,MIXH,AMB,VAR,DEGR,(VAI(I),I=1,2)        V2EC
+        IF(IDEBUG.EQ.1)WRITE(*,190)U,BRG,CLAS,MIXH,AMB,VAR,DEGR,        V2EC
+     +       (VAI(I),I=1,2)                                             V2EC
+
+
+to:
+
+        READ(IN,*) IQ(I)                                                V2EC
+        IF(IDEBUG.EQ.1)WRITE(IOUT,14) IQ(I)                             V2EC
+
+        READ(IN,*)  LNK(I),TYP(I),XL1(I),YL1(I),XL2(I),YL2(I),          V2EC
+     +              HL(I),WL(I),NLANES(I)                               V2EC
+        IF(IDEBUG.EQ.1) WRITE(IOUT,15) LNK(I),TYP(I),XL1(I),            V2EC
+     +              YL1(I),XL2(I),YL2(I),HL(I),WL(I),NLANES(I)          V2EC
+        READ(IN,*)  CAVG(I),RAVG(I),YFAC(I),IV(I),IDLFAC(I)             V2
+     +             ,SFR(I),ST(I),AT(I)                                  V2
+        IF(IDEBUG.EQ.1)WRITE(IOUT,1) CAVG(I),RAVG(I),YFAC(I),IV(I)      V2EC
+     +             ,IDLFAC(I),SFR(I),ST(I),AT(I)                        V2EC
+
+
+    2   READ(IN,*)  LNK(I),TYP(I),XL1(I),YL1(I),XL2(I),YL2(I),
+     +               VPHL(I),EFL(I),HL(I),WL(I)
+        IF(IDEBUG.EQ.1) WRITE(IOUT,160) LNK(I), TYP(I), XL1(I),         V2EC
+     +               YL1(I),XL2(I),YL2(I),VPHL(I),EFL(I),HL(I),WL(I)    V2EC
+
+
+        WRITE (IOUT,170)
+
+        WRITE (IOUT,180)
+
+ 9060   READ (IN,*) U, BRG, CLAS, MIXH, AMB, VAR, DEGR, (VAI(I),I=1,2)  V2EC
+        IF(IDEBUG.EQ.1)WRITE(IOUT,190) U,BRG,CLAS,MIXH,AMB,VAR,DEGR,    V2EC
+     +       (VAI(I),I=1,2)                                             V2EC
+
+
+
+11.  The definition of the variable BRG was expanded from:
+
+C      BRG = WIND DIRECTION (DEGREES)
+
+to:
+
+C      BRG = WIND DIRECTION (DIRECTION WIND IS BLOWING FROM - IN DEGREES)
+
+12.  PM concentration units were added to the following definition.  The
+definition was modified from:
+
+C      AMB = AMBIENT CONCENTRATION (PPM)
+
+to:
+
+C      AMB = AMBIENT CONCENTRATION (PPM or ug/m^3)
+
+
+13.  A check of the variable BRG was added to determine if it were greater than
+360 degrees.  If so, 360 degrees was subtracted from BRG.  Also note the unit
+number was changed to a unit variable name.  The code was changed from:
+
+          BRG=BRG2+(DEGR*VA(K4))
+C
+          WRITE(*,112) RUN,BRG
+  112     FORMAT(1X,5A8,' -  ANGLE: ',F4.0,'(degrees)')
+
+to:
+
+          BRG=BRG2+(DEGR*VA(K4))
+          IF (BRG .GT. 360) BRG = BRG - 360.
+C
+          WRITE(IOUT,112) RUN,BRG
+  112     FORMAT(1X,A40,' -  ANGLE: ',F4.0,'(degrees)')
+
+
+14. The following groups of WRITE statements were modified by substituting in a
+unit variable name for a fixed number.  Code was added to state the output in
+terms of PPM or ug/m^3 depending upon the MODET flag setting.  Several pages of
+non contiguous code segments will appear below in groups separated by double
+spacing.  Lahey Fortran compatible code was commented out with a 'CL' flag. 
+The groups of code were changed from:
+
+
+               WRITE(6,209)
+               WRITE(6,202) PGCT
+               WRITE(6,210) JOB,RUN
+               WRITE(6,221)
+               IF(VAR.EQ.'Y') GOTO 1005
+                 WRITE(6,240) U,CLAS,STB(CLAS),ATIM,MIXH,AMB,BRG1
+                 GOTO 1249
+ 1005            WRITE(6,231) U,CLAS,STB(CLAS),ATIM,MIXH,AMB
+                 GOTO 1249
+
+
+          WRITE (6,200)PGCT
+          WRITE (6,210)JOB,RUN
+          WRITE (6,'(6X,A6,A8,2X,A7,A5/)')                              V2EC
+     +            'DATE: ',IDATE,' TIME: ',ITIME                        V2EC
+          WRITE(6,220)
+          WRITE(6,230)VS1,VD1,Z0
+
+
+          IF(VAR.EQ.'Y') GOTO 1205
+ 1211     WRITE(6,240) U,CLAS,STB(CLAS),ATIM,MIXH,AMB,BRG1
+          GOTO 1206
+ 1205     WRITE(6,231) U,CLAS,STB(CLAS),ATIM,MIXH,AMB
+
+
+
+            IF(KQ.EQ.1) THEN
+              WRITE(6,250)
+             IF(IOPT.EQ.1)THEN                                          V2EF
+              WRITE(6,265)                                              V2EF
+              WRITE(6,275)                                              V2EF
+             ELSE                                                       V2EF
+              WRITE(6,260)
+              WRITE(6,270)                                              V2EF
+             ENDIF                                                      V2EF
+              WRITE(6,280)
+              ICOUNT=ICOUNT+4
+
+
+              PGCT=PGCT+1
+              WRITE(6,209)
+              WRITE(6,202) PGCT
+              WRITE (6,210)JOB,RUN
+              WRITE (6,'(6X,A6,A8,2X,A7,A5/)')                          V2EC
+     +            'DATE: ',IDATE,' TIME: ',ITIME                        V2EC
+              WRITE(6,250)
+             IF(IOPT.EQ.1)THEN                                          V2EF
+              WRITE(6,265)                                              V2EF
+              WRITE(6,275)                                              V2EF
+             ELSE                                                       V2EF
+              WRITE(6,260)
+              WRITE(6,270)                                              V2EF
+             ENDIF                                                      V2EF
+              WRITE(6,280)
+              ICOUNT=9
+
+
+            IF(IQ(I).EQ.2) THEN
+            WRITE(6,290) COD(I),(LNK(J,I),J=1,5),XL1(I),YL1(I),XL2(I),
+     +                   YL2(I),LL(I),LBRG(I),TYP(I),VPHL(I),
+
+
+            ELSE
+            WRITE(6,290) COD(I),(LNK(J,I),J=1,5),XL1(I),YL1(I),XL2(I),
+     +                   YL2(I),LL(I),LBRG(I),TYP(I),VPHL(I),
+
+
+            IF(IQ(I).EQ.2)THEN                                          V2EF
+            WRITE(6,290) COD(I),(LNK(J,I),J=1,5),XW1,YW1,XW2,           V2EF
+     +                   YW2,LLW,LBRG(I),TYP(I),VPHL(I),                V2EF
+
+
+C                                                                       V2EF
+            WRITE(6,290) COD(I),(LNK(J,I),J=1,5),XW1,YW1,XW2,           V2EF
+     +                   YW2,LLW,LBRG(I),TYP(I),VPHL(I),                V2EF
+
+
+            PGCT=PGCT+1                                                 V2EF
+            WRITE(6,209)                                                V2EF
+            WRITE(6,202) PGCT                                           V2EF
+            WRITE (6,210)JOB,RUN                                        V2EF
+            WRITE (6,'(6X,A6,A8,2X,A7,A5/)')                            V2EF
+     +            'DATE: ',IDATE,' TIME: ',ITIME                        V2EF
+            WRITE(6,401)                                                V2EF
+            WRITE(6,402)                                                V2EF
+            WRITE(6,403)                                                V2EF
+            WRITE(6,404)                                                V2EF
+            WRITE(6,405)                                                V2EF
+            ICOUNT=10                                                   V2EF
+          ENDIF                                                         V2EF
+
+
+          IF(IQ(I).EQ.2)THEN                                            V2EF
+            WRITE(6,406)COD(I),(LNK(J,I),J=1,5),CAVG(I),RAVG(I),YFAC(I),V2EF
+     +                  IV(I),SFR(I),IDLFAC(I),ST(I),AT(I)              V2EF
+
+
+           IF(KQ.EQ.1)THEN                                              V2EF
+             WRITE(6,300)                                               V2EF
+            IF(IOPT.EQ.1)THEN                                           V2EF
+             WRITE(6,310)                                               V2EF
+            ELSE                                                        V2EF
+             WRITE(6,309)                                               V2EF
+            ENDIF                                                       V2EF
+             WRITE(6,321)                                               V2EF
+             WRITE(6,331)                                               V2EF
+           ICOUNT=ICOUNT+4                                              V2EF
+
+
+            PGCT=PGCT+1
+            WRITE(6,209)
+            WRITE(6,202) PGCT
+            WRITE (6,210)JOB,RUN
+            WRITE (6,'(6X,A6,A8,2X,A7,A5/)')                            V2EC
+     +            'DATE: ',IDATE,' TIME: ',ITIME                        V2EC
+            WRITE(6,300)
+           IF(IOPT.EQ.1)THEN                                            V2EF
+            WRITE(6,310)
+           ELSE                                                         V2EF
+            WRITE(6,309)
+           ENDIF                                                        V2EF
+            WRITE(6,321)
+            WRITE(6,331)
+            ICOUNT=10                                                   V2EC
+          ENDIF                                                         V2EC
+C
+
+            WRITE (6,441) I,(RCP(J,I),J=1,5),XWR,YWR,ZWR                V2EF
+           ELSE                                                         V2EF
+            WRITE (6,441) I,(RCP(J,I),J=1,5),XR(I),YR(I),ZR(I)
+           ENDIF                                                        V2EF
+
+
+
+              PGCT=PGCT+1
+              WRITE(6,209)
+              WRITE(6,202) PGCT
+              WRITE(6,210) JOB,RUN
+              WRITE(6,8500)
+              WRITE(6,8510)
+              WRITE(6,8511) (REC(J),J=1,NR)
+              WRITE(6,8512) (X1(J),J=1,NR)
+              ICOUNT=8
+
+
+            PGCT=PGCT+1
+            WRITE(6,209)
+            WRITE(6,202) PGCT
+            WRITE(6,210) JOB,RUN
+            ICOUNT=3
+
+
+C
+          WRITE(6,8399)
+          WRITE(6,8400)
+          ICOUNT=ICOUNT+9
+
+
+          WRITE(6,8499) TRANGE,BRANGE
+
+
+C
+ 1190     WRITE(6,8500)
+          WRITE(6,8510)
+          IF(NR.LE.20)THEN                                              V2EC
+          WRITE(6,8511) (REC(J),J=1,NR)
+          WRITE(6,8512) (X1(J),J=1,NR)
+          ELSE                                                          V2EC
+          WRITE(6,8511) (REC(J),J=1,20)
+          WRITE(6,8512) (X1(J),J=1,20)
+          ENDIF                                                         V2EC
+
+
+C
+ 8998     IF(NR.LE.20)THEN                                              V2EC
+          WRITE(6,8530) BRG1,(CON(J),J=1,NR)
+          ELSE                                                          V2EC
+          WRITE(6,8530) BRG1,(CON(J),J=1,20)                            V2EC
+          WRITE(16,165) BRG1,(CON(J),J=21,NR)                           V2EC
+          ENDIF                                                         V2EC
+
+
+        WRITE(6,8512) (X1(J),J=IRP,NRP)                                 V2EC
+        WRITE(6,9040) (CRMAX(I) ,I=IRP,NRP)                             V2EC
+        WRITE(6,9042) (ANGMAX(I),I=IRP,NRP)                             V2EC
+        WRITE(6,'(1X)')
+        ENDIF                                                           V2EC
+
+
+          WRITE(6,209)                                                  V2EC
+          WRITE(6,202)PGCT                                              V2EC
+          WRITE(6,210)JOB,RUN                                           V2EC
+          ICOUNT=3                                                      V2EC
+
+
+        IF(K4.EQ.1) THEN                                                V2EC
+        WRITE(6,8399)                                                   V2EC
+        WRITE(6,8400)                                                   V2EC
+        ICOUNT=ICOUNT+9                                                 V2EC
+
+
+        WRITE(6,8499) TRANGE,BRANGE                                     V2EC
+
+
+ 1191   WRITE(6,8500)                                                   V2EC
+        WRITE(6,8510)                                                   V2EC
+        WRITE(6,8511) (REC(J),J=IRP,NRP)                                V2EC
+        WRITE(6,8512) (X1(J),J=IRP,NRP)                                 V2EC
+        ICOUNT=ICOUNT+4                                                 V2EC
+
+
+        WRITE(6,8530)BRG1,(CON(J),J=IRP,NRP)                            V2EC
+        ICOUNT=ICOUNT+1                                                 V2EC
+C
+ 9021   CONTINUE                                                        V2EC
+
+
+          PGCT=PGCT+1
+          WRITE(6,209)
+          WRITE(6,202) PGCT
+          WRITE(6,210) JOB,RUN
+          WRITE (6,'(6X,A6,A8,2X,A7,A5/)')                              V2EC
+     +            'DATE: ',IDATE,' TIME: ',ITIME                        V2EC
+          WRITE(6,9032)
+ 9032     FORMAT (/,6X,'RECEPTOR - LINK MATRIX FOR THE ANGLE PRODUCING',
+
+
+          WRITE(6,9031) (REC(LLL),LLL=IRP,NRP)
+ 9031     FORMAT(/,10X,'*',4X,'CO/LINK  (PPM) ',/,
+
+
+          WRITE(6,9034) (ANGMAX(LLL),LLL=IRP,NRP)
+ 9034     FORMAT (3X,'LINK # ','*',20(3X,I3))
+
+
+          WRITE(6,9033) (X1(L1),L1=IRP,NRP)
+ 9033     FORMAT(3X,'-------*',20A6)
+
+
+              PGCT=PGCT+1
+              WRITE(6,209)
+              WRITE(6,202) PGCT
+              WRITE(6,210) JOB,RUN
+              WRITE(6,9031) (REC(LLL),LLL=IRP,NRP)
+              WRITE(6,9034) (ANGMAX(LLL),LLL=IRP,NRP)
+              WRITE(6,9033) (X1(L1),L1=IRP,NRP)
+              ICOUNT=7
+
+
+            WRITE(6,9041) I,(COMAX(I,J),J=IRP,NRP)
+ 9041       FORMAT (5X,I3,'  *',20(1X,F5.1))
+
+
+to:
+
+
+               WRITE(IPO,202) CHAR(12), PGCT
+               WRITE(IPO,210) JOB,RUN
+               WRITE(IPO,221)
+               IF (VAR.EQ.'Y') GOTO 1005
+                 IF ( FPPM .NE. 1) THEN
+                    WRITE(IPO,240) U,CLAS,STB(CLAS),ATIM,MIXH,AMB,BRG1
+                   ELSE
+                    WRITE(IPO,241) U,CLAS,STB(CLAS),ATIM,MIXH,AMB,BRG1
+                 ENDIF
+                 GOTO 1249
+ 1005          IF ( FPPM .NE. 1) THEN
+                  WRITE(IPO,231) U,CLAS,STB(CLAS),ATIM,MIXH,AMB
+                 ELSE
+                  WRITE(IPO,232) U,CLAS,STB(CLAS),ATIM,MIXH,AMB
+               END IF
+               GOTO 1249
+
+          WRITE (IPO,200) CHAR(12), PGCT
+          WRITE (IPO,210)JOB,RUN
+          WRITE (IPO, 462) IMON, IDAY, IYR
+          WRITE (IPO, 463) IIHR, IMIN, ISEC
+CL          WRITE (IPO,'(6X,A6,A8,2X,A7,A5/)')                            V2EC
+CL     +            'DATE: ',IDATE,' TIME: ',ITIME                        V2EC
+            IF (MODET .EQ. 0) THEN
+              WRITE(IPO,23) MODE(1:1)
+            ENDIF
+            IF (MODET .EQ. 1) THEN
+              WRITE(IPO,24) MODE(1:1)
+            ENDIF
+          WRITE(IPO,220)
+          WRITE(IPO,230)VS1,VD1,Z0
+
+
+          IF(VAR.EQ.'Y') GOTO 1205
+ 1211          IF ( FPPM .NE. 1) THEN
+                    WRITE(IPO,240) U,CLAS,STB(CLAS),ATIM,MIXH,AMB,BRG1
+                   ELSE
+                    WRITE(IPO,241) U,CLAS,STB(CLAS),ATIM,MIXH,AMB,BRG1
+                 ENDIF
+                 GOTO 1206
+ 1205          IF ( FPPM .NE. 1) THEN
+                  WRITE(IPO,231) U,CLAS,STB(CLAS),ATIM,MIXH,AMB
+                 ELSE
+                  WRITE(IPO,232) U,CLAS,STB(CLAS),ATIM,MIXH,AMB
+               END IF
+
+
+            IF(KQ.EQ.1) THEN
+              WRITE(IPO,250)
+             IF(IOPT.EQ.1)THEN                                          V2EF
+              WRITE(IPO,265)                                            V2EF
+              WRITE(IPO,275)                                            V2EF
+             ELSE                                                       V2EF
+              WRITE(IPO,260)
+              WRITE(IPO,270)                                            V2EF
+             ENDIF                                                      V2EF
+              WRITE(IPO,280)
+              ICOUNT=ICOUNT+4
+
+
+              PGCT=PGCT+1
+              WRITE(IPO,202) CHAR(12), PGCT
+              WRITE (IPO,210)JOB,RUN
+              WRITE (IPO, 462) IMON, IDAY, IYR
+              WRITE (IPO, 463) IIHR, IMIN, ISEC
+CL          WRITE (IPO,'(6X,A6,A8,2X,A7,A5/)')                            V2EF
+CL     +            'DATE: ',IDATE,' TIME: ',ITIME                        V2EF
+              WRITE(IPO,250)
+             IF(IOPT.EQ.1)THEN                                          V2EF
+              WRITE(IPO,265)                                            V2EF
+              WRITE(IPO,275)                                            V2EF
+             ELSE                                                       V2EF
+              WRITE(IPO,260)
+              WRITE(IPO,270)                                            V2EF
+             ENDIF                                                      V2EF
+              WRITE(IPO,280)
+              ICOUNT=9
+
+
+            IF(IQ(I).EQ.2) THEN
+            WRITE(IPO,290) COD(I),LNK(I),XL1(I),YL1(I),XL2(I),
+     +                   YL2(I),LL(I),LBRG(I),TYP(I),VPHL(I),
+
+
+
+            ELSE
+            WRITE(IPO,290) COD(I),LNK(I),XL1(I),YL1(I),XL2(I),
+     +                   YL2(I),LL(I),LBRG(I),TYP(I),VPHL(I),
+
+
+            IF(IQ(I).EQ.2)THEN                                          V2EF
+            WRITE(IPO,290) COD(I),LNK(I),XW1,YW1,XW2,                   V2EF
+     +                   YW2,LLW,LBRG(I),TYP(I),VPHL(I),                V2EF
+
+
+
+C                                                                       V2EF
+            WRITE(IPO,290) COD(I),LNK(I),XW1,YW1,XW2,                   V2EF
+     +                   YW2,LLW,LBRG(I),TYP(I),VPHL(I),                V2EF
+
+
+            PGCT=PGCT+1                                                 V2EF
+            WRITE(IPO,202) CHAR(12), PGCT                               V2EF
+            WRITE (IPO,210)JOB,RUN                                      V2EF
+            WRITE (IPO, 462) IMON, IDAY, IYR                            V2EF
+            WRITE (IPO, 463) IIHR, IMIN, ISEC                           V2EF
+CL          WRITE (IPO,'(6X,A6,A8,2X,A7,A5/)')                          V2EF
+CL     +            'DATE: ',IDATE,' TIME: ',ITIME                      V2EF
+            ICOUNT = 4                                                  V2EF
+            IF (MODET .EQ. 0) THEN                                      V2EF
+              WRITE(IPO,401)                                            V2EF
+              WRITE(IPO,402)                                            V2EF
+              WRITE(IPO,403)                                            V2EF
+              WRITE(IPO,404)                                            V2EF
+              WRITE(IPO,405)                                            V2EF
+              ICOUNT = ICOUNT + 6                                       V2EF
+            END IF                                                      V2EF
+          ENDIF                                                         V2EF
+
+
+          IF(IQ(I).EQ.2)THEN                                            V2EF
+            WRITE(IPO,406)COD(I),LNK(I),CAVG(I),RAVG(I),YFAC(I),        V2EF
+     +                  IV(I),SFR(I),IDLFAC(I),ST(I),AT(I)              V2EF
+           IF(KQ.EQ.1)THEN                                              V2EF
+             WRITE(IPO,300)                                             V2EF
+            IF(IOPT.EQ.1)THEN                                           V2EF
+             WRITE(IPO,310)                                             V2EF
+            ELSE                                                        V2EF
+             WRITE(IPO,309)                                             V2EF
+            ENDIF                                                       V2EF
+             WRITE(IPO,321)                                             V2EF
+             WRITE(IPO,331)                                             V2EF
+           ICOUNT=ICOUNT+4                                              V2EF
+
+
+            PGCT=PGCT+1
+            WRITE(IPO,202) CHAR(12), PGCT
+            WRITE (IPO,210)JOB,RUN
+            WRITE (IPO, 462) IMON, IDAY, IYR
+            WRITE (IPO, 463) IIHR, IMIN, ISEC
+CL          WRITE (IPO,'(6X,A6,A8,2X,A7,A5/)')                            V2EF
+CL     +            'DATE: ',IDATE,' TIME: ',ITIME                        V2EF
+            WRITE(IPO,300)
+           IF(IOPT.EQ.1)THEN                                            V2EF
+            WRITE(IPO,310)
+           ELSE                                                         V2EF
+            WRITE(IPO,309)
+           ENDIF                                                        V2EF
+            WRITE(IPO,321)
+            WRITE(IPO,331)
+            ICOUNT=10                                                   V2EF
+          ENDIF                                                         V2EF
+C
+
+            WRITE (IPO,441) I,RCP(I),XWR,YWR,ZWR                        V2EF
+           ELSE                                                         V2EF
+            WRITE (IPO,441) I,RCP(I),XR(I),YR(I),ZR(I)
+           ENDIF                                                        V2EF
+
+
+              PGCT=PGCT+1
+              WRITE(IPO,202) CHAR(12), PGCT
+              WRITE(IPO,210) JOB,RUN
+              WRITE(IPO,8500)
+              IF (FPPM .NE. 1) THEN
+                 WRITE(IPO,8510)
+                ELSE
+                 WRITE(IPO,8520)
+              END IF
+              WRITE(IPO,8511) (REC(J),J=1,NR)
+              WRITE(IPO,8512) (X1(J),J=1,NR)
+              ICOUNT=8
+
+
+            PGCT=PGCT+1
+            WRITE(IPO,202) CHAR(12), PGCT
+            WRITE(IPO,210) JOB,RUN
+            ICOUNT=3
+
+
+C
+          WRITE(IPO,8399)
+          WRITE(IPO,8400)
+          ICOUNT=ICOUNT+9
+
+
+          WRITE(IPO,8499) TRANGE,BRANGE
+
+
+C
+ 1190     WRITE(IPO,8500)
+            IF (FPPM .NE. 1) THEN
+               WRITE(IPO,8510)
+              ELSE
+               WRITE(IPO,8520)
+            END IF
+          IF(NR.LE.20)THEN                                              V2EC
+            WRITE(IPO,8511) (REC(J),J=1,NR)
+            WRITE(IPO,8512) (X1(J),J=1,NR)
+           ELSE                                                         V2EC
+            WRITE(IPO,8511) (REC(J),J=1,20)
+            WRITE(IPO,8512) (X1(J),J=1,20)
+          ENDIF                                                         V2EC
+
+
+C
+ 8998     IF (NR.LE.20)THEN                                             V2EC
+            IF (FPPM .NE. 1) THEN
+              WRITE(IPO,8530) BRG1,(CON(J),J=1,NR)
+             ELSE
+              WRITE(IPO,8531) BRG1,(CON(J),J=1,NR)
+            END IF
+          ELSE                                                          V2EF
+            IF (FPPM .NE. 1) THEN
+              WRITE(IPO,8530) BRG1,(CON(J),J=1,20)                      V2EF
+             ELSE
+              WRITE(IPO,8531) BRG1,(CON(J),J=1,20)
+            END IF
+            WRITE(16,165) BRG1,(CON(J),J=21,NR)                         V2EF
+          ENDIF                                                         V2EC
+
+
+        WRITE(IPO,8512) (X1(J),J=IRP,NRP)                               V2EC
+        IF (FPPM .NE. 1) THEN
+          WRITE(IPO,9040) (CRMAX(I) ,I=IRP,NRP)                         V2EC
+         ELSE
+          WRITE(IPO,9050) (CRMAX(I) ,I=IRP,NRP)                         V2EC
+        END IF
+        WRITE(IPO,9042) (ANGMAX(I),I=IRP,NRP)                           V2EC
+        WRITE(IPO,'(1X)')
+        ENDIF                                                           V2EC
+
+
+          WRITE(IPO,202) CHAR(12), PGCT                                 V2EC
+          WRITE(IPO,210)JOB,RUN                                         V2EC
+          ICOUNT=3                                                      V2EC
+
+
+        IF(K4.EQ.1) THEN                                                V2EC
+        WRITE(IPO,8399)                                                 V2EC
+        WRITE(IPO,8400)                                                 V2EC
+        ICOUNT=ICOUNT+9                                                 V2EC
+
+
+        WRITE(IPO,8499) TRANGE,BRANGE                                   V2EC
+
+
+ 1191   WRITE(IPO,8500)                                                 V2EC
+          IF (FPPM .NE. 1) THEN
+             WRITE(IPO,8510)                                            V2EC
+            ELSE
+             WRITE(IPO,8520)                                            V2EC
+          END IF
+        WRITE(IPO,8511) (REC(J),J=IRP,NRP)                              V2EC
+        WRITE(IPO,8512) (X1(J),J=IRP,NRP)                               V2EC
+        ICOUNT=ICOUNT+4                                                 V2EC
+
+
+          IF (FPPM .NE. 1) THEN                                         V2EC
+            WRITE(IPO,8530) BRG1,(CON(J),J=IRP,NRP)                     V2EC
+           ELSE
+            WRITE(IPO,8531) BRG1,(CON(J),J=IRP,NRP)
+          END IF
+        ICOUNT=ICOUNT+1                                                 V2EC
+C                                                                       V2EC
+ 9021   CONTINUE                                                        V2EC
+
+
+
+          PGCT=PGCT+1
+          WRITE(IPO,202) CHAR(12), PGCT
+          WRITE(IPO,210) JOB,RUN
+          WRITE (IPO, 462) IMON, IDAY, IYR
+          WRITE (IPO, 463) IIHR, IMIN, ISEC
+CL          WRITE (IPO,'(6X,A6,A8,2X,A7,A5/)')                            V2EC
+CL     +            'DATE: ',IDATE,' TIME: ',ITIME                        V2EC
+          WRITE(IPO,9032)
+ 9032     FORMAT (/,6X,'RECEPTOR - LINK MATRIX FOR THE ANGLE PRODUCING',
+
+
+          IF (FPPM .NE. 1) THEN
+            WRITE(IPO,9031) (REC(LLL),LLL=IRP,NRP)
+           ELSE
+            WRITE(IPO,9035) (REC(LLL),LLL=IRP,NRP)
+          END IF
+ 9031     FORMAT(/,10X,'*',4X,'CO/LINK  (PPM) ',/,
+
+
+ 9035     FORMAT(/,10X,'*',4X,'PM/LNK(ug/m**3)',/,
+     +             10X,'*',4X,'ANGLE (DEGREES)',/,
+     +             10X,'* ',20(1X,A5))
+          WRITE(IPO,9034) (ANGMAX(LLL),LLL=IRP,NRP)
+ 9034     FORMAT (3X,'LINK # ','*',20(3X,I3))
+
+          WRITE(IPO,9033) (X1(L1),L1=IRP,NRP)
+ 9033     FORMAT(3X,'-------*',20A6)
+
+
+              PGCT=PGCT+1
+              WRITE(IPO,202) CHAR(12), PGCT
+              WRITE(IPO,210) JOB,RUN
+          IF (FPPM .NE. 1) THEN
+            WRITE(IPO,9031) (REC(LLL),LLL=IRP,NRP)
+           ELSE
+            WRITE(IPO,9035) (REC(LLL),LLL=IRP,NRP)
+          END IF
+              WRITE(IPO,9034) (ANGMAX(LLL),LLL=IRP,NRP)
+              WRITE(IPO,9033) (X1(L1),L1=IRP,NRP)
+              ICOUNT=7
+
+
+            WRITE(IPO,9041) I,(COMAX(I,J),J=IRP,NRP)
+ 9041       FORMAT (5X,I3,'  *',20(1X,F5.1))
+
+
+15.  Two code segments were added to determine the maximum concentration and
+the wind direction index at which it occurs.  The code was changed from:
+
+                ANGMAX(I)=BRGV(K4)
+              ELSE
+
+
+                ENDIF
+              ENDIF
+C
+
+to:
+
+                ANGMAX(I)=BRGV(K4)
+                IF (CSUM .GT. CMAX) THEN
+                  CMAX = CSUM
+                  IRMAX = I
+                END IF
+              ELSE
+
+
+                ENDIF
+                IF (CSUM .GT. CMAX) THEN
+                  CMAX = CSUM
+                  IRMAX = I
+                END IF
+              END IF
+C
+
+
+16.  The following sections of non contiguous code were changed from a
+unstructured format:
+
+        IF(NR.LE.MAXRPT)THEN                                            V2EC
+        NRP=NR                                                          V2EC
+        ELSE                                                            V2EC
+        NRP=MAXRPT                                                      V2EC
+        ENDIF                                                           V2EC
+
+
+        IRP=IRP+20                                                      V2EC
+            IF(NR.LE.MAXRPT)THEN                                        V2EC
+            NRP=NR                                                      V2EC
+            ELSE                                                        V2EC
+            NRP=MAXRPT                                                  V2EC
+            ENDIF                                                       V2EC
+        REWIND 16                                                       V2EC
+
+
+        MAXRPT=20                                                       V2EC
+ 9025   IF(NR.LE.MAXRPT)THEN                                            V2EC
+           NRP=NR                                                       V2EC
+        ELSE                                                            V2EC
+        NRP=MAXRPT                                                      V2EC
+        ENDIF                                                           V2EC
+
+to a structured format:
+
+        IF (NR.LE.MAXRPT) THEN                                          V2EC
+           NRP=NR                                                       V2EC
+          ELSE                                                          V2EC
+           NRP=MAXRPT                                                   V2EC
+        ENDIF                                                           V2EC
+
+
+        IRP=IRP+20                                                      V2EC
+         IF(NR.LE.MAXRPT)THEN                                           V2EC
+            NRP=NR                                                      V2EC
+           ELSE                                                         V2EC
+            NRP=MAXRPT                                                  V2EC
+         ENDIF                                                          V2EC
+        REWIND 16                                                       V2EC
+
+
+        MAXRPT=20                                                       V2EC
+ 9025   IF (NR.LE.MAXRPT) THEN                                          V2EC
+           NRP=NR                                                       V2EC
+          ELSE                                                          V2EC
+           NRP=MAXRPT                                                   V2EC
+        ENDIF                                                           V2EC
+
+
+17.  The Subroutine BUBSRT and some previously commented out code were not
+being used.  The unused code was deleted which changed the following code
+segment from:
+
+ 9026   CONTINUE                                                        V2EC
+C                                                                       V2EC
+        CALL BUBSRT(CRMAX,IORDER,NR)                                    V2EC
+C                                                                       V2EC
+        DO 9027 I=1,3                                                   V2EC
+        IF(I.EQ.1)THEN                                                  V2EF
+           WRITE(6,9043)CRMAX(I),ANGMAX(IORDER(I)),REC(IORDER(I))       V2EC
+*        ELSE IF(I.EQ.2)THEN                                             V2EF
+*           WRITE(6,9044)CRMAX(I),ANGMAX(IORDER(I)),REC(IORDER(I))       V2EC
+*        ELSE                                                            V2EF
+*           WRITE(6,9045)CRMAX(I),ANGMAX(IORDER(I)),REC(IORDER(I))       V2EC
+        END IF                                                          V2EF
+ 9027   CONTINUE                                                        V2EC
+C                                                                       V2EC
+        IF(PRINT2.NE.1) GOTO 9000
+
+to:
+
+ 9026   CONTINUE                                                        V2EC
+
+        IF (VAR .EQ. 'N') WRITE(IPO,8512) (X1(J),J=IRP,NRP)
+        IF (FPPM .NE. 1) THEN
+          WRITE(IPO,9043) CMAX,REC(IRMAX)                               V2EC
+         ELSE
+          WRITE(IPO,9046) CMAX,REC(IRMAX)
+        END IF
+        CMAX = 0.0
+C
+        IF(PRINT2.NE.1) GOTO 9000
+
+
+18.  The following FORMAT statement was moved to a later part of the code and
+modified:
+
+  202   FORMAT(113X,'PAGE ',I2)
+
+
+19.  The FORMATs in the following lines were changed to reflect changes in the
+variable definitions and structure of the associated WRITE statements. 
+Additional FORMATs were added for PM related processing.  The code was changed
+from:
+
+   15   FORMAT(5A4,A2,4F7.0,F8.0,F4.0,I4)
+   16   FORMAT(4F4.0,F8.0,3F4.0)
+  190   FORMAT(F3.0,F4.0,I1,F6.0,F4.0,A1,I3,2I3)
+  120   FORMAT(5A8,2F4.0,2F5.0,I2,F10.0,4X,I1,4X,I1)                    V2ECF
+  130   FORMAT (5A4,3F10.0)
+  150   FORMAT (5A8,2I3,2X,I2)
+  160   FORMAT (5A4,A2,4F7.0,F8.0,3F4.0)
+  165   FORMAT (F6.1,40F6.2)                                            V2EC
+C
+
+
+  180   FORMAT (1X,//,22HPROGRAM RUN TERMINATED,///,
+     + 46H * * SOURCE MUST BE WITHIN 10 METERS OF DATUM.)
+C
+
+
+C       ------------------------
+  200   FORMAT (1H1,25X,
+     +    'CAL3QHC: LINE SOURCE DISPERSION MODEL',
+     +    ' - VERSION 2.0, JANUARY 1992',18X,'PAGE ',I2,/)
+C
+  209   FORMAT (1H1)
+  210   FORMAT (6X,5HJOB: ,5A8,13X,5HRUN: ,5A8)
+C
+
+
+  230   FORMAT (7X,5HVS = ,F5.1,5H CM/S,7X,5HVD = ,F5.1,5H CM/S,
+     +         7X,5HZ0 = ,F4.0,3H CM)
+  231   FORMAT (8X, 4HU = ,F4.1,4H M/S,9X,9HCLAS =   ,I1,3H  (,A1,1H),
+
+to:
+
+   15   FORMAT(1X,A20,A2,4F7.0,F8.0,F4.0,I4)
+   16   FORMAT(4F4.0,F8.0,3F4.0)
+   23  FORMAT(9X,'The MODE flag has been set to ',A1,' for calculating',
+     *   ' CO averages.')
+   24  FORMAT(9X,'The MODE flag has been set to ',A1,' for calculating',
+     *   ' PM averages.')
+  120   FORMAT (1X,A40,2F4.0,2F5.0,I2,F10.0,4X,I1,4X,I1)                V2ECF
+  130   FORMAT (1X,A20,3F10.0)
+  150   FORMAT (1X,A40,2I3,2X,I2,2X,A1)
+  160   FORMAT (1X,A20,A2,4F7.0,F8.0,3F4.0)
+  165   FORMAT (F6.1,40F6.2)                                            V2EC
+
+
+  180   FORMAT (1X,//,22HPROGRAM RUN TERMINATED,///,
+     +    46H * * SOURCE MUST BE WITHIN 10 METERS OF DATUM.)
+  190   FORMAT(1X,F3.0,F4.0,I3,F6.0,F4.0,1X,A1,I3,2I3)
+C
+
+
+C       ------------------------
+  200   FORMAT (A1,26X,'CAL3QHC: LINE SOURCE DISPERSION MODEL',
+     +    ' - VERSION Dated 95221',24X,'PAGE ',I2,/)
+  202   FORMAT (A1,112X,'PAGE ',I2)
+C
+  210   FORMAT (6X,5HJOB: ,A40,13X,5HRUN: ,A40)
+C
+
+
+  230   FORMAT (7X,5HVS = ,F5.1,5H CM/S,7X,5HVD = ,F5.1,5H CM/S,
+     +          7X,5HZ0 = ,F4.0,3H CM)
+  231   FORMAT (8X, 4HU = ,F4.1,4H M/S,9X,9HCLAS =   ,I1,3H  (,A1,1H),
+*****
+
+
+20.  Several FORMAT statements were either added or modified to accommodate the
+addition of PM data processing.  The following are such statements and were
+modified from:
+
+     +         3X,6HAMB = ,F4.1,4H PPM/)
+C
+
+
+     +    3X,6HAMB = ,F4.1,4H PPM,2X,6HBRG = ,F4.0,8H DEGREES/)
+C
+  241   FORMAT (33X,5HZ0 = ,F4.0,3H CM,9X,
+     +    5HVD = ,F5.1,5H CM/S,8X,6HAMB = ,F4.1,4H PPM)
+C
+  250   FORMAT (7X,'LINK VARIABLES',/,
+
+
+C
+  290   FORMAT (5X,I3,2H. ,5A4,1H*,4(1X,F8.1,1X),1H*,4X,F5.0,
+     +    3X,F4.0,1X,A2,1X,F7.0,1X,F5.1,1X,F5.1,1X,F4.1,1X,F4.2,1X,F5.1)
+
+
+C
+  401   FORMAT (7X,'ADDITIONAL QUEUE LINK PARAMETERS',/,                V2EF
+
+
+C                                                                       V2EF
+  406   FORMAT (5X,I3,2H. ,5A4,1H*,2(3X,I5,1X),4X,F5.1,                 V2EF
+     +    5X,I5,7X,I4,4X,F7.2,6X,I1,8X,I1)                              V2EF
+
+
+C                                                                       V2EF
+  300   FORMAT (/,7X,'RECEPTOR LOCATIONS',/,
+     +            7X,'------------------')
+  309   FORMAT (30X,39H*           COORDINATES (M)           *)
+  310   FORMAT (30X,39H*           COORDINATES (FT)          *)
+  321   FORMAT (9X,8HRECEPTOR,13X,
+     + 39H*      X          Y          Z        *)
+  331   FORMAT (5X,25(1H-),1H*,37(1H-),1H*)
+  441   FORMAT (5X,I2,2H. ,5A4,1X,1H*,4X,F8.1,3X,F8.1,3X,F8.1,
+     +    3X,1H*)
+
+to:
+
+     +         3X,6HAMB = ,F4.1,4H PPM/)
+  232   FORMAT (8X, 4HU = ,F4.1,4H M/S,9X,9HCLAS =   ,I1,3H  (,A1,1H),
+     +        5X,7HATIM = ,F4.0,8H MINUTES,5X,7HMIXH = ,F6.0,2H M,
+     +         3X,6HAMB = ,F4.1,' ug/m**3'/)
+C
+
+
+     +    3X,6HAMB = ,F4.1,4H PPM,2X,6HBRG = ,F4.0,8H DEGREES/)
+  241   FORMAT (8X, 4HU = ,F4.1,4H M/S,9X,9HCLAS =   ,I1,3H  (,A1,1H),
+     +        5X,7HATIM = ,F4.0,8H MINUTES,5X,7HMIXH = ,F6.0,2H M,
+     +    3X,6HAMB = ,F4.1,' ug/m**3',2X,6HBRG = ,F4.0,8H DEGREES/)
+  250   FORMAT (7X,'LINK VARIABLES',/,
+
+
+C
+  290   FORMAT (5X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,4X,F5.0,
+     +    3X,F4.0,1X,A2,1X,F7.0,1X,F5.1,1X,F5.1,1X,F4.1,1X,F4.2,1X,F5.1)
+
+
+C
+  300   FORMAT (/,7X,'RECEPTOR LOCATIONS',/,
+     +            7X,'------------------')
+  309   FORMAT (30X,39H*           COORDINATES (M)           *)
+  310   FORMAT (30X,39H*           COORDINATES (FT)          *)
+  321   FORMAT (9X,8HRECEPTOR,13X,
+     + 39H*      X          Y          Z        *)
+  331   FORMAT (5X,25(1H-),1H*,37(1H-),1H*)
+C
+  401   FORMAT (7X,'ADDITIONAL QUEUE LINK PARAMETERS',/,                V2EF
+
+
+C                                                                       V2EF
+  406   FORMAT (5X,I3,2H. ,A20,1H*,2(3X,I5,1X),4X,F5.1,                 V2EF
+     +    5X,I5,7X,I4,4X,F7.2,6X,I1,8X,I1)                              V2EF
+
+
+C                                                                       V2EF
+  441   FORMAT (5X,I2,2H. ,A20,1X,1H*,4X,F8.1,3X,F8.1,3X,F8.1,
+     +    3X,1H*)
+
+21.  The following date and time FORMAT statements were added:
+
+  462   FORMAT(/6X,'DATE : ',I2,'/',I2,'/',I2)
+  463   FORMAT(6X,'TIME : ',I2,':',I2,':',I2/)
+
+
+22.  The following group of FORMAT statements were restructured and additional
+statements were added for PM related WRITE statements.  The code was changed
+from: 
+
+ 8510   FORMAT(  1X,'ANGLE ',1H*,6X,'(PPM)')
+ 8511   FORMAT(1X,  '(DEGR)',1H*,20(1X,A5))
+ 8512   FORMAT(1X,'------',1H*,20A6)
+ 8530   FORMAT(1X,F4.0,2X,1H*,20(1X,F5.1))
+ 9040   FORMAT(' MAX   ',1H*,20(1X,F5.1))
+ 9042   FORMAT(' DEGR. ',1H*,20(1X,I4,1X))
+ 9043   FORMAT(' THE HIGHEST CONCENTRATION IS  ',F6.2,' PPM AT',I5,     V2EC
+     +    ' DEGREES FROM ',A5,'.')                                      V2EC
+* 9044   FORMAT(' THE 2ND HIGHEST CONCENTRATION IS  ',F6.2,' PPM AT',I5, V2EF
+*     +    ' DEGREES FROM ',A5,'.')                                      V2EF
+* 9045   FORMAT(' THE 3RD HIGHEST CONCENTRATION IS  ',F6.2,' PPM AT',I5, V2EF
+*     +    ' DEGREES FROM ',A5,'.')                                      V2EF
+
+to:
+
+ 8510   FORMAT(  1X,'ANGLE ',1H*,6X,'(PPM)')
+ 8511   FORMAT(  1X,'(DEGR)',1H*,20(1X,A5))
+ 8512   FORMAT(  1X,'------',1H*,20A6)
+ 8520   FORMAT(  1X,'ANGLE ',1H*,6X,'(ug/m**3)')
+ 8530   FORMAT(   1X,F4.0,2X,1H*,20(1X,F5.1))
+ 8531   FORMAT(   1X,F4.0,2X,1H*,20(1X,F5.0))
+ 9040   FORMAT(    ' MAX   ',1H*,20(1X,F5.1))
+ 9050   FORMAT(    ' MAX   ',1H*,20(1X,F5.0))
+ 9042   FORMAT(    ' DEGR. ',1H*,20(1X,I4,1X))
+ 9043   FORMAT(' THE HIGHEST CONCENTRATION OF  ',F6.2,' PPM',           V2EC
+     +    ' OCCURRED AT RECEPTOR ',A5,'.')                              V2EC
+ 9046   FORMAT(' THE HIGHEST CONCENTRATION OF  ',F6.0,' ug/m**3',
+     +    ' OCCURRED AT RECEPTOR ',A5,'.')
+
+
+*** CAL3QHCR Model Modifications ***
+
+
+1.  The SCRAM header was changed to reflect a new creation date and MCB number. 
+The code was changed from:
+
+C  *                                                                        *
+C  *                         CAL3QHCR (DATED 95130)                         *
+C  *                                                                        *
+C  *                       *** SEE CAL3QHC MCB#3 ***                        *
+C  *                                                                        *
+
+to:
+
+C  *                                                                        *
+C  *                         CAL3QHCR (DATED 95221)                         *
+C  *                                                                        *
+C  *                       *** SEE CAL3QHC MCB#4 ***                        *
+C  *                                                                        *
+
+2.  The following model modification statement was added:
+
+C
+C                       July 11, 1995 - The input wind angle is no longer
+C                                       being read as a wind direction (WD).
+C                                       The input wind angle is now read as
+C                                       a wind flow value, (WD + 180 degrees),
+C                                       for compatibility with EPA preprocessed
+C                                       meteorological data.
+C
+
+3.  The following definitions were changed to reflect the change in input from
+wind direction to wind flow values and a change the input unit number from 5 to
+7 under the file input unit name, IN:
+
+C   BRG    - Wind direction or wind flow direction in degrees.
+C   BRG1   - Wind direction just before BRG converted to wind flow direction.
+
+
+C        5 - IN   - Input Control File
+
+to:
+
+C   BRG    - Wind flow direction (direction wind is blowing toward) in degrees.
+C   BRG1   - Wind direction converted from wind flow direction, BRG.
+
+
+C        7 - IN   - Input Control File
+
+
+4.  The following READ statements and a line from a DATA statement were changed
+from the input unit number 5 to the input file variable name, IN, and to change
+the file input unit number from 5 to 7.  The following statements are not
+contiguous and were changed from: 
+
+      READ(5,*,END=9999) JOB, ATIM, Z0, VS, VD, NR, SCAL, IOPT
+
+      READ(5,*) ISMN, ISDY, ISYR, IEMN, IEDY, IEYR
+
+      READ(5,*)     ISFCID, ISFCYR, IAIRID, IAIRYR
+
+      READ(5, *) FLINK, FAMB, RU
+
+        READ(5,*) RCP(I),XR(I),YR(I),ZR(I)
+
+      READ(5, *) JTIER, MODE
+
+     +      IN/5/, IO /6/, IPO/8/, IMET/10/, IT1 /11/, IT2/12/, ILK/15/
+
+to:
+
+      READ(IN,*,END=9999) JOB, ATIM, Z0, VS, VD, NR, SCAL, IOPT
+
+      READ(IN,*) ISMN, ISDY, ISYR, IEMN, IEDY, IEYR
+
+      READ(IN,*)  IMFCID, IMFCYR, IMIRID, IMIRYR
+
+      READ(IN,*)     ISFCID, ISFCYR, IAIRID, IAIRYR
+
+      READ(IN, *) FLINK, FAMB, RU
+
+        READ(IN,*) RCP(I),XR(I),YR(I),ZR(I)
+
+      READ(IN, *) JTIER, MODE
+
+     +      IN/7/, IO /6/, IPO/8/, IMET/10/, IT1 /11/, IT2/12/, ILK/15/
+
+
+5.  Lahey specific variable definition code was added for Lahey date and time
+functions.  This code was then commented out with a 'CL' flag because of its
+inability to be compiled with a Microsoft Fortran Compiler.
+
+CL      CHARACTER  IDATE*8, ITIME*5, FILE5*40, FILE6*40
+
+6.  The following section of code was added for those who wish to recompile
+this program using a Lahey Fortran compiler.  CL flags were added to the
+beginning of each line with Lahey specific code.  The lines are:
+
+CL
+CL      CALL TIME(ITIME)
+CL      CALL DATE(IDATE)
+CLC
+CL      CALL GETFIL(FILE5,FILE6)
+CLC
+CL      OPEN (5,FILE=FILE5 ,STATUS='OLD')
+CL      OPEN (6,FILE=FILE6 ,STATUS='UNKNOWN')
+CLC
+
+CL          WRITE (6,'(6X,A6,A8,2X,A7,A5/)')
+CL     +            'DATE: ',IDATE,' TIME: ',ITIME
+
+7.  After each WRITE statement containing a 463 format number such as:
+
+          WRITE (IPO, 463) IIHR, IMIN, ISEC
+
+the following Lahey date and time WRITE statements were added:
+
+CL          WRITE (IPO,'(6X,A6,A8,2X,A7,A5/)')
+CL     +            'DATE: ',IDATE,' TIME: ',ITIME
+
+8.  The definition of BRG was changed from:
+
+C          BRG = WIND DIRECTION (DEGREES)
+
+to:
+
+C          BRG = WIND FLOW (Direction + 180 Degrees)
+
+9.  After each WRITE statement containing a 468 format number such as:
+
+          WRITE (ILK, 468) IIHR, IMIN, ISEC
+
+the following Lahey date and time WRITE statements were added:
+
+CL          WRITE (ILK,'(6X,A6,A8,2X,A7,A5/)')
+CL     +            'DATE: ',IDATE,' TIME: ',ITIME
+
+10.  The variable BRG1 stores a wind direction value.  Since BRG was redefined
+from a wind direction to a wind flow variable, the following lines of code were
+changed to preserve BRG1 as a wind direction storage variable and BRG as a wind
+flow variable:
+
+          BRG1=BRG
+          BRG=BRG+180.
+          IF (BRG.GE.360.) BRG=BRG-360.
+
+to:
+
+          BRG1=BRG + 180.
+          BRG = BRG
+          IF (BRG1.GE.360.) BRG1=BRG1-360.
+
+
+11.  The model creation date in the following FORMAT statements were changed
+from:
+
+  200   FORMAT (A1,58X,'CAL3QHCR (Dated: 95130)')
+
+ 300  FORMAT (A1,46X,'CAL3QHCR (Dated: 95130)')
+
+to:
+
+  200   FORMAT (A1,58X,'CAL3QHCR (Dated: 95221)')
+
+ 300  FORMAT (A1,46X,'CAL3QHCR (Dated: 95221)')
+
+12.  The PM-10 nomenclature has been replaced with PM nomenclature throughout
+the model.  This is to allow for the possibility of modeling for other than 
+PM-10 only.  The source code was changed in various places from:
+
+C    Tier approach (1 or 2), Pollutant type ( 'c' for CO or 'p' for PM-10)
+
+
+C   LE     - Ending index value for calculating CO or PM-10 concentrations.
+
+
+C   LS     - Starting index value for calculating CO or PM-10 concs.
+
+
+C   MODE   - Character flag indicating PM10 (P) or CO (C) emissions processing.
+C   MODET  - Integer flag value. CO is 0; PM10 is 1. based on MODE
+
+
+C        SELECT TYPE OF AVERAGE NEEDED CO OR PM10
+
+
+C            *****  CALCULATIONS FOR PM-10 AVERAGES  ***
+
+
+C       SET UP FOR LOOP ON PM-10 OR CO
+
+
+   24  FORMAT(9X,'The MODE flag has been set to ',A1,' for calculating',
+     *   ' PM10 averages.'/)
+
+
+ 405  FORMAT (7X,'NOTES PERTAINING TO THE REPORT'//
+     +9X,'1.  THE HIGHEST AVERAGE IN EACH OF THE FIRST TWO COLUMNS OF '
+     +  ,'EACH TABLE BELOW ARE SUFFIXED BY AN ASTERISK (*).'/
+     +9X,'    FOR PM-10 OUTPUT, THERE IS ONLY ONE COLUMN AND ASTERISK '
+     +  ,'FOR THE ANNUAL AVERAGE/PERIOD OF CONCERN TABLE.'/)
+
+to:
+
+C    Tier approach (1 or 2), Pollutant type ( 'c' for CO or 'p' for PM)
+
+
+C   LE     - Ending index value for calculating CO or PM concentrations.
+
+
+C   LS     - Starting index value for calculating CO or PM concs.
+
+
+C   MODE   - Character flag indicating PM (P) or CO (C) emissions processing.
+C   MODET  - Integer flag value. CO is 0; PM is 1. based on MODE
+
+
+C        SELECT TYPE OF AVERAGE NEEDED CO OR PM
+
+
+C            *****  CALCULATIONS FOR PM AVERAGES  ***
+
+
+C       SET UP FOR LOOP ON PM OR CO
+
+
+   24  FORMAT(9X,'The MODE flag has been set to ',A1,' for calculating',
+     *   ' PM averages.'/)
+
+
+ 405  FORMAT (7X,'NOTES PERTAINING TO THE REPORT'//
+     +9X,'1.  THE HIGHEST AVERAGE IN EACH OF THE FIRST TWO COLUMNS OF '
+     +  ,'EACH TABLE BELOW ARE SUFFIXED BY AN ASTERISK (*).'/
+     +9X,'    FOR PM OUTPUT, THERE IS ONLY ONE COLUMN AND ASTERISK '
+     +  ,'FOR THE ANNUAL AVERAGE/PERIOD OF CONCERN TABLE.'/)
+
+
+Any problems or questions should be addressed to Peter Eckhoff via TTN E-mail.
+

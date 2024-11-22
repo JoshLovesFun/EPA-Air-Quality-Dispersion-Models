@@ -1,0 +1,17 @@
+'EXAMPLE - URBAN HIGHWAY (EX-3)'  60. 175.   0. 0.   4    0.3048 0 0
+'REC 1 (SE RAMP)'            50.      -70.      6.0
+'REC 2 (SE)'                 50.     -200.      6.0
+'REC 3 (SW)'               -110.      -70.      6.0
+'REC 4 (SW)'               -110.     -200.      6.0
+'URBAN HIGHWAY (FREE FLOW LINKS ONLY)'      5  1  1  'c'
+  1
+'Northbound Lnk.1'    'AG'     0. -2000.     0.   -50. 5000.  29.6  0. 60.
+  1
+'Northbound Lnk.2'    'AG'     0.   -50.     0.  2000. 4000.  29.6  0. 60.
+  1
+'Exit Ramp  Lnk.3'    'AG'     0.   -50.    70.     0. 1000.  54.0  0. 40.
+  1
+'Exit Ramp  Lnk.4'    'AG'    70.     0.   500.     0. 1000.  54.0  0. 40.
+  1
+'Southbound Lnk.5'    'AG'   -60.  2000.   -60. -2000. 5000.  29.6  0. 60.
+ 1.0 00. 4 1000. 0.  'Y' 10  0 36

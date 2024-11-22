@@ -1,0 +1,179 @@
+                        CAL3QHC: LINE SOURCE DISPERSION MODEL - VERSION 2.0 Dated 95221                        PAGE  1
+
+      JOB: EXAMPLE-TWO WAY MULTIPHASE INT.(EX-2)                RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+      DATE :  9/ 2/ 4
+      TIME : 15: 3:32
+
+         The MODE flag has been set to c for calculating CO averages.
+
+       SITE & METEOROLOGICAL VARIABLES  
+       -------------------------------
+       VS =   0.0 CM/S       VD =   0.0 CM/S       Z0 = 175. CM
+        U =  1.0 M/S         CLAS =   4  (D)     ATIM =  60. MINUTES     MIXH =  1000. M   AMB =  0.0 PPM
+
+       LINK VARIABLES
+       --------------
+         LINK DESCRIPTION     *         LINK COORDINATES (M)           *    LENGTH  BRG TYPE   VPH    EF      H   W    V/C QUEUE
+                              *   X1        Y1        X2        Y2     *     (M)   (DEG)            (G/MI)   (M) (M)       (VEH)
+      ------------------------*----------------------------------------*----------------------------------------------------------
+       1. Main St.NB Appr.    *      4.7    -305.0       4.7       0.0 *     305.   360. AG   1730.  41.6   0.0 12.0
+       2. Main St.NB Queue    *      4.7      -6.2       4.7    -100.5 *      94.   180. AG   1931. 100.0   0.0  6.2 0.97  15.7
+       3. Main St.NB Q.Left   *      0.0      -6.2       0.0    -232.1 *     226.   180. AG   1609. 100.0   0.0  3.1 1.35  37.6
+       4. Main St.NB Dep.     *      4.7       0.0       4.7     305.0 *     305.   360. AG   1500.  41.6   0.0 12.0
+       5. Main St.SB Appr.    *     -4.7     305.0      -4.7       0.0 *     305.   180. AG   1950.  41.6   0.0 12.0
+       6. Main St.SB Queue    *     -4.7       6.2      -4.7     294.8 *     289.   360. AG   1931. 100.0   0.0  6.2 1.07  48.1
+       7. Main St.SB Q.Left   *      0.0       6.2       0.0     135.7 *     129.   360. AG   1609. 100.0   0.0  3.1 1.17  21.6
+       8. Main St.SB Dep.     *     -4.7       0.0      -4.7    -305.0 *     305.   180. AG   1750.  41.6   0.0 12.0
+       9. Local St.EB Appr.   *   -305.0      -3.1       0.0      -3.1 *     305.    90. AG    450.  41.6   0.0 12.0
+      10. Local St.EB Queue   *     -7.8      -3.1     -30.3      -3.1 *      22.   270. AG   2575. 100.0   0.0  6.2 0.56   3.8
+      11. Local St.EB Dep.    *      0.0      -3.1     305.0      -3.1 *     305.    90. AG    680.  41.6   0.0 12.0
+      12. Local St.WB Appr.   *    305.0       3.1       0.0       3.1 *     305.   270. AG    510.  41.6   0.0 12.0
+      13. Local St.WB Queue   *      7.8       3.1      33.3       3.1 *      26.    90. AG   2575. 100.0   0.0  6.2 0.63   4.2
+      14. Local St.WB Dep.    *      0.0       3.1    -305.0       3.1 *     305.   270. AG    710.  41.6   0.0 12.0
+                                                                                                                PAGE  2
+      JOB: EXAMPLE-TWO WAY MULTIPHASE INT.(EX-2)                RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+      DATE :  9/ 2/ 4
+      TIME : 15: 3:32
+
+       ADDITIONAL QUEUE LINK PARAMETERS
+       --------------------------------
+         LINK DESCRIPTION     *    CYCLE    RED     CLEARANCE  APPROACH  SATURATION   IDLE   SIGNAL   ARRIVAL
+                              *    LENGTH   TIME    LOST TIME    VOL     FLOW RATE   EM FAC   TYPE     RATE
+                              *     (SEC)   (SEC)    (SEC)      (VPH)      (VPH)    (gm/hr)
+      ------------------------*--------------------------------------------------------------------------------
+       2. Main St.NB Queue    *      90       45       2.0      1500       1700     720.00      2        1
+       3. Main St.NB Q.Left   *      90       75       2.0       230       1400     720.00      2        3
+       6. Main St.SB Queue    *      90       45       2.0      1750       1800     720.00      2        1
+       7. Main St.SB Q.Left   *      90       75       2.0       200       1400     720.00      2        3
+      10. Local St.EB Queue   *      90       60       2.0       450       1400     720.00      2        3
+      13. Local St.WB Queue   *      90       60       2.0       510       1400     720.00      2        3
+
+       RECEPTOR LOCATIONS
+       ------------------
+                              *           COORDINATES (M)           *
+         RECEPTOR             *      X          Y          Z        *
+     -------------------------*-------------------------------------*
+      1. REC 1 (SE CORNER)    *        16.7      -13.7        1.8   *
+      2. REC 2 (SW CORNER)    *       -16.7      -13.7        1.8   *
+      3. REC 3 (NW CORNER)    *       -16.7       13.7        1.8   *
+      4. REC 4 (NE CORNER)    *        16.7       13.7        1.8   *
+      5. REC 5 (E MID-MAIN)   *        16.7      -45.7        1.8   *
+      6. REC 6 (W MID-MAIN)   *       -16.7      -45.7        1.8   *
+      7. REC 7 (N MID-LOCAL)  *       -45.7       13.7        1.8   *
+      8. REC 8 (S MID-LOCAL)  *       -45.7      -13.7        1.8   *
+
+       MODEL RESULTS
+       -------------
+
+       REMARKS : In search of the angle corresponding to
+                 the maximum concentration, only the first
+                 angle, of the angles with same maximum
+                 concentrations, is indicated as maximum.
+
+ WIND ANGLE RANGE: 150.-210.
+
+ WIND  * CONCENTRATION 
+ ANGLE *      (PPM)
+ (DEGR)* REC1  REC2  REC3  REC4  REC5  REC6  REC7  REC8 
+ ------*------------------------------------------------
+ 150.  *   0.0   9.3  11.8   6.5   0.0   8.7   6.5   4.0
+ 155.  *   0.1   9.5  12.7   6.8   0.1   8.7   6.0   3.8
+ 160.  *   0.4   9.3  13.3   7.2   0.4   8.5   5.4   3.4
+ 165.  *   1.0   9.0  13.6   7.7   0.9   7.9   4.6   2.8
+ 170.  *   2.2   7.8  13.1   9.0   1.9   6.9   3.9   2.1
+ 175.  *   4.0   6.4  11.9  11.0   3.2   5.5   2.9   1.4
+ 180.  *   6.1   4.7  10.2  13.0   5.1   4.0   2.1   0.8
+ 185.  *   8.2   3.1   8.6  14.9   7.1   2.7   1.7   0.4
+ 190.  *   9.9   1.6   6.9  16.2   8.6   1.5   1.4   0.1
+ 195.  *  10.9   0.7   5.9  16.5  10.0   0.7   1.2   0.0
+ 200.  *  11.3   0.3   5.3  15.8  10.6   0.3   1.2   0.0
+ 205.  *  11.3   0.1   4.7  14.8  10.7   0.1   1.2   0.0
+ 210.  *  10.9   0.0   4.2  13.7  10.6   0.0   1.2   0.0
+ ------*------------------------------------------------
+ MAX   *  11.3   9.5  13.6  16.5  10.7   8.7   6.5   4.0
+ DEGR. *  200   155   165   195   205   150   150   150
+
+ THE HIGHEST CONCENTRATION OF   16.50 PPM OCCURRED AT RECEPTOR REC4 .
+                                                                                                                PAGE  3
+      JOB: EXAMPLE-TWO WAY MULTIPHASE INT.(EX-2)                RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+       MODEL RESULTS
+       -------------
+
+       REMARKS : In search of the angle corresponding to
+                 the maximum concentration, only the first
+                 angle, of the angles with same maximum
+                 concentrations, is indicated as maximum.
+
+ WIND ANGLE RANGE: 240.-300.
+
+ WIND  * CONCENTRATION 
+ ANGLE *      (PPM)
+ (DEGR)* REC1  REC2  REC3  REC4  REC5  REC6  REC7  REC8 
+ ------*------------------------------------------------
+ 240.  *   9.0   0.0   2.0   9.0   9.0   0.0   1.5   0.0
+ 243.  *   8.9   0.0   1.9   8.9   8.9   0.0   1.6   0.0
+ 246.  *   8.9   0.0   1.8   9.0   8.9   0.0   1.6   0.0
+ 249.  *   9.0   0.0   1.7   9.3   8.9   0.0   1.6   0.0
+ 252.  *   8.9   0.1   1.8   9.3   8.7   0.0   1.7   0.1
+ 255.  *   9.3   0.2   1.7   9.3   8.9   0.0   1.6   0.2
+ 258.  *   9.4   0.3   1.6   9.2   8.8   0.0   1.6   0.3
+ 261.  *   9.6   0.4   1.6   9.0   8.8   0.0   1.5   0.4
+ 264.  *   9.9   0.6   1.4   9.0   8.7   0.0   1.4   0.6
+ 267.  *  10.4   0.8   1.3   8.9   8.9   0.2   1.2   0.8
+ 270.  *  10.7   1.1   1.1   8.6   8.9   0.2   1.1   1.0
+ 273.  *  11.1   1.3   0.9   8.4   8.9   0.2   0.8   1.2
+ 276.  *  11.4   1.5   0.7   8.2   9.0   0.3   0.7   1.2
+ 279.  *  11.4   1.7   0.5   7.9   9.1   0.4   0.5   1.4
+ 282.  *  11.5   2.0   0.4   7.9   9.2   0.5   0.4   1.4
+ 285.  *  11.7   2.1   0.3   7.7   9.2   0.5   0.2   1.5
+ 288.  *  11.6   2.4   0.1   7.5   9.4   0.5   0.1   1.5
+ 291.  *  11.0   2.7   0.1   7.7   9.4   0.5   0.1   1.5
+ 294.  *  10.7   3.0   0.0   7.6   9.6   0.5   0.0   1.5
+ 297.  *  10.5   3.3   0.0   7.7   9.7   0.5   0.0   1.5
+ 300.  *  10.1   3.6   0.0   7.8   9.8   0.5   0.0   1.4
+ ------*------------------------------------------------
+ MAX   *  11.7   3.6   2.0   9.3   9.8   0.5   1.7   1.5
+ DEGR. *  285   300   240   249   300   282   252   285
+
+ THE HIGHEST CONCENTRATION OF   11.70 PPM OCCURRED AT RECEPTOR REC1 .
+                                                                                                                PAGE  4
+      JOB: EXAMPLE-TWO WAY MULTIPHASE INT.(EX-2)                RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+       METEOROLOGICAL VARIABLES  
+       ------------------------
+        U =  2.0 M/S         CLAS =   4  (D)     ATIM =  60. MINUTES     MIXH =  1000. M   AMB =  0.0 PPM
+
+
+       MODEL RESULTS
+       -------------
+
+       REMARKS : In search of the angle corresponding to
+                 the maximum concentration, only the first
+                 angle, of the angles with same maximum
+                 concentrations, is indicated as maximum.
+
+ WIND ANGLE RANGE: 330.-430.
+
+ WIND  * CONCENTRATION 
+ ANGLE *      (PPM)
+ (DEGR)* REC1  REC2  REC3  REC4  REC5  REC6  REC7  REC8 
+ ------*------------------------------------------------
+ 330.  *   6.3   3.3   0.0   5.0   6.8   0.5   0.0   0.6
+ 340.  *   7.3   3.7   0.3   5.3   7.3   1.0   0.0   0.6
+ 350.  *   7.4   5.1   1.5   4.7   6.3   2.5   0.1   0.7
+ 360.  *   5.7   7.3   3.7   2.8   4.4   4.3   0.7   1.4
+  10.  *   3.8   9.1   5.9   1.0   2.3   5.6   1.7   2.5
+  20.  *   2.9   8.8   6.3   0.2   1.0   5.8   2.5   3.2
+  30.  *   2.4   7.4   5.9   0.0   0.5   5.4   2.7   3.5
+  40.  *   2.2   5.9   5.5   0.0   0.4   5.5   2.7   3.8
+  50.  *   1.7   5.3   5.0   0.0   0.3   5.0   2.4   4.0
+  60.  *   1.2   5.1   4.9   0.0   0.3   4.6   2.3   4.6
+  70.  *   1.0   5.0   4.8   0.0   0.3   4.3   2.3   4.6
+ ------*------------------------------------------------
+ MAX   *   7.4   9.1   6.3   5.3   7.3   5.8   2.7   4.6
+ DEGR. *  350    10    20   340   340    20    30    60
+
+ THE HIGHEST CONCENTRATION OF    9.10 PPM OCCURRED AT RECEPTOR REC2 .

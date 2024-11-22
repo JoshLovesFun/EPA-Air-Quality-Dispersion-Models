@@ -1,0 +1,79 @@
+
+                        Model Change Bulletin
+
+                                MCB#8                      07/15/2013
+
+                        CAL3QHCR (dated 13196)
+
+This Model Change Bulletin (MCB) documents changes made to the CAL3QHCR
+Dispersion Model. A brief description of the changes is provided below.
+Additional details are available in the Fortran source code.
+
+This revised version of CAL3QHCR (dated 13196) includes the following
+modifications relative to the previous version (dated 12355):
+
+--  Bug Fixes:
+
+----  1.      Dates and times in the .OUT files were output with values
+              of zero after page two. The correct dates and times are 
+              now displayed on all pages. 
+
+----  2.      Two variables, an integer loop limit and a floating point 
+              ratio, were given the same name, 'LIM'. The name of the 
+              ratio has been changed to 'LIMRAT' to eliminate the 
+              duplication. 
+
+
+--  Enhancements:
+
+----  1.      A new output file is added which contains the 
+              maximum design concentrations for all receptors. For PM, 
+              this is based on 24-hr averages and for CO, this is based 
+              on a rolling 8-hr average. The file is formatted to match 
+              other EPA model output and is designed to facilitate 
+              plotting the model data. See the description of the 
+              PLOTFILE in section 3.7 of the AERMOD User Guide 
+              (EPA-454/B-03-001, under revision) for more details on the 
+              format of this new output file. 
+
+----  2.      The .CTL file passed to CAL3QHCR has been expanded by one 
+              line to accommodate specifying the name of the new output 
+              file. The new file name is now a necessary input parameter 
+              in the .CTL file and an error message will be displayed 
+              if the file name is not specified. The format for the .CTL 
+              is now:
+
+              [full pathname] Message filename
+              [full pathname] input filename
+              [full pathname] meteorological filename
+              [full pathname] ET1 filename
+              [full pathname] ET2 filename
+              [full pathname] Output filename
+              [full pathname] Link data filename
+              [full pathname] Plot file name
+
+
+--  Miscellaneous:
+
+----  1.      The control files in the test suite (i.e., C1C.CTL,
+              R1C.CTL, R2C.CTL, R1P.CTL, R2P.CTL, and MED.CTL) have
+              been updated with the new line.
+
+----  2.      The output of date time strings now includes the leading
+              zeros. For example, ' 1/ 1/ 9   1: 1: 1' will now be 
+              printed as '01/01/09  01:01:01'. 
+
+----  3.      The subroutine used to obtain the system date and time
+              has been updated to comply with current F90 standards, 
+              changed from 'GETDAT' to 'DATE_AND_TIME'. 
+
+
+                        *****************
+                        *   IMPORTANT   *
+                        *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: CAL3QHCR (dated 13196).  All Model Change Bulletins for this program 
+will always be available for back reference on this website.  Future 
+notification of changes (MCBs) to any programs will be made in the Recent 
+Additions section of the SCRAM website.

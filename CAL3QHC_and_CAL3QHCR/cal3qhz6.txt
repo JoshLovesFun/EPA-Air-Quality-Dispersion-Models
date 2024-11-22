@@ -1,0 +1,161 @@
+
+                             Model Change Bulletin
+              
+                                    MCB#6                          9/01/04
+
+                            CAL3QHC  (Dated 04244)
+                            CAL3QHCR (Dated 04244)
+
+     Both CAL3QHC and CAL3QHCR are covered by this Model Change Bulletin (MCB)
+under the CAL3QHC model name.  Since CAL3QHCR is an enhanced but separate
+version of CAL3QHC, both models will retain their respective Julian creation
+dates.  Under this MCB, both models, have been updated and therefore both
+models have a new creation date.
+
+     Both models have been recompiled using Compaq Visual Fortran V6.6c.  This
+should eliminate some memory management problems that were occurring on 
+Windows XP based systems when using executables that were compiles using 
+Microsoft Fortran and other 16-bit compilers.
+
+The following are detailed changes made to both models
+
+CAL3QHC
+
+Only a few informational sections were modified:
+
+The model's SCRAM header was changed from: 
+
+C  *                                                                        *
+C  *                         CAL3QHC (DATED 95221)                          *
+C  *                                                                        *
+C  *                *** SEE CAL3QHC (DATED 95221) MCB #4 ***                *
+C  *                                                                        *
+C  *     ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS BULLETIN BOARD     *
+C  *                                                                        *
+C  *                        (919) 541-5742 (8-N-1)                          *
+C  *                                                                        *
+
+to:
+
+C  *                                                                        *
+C  *                         CAL3QHC (DATED 04244)                          *
+C  *                                                                        *
+C  *                       *** SEE CAL3QHC MCB#6 ***                        *
+C  *                                                                        *
+C  *        ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS WEB SITE        *
+C  *                                                                        *
+C  *                      http://www.epa.gov/scram001                       *
+C  *                                                                        *
+*****
+
+A brief description of the pertinent change was added:
+
+The following comment was added:
+
+C     |                                                                |
+C     | CAL3QHC (Dated 04244) was recompiled using Compaq Visual       |
+C     |         Fortran Version 6.6C.  This should alleviate memory    |
+C     |         management and stack segment errors when Windows XP    |
+C     |         is the Operating System.  Some minor comments were     |
+C     |         added or modified.
+C     |                                                                |
+C      ================================================================
+C
+
+The following warning was changed from:
+
+    6 FORMAT('                      NOTICE'/
+     +5x,'The format of CAL3QHC (Dated 95221) has been made user-',
+     +   'friendlier',/5X,
+     +'by using a free format.  However, the program has detected the',
+     +   ' possible use ',/5X,
+
+to:
+
+    6 FORMAT('                      NOTICE'/
+     +5x,'CAL3QHC has been made user-friendlier by using a ',/5X,
+     +'free format.  However, the program has detected the',
+     +   ' possible use ',/5X,
+
+
+
+CAL3QHCR
+
+     A bug was reported and fixed where CAL3QHCR was erroneously terminating
+when reading Year 2000 meteorological data.
+
+The main program header was updated.
+
+from:
+
+C  *                                                                        *
+C  *                         CAL3QHCR (DATED 04181)                         *
+C  *                                                                        *
+C  *                       *** SEE CAL3QHC MCB#5 ***                        *
+C  *                                                                        *
+
+to:
+
+C  *                                                                        *
+C  *                         CAL3QHCR (DATED 04244)                         *
+C  *                                                                        *
+C  *                       *** SEE CAL3QHC MCB#6 ***                        *
+C  *                                                                        *
+
+A brief comment was added describing the changes made to the model.
+
+C                       September 1, 2004 - A bug that prevented Year 2000  
+C                                           meterological data from being used
+C                                           was reported and fixed.
+C                                       
+
+
+This code corrects ends the erroneously terminating bug mentioned above.
+
+from:
+
+          IF (MYR .LT. 1 .OR. MYR .GT. 99) MFLG(1) = 1
+
+to:
+
+          IF (MYR .LT. 0 .OR. MYR .GT. 99) MFLG(1) = 1
+
+
+
+The creation date was updated.
+
+from:
+
+ 200  FORMAT (A1,58X,'CAL3QHCR (Dated: 04181)')
+
+to:
+
+ 200  FORMAT (A1,58X,'CAL3QHCR (Dated: 04244)')
+
+
+from:
+
+ 300  FORMAT (A1,46X,'CAL3QHCR (Dated: 04181)')
+
+to:
+
+ 300  FORMAT (A1,46X,'CAL3QHCR (Dated: 04244)')
+
+
+The PM format was expanded to the hundreths decimal place.
+This was done to accomodate some sensitivity testing and left
+in place.
+
+
+from:
+
+  164 FORMAT (1X, I4, 2F8.1)
+
+to:
+
+
+C          Insertion, Adesman 1/16/2003
+C  164 FORMAT (1X, I4, 2F8.1)
+  164 FORMAT (1X, I4, 2F9.2)
+C           End Of Insertion
+

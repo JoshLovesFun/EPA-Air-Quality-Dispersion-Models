@@ -1,0 +1,32 @@
+'EXAMPLE - TWO WAY INTERSECTION (EX-1)' 60. 175.  0. 0.  8   0.3048 1 1
+'REC 1 (SE CORNER)  '        45.      -35.      6.0
+'REC 2 (SW CORNER)  '       -45.      -35.      6.0
+'REC 3 (NW CORNER)  '       -45.       35.      6.0
+'REC 4 (NE CORNER)  '        45.       35.      6.0
+'REC 5 (E MID-MAIN) '        45.     -150.      6.0
+'REC 6 (W MID-MAIN) '       -45.     -150.      6.0
+'REC 7 (N MID-LOCAL)'      -150.       35.      6.0
+'REC 8 (S MID-LOCAL)'      -150.      -35.      6.0
+'MAIN ST. AND LOCAL ST. INTERSECTION'       9  1  0  'C'
+  1
+'Main St.NB Appr.  '  'AG'    10. -1000.    10.     0. 1500.  41.6  0. 40.
+  2
+'Main St.NB Queue  '  'AG'    10.   -10.    10. -1000.    0.  20.0   2
+        90        40       3.0 1500 735.00 0 0 0
+  1
+'Main St.NB Dep.   '  'AG'    10.     0.    10.  1000. 1500.  41.6  0. 40.
+  1
+'Main St.SB Appr.  '  'AG'   -10.  1000.   -10.     0. 1200.  41.6  0. 40.
+  2
+'Main St.SB Queue  '  'AG'   -10.    10.   -10.  1000.    0.  20.0   2
+        90        40       3.0 1200 735.00 0 0 0
+  1
+'Main St.SB Dep.   '  'AG'   -10.     0.   -10. -1000. 1200.  41.6  0. 40.
+  1
+'Local St.Appr.Lnk.'  'AG' -1000.     0.     0.     0. 1000.  41.6  0. 40.
+  2
+'Local St.Queue Lnk.' 'AG'   -20.     0. -1000.     0.    0.  20.0   2
+        90        50       3.0 1000 735.00 0 0 0
+  1
+'Local St.Dep.Lnk.'   'AG'     0.     0.  1000.     0. 1000.  41.6  0. 40.
+ 1.0 00. 4 1000. 0.  'Y' 10  0 36

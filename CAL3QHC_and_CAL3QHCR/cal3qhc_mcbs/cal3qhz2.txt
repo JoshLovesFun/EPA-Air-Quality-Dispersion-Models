@@ -1,0 +1,51 @@
+                      Model Change Bulletin
+              
+                              MCB#2                       4/26/95
+
+                      CAL3QHC  (Dated 93157)
+                      CAL3QHCR (Dated 95116)
+
+
+     Both CAL3QHC and CAL3QHCR are covered by this Model Change Bulletin. 
+CAL3QHCR is an enhanced but separate version of CAL3QHC.  Both models will
+retain their respective identifying Julian dates.
+
+        No changes have been made to CAL3QHC (Dated 93157) and therefore, there is
+no change to its Julian date.
+
+     This Model Change Bulletin initiates the activities of CAL3QHCR (Dated
+95116) under the CAL3QHC header.  CAL3QHCR is an enhanced version of CAL3QHC
+(Dated 93157).  CAL3QHCR is capable of processing up to a year of
+meteorological, and vehicle emissions, traffic volume and signalization data in
+one run using the basic algorithms from CAL3QHC.  Daily to seasonal runs can
+also be made.  Output from the model consists of calculated running 8-hour and
+1-hour averaged CO or 24-hour and annual block averaged PM-10 concentrations. 
+Model usage caveats are contained in the CAL3QHCR user's guide which is an
+addendum to the CAL3QHC user's guide.
+
+     CAL3QHCR will henceforth be identified by its respective name and Julian
+date, i.e.: CAL3QHCR (Dated 95116).  Future changes to either of these two
+programs will be identified by an updated Julian date found on the first line
+of the model source code and followed by a reference to a CAL3QHC Model Change
+Bulletin (MCB#n) on the SCRAM BBS.  A new Julian date will be assigned to a
+model only when the source code for that model has been changed.  The nature
+and contents of the changes to each model will be explained as was done in the
+previous two paragraphs.  All Model Change Bulletins for these two models will
+always be available for back reference on this BBS.  In the future,
+notification of changes (MCBs) to either of these two models will be made in
+the SCRAM ALERTS section of this BBS immediately following the LOGON procedure.
+
+      The source code for these models have been compiled and tested on an IBM
+PC computer.  A math coprocessor should be used.
+
+                       ******************
+                       * Important Note *  
+                       ******************
+   
+      A new Model Change Bulletin will ONLY be issued when there
+is a change to the source code for either of these two models.  Changes to test
+cases and/or any pre and post processors that are included in the archived file
+of either model will be addressed and appropriately identified in an amendment
+to the models' latest MCB with notification posted in the SCRAM ALERTS section
+of the BBS.    
+

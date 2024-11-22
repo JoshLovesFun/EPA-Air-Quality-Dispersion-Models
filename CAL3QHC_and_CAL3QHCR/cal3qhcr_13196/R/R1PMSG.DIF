@@ -1,0 +1,11 @@
+Comparing files R1PT.MSG and R1P.MSG
+***** R1PT.MSG
+
+         Run start date: 01/01/64    Julian:   1
+               end date: 12/31/64    Julian: 366
+***** R1P.MSG
+
+         Run start date:  1/ 1/64    Julian:   1
+               end date: 12/31/64    Julian: 366
+*****
+

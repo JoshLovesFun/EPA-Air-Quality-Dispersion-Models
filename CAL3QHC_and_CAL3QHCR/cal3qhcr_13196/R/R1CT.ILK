@@ -1,0 +1,31 @@
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:  1
+     TIME : 08:26:03                                        LINK DATA VARIABLES
+
+     JOB: EXAMPLE - TWO WAY INTERSECTION (EX-1)                       RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+     LINK VARIABLES
+     --------------
+         LINK DESCRIPTION     *         LINK COORDINATES (FT)          *  LENGTH  BRG TYPE  VPH     EF     H    W    V/C QUEUE
+                              *     X1        Y1        X2        Y2   *   (FT)  (DEG)            (G/MI) (FT)  (FT)      (VEH) TRUNC
+      ------------------------*----------------------------------------*------------------------------------------------------------
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1500.0   41.6   0.0  40.0
+       2. Main St.NB Queue    *     10.0     -10.0      10.0    -238.5 *   229.  180.  AG 1752.4  100.0   0.0  20.0 0.94  11.6  NO 
+       3. Main St.NB Dep.     *     10.0       0.0      10.0    1000.0 *  1000.  360.  AG 1500.0   41.6   0.0  40.0
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG 1200.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0     141.2 *   131.  360.  AG 1752.4  100.0   0.0  20.0 0.75   6.7  NO 
+       6. Main St.SB Dep.     *    -10.0       0.0     -10.0   -1000.0 *  1000.  180.  AG 1200.0   41.6   0.0  40.0
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1000.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -165.4       0.0 *   145.  270.  AG 2190.5  100.0   0.0  20.0 0.80   7.4  NO 
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1000.0   41.6   0.0  40.0
+  
+     ADDITIONAL QUEUE LINK PARAMETERS
+     --------------------------------
+         LINK DESCRIPTION     *   CYCLE    RED     CLEARANCE  APPROACH  SATURATION   IDLE   SIGNAL   ARRIVAL
+                              *    LENGTH   TIME    LOST TIME    VOL     FLOW RATE   EM FAC   TYPE     RATE
+                              *     (SEC)   (SEC)    (SEC)      (VPH)      (VPH)    (gm/hr)
+      ------------------------*--------------------------------------------------------------------------------
+       2. Main St.NB Queue    *      90       40       3.0      1500       1600      735.0      1        3
+       5. Main St.SB Queue    *      90       40       3.0      1200       1600      735.0      1        3
+       8. Local St.Queue Lnk. *      90       50       3.0      1000       1600      735.0      1        3

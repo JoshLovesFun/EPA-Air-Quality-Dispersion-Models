@@ -1,0 +1,314 @@
+                                                           CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  1
+     TIME : 14:36:43
+
+     JOB: EXAMPLE - TWO WAY INTERSECTION (EX-1)                       RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+       ===================
+       General Information
+       ===================
+
+         Run start date:  1/ 1/64    Julian:   1
+               end date: 12/31/64    Julian: 366
+
+         A Tier 2 approach was used for input data preparation.
+
+         The MODE flag has been set to C for calculating CO averages.
+
+         Ambient background concentrations are included in the averages below.
+
+
+       Site & Meteorological Constants
+       -------------------------------
+         VS =   0.0 CM/S       VD =   0.0 CM/S       Z0 = 175. CM     ATIM =  60.
+
+           Met. Sfc. Sta. Id & Yr = 94823    64
+           Upper Air Sta. Id & Yr = 94823    64
+
+         Urban mixing heights were processed.
+
+         In 1964, Julian day 1 is a Wednesday.
+
+         The patterns from the input file
+         have been assigned as follows:
+
+           Pattern # 1 is assigned to Monday.   
+           Pattern # 1 is assigned to Tuesday.  
+           Pattern # 1 is assigned to Wednesday.
+           Pattern # 1 is assigned to Thursday. 
+           Pattern # 1 is assigned to Friday.   
+           Pattern # 2 is assigned to Saturday. 
+           Pattern # 3 is assigned to Sunday.   
+
+       Link Data Constants - (Variable data in *.LNK file)
+       -------------------
+
+             LINK DESCRIPTION     *         LINK COORDINATES (FT)          *   LENGTH   BRG  TYPE    H     W  NLANES
+                                  *     X1        Y1        X2        Y2   *    (FT)   (DEG)       (FT)  (FT)
+          ------------------------*----------------------------------------*----------------------------------------
+           1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *    1000.   360.  AG    0.0  40.0
+           2. Main St.NB Queue    *     10.0     -10.0      10.0   -1000.0 *     990.   180.  AG    0.0  20.0    2
+           3. Main St.NB Dep.     *     10.0       0.0      10.0    1000.0 *    1000.   360.  AG    0.0  40.0
+           4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *    1000.   180.  AG    0.0  40.0
+           5. Main St.SB Queue    *    -10.0      10.0     -10.0    1000.0 *     990.   360.  AG    0.0  20.0    2
+           6. Main St.SB Dep.     *    -10.0       0.0     -10.0   -1000.0 *    1000.   180.  AG    0.0  40.0
+           7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *    1000.    90.  AG    0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  2
+     TIME : 14:36:43
+
+     JOB: EXAMPLE - TWO WAY INTERSECTION (EX-1)                       RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+       Link Data Constants - (Variable data in *.LNK file)
+       -------------------
+
+             LINK DESCRIPTION     *         LINK COORDINATES (FT)          *   LENGTH   BRG  TYPE    H     W  NLANES
+                                  *     X1        Y1        X2        Y2   *    (FT)   (DEG)       (FT)  (FT)
+          ------------------------*----------------------------------------*----------------------------------------
+           8. Local St.Queue Lnk. *    -20.0       0.0   -1000.0       0.0 *     980.   270.  AG    0.0  20.0    2
+           9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *    1000.    90.  AG    0.0  40.0
+
+       Receptor Data
+       -------------
+
+                                   *           COORDINATES (FT)
+              RECEPTOR             *         X          Y          Z
+          -------------------------*-------------------------------------
+           1. REC 1 (SE CORNER)    *        45.0      -35.0        6.0
+           2. REC 2 (SW CORNER)    *       -45.0      -35.0        6.0
+           3. REC 3 (NW CORNER)    *       -45.0       35.0        6.0
+           4. REC 4 (NE CORNER)    *        45.0       35.0        6.0
+           5. REC 5 (E MID-MAIN)   *        45.0     -150.0        6.0
+           6. REC 6 (W MID-MAIN)   *       -45.0     -150.0        6.0
+           7. REC 7 (N MID-LOCAL)  *      -150.0       35.0        6.0
+           8. REC 8 (S MID-LOCAL)  *      -150.0      -35.0        6.0
+
+       Model Results
+       -------------
+
+         Remarks : In search of the wind direction corresponding
+                   to the maximum concentration, only the first
+                   direction, of the directions with the same maximum
+                   concentrations, is indicated as the maximum.
+
+                 * MAXIMUM HOURLY CONCENTRATIONS WITH ANY AMBIENT BACKGROUND CONCENTRATIONS (BKG) ADDED
+                 *         (PPM)
+                 *    REC1    REC2    REC3    REC4    REC5    REC6    REC7    REC8 
+         --------*----------------------------------------------------------------
+         MAX+BKG *    13.1    13.4    15.8    11.7    11.3    10.9    13.3    11.1
+         - BKG   *     5.0     5.1     5.0     5.0     5.1     5.0     5.1     5.1
+         --------*----------------------------------------------------------------
+           MAX   *     8.1     8.3    10.8     6.7     6.2     5.9     8.2     6.0
+         WIND DIR*    283      16     151     195     315     151     138      63
+         JULIAN  *    218     217     258      48     311     258     158     138
+         HOUR    *      7      17       8       7      18       8      22       2
+
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  3
+     TIME : 14:36:43
+
+     JOB: EXAMPLE - TWO WAY INTERSECTION (EX-1)                       RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+         THE HIGHEST CONCENTRATION OF 15.78 PPM OCCURRED AT RECEPTOR REC3 .
+
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  4
+     TIME : 14:36:59
+
+     JOB: EXAMPLE - TWO WAY INTERSECTION (EX-1)                       RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+       ==============
+       Output Section
+       ==============
+
+       NOTES PERTAINING TO THE REPORT
+
+         1.  THE HIGHEST AVERAGE IN EACH OF THE FIRST TWO COLUMNS OF EACH TABLE BELOW ARE SUFFIXED BY AN ASTERISK (*).
+             FOR PM OUTPUT, THERE IS ONLY ONE COLUMN AND ASTERISK FOR THE ANNUAL AVERAGE/PERIOD OF CONCERN TABLE.
+
+         2.  THE NUMBERS IN PARENTHESES ARE THE JULIAN DAY AND ENDING HOUR FOR THE PRECEDING AVERAGE.
+
+         3.  THE NUMBER OF CALM HOURS USED IN PRODUCING EACH AVERAGE ARE PREFIXED BY A C.
+
+
+       PRIMARY AVERAGES.
+
+         MAXIMUM 8-HOUR RUNNING NONOVERLAPPING AVERAGE CONCENTRATIONS
+           IN PARTS PER MILLION (PPM),
+             INCLUDING AMBIENT BACKGROUND CONCENTRATIONS.
+
+                                  Highest             Second highest
+            Receptor               Ending                  Ending
+             Number        Conc    Day Hr  Calm    Conc    Day Hr  Calm
+
+                1          9.42   ( 54, 4) C 1     9.38   (311,23) C 2
+                2          9.51   (138, 4) C 0     9.10   (180, 5) C 1
+                3          9.61*  (329,14) C 2     9.53*  (320, 2) C 2
+                4          8.59   (299, 3) C 2     8.39   (363,20) C 1
+                5          8.30   (292, 5) C 1     8.29   (309,20) C 2
+                6          8.23   (138, 4) C 0     8.00   (180, 6) C 1
+                7          8.81   (338,14) C 0     8.68   (103, 3) C 0
+                8          8.84   (306, 3) C 0     8.39   (138, 4) C 0
+
+         FIVE HIGHEST  1-HOUR END-TO-END AVERAGE CONCENTRATIONS IN PARTS PER MILLION
+         INCLUDING AMBIENT BACKGROUND CONCENTRATIONS.
+
+                       Highest         Second Highest       Third Highest      Fourth Highest       Fifth Highest
+           Rcptr        Ending              Ending              Ending              Ending              Ending
+            No.   Conc  Day Hr  Calm  Conc  Day Hr  Calm  Conc  Day Hr  Calm  Conc  Day Hr  Calm  Conc  Day Hr  Calm 
+
+              1  13.07 (218, 7) C 0  12.40 (201, 1) C 0  12.06 (237, 6) C 0  11.88 (299, 3) C 0  11.38 ( 92, 8) C 0
+              2  13.37 (217,17) C 0  12.64 ( 41,14) C 0  12.58 (138, 3) C 0  12.48 ( 50, 8) C 0  12.27 (180, 4) C 0
+              3  15.78*(258, 8) C 0  14.89*( 22, 9) C 0  13.78 (158,22) C 0  13.47 (128, 7) C 0  13.17 (300, 7) C 0
+              4  11.67 ( 48, 7) C 0  11.67 (324,17) C 0  11.58 (111,18) C 0  11.57 ( 43, 7) C 0  11.07 (314, 7) C 0
+              5  11.28 (311,18) C 0  10.97 ( 48, 7) C 0  10.87 (107, 7) C 0  10.77 ( 43, 7) C 0  10.60 (279,10) C 0
+              6  10.88 (258, 8) C 0   9.97 (217,17) C 0   9.87 (300, 7) C 0   9.78 (138, 3) C 0   9.64 ( 41,14) C 0
+              7  13.28 (158,22) C 0  13.18 (258, 8) C 0  11.27 (181, 7) C 0  11.27 ( 72, 7) C 0  11.17 (248, 7) C 0
+              8  11.09 (138, 2) C 0  10.89 (137,23) C 0  10.88 (305,22) C 0  10.77 (194, 4) C 0  10.76 (247, 6) C 0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  5
+     TIME : 14:36:59
+
+     JOB: EXAMPLE - TWO WAY INTERSECTION (EX-1)                       RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+       LINK CONTRIBUTION TABLES
+
+
+         MAXIMUM  8-HOUR AVERAGED LINK CONTRIBUTIONS
+              IN PARTS PER MILLION (PPM)
+         INCLUDING AMBIENT BACKGROUND CONCENTRATIONS.
+
+           Rcptr Total  Ending  Ambient  Total   Link  Link  Link  Link  Link  Link  Link  Link  Link
+            No.   Conc  Day Hr  Backgnd   Link    +1    +2    +3    +4    +5    +6    +7    +8    +9
+ 
+             1    9.42 ( 54, 4)   5.09    4.33   0.73  1.53  0.01  0.01  0.03  0.40  0.51  1.03  0.07
+             2    9.51 (138, 4)   5.09    4.43   0.15  0.16  0.58  0.52  0.86  0.30  0.44  1.28  0.14
+             3    9.61 (329,14)   5.01    4.60   0.40  0.58  0.27  0.38  0.80  0.35  0.35  1.15  0.32
+             4    8.59 (299, 3)   5.09    3.50   0.03  0.00  0.63  0.37  0.88  0.07  0.47  0.97  0.08
+             5    8.30 (292, 5)   5.09    3.21   0.71  1.51  0.00  0.01  0.01  0.43  0.19  0.34  0.00
+             6    8.23 (138, 4)   5.09    3.14   0.47  0.94  0.24  0.19  0.24  0.65  0.06  0.19  0.16
+             7    8.81 (338,14)   5.01    3.80   0.26  0.48  0.03  0.03  0.06  0.25  0.54  2.10  0.06
+             8    8.84 (306, 3)   5.09    3.75   0.06  0.14  0.23  0.19  0.43  0.05  0.53  1.98  0.16
+
+         SECOND HIGHEST  8-HOUR AVERAGED LINK CONTRIBUTIONS
+              IN PARTS PER MILLION (PPM)
+         INCLUDING AMBIENT BACKGROUND CONCENTRATIONS.
+
+           Rcptr Total  Ending  Ambient  Total   Link  Link  Link  Link  Link  Link  Link  Link  Link
+            No.   Conc  Day Hr  Backgnd   Link    +1    +2    +3    +4    +5    +6    +7    +8    +9
+ 
+             1    9.38 (311,23)   5.09    4.28   0.58  1.53  0.15  0.15  0.30  0.28  0.38  0.75  0.15
+             2    9.10 (180, 5)   5.09    4.01   0.17  0.33  0.49  0.44  0.84  0.31  0.33  1.04  0.06
+             3    9.53 (320, 2)   5.09    4.43   0.32  0.53  0.42  0.52  1.30  0.27  0.20  0.68  0.20
+             4    8.39 (363,20)   5.06    3.33   0.03  0.01  0.69  0.40  1.03  0.03  0.36  0.73  0.06
+             5    8.29 (309,20)   5.06    3.23   0.63  1.18  0.25  0.20  0.25  0.28  0.10  0.25  0.08
+             6    8.00 (180, 6)   5.08    2.91   0.51  1.07  0.16  0.11  0.14  0.66  0.04  0.07  0.14
+             7    8.68 (103, 3)   5.09    3.59   0.19  0.34  0.14  0.12  0.25  0.12  0.50  1.65  0.28
+             8    8.39 (138, 4)   5.09    3.30   0.01  0.01  0.29  0.25  0.24  0.01  0.55  1.91  0.03
+
+         MAXIMUM  1-HOUR AVERAGED LINK CONTRIBUTIONS
+              IN PARTS PER MILLION (PPM)
+         INCLUDING AMBIENT BACKGROUND CONCENTRATIONS.
+
+           Rcptr Total  Ending  Ambient  Total   Link  Link  Link  Link  Link  Link  Link  Link  Link
+            No.   Conc  Day Hr  Backgnd   Link    +1    +2    +3    +4    +5    +6    +7    +8    +9
+ 
+             1   13.07 (218, 7)   4.97    8.10   1.20  2.20  0.10  0.10  0.10  0.70  1.10  2.40  0.20
+             2   13.37 (217,17)   5.07    8.30   0.00  0.00  1.20  1.30  2.10  0.20  0.80  2.70  0.00
+             3   15.78 (258, 8)   4.98   10.80   1.50  3.00  0.10  0.50  0.30  1.30  1.00  3.00  0.10
+             4   11.67 ( 48, 7)   4.97    6.70   1.70  3.00  0.20  0.00  0.00  1.00  0.00  0.00  0.80
+             5   11.28 (311,18)   5.08    6.20   1.30  2.70  0.00  0.00  0.10  0.80  0.30  1.00  0.00
+             6   10.88 (258, 8)   4.98    5.90   1.60  2.50  0.00  0.00  0.00  1.80  0.00  0.00  0.00
+             7   13.28 (158,22)   5.08    8.20   0.60  1.10  0.00  0.00  0.00  0.60  1.10  4.80  0.00
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  6
+     TIME : 14:36:59
+
+     JOB: EXAMPLE - TWO WAY INTERSECTION (EX-1)                       RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+       LINK CONTRIBUTION TABLES
+
+
+         MAXIMUM  1-HOUR AVERAGED LINK CONTRIBUTIONS
+              IN PARTS PER MILLION (PPM)
+         INCLUDING AMBIENT BACKGROUND CONCENTRATIONS.
+
+           Rcptr Total  Ending  Ambient  Total   Link  Link  Link  Link  Link  Link  Link  Link  Link
+            No.   Conc  Day Hr  Backgnd   Link    +1    +2    +3    +4    +5    +6    +7    +8    +9
+ 
+             8   11.09 (138, 2)   5.09    6.00   0.10  0.10  0.40  0.30  0.70  0.10  0.90  3.20  0.20
+
+         SECOND HIGHEST  1-HOUR AVERAGED LINK CONTRIBUTIONS
+              IN PARTS PER MILLION (PPM)
+         INCLUDING AMBIENT BACKGROUND CONCENTRATIONS.
+
+           Rcptr Total  Ending  Ambient  Total   Link  Link  Link  Link  Link  Link  Link  Link  Link
+            No.   Conc  Day Hr  Backgnd   Link    +1    +2    +3    +4    +5    +6    +7    +8    +9
+ 
+             1   12.40 (201, 1)   5.10    7.30   1.00  2.00  0.10  0.20  0.30  0.50  0.80  2.10  0.30
+             2   12.64 ( 41,14)   5.04    7.60   0.00  0.00  1.10  1.10  2.00  0.20  0.60  2.60  0.00
+             3   14.89 ( 22, 9)   4.99    9.90   1.50  1.70  0.00  0.10  0.00  1.60  0.90  4.10  0.00
+             4   11.67 (324,17)   5.07    6.60   0.00  0.00  1.20  0.70  1.60  0.00  1.00  2.00  0.10
+             5   10.97 ( 48, 7)   4.97    6.00   1.90  3.10  0.00  0.00  0.00  1.00  0.00  0.00  0.00
+             6    9.97 (217,17)   5.07    4.90   0.50  0.90  0.70  0.50  0.70  0.90  0.20  0.40  0.10
+             7   13.18 (258, 8)   4.98    8.20   0.80  1.00  0.00  0.00  0.00  0.70  1.20  4.50  0.00
+             8   10.89 (137,23)   5.09    5.80   0.00  0.00  0.40  0.40  0.80  0.00  0.80  3.40  0.00
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  7
+     TIME : 14:36:59
+
+     JOB: EXAMPLE - TWO WAY INTERSECTION (EX-1)                       RUN: MAIN ST. AND LOCAL ST. INTERSECTION     
+
+
+                                                           CALM DURATION FREQUENCY
+
+           Hours of    Frequency
+         Consecutive       of    
+         Calm Winds    Occurrence    (Julian day/hour ending) of Significant Occurrences
+
+              1           188        (  7,13)( 11, 5)( 11,13)( 21,24)( 23,19)( 29, 5)( 31, 3)( 31, 6)( 34,24)( 35, 6)
+                                     ( 40,18)( 42,23)( 43, 5)( 46, 2)( 46,14)( 48, 5)( 54, 2)( 54, 6)( 56, 2)( 59, 8)
+                                     ( 62, 6)( 62,23)( 71,19)( 72,23)( 73, 4)( 73, 8)( 76, 8)( 83, 4)( 84,23)( 85, 1)
+                                     (105, 7)(110,18)(111,20)(125, 5)(126, 2)(126, 4)(132,21)(136, 8)(137, 4)(137, 6)
+                                     (143,21)(144, 1)(154, 4)(154, 6)(156, 6)(158, 1)(160,24)(164, 1)(169, 6)(174, 4)
+                                     (174,20)(175,21)(179, 6)(180, 5)(180,24)(182, 3)(182, 6)(184, 1)(188, 7)(188,24)
+                                     (190, 2)(190,24)(191, 4)(191, 6)(192, 1)(192, 6)(193, 3)(193,23)(195,24)(198, 8)
+                                     (199,20)(201,21)(201,24)(202, 2)(202, 5)(202,23)(203, 6)(204, 2)(204, 5)(204, 7)
+                                     (205,22)(205,24)(206, 2)(206, 4)(210, 5)(212, 2)(214, 9)(214,21)(214,23)(215, 2)
+                                     (215, 4)(215,21)(228,23)(230, 3)(233, 4)(238, 5)(239,22)(240, 2)(242, 3)(242,21)
+                                     (242,23)(243, 1)(243,23)(244, 2)(244, 5)(246,22)(246,24)(247, 7)(248, 5)(250,22)
+                                     (253,21)(255, 1)(257,24)(258, 3)(259,24)(260,21)(261, 1)(261, 6)(261, 8)(261,21)
+                                     (261,24)(262, 3)(262, 7)(263, 1)(263, 3)(266, 4)(267, 3)(270, 1)(270, 5)(271,21)
+                                     (273,14)(273,20)(276, 8)(277, 1)(280,23)(285, 8)(285,19)(288,19)(288,22)(289, 7)
+                                     (289,18)(289,20)(289,24)(291,18)(292, 4)(292, 8)(294, 6)(297,23)(299, 4)(300, 6)
+                                     (300, 8)(301, 4)(301, 7)(301,19)(302, 5)(306, 7)(306,15)(306,20)(307, 2)(308, 7)
+                                     (308,22)(309,17)(311,19)(311,21)(312,18)(312,21)(314, 5)(315, 1)(319,11)(319,21)
+                                     (320,20)(324,15)(329, 4)(329, 6)(336, 8)(338,21)(338,23)(339,11)(344,19)(344,21)
+                                     (346, 8)(347, 5)(347,16)(356,19)(356,21)(357, 1)(357,23)(363,19)
+              2            55        ( 23,24)( 24, 3)( 29, 8)( 36,18)( 43, 3)( 46, 6)( 48,22)( 49, 3)(102, 3)(111,24)
+                                     (125,23)(136, 6)(139, 2)(139, 6)(156, 3)(157,21)(174,23)(193, 1)(196, 4)(198, 6)
+                                     (198,23)(200,23)(203, 2)(203,22)(205, 1)(205, 5)(205, 8)(208,23)(222,24)(242, 6)
+                                     (247, 3)(249,24)(250, 3)(250, 6)(250, 9)(261, 4)(262,20)(262,23)(272, 1)(279, 5)
+                                     (281, 7)(286, 7)(288, 8)(289, 1)(299, 2)(301,23)(302, 2)(302,23)(306,23)(328,22)
+                                     (329, 9)(344,24)(355,24)(356, 8)(361,10)
+              3            27        ( 18,23)( 45,24)( 49, 7)( 53, 7)(102, 7)(107, 2)(144, 6)(160, 7)(180,22)(183, 2)
+                                     (193, 7)(194, 3)(199,24)(202,21)(209, 4)(218, 3)(228, 7)(230, 7)(243, 6)(280, 5)
+                                     (281, 3)(289, 5)(301, 2)(312, 7)(320, 4)(329,19)(356, 4)
+              4            12        ( 87,24)(170, 2)(198, 3)(209,24)(233, 1)(248, 1)(254,23)(269,23)(280, 1)(300,22)
+                                     (312, 3)(320, 9)
+              5            12        (142,24)(143, 6)(147, 2)(169, 4)(178, 7)(188, 4)(189, 6)(228, 3)(254, 6)(286,23)
+                                     (295, 1)(307, 8)
+              6             6        ( 59, 6)(199, 6)(238, 2)(259, 3)(288, 5)(298, 6)
+              7             3        (229, 7)(286, 3)(310, 2)
+              9             2        (220, 6)(252, 5)
+             10             3        (253, 7)(305, 9)(309, 9)
+ 
+     Program terminated normally
+ 

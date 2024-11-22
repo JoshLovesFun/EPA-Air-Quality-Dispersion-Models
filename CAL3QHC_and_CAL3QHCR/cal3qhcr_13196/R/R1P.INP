@@ -1,0 +1,25 @@
+'EXAMPLE OF PM-10 ROADWAY HOT SPOT' 60. 175. 0. 0. 8 0.3048 1
+ 1 1 64  12 31 64
+ 94823 64  94823 64
+ 1 1 'U'
+'REC 1 (SE MIDPOINT)'        45.      -35.      6.0
+'REC 2 (SW MIDPOINT)'       -45.      -35.      6.0
+'REC 3 (NW MIDPOINT)'       -45.       35.      6.0
+'REC 4 (NE MIDPOINT)'        45.       35.      6.0
+'REC 5 (E MID-MAIN) '        45.     -150.      6.0
+'REC 6 (W MID-MAIN) '       -45.     -150.      6.0
+'REC 7 (N FAR-MAIN) '      -150.       35.      6.0
+'REC 8 (S FAR-MAIN) '      -150.      -35.      6.0
+1 'p'
+1 1 1 1 1 1 1
+'MAIN ST. BETWEEN DISTANT INTERSECTIONS'       3
+   1  1
+'Main St.NB Appr/Dep' 'AG'    10. -1000.    10.  1000.    0.  40.
+   2  1
+'Main St.SB Appr/Dep' 'AG'   -10.  1000.   -10. -1000.    0.  40.
+   3  1
+'Local St.Appr./Dep ' 'AG' -1000.     0.  1000.     0.    0.  40.
+  1  50.0
+    1  1500.0    3.00
+    2  1200.0    3.00
+    3  1000.0    3.00

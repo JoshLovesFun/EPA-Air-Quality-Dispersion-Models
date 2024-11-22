@@ -1,0 +1,329 @@
+  
+ READING INPUT FROM THE MAIN CONTROL FILE
+
+         Run start date: 01/01/90    Julian:   1
+               end date: 12/31/90    Julian: 365
+
+  
+ READING DATA FROM THE MET FILE
+  
+ READING RECEPTOR LOCATIONS FROM THE CONTROL FILE
+  
+ READING LINK (ETS) DATA FROM THE MAIN INPUT FILE
+ 
+   End of ETS processing subroutine.
+ 
+  
+ FINISHED READING CONTROL FILE INPUT
+  
+ ENTERING MAIN PROCESSING LOOP
+   Processing has reached Julian day:  1
+  
+ Meteorological data that appears to be in error: 
+  
+90 1 714   116.00     2.57 281.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 715   187.00     2.57 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 716   235.00     2.57 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 717     4.00     2.57 282.0 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 718   244.00     3.09 281.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 719   171.00     2.57 281.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 720    82.00     3.09 282.6 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 721   348.00     5.66 285.4 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 722     2.00     6.69 285.4 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 723    61.00     7.72 288.2 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 724    85.00     9.26 286.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 1    89.00     6.69 285.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 2    31.00     9.77 284.8 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 3   358.00     5.66 283.7 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 4     5.00     4.12 283.7 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 5    17.00     5.66 282.6 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 6    35.00     4.63 282.0 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 7    65.00     2.57 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 8    61.00     0.00 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 9   280.00     2.57 280.4 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 810    60.00     1.54 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 811    79.00     2.06 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 812   167.00     2.57 281.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 813   179.00     2.57 281.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 814   184.00     3.60 282.0 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 815   182.00     3.60 282.6 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 816   179.00     2.57 282.6 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+   Processing has reached Julian day: 30
+   Processing has reached Julian day: 60
+   Processing has reached Julian day: 90
+   Processing has reached Julian day:120
+   Processing has reached Julian day:150
+   Processing has reached Julian day:180
+   Processing has reached Julian day:210
+   Processing has reached Julian day:240
+   Processing has reached Julian day:270
+   Processing has reached Julian day:300
+   Processing has reached Julian day:330
+   Processing has reached Julian day:360
+  
+ END OF PROCESSING LOOP
+  
+ CALCULATING LINK CONTRIBUTIONS.
+   Processing has reached Julian day:  1
+  
+90 1 714   116.00     2.57 281.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 715   187.00     2.57 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 716   235.00     2.57 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 717     4.00     2.57 282.0 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 718   244.00     3.09 281.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 719   171.00     2.57 281.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 720    82.00     3.09 282.6 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 721   348.00     5.66 285.4 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 722     2.00     6.69 285.4 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 723    61.00     7.72 288.2 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 724    85.00     9.26 286.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 1    89.00     6.69 285.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 2    31.00     9.77 284.8 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 3   358.00     5.66 283.7 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 4     5.00     4.12 283.7 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 5    17.00     5.66 282.6 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 6    35.00     4.63 282.0 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 7    65.00     2.57 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 8    61.00     0.00 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 8 9   280.00     2.57 280.4 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 810    60.00     1.54 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 811    79.00     2.06 280.9 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 812   167.00     2.57 281.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 813   179.00     2.57 281.5 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 814   184.00     3.60 282.0 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 815   182.00     3.60 282.6 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+  
+90 1 816   179.00     2.57 282.6 4    0.0    0.0
+   The Rural Mix Hgt   value,     0.0 appears to be out of range.
+   The Urban Mix Hgt   value,     0.0 appears to be out of range.
+    Please review the data and adjust accordingly.
+   Processing has reached Julian day: 30
+   Processing has reached Julian day: 60
+   Processing has reached Julian day: 90
+   Processing has reached Julian day:120
+   Processing has reached Julian day:150
+   Processing has reached Julian day:180
+   Processing has reached Julian day:210
+   Processing has reached Julian day:240
+   Processing has reached Julian day:270
+   Processing has reached Julian day:300
+   Processing has reached Julian day:330
+   Processing has reached Julian day:360
+  
+ END OF PROCESSING LOOP
+ 
+ Preparing output tables and storing them to file.
+ 
+ Preparing link contribution tables.
+ 
+ Program terminated normally

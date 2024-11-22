@@ -1,0 +1,36 @@
+                            Model Change Bulletin
+
+                                    MCB#1                        06/01/93
+
+                            CAL3QHC (dated 93157)
+
+
+     This Model Change Bulletin initiates the use of the CAL3QHC (dated 93157)
+model.  The principal difference between the original CAL3QHC model, released
+in August 1990, and this revised CAL3QHC (dated 93157) pertains to the
+calculation of intersection capacity, vehicle delay, and queue length.  This
+update includes three new traffic parameters that can be optionally specified
+by the user:  Saturation Flow Rate, Signal Type, and Arrival Type.  These
+parameters permit more precise specification of the operational characteristics
+of an intersection than in the original CAL3QHC model.  If these parameters are
+not specified by the user, the model defaults to a saturation flow rate of 1600
+vph/lane, pretimed signal type, and a progression that assumes random arrivals
+(these values are representative of typical urban intersections).  The
+"stopped" delay (used in the queue calculation) was replaced  with "approach"
+delay following recommendations from the 1985 Highway Capacity Manual.
+
+     CAL3QHC (dated 93157) has been expanded to accomodate up to 120 roadway
+links, 60 receptor locations, and 360 wind angles, an increase from the
+original version which could accommodate 55 links and 20 receptors.  This
+allows the modeling of adjacent intersections that interact with each other
+within a short distance.
+
+     This revised CAL3QHC model contains the same input format as the original
+version, with the only exception that the idle emission factor must be input
+in "grams per hour" instead of the original "grams per minute".  The ouput
+format has been expanded to provide all the input queue and emission
+parameters for verification purpose, and the option to be printed in either
+Metric or English units has been added.
+
+     The User's Guide to CAL3QHC has been revised to provide all the
+information necessary to run CAL3QHC (dated 93157).

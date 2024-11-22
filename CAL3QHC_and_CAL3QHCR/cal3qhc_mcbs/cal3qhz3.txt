@@ -1,0 +1,404 @@
+                             Model Change Bulletin
+              
+                                    MCB#3                          5/25/95
+
+                            CAL3QHC  (Dated 93157)
+                            CAL3QHCR (Dated 95130)
+
+     Both CAL3QHC and CAL3QHCR are covered by this one Model Change Bulletin
+(MCB) under the CAL3QHC model name.  Since CAL3QHCR is an enhanced but separate
+version of CAL3QHC, it is possible for CAL3QHC and CAL3QHCR to have different
+Julian creation dates as under this MCB.  Both models will retain their
+respective identifying Julian dates but SHARE THE SAME MCB.  Whenever a change
+is made to only one of these two models, only the changed model will be
+identified with a new Julian date.  
+
+     The user's guides to both models are available under the CAL3QHC model
+name in the Documentation section, under Regulatory Models, in the File
+Transfer area of the SCRAM BBS.
+
+*** CAL3QHC CHANGES ***
+
+     No changes have been made to CAL3QHC (Dated 93157) and therefore, there is
+no change to its Julian date.  No changes have been made to the CAL3QHC user's
+guide.
+
+*** CAL3QHCR CHANGES ***
+
+     One significant correction, several formatting changes, and two minor
+corrections have been made to the CAL3QHCR source code.  The CAL3QHCR user's
+guide has also been updated.  These changes and updates consist of the
+following:
+
+     1.  Correction to the queue link length calculations.  
+
+          In a Tier II approach, as traffic volumes decreased, the hourly
+          vehicle queue lengths.  There was no program coding to increase
+          hourly queue lengths as traffic volumes increased.
+
+          A new variable, QLT, is being used to reset each queue link length to
+          its initial value.  The program uses the shorter of QLT or the hourly
+          calculated vehicle queue length for calculating concentrations.
+
+     2.  Formatting changes that will be self explanatory.
+
+     3.  Correction to a PM-10 algorithm that calculates concentration averages
+     for a one-day run.
+
+     4.  Correction to the algorithm printing the *.LNK file.
+
+     5.  Addition of a Tier II PM-10 test case to the CAL3QHCR user's guide and
+     updating the text and output tables affected by the changes.     The following source code changes have been made to CAL3QHCR:
+
+1.  The initial SCRAM header for CAL3QHCR under CAL3QHC MCB#2,
+
+C  *                         CAL3QHCR (DATED 95116)                         *
+C  *                                                                        *
+C  *                *** SEE CAL3QHCR (DATED 95116) MCB#1 ***                *
+
+did not reflect the model's status under the CAL3QHC model name.  The SCRAM
+header should have read:
+
+C  *                         CAL3QHCR (DATED 95116)                         *
+C  *                                                                        *
+C  *                       *** SEE CAL3QHC MCB#2 ***                        *
+
+The SCRAM header was changed to reflect the new model version and status.  The
+header was changed to:
+
+C  *                         CAL3QHCR (DATED 95130)                         *
+C  *                                                                        *
+C  *                       *** SEE CAL3QHC MCB#3 ***                        *
+
+
+2.  The variable IYR was used in two different ways and caused the wrong year
+to be printed in a header on one page of a test case.  The following change
+assigns a new variable name, IYRR, to the second definition.  The source code
+was changed from:
+
+C   IYR    - Year argument in Subroutine Julian
+C   IYR    - Year program executed.
+
+to:
+
+C   IYR    - Year argument in Subroutine Julian
+C   IYRR   - Year program executed.
+
+3.  In a Tier II approach, the queue link length was being shrunk but not
+expanded under varying traffic volumes.  A new variable, QLT, stores the
+initial queue lengths and allows the vehicle queue lengths to expand up to QLT. 
+The following definition was added:
+
+C   QLT    - Initial length of link.
+
+4.  The variable, IYR, was changed to IYRR in the INTEGER assignment area.  The
+following line of code was changed from:
+
+     +         IIHR, IMIN, ISEC, IX, IYR, IMON, IDAY,
+
+to:
+
+     +         IIHR, IMIN, ISEC, IX, IYRR, IMON, IDAY,
+5.  In the DOUBLE PRECISION statement, the variable, QLT, was added and
+dimensioned to 120.  The source code was changed from:
+
+     +                 PD, QLL, SIDE, WLW,
+
+to:
+
+     +                 PD, QLL, QLT(120), SIDE, WLW,
+
+6.  When the variable, IYRR, was added, the following date/time lines of code
+were changed from:
+
+        CALL GETDAT (IYR, IMON, IDAY)
+        CALL GETTIM (IIHR, IMIN, ISEC, IX)
+          IYR = MOD(IYR,100)
+
+to:
+
+        CALL GETDAT (IYRR, IMON, IDAY)
+        CALL GETTIM (IIHR, IMIN, ISEC, IX)
+          IYRR = MOD(IYRR,100)
+
+7.  Initial queue and free flow link lengths were calculated and stored in the
+variable, LL.  Since the initial link length values were lost in a Tier II
+approach, the initial values are now stored in the variable QLT.  QLT is used
+to reset the queue link lengths to their initial values before determining
+whether new hourly calculated vehicle queue lengths exceed the initial values. 
+The source code was changed from:
+
+          LL(I) = SQRT((XL1(I)-XL2(I))**2+(YL1(I)-YL2(I))**2)
+
+to:
+
+          LL(I) = SQRT((XL1(I)-XL2(I))**2+(YL1(I)-YL2(I))**2)
+          QLT(I) = LL(I)
+
+8.  In the WRITE statements containing Format statement number 462, the
+variable, IYR, was changed to IYRR as follows:
+
+               WRITE (IPO, 462) IMON, IDAY, IYRR, IPAG
+
+9.  A printout line counter, ILIN, was added to the following segment of code. 
+The code was changed from:
+
+          WRITE (IPO,  32) ISFCID, ISFCYR, IAIRID, IAIRYR
+            IF (JTIER .EQ. 2 .AND. (ISFCYR .NE. ISYR))
+     +        WRITE (IPO, 34) ISYR, ISFCYR
+
+to:
+
+          WRITE (IPO,  32) ISFCID, ISFCYR, IAIRID, IAIRYR
+
+            IF (JTIER .EQ. 2 .AND. (ISFCYR .NE. ISYR)) THEN
+              ILIN = ILIN + 1
+              WRITE (IPO, 34) ISYR, ISFCYR
+            END IF
+
+10.  The variable, IYR, in the following lines of code, was changed from:
+
+          DO 8902 IH = 1, 24
+               READ(IT2,*) IYR, IDY, IHREND, AMB
+            DO 8903 I = 1, NL
+
+to:
+
+          DO 8902 IH = 1, 24
+               READ(IT2,*) IEYR, IDY, IHREND, AMB
+            DO 8903 I = 1, NL
+
+and from:
+
+        READ(IT2,*) IYR, IDY, IHREND, AMB
+
+to:
+
+        READ(IT2,*) IEYR, IDY, IHREND, AMB
+
+11.  In the WRITE statements containing Format statement number 465, the
+variable, IYR, was changed to IEYR as follows:
+
+               WRITE (IO,465) IEYR,  JSDOW,  IHREND
+
+12.  In the queue truncation algorithm, the hourly calculated queue length,
+QLL, should be compared to the initial queue link length, QLT, instead of the
+queue length, LL.  The algorithm was corrected so if QLL is greater than QLT,
+LL is truncated to QLT.  If QLL is less than or equal to QLT, LL is set to QLL. 
+The lines of code were changed from:
+
+ 1111   IF (QLL.GT.LL(I)) THEN
+           TRUNC(I)='YES'
+        ELSE
+           IF (QLL.LT.LL(I)) THEN
+           LL(I)=QLL
+           TRUNC(I)='NO '
+to:
+
+ 1111   IF (QLL.GT.QLT(I)) THEN
+           LL(I) = QLT(I)
+           TRUNC(I)='YES'
+        ELSE
+           LL(I) = QLL
+           TRUNC(I)='NO '
+
+13.  The IF (ICLM .EQ. 0) THEN block ended just after the 1020 CONTINUE
+statement and contained an algorithm that wrote variable link data to a *.LNK
+file.  Under calm conditions, data that should have been written to that file
+were not being written.  The IF...THEN block has been broken into two segments,
+one on each side of the algorithm.  The first segment now ends at the end of
+the 1053 CONTINUE statement and the second segment starts after the end of the
+DO 720 loop.  The end of the second segment is now identified by a comment
+statement.  The code was change from:
+
+ 1053  CONTINUE
+C
+
+to:
+
+ 1053  CONTINUE
+
+C        END OF ICLM BLOCK
+      END IF
+C
+
+and from:
+
+  720     CONTINUE
+C
+
+to:
+
+  720     CONTINUE
+
+        IF (ICLM .EQ. 0) THEN
+C
+
+and from:
+
+ 1020     CONTINUE
+       END IF
+
+C
+
+to:
+
+ 1020     CONTINUE
+
+C       END OF ICLM BLOCK
+        END IF
+C
+
+14.  Traffic signalization data is only needed for CO calculations and not for
+PM-10.  The following lines of code were placed in an IF statement so the
+traffic and signalization data are printed to an *.LNK file only when CO
+concentrations are being calculated.  The comment statement was in error and
+was changed.  The lines of code were modified from:
+
+          IC15 = IC15 + 7
+            WRITE (ILK, 200) CHAR(12)
+            WRITE (ILK, 462) IMON, IDAY, IYR, IP15
+            WRITE (ILK, 468) IIHR, IMIN, ISEC
+            IC15=IC15+1
+          ENDIF
+ 1154     CONTINUE
+
+C       END OF ISKP, ICLM IF BLOCK
+      END IF
+
+to:
+
+        IF (MODET .EQ. 0) THEN
+          IC15 = IC15 + 7
+            WRITE (ILK, 200) CHAR(12)
+            WRITE (ILK, 462) IMON, IDAY, IYRR, IP15
+            WRITE (ILK, 468) IIHR, IMIN, ISEC
+            IC15=IC15+1
+          END IF
+ 1154     CONTINUE
+C        END OF MODET BLOCK
+         END IF
+C      END OF   IPFLG BLOCK
+       END IF
+15.  The printout line counter value was changed from 7 in the following lines
+of code:
+
+         IF (ILIN .GE. 55) THEN
+           IPAG = IPAG + 1
+           ILIN = 7
+           WRITE (IPO, 200) CHAR(12)
+
+to 6:
+
+         IF (ILIN .GT. 55) THEN
+           IPAG = IPAG + 1
+           ILIN = 6
+           WRITE (IPO, 200) CHAR(12)
+
+and the incremental value of 8, in the following code segment:
+
+         IF (ILIN .LT. 55) THEN
+           ILIN = ILIN + 8
+           IF (LLL .EQ. 2) WRITE (IPO, 794) NATM(LLL)
+
+was changed to a value of 7:
+
+         IF (ILIN .LT. 55) THEN
+           ILIN = ILIN + 7
+           IF (LLL .EQ. 2) WRITE (IPO, 794) NATM(LLL)
+
+16.  An error occurred when 24-hour averaged and period of concern averaged PM-
+10 concentrations were calculated for one day.  Two IF statements were added to
+set the variable ITR = 1, when the difference between start and stop days is 0
+for PM-10 calculations (MODET = 1).  One IF statement was added before the DO
+653 loop as shown here: 
+
+            IF (LLL .EQ. 4) ITR = 1
+            IF ((IEJDAY - ISJDAY) .EQ. 0 .AND. MODET .EQ. 1) ITR = 1
+        DO 653 IK = 1, ITR
+
+and the other IF statement was placed after the following IF statement:
+
+          IF (LLLL .EQ. 4) ITR = 1
+
+as shown here:
+
+          IF (LLLL .EQ. 4) ITR = 1
+          IF ((IEJDAY - ISJDAY) .EQ. 0 .AND. MODET .EQ. 1) ITR = 1
+
+17.  The Calm Duration Frequency Table is now printed at the top of a new page. 
+An IF statement that could cause the table to be started on the same page as
+the last table of concentration averages, was removed.  The affected lines of
+code were changed from:
+
+          IF (ILIN .GT. 30) THEN
+              IPAG = IPAG + 1
+             WRITE (IPO, 200) CHAR(12)
+             WRITE (IPO, 462) LMON, LDAY, LYR, IPAG
+             WRITE (IPO, 463) LHR, LMIN, LSEC
+             WRITE (IPO, 210) JOB,RUN
+          END IF
+
+          WRITE (IPO, 900)
+
+to:
+
+           IPAG = IPAG + 1
+          WRITE (IPO, 200) CHAR(12)
+          WRITE (IPO, 462) LMON, LDAY, LYR, IPAG
+          WRITE (IPO, 463) LHR, LMIN, LSEC
+          WRITE (IPO, 210) JOB,RUN
+          WRITE (IPO, 900)
+
+18.  A pointer was added to the following statement to where the variable link
+data are located:
+
+   30  FORMAT(/7X,'Link Data Constants - (Variable data in *.LNK file)'
+     +        /7X,'-------------------'/)
+
+19.  The following warning was changed to a caution in Format statement 34. 
+The code was changed from:
+
+   34  FORMAT(/9X,'WARNING: The input years for the Run and ',
+     +   'Meteorological data '/9X, '         differ.  The respecti',
+
+to:
+
+   34  FORMAT(/9X,'CAUTION: The input years for the Run and ',
+     +   'Meteorological data '/9X, '         differ.  The respecti',
+
+
+    The model conversion data was changed from 95116 to 95130 in the following
+non consecutive lines of code:
+
+
+  200   FORMAT (A1,58X,'CAL3QHCR (Dated: 95130)')
+ 300  FORMAT (A1,46X,'CAL3QHCR (Dated: 95130)')
+
+
+20.  Line feeds were added to each of the following Format statements just
+before the 9X.
+
+ 9048   FORMAT(/9X,'THE HIGHEST CONCENTRATION OF',F6.2,' PPM',
+     +            ' OCCURRED AT RECEPTOR ', A5,'.'/)
+ 9049   FORMAT(/9X,'THE HIGHEST CONCENTRATION OF',F8.2,' UG/M**3',
+     +            ' OCCURRED AT RECEPTOR ', A5,'.'/)
+
+
+21.  The variable IYR, was changed to ISYR, to reflect the starting year date
+in the following Common statement:
+
+      COMMON /ALL/ BKG(5,NN,2), CUM(NN,2), CUMB(4), CUMT(4),
+     1             HMAXA(5,NN,2), ISYR, LPYR, IHR(5,NN,2), IPAG,
+     2             JDAY, L3, L4, LH, NDAY(25), NHR,
+
+
+and in the following lines of code:
+
+        LPYR = 0
+          IF (MOD(ISYR, 4) .EQ. 0) LPYR = 1
+          IF (LPYR .EQ. 1) NCNT(4) = 6588
+
+
+Any problems or questions should be addressed to Peter Eckhoff via TTN E-mail.
+

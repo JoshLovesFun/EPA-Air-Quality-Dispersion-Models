@@ -1,0 +1,52 @@
+
+                        Model Change Bulletin
+
+                                MCB#7                      12/20/2012
+
+                        CAL3QHCR (dated 12355)
+
+This Model Change Bulletin (MCB) documents changes made to the CAL3QHCR
+Dispersion Model. A brief description of the changes is provided
+below.  Additional details are available in the Fortran source code.
+
+
+This revised version of CAL3QHCR (dated 12355) includes the following
+modifications relative to the previous version (dated 04244):
+
+--  Bug Fixes:
+
+		1.	No bug fixes were made at this time. 
+
+
+--  Enhancements:
+
+		1.	The number of sources allowed in the model was increased 
+			from 120 to 5000 and the number of receptors was increased 
+			from 60 to 5000. 
+
+		2.	The accuracy of internal model calculations was improved and 
+			mixed-mode calculations were eliminated such that all integer
+			variables used in calculations with floating point values were 
+			converted to floating point variables. 
+
+		3.	The sixth highest concentration value was added to the list of
+			output values. 
+
+--  Miscellaneous:
+
+		1.	The date and time functions used to determine model execution 
+			time were updated with current standard supported functions. 
+
+		2.	The number of significant figures in the output was increased 
+			to 4 decimal places. 
+
+
+                        *****************
+                        *   IMPORTANT   *
+                        *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: CAL3QHCR (dated 12355).  All Model Change Bulletins for this program 
+will always be available for back reference on this website.  Future 
+notification of changes (MCBs) to any programs will be made in the Recent 
+Additions section of the SCRAM website.

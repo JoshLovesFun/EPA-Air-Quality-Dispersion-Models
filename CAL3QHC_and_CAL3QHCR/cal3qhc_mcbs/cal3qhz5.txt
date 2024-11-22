@@ -1,0 +1,974 @@
+
+                             Model Change Bulletin
+              
+                                    MCB#5                          6/30/04
+
+                            CAL3QHC  (Dated 95221)
+                            CAL3QHCR (Dated 04174)
+
+     Both CAL3QHC and CAL3QHCR are covered by this Model Change Bulletin (MCB)
+under the CAL3QHC model name.  Since CAL3QHCR is an enhanced but separate
+version of CAL3QHC, both models will retain their respective Julian creation
+dates.  Under this MCB, both models, only CAL3QHCR has been updated and only
+CAL3QHCR has a new creation date.
+
+     The one of the dimensions of the array variables used in creating the
+Calm Duration Table was set too low for certain meteorological data sets that
+have a large number of 1-hour in duration calms.  The array value has been 
+reset from 200 to 2000.  The overflow from these variables caused some of the
+values in the table to appear with astericks in the day of occurrence field
+and it caused erroneous totals for some of the concentrations. 
+
+     Additional modifications to the model includes additional write 
+statements, and an additional output file to capture DOS window output.  The 
+execution statement has been modified as appears below in the change comments.
+
+       
+Here are the modifications to CAL3QHCR:
+
+The main program header was updated
+
+from:
+C  *                                                                        *
+C  *                         CAL3QHCR (DATED 95221)                         *
+C  *                                                                        *
+C  *                       *** SEE CAL3QHC MCB#4 ***                        *
+C  *                                                                        *
+C  *     ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS BULLETIN BOARD     *
+C  *                                                                        *
+C  *                        (919) 541-5742 (8-N-1)                          *
+C  *                                                                        *
+to:
+C  *                                                                        *
+C  *                         CAL3QHCR (DATED 04174)                         *
+C  *                                                                        *
+C  *                       *** SEE CAL3QHC MCB#5 ***                        *
+C  *                                                                        *
+C  *        ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS WEB SITE        *
+C  *                                                                        *
+C  *                      http://www.epa.gov/scram001                       *
+C  *                                                                        *
+*****
+
+Our mailing address has changed
+
+from:
+C                       EPA
+C                       MD-14
+C                       Research Triangle Park, NC 27711
+to:
+C                       EPA
+C                       4930 Page Road
+C                       D243-01
+C                       Research Triangle Park, NC 27711
+*****
+
+Modification comments have been added to the model.  They are:
+
+C                       June 23, 2004 - An array upper bound overflow condition 
+C                                       is possible when the number of calms in
+C                                       one of the duration classes in the
+C                                       Calms Duration Frequency table exceeds
+C                                       200.  The related array sizes were   
+C                                       increased.  Also, when the mixing 
+C                                       heights are both zero, the program 
+C                                       crashes.  A substitute value is now 
+C                                       used and a warning message to check the
+C                                       mixing height values has been 
+C                                       emphasized.
+C                                       
+C
+*****
+
+from:
+C
+C  Type: CAL3QHCR < control metdata et1data et2data summaryoutput linkdetails
+C
+to:
+C
+C                            EXECUTION PROCEDURES
+C
+C  Create an input file with the name: CAL3R.CTL
+C    CAL3R.CTL Structure:
+C      [full pathname] Message filename (eg MainMarket.MSG)
+C      [full pathname] input filename  (eg C:\CAL3QHCR\Proj\MainMarket.INP)
+C      [full pathname] meteorological filename (eg E:\Met\Medford\S4222590.asc)
+C      [full pathname] ET1 filename  (eg fname.et1)
+C      [full pathname] ET2 filename
+C      [full pathname] Output filename
+C      [full pathname] Link data filename
+C    If all the files and executable are in the same subdirectory, the 
+C      full pathname is not needed.
+C  Copy CAL3QHCR to the subdirectory where CAL3R.CTL is located
+C  Double Click: CAL3QHCR
+C
+*****
+
+The variable IO was deleted
+
+from:
+C   INTG   - Probabilty density contribution by element and subelement.
+C   IO     - Unit number for output to the monitor
+C   IOPT   - Metric to english conversion in output option.  See SCAL.
+to:
+C   INTG   - Probabilty density contribution by element and subelement.
+C   IOPT   - Metric to english conversion in output option.  See SCAL.
+*****
+
+The variable ISCN is used in place of the number 6 which is the unit number
+for sending data to a monitor screen
+
+from:
+C   IRU    - Rural/urban mixing height flag (0-rural, 1-urban)
+C   ISCTM  - Flag indicating whether maxima concentrations are being calculated
+to:
+C   IRU    - Rural/urban mixing height flag (0-rural, 1-urban)
+C   ISCN   - Unit number for output to the monitor
+C   ISCTM  - Flag indicating whether maxima concentrations are being calculated
+*****
+
+Met data checking was enhanced and three flags were added accordingly
+
+from:
+C   MDY    - Day of meteorological data.
+C   MHR    - Hour ending of meteorological data.
+to:
+C   MDY    - Day of meteorological data.
+C   MFLG   - Flag indicating that one of the met data values is out of range
+C   MFLG1  - Flag indicating when to print a line of met data
+C   MFLG2  - Flag indicating there may be an error in the met data
+C   MHR    - Hour ending of meteorological data.
+*****
+
+The variable MSGS was created to define the unit number through which error and
+other messages are written.  Variable names, MVALN & VAL, were also added and 
+used in identifying meteorological data outside normal bounds.
+
+to:
+C   MSGS   - Unit number for error messages
+C   MVALN  - Name of meteorological value that maybe out of range
+C   MYR    - Year of meteorological data.
+*****
+
+from:
+C   V1     - Average of depositon and settling velocities [m/s].
+C   VD     - Deposition velocity [cm/s].  Converted to m/s.
+to:
+C   V1     - Average of depositon and settling velocities [m/s].
+C   VAL    - Meteorological data value 
+C   VD     - Deposition velocity [cm/s].  Converted to m/s.
+*****
+
+A variable for file names was added so that the input file names could be read from
+a control file.  This would add the ability to enter long file names in a text file 
+instead of creating a BAT (batch file) with long filenames which can be troublesome.
+
+from:
+      CHARACTER*40 JOB, RUN
+to:
+      CHARACTER*80 FNZ(7)
+      CHARACTER*40 JOB, RUN
+
+from:
+      CHARACTER*20 LNK, RCP(60)
+      CHARACTER*15 X1(60)
+      CHARACTER*10 DAYWK
+to:
+      CHARACTER*20 LNK, RCP(60)
+      CHARACTER*15 X1(60), MVALN(10)
+      CHARACTER*10 DAYWK
+*****
+
+from:
+      INTEGER  ANGMAX(60), AT, CAVG, CLAS, CNTM(24), COD,
+     +         CUMT, FAMB, FLINK, IHE(60),
+     +         IIHR, IMIN, ISEC, IX, IYRR, IMON, IDAY,
+     +         JD(60), NOLNK(120), RAVG, SFR, ST
+
+to:
+      INTEGER  ANGMAX(60), AT, CAVG, CLAS, CNTM(24), COD,
+     +         CUMT, FAMB, FLINK, MSGS, IHE(60),
+     +         IIHR, IMIN, ISEC, IX, IYRR, IMON, IDAY, JD(60), 
+     +         MFLG(10), MFLG1, MFLG2, NOLNK(120), RAVG, SFR, ST
+
+*****
+
+The VAL variable refers to the ten hourly meteorological values that are 
+read during each loop of the program.
+
+from:
+      
+      REAL     IDLFAC, INC, K1, KZ, LIM, MIXH, MOWT, NE, PAF(5, 3, 3)
+C
+to:
+      
+      REAL     IDLFAC, INC, K1, KZ, LIM, MIXH, MOWT, NE, PAF(5, 3, 3),
+     +         VAL(10)
+C
+*****
+
+Three new units, ICTL, MSGS, and ISCN were added.
+
+from:
+      COMMON /IO/  IN, IO, IMET, IT1, IT2, IPO, ILK
+to:
+      COMMON /IO/  ICTL, IN, MSGS, IMET, IT1, IT2, IPO, ILK, ISCN
+*****
+
+The arrays used in creating the Calm Duration Table were increased in
+size from 200 to 2000.
+
+from:
+     2          NIP(24), NIPJ(24,200), NIPH(24,200),
+to:
+     2          NIP(24), NIPJ(24,2000), NIPH(24,2000),
+*****
+
+Data was rearranged here
+
+from:
+      DATA BNTH/24*0.0/, CMAX/0./, CNHR/1440*0./, CNTM/24*0/,
+     1     CONTL/28800*0.0/, CRMAXB/60*0./, ILIN/0/, IP/0/, IP15/0/,
+     2     IPP/0/, ITAVG / 7, 0, 23, 8784/, J8/16/, JHR8/540*0/,
+     3     NATM/8,1,24,8760/, NIP/24*0/, RNMX8/540*0./,
+     4     TOTL/240*0.0/, XR/NN*0.0/, YR/NN*0.0/, ZR/NN*0.0/
+
+to:
+      DATA BNTH/24*0.0/, CMAX/0./, CNHR/1440*0./, CNTM/24*0/,
+     1     CONTL/28800*0.0/, CRMAXB/60*0./, ILIN/0/,
+     2     IP/0/, IP15/0/, IPP/0/,
+     3     ITAVG / 7, 0, 23, 8784/,J8/16/, JHR8/540*0/,
+     4     NATM/8,1,24,8760/, NIP/24*0/, RNMX8/540*0./, TOTL/240*0.0/,
+     5     XR/NN*0.0/, YR/NN*0.0/, ZR/NN*0.0/
+
+*****
+
+Meteorological names were added for identification of possible erroneous
+meteorological data.  These are the names associated with the variables VAL
+and MVALN
+
+from:
+     +                          ' +7',' +8',' +9','+10'/
+      DATA X1 /60*'---------------'/
+to:
+     +                          ' +7',' +8',' +9','+10'/
+      DATA MVALN / 'Year', 'Month', 'Day', 'Hour', 'Wind Direction', 
+     +            'Wind Speed', 'Temperature', 'Stability Class',
+     +            'Rural Mix Hgt', 'Urban Mix Hgt'/
+      DATA X1 /60*'---------------'/
+*****
+
+The ICTL, ISCN and MSGS unit numbers are defined.
+
+from:
+C
+C        7 - IN   - Input Control File
+C        6 - IO   - Output to the Screen
+C        8 - IPO  - Printout to a file
+C       10 - IMET - Meteorological Input File (ASCII format)
+to:
+C
+C        5   ICTL - Control File
+C        6   ISCN - Statements sent to Monitor
+C        7 - INP  - Input File
+C        8 - MSGS - Error & other messages sent to a file 
+C        9 - IPO  - Printout to a file
+C       10 - IMET - Meteorological Input File (ASCII format)
+*****
+
+
+
+from:
+      MAXR=60
+C
+to:
+      MAXR=60
+        IRMAX = 1
+        A = 0.0
+C
+*****
+
+A substitute I/O approach was added.  Easily viewable long input/output 
+filenames can be added to a text file and then read in as input filenames
+to OPEN statements.
+
+from:
+CLC
+CL      OPEN (5,FILE=FILE5 ,STATUS='OLD')
+CL      OPEN (6,FILE=FILE6 ,STATUS='UNKNOWN')
+CLC
+
+CL          WRITE (6,'(6X,A6,A8,2X,A7,A5/)')
+CL     +            'DATE: ',IDATE,' TIME: ',ITIME
+C      ==========================================
+to:
+CLC
+CL          WRITE (ISCN,'(6X,A6,A8,2X,A7,A5/)')
+CL     +            'DATE: ',IDATE,' TIME: ',ITIME
+
+C     Open Control File (*.CTL) and read in I/O file names, and
+C          OPEN data files
+C
+      OPEN (ICTL, FILE ='cal3r.ctl' , STATUS='OLD', ERR = 89)
+          DO I = 1, 7
+            READ(ICTL, *) FNZ(I)
+          WRITE(ISCN, *) 'READ IN: ', TRIM(FNZ(I))
+        END DO
+      CLOSE(ICTL)
+
+        OPEN (MSGS, FILE = FNZ(1),STATUS='UNKNOWN', ERR = 97)
+        OPEN (IN, FILE = FNZ(2) ,STATUS='OLD', ERR = 91)
+        OPEN (IMET, FILE = FNZ(3) ,STATUS='OLD', ERR = 92)
+        OPEN (IT1, FILE = FNZ(4) ,STATUS='UNKNOWN', ERR = 93)
+        OPEN (IT2, FILE = FNZ(5) ,STATUS='UNKNOWN', ERR = 94)
+        OPEN (IPO, FILE = FNZ(6) ,STATUS='UNKNOWN', ERR = 95)
+        OPEN (ILK, FILE = FNZ(7) ,STATUS='UNKNOWN', ERR = 96)
+      GOTO 98
+      
+   89   WRITE(MSGS,*) 'Error opening the control file CAL3R.CTL.'
+        WRITE(MSGS,*) 'CAL3R.CTL replaces listing the filenames '
+        WRITE(MSGS,*) 'on a Command Line.'
+        WRITE(MSGS,*) 'There should be 7 filenames listed in CAL3R.CTL'
+        WRITE(MSGS,*) 'See the source code listing for its structure'
+        WRITE(MSGS,*) 'under: EXECUTION Procedures.'
+        WRITE(ISCN,*) 'Error opening the control file CAL3R.CTL.'
+        WRITE(ISCN,*) 'CAL3R.CTL replaces listing the filenames '
+        WRITE(ISCN,*) 'on a Command Line.'
+        WRITE(ISCN,*) 'There should be 7 filenames listed in CAL3R.CTL'
+        WRITE(ISCN,*) 'See the source code listing for its structure.'
+        WRITE(ISCN,*) 'under: EXECUTION Procedures.'
+          STOP
+   91   WRITE(MSGS,*) 'Error opening the input file.'
+        WRITE(ISCN,*) 'Error opening the input file.'
+          STOP
+   92   WRITE(MSGS,*) 'Error opening the meteorological datafile.'
+        WRITE(ISCN,*) 'Error opening the meteorological datafile.'
+          STOP
+   93   WRITE(MSGS,*) 'Error opening the first intermediate file.'
+        WRITE(ISCN,*) 'Error opening the first intermediate file.'
+          STOP
+   94   WRITE(MSGS,*) 'Error opening the second imtermediate file.'
+        WRITE(ISCN,*) 'Error opening the second imtermediate file.'
+          STOP
+   95   WRITE(MSGS,*) 'Error opening the output file.'
+        WRITE(ISCN,*) 'Error opening the output file.'
+          STOP
+   96   WRITE(MSGS,*) 'Error opening the detailed link file.'
+        WRITE(ISCN,*) 'Error opening the detailed link file.'
+          STOP
+   97   WRITE(ISCN,*) 'Error opening the message file.'
+          STOP
+   98 CONTINUE
+C      ==========================================
+*****
+
+The DOS Window can close abruptly without letting the viewer see the
+information on the screen.  Duplicate messages are sent to the monitor
+screen and to a MSG file.
+
+from:
+C
+      WRITE(IO,*) ' '
+      WRITE(IO,*) 'READING INPUT FROM THE MAIN CONTROL FILE'
+
+to:
+C
+      WRITE(MSGS,*) ' '
+      WRITE(MSGS,*) 'READING INPUT FROM THE MAIN CONTROL FILE'
+      WRITE(ISCN,*) ' '
+      WRITE(ISCN,*) 'READING INPUT FROM THE MAIN CONTROL FILE'
+
+*****
+
+Some of the error, warning and informational output was duplicated
+or rerouted to the MSGS output file.
+
+from:
+        IF (NR.GT.MAXR) THEN
+           WRITE (IO,167) NR, MAXR
+           STOP
+to:
+        IF (NR.GT.MAXR) THEN
+           WRITE (MSGS,167) NR, MAXR
+           STOP
+*****
+
+
+from:
+
+         WRITE(IO,31) ISMN, ISDY, ISYR, ISJDAY, IEMN, IEDY, IEYR, IEJDAY
+
+to:
+
+         WRITE(MSGS,31) ISMN, ISDY, ISYR, ISJDAY,
+     &                  IEMN, IEDY, IEYR, IEJDAY
+         WRITE(ISCN,31) ISMN, ISDY, ISYR, ISJDAY,
+     &                  IEMN, IEDY, IEYR, IEJDAY
+
+*****
+
+from:
+C
+      WRITE(IO,*) ' '
+      WRITE(IO,*) 'READING DATA FROM THE MET FILE'
+to:
+C
+      WRITE(MSGS,*) ' '
+      WRITE(MSGS,*) 'READING DATA FROM THE MET FILE'
+      WRITE(ISCN,*) ' '
+      WRITE(ISCN,*) 'READING DATA FROM THE MET FILE'
+*****
+
+from:
+         IF (IMFLG .EQ. 1) THEN
+           WRITE (IO, 11)
+           WRITE (IO, 12) ISFCID, ISFCYR, IAIRID, IAIRYR
+           WRITE (IO, 13) IMFCID, IMFCYR, IMIRID, IMIRYR
+            STOP
+to:
+         IF (IMFLG .EQ. 1) THEN
+           WRITE (MSGS, 11)
+           WRITE (MSGS, 12) ISFCID, ISFCYR, IAIRID, IAIRYR
+           WRITE (MSGS, 13) IMFCID, IMFCYR, IMIRID, IMIRYR
+           WRITE (ISCN, 11)
+           WRITE (ISCN, 12) ISFCID, ISFCYR, IAIRID, IAIRYR
+           WRITE (ISCN, 13) IMFCID, IMFCYR, IMIRID, IMIRYR
+            STOP
+*****
+
+from:
+C
+      WRITE(IO,*) ' '
+      WRITE(IO,*) 'READING RECEPTOR LOCATIONS FROM THE CONTROL FILE'
+C
+to:
+C
+      WRITE(MSGS,*) ' '
+      WRITE(MSGS,*) 'READING RECEPTOR LOCATIONS FROM THE CONTROL FILE'
+      WRITE(ISCN,*) ' '
+      WRITE(ISCN,*) 'READING RECEPTOR LOCATIONS FROM THE CONTROL FILE'
+C
+*****
+
+from:
+C
+      WRITE(IO,*) ' '
+      WRITE(IO,*) 'READING LINK (ETS) DATA FROM THE MAIN INPUT FILE'
+
+to:
+C
+      WRITE(MSGS,*) ' '
+      WRITE(MSGS,*) 'READING LINK (ETS) DATA FROM THE MAIN INPUT FILE'
+      WRITE(ISCN,*) ' '
+      WRITE(ISCN,*) 'READING LINK (ETS) DATA FROM THE MAIN INPUT FILE'
+
+*****
+
+from:
+C
+      WRITE(IO,*) ' '
+      WRITE(IO,*) 'FINISHED READING CONTROL FILE INPUT'
+
+to:
+C
+      WRITE(MSGS,*) ' '
+      WRITE(MSGS,*) 'FINISHED READING CONTROL FILE INPUT'
+      WRITE(ISCN,*) ' '
+      WRITE(ISCN,*) 'FINISHED READING CONTROL FILE INPUT'
+
+*****
+
+from:
+           IF (LL(I).GE.WL(I)) GOTO 16
+             WRITE (IO,17)
+             STOP
+to:
+           IF (LL(I).GE.WL(I)) GOTO 16
+             WRITE (MSGS,17)
+             WRITE (ISCN,17)
+             STOP
+*****
+
+from:
+   16      IF (ABS(HL(I)).LE.10.) GOTO 19
+             WRITE (IO,18)
+             STOP
+to:
+   16      IF (ABS(HL(I)).LE.10.) GOTO 19
+             WRITE (MSGS,18)
+             WRITE (ISCN,18)
+             STOP
+*****
+
+from:
+C
+      WRITE(IO,*) ' '
+      WRITE(IO,*) 'ENTERING MAIN PROCESSING LOOP'
+
+to:
+C
+      WRITE(MSGS,*) ' '
+      WRITE(MSGS,*) 'ENTERING MAIN PROCESSING LOOP'
+      WRITE(ISCN,*) ' '
+      WRITE(ISCN,*) 'ENTERING MAIN PROCESSING LOOP'
+
+*****
+
+from:
+        IF (IAZ .EQ. 2) THEN
+          WRITE(IO, *) ' '
+          WRITE(IO, *) 'CALCULATING LINK CONTRIBUTIONS.'
+        END IF
+to:
+        IF (IAZ .EQ. 2) THEN
+          WRITE(MSGS, *) ' '
+          WRITE(MSGS, *) 'CALCULATING LINK CONTRIBUTIONS.'
+          WRITE(ISCN, *) ' '
+          WRITE(ISCN, *) 'CALCULATING LINK CONTRIBUTIONS.'
+        END IF
+*****
+
+from:
+
+        WRITE(IO,53) ISJDAY
+
+to:
+
+        WRITE(MSGS,53) ISJDAY
+        WRITE(ISCN,53) ISJDAY
+
+*****
+
+from:
+            MN = IJ
+            WRITE(IO,53) MN
+C              IMNST = MN
+to:
+            MN = IJ
+            WRITE(MSGS,53) MN
+            WRITE(ISCN,53) MN
+C              IMNST = MN
+*****
+
+from:
+
+           IF (IEFLAG .EQ. 0) THEN
+             IEFLAG = 1
+             JITS = MOD(IJ + IDOW - 1,7)
+             IF  (JITS .EQ. 0) JITS = 7
+             IF ((JITS .NE. IDY) .OR. (IH .NE. IHREND)) THEN
+               WRITE (IO,*) 'Error in Emissions file data date sequence'
+               WRITE (IO,464) ISYR, JITS,    IH
+               WRITE (IO,465) IEYR,  JSDOW,  IHREND
+                STOP
+             END IF
+           END IF
+
+to:
+
+          IF (IEFLAG .EQ. 0) THEN
+            IEFLAG = 1
+            JITS = MOD(IJ + IDOW - 1,7)
+            IF  (JITS .EQ. 0) JITS = 7
+            IF ((JITS .NE. IDY) .OR. (IH .NE. IHREND)) THEN
+              WRITE (MSGS,*)'Error in Emissions file data date sequence'
+              WRITE (MSGS,464) ISYR, JITS,    IH
+              WRITE (MSGS,465) IEYR,  JSDOW,  IHREND
+              WRITE (ISCN,*)'Error in Emissions file data date sequence'
+              WRITE (ISCN,464) ISYR, JITS,    IH
+              WRITE (ISCN,465) IEYR,  JSDOW,  IHREND
+               STOP
+            END IF
+          END IF
+
+*****
+
+An algorithm was added to identify meteorological values that
+might be out of normal ranges.
+
+from:
+     +                  XRUR, XURB
+
+to:
+     +                  XRUR, XURB
+          IF (MYR .LT. 1 .OR. MYR .GT. 99) MFLG(1) = 1
+          IF (MMN .LT. 1 .OR. MMN .GT. 12) MFLG(2) = 1
+          IF (MDY .LT. 1 .OR. MDY .GT. 31) MFLG(3) = 1
+          IF (MHR .LT. 1 .OR. MHR .GT. 24) MFLG(4) = 1
+          IF (BRG .LT. 0.0 .OR. BRG .GT. 360.0) MFLG(5) = 1
+          IF (U .LT. 0.0 .OR. U .GT. 100.0) MFLG(6) = 1
+          IF (TMP .LT. 230.0 .OR. TMP .GT. 320.0) MFLG(7) = 1
+          IF (CLAS .LT. 1 .OR. CLAS .GT. 7) MFLG(8) = 1
+          IF (XRUR .LE. 0.01) MFLG(9) = 1
+          IF (XURB .LE. 0.01) MFLG(10) = 1
+          DO I = 1, 10
+            IF (MFLG(I) .GT. 0) THEN
+              VAL(1) = FLOAT(MYR)
+              VAL(2) = FLOAT(MMN)
+              VAL(3) = FLOAT(MDY)
+              VAL(4) = FLOAT(MHR)
+                VAL(5) = BRG
+                VAL(6) = U
+                VAL(7) = TMP
+              VAL(8) = FLOAT(CLAS)
+                VAL(9) = XRUR
+                VAL(10) = XURB
+              IF (MFLG1 .EQ. 0) THEN
+                 IF (MFLG2.EQ.0) THEN
+                    WRITE(IPO,*) ' '
+                    WRITE(IPO,*) '*********************************',
+     +                           '**************************' 
+                    WRITE(IPO,*) ' Please check the meteorological ',
+     +                           'data listed in CAL3HR.ERR.' 
+                    WRITE(IPO,*) '*********************************',
+     +                           '**************************' 
+                    WRITE(MSGS,*) ' '
+                    WRITE(MSGS,*) 'Meteorological data that appears ',
+     +                            'to be in error: '
+                    WRITE(ISCN,*) ' '
+                    WRITE(ISCN,*) 'Meteorological data that appears ',
+     +                            'to be in error: '
+                    MFLG2 = 1
+                 END IF
+                 WRITE(MSGS,*) ' '
+                 WRITE(MSGS,51)  MYR, MMN, MDY, MHR, BRG, U, TMP, CLAS,
+     +                          XRUR, XURB
+                 WRITE(ISCN,*) ' '
+                 WRITE(ISCN,51)  MYR, MMN, MDY, MHR, BRG, U, TMP, CLAS,
+     +                          XRUR, XURB
+                   MFLG1 = 1
+              END IF
+              WRITE(MSGS,52)  MVALN(I), VAL(I)
+              WRITE(ISCN,52)  MVALN(I), VAL(I)
+   52         FORMAT('   The ', A15,' value,', F8.1,
+     +               ' appears to be out of range.')
+              MFLG(I) = 0
+            END IF
+          END DO   
+          IF (MFLG1 .EQ. 1) THEN
+                WRITE(MSGS,*) '   Please review the ', 
+     +         'data and adjust accordingly.'
+                WRITE(ISCN,*) '   Please review the ', 
+     +         'data and adjust accordingly.'
+          END IF
+          MFLG1 = 0
+
+
+*****
+
+A substitute mixing height was added to keep the program from
+crashing when mixing heights are at 0.0.  The mixing height data 
+still needs to be reviewed. 
+
+from:
+          END IF
+
+to:
+          END IF
+          IF (MIXH .EQ. 0.00) MIXH = MAX(XRUR,XURB)
+          IF (MIXH .EQ. 0.00) MIXH = 10.00
+
+*****
+
+from:
+             IF ((MITS .NE. IJ) .OR. (IH .NE. MHR)) THEN
+               WRITE (IO,*) 'Error in Met file data date sequence'
+               WRITE (IO,464)  ISYR, IJ,   IH
+               WRITE (IO,465)  MYR,  MITS, MHR
+                STOP
+to:
+             IF ((MITS .NE. IJ) .OR. (IH .NE. MHR)) THEN
+               WRITE (MSGS,*) 'Error in Met file data date sequence'
+               WRITE (MSGS,464)  ISYR, IJ,   IH
+               WRITE (MSGS,465)  MYR,  MITS, MHR
+               WRITE (ISCN,*) 'Error in Met file data date sequence'
+               WRITE (ISCN,464)  ISYR, IJ,   IH
+               WRITE (ISCN,465)  MYR,  MITS, MHR
+                STOP
+*****
+
+from:
+        MN = 1
+        WRITE(IO,*) ' '
+        WRITE(IO,*) 'END OF PROCESSING LOOP'
+
+to:
+        MN = 1
+        WRITE(MSGS,*) ' '
+        WRITE(MSGS,*) 'END OF PROCESSING LOOP'
+        WRITE(ISCN,*) ' '
+        WRITE(ISCN,*) 'END OF PROCESSING LOOP'
+
+*****
+
+from:
+C
+      WRITE(IO, *)
+      WRITE(IO, *) 'Preparing output tables and storing them to file.'
+
+to:
+C
+      WRITE(MSGS, *)
+      WRITE(MSGS, *) 'Preparing output tables and storing them to file.'
+      WRITE(ISCN, *)
+      WRITE(ISCN, *) 'Preparing output tables and storing them to file.'
+
+*****
+
+from:
+
+             WRITE (IO, *)
+             WRITE (IO, *) 'Preparing link contribution tables.'
+
+to:
+
+             WRITE (MSGS, *)
+             WRITE (MSGS, *) 'Preparing link contribution tables.'
+             WRITE (ISCN, *)
+             WRITE (ISCN, *) 'Preparing link contribution tables.'
+
+*****
+
+from:
+      WRITE(IPO, *)
+      WRITE (IO, *)
+      WRITE (IO, *) 'Program terminated normally'
+
+to:
+      WRITE(IPO, *)
+      WRITE (MSGS, *)
+      WRITE (MSGS, *) 'Program terminated normally'
+      WRITE (ISCN, *)
+      WRITE (ISCN, *) 'Program terminated normally'
+
+*****
+
+The creation date was updated
+
+from:
+  200   FORMAT (A1,58X,'CAL3QHCR (Dated: 95221)')
+to:
+  200   FORMAT (A1,58X,'CAL3QHCR (Dated: 04174)')
+*****
+
+The PM format was expanded for some sensitivity testing and 
+then commented out.
+
+from:
+  281   FORMAT ( 6X,24(1H-),1H*,40(1H-),1H*,60(1H-))
+  290   FORMAT (5X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,1X,F6.0,
+     +    2X,F4.0,2X,A2,1X,F6.1,2X,F5.1,1X,F5.1,2X,F4.1)
+  293   FORMAT (9X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,4X,F5.0,
+to:
+  281   FORMAT ( 6X,24(1H-),1H*,40(1H-),1H*,60(1H-))
+
+C        Insertion, Adesman 1/16/2003
+  290   FORMAT (5X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,1X,F6.0,
+     +    2X,F4.0,2X,A2,1X,F6.1,2X,F5.1,1X,F5.1,2X,F4.1)
+C  290   FORMAT (5X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,1X,F6.0,
+C     +    2X,F4.0,2X,A2,1X,F6.1,2X,F6.2,1X,F5.1,2X,F4.1)
+C        End Of Insertion
+
+  293   FORMAT (9X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,4X,F5.0,
+*****
+
+from:
+     +    3X,F4.0,2X,A2,1X,F6.1,1X,F5.1,I5)
+  294   FORMAT (5X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,1X,F6.0,
+     +    2X,F4.0,2X,A2,1X,F6.1,2X,F5.1,1X,F5.1,2X,F4.1,1X,F4.2,1X,F5.1,
+     +    2X,A3)
+  295   FORMAT (9X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,3X,F6.0,
+to:
+     +    3X,F4.0,2X,A2,1X,F6.1,1X,F5.1,I5)
+
+C        Insertion, Adesman 1/16/2003
+  294   FORMAT (5X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,1X,F6.0,
+     +    2X,F4.0,2X,A2,1X,F6.1,2X,F5.1,1X,F5.1,2X,F4.1,1X,F4.2,1X,F5.1,
+     +    2X,A3)
+C  294   FORMAT (5X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,1X,F6.0,
+C     +    2X,F4.0,2X,A2,1X,F6.1,2X,F6.2,1X,F5.1,2X,F4.1,1X,F4.2,1X,F5.1,
+C     +    2X,A3)
+C        End Of Insertion
+
+  295   FORMAT (9X,I3,2H. ,A20,1H*,4(1X,F8.1,1X),1H*,3X,F6.0,
+*****
+
+from:
+      COMMON /CHR/ STAR(2,NN), BLNK, STR, JOB, RUN, EXIN
+      COMMON /IO/ IN, IO, IMET, IT1, IT2, IPO, ILK
+
+to:
+      COMMON /CHR/ STAR(2,NN), BLNK, STR, JOB, RUN, EXIN
+      COMMON /IO/  ICTL, INP, MSGS, IMET, IT1, IT2, IPO, ILK, ISCN
+
+*****
+
+from:
+10        CONTINUE
+          IF (A .GT. RNMX(JJ,K)) THEN
+to:
+10        CONTINUE
+          IF (JJ .GT. 0) THEN
+          IF (A .GT. RNMX(JJ,K)) THEN
+*****
+
+from:
+           NDV(JJ,K,I) = NCN
+         END IF
+C            CONCENTRATION IS ONE OF THE TOP CONC.'S FOR THIS RECEPTOR
+to:
+           NDV(JJ,K,I) = NCN
+          END IF
+          END IF
+C            CONCENTRATION IS ONE OF THE TOP CONC.'S FOR THIS RECEPTOR
+*****
+
+The following COMMON /IO/ statements were expanded with additional
+unit number variables:
+
+from:
+      COMMON /IO/  IN, IO, IMET, IT1, IT2, IPO, ILK
+
+to:
+      COMMON /IO/  ICTL, INP, MSGS, IMET, IT1, IT2, IPO, ILK, ISCN
+
+*****
+
+from:
+      COMMON /IO/  IN, IO, IMET, IT1, IT2, IPO, ILK
+to:
+      COMMON /IO/  ICTL, INP, MSGS, IMET, IT1, IT2, IPO, ILK, ISCN
+*****
+
+The creation date was updated.
+
+from:
+ 300  FORMAT (A1,46X,'CAL3QHCR (Dated: 95221)')
+to:
+ 300  FORMAT (A1,46X,'CAL3QHCR (Dated: 04174)')
+*****
+
+from:
+      COMMON /IO/ IN, IO, IMET, IT1, IT2, IPO, ILK
+to:
+      COMMON /IO/  ICTL, INP, MSGS, IMET, IT1, IT2, IPO, ILK, ISCN
+*****
+
+Additional outputs are now sent to both the monitor screen and to a
+MSGS output file.  Sometimes a Windows DOS window will close before
+all the data printed there can be read.  The MSGS files duplicates 
+most of those messages.  The next several statements add the second 
+output capability to the program.
+
+from:
+      IF (IMN.LT.1 .OR. IMN.GT.12) THEN
+        WRITE(IO,*) 'Month value in error, value:', IMN
+        WRITE(IO,*) '  Day, year, jday of month above:', IDY, IYR, JDY
+         STOP
+to:
+      IF (IMN.LT.1 .OR. IMN.GT.12) THEN
+        WRITE(MSGS,*) 'Month value in error, value:', IMN
+        WRITE(MSGS,*) '  Day, year, jday of month above:', IDY, IYR, JDY
+        WRITE(ISCN,*) 'Month value in error, value:', IMN
+        WRITE(ISCN,*) '  Day, year, jday of month above:', IDY, IYR, JDY
+         STOP
+*****
+
+from:
+      IF (IDY .GT. IDYMAX(IMN)) THEN
+        WRITE(IO,*) 'Day exceeds days in month:', IDY
+        WRITE(IO,*) '  Month, year & jday of day above:', IMN, IYR, JDY
+         STOP
+to:
+      IF (IDY .GT. IDYMAX(IMN)) THEN
+        WRITE(MSGS,*) 'Day exceeds days in month:', IDY
+        WRITE(MSGS,*)'  Month, year & jday of day above:', IMN, IYR, JDY
+        WRITE(ISCN,*) 'Day exceeds days in month:', IDY
+        WRITE(ISCN,*)'  Month, year & jday of day above:', IMN, IYR, JDY
+         STOP
+*****
+
+from:
+         ELSE
+           WRITE(IO,*) 'Invalid Date; 2/29+ in a Non-Leap Year'
+           WRITE(IO,*) '  Values are m,d,yr,jdy:', IMN, IDY, IYR, JDY
+             STOP
+to:
+         ELSE
+           WRITE(MSGS,*) 'Invalid Date; 2/29+ in a Non-Leap Year'
+           WRITE(MSGS,*) '  Values are m,d,yr,jdy:', IMN, IDY, IYR, JDY
+           WRITE(ISCN,*) 'Invalid Date; 2/29+ in a Non-Leap Year'
+           WRITE(ISCN,*) '  Values are m,d,yr,jdy:', IMN, IDY, IYR, JDY
+             STOP
+*****
+
+from:
+      COMMON /IO/  IN, IO, IMET, IT1, IT2, IPO, ILK
+to:
+      COMMON /IO/  ICTL, INP, MSGS, IMET, IT1, IT2, IPO, ILK, ISCN
+*****
+
+The additional unit numbers are defined for each unit number variable:
+
+from:
+     +     STR/'*'/, IHR/600*0/, L3/1/, L4/2/, NHR/0/, IPAG/0/,
+     +      IN/7/, IO /6/, IPO/8/, IMET/10/, IT1 /11/, IT2/12/, ILK/15/
+      DATA DAYWK / 'Monday.', 'Tuesday.',  'Wednesday.', 'Thursday.',
+to:
+     +     STR/'*'/, IHR/600*0/, L3/1/, L4/2/, NHR/0/, IPAG/0/,
+     +     ICTL /5/, ISCN/6/, INP /7/, IMET/10/, MSGS /8/, IPO/9/,
+     *     IT1 /11/, IT2/12/, ILK/15/
+      DATA DAYWK / 'Monday.', 'Tuesday.',  'Wednesday.', 'Thursday.',
+*****
+
+from:
+      COMMON /IO/  IN, IO, IMET, IT1, IT2, IPO, ILK
+to:
+      COMMON /IO/  ICTL, INP, MSGS, IMET, IT1, IT2, IPO, ILK, ISCN
+*****
+
+from:
+          IF (NL .GT. MAXL) THEN
+            WRITE(IO, 168) NL, MAXL
+            STOP
+to:
+          IF (NL .GT. MAXL) THEN
+            WRITE(MSGS, 168) NL, MAXL
+            WRITE(ISCN, 168) NL, MAXL
+            STOP
+*****
+
+from:
+
+      WRITE(IO, *)
+      WRITE(IO, *) '  End of ETS processing subroutine.'
+      WRITE(IO, *)
+CC
+to:
+
+      WRITE(MSGS, *)
+      WRITE(MSGS, *) '  End of ETS processing subroutine.'
+      WRITE(MSGS, *)
+      WRITE(ISCN, *)
+      WRITE(ISCN, *) '  End of ETS processing subroutine.'
+      WRITE(ISCN, *)
+CC
+*****
+
+The PM format was changed form an F8.1 to a F9.2
+
+from:
+   42 FORMAT (3I3,F6.2)
+  164 FORMAT (1X, I4, 2F8.1)
+  168 FORMAT (' NUMBER OF LINKS INPUT = ', I4, '> MAXIMUM ALLOWED',
+to:
+   42 FORMAT (3I3,F6.2)
+
+C          Insertion, Adesman 1/16/2003
+C  164 FORMAT (1X, I4, 2F8.1)
+  164 FORMAT (1X, I4, 2F9.2)
+C           End Of Insertion
+
+  168 FORMAT (' NUMBER OF LINKS INPUT = ', I4, '> MAXIMUM ALLOWED',
+*****
+

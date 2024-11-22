@@ -1,0 +1,15 @@
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  1
+     TIME : 15: 3: 2                                        LINK DATA VARIABLES
+
+     JOB: EXAMPLE OF PM-10 ROADWAY HOT SPOT                           RUN: MAIN ST. BETWEEN DISTANT INTERSECTIONS  
+
+     LINK VARIABLES
+     --------------
+         LINK DESCRIPTION     *         LINK COORDINATES (FT)          *  LENGTH  BRG TYPE  VPH     EF     H    W    V/C QUEUE
+                              *     X1        Y1        X2        Y2   *   (FT)  (DEG)            (G/MI) (FT)  (FT)      (VEH) TRUNC
+      ------------------------*----------------------------------------*------------------------------------------------------------
+       1. Main St.NB Appr/Dep *     10.0   -1000.0      10.0    1000.0 *  2000.  360.  AG 1500.0    3.0   0.0  40.0
+       2. Main St.SB Appr/Dep *    -10.0    1000.0     -10.0   -1000.0 *  2000.  180.  AG 1200.0    3.0   0.0  40.0
+       3. Local St.Appr./Dep  *  -1000.0       0.0    1000.0       0.0 *  2000.   90.  AG 1000.0    3.0   0.0  40.0

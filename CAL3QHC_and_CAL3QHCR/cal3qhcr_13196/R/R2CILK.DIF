@@ -1,0 +1,1875 @@
+Comparing files R2CT.ILK and R2C.ILK
+***** R2CT.ILK
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:  1
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  1
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.13   1.2 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.14   1.2 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  180.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:  2
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  180.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  2
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  240.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:  3
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  240.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  3
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       300       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:  4
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       300       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  4
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.4       0.0 *   182.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.5       0.0 *   183.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:  5
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  5
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1350.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:  6
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1350.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  6
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       850       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:  7
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       850       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  7
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  800.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:  8
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  800.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  8
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1350.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:  9
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1350.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:  9
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1000       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 10
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1000       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 10
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.4       0.0 *   182.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.5       0.0 *   183.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1050.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 11
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1050.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 11
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1200.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 12
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1200.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 12
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       600       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 13
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       600       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 13
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.37   3.3 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.38   3.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  500.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 14
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  500.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 14
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 15
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 15
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       200       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 16
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       200       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 16
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.13   1.2 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.14   1.2 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  150.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 17
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  150.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 17
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 18
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 18
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       899       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 19
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       899       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 19
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.4       0.0 *   182.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.5       0.0 *   183.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1050.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 20
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1050.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 20
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1275.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 21
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1275.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 21
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       750       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 22
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       750       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 22
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  800.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 23
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  800.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 23
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1500.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 24
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1500.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 24
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.4       0.0 *   182.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.5       0.0 *   183.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1100       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 25
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1100       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 25
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1000.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 26
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1000.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 26
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  900.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 27
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  900.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 27
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       550       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 28
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       550       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 28
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.37   3.3 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.38   3.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 29
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 29
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  300.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 30
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  300.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 30
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.13   1.2 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.14   1.2 
+NO 
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       180       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 31
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       180       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 31
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  160.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 32
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  160.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 32
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1350.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 33
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1350.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 33
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.4       0.0 *   182.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.5       0.0 *   183.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1100       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 34
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1100       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 34
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  900.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 35
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  900.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 35
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1125.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 36
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1125.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 36
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       800       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 37
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       800       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 37
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  900.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 38
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  900.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 38
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1650.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 39
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1650.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 39
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.4       0.0 *   182.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.5       0.0 *   183.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1049       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 40
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1049       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 40
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  800.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 41
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  800.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 41
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  825.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 42
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  825.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 42
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.37   3.3 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.38   3.3 
+NO 
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       500       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 43
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       500       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 43
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  300.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 44
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  300.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 44
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  400.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 45
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  400.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 45
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       300       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 46
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       300       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 46
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  440.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      58.1 *    48.  360.  AG 1752.4  100.0   0.0  20.0 0.27   2.4 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  440.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      58.1 *    48.  360.  AG 1752.4  100.0   0.0  20.0 0.28   2.4 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  366.7   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 47
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  366.7   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 47
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  650.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 48
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  650.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 48
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       466       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 49
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       466       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 49
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.37   3.3 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.38   3.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  533.3   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 50
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  533.3   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 50
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  900.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 51
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  900.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 51
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       633       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 52
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       633       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 52
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  700.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 53
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  700.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 53
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1150.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 54
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1150.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 54
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       799       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 55
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       799       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 55
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  866.7   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 56
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  866.7   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 56
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1400.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 57
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1400.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 57
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG  933.3   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -147.6       0.0 *   128.  270.  AG 2190.5  100.0   0.0  20.0 0.75   6.5 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG  933.3   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -147.7       0.0 *   128.  270.  AG 2190.5  100.0   0.0  20.0 0.75   6.5 
+NO 
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       966       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 58
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       966       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 58
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1000.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 59
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1000.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 59
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1481.3   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 60
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1481.3   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 60
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+----
+       2. Main St.NB Queue    *     10.0     -10.0      10.0    -226.6 *   217.  180.  AG 1752.4  100.0   0.0  20.0 0.92  11.0 
+NO 
+***** R2C.ILK
+----
+       2. Main St.NB Queue    *     10.0     -10.0      10.0    -226.6 *   217.  180.  AG 1752.4  100.0   0.0  20.0 0.93  11.0 
+NO 
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       875       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 61
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       875       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 61
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  650.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 62
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  650.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 62
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  637.5   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 63
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  637.5   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 63
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       312       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 64
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       312       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 64
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  184.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      30.1 *    20.  360.  AG 1752.4  100.0   0.0  20.0 0.11   1.0 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  184.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      30.1 *    20.  360.  AG 1752.4  100.0   0.0  20.0 0.12   1.0 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  159.4   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 65
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  159.4   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 65
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  253.1   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 66
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  253.1   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 66
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       172       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 67
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       172       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 67
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  178.3   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 68
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  178.3   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 68
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.9   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.13   1.2 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.9   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.14   1.2 
+NO 
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  274.4   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 69
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  274.4   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 69
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       184       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 70
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       184       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 70
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  188.3   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 71
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  188.3   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 71
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  286.5   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 72
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  286.5   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 72
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       192       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 73
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       192       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 73
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.13   1.2 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.14   1.2 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  180.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 74
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  180.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 74
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  240.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 75
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  240.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 75
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       300       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 76
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       300       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 76
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.4       0.0 *   182.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.5       0.0 *   183.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 77
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 77
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1350.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 78
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1350.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 78
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       850       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 79
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       850       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 79
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  800.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 80
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  800.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 80
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1350.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 81
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1350.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 81
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1000       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 82
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1000       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 82
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.4       0.0 *   182.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.5       0.0 *   183.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1050.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 83
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1050.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 83
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1200.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 84
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1200.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 84
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       600       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 85
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       600       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 85
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.37   3.3 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.38   3.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  500.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 86
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  500.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 86
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 87
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 87
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       200       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 88
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       200       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 88
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.13   1.2 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  216.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      33.6 *    24.  360.  AG 1752.4  100.0   0.0  20.0 0.14   1.2 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  150.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 89
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  150.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 89
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 90
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 90
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       899       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 91
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       899       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 91
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.4       0.0 *   182.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.5       0.0 *   183.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1050.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 92
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1050.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 92
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1275.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 93
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1275.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 93
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       750       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 94
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       750       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 94
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  800.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 95
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  800.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 95
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1500.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 96
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG 1500.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 96
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.4       0.0 *   182.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+***** R2C.ILK
+       7. Local St.Appr.Lnk.  *  -1000.0       0.0       0.0       0.0 *  1000.   90.  AG 1100.0   41.6   0.0  40.0
+       8. Local St.Queue Lnk. *    -20.0       0.0    -202.5       0.0 *   183.  270.  AG 2190.5  100.0   0.0  20.0 0.88   9.3 
+NO 
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1100       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 97
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0      1100       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 97
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1000.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 98
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG 1000.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 98
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  900.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE: 99
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       1. Main St.NB Appr.    *     10.0   -1000.0      10.0       0.0 *  1000.  360.  AG  900.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE: 99
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       550       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:100
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       8. Local St.Queue Lnk. *      90       50       3.0       550       1600      735.0      1        3
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:100
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+
+***** R2CT.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.37   3.3 
+NO 
+***** R2C.ILK
+       4. Main St.SB Appr.    *    -10.0    1000.0     -10.0       0.0 *  1000.  180.  AG  600.0   41.6   0.0  40.0
+       5. Main St.SB Queue    *    -10.0      10.0     -10.0      75.6 *    66.  360.  AG 1752.4  100.0   0.0  20.0 0.38   3.3 
+NO 
+*****
+
+***** R2CT.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 13196)
+
+     DATE : 07/16/13                                                                                                 PAGE:101
+     TIME : 08:26:17                                        LINK DATA VARIABLES
+
+***** R2C.ILK
+       9. Local St.Dep.Lnk.   *      0.0       0.0    1000.0       0.0 *  1000.   90.  AG  450.0   41.6   0.0  40.0
+                                                          CAL3QHCR (Dated: 04181)
+
+     DATE :  7/ 1/ 4                                                                                                 PAGE:101
+     TIME : 14:36:43                                        LINK DATA VARIABLES
+
+*****
+

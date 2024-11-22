@@ -1,0 +1,57 @@
+  
+ READING INPUT FROM THE MAIN CONTROL FILE
+
+         Run start date: 01/01/64    Julian:   1
+               end date: 12/31/64    Julian: 366
+
+  
+ READING DATA FROM THE MET FILE
+  
+ READING RECEPTOR LOCATIONS FROM THE CONTROL FILE
+  
+ READING LINK (ETS) DATA FROM THE MAIN INPUT FILE
+ 
+   End of ETS processing subroutine.
+ 
+  
+ FINISHED READING CONTROL FILE INPUT
+  
+ ENTERING MAIN PROCESSING LOOP
+   Processing has reached Julian day:  1
+   Processing has reached Julian day: 30
+   Processing has reached Julian day: 60
+   Processing has reached Julian day: 90
+   Processing has reached Julian day:120
+   Processing has reached Julian day:150
+   Processing has reached Julian day:180
+   Processing has reached Julian day:210
+   Processing has reached Julian day:240
+   Processing has reached Julian day:270
+   Processing has reached Julian day:300
+   Processing has reached Julian day:330
+   Processing has reached Julian day:360
+  
+ END OF PROCESSING LOOP
+  
+ CALCULATING LINK CONTRIBUTIONS.
+   Processing has reached Julian day:  1
+   Processing has reached Julian day: 30
+   Processing has reached Julian day: 60
+   Processing has reached Julian day: 90
+   Processing has reached Julian day:120
+   Processing has reached Julian day:150
+   Processing has reached Julian day:180
+   Processing has reached Julian day:210
+   Processing has reached Julian day:240
+   Processing has reached Julian day:270
+   Processing has reached Julian day:300
+   Processing has reached Julian day:330
+   Processing has reached Julian day:360
+  
+ END OF PROCESSING LOOP
+ 
+ Preparing output tables and storing them to file.
+ 
+ Preparing link contribution tables.
+ 
+ Program terminated normally

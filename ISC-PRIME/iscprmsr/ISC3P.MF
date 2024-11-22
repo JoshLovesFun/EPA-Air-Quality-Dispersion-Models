@@ -1,0 +1,35 @@
+#
+# MKMF template makefile for protected mode executables.
+#
+FC        = f77l3
+LINKER    = 386link
+PROGRAM   = isc3p.exe
+DEST      = .
+EXTHDRS         =
+FFLAGS    =/D1LAHEY
+HDRS            =
+LDFLAGS   = -symbols -stub runb -pack
+LDMAP     = nul
+LIBS      =
+LPATH     = c:\f77l3v51\lib
+MAKEFILE  = isc3p.mf
+OBJS            = isc3p.obj host.obj prime.obj
+SRCS            = isc3p.for host.for prime.for
+
+$(PROGRAM):     $(OBJS) $(LIBS)
+          $(LINKER) $(OBJS) -EXE $@ -MAP $(LDMAP) -LIBPATH $(LPATH) $(LDFLAGS)
+
+clean:;         @del -f $(OBJS)
+
+depend:;   @mkmf -f $(MAKEFILE) PROGRAM=$(PROGRAM) DEST=$(DEST)
+
+install:   $(PROGRAM)
+                @echo Installing $(PROGRAM) in $(DEST)
+                @if not $(DEST)x==.x copy $(PROGRAM) $(DEST)
+### OPUS MKMF:  Do not remove this line!  Automatic dependencies follow.
+
+host.obj: MAIN1.INC MAIN2.INC MAIN3.INC params.pri
+
+isc3p.obj: DEPVAR.INC MAIN1.INC MAIN2.INC MAIN3.INC
+
+prime.obj: ambient.pri dfsn.pri numparm.pri params.pri wakedat.pri

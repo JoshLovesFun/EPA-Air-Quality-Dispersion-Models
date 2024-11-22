@@ -1,0 +1,198 @@
+                           README.TXT
+                    ISC-PRIME (dated 04269)
+                        August 26, 2004
+
+Due to several notifications of issues with ISC-PRIME with
+respect to operating under Windows XP, it was decided to 
+recompile ISC-PRIME with a newer compiler.  This program has 
+been tested under Windows XP and appears to work satisfactorly.
+This does not mean it will work under all circumstances and 
+configurations.  If you have problems with this version, please
+report them to Peter Eckhoff, eckhoff.peter@epa.gov.
+
+Several minor modifications were made to the source code.  They
+are:
+
+1) Lahey specific input and output code was commented out.
+2) The input and output units were changed from 5 & 6 to 7 & 8,
+   respectively.
+3) Recompiled with a more recent compiler, Compaq Visual Fortran,
+   Version 6.6c.
+   
+The program should be executed from the DOS or Command prompt.  
+Here is an example based on the revised test case names:
+
+c:\ISCPRIME\ISC3P PRIMETST.INP PRTST2.OUT
+
+After executing the test case, compare PRTST2.OUT with PRTST.OUT.
+There should not be any differences.  
+
+However, if you compare the latest output, PRTST.OUT, with the 
+output file produced under the older Lahey version, PRIMETST.OUT,
+you will notice several differences.
+
+old output example:
+
+     10.0 |   1126.41931 (90100412)   1312.52197 (90100412) ... 
+
+new output example:
+
+      10.0 |   1126.41943 (90100412)   1312.52185 (90100412) ...
+
+One is that the columns do not line up.  This is being attributed
+to using a different compiler following a more modern standard.  
+
+The other is that the output is slightly different in the 10 and 
+100 thousandths digits.  This is being attributed to the 
+differences in precision between older 16-bit Lahey compiler and 
+the newer 32-bit Compaq compiler.  These types of result 
+differences are of no consequence.
+
+The original readme file has been retained below due to its
+relevance.
+
+
+******************* Original README follows ******************
+
+                           README.TXT
+                    ISC-PRIME (dated 97224)
+                        January 25, 1999
+
+                                
+The PRIME (Plume Rise Model Enhancement) algorithms have been
+incorporated into the ISCST3 (dated 96113) source code and the
+new model is called ISC-PRIME(dated 97224). PRIME is the next
+generation building downwash paradigm and was provided by the
+Electric Power Research Institute, Project Officer: Charles
+Hakkarinen.  At this point in its development, ISC-PRIME is for
+review and comment only.
+
+To facilitate your review of and comment on this model, several 
+sets of files and documents are being made publicly available
+through the SCRAM Website (http://www.epa.gov/scram001) and
+through NTIS ((800) 553-6847 or (703) 605-6550).  
+
+Because of the number of figures in both the "Results of the
+Independent Evaluation of ISCST3 and ISC-PRIME", and the 
+"Consequence Analysis for ISC-PRIME", these two documents are 
+only available, in toto, from:
+
+     National Technical Information Service (NTIS), 
+     5285 Port Royal Rd.
+     Springfield, VA 22161
+     (800) 553-6847 
+     Internet: http://www.fedworld.gov/ntis/ntishome.html
+
+The NTIS ordering titles and PB numbers are:
+
+     Paine, R.J. and F. Lew, 1997.  Consequence Analysis for 
+     ISC-PRIME.  Prepared for the Electric Power Research
+     Institute, Palo Alto, CA.  
+     ENSR Document Number 2460-026-450.  (NTIS No. PB 98-156516)
+
+     Paine, R.J. and F. Lew, 1997.  Results of the Independent
+     Evaluation of ISCST3 and ISC-PRIME.  Prepared for the
+     Electric Power Research Institute, Palo Alto, CA. ENSR
+     Document Number 2460-026-440.  (NTIS No. PB 98-156524)
+
+An abbreviated copy of the Independent Evaluation, with text and
+most tables, is available from the SCRAM Website.  There is no
+electronic copy available for the Consequence Analysis.
+
+The following is a list of files available from the SCRAM
+Website:
+
+SCRAM Filename,  Filename  -       Description
+
+README           ISCPRIME.TXT      this file
+
+USEGUIDE         USEGUIDE.PDF      ISC-PRIME User's Guide   
+                                   (Addendum to the ISC3 User's
+                                   Guide).  Note a free Adobe
+                                   Acrobat Reader (www.adobe.com)
+                                   is needed in order to read a
+                                   *.PDF file. 
+
+TEKPAPR1         TEKPAPR1.PDF      Technical papers (2) presented 
+TEKPAPR2         TEKPAPR2.PDF      at the 1998 AMS Conference in
+                                   Phoenix, AZ
+
+EVALRPT          ABEVLRPT.ZIP      Abbreviated copy of the ENSR
+                                   Independent Evaluation of
+                                   ISCST3 and ISC-PRIME.  
+
+CONSQPAPR        CONSQPAPR.PDF     Technical paper on the ENSR 
+ CONSQTBLS        CONSQTBLS.PDF    Consequence Analysis.  This 
+                                   includes a separate PDF file
+                                   with the accompanying tables.
+
+PRMRPT           PRMRPT.ZIP        EPA Staff Report, Consequences 
+                                   Analysis of using ISC-PRIME
+                                   over the Industrial Source
+                                   Complex Short Term Model.
+
+ISCPRMSR         ISCPRMSR.ZIP      Source code for ISC-PRIME and
+                                   its building dimensions
+                                   preprocessor code, BPIPPRM.
+
+PRMTESTS         PRMTESTS.ZIP      Executables, testcases, and
+                                   other files necessary for
+                                   running the ISC-PRIME
+                                   testcase.
+
+
+SETUP INSTRUCTIONS 
+
+     To setup and run the ISC-PRIME test case, download, save,
+and unZIP PRMTESTS.ZIP in its own subdirectory.  The two
+executables,  BPIPPRM.EXE and ISC3P.EXE can be executed from a
+MS-DOS prompt or from a Windows 3.1 or Windows 95 RUN window.  
+
+BPIPPRM
+
+     The building dimensions preprocessor program, BPIP, has been
+modified to preprocess the same building dimension input files
+for ISC-PRIME.  The modified program is called BPIPPRM and it
+outputs additional values needed as input to ISC-PRIME.  BPIP 
+input structure and execution lines have not been altered. 
+A BPIP input file can be read by BPIPPRM without any alterations
+to its input structure or values.  Further details are available 
+in the Addendum to ISC3 User's Guide (The PRIME Plume Rise and 
+Building Downwash Model).  
+
+The execution line to run BPIPPRM is: BPIPPRM
+
+     Note that BPIPPRM is coded to read the filename BPIP and to
+write to the output filenames BPIP.OUT and BPIP.SUM.  The user 
+does not have to add the input, output, and summary file names to 
+the execution line as with the program BPIP.  However, the input 
+datafile has to be copied to the file, BPIP.INP, before execution 
+takes place.  During execution, no messages are printed to the 
+screen.  The user's output and summary files will always be named 
+BPIP.OUT and BPIP.SUM.  These two output files will have to be 
+renamed to other filenames or the output will be overwritten the 
+next time BPIPPRM is executed. 
+
+
+     Compare BPIP.OUT with BPIPOUT.ORG for differences.
+     Compare BPIP.SUM with BPIPSUM.ORG for differences.
+     
+     For Windows 95 users, Ultraedit (www.idmcomp.com) and other
+commercial text editors have file comparison features similar in
+function and output to the old MS-DOS FC command.
+
+ISC-PRIME
+
+     ISC3P.EXE is the ISC-PRIME executable filename.  Output from
+BPIPPRM's BPIP.OUT file has already been copied and pasted into
+the ISC-PRIME input file, PRIMETST.INP.  In addition to the
+BUILDHGT and BUILDWID keywords and associated data from BPIP.OUT,
+there are three new keywords, BUILDLEN, XBADJ, and YBADJ, and
+their associated data which have also been copied to PRIMETST.INP.  
+For further details, read the Addendum to ISC3 User's Guide.
+
+The ISC-PRIME execution line is: ISC3P PRIMTETST.INP PRIMETST.OUT
+
+     Compare PRIMETST.OUT with PRMTST.OUT
+
+End of readme file.

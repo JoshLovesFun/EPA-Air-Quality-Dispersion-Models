@@ -1,0 +1,431 @@
+                              BPIP (Dated: 95086)
+ PRIME test case                                                               
+
+============================
+BPIP PROCESSING INFORMATION:
+============================
+
+   The ST flag has been set for processing for an ISCST2 run.
+
+   Inputs entered in METERS     will be converted to meters using 
+    a conversion factor of    1.0000.  Output will be in meters.
+
+   UTMP is set to UTMN.  The input is assumed to be in a local
+    X-Y coordinate system as opposed to a UTM coordinate system.
+    True North is in the positive Y direction.
+
+   Plant north is set to   0.00 degrees with respect to True North.  
+
+
+
+
+==============
+INPUT SUMMARY:
+==============
+
+
+ Number of buildings to be processed :   1
+
+
+ unit1    has 1 tier(s) with a base elevation of    0.00 METERS    
+ BUILDING  TIER  BLDG-TIER  TIER   NO. OF      CORNER   COORDINATES
+   NAME   NUMBER   NUMBER  HEIGHT  CORNERS        X           Y
+
+ unit1       1        1     50.00     4
+                                                  0.00        0.00 meters
+                                                  0.00       75.00 meters
+                                                 50.00       75.00 meters
+                                                 50.00        0.00 meters
+
+ Number of stacks to be processed :   1
+
+                    STACK            STACK   COORDINATES
+  STACK NAME     BASE  HEIGHT          X           Y
+
+  unit1          0.00   65.00 METERS    
+                                      60.00       37.50 meters
+ 
+   No stacks have been detected as being atop any structures.
+
+
+                     Overall GEP Summary Table
+                          (Units: meters)
+
+
+ StkNo:  1  Stk Name:unit1    Stk Ht:  65.00 Prelim. GEP Stk.Ht:  125.00
+            GEP:  BH:  50.00  PBW:   67.71             *Eqn1 Ht:  125.00
+          *adjusted for a Stack-Building elevation difference of    0.00
+  No. of Tiers affecting Stk:  1  Direction occurred:  165.00
+   Bldg-Tier nos. contributing to GEP:   1
+
+
+
+
+                     Summary By Direction Table
+                          (Units:  meters)
+
+ Dominate stand alone tiers:
+
+
+ Drtcn:  10.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  62.26  PBL:  82.54  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -47.35  YADJ:   34.47
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn:  20.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  72.64  PBL:  87.58  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -55.76  YADJ:   32.89
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn:  30.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  80.80  PBL:  89.95  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -62.48  YADJ:   30.31
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn:  40.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  86.51  PBL:  89.59  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -67.29  YADJ:   26.81
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn:  50.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  89.59  PBL:  86.51  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -70.07  YADJ:   22.50
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn:  60.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  89.95  PBL:  80.80  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -70.71  YADJ:   17.50
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn:  70.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  87.58  PBL:  72.64  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -69.21  YADJ:   11.97
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn:  80.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  82.54  PBL:  62.26  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -65.60  YADJ:    6.08
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn:  90.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  75.00  PBL:  50.00  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -60.00  YADJ:    0.00
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 100.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  82.54  PBL:  62.26  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -65.60  YADJ:   -6.08
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 110.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  87.58  PBL:  72.64  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -69.21  YADJ:  -11.97
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 120.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  89.95  PBL:  80.80  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -70.71  YADJ:  -17.50
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 130.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  89.59  PBL:  86.51  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -70.07  YADJ:  -22.50
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 140.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  86.51  PBL:  89.59  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -67.29  YADJ:  -26.81
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 150.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  80.80  PBL:  89.95  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -62.48  YADJ:  -30.31
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 160.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  72.64  PBL:  87.58  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -55.76  YADJ:  -32.89
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 170.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  62.26  PBL:  82.54  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -47.35  YADJ:  -34.47
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 180.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  50.00  PBL:  75.00  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -37.50  YADJ:  -35.00
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 190.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  62.26  PBL:  82.54  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -35.19  YADJ:  -34.47
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 200.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  72.64  PBL:  87.58  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -31.82  YADJ:  -32.89
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 210.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  80.80  PBL:  89.95  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -27.48  YADJ:  -30.31
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 220.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  86.51  PBL:  89.59  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -22.30  YADJ:  -26.81
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 230.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  89.59  PBL:  86.51  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -16.44  YADJ:  -22.50
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 240.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  89.95  PBL:  80.80  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -10.09  YADJ:  -17.50
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 250.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  87.58  PBL:  72.64  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:   -3.43  YADJ:  -11.97
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 260.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  82.54  PBL:  62.26  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:    3.34  YADJ:   -6.08
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 270.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  75.00  PBL:  50.00  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:   10.00  YADJ:    0.00
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 280.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  82.54  PBL:  62.26  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:    3.34  YADJ:    6.08
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 290.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  87.58  PBL:  72.64  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:   -3.43  YADJ:   11.97
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 300.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  89.95  PBL:  80.80  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -10.09  YADJ:   17.50
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 310.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  89.59  PBL:  86.51  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -16.44  YADJ:   22.50
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 320.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  86.51  PBL:  89.59  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -22.30  YADJ:   26.81
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 330.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  80.80  PBL:  89.95  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -27.48  YADJ:   30.31
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 340.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  72.64  PBL:  87.58  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -31.82  YADJ:   32.89
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 350.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  62.26  PBL:  82.54  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -35.19  YADJ:   34.47
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+ Drtcn: 360.00
+
+ StkNo:  1  Stk Name:unit1                             Stack Ht:   65.00
+                 GEP:  BH:  50.00  PBW:  67.71   *Equation 1 Ht:  125.00
+     Single tier MAX:  BH:  50.00  PBW:  50.00  PBL:  75.00  *Wake Effect Ht:  125.00
+     Relative Coordinates of Projected Width Mid-point: XADJ:  -37.50  YADJ:   35.00
+
+          *adjusted for a Stack-Building elevation difference of    0.00
+                BldNo:  1  Bld Name:unit1     TierNo:  1
+
+
+Dominant combined buildings:  None

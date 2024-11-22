@@ -1,0 +1,89 @@
+                              BPIP (Dated: 95086)
+ PRIME test case                                                               
+
+============================
+BPIP PROCESSING INFORMATION:
+============================
+
+   The ST flag has been set for processing for an ISCST2 run.
+
+   Inputs entered in METERS     will be converted to meters using 
+    a conversion factor of    1.0000.  Output will be in meters.
+
+   UTMP is set to UTMN.  The input is assumed to be in a local
+    X-Y coordinate system as opposed to a UTM coordinate system.
+    True North is in the positive Y direction.
+
+   Plant north is set to   0.00 degrees with respect to True North.  
+
+
+ PRIME test case                                                               
+
+
+
+                PRELIMINARY* GEP STACK HEIGHT RESULTS TABLE
+                         (Output Units: meters)
+
+                            Stack-Building            Preliminary*
+         Stack    Stack     Base Elevation    GEP**   GEP Stack
+         Name     Height    Differences       EQN1    Height Value
+
+
+        unit1      65.00         0.00       125.00       125.00
+
+   * Results are based on Determinants 1 & 2 on pages 1 & 2 of the GEP
+     Technical Support Document.  Determinant 3 may be investigated for
+     additional stack height credit.  Final values result after
+     Determinant 3 has been taken into consideration.
+  ** Results were derived from Equation 1 on page 6 of GEP Technical
+     Support Document.  Values have been adjusted for any stack-building
+     base elevation differences.
+
+     Note:  Criteria for determining stack heights for modeling emission
+     limitations for a source can be found in Table 3.1 of the
+     GEP Technical Support Document.
+
+
+
+
+
+                              BPIP (Dated: 95086)
+ DATE :  0/ 0/ 0
+ TIME :  0: 0: 0
+
+
+ PRIME test case                                                               
+
+ BPIP output is in meters
+
+
+     SO BUILDHGT unit1      50.00   50.00   50.00   50.00   50.00   50.00
+     SO BUILDHGT unit1      50.00   50.00   50.00   50.00   50.00   50.00
+     SO BUILDHGT unit1      50.00   50.00   50.00   50.00   50.00   50.00
+     SO BUILDHGT unit1      50.00   50.00   50.00   50.00   50.00   50.00
+     SO BUILDHGT unit1      50.00   50.00   50.00   50.00   50.00   50.00
+     SO BUILDHGT unit1      50.00   50.00   50.00   50.00   50.00   50.00
+     SO BUILDWID unit1      62.26   72.64   80.80   86.51   89.59   89.95
+     SO BUILDWID unit1      87.58   82.54   75.00   82.54   87.58   89.95
+     SO BUILDWID unit1      89.59   86.51   80.80   72.64   62.26   50.00
+     SO BUILDWID unit1      62.26   72.64   80.80   86.51   89.59   89.95
+     SO BUILDWID unit1      87.58   82.54   75.00   82.54   87.58   89.95
+     SO BUILDWID unit1      89.59   86.51   80.80   72.64   62.26   50.00
+     SO BUILDLEN unit1      82.54   87.58   89.95   89.59   86.51   80.80
+     SO BUILDLEN unit1      72.64   62.26   50.00   62.26   72.64   80.80
+     SO BUILDLEN unit1      86.51   89.59   89.95   87.58   82.54   75.00
+     SO BUILDLEN unit1      82.54   87.58   89.95   89.59   86.51   80.80
+     SO BUILDLEN unit1      72.64   62.26   50.00   62.26   72.64   80.80
+     SO BUILDLEN unit1      86.51   89.59   89.95   87.58   82.54   75.00
+     SO XBADJ    unit1     -47.35  -55.76  -62.48  -67.29  -70.07  -70.71
+     SO XBADJ    unit1     -69.21  -65.60  -60.00  -65.60  -69.21  -70.71
+     SO XBADJ    unit1     -70.07  -67.29  -62.48  -55.76  -47.35  -37.50
+     SO XBADJ    unit1     -35.19  -31.82  -27.48  -22.30  -16.44  -10.09
+     SO XBADJ    unit1      -3.43    3.34   10.00    3.34   -3.43  -10.09
+     SO XBADJ    unit1     -16.44  -22.30  -27.48  -31.82  -35.19  -37.50
+     SO YBADJ    unit1      34.47   32.89   30.31   26.81   22.50   17.50
+     SO YBADJ    unit1      11.97    6.08    0.00   -6.08  -11.97  -17.50
+     SO YBADJ    unit1     -22.50  -26.81  -30.31  -32.89  -34.47  -35.00
+     SO YBADJ    unit1     -34.47  -32.89  -30.31  -26.81  -22.50  -17.50
+     SO YBADJ    unit1     -11.97   -6.08    0.00    6.08   11.97   17.50
+     SO YBADJ    unit1      22.50   26.81   30.31   32.89   34.47   35.00

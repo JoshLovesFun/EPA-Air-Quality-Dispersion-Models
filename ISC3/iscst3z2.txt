@@ -1,0 +1,82 @@
+
+                            Model Change Bulletin
+              
+                                    MCB#2                         05/07/96
+
+                             ISCST3 (dated 96113)
+                             ISCLT3 (dated 96113)
+
+
+    This Model Change Bulletin documents changes made to the Industrial
+Source Complex Dispersion Model (ISC3) (see Code Changes below).  In addition,
+this MCB identifies an anomalous behavior in the dry deposition algorithm (see
+Dry Deposition Anomaly below).  [NOTE:  New ISC3 users are urged to read ISC3
+MCB#1, Amendment #1 for important information.]
+
+
+CODE CHANGES
+
+    Changes from the ISCST3 (dated 95250) and ISCLT3 (dated 95250) include a
+correction to subroutine DEPCOR in DEPFLUX.FOR for both models.  A valid
+ELSEIF line was incorrectly commented out.  The change occurs on line 201
+in the DEPFLUX.FOR code file.  This correction only affects the dry depletion
+option of the models.  This change did NOT cause a change in the test case
+results (TEST-ST.ZIP and TEST-LT.ZIP).  Additional limited testing has shown
+no changes in model output, using input conditions that would likely show
+differences.
+
+    The ISCST3 (dated 96113) model also includes a few minor changes to the
+SETUP.FOR and OUTPUT.FOR files for compatibility with the ISCEV3 (EVENT) model,
+and a minor change to subroutine HRLOOP in ISCST3.FOR to correct a potential
+problem with the STARTEND keyword for non-sequential meteorological data sets.
+
+
+DRY DEPOSITION ANOMALY
+                      
+    In addition to this correction, users should be aware of potentially
+anomalous behavior of the dry depletion algorithm under some circumstances.
+Slight discontinuities in the concentration distribution with downwind distance
+have been noted for some stability categories (rural C and D, urban D, E, and
+F) for particles in the 5 to 10 micron range when dry depletion is implemented.
+The discontinuities have been traced to a discontinuity in the sigma-z profile
+with distance after the point where the plume centerline "touched down."  The
+plume touchdown distance will vary depending on the source characteristics,
+but will generally be from a few hundred meters to a few thousand meters
+downwind for stack sources, and less for low-level or ground-based sources.
+Up to the touchdown point, the sigma-z is based on the standard sigma-z curves
+for ISC.  Beyond the touchdown point, the sigma-z is adjusted to account for a
+change in the vertical profile of the plume due to continued settling of the
+particles above the plume centerline.  It is currently believed that this
+discontinuity occurs at the touchdown point and is due to problems with
+convergence of the SZFORM2 subroutine, and possibly with the overall
+convergence of the depletion integral by subroutine QATR2.
+
+    Based on limited tests that have been performed, the magnitude of the
+anomaly appears to be slight (i.e., may potentially affect results by about 5
+to 10 percent or less), and the largest affect will be beyond the point of
+maximum concentration or deposition flux.  This appears to be associated with
+a discontinuity in sigma-z at the touchdown point and with convergence of
+sigma-z in SZFORM2, which seem to gradually disappear at distances well beyond
+the touchdown point (i.e., about 5 times the touchdown distance).  It is not
+anticipated that the anomaly will continue to get worse with distance.  Also,
+it should be emphasized that this affects the dry depletion option only, and
+has no effect on the deposition algorithm itself.  The anomaly is still being
+investigated, and an update to the models will be issued once it is resolved.
+For questions about the appropriateness of use of the dry depletion algorithm
+for a specific application, contact the Regional Modeling Contact.
+
+
+                           *****************
+                           *   IMPORTANT   *
+                           *****************
+
+    This program will henceforth be identified by its name and a Julian date,
+i.e.: ISCST3 (dated 96113) and ISCLT3 (dated 96113).  Future changes to this
+model will be identified by an updated Julian date found at the beginning of
+the model source code and followed by a reference to a SCRAM BBS Model Change
+Bulletin (MCB#n) which will explain the nature and contents of the changes.
+All Model Change Bulletins for this program will always be available for back
+reference on this BBS.  In the future, notification of changes (MCBs) to this
+program will be made in the SCRAM ALERTS section of this BBS immediately
+following the LOGON procedure.
+

@@ -1,0 +1,62 @@
+
+                            Model Change Bulletin
+              
+                                    MCB#3                         12/29/97
+
+                             ISCST3 (dated 97363)
+
+
+    This Model Change Bulletin documents changes made to the Industrial
+Source Complex Short Term (ISCST3) Dispersion Model (see Code Changes below).
+[NOTE:  New ISC3 users are urged to read ISC3 MCB#1, Amendment #1 for
+important information.  In addition, this change to the ISCST3 model does
+not address the anomalous behavior of the dry deposition algorithm described
+in MCB#2, and does not include a revised EVENT processor (ISCEV3).]
+
+
+CODE CHANGES
+
+    Changes from ISCST3 (dated 96113) include the following:
+
+1.  Correction to the vertical virtual distance calculation for rural
+    conditions, which can affect volume and building downwash sources;
+
+2.  Correction for area sources when CONC, DDEP, and WDEP are calculated;
+
+3.  Correction to SUBROUTINE RSINIT;
+
+4.  Correction to the output units label for ANNUAL average deposition
+    fluxes;
+
+5.  Correction for cases when the flagpole receptor height is above the
+    mixing height;
+
+6.  Correction to SUBROUTINE DEPCOR to ensure unlimited mixing for stable
+    conditions;
+
+7.  Change of the deposition reference height, ZRDEP, to 1.0m instead
+    of 20.*Z0M;
+
+8.  Correction to the interpolation routine used in SUBROUTINE TGQA; and
+
+9.  Minor cosmetic changes including corrections to format statements.
+
+
+Sensitivity tests performed on the correction to the vertical virtual
+distance for rural conditions showed little or no affect on design
+concentrations for a range of typical source characteristics, and
+meteorological regimes.
+
+
+                           *****************
+                           *   IMPORTANT   *
+                           *****************
+
+    This program will henceforth be identified by its name and a Julian date,
+i.e.: ISCST3 (dated 97363).  Future changes to this model will be identified
+by an updated Julian date found at the beginning of the model source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and contents of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the SCRAM ALERTS section of this website.

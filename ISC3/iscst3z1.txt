@@ -1,0 +1,113 @@
+                            Model Change Bulletin
+              
+                                    MCB#1                         09/09/95
+
+                             ISCST3 (dated 95250)
+                             ISCLT3 (dated 95250)
+
+
+     This Model Change Bulletin initiates the use of the Industrial Source
+Complex Dispersion Model (ISC3).
+
+     Changes from the ISCST2 (dated 93109) and ISCLT2 (dated 93109) include
+(1) a new area source algorithm, (2) a revised dry deposition algorithm, (3) a
+wet deposition algorithm, (4) COMPLEX1 algorithms for complex terrain
+calculations, and (5) a pit retention algorithm.
+
+     A detailed description of ISCST3 and ISCLT3 files and their contents is
+contained in the README.TXT file, located with the *.EXEs.  The ISCEV3 model
+has not been updated at this time.  It is currently being updated and a SCRAM
+Alert will notify users of its availability.  Likewise, the ISC2VOL3.ZIP file
+was not updated.  Due to budget restrictions, there are no imminent plans to
+revise the programming guide (ISC2VOL3.ZIP).
+
+     The following is a list of changes which have occurred between the Beta
+Testing versions of ISCST3/ISCLT3 (dated 95200) and the current versions of
+ISCST3/ISCLT3 (dated 95250):
+
+
+ISCST3
+
+  (1)  Fixed problem with summary tables for short term averages, which
+occurred when requesting non-consecutive high values (e.g. OU RECTABLE FIRST
+SECOND SIXTH),
+
+  (2)  Fixed error for open pit sources with release heights above the base
+of the pit, and
+
+  (3)  Added fatal error message for open pit source with no particle
+categories specified.
+
+
+ISCLT3
+
+  (1)  Same as items (2) and (3) above.
+
+
+
+
+     This program will henceforth be identified by its name and a Julian date,
+i.e.: ISCST3 (dated 95250).  Future changes to this model will be identified
+by an updated Julian date found on the first line of the model source code
+and followed by a reference to a SCRAM BBS Model Change Bulletin (MCB#n) which
+will explain the nature and contents of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this BBS.  In the future, notification of changes (MCBs) to this prgram will be
+made in the SCRAM ALERTS section of this BBS immediately following the LOGON
+procedure.
+
+
+
+
+            ******************************************************
+            *                                                    *
+            *      Amendment #1 to Model Change Bulletin #1      *
+            *                      04/17/96                      *
+            *                                                    *
+            ******************************************************
+
+
+
+The purpose of this amendment is to alert users of ISC3 that it is possible
+to inadvertently use the model in a way that was not intended.  When a user
+is estimating air quality credits (e.g., PSD increment expansion) due to
+source shut down or emissions reductions, negative emissions can be input to
+the model as part of the calculations.  While this approach is widely used in
+flat terrain applications, serious reservations have been expressed regarding
+its use with complex terrain screening techniques.  Due to the inherent
+conservative nature of these screening techniques, excessive air quality
+credits may be estimated.  The current version of ISC3 has the capability of
+using complex terrain screening for estimating air quality credits.
+
+Although the Guideline on Air Quality Models (Revised) does not specifically
+provide guidance on using models to estimate air quality credits, there are
+precedents for such usage.  The EPA Model Clearinghouse responded to this
+issue in a November 6, 1992 memorandum to EPA Region I (see Model Clearinghouse
+in Area H on the main SCRAM menu, then select Current Memos, file CFYM#77.TXT).
+This was in response to a proposal to use a screening model to estimate air
+quality or concentration credits in intermediate terrain due to emission
+reductions.  Note that intermediate terrain is defined as the terrain between
+stack height and plume height.  Also note that when screening modeling is
+conducted in the intermediate terrain area to calculate concentration
+estimates, the GAQM recommends that concentration estimates be calculated for
+each receptor and hour with both a simple terrain model (with terrain cut-off
+at stack top) and a complex terrain screening model.  The larger of the model
+estimates would then be selected for that hour.
+
+EPA Region X has presented a method that would allow ISC3 to be applied for
+estimating air quality credits consistent with the November 6, 1992 Model
+Clearinghouse memorandum.  This method consists of coding changes to the ISC3
+which were developed by RTP Environmental Associates.  Since there may be
+other cases where a similar modeling analysis for concentrations credits is
+necessary, the coding changes submitted by Region X are available in Area F of
+SCRAM BBS - Topics for Review/Comment.  Implementation of these coding changes
+is the responsibility of the user and would require recompilation of the
+program.  However, the Agency has not made a decision on the acceptability of
+these changes for a formal modification of ISC3 and they should only be used
+on a case-by-case basis with the concurrence of the appropriate regulatory
+agencies.  Comments on the accuracy of the code and its compatibility with the
+November 6, 1992 memorandum should be directed to Dennis Doll (US EPA)
+via SCRAM email or INTERNET doll.dennis@epamail.epa.gov     .
+
+
+                   

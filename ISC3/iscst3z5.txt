@@ -1,0 +1,96 @@
+
+
+
+
+
+                            Model Change Bulletin
+              
+                                    MCB#5                         12/14/98
+
+                             ISCST3 (dated 98348)
+
+
+    This Model Change Bulletin documents changes made to the Industrial
+Source Complex Short Term (ISCST3) Dispersion Model (see Code Changes below).
+
+[NOTE:  New ISC3 users are urged to read ISC3 MCB#1, Amendment #1 for
+important information.  In addition, this change to the ISCST3 model does
+not address the anomalous behavior of the dry deposition algorithm described
+in MCB#2.  Also, refer to the IMPORTANT NOTE below for informations
+regarding additional problems with the dry depletion algorithm.]
+
+
+CODE CHANGES
+
+    Changes from ISCST3 (dated 98226) include the following:
+
+1.  Corrections to errors with the new post-1997 PM10 routines
+    involving leap years and the 24-hour PLOTFILE option.  The user
+    may now model either 24-hour or annual averages separately
+    for post-1997 PM10 analyses.
+
+2.  A correction to the 'NO ECHO' option.
+
+3.  A correction to a potential problem with the MAXTABLE option
+    when MaxNum = 1.
+
+4.  The status message written to the screen has been modified to
+    include the year of data being processed.
+
+5.  General code clean-up, including additional variable declarations
+    and the inclusion of an IMPLICIT NONE statement throughout the code,
+    and minor cosmetic changes.  For example, The PCALC2, VCALC2, ACALC2,
+    and OCALC2 routines for EVENT processing have been removed, and the
+    PCALC, VCALC, ACALC, and OCALC routines have been modified to handle
+    both "normal" and EVENT processing.
+
+6.  The file unit for the runstream input file (INUNIT) has been
+    changed from 5 to 7, and the file unit for the main printed output
+    file (IOUNIT) has been changed from 6 to 8.  This change in file units,
+    and much of the code clean-up, is to improve portability of the model
+    to the Lahey LF95 Fortran 95 Compiler (Version 5.0).
+
+7.  A new PARAMETER called ILEN_FLD has been added to MAIN1, which is
+    initially assigned a value of 80.  This PARAMETER is now used to
+    specify the maximum length of individual fields on the input
+    runstream image, and also to declare the length of all filename
+    and format variables.  The user may therefore specify file/pathnames
+    of up to 80 charaters for all input and output files.
+
+8.  The integration routine for the area source integral has been replaced
+    by the same integration routine used for depletion (QATR).  Other
+    optimizations have also been made to the area source integration.
+    This may cause relatively minor changes to the results for area
+    sources, but should improve model runtimes for most area source
+    applications.
+
+
+IMPORTANT NOTE ON DRY DEPLETION:
+
+    An error has been identified in SUBROUTINE DEPCOR involving an
+    undefined variable 'x' being used for comparison to the plume
+    touchdown distance, 'xtd', and in a subsequent call to SUBROUTINE
+    SZSETL.  While it appears that the variable being used in this context
+    should be 'xr', such a correction leads to anomalous behavior for
+    ground-level, non-buoyant sources (such as area sources).  Therefore,
+    EPA is not correcting the known error (i.e., changing 'x' to 'xr') at
+    this time.  Corrective action will be deferred until the problems
+    with the SZSETL routines can be further investigated and appropriate
+    solutions developed and tested.  Users are therefore encouraged to
+    use extra caution when applying and interpreting the dry depletion
+    algorithm.
+
+
+
+                           *****************
+                           *   IMPORTANT   *
+                           *****************
+
+    This program will henceforth be identified by its name and a Julian date,
+i.e.: ISCST3 (dated 98348).  Future changes to this model will be identified
+by an updated Julian date found at the beginning of the model source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and contents of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the SCRAM ALERTS section of this website.

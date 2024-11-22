@@ -1,0 +1,63 @@
+
+
+
+                            Model Change Bulletin
+
+                                    MCB#9                       02/04/2002
+
+                             ISCST3 (dated 02035)
+
+    This Model Change Bulletin documents changes made to the Industrial
+Source Complex Short Term (ISCST3) Dispersion Model (see Code Changes below).
+
+[NOTE:  New ISC3 users are urged to read ISC3 MCB#1, Amendment #1 for
+important information.  In addition, this change to the ISCST3 model does
+not address the anomalous behavior of the dry deposition algorithm described
+in MCB#2 and MCB#5.]
+
+CODE CHANGES
+
+    Changes from ISCST3 (dated 00101) include the following:
+
+1.  Correction of a problem with allocating data storage for the
+    SHRDOW emission factor option when all SHRDOW input records are in
+    INCLUDED files.
+
+2.  Correction to a potential problem with concatenated meteorological
+    data files when the header record has been removed between the
+    individual years.  The problem occurred when the surface station ID
+    matched the year of the concatenated data file.
+
+3.  A modification to the area source optimizations under the
+    TOXICS option to address potential problems with the distance
+    at which the algorithm switches to a point source approximation
+    for very elongated area sources.
+
+4.  Addition of a non-default option (HE>ZI) to address a potential
+    problem that may occur for cases when the receptor elevation is
+    below the stack base elevation.  In these cases the mixing height
+    (ZI), which is terrain-following, may drop below the plume centerline
+    height (HE), which is horizontal, resulting in anomalously large
+    concentrations due to the actual plume approaching the centerline
+    of one of the image plumes in the Vertical Term.  When the HE>ZI option
+    is specified on the CO MODELOPT card, the model limits the plume
+    centerline height (HE) to be less than or equal to the mixing height
+    (ZI) when calculating the Vertical Term.  The model also generates
+    informational messages that identify when this adjustment has been made.
+    Since HE>ZI is a non-default option, it will be overridden if the
+    DFAULT option is specified.
+
+
+
+                           *****************
+                           *   IMPORTANT   *
+                           *****************
+
+    This program will henceforth be identified by its name and a Julian date,
+i.e.: ISCST3 (dated 02035).  Future changes to this model will be identified
+by an updated Julian date found at the beginning of the model source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the SCRAM ALERTS section of this website.

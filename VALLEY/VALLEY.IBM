@@ -1,0 +1,1018 @@
+C***********************************************************************MA000005
+C                                                                       MA000006
+C                         VALLEY (DATED 85338)                          MA000010
+C                                                                       MA000011
+C             *** SEE VALLEY MODEL CHANGE BULLETIN MCB#1 ***            MA000012
+C                                                                       MA000013
+C     ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS BULLETIN BOARD    MA000014
+C                                                                       MA000015
+C                             919-541-5742                              MA000016
+C                                                                       MA000017
+C***********************************************************************MA000018
+C
+C                    VALLEY             (DATED 85338)    
+C
+CC  1280 - OPTIONS ADDED FOR BUOYANCY INDUCED DISPERSION VIA SUM OF     MA000070
+CC  SQUARES OF PG SIGMA AND (DELTA H/3.5), AND FOR FACTOR 2.6 OR 2.4 IN MA000080
+CC  STABLE PLUME RISE(FINAL) FORMULA. P AND T CHANGED FOR PPM,          MA000090
+CC  AND FOR SELECTING EXCLUSION OF TRANSITIONAL PLUME RISE.             MA000091
+CC  V1 - JUNE 1977. C9M3D WITH HALES/BIERLY/HEWSON EQN RATHER THAN      MA000100
+CC  INTERPOLATION FOR LIMITED MIXING. INPUT VARIABLE ALWT CHANGED       MA000200
+CC  TO MWT.                                                             MA000300
+CC  C9M3D-NOV. 24,1975. C8M3D WITH FOUR RECEPTOR COORDINATES CORRECTED. MA000400
+CC  CALL BRIGGS (STABLE) MOVED TO WIND SPD LOOP. BRIGE AND BRIGF NOW AREMA000500
+CC  PLUME RISES (NOT PLUME RISE FACTORS).                               MA000600
+CC  C8M3D - SEPT. 17, 1974.  C7M3D WITH PLOTS PRINTED VIA SUBROUTINE.   MA000700
+      DIMENSION TS(50),VS(50),D(50),VF(50),DTDZ(6)                      MA000900
+      DIMENSION DIR(16),STAB(6)                                         IBM01000
+      DIMENSION INAME(300),RECHT(112),SORHT(50)                         MA001100
+      DIMENSION TITLE(20),SCFMT(18),RHOR(112),RVER(112)                 MA001200
+      DIMENSION SHOT(50),SVET(50),HST(50),QSOT(50),GT(50),WT(50)        MA001300
+      DIMENSION SC(6,16,6),A(18),B(18),C(18),WSA(6)                     MA001400
+      DIMENSION S(112),V(112),BRIGUN(50),BRIGE(50),BRIGF(50)            MA001500
+      REAL MWT                                                          MA000800
+      CHARACTER*4 DIR,STAB                                              IBM00001
+      CHARACTER*4 INAMAE, TITLE
+      COMMON MAXVM,VMAX,V,ICONT,MAXAM,AMAX,S,GRID,NSOR,INAME,TITLE,     MA001600
+     A HLIFE,STP,VXDIR,PAGE,ALWT,TFORM,IS3D,G,BRIGUN,TS,D,VS,VF,SORHT,  MA001700
+     B SHOT,SVET,HS,QSOT,BRIGE,BRIGF,DMIX,DMNI,STARFR,W,WSA,TEMP,IREC,  MA001800
+     C ISOR,GT,HST,WT,VFORM,AXDIR,IUR,ISHORT,NN,MAP,RECHT,HFCTR,K,P,MWT,MA001900
+     D IBID,I26,IFR                                                     MA001910
+CC  FIXED POTENTIAL TEMP GRADIENTS. 99 IS DUMMY.                        MA002000
+      DATA DTDZ/99.,99.,99.,99.,0.02,0.035/                             MA002100
+      DATA DIR   /'   N',' NNE','  NE',' ENE','   E',' ESE','  SE',     MA002200
+     A ' SSE','   S',' SSW','  SW',' WSW','   W',' WNW','  NW',' NNW'/  MA002300
+      DATA STAB   /'   A','   B','   C','   D','   E','   F'/           MA002400
+CC  RECEPTORS ARE NUMBERED CONSECUTIVELY OUTWARD ALONG EACH RADIAL.     MA002500
+CC  1-7 TO NORTH, 8-14 TO NNE, ...., 106-112 TO NNW.                    MA002600
+CC  THE CENTER OF THE NETWORK IS AT X=460., Y=60.                       MA002700
+CC  HORIZ COORD OF RECEPTORS FOLLOW.                                    MA002800
+      DATA RHOR/7*460.,463.,466.,469.,473.,476.,478.,481.,              MA002900
+     A 465.,472.,477.,483.,488.,493.,498.,                              MA003000
+     B 468.,476.,483.,488.,496.,503.,512.,                              MA003100
+     C 468.,476.,484.,492.,500.,508.,516.,                              MA003200
+     D 468.,476.,483.,488.,496.,503.,512.,                              MA003300
+     E 465.,472.,477.,483.,488.,493.,498.,                              MA003400
+     F 463.,466.,469.,473.,475.,478.,481.,7*460.,                       MA003500
+     G 458.,454.,451.,447.,445.,442.,439.,                              MA003600
+     H 453.,448.,443.,437.,432.,427.,422.,                              MA003700
+     I 452.,444.,437.,432.,424.,417.,408.,                              MA003800
+     J 452.,444.,436.,428.,420.,412.,404.,                              MA003900
+     K 452.,444.,437.,432.,424.,417.,408.,                              MA004000
+     L 453.,448.,443.,437.,432.,427.,422.,                              MA004100
+     M 458.,454.,451.,447.,445.,442.,439./                              MA004200
+CC  VERT COORD OF RECEPTORS FOLLOW.                                     MA004300
+      DATA RVER/68.,75.,83.,92.,100.,108.,117.,                         MA004400
+     A 67.,73.,82.,90.,97.,103.,110.,                                   MA004500
+     B 65.,72.,77.,83.,88.,93.,98.,                                     MA004600
+     C 63.,66.,70.,72.,75.,78.,82.,7*60.,                               MA004700
+     D 57.,53.,50.,48.,45.,42.,38.,                                     MA004800
+     E 55.,48.,43.,37.,32.,27.,22.,                                     MA004900
+     F 53.,47.,38.,30.,23.,17.,10.,                                     MA005000
+     G 52.,45.,37.,28.,20.,12.,3.,                                      MA005100
+     H 55.,47.,38.,30.,23.,17.,10.,                                     MA005200
+     I 53.,48.,43.,37.,32.,27.,22.,                                     MA005300
+     J 57.,53.,50.,48.,45.,42.,38.,                                     MA005400
+     K 7*60.,63.,66.,70.,72.,75.,78.,82.,                               MA005500
+     L 67.,72.,77.,83.,88.,93.,98.,                                     MA005600
+     M 65.,73.,82.,90.,97.,103.,110./                                   MA005700
+CC  A,B,C ARE FACTORS FOR COMPUTING SIGZ.                               MA005800
+      DATA A/.0010,.0476,.119,2.61,52.6,33.6,.001,.0476,.119,.187,      MA005900
+     A .1345,.362,.1742,.1426,.1233,.0804,.06,.0434/, B/1.89,1.11,.915, MA006000
+     B .45,.15,.14,1.89,1.11,.915,.755,.745,.55,.936,.922,.905,.881,    MA006100
+     C .854,.814/,C/9.6,2.,.0,-25.5,-126.,-75.,9.6,2.,0.,-1.4,-1.1,-2.7,MA006200
+     D 6*0./                                                            MA006300
+C
+C     PRINT HEADER
+C
+      WRITE(6,10)
+   10 FORMAT('1', 21X, 'VALLEY               (DATED 85338)',/)
+C
+  109 FORMAT(1H0,I10,7F10.5)                                            MA006400
+  113 FORMAT(20A4)                                                      MA006500
+      IN=5                                                              MA006600
+      IREC=112                                                          MA006700
+      QSOT(1)=0.                                                        MA006800
+      HFCTR=0.3048                                                      MA006900
+CC  MAP.NE.0 MEANS ELEV CHART WILL BE PRINTED (PROVIDED RCPTR ELEV.NE.0)MA007000
+      MAP=1                                                             MA007100
+CC <<<<<<<<<<  DATA IN >>>>>>>>>>                                       MA007200
+CC  READ RCPTR GRND ELEV (INPUT AS ZEROS FOR FLAT PLANE ANALYSIS)       MA007300
+CC  RECHT - RECEPTOR HEIGHTS, IN FT MSL FOR COMPATABILITY WITH USGS MAPSMA007400
+      READ(IN,74,ERR  =3901) (RECHT(I),I=1,112)                         MA007500
+   74 FORMAT(7F5.0)                                                     MA007600
+      SUM=0.0                                                           MA007700
+CC IS3D IS INDEX FOR WRITING LAST LITERAL IN PLOTS. IS3D=1 FOR FLAT PLNEMA007800
+      IS3D=7                                                            MA007900
+      DO 76 I=1,112                                                     MA008000
+      SUM=SUM+RECHT(I)                                                  MA008100
+   76 CONTINUE                                                          MA008200
+      IF(SUM.NE.0.0) GO TO 77                                           MA008300
+      IS3D=1                                                            MA008400
+      MAP=0                                                             MA008500
+      NPASS=0                                                           MA008505
+      SGRID=0.                                                          MA008510
+CC <<<<<<<<<<  DATA IN >>>>>>>>>>                                       MA008600
+   77 READ(IN,79,ERR=3903) P,TEMP,PRESS                                 MA008700
+   79 FORMAT(3F6.0)                                                     MA008800
+CC  P IS AMBIENT AIR PRESSURE(MB) USED IN CONV. CHI TO STANDARD         MA008900
+CC    COND.  ZERO DEFAULTS TO 960.                                      MA009000
+CC  TEMP IS AIR TEMP (DEG K) USED FOR PLUME RISE CALC AND FOR           MA009100
+CC    CONV. CHI TO STANDARD COND. ZERO DEFAULTS TO 293.                 MA009200
+CC  PRESS IS A CONTROL - IF EQ. 0, CHI (UG/M3 ONLY) IS AT AMBIENT COND. MA009300
+CC                       IF NE. 0, CHI IS AT STD. COND.                 MA009400
+ 1000 CONTINUE                                                          MA009500
+      VFORM=1.                                                          MA009600
+      AMAX=0.                                                           MA009700
+      IF(MAP.EQ.2) MAP=0                                                MA009800
+CC <<<<<<<<<<  DATA IN >>>>>>>>>>                                       MA009900
+CC  TITLE - LITERAL FOR I.D. OF DATA THRU NEXT SC DECK.  TITLE IS OUT-  MA010000
+CC        PUTTED IN ITS ENTIRETY, WITH LINE FEED AFTER COLUMN 20.       MA010100
+      READ(IN,113,END=3900)(TITLE(I),I=1,20)                            MA010200
+CC <<<<<<<<<<  DATA IN >>>>>>>>>>                                       MA010300
+      READ(IN,73,ERR=3905)GRID,MWT,DMIX,ISOR,DUPSOR,K,IUR,ICONT,DMNI,   MA010400
+     A HLIFE,ISHORT,IBID,I26,IFR                                        MA010500
+   73 FORMAT(F5.1,F7.0,F6.0,5I3,2F4.0,I3,3I1)                           MA010600
+CC  GRID - IN METERS.  EQUIV TO ONE PRINT SPACE ON OUTPUTTED PLOT.      MA010700
+CC               FOR PLOT SCALE=     USE GRID=                          MA010800
+CC                    1/24000              61.                          MA010900
+CC                    1/62500             158.7                         MA011000
+CC    PRINTER LINE SPACING MUST BE SET AT (NORMAL) 6 LINES PER INCH     MA011100
+CC    TO OBTAIN EQUAL AREA MAP.                                         MA011200
+CC  DMIX - MEAN MAXIMUM AFTERNOON MIXING DEPTH (METERS).                MA011300
+CC  DMNI - NIGHT DMIX FOR URBAN ONLY. DMNI IS USED ONLY IN THE          MA011400
+CC         URBAN CASE(M).                                               MA011500
+CC  ISOR - NMBR OF SRCS TO BE READ FOR THIS RUN THRU PROGRAM.           MA011600
+CC  DUPSOR =0 INDICATES THAT SOURCE PARAMETERS ARE NOT APPLICABLE TO EACMA011700
+CC            TIME PERIOD. THUS, SOURCE CARDS MUST PRECEDE EACH SC() DECMA011800
+CC         >0     INDICATES THAT ONLY ONE SET OF (N=ISOR) SOURCE CARDS  MA011900
+CC            IS NEEDED FOR ALL THE SC DECKS.                           MA012000
+CC  MWT=0 FOR UG/M3.                                                    MA012100
+CC  =MOLECULAR WEIGHT OF GAS WHEN UNITS OF PPM ARE DESIRED(G/MOLE).     MA012200
+CC  PROGRAM CONVERTS TO PPM VIA FACTOR 8.31E+04*298./(MWT*1013.2)       MA012300
+CC          MWT - MOLECULAR WT OF GAS.                                  MA012500
+CC K - OUTPUT MACHINE DESIGNATOR  ... 6 FOR 360 PRINTER.                MA012700
+CC IUR = 1 FOR URBAN                                                    MA012800
+CC     = 2 FOR RURAL                                                    MA012900
+CC ICONT = 0 OUTPUTS ONLY SUM OF CHI FOR ALL SOURCES                    MA013000
+CC       = 1 OUTPUTS IMPACT OF INDIVIDUAL SOURCES, & SUM.               MA013100
+CC       = 2 OUTPUTS ONLY THE IMPACT OF INDIVID SOURCES                 MA013200
+CC HLIFE - HALF LIFE OF POLLUTANT (HOURS). DEFAULT VALUE IS INFINITE.   MA013300
+CC ISHORT = 0 FOR LONGTERM CHI.                                         MA013400
+CC        = 1 FOR 24-HR CHI, BY ASSUMING THE SC CONDTN EXISTS FOR 6 OF TMA013500
+CC               24 HRS.  A SPECIAL 24-HR SC DECK IS RQRD. (ISHORT=     MA013600
+CC               ISHORT+1  INTERNALLY TO FACILITATE INDEXING FOR WRITE) MA013700
+CC IBID = 0 NO BUOYANCY - INDUCED DISPERSION.                           MA013710
+CC      = 1 WITH BUOYANCY - INDUCED DISPERSION.                         MA013720
+CC I26  = 0 MODEL USES 2.4 IN STABLE PLUME RISE EQ                      MA013730
+CC      = 1 MODEL USES 2.6 IN STABLE PLUME RISE EQ                      MA013740
+CC  IFR = 0 TRANSITIONAL PLUME RISE AVAILABLE FOR ALL STABILITIES       MA013750
+CC      = 1 NO TRANSITIONAL RISE                                        MA013751
+CC      = 2 TRANSITIONAL RISE AVAILABLE FOR STABLE ONLY                 MA013752
+      ISHORT=ISHORT+1                                                   MA013800
+      IF(GRID.EQ.SGRID.OR.NPASS.EQ.0.OR.SUM.EQ.0.0)GO TO 72             MA013840
+      WRITE(6,71)                                                       MA013845
+   71 FORMAT('1'///////' VALLEY DIAGNOSTIC.'/' BE AWARE THAT YOU HAVE CHMA013850
+     AANGED THE VALUE OF GRID BELOW.'/' A RERUN IS REQUIRED UNLESS ALL RMA013855
+     BECEPTORS OF CONCERN'/' LIE ON AN ELEVATED FLAT PLANE.')           MA013860
+   72 NPASS=1                                                           MA013865
+      SGRID=GRID                                                        MA013870
+      IF(MWT.EQ.1000000.)WRITE(K,3119)                                  MA013900
+ 3119 FORMAT(' VALLEY DIAGNOSTIC. CHECK MWT VALUE OF 1000000')          MA014000
+      IF(IUR.EQ.1.OR.IUR.EQ.2) GO TO 3122                               MA014100
+       WRITE(K,3121)IUR                                                 MA014200
+ 3121 FORMAT('  IUR HAS ILLEGAL VALUE OF',I5,', SO TERMINATE RUN.')     MA014300
+       GO TO 3900                                                       MA014400
+ 3122 IF(DMNI.EQ.0.) DMNI=100.                                          MA014500
+      IF(QSOT(1).EQ.0.) GO TO 3111                                      MA014600
+      IF(DUPSOR.NE.0.) GO TO 3112                                       MA014700
+CC <<<<<<<<<<  DATA IN >>>>>>>>>>                                       MA014800
+ 3111 READ(IN,106,ERR=3907)(INAME(6*IL-5),INAME(6*IL-4),INAME(6*IL-3),  MA014900
+     AINAME(6*IL-2),INAME(6*IL-1),INAME(6*IL),QSOT(IL),HST(IL),TS(IL),  MA015000
+     BVS(IL),D(IL),VF(IL),SHOT(IL),SVET(IL),SORHT(IL),                  MA015100
+     C WT(IL),GT(IL),IL=1,ISOR)                                         MA015200
+  106 FORMAT(6A4/11F7.0)                                                MA015300
+CC  INAME - LITERAL I.D. OF EMISSION SOURCES.  PRINTED IN OUTPUT.       MA015400
+CC  QSOT - EMISSION RATE (GM/SEC).                                      MA015500
+CC  HST - PHYSICAL HEIGHT OF STACK. (METERS)                            MA015600
+CC  TS - EFFLUENT TEMPERATURE (DEG K)      TS,VS,D, & VF CAN BE         MA015700
+CC  VS - EFFLUENT VELOCITY (MPS)           BLANK WHEN GT > 0.           MA015800
+CC  D  - STACK DIAMETER (M)                                             MA015900
+CC  VF - VOLUMETRIC FLOW RATE (CU M PER SEC).  COMPUTED INTERNALLY IF   MA016000
+CC    ENTERED AS ZERO, AND VS AND D ARE GIVEN.                          MA016100
+CC  SHOT - HORIZ COORD OF SOURCE.  460.0 FOR CENTER OF NETWORK.         MA016200
+CC  SVET - VERT COORD OF SOURCE.  60.0 FOR CENTER OF RADIAL NETWORK.    MA016300
+CC    EACH UNIT OF THE COORDINATES IS EQUIVALENT TO THE LENGTH OF 'GRID'MA016400
+CC  COORDINATES FOR AREA SOURCE ARE AT THE LOWER LEFT-HAND CRNR OF AREA.MA016500
+CC      THIS IS THE SOUTHWEST CORNER.                                   MA016600
+CC  SORHT - GRND ELEV AT SOURCE (FEET.)                                 MA016700
+CC  WT - WIDTH OF SQUARE AREA SOURCE (M).  ZERO FOR POINT SOURCES.      MA016800
+CC  GT - FIXED PLUME RISE (M). UNCHANGED THRUOUT CALCULATIONS, EXCEPT   MA016900
+CC    FOR TERRAIN ELEVATION EFFECTS.  BRIGGS IS CALCULATED ONLY IF GT=0.MA017000
+CC  PLUME RISE IS CALCULATED OR USER ASSIGNED FOR ALL SOURCES.          MA017100
+ 3112 CONTINUE                                                          MA017200
+CC <<<<<<<<<<  DATA IN >>>>>>>>>>                                       MA017300
+CC  READ IN CLASS-AVERAGE WIND SPEEDS (MPS)                             MA017400
+      READ(IN,7,ERR=3909)(WSA(I),I=1,6)                                 MA017500
+    7 FORMAT(6F10.6)                                                    MA017600
+      IF(WSA(1).GT.99.) GO TO 3900                                      MA017700
+CC <<<<<<<<<<  DATA IN >>>>>>>>>>                                       MA017800
+      READ(IN,2)SCFMT                                                   MA017900
+    2 FORMAT(18A4)                                                      MA018000
+CC  SCFMT IS FORTRAN FORMAT FOR SC DECK.                                MA018100
+CC ###### EXAMPLE  (8X,F5.0,F5.0,F5.0,F5.0,F5.0,F5.0,42X) OR (6F8.0)    MA018200
+CC <<<<<<<<<<  DATA IN >>>>>>>>>>                                       MA018300
+      READ(IN,SCFMT,ERR=3911)(((SC(M,N,J),J=1,6),N=1,16),M=1,6)         MA018400
+CC  SC IS STABILITY,DIRECTION, SPEED ROSE DATA I.E., STAR DECK.         MA018500
+CC  FOR LONG-TERM SC DECK, FREQUENCIES NORMALLY TOTAL ABOUT 1.00 .      MA018600
+CC  SUM THE STAR FREQUENCIES FOR PRINTOUT.                              MA018700
+      STARFR =0.0                                                       MA018800
+      DO 3313 J=1,6                                                     MA018900
+      DO 3313 N=1,16                                                    MA019000
+      DO 3313 M=1,6                                                     MA019100
+      STARFR =STARFR +SC(M,N,J)                                         MA019200
+ 3313 CONTINUE                                                          MA019300
+CC  LIST STABILITY, DIR, SPD FREQUENCIES.                               MA019400
+      WRITE(K,3116)(TITLE(I),I=1,5)                                     MA019500
+ 3116 FORMAT('1'//////20X,5A4)                                          MA019600
+      WRITE(K,3117)(WSA(J),J=1,6)                                       MA019700
+ 3117 FORMAT(//T13,'SPD(MPS)',2X,6(F6.3,2X)/' STABILITY   WIND DIR')    MA019800
+      DO 3120 M=1,6                                                     MA019900
+      WRITE(K,3118) (STAB(M),DIR(N),(SC(M,N,J),J=1,6),N=1,16)           MA020000
+ 3118 FORMAT('0',(T4,A4,T14,A4,T21,6F8.4))                              MA020100
+ 3120 CONTINUE                                                          MA020200
+CC  S(M) IS IMPACT OF ALL SOURCES AT RCPTR M.                           MA020300
+      DO 1110 M=1,112                                                   MA020400
+ 1110 S(M)=0.0                                                          MA020500
+CC  CALCULATE ALWT(PPM OR UG/M3), AND STP(STD OR AMBIENT COND.).        MA020600
+      IF(MWT.NE.0.0) GO TO 3220                                         MA020700
+CC  CHI TO BE IN UG/M3.                                                 MA020800
+      ALWT=1000000.                                                     MA020900
+      IF(PRESS.EQ.0.) GO TO 3225                                        MA021000
+CC  UG/M3 TO BE AT STD. COND.                                           MA021100
+      IF(P.EQ.0.) P=960.                                                MA021200
+      IF(TEMP.EQ.0.)TEMP=293.                                           MA021210
+      PRESS=P                                                           MA021300
+      STP=1013.2*TEMP/(PRESS*298.)                                      MA021400
+      GO TO 3230                                                        MA021500
+CC  CHI TO BE IN PPM.                                                   MA021600
+ 3220 IF(P.EQ.0.) P=960.                                                MA021700
+      IF(TEMP.EQ.0.)TEMP=293.                                           MA021800
+      ALWT=8.31E04*298./(MWT*1013.2)                                    MA021900
+ 3225 STP=1.0                                                           MA022000
+CC LOOP ON SOURCE                                                       MA022100
+ 3230 DO 97 IL=1,ISOR                                                   MA022200
+      VMAX=0.                                                           MA022300
+      BRIGUN(IL)=1.E 10                                                 MA022400
+      BRIGE(IL)=1.E 10                                                  MA022500
+      BRIGF(IL)=1.E 10                                                  MA022600
+      NSOR=IL                                                           MA022700
+CC  COMPUTE COORD OF CENTER OF SOURCE, POINT OR AREA.                   MA022800
+      SHOR=SHOT(IL)+WT(IL)/(2*GRID)                                     MA022900
+      SVER=SVET(IL)+WT(IL)/(2*GRID)                                     MA023000
+      HS=HST(IL)                                                        MA023100
+      QSO=QSOT(IL)                                                      MA023200
+CC QSO IS QRTRD FOR SHORT TERM TO CONVERT 6-HR MEAN TO 24-HR MEAN.      MA023300
+CC  ASSUMES STEADY STATE FOR 6 HOURS.                                   MA023400
+      IF(ISHORT.EQ.2) QSO=QSOT(IL)/4.0                                  MA023500
+      G=GT(IL)                                                          MA023600
+      W=WT(IL)                                                          MA023700
+CC  SET FLAG ONCE FOR EACH SOURCE, TO SKIP BRIGGS WHEN EFFLUENT CHARACT-MA023800
+CC    ERISTICS ARE NOT GIVEN BY USER.  PRINT WARNING.  OR, WHEN FIXED   MA023900
+CC    DELTA H IS INPUT.                                                 MA024000
+      IZBRIG=1                                                          MA024100
+      IF(G.GT.0.0)GO TO 499                                             MA024200
+      TOTAL=VF(IL)+VS(IL)+D(IL)                                         MA024300
+      IF(TOTAL.GT.0.0.AND.TS(IL).GE.TEMP) GO TO 500                     MA024400
+      BRIGUN(IL)=0.0                                                    MA024500
+      BRIGE(IL)=0.0                                                     MA024600
+      BRIGF(IL)=0.0                                                     MA024700
+      MMM=6*(IL-1)                                                      MA024800
+      WRITE(K,498)NSOR,(INAME(MMM+MM),MM=1,6)                           MA024900
+  498 FORMAT('1'///////////////T45,'WARNING -- RE SOURCE',I4,', ',6A4/  MA025000
+     A 45X,'PLUME RISE FACTORS SET TO 0.0 BECAUSE'/45X,'EFFLUENT FACTORSMA025100
+     B ARE NOT SPECIFIED BY USER.')                                     MA025200
+  499 IZBRIG=0                                                          MA025300
+CC  LOOP ON RECEPTOR                                                    MA025400
+  500 DO 115 M=1,IREC                                                   MA025500
+      ISBRIG=1                                                          MA025600
+CC  V(M) IS IMPACT OF SOURCE IL ON RCPTR M.                             MA025700
+      V(M)=0.0                                                          MA025800
+      NDIR1=1                                                           MA025900
+      NDIR2=16                                                          MA026000
+      IF(W.GT.0.0) GO TO 510                                            MA026100
+CC  LIMIT APPLICABLE WIND SECTORS TO TWO FOR POINT SOURCES(VIA IPP)     MA026200
+      XDIFF=SHOT(IL)-RHOR(M)                                            MA026300
+      YDIFF=SVET(IL)-RVER(M)                                            MA026400
+CC  PLACE LOWER LIMIT ON PT-SRC/RCPTR DISTANCE(20M).                    MA026500
+      SRDIS=GRID*SQRT(XDIFF**2+YDIFF**2)                                MA026600
+      IF(SRDIS.LT.20.)GO TO 115                                         MA026700
+      NDIR1=IFIX(ATAN2(XDIFF,YDIFF)/0.3927)+1                           MA026800
+      IF(XDIFF.LT.0.0)NDIR1=NDIR1+15                                    MA026900
+      NDIR2=NDIR1 + 1                                                   MA027000
+CC  LOOP ON WIND DIRECTION                                              MA027100
+  510 DO 96 ND=NDIR1,NDIR2                                              MA027200
+      N=ND                                                              MA027300
+      IF(N.EQ.17) N=1                                                   MA027400
+CC  LOOP ON STABILITY                                                   MA027500
+      DO 98 LOOK=1,7                                                    MA027600
+CC  LOOP ON WIND SPEED                                                  MA027700
+      DO 99 J=1,6                                                       MA027800
+      H=G+HS                                                            MA027900
+CC  SKIP TO 9 WHEN APPLICABLE DIR AND STBLTY VRBLS ARE ALREADY COMPUTED.MA028000
+      IF(J.GT.1) GO TO 9                                                MA028100
+CC  SKIP TO 132 WHEN APPLICABLE DIR VRBLS ARE ALREADY COMPUTED.         MA028200
+      IF(LOOK.GT.1) GO TO 132                                           MA028300
+CC  ACTUAL START OF CALCULATIONS BASED ON ITERATION OF WIND DIRECTION.  MA028400
+      BB = N                                                            MA028500
+      RAD = (BB-1.0) * .3927                                            MA028600
+      BSIN=SIN (RAD)                                                    MA028700
+      BCOS=COS (RAD)                                                    MA028800
+CC  XP IS DISTANCE (VECTOR WITH SIGN) FROM RCPTR TO ACTUAL SRC.         MA028900
+      XP=GRID*((SVER-RVER(M))*BCOS+(SHOR-RHOR(M))*BSIN)                 MA029000
+CC  WHEN RCPTR TO PT SRC DIST IS SMALL, GO TO NEXT RCPTR.               MA029100
+      IF(XP.LT.10.AND.W.EQ.0.0)GO TO 115                                MA029200
+CC  X IS DWNWND DIST FROM PT SRC OR VIRTUAL PT SRC TO RCPTR.            MA029300
+      X = XP + W/.393                                                   MA029400
+CC  IF RCPTR IS UPWIND OF SOURCE, GO TO NEXT DIR.                       MA029500
+   18 IF(XP+W/2.)96,96,4                                                MA029600
+CC  Y IS CROSSWIND DISTANCE, RECPTR TO SECTOR CENTERLINE AT DSTNC X.    MA029700
+    4 Y=ABS(GRID*((SVER-RVER(M))*BSIN-(SHOR-RHOR(M))*BCOS))             MA029800
+CC  CX IS SECTOR WIDTH AT DSTNC X.                                      MA029900
+      CX = .393 * X                                                     MA030000
+CC  IS RECPTR AFFECTED BY SECTOR.                                       MA030100
+CC  ARG 2 IS FRACTION OF SECTOR WINDS AFFECTING RECPTR FOR GIVEN SOURCE.MA030200
+      IF(CX-Y) 96,96,36                                                 MA030300
+   36 ARG2 = (CX-Y)/CX                                                  MA030400
+      IF(W.GT.0.0) GO TO 121                                            MA030500
+      IF(SHOR.NE.460..OR.SVER.NE.60.) GO TO 13                          MA030600
+CC  IF PT SRC AT CENTR (460,60) ARG2 SAYS WHICH LONE SECTOR IS REQUIRED.MA030700
+CC    DELETE 2 STMNTS ABOVE AND 3 BELOW IF RCPTRS OTHER THAN ON THE 16  MA030800
+CC    RADIALS ARE ADDED AS MODIF., AND ADD 'IF(W.EQ.0.)GOTO13' AT 36+001MA030900
+      IF(ARG2.LT.0.5) GO TO 96                                          MA031000
+      ARG2=1.0                                                          MA031100
+      GO TO 13                                                          MA031200
+  121 IF((W/2.)-ABS(XP))122,122,1225                                    MA031300
+  122 IF(W-.393*XP)13,13,123                                            MA031400
+CC  Q IS FRACTION OF AREA SRC WHICH AFFECTS RCPTR.  FOR PT SRC, Q=1.    MA031500
+CC  RECEPTOR INSIDE SOURCE AREA.                                        MA031600
+ 1225 Q=(.1965*(X-2.04*W)**2)/W**2                                      MA031700
+      XP =.707*(XP+W/2.)                                                MA031800
+      X=2.0*XP                                                          MA031900
+CC  FOR AREA SRC LIMIT RCPTR-TO VIRTUAL PT SRC DIST TO MIN OF 100 M TO  MA032000
+CC     AVOID ARITHMETIC BLOWUP.                                         MA032100
+      IF(X.LT.100.) X=100.                                              MA032200
+CC  IF AREA SRC DOES NOT AFFECT RCPTR, GO TO NEXT DIRECTION.            MA032300
+      IF(Y-(W/2.+0.5))131,131,96                                        MA032400
+CC  RECEPTOR OUTSIDE SOURCE AREA, BUT 'NEAR' IT.                        MA032500
+  123 Q=(.393*X-W)/W                                                    MA032600
+      XP=SQRT((XP*XP)+(W*W/4))                                          MA032700
+      X=2.*XP                                                           MA032800
+      IF(X.LT.100.) X=100.                                              MA032900
+      IF(Y-(W/2.+.393*X)) 131,131,96                                    MA033000
+CC  CONTRIBUTION OF POINT SOURCE OR DISTANT AREA SOURCE IS Q=1.         MA033100
+   13 Q=1.                                                              MA033200
+CC  PLUME RISE FCTRS ARE COMPUTED ONCE PER SOURCE-RECEPTOR FOR          MA033300
+CC  NONSTABLE.                                                          MA033400
+  131 IF((ISBRIG+IZBRIG).LT.2)GO TO 132                                 MA033500
+      ISBRIG=0                                                          MA033600
+      XXP=XP/1000.                                                      MA033700
+      IF(IFR.GT.0)XXP=0.                                                MA033711
+      IT=4                                                              MA033800
+      CALL BEHVAL (DUM1,DUM2,DUM3,DUM4,DUM5,DUM6,BRIG,HST(IL),          MA033900
+     * TS(IL),VS(IL),D(IL),VF(IL),IT,1.0,XXP,DTDZ(IT),TEMP,P,I26)       MA034000
+      BRIGUN(IL)=BRIG                                                   MA034100
+      IF(XXP.EQ.0.)BRIGUN(IL)=DUM5                                      MA034110
+  132 GO TO (1310,1311),IUR                                             MA034200
+CC                                                                      MA034300
+CC - LOOK                      1  2  3    4        5    6          7    MA034400
+CC                                                                      MA034500
+CC - URB. STAB. (STMNT 1310)   A  B  C  D(DAY)   D(NGT)  E     EXIT LOOPMA034600
+CC                                                                      MA034700
+CC - RUR. STAB. (STMNT 1311)   A  B  C  D(DAY)  D(NGT)  E          F    MA034800
+CC  INITIALIZE STABILITY-DEPENDENT FACTORS AND FLAGS.                   MA034900
+CC                                                                      MA035000
+ 1310 GO TO (362,363,364,367,366,365,98),LOOK                           MA035100
+ 1311 GO TO (362,363,364,367,368,369,370),LOOK                          MA035200
+  362 DM=1.5*DMIX                                                       MA035300
+      FREQ=1.                                                           MA035400
+      L=1                                                               MA035500
+      LLL=1                                                             MA035600
+      GO TO 22                                                          MA035700
+  363 DM=DMIX                                                           MA035800
+      FREQ=1.                                                           MA035900
+      L=2                                                               MA036000
+      GO TO 22                                                          MA036100
+  364 DM=DMIX                                                           MA036200
+      FREQ=1.                                                           MA036300
+      L=3                                                               MA036400
+      GO TO 22                                                          MA036500
+  365 DM=DMNI                                                           MA036600
+      FREQ=1.                                                           MA036700
+      L=5                                                               MA036800
+      GO TO 22                                                          MA036900
+  366 IF(ISHORT.EQ.2) GO TO 98                                          MA037000
+      DM=(DMIX+DMNI)/2.                                                 MA037100
+      FREQ=.40                                                          MA037200
+      L=4                                                               MA037300
+      GO TO 22                                                          MA037400
+  367 DM=DMIX                                                           MA037500
+      FREQ=.60                                                          MA037600
+      IF(ISHORT.EQ.2) FREQ=1.0                                          MA037700
+      L=4                                                               MA037800
+      GO TO 22                                                          MA037900
+  368 IF(ISHORT.EQ.2) GO TO 98                                          MA038000
+      DM=DMIX/2.                                                        MA038100
+      FREQ=.40                                                          MA038200
+      L=4                                                               MA038300
+      GO TO 22                                                          MA038400
+  369 FREQ=1.                                                           MA038500
+      DM=10000.                                                         MA038600
+      L=5                                                               MA038700
+      LLL=2                                                             MA038800
+      GO TO 22                                                          MA038900
+  370 FREQ=1.                                                           MA039000
+      DM=10000.                                                         MA039100
+      L=6                                                               MA039200
+   22 KKK=L                                                             MA039300
+CC  REVERT TO ORIGINAL DMIX WHEN SHORT-TERM AND NONSTABLE.              MA039400
+      IF(ISHORT.EQ.2.AND.LLL.EQ.1) DM=DMIX                              MA039500
+      IF(IUR.EQ.1.AND.LOOK.GE.6)L=4                                     MA039600
+CC  COMPUTE SIGMA Z AS F(DISTANCE,STABILITY).                           MA039700
+      LL=L                                                              MA039800
+      IF(XP.LT.1000.)  LL=LL+6                                          MA039900
+      IF(XP.LT.100.) LL=LL+6                                            MA040000
+      SIGI=50.-HS                                                       MA040100
+      IF(LLL.GT.1.OR.HS.GT.50..OR.SIGI.LT.1.0) SIGI=0.0                 MA040200
+CC  SIGMA IS INCREASED FOR ALL LOW-LEVEL SRCS XCPT FOR RURAL STABLE.    MA040300
+      IF(SIGI.GT.30.) SIGI=30.                                          MA040400
+      IF(IBID.EQ.0)GO TO 800                                            MA040410
+      SIGZ=((A(LL)*ABS(XP)**B(LL)+C(LL))**2 + SIGI**2)                  MA040420
+      GO TO 9                                                           MA040430
+  800 SIGZ=SQRT((A(LL)*ABS(XP)**B(LL)+C(LL))**2 + SIGI**2)              MA040440
+CC  ACTUAL START OF CALCULATIONS BASED ON ITERATION OF SPEED CLASS      MA040600
+    9 F=SC(KKK,N,J)                                                     MA040700
+      IF(KKK.EQ.5.AND.IUR.EQ.1) F=SC(5,N,J) + SC(6,N,J)                 MA040800
+      WS=WSA(J)                                                         MA040900
+      IF(F.EQ.0.0.OR.WS.EQ.0.0) GO TO 99                                MA041000
+      WINDSP=WS                                                         MA041100
+      IF(IZBRIG.EQ.0.AND.IBID.EQ.0) GO TO 15                            MA041110
+      IF(IZBRIG.EQ.0.AND.IBID.NE.0) GO TO 802                           MA041120
+      IF(L.LT.5.AND.IBID.EQ.0) GO TO 14                                 MA041130
+      IF(L.LT.5.AND.IBID.NE.0) GO TO 804                                MA041140
+CC  BEH072 RETURNS DELTA H (BRIG) FOR STABLE E OR F, FOR EACH WIND SPD. MA041400
+CC    FOR WIND SPD = WS.                                                MA041500
+      XXP=XP/1000.                                                      MA041535
+      IF(IFR.EQ.1)XXP=0.                                                MA041540
+      CALL BEHVAL(DUM1,DUM2,DUM3,DUM4,DUM5,DUM6,BRIG,HST(IL),           MA041600
+     * TS(IL),VS(IL),D(IL),VF(IL),L,WS,XXP,DTDZ(L),TEMP,P,I26)          MA041700
+      IF(XXP.EQ.0.)BRIG=DUM5                                            MAO41750
+      IF(L.EQ.5) BRIGE(IL)=BRIG                                         MA041800
+      IF(L.EQ.6) BRIGF(IL)=BRIG                                         MA041900
+      IF(IBID.NE.0)GO TO 802                                            MA041910
+      H=HS+BRIG                                                         MA041920
+      GO TO 15                                                          MA041930
+  804 BRIG=BRIGUN(IL)/WS                                                MA041940
+  802 IF(G.GT.0.0)BRIG=G                                                MA041950
+      H=HS+BRIG                                                         MA041960
+      DUM=BRIG/3.5                                                      MA041970
+      DUM=DUM*DUM                                                       MA041980
+      SIGZ=SQRT(SIGZ+DUM)                                               MA041990
+      GO TO 15                                                          MA042100
+   14 H=HS+BRIGUN(IL)/WS                                                MA042200
+   15 CONTINUE                                                          MA042300
+CC  FOR ALL SHORT TERM NONSTABLE, LIMIT H TO DM.  RECALL FOR SHORT-TERM MA042400
+CC    RURAL, DM(STBL) >> H.                                             MA042500
+      IF(ISHORT.EQ.2.AND.LLL.EQ.1.AND.H.GT.DM) H=DM                     MA042600
+CC  GO TO NEXT SPEED  IF PLUME ABOVE LID.                               MA042700
+      IF(H.GT.DM) GO TO 99                                              MA042800
+      IF(LLL.EQ.1.OR.SUM.EQ.0.0.OR.H.LE.10.0) GO TO 3488                MA042900
+CC  THRU 3490, ESTABLSH HT OF PLUME CNTRLNE ABOVE RCTPTR.               MA043000
+CC  STABLE                                                              MA043100
+      DELEV=(SORHT(IL)-RECHT(M))*HFCTR                                  MA043200
+CC  PLHT IS UNADJUSTED PLUME HT AT RECEPTOR.                            MA043300
+ 3410 PLHT=H+DELEV                                                      MA043400
+ 3420 IF(PLHT.GT.0.0) GO TO 3430                                        MA043500
+CC  ATTENUATE CONC TO ZERO AT 400M ABOVE ORIG PLUME CNTRLINE.           MA043600
+      IF(PLHT.LE.-400.0) GO TO 99                                       MA043700
+      WS=WS*(400./(400.+PLHT))                                          MA043800
+CC  SET MIN PLUME HT AT 10M ABOVE RCPTR FOR STABLE ONLY, IF TERRAIN USEDMA043900
+ 3430 IF(PLHT.LT.10.0) PLHT=10.                                         MA044000
+CC  PLHT IS NOW THE ADJUSTED PLUME HEIGHT AT THE RECEPTOR.              MA044100
+      GO TO 3491                                                        MA044200
+CC  UNSTABLE                                                            MA044300
+ 3488 PLHT=H                                                            MA044400
+ 3491 H=PLHT                                                            MA044500
+      ARG1=(-.5*H*H)/(SIGZ*SIGZ)                                        MA044600
+CC  ARG1.LT.-40. ((I.E., EXP(ARG1).LT.4.0E-16)) IS INSIGNIFICANT.       MA044700
+      IF(ARG1.LT.-40.) GO TO 99                                         MA044800
+      ARG1=EXP(ARG1)                                                    MA044900
+      ARG1FR=0.0001*ARG1                                                MA045000
+CC  RATHER THAN INTERPOLATING FOR LID REFLECTION AS IN C9M3D, USE       MA045100
+CC  TURNER (WADE) EQN 5.14 FOR HOMOGENEOUS MIX, AND HALES-BIERLY-HEWSON MA045200
+CC  EQN (TURNER EQN 5.8, BUT FOR SECTOR) FOR SHORTER DISTANCES.         MA045300
+      XD=X                                                              MA045400
+      AJ=0.                                                             MA045500
+      IF(SIGZ.GT.(2.*DM))GO TO 75                                       MA045600
+CC  NO INVERSION ALOFT FOR STABLE (GO TO 68)                            MA045700
+      IF(L.GE.5)GO TO 68                                                MA045800
+CC  NONSTABLE METEO CONDITIONS. HALES-BIERLY-HEWSON.                    MA045900
+      DO 65 NJ=1,5                                                      MA046000
+      DUM1=2*NJ*DM                                                      MA046100
+      DUM3=-.5*((-H-DUM1)/SIGZ)**2                                      MA046150
+      DUM4=-.5*((H-DUM1)/SIGZ)**2                                       MA046155
+      IF(DUM4.LT.-40.)GO TO 68                                          MA046160
+      IF(DUM3.LT.-40.)GO TO 64                                          MA046165
+      DUM2=EXP(DUM3)+EXP(DUM4)                                          MA046170
+      GO TO 65                                                          MA046175
+  64  DUM2=EXP(DUM4)                                                    MA046180
+  65  AJ=AJ+DUM2                                                        MA046700
+   68 C3=2.03*FREQ*Q*F*ARG2*(ARG1+AJ)/(WS*XD*SIGZ)                      MA046800
+      GO TO 78                                                          MA046900
+CC  FULLY MIXED IN VERTICAL                                             MA047000
+   75 C3=2.55*FREQ*Q*F*ARG2/(DM*WS*XD)                                  MA047100
+   78 CONTINUE                                                          MA047200
+      C4=C3*QSO*ALWT*STP                                                MA047300
+CC       DISTANCE TO VIRTUAL SOURCE IS EXCLUDED FROM HLIFE CALCULATION. MA047400
+      IF(HLIFE.NE.0.0) C4=C4*EXP(-(XP/WINDSP)*0.693/(3600.*HLIFE))      MA047500
+      V(M)=V(M)+C4                                                      MA047600
+CC  V IS THE IMPACT OF SOURCE AT RECEPTOR M.                            MA047700
+   99 CONTINUE                                                          MA047800
+   98 CONTINUE                                                          MA047900
+   96 CONTINUE                                                          MA048000
+CC  VMAX IS MAX VALUE OF ALL V'S COMPUTED FOR GIVEN SOURCE.             MA048100
+      IF(V(M).LT.VMAX) GO TO 1140                                       MA048200
+      VMAX=V(M)                                                         MA048300
+      MAXVM=M                                                           MA048400
+CC  S IS THE SUM OF IMPACTS OF ALL SOURCES AT RECEPTOR M.               MA048500
+ 1140 S(M)=S(M)+V(M)                                                    MA048600
+      IF(S(M).LT.AMAX) GO TO 115                                        MA048700
+      MAXAM=M                                                           MA048800
+CC  AMAX IS MAX VALUE OF S(M) IN PLOT TO BE PRINTED.                    MA048900
+      AMAX=S(M)                                                         MA049000
+  115 CONTINUE                                                          MA049100
+      IF(ICONT.EQ.0) GO TO 97                                           MA049200
+CC  SET FLAG TO INDICATE FLOW ROUTE THRU PLOTTING SUBROUTINE.           MA049300
+      NN=1                                                              MA049400
+      CALL EBPLT1                                                       MA049500
+   97 CONTINUE                                                          MA049600
+      IF(ICONT.EQ.2) GO TO 971                                          MA049700
+      NN=0                                                              MA049800
+      CALL EBPLT1                                                       MA049900
+  971 IF(MAP.NE.1) GO TO 1000                                           MA050000
+CC  SET FLAG TO INDICATE FLOW ROUTE THROUGH PLOTTING SUBROUTINE.        MA050100
+      NN=2                                                              MA050200
+      CALL EBPLT1                                                       MA050300
+      GO TO 1000                                                        MA050400
+ 3901 WRITE(6,3902) I                                                   MA050500
+ 3902 FORMAT('0<<< ERROR IN READ RCPTR HTS.  CARD',I4)                  MA050600
+      GO TO 3915                                                        MA050700
+ 3903 WRITE(6,3904)                                                     MA050800
+ 3904 FORMAT('0<<< ERROR IN READ P,TEMP')                               MA050900
+      GO TO 3915                                                        MA051000
+ 3905 WRITE(6,3906)                                                     MA051100
+ 3906 FORMAT('0<<< ERROR IN READ GRID')                                 MA051200
+      GO TO 3915                                                        MA051300
+ 3907 WRITE(6,3908) IL                                                  MA051400
+ 3908 FORMAT('0<<< ERROR IN READ SOURCE, CARD',I4)                      MA051500
+      GO TO 3915                                                        MA051600
+ 3909 WRITE(6,3910)                                                     MA051700
+ 3910 FORMAT('0<<< ERROR IN READ WSA')                                  MA051800
+      GO TO 3915                                                        MA051900
+ 3911 WRITE(6,3912) M,N,J                                               MA052000
+ 3912 FORMAT('0<<< ERROR IN READ SC, STABILITY',I2,'DIR',I3,'SPD',I2)   MA052100
+ 3915 WRITE(6,3916)                                                     MA052200
+ 3916 FORMAT('0<<< CHECK OVERALL ORDER OF DATA CARDS BEFORE CHECKING'/  MA052300
+     A'       DATA ON CARD REFERRED TO ABOVE'/'      EXECUTION HAS BEEN MA052400
+     BTERMINATED DUE TO READ FORMAT ERROR (NOT BECAUSE OF DATA CHECK)') MA052500
+3900  CONTINUE                                                          MA052600
+      CALL EXIT                                                         MA052700
+      END                                                               MA052800
+      SUBROUTINE EBPLT1                                                 PL000100
+CC  EBPLT1 IS EWBPLT WITH 'VIA VALLEY V1' PRINTED ON OUTPUT PAGES.      PL000200
+CC  EWBPLT IS GEARED TO WRITE OUTPUT PLOTS OF CONCENTRATION AND HEIGHT  PL000300
+CC    DIFFERENCES.  IT IS CALLED WITH FLAG NN SET TO ONE OF 3 VALUES....PL000400
+CC      0 - WRITE THE SUM OF ALL CONTRIBUTIONS, AND WRITE A HEIGHT      PL000500
+CC        DIFFERENCE BEFORE RETURN IF IMAP.EQ.1.                        PL000600
+CC      1 - WRITE THE CONTRIBUTION OF ONLY ONE SOURCE.                  PL000700
+CC      2 - WRITE ONLY THE HEIGHT DIFFERENCE MAP.                       PL000800
+      REAL MWT                                                          PL000890
+      CHARACTER *4 VERBL(12),URBRUR(2),TERM(2),THREED(12),KCON(8),      IBM00002
+     1KBID(8),KBLK(8),KFIRI(8),NFIRI(8)                                 IBM00003
+      DIMENSION SHOT(50),SVET(50),HST(50),QSOT(50),GT(50),WT(50)        PL000900
+      DIMENSION TS(50),VS(50),D(50),VF(50),RECHT(112)                   IBM01001
+CC    DIMENSION VERBL(12),URBRUR(2),THREED(12),KBID(8),KCON(8),KBLK(8)  IBM01100
+      DIMENSION INAME(300),SORHT(50),SCALE(6),TITLE(20),WSA(6)          IBM01200
+      DIMENSION S(112),V(112),BRIGUN(50),BRIGE(50),BRIGF(50)            PL001300
+      COMMON MAXVM,VMAX,V,ICONT,MAXAM,AMAX,S,GRID,NSOR,INAME,TITLE,     PL001400
+     A HLIFE,STP,VXDIR,PAGE,ALWT,TFORM,IS3D,G,BRIGUN,TS,D,VS,VF,SORHT,  PL001500
+     B SHOT,SVET,HS,QSOT,BRIGE,BRIGF,DMIX,DMNI,STARFR,W,WSA,TEMP,IREC,  PL001600
+     C ISOR,GT,HST,WT,VFORM,AXDIR,IUR,ISHORT,NN,MAP,RECHT,HFCTR,K,P,MWT,PL001700
+     D IBID,I26,IFR                                                     PL001710
+      DATA VERBL/'SUM ','CONC',' DUE',' TO ','ALL ','SRCS',             PL001800
+     A           'GROU','ND E','LEV ','DIFF','EREN','CES.'/             PL001900
+      DATA URBRUR/'URBN','RURL'/,TERM/'LONG','SHRT'/                    PL002000
+      DATA THREED/'FLAT','-PLA','NE C','ONCE','PT. ','    ',            PL002100
+     A            'SLOP','ING ','TERR','AIN ','CONC','EPT.'/            PL002200
+      DATA KCON/'BRIG','GS S','TABL','E CO','NSTA','NT I','S 2.',       PL002250
+     A          '6.  '/                                                 PL002255
+      DATA KBID/'BUOY','ANCY','-IND','UCED',' DIS','PERS','ION.',       PL002260
+     A          '    '/                                                 PL002265
+      DATA KBLK/'    ','    ','    ','    ','    ','    ','    ',       PL002270
+     A          '    '/                                                 PL002275
+      DATA KFIRI/'FINA','L RI','SE O','NLY,',' FOR',' ALL',' CAS',      PL002276
+     A           'ES. '/                                                PL002277
+      DATA NFIRI/'ONLY',' FIN','AL R','ISE ','FOR ','NONS','TABL',      PL002278
+     A           'E.  '/                                                PL002279
+  810 FORMAT( '1',T39,F5.1,T56,'/--',T60,F5.1,T81,F5.1/T34,'RELOCATE 2/3PL002300
+     A INCH UP-/',T60,F5.1///T42,F5.1,                                  PL002400
+     B T78,F5.1//T60,F5.1/T22,F5.1,T98,F5.1/T45,F5.1,T76,F5.1//         PL002500
+     C T27,F5.1,T93,F5.1,'          VALLEY         '/T2,'1280',         PL002600
+     D T60,F5.1,T102,6A4/T47,F5.1,T73,F5.1/T32,F5.1,T88,F5.1/           PL002700
+     E T100,5A4/T65,15A4/T37,F5.1,T60,F5.1,T83,F5.1/T8,F5.1,T51,F5.1,T69PL002800
+     F ,F5.1,T112,F5.1)                                                 PL002900
+ 8102 FORMAT                                                            PL003000
+     A(T17,F5.1,T103,F5.1/T43,F5.1,T77,F5.1/T24,F5.1,T60,F5.1,T96,F5.1/ PL003100
+     B T54,F5.1,T66,F5.1/T32,F5.1,T48,F5.1,T72,F5.1,T88,F5.1/T37,F5.1,  PL003200
+     C T83,F5.1/T60,F5.1/T44,F5.1,4X,F5.1,5X,F5.1,8X,F5.1/              PL003300
+     D T58,    F5.1,T65   ,F5.1 /T52,F5.1,                              PL003400
+     E T59,9('*'),T68,F5.1,T99,'MULTIPLY PRINTED VALUES BY ')           PL003500
+ 103  FORMAT(T59,'* COORD *',T99,1PE8.1,' TO GET CONC. IN UG/M3')       PL003600
+ 104  FORMAT(T59,'* COORD *',T99,1PE8.1,' TO GET CONC. IN PPM')         PL003700
+  811 FORMAT(T4,7(F5.1,3X), T59,'*  _._  *',T68,6(F5.1,3X),F5.1/        PL003800
+     A T59,'* 460,60*',T76,'SOR ELEV  COORDX  COORDY  STK HT  Q(GM/SEC) PL003900
+     B FIXD DH')                                                        PL004000
+  812 FORMAT(T52,F5.1,T59,9('*'),T68,F5.1,T76,F6.0,'FT',F8.2,F8.2,F7.0, PL004100
+     A 'M ',1PE10.4,4X,0PF6.0/ T58,F5.1,T65   ,F5.1/T44,F5.1,T53,F5.1,  PL004200
+     B T63,F5.1,T76,F5.1,T84,'BRIG.E  BRIG.F  DMIX    DMNI  STAR F WIDTHPL004300
+     C'/T60,F5.1,T84,F6.0,F8.0,F7.0,F8.0,F7.2,F7.0/T37,F5.1,T83,F5.1/   PL004400
+     D T32,F5.1,T48,F5.1,T72,F5.1,T88,F5.1,12X,'BRIGUN P(MB)  MWT'/     PL004500
+     E T54, F5.1,T66,F5.1,T103,F8.0,F6.0,F6.1/T24,F5.1,T60,F5.1,        PL004600
+     F T96,F5.1/T43,F5.1,'  VV MEAN WIND SPDS(MPS) VV',T77,F5.1,/       PL004700
+     G T17,F5.1,T34,6F9.5,T103,F5.1//T8,F5.1,                           PL004800
+     H T51,F5.1,T69,F5.1,T112,F5.1/T37,F5.1,T60,F5.1,T83,F5.1/          PL004900
+     I T97,'AIR T  GAS T   DIAM  GAS V  FLOW'/T95,2F7.0,2F7.1,F6.1/     PL005000
+     J T32,F5.1,T88,F5.1/T47,F5.1,T73,F5.1/T60,F5.1/T27,F5.1,T93,       PL005100
+     K F5.1//T45,F5.1,T75,F5.1/T22,F5.1,T98,F5.1/T60,F5.1//             PL005200
+     L T42,F5.1,T78,F5.1/T5,8A4,T56,'0 KM',3X,F7.3,5('KM ',F7.3),'KM'/  PL005300
+     M T5,8A4,T56,6('!....+....'),'!'/T5,8A4,T60,F5.1,                  PL005400
+     N T68,'__RELOCATE 2/3 INCH DOWN',/T5,A4,', ',A4,'-TERM MODE.',     PL005500
+     O T39,F5.1,T60,F5.1,'--/',T81,F5.1,T100,6A4)                       PL005600
+      MM=NN+1                                                           PL005700
+      GO TO(971,10,3800),MM                                             PL005800
+   10 AXVM=(MAXVM+6)/7                                                  PL005900
+      VXDIR=(AXVM-1.)*22.5                                              PL006000
+      IF(VMAX.GE.100000.)   VFORM=0.001                                 PL006100
+      IF(VMAX.LT.100000.) VFORM=0.01                                    PL006200
+      IF(VMAX.LT.10000.) VFORM=0.1                                      PL006300
+      IF(VMAX.LT.1000.) VFORM=1.                                        PL006400
+      IF(VMAX.LT.100.) VFORM=10.                                        PL006500
+      IF(VMAX.LT.10.)VFORM=100.                                         PL006600
+      IF(VMAX.LT.1.) VFORM=1000.                                        PL006700
+      IF(VMAX.LT.0.1) VFORM=10000.                                      PL006800
+      IF(VMAX.LT.0.01) VFORM=100000.                                    PL006900
+      IF(VMAX.LT.0.001) VFORM=1000000.                                  PL007000
+C  VFORM AND AFORM SCALE ALL CONCENTR. VALUES.  ALL VALUES ARE SCALED   PL007100
+C   BY THE SAME FACTOR ON A GIVEN PLOT SO THAT THE                      PL007200
+C   MAX VALUE ON PLOT IS LEFT-JUSTIFIED IN F5.1, AND UNITS              PL007300
+C   ARE PROPERLY IDENTIFIED IN OUTPUT.   THUS, THE SCALING FACTOR CAN   PL007400
+CC  BE CHANGED FROM PLOT TO PLOT.                                       PL007500
+      DO 835 I=1,IREC                                                   PL007600
+      V(I)=V(I)*VFORM                                                   PL007700
+  835 CONTINUE                                                          PL007800
+      TFORM=1.0/VFORM                                                   PL007900
+      PAGE=VMAX*VFORM                                                   PL008000
+C  TFORM IDENTIFIES IN PRINT STMNT THE UNITS OF CHI PRINTED ON GRAPH.   PL008100
+      GO TO 1153                                                        PL008200
+  971 AXAM=(MAXAM+6)/7                                                  PL008300
+      AXDIR=(AXAM-1.)*22.5                                              PL008400
+      IF(AMAX.GE.100000.)   AFORM=0.001                                 PL008500
+      IF(AMAX.LT.100000.) AFORM=0.01                                    PL008600
+      IF(AMAX.LT.10000.) AFORM=0.1                                      PL008700
+      IF(AMAX.LT.1000.)  AFORM=1.0                                      PL008800
+      IF(AMAX.LT.100.) AFORM=10.                                        PL008900
+      IF(AMAX.LT.10.) AFORM=100.                                        PL009000
+      IF(AMAX.LT.1.) AFORM=1000.                                        PL009100
+      IF(AMAX.LT.0.1) AFORM=10000.                                      PL009200
+      IF(AMAX.LT.0.01) AFORM=100000.                                    PL009300
+      IF(AMAX.LT.0.001) AFORM=1000000.                                  PL009400
+      DO 840 I=1,IREC                                                   PL009500
+      S(I)=S(I)*AFORM                                                   PL009600
+ 840  CONTINUE                                                          PL009700
+      TFORM=1.0/(AFORM)                                                 PL009800
+      PAGE=AMAX*AFORM                                                   PL009900
+ 1153 DO 805 I=1,6                                                      PL010000
+      R=I                                                               PL010100
+      SCALE(I)=R*GRID* 0.01                                             PL010200
+  805 CONTINUE                                                          PL010300
+      IF(IFR.EQ.1)GO TO 509                                             PL010314
+      IF(IFR.EQ.2)GO TO 502                                             PL010315
+      DO 501 I=1,8                                                      PL010316
+      KFIRI(I)=KBLK(I)                                                  PL010319
+  501 CONTINUE                                                          PL010322
+      GO TO 509                                                         PL010325
+  502 DO 503 I=1,8                                                      PL010328
+      KFIRI(I)=NFIRI(I)                                                 PL010331
+  503 CONTINUE                                                          PL010334
+  509 CONTINUE                                                          PLO10337
+      IF(IBID.NE.0)GO TO 500                                            PL010350
+      DO 510 I=1,8                                                      PL010355
+      KBID(I)=KBLK(I)                                                   PL010360
+  510 CONTINUE                                                          PL010365
+  500 IF(I26.NE.0)GO TO 520                                             PL010370
+      DO 525 I=1,8                                                      PL010375
+      KCON(I)=KBLK(I)                                                   PL010380
+  525 CONTINUE                                                          PL010385
+  520 CONTINUE                                                          PL010390
+      IF(NN.EQ.0) GO TO 11538                                           PL010400
+CC  WRITE IN MAP FORM THE EFFECTS OF AN INDIVIDUAL SOURCE.              PL010500
+      I=NSOR                                                            PL010600
+      WRITE(K,810) V(112),V(7),V(14),                                   PL010700
+     A V(6),V(111),V(13),V(5),V(105),                                   PL010800
+     B V(21),V(110),V(12),V(104),V(20),V(4), INAME(6*I -5),INAME(6*I -4)PL010900
+     C ,INAME(6*I -3),INAME(6*I -2),INAME(6*I -1),INAME(6*I ),          PL011000
+     D V(109),V(11),V(103),V(19),                                       PL011100
+     E (TITLE(I),I=1,5),(TITLE(I),I=6,20),V(102),V(3),V(18),V(98),V(108)PL011200
+     F ,V(10),V(28)                                                     PL011300
+      IF(HLIFE.EQ.0.0) HLIFE=999.99                                     PL011400
+      WRITE(K,803) HLIFE,STP,VXDIR,PAGE                                 PL011500
+  803 FORMAT(T9,'HLIFE= ',F6.2,' HRS.  CONCTR CORRCTD TO STD COND VIA   PL011600
+     AFACTOR',F6.3,'.  MAX TOWARD',F5.0,' DEG.  NORTH TOWARD TOP.  PLOT'PL011700
+     B ,F8.3)                                                           PL011800
+      IF(HLIFE.EQ.999.99) HLIFE=0.0                                     PL011900
+      WRITE (K,8102) V(97),V(27),                                       PL012000
+     A V(101),V(17),V(96),V(2),V(26),V(107),V(9),V(95),V(100),V(16),    PL012100
+     B V(25),V(94),V(24),V(1),V(93),V(99),V(8),V(23),V(106),V(15),      PL012200
+     C V(92),V(22)                                                      PL012300
+      IF(ALWT-1000000.)1141,1142,1141                                   PL012400
+ 1141 WRITE(K,104) TFORM                                                PL012500
+      GO TO 11421                                                       PL012600
+ 1142 WRITE(K,103) TFORM                                                PL012700
+11421 CONTINUE                                                          PL012800
+      WRITE(K,811) V(91),V(90),V(89),V(88),V(87),V(86),V(85),           PL012900
+     A (V(M),M=29,35)                                                   PL013000
+      IIB=IS3D                                                          PL013100
+      IIE=IS3D+5                                                        PL013200
+      IF(G.EQ.0.0) G=1.E 10                                             PL013300
+      IF(W.EQ.0.0) W=1.E 10                                             PL013400
+      IF(TS(NSOR).EQ.0.0) TS(NSOR)=1.E 10                               PL013500
+      IF(D(NSOR).EQ.0.0) D(NSOR)=1.E 10                                 PL013600
+      IF(VS(NSOR).EQ.0.0) VS(NSOR)=1.E 10                               PL013700
+      IF(VF(NSOR).EQ.0.0) VF(NSOR)=1.E 10                               PL013800
+      WRITE(K,812) V(78),V(36),SORHT(NSOR),SHOT(NSOR),SVET(NSOR),HS,    PL013900
+     A QSOT(NSOR),G,V(64),V(43),V(79),V(71),V(50),V(37),                PL014000
+     B V(57),BRIGE (NSOR),BRIGF (NSOR),DMIX,DMNI,STARFR,W,V(80),V(38),  PL014100
+     C V(81),V(72),V(44),V(39),V(65),V(51),BRIGUN(NSOR),P,MWT,V(82),    PL014200
+     D V(58),V(40),V(73),V(45),V(83), (WSA(I),I=1,6), V(41),V(84),V(66),PL014300
+     E V(52),V(42),V(74),V(59),V(46),TEMP,TS(NSOR),D(NSOR),VS(NSOR),    PL014400
+     F VF(NSOR),V(75),V(47),V(67),V(53),V(60),V(76),V(48),              PL014500
+     G V(68),V(54),V(77),V(49),V(61),V(69),V(55),(KFIRI(I),I=1,8),      PL014600
+     * (SCALE(N1),N1=1,6),(KCON(I),I=1,8),(KBID(I),I=1,8),              PL014650
+     H V(62),URBRUR(IUR),TERM(ISHORT),V(70),V(63),V(56),(THREED(I),     PL014700
+     I I=IIB,IIE)                                                       PL014800
+      IF(TS(NSOR).EQ.1.E10) TS(NSOR)=0.                                 PL014850
+      IF(D(NSOR).EQ.1.E10) D(NSOR)=0.                                   PL014851
+      IF(VS(NSOR).EQ.1.E10) VS(NSOR)=0.                                 PL014852
+      IF(VF(NSOR).EQ.1.E10) VF(NSOR)=0.                                 PL014853
+      RETURN                                                            PL014900
+CC  WRITE ALL SOURCE DATA ON ONE PAGE IF SUM OF CHI PLOT IS TO BE PRINTDPL015000
+11538 DO 11537 I=1,ISOR                                                 PL015100
+CC  OVERFLOW INAPPLICABLE VARIABLES FOR PRINTING.                       PL015200
+      IF(GT(I).EQ.0.0) GT(I)=1.E10                                      PL015300
+      IF(TS(I).EQ.0.0) TS(I)=1.E 10                                     PL015400
+      IF(D(I).EQ.0.0) D(I)=1.E 10                                       PL015500
+      IF(VS(I).EQ.0.0) VS(I)=1.E 10                                     PL015600
+      IF(VF(I).EQ.0.0)VF(I)=1.E 10                                      PL015700
+11537 CONTINUE                                                          PL015800
+      WRITE(K,111)(TITLE(I),I=1,20),PAGE                                PL015900
+      WRITE(K,112)                                                      PL016000
+     A  (IL,INAME(6*IL-5),INAME(6*IL-4),INAME(6*IL-3),INAME(6*IL-2),    PL016100
+     B INAME(6*IL-1),INAME(6*IL),SHOT(IL),SVET(IL),HST(IL),QSOT(IL),    PL016200
+     C GT(IL),WT(IL),SORHT(IL),BRIGUN(IL),BRIGE(IL),BRIGF(IL),          PL016300
+     D TEMP,TS(IL),D(IL),VS(IL),IL=1,ISOR)                              PL016400
+ 111  FORMAT('1',                                                       PL016500
+     A       6X,20A4/'   SOURCE DATA.  PLOT ',F7.3 /5X,'SOURCE NAME',10XPL016600
+     B ,' COORDX COORDY  STK HT  EMISS RATE  FIXD DH  SOR W  SOR H  BRIGPL016700
+     CUN  BRIGE  BRIGF  AIR T  GAS T  DIAM  GAS V')                     PL016800
+  112 FORMAT(     1X,I2,1X,6A4,F7.2,F7.2,F8.0,1X,1P,E10.4,0P,F9.0,F7.0, PL016900
+     A F7.0,F8.0,2F7.0,2X,F4.0,3X,F4.0,1X,F5.1,1X,F5.1)                 PL017000
+      DO 11540 I=1,ISOR                                                 PL017050
+      IF(GT(I).EQ.1.E10)GT(I)=0.                                        PL017051
+      IF(TS(I).EQ.1.E10)TS(I)=0.                                        PL017052
+      IF(D(I).EQ.1.E10)D(I)=0.                                          PL017053
+      IF(VS(I).EQ.1.E10)VS(I)=0.                                        PL017054
+      IF(VF(I).EQ.1.E10)VF(I)=0.                                        PL017055
+11540 CONTINUE                                                          PL017060
+      IVER=1                                                            PL017100
+CC OVERFLOW SOURCE HT (SHT) BEFORE WRITING SUM OF ALL SOURCE CONTRIBUTNSPL017200
+      SHT=1.E+20                                                        PL017300
+CC OVERFLOW IRRELEVANT PRMTRS(XCPT Q) FOR WRITING SUM AND HDIFF         PL017400
+11539 QSO=0.0                                                           PL017500
+      DUM=1.E+20                                                        PL017600
+      IB=IVER                                                           PL017700
+      IE=IVER+5                                                         PL017800
+CC  WRITE IN MAP FORM THE SUM OF EFFECTS OF ALL SOURCES.                PL017900
+CC  OR, IF S() ARRAY HAS BEEN LOADED WITH HT DIFFS, WRITE THEM.         PL018000
+      WRITE(K,810) S(112),S(7),S(14),                                   PL018100
+     A S(6),S(111),S(13),S(5),S(105),                                   PL018200
+     B S(21),S(110),S(12),S(104),S(20),S(4),(VERBL(I),I=IB,IE),         PL018300
+     C S(109),S(11),S(103),S(19),                                       PL018400
+     D (TITLE(I),I=1,5),(TITLE(I),I=6,20),S(102),S(3),S(18),S(98),S(108)PL018500
+     E ,S(10),S(28)                                                     PL018600
+      IF(MAP.EQ.2) GO TO 809                                            PL018700
+      IF(HLIFE.EQ.0.0) HLIFE=999.99                                     PL018800
+      WRITE(K,803) HLIFE,STP,AXDIR,PAGE                                 PL018900
+      IF(HLIFE.EQ.999.99) HLIFE=0.0                                     PL019000
+  809 IF(MAP.EQ.2) WRITE(K,8101)                                        PL019100
+ 8101 FORMAT(T20,'NORTH TOWARD TOP.  (1/10)((SOURCE HT(1))-(RECPTR HT(N)PL019200
+     A)), HTS IN METERS.')                                              PL019300
+      WRITE (K,8102) S(97),S(27),                                       PL019400
+     A S(101),S(17),S(96),S(2),S(26),S(107),S(9),S(95),S(100),S(16),    PL019500
+     B S(25),S(94),S(24),S(1),S(93),S(99),S(8),S(23),S(106),S(15),      PL019600
+     C S(92),S(22)                                                      PL019700
+      IF(MAP.EQ.2) GO TO 11515                                          PL019800
+      IF(ALWT-1000000.)1151,1152,1151                                   PL019900
+ 1151 WRITE(K,104) TFORM                                                PL020000
+      GO TO 11521                                                       PL020100
+ 1152 WRITE(K,103) TFORM                                                PL020200
+      GO TO 11521                                                       PL020300
+11515 WRITE(K,11517) TFORM                                              PL020400
+11517 FORMAT(T59,'* COORD *',T86,1PE8.1,' TO GET GROUND ELEV DIFF IN M')PL020500
+11521 CONTINUE                                                          PL020600
+      IIB=IS3D                                                          PL020700
+      IIE=IS3D+5                                                        PL020800
+      WRITE(K,811) S(91),S(90),S(89),S(88),S(87),S(86),S(85),           PL020900
+     A (S(M),M=29,35)                                                   PL021000
+      WRITE(K,812) S(78),S(36),SHT,DUM,DUM,DUM,QSO,DUM,                 PL021100
+     A S(64),S(43),S(79),S(71),S(50),S(37),                             PL021200
+     B S(57),DUM,DUM,DMIX,DMNI,STARFR,DUM,                              PL021300
+     C S(80),S(38),S(81),S(72),S(44),S(39),S(65),S(51),DUM,P,MWT,S(82), PL021400
+     D S(58),S(40),S(73),S(45),S(83), (WSA(I),I=1,6),                   PL021500
+     E S(41),S(84),S(66),S(52),S(42),S(74),S(59),S(46),TEMP,DUM,DUM,DUM,PL021600
+     F DUM,S(75),S(47),S(67),S(53),S(60),S(76),S(48),                   PL021700
+     G S(68),S(54),S(77),S(49),S(61),S(69),S(55),(KFIRI(I),I=1,8),      PL021800
+     * (SCALE(N1),N1=1,6),(KCON(I),I=1,8),(KBID(I),I=1,8),              PL021810
+     H S(62),URBRUR(IUR),TERM(ISHORT),S(70),S(63),S(56),(THREED(I),     PL021900
+     I I=IIB,IIE)                                                       PL022000
+      IF(MAP.NE.1)RETURN                                                PL022100
+CC  PREPARE TO WRITE HEIGHT MAP                                         PL022200
+ 3800 CONTINUE                                                          PL022300
+      MAP=2                                                             PL022400
+      PAGE=PAGE-100.                                                    PL022500
+      DO 3805 I=1,8                                                     PL022550
+      KCON(I)=KBLK(I)                                                   PL022551
+      KBID(I)=KBLK(I)                                                   PL022552
+      KFIRI(I)=KBLK(I)                                                  PL022553
+ 3805 CONTINUE                                                          PL022559
+      DO 3810 I=1,IREC                                                  PL022600
+      S(I)=((SORHT(1)-RECHT(I))*HFCTR)/10.                              PL022700
+      TFORM=10.0                                                        PL022800
+ 3810 CONTINUE                                                          PL022900
+CC  OVERFLOW IRRELEVANT VRBLS FOR WRITING HDIFF MAP                     PL023000
+      DO 3811 I=1,6                                                     PL023100
+ 3811 WSA(I)=10000.                                                     PL023200
+      SHT=SORHT(1)                                                      PL023300
+      STARFR=1.E+10                                                     PL023400
+      IVER=7                                                            PL023500
+      DMIX=1.E+10                                                       PL023600
+      DMNI=1.E+10                                                       PL023700
+      MWT=1.E+10                                                        PL024000
+      GO TO 11539                                                       PL024100
+      END                                                               PL024200
+      SUBROUTINE BEHVAL   (HF,HX,HMW,F,DELHF,DISTF,DELHX,HP,TS,VS,D,VF, BE000100
+     1 KST,U,X,DTHDZ,T,P,I26)                                           BE000200
+C  BEHVAL - BEH072 WITH OPTION TO PERMIT 2.4 OR 2.6 AS COEFFICIENT      BE000298
+C  IN STABLE FINAL RISE EQN. X=0 FORCES FINAL RISE, AS IN BEH072.       BE000299
+C        BEHO72   (BRIGGS EFFECTIVE HEIGHT)   OCTOBER 1972              BE000300
+C         THIS DIFFERS FROM THE AUGUST 1972 VERSION IN STATEMENT 24 + 1:BE000400
+C          THE CONSTANT 2.4 PREVIOUSLY WAS 2.9, AND IN STATEMENT 27:    BE000500
+C          THE CONSTANT 3.14159 PREVIOUSLY WAS 2.4 .                    BE000600
+C        D. B. TURNER, RESEARCH METEOROLOGIST* MODEL DEVELOPMENT BRANCH,BE000700
+C         DIVISION OF METEOROLOGY, ENVIRONMENTAL PROTECTION AGENCY.     BE000800
+C           ROOM 314B, NCHS BUILDING, RTP. PHONE (919) 549-8411 EXT 4564BE000900
+C          MAILING ADDRESS- DM, EPA, RESEARCH TRIANGLE PARK, NC 27711   BE001000
+C         * ON ASSIGNMENT FROM NATIONAL OCEANIC AND ATMOSPHERIC         BE001100
+C               ADMINISTRATION, DEPARTMENT OF COMMERCE.                 BE001200
+C         FROM A SINGLE SOURCE IS BASED ON:                             BE001300
+C        THIS VERSION OF BRIGGS EFFECTIVE HEIGHT TO CALCULATE PLUME RISEBE001400
+C           1) BRIGGS,GARY A., 1971: SOME RECENT ANALYSES OF PLUME RISE BE001500
+C               OBSERVATION. PP 1029 - 1032 IN PROCEEDINGS OF THE SECONDBE001600
+C               INTERNATIONAL CLEAN AIR CONGRESS, EDITED BY H. M. ENGLUNBE001700
+C               AND W. T. BEERY. ACADEMIC PRESS, NEW YORK.              BE001800
+C           2) BRIGGS, GARY A.,1972: DISCUSSION ON CHIMNEY PLUMES IN    BE001900
+C               NEUTRAL AND STABLE SURROUNDINGS. ATMOS. ENVIRON. 6, 507 BE002000
+C               - 510. (JUL 72).                                        BE002100
+C         OUTPUT VARIABLES ARE...                                       BE002200
+C           HF    FINAL EFFECTIVE PLUME HEIGHT (METERS)                 BE002300
+C           HX    EFFECTIVE PLUME HEIGHT FOR DISTANCE X (METERS)        BE002400
+C           HMW   HEAT OUTPUT OF SOURCE (MW)                            BE002500
+C           F     BUOYANCY FLUX (M**4/SEC**3)                           BE002600
+C           DELHF FINAL PLUME RISE (METERS)                             BE002700
+C           DISTF DISTANCE OF FINAL PLUME RISE FROM SOURCE (KM)         BE002800
+C           DELHX PLUME RISE AT DISTANCE X (METERS)                     BE002900
+C         INPUT VARIABLES ARE...                                        BE003000
+C           HP    PHYSICAL STACK HEIGHT (METERS)                        BE003100
+C           TS    STACK GAS TEMPERATURE (DEG K)                         BE003200
+C           VS    STACK GAS EXIT VELOCITY (M/SEC)                       BE003300
+C           D     INSIDE STACK DIAMETER (METERS)                        BE003400
+C           VF    STACK GAS VOLUMETRIC FLOW RATE (M**3/SEC)             BE003500
+C           KST   STABILITY (CLASS), SEE PAGE 209 OF PASQUILL,          BE003600
+C                  ATMOSPHERIC DISPERSION.  CLASSES DEFINED BY...       BE003700
+C                    1 IS PASQUILL STABILITY CLASS A                    BE003800
+C                    2 IS PASQUILL STABILITY CLASS B                    BE003900
+C                    3 IS PASQUILL STABILITY CLASS C                    BE004000
+C                    4 IS PASQUILL STABILITY CLASS D                    BE004100
+C                    5 IS PASQUILL STABILITY CLASS E                    BE004200
+C                    6 IS PASQUILL STABILITY CLASS F                    BE004300
+C           U     WIND SPEED (M/SEC)                                    BE004400
+C           X     DOWNWIND DISTANCE (KM)                                BE004500
+C           DTHDZ POTENTIAL TEMPERATURE LAPSE RATE (DEG K/METER)        BE004600
+C           T     AMBIENT AIR TEMPERATURE (DEG K)                       BE004700
+C           P     AMBIENT AIR PRESSURE (MB)                             BE004800
+C        THANKS TO DALE COVENTRY FOR HIS HELPFUL DISCUSSION ON          BE004900
+C         PROGRAMMING PLUME RISE, TO ROGER THOMPSON FOR THE COMMENT     BE005000
+C         CARDS, AND TO RUSS LEE WHO REVISED THIS ACCORDING TO REFERENCEBE005100
+      PRC=2.4                                                           BE005150
+      IF(I26.NE.0)PRC=2.6                                               BE005151
+      IF(T)1,1,2                                                        BE005200
+C        T = 0. MEANS NO AMBIENT TEMPERATURE GIVEN.  USE T = 293.       BE005300
+    1 T = 293.                                                          BE005400
+    2 IF(P)3,3,4                                                        BE005500
+C        P = 0. MEANS NO AMBIENT AIR PRESSURE GIVEN.  USE P = 960.      BE005600
+    3 P = 960.                                                          BE005700
+C        IF VF IS NOT GIVEN, CALCULATE IT FROM STACK DATA.              BE005800
+    4 IF(VF)5,5,6                                                       BE005900
+    5 VF = 0.785398*VS*D*D                                              BE006000
+C        THE CONSTANT 0.785398 = PI/4                                   BE006100
+    6 F = 3.12139*VF*(TS-T)/TS                                          BE006200
+C        THE CONSTANT 3.12139 IS THE ACCELERATION DUE TO GRAVITY / PI.  BE006300
+      HMW = 0.00011217*F*P                                              BE006400
+C        THE CONSTANT 0.00011217 = PI TIMES THE SPECIFIC HEAT OF AIR AT BE006500
+C         CONSTANT PRESSURE (0.24 CAL/GM*DEG K) TIMES MOLECULAR WEIGHT  BE006600
+C         OF AIR (28.966 GM/GM.MOLE) DIVIDED BY IDEAL GAS CONSTANT      BE006700
+C         (0.0831 MB*M**3/GM.MOLE*DEG K) AND ACCELERATION DUE TO GRAVITYBE006800
+C         (9.80616 M/SEC*SEC) AND THEN MULTIPLIED BY (4.1855E-06 MW/CAL BE006900
+C         PER SEC) TO CONVERT THE ANSWER TO MEGAWATTS.                  BE007000
+C        GO TO APPROPRIATE BRANCH FOR STABILITY CONDITION GIVEN.        BE007100
+C        IF UNSTABLE OR NEUTRAL GO TO 7, IF STABLE GO TO 20.            BE007200
+      GO TO (7,7,7,7,20,20),KST                                         BE007300
+C        DETERMINE APPROPRIATE FORMULA FOR CALCULATING XST, DISTANCE AT BE007400
+C         WHICH TURBULENCE BEGINS TO DOMINATE.  THE FORMULA USED DEPENDSBE007500
+C         UPON BUOYANCY FLUX. STATEMENTS 8 AND 9 ARE EQUATION (7).      BE007600
+7     IF(F-55.)8,9,9                                                    BE007700
+8     XST=14.*F**.625                                                   BE007800
+      GO TO 10                                                          BE007900
+9     XST=34.*F**.4                                                     BE008000
+10    DISTF=3.5*XST                                                     BE008100
+      DELHF=1.6*F**0.333333*DISTF**0.666667/U                           BE008200
+      IF(X)29,29,32                                                     BE008300
+C        IF X = 0.0, CALCULATE FINAL RISE ONLY, IF X IS GREATER THAN    BE008400
+C         0.0, CALCULATE RISE FOR DISTANCE = X ALSO.                    BE008500
+   32 XM = 1000.* X                                                     BE008600
+C        XM IS X IN METERS.                                             BE008700
+C        STATEMENT 14 IS EQUATION (6), REFERENCE 1.                     BE008800
+   14 DELHX = 1.6*F**0.333333*XM**0.666667/U                            BE008900
+      IF(DELHX.GT.DELHF)DELHX=DELHF                                     BE009000
+      GO TO 30                                                          BE009100
+   20 IF(DTHDZ)21,21,24                                                 BE009200
+C        IF DTHDZ IS NEGATIVE OR ZERO ASSIGN TO IT A VALUE OF 0.02 OR   BE009300
+C         0.035 IF STABILITY IS SLIGHTLY STABLE OR STABLE, RESPECTIVELY.BE009400
+   21 GO TO (7,7,7,7,22,23),KST                                         BE009500
+   22 DTHDZ = 0.02                                                      BE009600
+      GO TO 24                                                          BE009700
+   23 DTHDZ = 0.035                                                     BE009800
+   24 S = 9.80616*DTHDZ/T                                               BE009900
+C        THE CONSTANT 9.80616 IS THE ACCELERATION DUE TO GRAVITY.       BE010000
+C        S IS A STABILITY PARAMETER.                                    BE010100
+C        CALCULATE PLUME RISE ACCORDING TO EQUATION (4), REFERENCE 1.   BE010200
+      DHA = PRC*(F/(U*S))**0.333333                                     BE010300
+C        CALCULATE PLUME RISE BY EQUATION (5), REFERENCE 1 FOR LIGHT    BE010400
+C         WIND CONDITIONS ACCORDING TO MORTON, TAYLOR, AND TURNER.      BE010500
+      DELHF = 5.0*F**0.25/S**0.375                                      BE010600
+      IF(DHA-DELHF) 25,25,27                                            BE010700
+   25 DELHF = DHA                                                       BE010800
+C        DISTANCE TO FINAL PLUME RISE IS GIVEN BY THE FOLLOWING         BE010900
+   27 DISTF = 3.14159*U/S**0.5                                          BE011000
+C        IF X = 0.0, CALCULATE FINAL RISE ONLY, IF X IS GREATER THAN    BE011100
+C         0.0, CALCULATE RISE FOR DISTANCE = X ALSO.                    BE011200
+C        IF X IS ZERO OR LESS, GO TO 29 AND SET PLUME RISE AND DIST. TO BE011300
+C         MAXIMUM PLUME RISE EQUAL TO ZERO.                             BE011400
+      IF(X)29,29,33                                                     BE011500
+   33 XM = 1000.*X                                                      BE011600
+C        XM IS X IN METERS.                                             BE011700
+C        IF XM IS GREATER THAN THE DISTANCE TO THE POINT OF FINAL PLUME BE011800
+C         RISE, SET PLUME RISE EQUAL TO FINAL PLUME RISE, OTHERWISE,    BE011900
+C         CALCULATE PLUME RISE FROM EQUATION (6),REFERENCE 1.           BE012000
+      IF(XM-DISTF)14,14,28                                              BE012100
+   28 DELHX = DELHF                                                     BE012200
+      GO TO 30                                                          BE012300
+   29 DELHX = 0.                                                        BE012400
+      HX = 0.                                                           BE012500
+      GO TO 31                                                          BE012600
+C        CALCULATE EFFECTIVE HEIGHT AT DISTANCE X.                      BE012700
+   30 HX = HP + DELHX                                                   BE012800
+C        CALCULATE FINAL EFFECTIVE HEIGHT.                              BE012900
+   31 HF = HP + DELHF                                                   BE013000
+      DISTF = DISTF/1000.                                               BE013100
+      RETURN                                                            BE013200
+      END                                                               BE013300

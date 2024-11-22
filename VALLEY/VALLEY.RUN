@@ -1,0 +1,139 @@
+//uidjobid JOB (acctfimas,bin#),'name',MSGCLASS=A,
+//        TIME=(,10),NOTIFY=uid,PRTY=3
+/*ROUTE PRINT HOLD
+//*
+//*
+/*JOBPARM LINES=250
+//*
+//*
+//* UNIT 5 - INPUT DATA
+//* UNIT 6 - PRINT OUTPUT
+//*
+//*
+//VALLEY EXEC PGM=VALLEY,REGION=4096K,COND=(4,LT)
+//STEPLIB DD DSN=uidacct.model.load,DISP=SHR
+//SYSPRINT DD SYSOUT=A
+//FT05F001 DD DDNAME=SYSIN
+//FT06F001 DD DSN=printed output data set,DISP=OLD
+//SYSIN DD *
+
+
+
+ 3867 4213 4450 4650 5040 5400 4900
+ 3867 4213 4550 4900 5600 5270 4950
+ 3867 4213 4500 4750 5170 5630 5200
+
+
+
+
+
+ 3800 3800 3800 3800 3800 3800 3800
+ 3800 3800 3800 3800 3800 3800 3800
+ 3800 3800 3800 3800 3800 3800 3800
+
+
+870.  283.  870.
+TEST RUN -- SO2                         PARTIAL WIND ROSE FOR EASY DUPLICATION.
+60.9                2     6  2  1      3.  1
+MAIN STACK
+1200.  75.    375.   4.8    3.2           460.   60.    3800.
+VENTS.(AS AREA SRC)
+300.   20.                                459.84 59.84  3800.  20.    .001
+2.5
+(6F2.1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.
+1.
+1.
+
+
+
+
+
+1.
+1.
+1.
+
+/*

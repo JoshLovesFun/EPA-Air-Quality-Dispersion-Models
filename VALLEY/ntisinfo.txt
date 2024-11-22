@@ -1,0 +1,382 @@
+                     AIR QUALITY MODELS AND DOCUMENTS
+                                   from
+               NATIONAL TECHNICAL INFORMATION SERVICE (NTIS)
+
+
+
+      Models are available, individually, from NTIS on microcomputer disks.
+Regulatory and Air Quality models will also be available as a package.
+Most of the disks must be transported (uploaded) to IBM 3090 machines;
+however, some models do have PC executable code. Those that are operational
+on IBM compatible microcomputers are identified as executables in the
+following list:
+
+      Air quality model programs which are contained on the Support Center
+for Regulatory Air Models (SCRAM) but are not listed below can be ordered
+through NTIS:
+               
+                 Sales Desk              (800) 553-6847(US)
+                                         (703) 605-6000(Canada)
+
+EPA REGULATORY MODELS/PROGRAMS:
+
+                                  * BLP *
+(Buoyant Line and Point Source Dispersion Model) is a Gaussian plume
+dispersion model associated with aluminum reduction plants.
+Order Number: PB90-500281; Price: $50; (1 transport disk; 1 document)
+Document Order Number: PB90-164642
+
+                                * CALINE3 *
+(California Line Source Model) is a line-source dispersion model that can be
+used to predict carbon monoxide concentrations near highways and arterial
+streets given traffic emissions, site geometry, and meteorology.
+Order Number: PB90-500299; Price: $75; (1 transport disk; 1 document)
+Document Order Number: PB80-220841
+
+                                 * CDM2 *
+(Climatological Dispersion Model) is a climatological dispersion model that
+determines long-term quasi-stable pollutant concentrations.
+Order Number: PB90-500273; Price: $50; (1 transport disk; 1 document) 
+Order Number: PB90-500406; Price: $50; (1 executable disk; 1 document) 
+Document Order Number: PB86-136546
+
+                               * COMPLEX I *
+is a multiple point-source code with terrain adjustment representing a
+sequential modeling bridge between VALLEY and COMPLEX II.
+Order Number: PB90-500414; Price: $50 (1 transport disk; no documentation)
+
+                                * CRSTER *
+estimates ground-level concentrations resulting from up to 19 co-located
+elevated stack emissions.
+Order Number: PB90-500323; Price: $50 (1 transport disk; 1 document)
+Document Order Number: PB-271360
+
+                                 * EKMA *
+was developed for relating concentrations of photochemically formed ozone to
+levels of organic compounds and oxides of nitrogen.
+
+1) Procedures For Applying City-specific EKMA.  EPA-450/4-89-012
+   Accession No. PB90-256777  Paper copy   Price code:        Price:  $ 23.00
+                              Microfiche   Price code:        Price:  $  8.00
+2) User's Manual for OZIPM-4 (Ozone Isopleth Plotting With Optional
+   Mechanisms) - Volume 1.  EPA-450/4-89-009a
+   Accession No. PB90-261488  Paper copy   Price code:        Price:  $ 23.00
+                              Microfiche   Price code:        Price:  $ 11.00
+3) User's Manual for OZIPM-4 (Ozone Isopleth Plotting With Optional
+   Mechanisms) - Volume 2: Computer Code.  EPA-450/4-89-009b
+   Accession No. PB90-255399  Paper copy   Price code:        Price:  $ 23.00
+                              Microfiche   Price code:        Price:  $  8.00
+4) Consideration of Transported Ozone and Precursors and Their Use in EKMA.
+    EPA-450/4-88-016
+   Accession No. PB90-255415  Paper copy   Price code:        Price:  $ 23.00
+                              Microfiche   Price code:        Price:  $  8.00
+5) A PC-Based System for Generating Ekma Input Files.  EPA-450/4-89-010
+   Accession No. PB90-255407  Paper copy   Price code:        Price:  $ 17.00
+                              Microfiche   Price code:        Price:  $  8.00
+
+                                 * ISC2 *
+(Industrial Source Complex Short-Term2/Industrial Source Complex Long-Term2)
+is a steady-state Gaussian plume model which can be used to access pollutant
+concentrations from an industrial source complex.
+
+ISCST2A.ZIP:  Order Number:   PB90-500380  (PC executable)    Price:  $140.00
+ISCLT2.ZIP:   Order Number:   PB90-500257  (PC executable)    Price:  $140.00
+
+Order Number: PB92-232446     Paper copy (3 volumes)          Price:  $ 71.00
+                              Microfiche                      Price:  $ 33.50
+              PB92-232453     Paper copy (Volume 1)           Price:  $ 36.50
+                              Microfiche                      Price:  $ 17.50
+              PB92-232461     Paper copy (Volume 2)           Price:  $ 19.50
+                              Microfiche                      Price:  $  9.00
+              PB92-232479     Paper copy (Volume 3)           Price:  $ 27.00
+                              Microfiche                      Price:  $ 12.50
+
+                             * LONGZ-SHORTZ *
+is designed to calculate the long and short-term pollutant concentrations
+produced at a large number of receptors by emissions from multiple stack,
+building, and area sources.
+Order Number: PB90-500265; Price: $125 (2 transport disks; 3 documents)
+Document Order Numbers: PB83-146092; PB83-146100; PB86-244878
+
+                               * MPRM 1.2 *
+(Meteorological Processor for Regulatory Models) provides a general purpose
+computer processor for organizing available meteorological data into a format
+suitable for use by air quality dispersion models. Specifically, the
+processor is designed to accommodate those dispersion models that have gained
+EPA approval for use in regulatory decision making.
+Order Number: PB90-500422; Price: $70 (1 transport disk; 1 document)
+Order Number: PB90-500430; Price: $70 (1 executable disk; 1 document)
+Document Order Number: PB89-127526
+
+                                 * MPTER *
+is a multiple point-source Gaussian model with optional terrain adjustments.
+Order Number: PB90-500307; Price: $75 (1 transport disk; 3 documents)
+Order Number: PB90-500356; Price: $75 (1 executable disk; 3 documents)
+Document Order Numbers: PB83-114207; PB80-197361; PB86-217163
+
+                                 * PTPLU *
+is a point-source dispersion Gaussian screening model for estimating maximum
+surface concentrations for one-hour concentrations.
+Order Number: PB90-500331; Price: $50 (1 transport disk; 1 document)
+Document Order Number: PB83-211235
+
+                                  * RAM *
+is a short-term Gaussian steady-state algorithm that estimates concentrations
+of stable pollutants.
+Order Number: PB90-500315; Price: $50 (1 transport disk; 1 document)
+Document Order Number: PB88-113261
+
+                                 * RTDM *
+(Rough Terrain Diffusion Model) is a sequential Gaussian plume model designed
+to estimate ground-level concentrations in rough (or flat) terrain in the
+vicinity of one or more co-located point sources.
+Order Number: PB90-500372; Price: $50 (1 transport disk; 1 document)
+Document Order Number: PB88-171467
+
+                           
+
+                      * Urban Airshed Model (UAM) *
+is a three-dimensional grid based photochemical simualtion model for urban
+scale domains.
+
+1) User's Guide for the Urban Airshed Model, Volume I: User's Manual for
+   UAM (CB-IV). EPA-450/4-90/007a
+   Accession No. PB91-131227  Paper copy   Price code: A12    Price:  $ 31.00
+                              Microfiche   Price code: A12    Price:  $ 31.00
+2) User's Guide for the Urban Airshed Model, Volume II: User's Manual for
+   UAM (CB-IV) Modeling System. EPA-450/4-90/007b
+   Accession No. PB91-131235  Paper copy   Price code: A22    Price:  $ 53.00
+                              Microfiche   Price code: A22    Price:  $ 53.00
+3) User's Guide for the Urban Airshed Model, Volume III: User's Manual for
+   the Diagnostic Wind Model. EPA-450/4-90/007c
+   Accession No. PB91-131243  Paper copy   Price code: A04    Price:  $ 17.00
+                              Microfiche   Price code: A04    Price:  $ 17.00
+4) User's Guide for the Urban Airshed Model, Volume IV: User's Manual for
+   the Emissions Preprocessor System. EPA-450/4-90/007d
+   Accession No. PB91-131250  Paper copy   Price code: A13    Price:  $ 31.00
+                              Microfiche   Price code: A13    Price:  $ 31.00
+5) User's Guide for the Urban Airshed Model, Volume V: User's Manual for
+   UAM (CB-IV) Modeling System. EPA-450/4-90/007e
+   Accession No. PB91-131268  Paper copy   Price code: A11    Price:  $ 31.00
+                              Microfiche   Price code: A11    Price:  $ 31.00
+6) Gridded Model Information Support System (GMISS) User's Guide.  Volume II:
+   UAM Subsytem. EPA-450/4-91/009 (Note: Volume I is for EPA use only.)
+   Accession No. PB91-206268  Paper copy   Price code: A06    Price:  $ 23.00
+                              Microfiche   Price code: A01    Price:  $  8.00
+7) Guideline for Regulatory Application of the Urban Airshed Model.
+   EPA-450/4-91-013
+   Accession No. PB92-108760  Paper copy   Price Code: A05    Price:  $ 19.00
+                              Microfiche   Price Code: A01    Price:  $  9.00
+8) Gridded Model Information Support System(GMISS) User's Guide, Volume III:
+   Model Concentration Data Retrieval Subsystem. EPA-450/4-91-032.
+   Accession No. PB92-??????  Paper copy   Price Code: A06    Price:  $  ?.??
+                              Microfiche   Price Code: A01    Price:  $  ?.??
+9)User's Guide for the Urban Airshed Model, Volume VI: User's Manual for the
+   Postprocessing System. EPA-450/4-90-007f.
+   Accession No. PB92-145382/AS Paper copy Price Code: A06    Price:  $ 26.00
+                              Microfiche   Price Code: A02    Price:  $ 12.50
+10)User's Guide for the Urban Airshed Model, Volume VII: User's Manual for the
+   Performance Evaluation System. EPA-450/4-90-007g
+   Accession No. PB92-224849  Paper copy   Price Code: A07    Price:  $ 27.00
+                              Microfiche   Price Code: A02    Price:  $ 12.50
+11)User's Guide for the Urban Airshed Model, Volume VIII: User's Manual for the
+   Quality Assurance System. EPA-454/B-93-004.
+   Accession No. PB93-??????  Paper copy   Price Code: ???    Price:  $  ?.??
+                              Microfiche   Price Code: ???    Price:  $  ?.??
+12)Guidance on the Urban Airshed Model (UAM) Reporting Requirements for
+   Attachement Demonstration. EPA-454/R-93-056.
+   Accession No. PB94-203452  Paper copy   Price Code: A03    Price:  $ 17.50
+                              Microfiche   Price Code: A01    Price:  $  9.00
+
+                                * VALLEY *
+is a steady-state, univariate Gaussian plume dispersion algorithm designed
+for estimating either 24-hour or annual concentrations resulting from
+emissions from up to 50 (total) point and area sources.
+Order Number: PB90-500349; Price: $50 (1 transport disk; 1 document)
+Document Order Number: PB-274054
+
+                              * WRPLOT *
+is an interactive program that generates wind rose statistics and plots for
+selected meteorological stations for user-specified date and time ranges.
+A wind rose depicts the frequency of occurrence of winds in each of 16
+direction sectors (north, north-northeast, northeast, etc.) and six wind
+speed classes for a given location and time period.
+Order Number:           ; Price:
+Document Order Number:
+
+
+
+
+
+
+
+
+ALTERNATIVE MODELS
+
+                                *OZIPR*
+Supporting Report: Simplified approach for estimating secondary production
+of hazardous air pollutants(HAPS) using the OZIPR Model(EPA 454/R-99-054);
+(Replaces Section 2.4 in Dispersion Modeling of Toxic Pollutants in Urban 
+Areas, EPA-454/R-99-021).
+   Document Order Number:  PB2002-101427                               
+
+
+
+
+
+
+
+
+
+
+AIR QUALITY MODELS from OFFICE OF RESEARCH and DEVELOPMENT:
+
+                                * APRAC-3 *
+contains the emission factor computation methodology and treats traffic links
+in the primary network with low vehicle miles traveled as area sources.
+Order Number: PB90-500851; Price: $50 (1 transport disk; 1 document)
+Document Order Number: PB82-103763
+
+                               * CTDMPLUS *
+is a refined air quality model for use in all stability conditions for
+complex terrain applications.
+
+1) User's Guides to the Complex Terrain Dispersion Model (CTDMPLUS):
+   3 user's Guides and Final Report (See 1a-d for titles):
+     Accession No.: PB90-243809  Paper copy  Price code: E99   Price:  $148.00
+                                 Microfiche  Price code: E99   Price:  $ 54.50
+   Individually:
+   a.  User's Guide to the Complex Terrain Dispersion Model Plus Algorithms
+       for Unstable Situations (CTDMPLUS): Volume 1 (EPA/600/8-89/041)
+         Accession No.: PB89-181424         Paper copy         Price:  $ 31.00
+   b.  User's Guide to the CTDM Meteorological Preprocessor Program
+       (EPA/600/8-88/004)
+         Accession No.: PB88-162102         Paper copy         Price:  $ 23.00
+   c.  The Complex Terrain Dispersion Model Terrain Preprocessor System User's
+       Guide and Program Description (EPA/600/8-88/003)
+         Accession No.: PB88-162094         Paper copy         Price:  $ 23.00
+   d.  EPA Complex Terrain Model Development: Final Report (EPA/600/3-88/006)
+         Accession No.: PB88-162110         Paper copy         Price:  $ 45.00
+2) Complex Terrain Dispersion Model (CTDMPLUS) for microcomputers.
+     Accession No.: PB90-504119  Diskettes  Price code: D05    Price:  $230.00
+3) User's Guide to CTDMPLUS: Volume 2. The Screening Mode (CTSCREEN).
+   EPA/600/8-90/087
+     Accession No.: PB91-136564  Paper copy   Price code: A04  Price:  $ 17.00
+                                 Microfiche   Price code: A04  Price:  $ 17.00
+
+                               * CTSCREEN *
+is the screening mode of CTDMPLUS.  Refer to CTDMPLUS above for all document
+information for this model.
+
+                            * HIWAY-ROADWAY *
+are two models which compute the hourly concentrations of non-reactive
+pollutants downwind of roadways and predict pollutant concentrations within
+two hundred meters of a highway respectively.
+Order Number: PB90-500810; Price: $50 (1 transport disk; 1 document)
+Document Order Number: PB80-227556
+
+                                * INPUFF *
+is a Gaussian integrated puff model which is capable of addressing the
+accidental release of a substance over several minutes or of modeling the
+more typical continuous plume from a stack.
+Order Number: PB90-500752; Price: $50 (1 transport disk; 2 documents)
+Document Order Number: PB86-242468; PB86-242450
+
+                               * MESOPUFF *
+is a Lagrangian model suitable for modeling the transport, diffusion and
+removal of air pollutants from multiple point and area sources at transport
+distances beyond 10-50 KM.
+Order Number: PB90-500794; Price: $50 (1 transport disk; 1 document)
+Document Order Number: PB84-181775
+
+                                 * MPTDS *
+is a modification of MPTER that explicitly accounts for gravitational
+settling and/or deposition loss of a pollutant.
+Order Number: PB90-500836; Price: $50 (1 transport disk; 2 documents)
+Document Order Numbers: PB82-215153; PB83-114207
+
+                                  * PAL *
+(Point, Area and Line Source Algorithm Model) is a short-term Gaussian steady
+state algorithm that estimates concentrations of stable pollutants from
+point, area and line sources.
+Order Number: PB90-500802; Price: $50 (1 transport disk; 1 document)
+Order Number: PB90-500844; Price: $50 (1 executable disk; 1 document)
+Document Order Number: PB87-168787
+ 
+                                  * PBM *
+(Photochemical Box Model) is a simple stationary single-cell model with a
+variable height lid designed to provide volume-integrated hour averages of
+03 and other photochemical smog pollutants for an urban area for a single day
+of simulation.
+Order Number: PB90-500786; Price: $50 (1 transport disk; 1 document)
+Document Order Number: PB85-137164
+
+                                  * PEM *
+(Pollution Episodic Model) is an urban scale air pollution model capable of
+predicting short-term average surface concentrations and deposition fluxes
+of two gaseous or particulate pollutants.
+Order Number: PB90-500760; Price: $75 (1 transport disk; 3 documents)
+Document Order Numbers: PB84-232537; PB84-164128; PB84-138742
+
+                                * PLUVUE *
+is a model that predicts the transport, atmospheric diffusion, chemical
+conversion, optical effects and surface deposition of point-source emissions.
+Order Number: PB90-500778; Price: $50 (1 transport disk; 1 document)
+Document Order Number: PB84-158302
+
+                                  * SDM *
+The Shoreline Dispersion Model (SDM) is a multipoint Gaussian dispersion
+model that can be used to determine ground-level concentrations from tall
+stationary point source emissions near a shoreline environment.  SDM is used
+in conjunction with MPTER algorithms to calculate concentrations when
+fumigation conditions do not exist.
+1) User's Guide to SDM - A Shoreline Dispersion Model EPA-450/4-88-017
+   Accession No. : PB89-164305
+   Errata Sheets for the User's Guide to SDM
+
+
+                                 * TUPOS *
+is a Gaussian model that estimates dispersion directly from fluctuation
+statistics at plume level.
+Order Number: PB90-500877; Price: $75 (1 transport disk; 3 documents)
+Document Order Numbers: PB86-181310; PB86-181328; PB86-241031
+
+                                * UTIL-1 *
+is a disk containing utility programs including CALMPRO, RUNAVG, UTMCON and
+CHAVG.
+Order Number: PB90-500828; Price: $50 (1 transport disk; 2 documents)
+Document Order Numbers: PB84-229467 and PB83-107342
+
+GUIDANCE DOCUMENTS:
+
+1) Guidance on the Application of Refined Dispersion Models for Air Toxics
+   Releases.   EPA-450/4-91-007
+   Accession No. PB91-190983  Paper Copy Price code: A08  Price: $ 23.00
+                              Microfiche Price code: A01  Price: $  8.00
+
+2) Evaluation of Dense Gas Simulation Models.  EPA-450/4-90-018
+   Accession No. PB91-191072  Paper Copy Price code: A06  Price: $ 23.00
+                              Microfiche Price code: A01  Price: $  8.00
+
+
+                                * VISCREEN *
+is a screening model that calculates the potential impact of a plume of
+specified emissions for specific transport and dispersion conditions.
+Order Number: PB93-223592
+
+******************************************************************************
+
+If more information is needed for one or more of the models, please call the
+FEDERAL COMPUTER PRODUCTS CENTER at (703) 487-4763. If you wish to order the
+disks and/or documents, please call the NTIS Sales Desk at (800) 553-6847
+from within the US or (703) 605-6000 from Canada.
+
+
+Correspondence can be addressed to:
+
+                       Computer Products
+                       National Technical Information Service
+                       U.S. Department of Commerce
+                       5285 Port Royal Road
+                       Springfield, VA 22161
+

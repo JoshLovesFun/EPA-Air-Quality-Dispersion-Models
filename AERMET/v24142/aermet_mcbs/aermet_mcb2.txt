@@ -1,0 +1,197 @@
+
+                        Model Change Bulletin
+
+                                MCB#2                       02/28/2011
+
+                        AERMET (dated 11059)
+
+This Model Change Bulletin documents changes made to the AERMET 
+Meteorological Preprocessor for the AERMOD Dispersion Model.  A brief 
+description of the changes is provided below.  Additional details are 
+also available through comments imbedded in the Fortran source code. 
+Changes to the user instructions associated with this update are 
+documented in a separate AERMET User's Guide Addendum.
+
+This revised version of AERMET (dated 11059) includes the following
+modifications relative to the previous version (dated 06341):                                                       
+                                                                        
+-- Bug Fixes:                                                           
+
+   1.  Corrected several problems associated with the processing of
+       subhourly ONSITE meteorological data, including:
+       
+       a) Modified the procedure for calculating hourly averages
+          to use the "hour-ending" convention in accordance with
+          Section 7.3 of "Meteorological Monitoring Guidance for 
+          Regulatory Modeling Applications," EPA-454/R-99-005, 
+          February 2000; previous versions used the "hour-beginning"
+          convention.
+          
+       b) Corrected the procedure for calculating hourly averages 
+          from subhourly values for sigma-theta.  Previous versions
+          used an equation in Section 5.2 of the AERMET User's Guide,
+          but this has been replaced with the equation referenced in
+          Table 8-3 of Appendix W. The equation from Section 5.2 of 
+          the AERMET User's Guide was also coded incorrectly in 
+          previous versions of AERMET, which resulted in runtime
+          errors in some cases due to taking a square root of a 
+          negative number.
+          
+       c) Corrected the processing of subhourly wind data to properly
+          code hours as calm when more than half of the samples for 
+          the hour are non-missing, but below the wind threshold.  
+          Previous versions coded these hours as missing rather than 
+          calm.
+          
+       d) Addressed several issues associated with the extraction of 
+          ONSITE data that could result in erroneous values being 
+          assigned to ONSITE variables, and also improved error 
+          handling and reporting for the processing of ONSITE data.
+          
+       e) Corrected problems associated with processing of ONSITE
+          precipitation data, including the fact that subhourly 
+          precipitation values were averaged rather than summed 
+          to determine the hourly value, and that negative values
+          were also included in the summed value (before averaging)
+          if the missing data code was not properly specified.
+   
+   2.  The implementation of the SUBNWS option was corrected to 
+       avoid using the BULKRN option using ONSITE delta-T data when 
+       the ONSITE winds are missing and the reference winds are 
+       based on SURFACE data. Vertical rofiles of ONSITE temperature, 
+       sigma-theta, and sigma-w are also skipped if the reference
+       winds are based on SURFACE data.  These changes are intended
+       to avoid internal inconsistencies in the characterization of
+       the boundary layer that may occur with some combinations of
+       SURFACE and ONSITE data.
+
+   3.  Corrected problems with time zone adjustments for cases with
+       surface and onsite stations in different time zones.
+          
+   4.  Incorporated changes to properly handle ISHD surface files 
+       with the “problem” addressed on an interim basis by FIXISHD 
+       utility, which is no longer required.
+          
+-- Enhancements:                                                        
+
+   1.  Enhancements were made to the heirarchy for handling missing 
+       station pressure to make full use of other available data and 
+       of user-specified station elevations for SURFACE stations 
+       and ONSITE stations, if available.
+       
+   2.  Increased the maximum record length for the runstream input file 
+       from 80 to 132 characters, removed any limit on the record length
+       for ONSITE data records, increased the maximum field length for 
+       filenames from 48 to 96, and allow for use of double quotes (“) 
+       as field delimiters to support filenames with embedded spaces.
+       
+   3.  Several enhancements to provide more flexibility in selecting
+       the most appropriate upper air sounding, including a new option
+       for a user-specified window on upper air observation time, and
+       an option for AERMET to automatically select the most appropriate 
+       sounding based on local sunrise. These enhancements allow AERMET 
+       to better utilize upper air data that occurs more frequently 
+       than twice-daily, including "pseudo" upper air data derived from 
+       gridded meteorological models or reanalysis data, if deemed to 
+       be appropriate in the future (note that use of gridded model 
+       outputs or reanalysis data in AERMET would be considered as 
+       an alternative modeling technique at the present time).  These 
+       enhancements also provide better support for applications of 
+       AERMOD beyond the U.S.
+        
+   4.  Enhancement to allow the use of hourly-averaged winds derived 
+       from 1-minute ASOS wind data (TD-6405), generated by the new
+       AERMINUTE program, which can improve the representativeness 
+       of airport wind data by providing hourly averages as well as
+       filling in for many hours that are missing in the standard
+       airport data archives due to calm or variable winds.
+       
+   5.  Adjustment of ASOS-based wind speeds (including winds derived 
+       from 1-minute ASOS data) by +0.5 knot to account for the bias 
+       in reported ASOS wind speeds due to winds being truncated 
+       (rather than rounded) to whole knots.  This includes changes
+       to several subroutines to allow tracking whether surface data 
+       are ASOS or observer-based across all three stages of data 
+       processing, and the inclusion of an ASOS 'flag' in the surface
+       extraction and surface QA files.  A database of ASOS commission
+       dates has been included to allow AERMET to determine whether 
+       observations for a specific surface station are ASOS or not. 
+       The surface output file format has also been modified to include 
+       a character string for each hour identifying whether the wind 
+       speeds have been adjusted or not to account for the truncation 
+       of the ASOS winds ('ADJ-' or 'NAD-') and whether the reference 
+       wind data is based on ONSITE, SURFACE or 1-MIN ASOS data (OS, 
+       SFC, or A1).
+       
+   6.  Several enhancements to the error handling and reporting related 
+       to processing ONSITE data, including an option to use ‘FREE’ 
+       format to read the data and the option to specify missing data 
+       codes and upper/lower bounds for ONSITE data as REAL variables.
+       
+   7.  A new option/requirement incorporated in Stage 3 to specify a 
+       secondary set of surface characteristics for use when NWS winds 
+       are substituted for missing on-site winds using the SUBNWS option
+       on the METPREP pathway.  The primary set of surface characteristics 
+       is used when the reference wind is based on ONSITE data, and the 
+       secondary surface characteristics are used when SURFACE data are 
+       substituted for missing ONSITE data.  This ensures that an 
+       appropriate surface roughness will be used depending on the 
+       location of the reference wind data.
+       
+   8.  New keywords, AERSURF and AERSURF2, were added to the METPREP 
+       pathway to allow users to specify an external file to read
+       for surface characteristics, such as an AERSURFACE output file,
+       rather than entering the data directly in the Stage 3 input
+       file.
+       
+   9.  Enhancements to utilize on-site precipitation and relative 
+       humidity data, if available, in the surface output file.
+
+-- Miscellaneous:                                                       
+   
+   1.  The LOCATION keyword is no longer supported on the METPREP 
+       pathway in Stage 3.  The METPREP LOCATION keyword had been used
+       as the location for determining sunrise for convective mixing
+       height calculations.  This could result in somewhat different
+       results using the same raw input data depending on the METPREP
+       LOCATION, which are not meaningful.  A non-fatal warning message
+       is issued if the METPREP LOCATION keyword is found, and the
+       location used to determine sunrise for convective mixing height
+       calculations is based on the primary surface station location,
+       i.e., the ONSITE station if available, or the SURFACE (NWS) 
+       station location.
+       
+   2.  Modified several subroutines to adjust the lower limit on the
+       value of surface roughness length to 0.0001 meters, rather than
+       0.001 meters.  This allows more flexibility for applications of
+       AERMET for overwater or other very low roughness settings.
+       
+   3.  Several subroutines were modified to improve error handling and
+       reporting for all three processing stages, including adjustments 
+       and improvements to the order and formatting of information in 
+       the report file.
+       
+   4.  Implemented some restrictions on the use of surface (NWS) data 
+       outside the valid range of dates based on the surface data format,
+       i.e., data that have been reformatted from another file format.
+       These restrictions affect cloud cover for ASOS data in the SCRAM 
+       or SAMSON format, since the SAMSON CDs and nearly all SCRAM surface 
+       data predated the advent of ASOS in 1992.  The ASOS cloud covers 
+       are set to missing for any SURFACE data input in the SCRAM or 
+       SAMSON format, since the interpretation and formatting of ASOS
+       cloud cover codes cannot be verified in these cases.
+
+
+                       *****************
+                       *   IMPORTANT   *
+                       *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMET (dated 11059).  Future changes to AERMET will be identified
+by an updated Julian date found at the beginning of the source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the SCRAM ALERTS section of this website.
+                                                                           

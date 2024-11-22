@@ -1,0 +1,781 @@
+
+                      RTDM3.2            (DATED 89226)
+
+   ROUGH TERRAIN DIFFUSION MODEL   VERSION 3.2   LEVEL 861130                            PAGE   1
+
+
+
+         MODEL PARAMETERS:
+
+
+         PR001:  HORIZONTAL SCALE IS 1000.000 METERS PER USER UNIT
+
+         PR002:  VERTICAL SCALE IS     .305 METERS PER USER UNIT
+
+         PR003:  WIND SPEED SCALE IS    1.000 M/SEC PER USER UNIT
+
+         PR004:  ANEMOMETER #1 HEIGHT ABOVE ZA (USED FOR PLUME RISE) IS  10.0 M
+                 IF AVAILABLE, ANEMOMETER #2 HEIGHT ABOVE ZA (USED FOR PLUME DILUTION) IS    .0 M
+                 DILUTION WIND SPEED OPTION IS 0      (IF 0, ONE WIND SPEED--AT STACK HEIGHT--IS USED FOR PLUME RISE AND DILUTION
+                 IF 1, WIND SPEED AT LEVEL #1 IS EXTRAPOLATED TO STACK-TOP HEIGHT FOR PLUME RISE AND TO PLUME HEIGHT FOR DILUTION
+                 IF 2, WIND SPEED AT LEVEL #1 IS EXTRAPOLATED TO STACK-TOP HEIGHT FOR PLUME RISE,
+                 AND THE SPEED AT LEVEL #2 IS EXTRAPOLATED TO PLUME HEIGHT FOR DILUTION)
+                 ZA (HEIGHT IN METERS ABOVE STACK BASE ELEVATION WHERE THE WIND SPEED PROFILE IS ASSUMED TO ORIGINATE) =     .000
+
+         PR005:  DEFAULT WIND SPEED PROFILE EXPONENTS AS A FUNCTION OF STABILITY CLASS (1-6, RESPECTIVELY):
+                                .0900   .1100   .1200   .1400   .2000   .3000
+
+         PR006:  DISPERSION COEFFICIENTS ARE BRIGGS RURAL/ASME-1979 (UNLESS REPLACED BY ON-SITE TURBULENCE DATA).
+
+         PR009:  PARTIAL PLUME PENETRATION OF MIXING LIDS IS NOT BEING USED.
+
+         PR010:  BUOYANCY-ENHANCED PLUME DISPERSION IS USED; PARAMETER ALPHA IS    3.162
+
+         PR011:  UNLIMITED MIXING HEIGHT USED FOR STABLE CONDITIONS
+
+         PR012:  TRANSITIONAL PLUME RISE IS USED.
+
+         PR013:  PLUME PATH COEFFICIENTS FOR STABILITY CLASSES 1-6:   .500  .500  .500  .500  .500  .500
+
+         PR014:  DEFAULT VERTICAL POTENTIAL TEMPERATURE GRADIENTS USED FOR STABLE PLUME RISE (CLASSES 5 & 6):   .0200  .0350
+
+         PR015:  STACK-TIP DOWNWASH IS NOT USED.
+
+         PR016:  Y-COMPONENT TURBULENCE INTENSITY VALUES ARE NOT PROVIDED; STABILITY CLASS IS USED TO OBTAIN SIGMA-Y.
+
+         PR017:  Z-COMPONENT TURBULENCE INTENSITY VALUES ARE NOT PROVIDED; STABILITY CLASS IS USED TO OBTAIN SIGMA-Z.
+
+         PR018:  HOURLY VERTICAL POTENTIAL TEMPERATURE GRADIENTS ARE PROVIDED FOR COMPUTING STABLE PLUME RISE.
+
+         PR019:  HOURLY VERTICAL POTENTIAL TEMPERATURE GRADIENTS ARE PROVIDED FOR COMPUTING HCRIT.
+
+         PR020:  WIND DIRECTION SHEAR IS USED IN COMPUTATION OF SIGMA-Y; COEFFICIENT =   .17
+
+         PR021:  HOURLY VALUES OF WIND SPEED PROFILE EXPONENT ARE PROVIDED.
+
+         PR022:  PARTIAL REFLECTION ALGORITHM IS BEING USED; KEYWORD TERRAIN MUST BE USED TO READ IN TERRAIN.
+
+         PR023:  OFF-CENTERLINE CONCENTRATIONS ARE COMPUTED FOR ALL STABILITIES; NO SECTOR AVERAGING IS USED.
+
+         PR024:  HOURLY EMISSIONS DATA ARE NOT AVAILABLE; CONSTANT VALUES SPECIFIED IN THE STACKS SECTION ARE USED.
+
+         PR025:  DETAILED INFORMATION ABOUT EACH CASE WILL BE PRINTED.
+   ROUGH TERRAIN DIFFUSION MODEL   VERSION 3.2   LEVEL 861130                            PAGE   2
+
+
+
+         MODELED STACK PARAMETERS:
+
+
+
+         X,Y COORDINATE OF ALL SOURCES (USER UNITS) IS (    600.00 ,     800.00 )  OR  ( 600000.00 ,  800000.00) METERS
+         BASE HEIGHT OF ALL SOURCES (USER UNITS) IS    765.000 OR    233.172 METERS
+         POLLUTANT IS SO2 
+
+
+
+         CODE NAME   STACK HT (M)   DIAMETER (M)   EXIT VEL (M/SEC)  STACK TEMP (K)  EMISSION RATE (G/SEC)
+
+        1   STK1       121.920         5.000            20.000           370.000            1000.000
+   ROUGH TERRAIN DIFFUSION MODEL   VERSION 3.2   LEVEL 861130                            PAGE   3
+
+
+
+         RECEPTOR POINT INFORMATION (ALL COORDINATES IN USER UNITS):
+
+
+         RECEPTOR    X-COORD    Y-COORD    HEIGHT     NAME
+
+           1         603.16     801.61    2782.00** WEST MT.                        
+           2         602.75     799.90    2430.00** BRUSH MT.                       
+           3         603.46     799.41    2520.00** WALKER MT.                      
+           4         600.53     800.63    1100.00                                   
+           5         600.64     800.76    1200.00**                                 
+           6         600.80     800.96    1300.00**                                 
+           7         600.85     801.01    1400.00**                                 
+           8         600.96     801.14    1500.00**                                 
+           9         601.09     801.30    1600.00**                                 
+          10         601.31     801.56    1700.00**                                 
+          11         601.43     801.70    1800.00**                                 
+          12         601.61     801.92    1900.00**                                 
+          13         601.84     802.19    2000.00**                                 
+          14         603.59     804.27    2100.00**                                 
+          15         603.70     804.40    2200.00**                                 
+          16         603.89     804.63    2300.00**                                 
+          17         603.93     804.68    2400.00**                                 
+          18         603.96     804.72    2500.00**                                 
+          19         603.98     804.74    2600.00**                                 
+          20         603.99     804.76    2700.00**                                 
+          21         604.00     804.77    2800.00**                                 
+          22         604.03     804.80    2900.00**                                 
+          23         604.04     804.82    3000.00** TUMBLEDOWN MT.                  
+          24         603.35     793.70    1631.00** BUNKER MT.                      
+          25         598.10     798.23    2440.00** RECORD HILL                     
+          26         596.53     799.26    2440.00** OLD TURK MT.                    
+
+ ** THIS RECEPTOR IS HIGHER IN ELEVATION THAN THAT OF THE LOWEST STACK TOP.
+    SPECIAL ALGORITHMS CONCERNING PLUME IMPINGEMENT AND REFLECTION MAY INFLENCE CONCENTRATIONS MODELED AT THIS RECEPTOR.
+   ROUGH TERRAIN DIFFUSION MODEL   VERSION 3.2   LEVEL 861130                            PAGE   4
+
+
+
+         TERRAIN INFORMATION:
+
+
+                 TABLE OF DISTANCES (KM) FROM THE SOURCE TO ELEVATION CONTOURS AS A FUNCTION OF WIND DIRECTION
+
+
+                                                           ELEVATION IN USER UNITS:
+
+WIND DIR.   1100. 1200. 1300. 1400. 1500. 1600. 1700. 1800. 1900. 2000. 2100. 2200. 2300. 2400. 2500. 2600. 2700. 2800. 2900. 3000.
+
+   10        4.46  4.78  5.01  7.00  7.38
+   20        1.50  3.35  3.45  3.75  3.85  3.95  4.05  4.20  4.60  4.70  4.80
+   30        1.40  1.50  1.65  3.00  3.10  3.16  3.24  3.31  3.50
+   40        1.28  1.40  1.46  1.53  1.61  1.74  1.88  1.98  2.72
+   50        1.15  1.30  1.39  1.49  1.60  1.69  1.75  1.82  1.94  2.06  2.13  2.22  2.34
+   60        1.18  1.29  1.40  1.48  1.58  1.69  1.80  1.94  2.10  2.24  2.58
+   70        1.25  1.47  1.60  1.72  1.87  2.03  2.20  2.32  2.47
+   80        1.41  1.58  1.70  1.87  2.00  2.12  2.24  2.38  2.44  2.49  2.59
+   90        1.64  1.75  1.88  1.99  2.09  2.20  2.39  2.59  2.76  2.94  3.08
+  100        1.99  2.09  2.18  2.30  2.52  2.59  2.66  2.71  2.81  2.95  3.09  3.18  3.29
+  110        2.02  2.28  2.40  2.52  2.63  2.72  3.00  3.19  3.55
+  120        2.21  2.41  2.52  2.63  5.75  5.90  6.01  6.18  6.30  6.50  6.73  6.85  7.07
+  130        2.75  5.47  5.62  5.92  6.01  6.70  6.90  7.37  7.48  7.79
+  140        1.22  1.29  6.70  6.80  6.90  7.00
+  150        1.11  1.19  1.24  1.29  1.32
+  160        1.08  1.15  1.21  1.28  1.38  1.42  5.13  5.32  5.51
+  170        1.01  1.12  1.23  1.34  1.48  1.53  4.98
+  180         .81  1.04  1.18  1.38  1.51  1.66  1.82  2.10  2.23  2.31  4.79  4.92  5.05
+  190         .79   .90  1.07  1.23  1.37  1.50  1.71  1.81  1.91  2.01
+  200         .68   .82  1.00  1.16  1.30  1.50  1.68  1.95  2.52
+  210         .71   .83  1.03  1.20  1.43  1.58  1.81  2.15  2.30  2.52  2.62  2.73
+  220         .82   .99  1.25  1.32  1.49  1.70  2.04  2.22  2.50  2.86  5.58  5.75  6.05  6.11  6.16  6.19  6.21  6.23  6.27  6.29
+  230        1.05  1.21  1.48  1.61  2.02  2.17  2.28  2.42  2.54  2.67  2.84  3.01  3.17  3.21  3.28  3.32  7.42  7.49
+  240        1.05  1.20  1.41  1.61  1.78  1.90  2.04  2.16  2.38  2.52  2.68  2.80  2.91  3.14  3.31  3.39  3.45
+  250        1.00  1.23  1.31  1.40  1.56  1.70  1.86  1.97  2.08  2.17  2.30  2.45  2.57  2.80
+  260        1.00  1.11  1.27  1.36  1.49  1.60  1.78  2.09  2.27  2.45  2.56  2.63  2.73  2.84
+  270        1.03  1.16  1.28  1.38  1.48  1.53  1.66  1.73  1.88  2.09  2.26  2.49  2.61
+  280        1.09  1.22  1.34  1.43  1.54  1.63  1.71  1.76  1.82  1.89  1.97  2.10  3.50  3.58  3.70
+  290        1.16  1.28  1.43  1.57  1.67  1.76  1.83  1.98  2.13  3.26  3.34  3.50  3.65  3.79  3.90  4.05
+  300        1.28  1.41  1.60  1.74  1.89  2.10  2.90  3.01  3.16  3.24  3.33  3.96  4.03  4.17
+  310        1.46  1.60  1.75  1.90  2.90  3.04  3.42  3.59  3.75  3.90  3.98  4.08  4.20  8.25  8.35
+  320        1.65  1.85  2.00  3.12  3.36  3.49  4.05  4.20  4.42  8.55  8.65
+  330        2.18  2.97  4.42  4.61  4.78
+  340        6.23  6.42  6.58
+  350        4.69  4.90
+  360        4.31  6.80
+   MAP OF USER-SPECIFIED TERRAIN:  LETTERS (SOME OVERWRITTEN) DENOTE ELEVATIONS (SEE TABLE); "+" = SOURCE; "*" = A RECEPTOR POINT
+     DISTANCES FROM SOURCE (0,0):  XMIN =  -6122.80 M,     XMAX =   6396.47 M,     YMIN =  -7267.88 M,     YMAX =   5362.31 M
+                   F                                                                                              
+                     D                   I               M                                                        
+       J I                                 H       G     L                                   *             R      
+         H                                                                                 * *             Q      
+             G                                                                           *                        
+             F                                                                           *                        
+                   E                                                                                              
+                   D C                                                                                            
+     M L             B                                                                                            
+       K J I                                                                                                      
+           H G                                                                                                        CONTOUR
+               E                                                                                                      CODES
+                                                                                                                  
+                                                         J       I   L                                               A  1100.00
+                                                         H   J     I J   *     P                                     B  1200.00
+                                       A                 G   I H   H   *     L                                       C  1300.00
+                                                       F F   G G G   * * H J     N Q *                               D  1400.00
+                                       D             F E D E F F F *   E G   K M                                     E  1500.00
+                             I H       C A           E C C D E E   *     H I J                                       F  1600.00
+                                 G F E C           B B A A B C C * C D E G   L M N                                   G  1700.00
+                             M         B A                 A B * B B C F H J K                                       H  1800.00
+                               L J H E D B                       A B D E   H I K N                                   I  1900.00
+                                                                   B D F G                                           J  2000.00
+                               K J I G F D B             +         B D F H J K L *                                   K  2100.00
+                                         E C B                     A D F J L                                         L  2200.00
+                                   K J G   D C A A                 A C E               *                             M  2300.00
+                           *           H F E   E B A               A C   H I           M O                           N  2400.00
+                                     I     I G E C A               A B E F                                           O  2500.00
+                                       K J   I G E B               A C D             K M N                           P  2600.00
+                                           M J H F C A               C         G H       O P                         Q  2700.00
+                                         *                                       I K                                 R  2800.00
+                                                                   A         F         L                             S  2900.00
+                                           I                                     G     M N                           T  3000.00
+                                                                           D     H I                              
+                                             E                         B     F     J M                            
+                                           H F                                                                    
+                                           I   B                                 G                                
+                                               C                                 H I                              
+                                               E                                                                  
+                                             G F                             C                                    
+                                             H                               D                                    
+                                             I           A                     E                                  
+                                           K       A                                                              
+                                                   B             A                                                
+                                                   C             B                                                
+                                                                                                                  
+                                                                                                                 O
+                                                                                                                  
+                                                                             A                                    
+                                                                             C                                    
+                                                                                       *                          
+                                                                                                         K        
+                                               D         B                                                        
+                                                                                                                  
+                                               E                                                                  
+
+   ROUGH TERRAIN DIFFUSION MODEL   VERSION 3.2   LEVEL 861130                            PAGE   6
+
+
+THE CODE FOR MISSING DATA IS PRESENTED AS FOLLOWS:
+  A "1" IS INCLUDED IF WIND DIRECTION IS MISSING,
+  A "2" IS INCLUDED IF WIND SPEED IS MISSING,
+  A "3" IS INCLUDED IF MIXING HEIGHT IS MISSING,
+  A "4" IS INCLUDED IF STABILITY CLASS IS MISSING,
+  A "5" IS INCLUDED IF AMBIENT TEMPERATURE IS MISSING.
+  IF THERE IS MISSING DATA FOR ANY OF THESE PARAMETERS, THE PREVIOUS GOOD VALUE IS USED.
+  IF THERE IS MISSING DATA FOR OPTIONAL PARAMETERS, THE DEFAULT VALUE (OBTAINED FROM THE STABILITY CLASS) IS USED.
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #    1          YEAR, DAY, HOUR: 76 365 24
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      1.00     3000.        1      293.15     .2200*    .2000*    .0000     .0000     .1000     .0900     2.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =      .00 M
+UTOP =  1.25 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  858.18 M,  DISTANCE TO FINAL RISE =  1091.15 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   980.10    672.71    623.6 271.4  831. 1073.9  652.9 271.4  707.1 .00016  .71766E-03  .71766E-03 1.27   93.
+  2  1.69  -2.17  507.   980.10    726.36    344.1 271.4  431.  614.3  338.2 271.4  433.6 .00000  .45242E-03  .92337E-03 1.00    0.
+  4   .82   -.00  102.   833.17    782.12    174.1 224.9  174.  333.3  164.7 224.9  278.7 .00120  .55872E-04  .14312E-02 1.00   53.
+  5   .99   -.00  133.   928.15    861.85    208.5 255.0  238.  406.1  198.7 255.0  323.2 .00098  .70589E-04  .12342E-02 1.00   55.
+  6  1.25    .00  163.   980.10    898.57    259.2 271.4  318.  492.0  249.9 271.4  368.9 .00081  .11139E-03  .10813E-02 1.00   72.
+  7  1.32   -.00  194.   980.10    883.33    273.0 271.4  336.  511.0  264.0 271.4  378.6 .00078  .13861E-03  .10537E-02 1.00   86.
+  8  1.49   -.00  224.   980.10    868.09    305.9 271.4  379.  557.8  298.1 271.4  403.1 .00072  .19476E-03  .98967E-03 1.00  111.
+  9  1.70    .00  255.   980.10    852.85    345.1 271.4  432.  615.9  339.3 271.4  434.5 .00065  .26748E-03  .91862E-03 1.00  138.
+ 10  2.04    .00  285.   980.10    837.61    408.5 271.4  519.  713.8  407.4 271.4  489.5 .00056  .37706E-03  .81729E-03 1.00  168.
+ 11  2.22   -.00  315.   980.10    822.37    442.1 271.4  566.  767.4  444.3 271.4  520.6 .00052  .44016E-03  .77150E-03 1.01  183.
+ 12  2.51    .00  346.   980.10    807.13    492.9 271.4  638.  850.6  501.1 271.4  569.9 .00047  .51356E-03  .71269E-03 1.02  192.
+ 13  2.86   -.00  376.   980.10    791.89    554.9 271.4  728.  954.9  572.1 271.4  633.2 .00042  .57645E-03  .66065E-03 1.05  192.
+ 14  5.58   -.01  407.   980.10    776.65    983.3 271.4 1420. 1748.6 1115.7 271.4 1148.3 .00023  .55290E-03  .55289E-03 1.59  101.
+ 15  5.75   -.01  437.   980.10    761.41   1007.8 271.4 1464. 1797.6 1149.8 271.4 1181.4 .00022  .54890E-03  .54887E-03 1.63   97.
+ 16  6.05   -.00  468.   980.10    746.17   1050.2 271.4 1540. 1883.3 1209.4 271.4 1239.5 .00021  .53740E-03  .53740E-03 1.67   91.
+ 17  6.11   -.00  498.   980.10    730.93   1059.2 271.4 1556. 1901.6 1222.2 271.4 1252.0 .00021  .53788E-03  .53784E-03 1.69   90.
+ 18  6.16    .00  529.   980.10    715.69   1066.2 271.4 1569. 1915.9 1232.2 271.4 1261.8 .00021  .53891E-03  .52714E-03 1.67   88.
+ 19  6.19   -.00  559.   980.10    700.45   1070.2 271.4 1576. 1924.0 1237.9 271.4 1267.3 .00021  .54100E-03  .52485E-03 1.67   87.
+ 20  6.21    .00  590.   980.10    685.21   1073.2 271.4 1581. 1930.2 1242.2 271.4 1271.5 .00021  .54333E-03  .52310E-03 1.67   86.
+ 21  6.23    .00  620.   980.10    669.97   1075.2 271.4 1585. 1934.2 1245.0 271.4 1274.3 .00021  .54600E-03  .52197E-03 1.67   86.
+ 22  6.27   -.00  651.   980.10    654.73   1081.1 271.4 1596. 1946.3 1253.5 271.4 1282.5 .00020  .54688E-03  .51860E-03 1.67   85.
+ 23  6.29    .00  681.   980.10    639.49   1084.1 271.4 1601. 1952.5 1257.8 271.4 1286.8 .00020  .54886E-03  .51689E-03 1.67   84.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 76 366  4
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #    2          YEAR, DAY, HOUR: 76 366  4
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      3.00     1000.        1      293.15     .2200*    .2000*    .0000     .0000     .1000    -.0900     6.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =      .00 M
+UTOP =  2.44 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  440.76 M,  DISTANCE TO FINAL RISE =  1091.15 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   562.68    281.34    623.6 139.4  427.  768.4  652.9 139.4  667.6 .00010  .14524E-02  .71019E-03 1.19   30.
+  4   .82   -.00  102.   487.22    436.17    174.1 115.5   89.  227.2  164.7 115.5  201.1 .00176  .37787E-03  .19834E-02 1.00  272.
+  5   .99   -.00  133.   536.00    469.71    208.5 130.9  122.  274.8  198.7 130.9  238.0 .00145  .47806E-03  .16781E-02 1.00  285.
+  6  1.25    .00  163.   562.68    481.15    259.2 139.4  163.  336.6  249.9 139.4  286.2 .00119  .67834E-03  .14205E-02 1.02  330.
+  7  1.32   -.00  194.   562.68    465.91    273.0 139.4  173.  351.7  264.0 139.4  298.5 .00113  .79094E-03  .13812E-02 1.03  368.
+  8  1.49   -.00  224.   562.68    450.67    305.9 139.4  195.  388.5  298.1 139.4  329.1 .00103  .94991E-03  .12936E-02 1.07  400.
+  9  1.70    .00  255.   562.68    435.43    345.1 139.4  222.  433.3  339.3 139.4  366.8 .00092  .10789E-02  .12613E-02 1.16  407.
+ 10  2.04    .00  285.   562.68    420.19    408.5 139.4  266.  507.2  407.4 139.4  430.6 .00079  .11712E-02  .12202E-02 1.32  378.
+ 11  2.22   -.00  315.   562.68    404.95    442.1 139.4  290.  547.0  444.3 139.4  465.6 .00073  .12132E-02  .11284E-02 1.32  337.
+ 12  2.51    .00  346.   562.68    389.71    492.9 139.4  328.  608.1  501.1 139.4  520.2 .00066  .12392E-02  .10101E-02 1.32  272.
+ 13  2.86   -.00  376.   562.68    374.47    554.9 139.4  374.  683.5  572.1 139.4  588.8 .00058  .12541E-02  .89237E-03 1.32  214.
+ 14  5.58   -.01  407.   562.68    359.23    983.3 139.4  729. 1232.2 1115.7 139.4 1124.4 .00032  .12554E-02  .46731E-03 1.32   62.
+ 15  5.75   -.01  437.   562.68    343.99   1007.8 139.4  752. 1265.0 1149.8 139.4 1158.2 .00032  .12799E-02  .45367E-03 1.32   59.
+ 16  6.05   -.00  468.   562.68    328.75   1050.2 139.4  791. 1322.0 1209.4 139.4 1217.5 .00030  .13054E-02  .43159E-03 1.32   53.
+ 17  6.11   -.00  498.   562.68    313.51   1059.2 139.4  799. 1334.1 1222.2 139.4 1230.2 .00030  .13319E-02  .42713E-03 1.32   52.
+ 18  6.16    .00  529.   562.68    298.27   1066.2 139.4  806. 1343.6 1232.2 139.4 1240.1 .00030  .13595E-02  .42371E-03 1.32   52.
+ 19  6.19   -.00  559.   562.68    283.03   1070.2 139.4  809. 1348.9 1237.9 139.4 1245.7 .00030  .13882E-02  .36039E-03 1.13   44.
+ 20  6.21    .00  590.   562.68    281.34   1073.2 139.4  812. 1353.0 1242.2 139.4 1250.0 .00029  .14182E-02  .36904E-03 1.16   45.
+ 21  6.23    .00  620.   562.68    281.34   1075.2 139.4  814. 1355.7 1245.0 139.4 1252.8 .00029  .14496E-02  .38177E-03 1.20   46.
+ 22  6.27   -.00  651.   562.68    281.34   1081.1 139.4  819. 1363.7 1253.5 139.4 1261.2 .00029  .14823E-02  .39905E-03 1.26   48.
+ 23  6.29    .00  681.   562.68    281.34   1084.1 139.4  822. 1367.8 1257.8 139.4 1265.5 .00029  .15166E-02  .41986E-03 1.33   50.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 76 366  9
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #    3          YEAR, DAY, HOUR: 76 366  9
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      2.00     3000.        2      293.15     .1600*    .1200*    .0000     .0000     .1200     .1100     4.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =      .00 M
+UTOP =  2.63 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  408.16 M,  DISTANCE TO FINAL RISE =  1091.15 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   530.08    265.04    453.5 129.1  474.  668.8  391.7 129.1  412.5 .00007  .15736E-02  .10818E-02 1.12   29.
+  4   .82   -.00  102.   460.20    409.14    126.6 107.0   99.  193.1   98.8 107.0  145.6 .00207  .10578E-03  .27397E-02 1.00   83.
+  5   .99   -.00  133.   505.37    439.07    151.6 121.3  136.  236.8  119.2 121.3  170.1 .00168  .16740E-03  .23460E-02 1.00  107.
+  6  1.25    .00  163.   530.08    448.54    188.5 129.1  182.  291.8  150.0 129.1  197.9 .00137  .30872E-03  .20164E-02 1.00  160.
+  7  1.32   -.00  194.   530.08    433.30    198.5 129.1  192.  304.7  158.4 129.1  204.3 .00131  .41223E-03  .19526E-02 1.00  205.
+  8  1.49   -.00  224.   530.08    418.06    222.5 129.1  217.  336.2  178.8 129.1  220.6 .00119  .60010E-03  .18102E-02 1.00  270.
+  9  1.70    .00  255.   530.08    402.82    251.0 129.1  246.  374.7  203.6 129.1  241.0 .00106  .81924E-03  .16612E-02 1.00  331.
+ 10  2.04    .00  285.   530.08    387.58    297.1 129.1  296.  438.8  244.4 129.1  276.4 .00091  .10801E-02  .14715E-02 1.02  373.
+ 11  2.22   -.00  315.   530.08    372.34    321.5 129.1  323.  473.5  266.6 129.1  296.2 .00084  .12224E-02  .14091E-02 1.05  391.
+ 12  2.51    .00  346.   530.08    357.10    358.5 129.1  364.  527.0  300.7 129.1  327.2 .00076  .13442E-02  .13739E-02 1.13  386.
+ 13  2.86   -.00  376.   530.08    341.86    403.6 129.1  416.  593.5  343.2 129.1  366.7 .00067  .14090E-02  .13072E-02 1.20  334.
+ 14  5.58   -.01  407.   530.08    326.62    715.1 129.1  811. 1088.6  669.4 129.1  681.8 .00037  .10434E-02  .10434E-02 1.78  145.
+ 15  5.75   -.01  437.   530.08    311.38    733.0 129.1  835. 1118.8  689.9 129.1  701.8 .00036  .10303E-02  .10303E-02 1.81  140.
+ 16  6.05   -.00  468.   530.08    296.14    763.8 129.1  879. 1171.3  725.7 129.1  737.1 .00034  .99858E-03  .99858E-03 1.84  129.
+ 17  6.11   -.00  498.   530.08    280.90    770.3 129.1  888. 1182.6  733.3 129.1  744.6 .00034  .99793E-03  .99793E-03 1.86  128.
+ 18  6.16    .00  529.   530.08    265.66    775.4 129.1  895. 1191.4  739.3 129.1  750.5 .00033  .99855E-03  .98443E-03 1.85  125.
+ 19  6.19   -.00  559.   530.08    265.04    778.3 129.1  899. 1196.3  742.7 129.1  753.9 .00033  .99498E-03  .99498E-03 1.88  126.
+ 20  6.21    .00  590.   530.08    265.04    780.5 129.1  902. 1200.1  745.3 129.1  756.4 .00033  .99201E-03  .99201E-03 1.88  125.
+ 21  6.23    .00  620.   530.08    265.04    781.9 129.1  904. 1202.6  747.0 129.1  758.1 .00033  .99010E-03  .99010E-03 1.88  125.
+ 22  6.27   -.00  651.   530.08    265.04    786.2 129.1  911. 1210.0  752.1 129.1  763.1 .00033  .98440E-03  .98440E-03 1.88  123.
+ 23  6.29    .00  681.   530.08    265.04    788.4 129.1  914. 1213.8  754.7 129.1  765.7 .00033  .98149E-03  .98149E-03 1.88  123.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 76 366 12
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #    4          YEAR, DAY, HOUR: 76 366 12
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      4.00      700.        2      293.15     .1600*    .1200*    .0000     .0000     .1200    -.1100     7.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =      .00 M
+UTOP =  3.23 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  332.83 M,  DISTANCE TO FINAL RISE =  1091.15 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   454.75    227.38    453.5 105.3  387.  605.3  391.7 105.3  405.6 .00005  .25406E-02  .13530E-02 1.38   20.
+  4   .82   -.00  102.   397.77    346.71    126.6  87.2   81.  173.7   98.8  87.2  131.8 .00230  .19020E-03  .30270E-02 1.00  135.
+  5   .99   -.00  133.   434.60    368.31    151.6  98.9  111.  212.1  119.2  98.9  154.9 .00188  .30491E-03  .25756E-02 1.00  178.
+  6  1.25    .00  163.   454.75    373.22    188.5 105.3  148.  261.8  150.0 105.3  183.2 .00152  .54688E-03  .22545E-02 1.04  258.
+  7  1.32   -.00  194.   454.75    357.98    198.5 105.3  156.  273.8  158.4 105.3  190.2 .00146  .71377E-03  .21997E-02 1.05  322.
+  8  1.49   -.00  224.   454.75    342.74    222.5 105.3  177.  302.9  178.8 105.3  207.5 .00132  .98418E-03  .21003E-02 1.09  401.
+  9  1.70    .00  255.   454.75    327.50    251.0 105.3  201.  338.3  203.6 105.3  229.2 .00118  .12601E-02  .20430E-02 1.17  460.
+ 10  2.04    .00  285.   454.75    312.26    297.1 105.3  241.  397.0  244.4 105.3  266.1 .00100  .15380E-02  .20543E-02 1.37  479.
+ 11  2.22   -.00  315.   454.75    297.02    321.5 105.3  263.  428.6  266.6 105.3  286.6 .00093  .16910E-02  .21148E-02 1.52  487.
+ 12  2.51    .00  346.   454.75    281.78    358.5 105.3  297.  477.2  300.7 105.3  318.6 .00084  .18268E-02  .15673E-02 1.25  406.
+ 13  2.86   -.00  376.   454.75    266.54    403.6 105.3  339.  537.4  343.2 105.3  359.0 .00074  .19312E-02  .13907E-02 1.25  320.
+ 14  5.58   -.01  407.   454.75    251.30    715.1 105.3  661.  979.5  669.4 105.3  677.7 .00041  .20139E-02  .73679E-03 1.25   93.
+ 15  5.75   -.01  437.   454.75    236.06    733.0 105.3  681. 1006.1  689.9 105.3  697.9 .00040  .20777E-02  .71547E-03 1.25   88.
+ 16  6.05   -.00  468.   454.75    227.38    763.8 105.3  716. 1052.5  725.7 105.3  733.3 .00038  .21456E-02  .70758E-03 1.30   83.
+ 17  6.11   -.00  498.   454.75    227.38    770.3 105.3  724. 1062.4  733.3 105.3  740.9 .00038  .22182E-02  .63564E-03 1.18   74.
+ 18  6.16    .00  529.   454.75    227.38    775.4 105.3  730. 1070.2  739.3 105.3  746.8 .00037  .22958E-02  .64712E-03 1.21   75.
+ 19  6.19   -.00  559.   454.75    227.38    778.3 105.3  733. 1074.5  742.7 105.3  750.1 .00037  .23790E-02  .67006E-03 1.26   77.
+ 20  6.21    .00  590.   454.75    227.38    780.5 105.3  736. 1077.9  745.3 105.3  752.7 .00037  .24685E-02  .70009E-03 1.32   80.
+ 21  6.23    .00  620.   454.75    227.38    781.9 105.3  738. 1080.1  747.0 105.3  754.4 .00037  .25650E-02  .73417E-03 1.39   84.
+ 22  6.27   -.00  651.   454.75    227.38    786.2 105.3  743. 1086.6  752.1 105.3  759.4 .00037  .26693E-02  .60997E-03 1.16   69.
+ 23  6.29    .00  681.   454.75    227.38    788.4 105.3  745. 1089.9  754.7 105.3  762.0 .00037  .27825E-02  .61783E-03 1.18   70.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 76 366 14
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #    5          YEAR, DAY, HOUR: 76 366 14
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      2.00     3000.        3      293.15     .1100*    .0800*    .0000     .0000     .1500     .1200     4.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =      .00 M
+UTOP =  2.70 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  398.08 M,  DISTANCE TO FINAL RISE =  1091.15 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   520.00    260.00    311.8 125.9  578.  668.9  203.1 125.9  239.0 .00007  .18474E-02  .16810E-02 1.01   43.
+  4   .82   -.00  102.   451.84    400.79     87.0 104.3  121.  181.9   61.0 104.3  120.9 .00219  .27045E-04  .33006E-02 1.00   22.
+  5   .99   -.00  133.   495.90    429.60    104.2 118.3  165.  228.4   72.6 118.3  138.8 .00175  .47694E-04  .28749E-02 1.00   31.
+  6  1.25    .00  163.   520.00    438.46    129.6 125.9  221.  285.7   89.4 125.9  154.4 .00140  .91690E-04  .25837E-02 1.00   47.
+  7  1.32   -.00  194.   520.00    423.22    136.5 125.9  234.  298.6   93.9 125.9  157.1 .00134  .13466E-03  .25400E-02 1.00   67.
+  8  1.49   -.00  224.   520.00    407.98    152.9 125.9  264.  330.0  104.6 125.9  163.7 .00121  .21833E-03  .24370E-02 1.00   98.
+  9  1.70    .00  255.   520.00    392.74    172.6 125.9  301.  368.7  117.3 125.9  172.0 .00108  .34255E-03  .23188E-02 1.00  137.
+ 10  2.04    .00  285.   520.00    377.50    204.2 125.9  361.  433.3  137.4 125.9  186.3 .00092  .54992E-03  .21417E-02 1.00  188.
+ 11  2.22   -.00  315.   520.00    362.26    221.0 125.9  393.  468.6  147.9 125.9  194.2 .00085  .72123E-03  .20562E-02 1.00  227.
+ 12  2.51    .00  346.   520.00    347.02    246.5 125.9  444.  523.1  163.6 125.9  206.4 .00076  .94085E-03  .19393E-02 1.00  266.
+ 13  2.86   -.00  376.   520.00    331.78    277.5 125.9  507.  591.2  182.5 125.9  221.7 .00067  .11745E-02  .18198E-02 1.01  294.
+ 14  5.58   -.01  407.   520.00    316.54    491.6 125.9  988. 1110.9  306.8 125.9  331.6 .00036  .15256E-02  .15256E-02 1.27  203.
+ 15  5.75   -.01  437.   520.00    301.30    503.9 125.9 1018. 1143.1  313.7 125.9  338.0 .00035  .15866E-02  .12862E-02 1.09  166.
+ 16  6.05   -.00  468.   520.00    286.06    525.1 125.9 1071. 1199.6  325.5 125.9  349.0 .00033  .16340E-02  .12457E-02 1.09  153.
+ 17  6.11   -.00  498.   520.00    270.82    529.6 125.9 1083. 1211.7  328.0 125.9  351.3 .00033  .16874E-02  .12375E-02 1.09  151.
+ 18  6.16    .00  529.   520.00    260.00    533.1 125.9 1091. 1221.1  329.9 125.9  353.1 .00033  .17231E-02  .12311E-02 1.09  149.
+ 19  6.19   -.00  559.   520.00    260.00    535.1 125.9 1096. 1226.4  331.0 125.9  354.1 .00033  .17208E-02  .12276E-02 1.09  148.
+ 20  6.21    .00  590.   520.00    260.00    536.6 125.9 1100. 1230.5  331.8 125.9  354.9 .00032  .17190E-02  .12249E-02 1.09  147.
+ 21  6.23    .00  620.   520.00    260.00    537.6 125.9 1103. 1233.2  332.4 125.9  355.4 .00032  .17179E-02  .13328E-02 1.19  160.
+ 22  6.27   -.00  651.   520.00    260.00    540.5 125.9 1110. 1241.2  334.0 125.9  356.9 .00032  .17145E-02  .14361E-02 1.28  171.
+ 23  6.29    .00  681.   520.00    260.00    542.0 125.9 1114. 1245.3  334.8 125.9  357.7 .00032  .17127E-02  .14670E-02 1.32  174.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 76 366 19
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #    6          YEAR, DAY, HOUR: 76 366 19
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      7.00      550.        3      293.15     .1100*    .0800*    .0000     .0000     .1500    -.1200    14.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =      .00 M
+UTOP =  5.70 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  188.40 M,  DISTANCE TO FINAL RISE =  1091.15 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   310.32    155.16    311.8  59.6  274.  419.1  203.1  59.6  211.7 .00000  .35579E-02  .20353E-02 1.08    1.
+  4   .82   -.00  102.   278.06    227.01     87.0  49.4   57.  115.3   61.0  49.4   78.5 .00346  .15533E-03  .50819E-02 1.00   94.
+  5   .99   -.00  133.   298.91    232.62    104.2  56.0   78.  141.8   72.6  56.0   91.7 .00281  .34790E-03  .43520E-02 1.00  171.
+  6  1.25    .00  163.   310.32    228.78    129.6  59.6  105.  177.0   89.4  59.6  107.4 .00225  .76961E-03  .37133E-02 1.00  304.
+  7  1.32   -.00  194.   310.32    213.54    136.5  59.6  111.  185.5   93.9  59.6  111.2 .00215  .11360E-02  .35888E-02 1.00  428.
+  8  1.49   -.00  224.   310.32    198.30    152.9  59.6  125.  206.3  104.6  59.6  120.4 .00193  .17075E-02  .33290E-02 1.00  579.
+  9  1.70    .00  255.   310.32    183.06    172.6  59.6  142.  231.4  117.3  59.6  131.5 .00172  .23031E-02  .31020E-02 1.02  696.
+ 10  2.04    .00  285.   310.32    167.82    204.2  59.6  171.  272.8  137.4  59.6  149.7 .00146  .28439E-02  .29549E-02 1.11  729.
+ 11  2.22   -.00  315.   310.32    155.16    221.0  59.6  186.  295.1  147.9  59.6  159.4 .00135  .31188E-02  .27521E-02 1.10  652.
+ 12  2.51    .00  346.   310.32    155.16    246.5  59.6  210.  329.3  163.6  59.6  174.1 .00121  .30932E-02  .25207E-02 1.10  535.
+ 13  2.86   -.00  376.   310.32    155.16    277.5  59.6  240.  371.5  182.5  59.6  192.0 .00107  .30500E-02  .22599E-02 1.09  425.
+ 14  5.58   -.01  407.   310.32    155.16    491.6  59.6  468.  681.2  306.8  59.6  312.6 .00059  .29027E-02  .28213E-02 2.21  290.
+ 15  5.75   -.01  437.   310.32    155.16    503.9  59.6  482.  699.8  313.7  59.6  319.3 .00057  .30245E-02  .28633E-02 2.29  286.
+ 16  6.05   -.00  468.   310.32    155.16    525.1  59.6  507.  732.3  325.5  59.6  330.9 .00054  .31647E-02  .25785E-02 2.14  246.
+ 17  6.11   -.00  498.   310.32    155.16    529.6  59.6  512.  739.3  328.0  59.6  333.3 .00054  .33234E-02  .21571E-02 1.80  204.
+ 18  6.16    .00  529.   310.32    155.16    533.1  59.6  517.  744.7  329.9  59.6  335.2 .00054  .35005E-02  .27429E-02 2.30  258.
+ 19  6.19   -.00  559.   310.32    155.16    535.1  59.6  519.  747.7  331.0  59.6  336.3 .00053  .36355E-02  .21349E-02 1.80  200.
+ 20  6.21    .00  590.   310.32    155.16    536.6  59.6  521.  750.1  331.8  59.6  337.1 .00053  .36355E-02  .27100E-02 2.29  253.
+ 21  6.23    .00  620.   310.32    155.16    537.6  59.6  522.  751.6  332.4  59.6  337.7 .00053  .36355E-02  .12835E-02 1.09  119.
+ 22  6.27   -.00  651.   310.32    155.16    540.5  59.6  525.  756.2  334.0  59.6  339.3 .00053  .36356E-02  .22090E-02 1.88  204.
+ 23  6.29    .00  681.   310.32    155.16    542.0  59.6  527.  758.5  334.8  59.6  340.1 .00053  .36356E-02  .26858E-02 2.29  248.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 77   1  5
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #    7          YEAR, DAY, HOUR: 77   1  5
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      3.00     1000.        4      293.15     .0800*    .0600*    .0000     .0000     .2000     .1400     6.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =      .00 M
+UTOP =  4.26 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  252.44 M,  DISTANCE TO FINAL RISE =  1091.15 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   374.36    187.18    226.8  79.8  489.  544.8   80.7  79.8  113.5 .00003  .18041E-02  .35306E-02 1.00   12.
+  4   .82   -.00  102.   331.14    280.08     63.3  66.2  102.  137.2   33.0  66.2   74.0 .00291  .82840E-05  .53946E-02 1.00    6.
+  5   .99   -.00  133.   359.08    292.78     75.8  75.0  140.  175.8   37.8  75.0   84.0 .00227  .21777E-04  .47509E-02 1.00   12.
+  6  1.25    .00  163.   374.36    292.82     94.3  79.8  187.  224.2   44.2  79.8   91.3 .00178  .50811E-04  .43715E-02 1.00   21.
+  7  1.32   -.00  194.   374.36    277.58     99.3  79.8  198.  235.2   45.9  79.8   92.1 .00170  .92075E-04  .43329E-02 1.00   37.
+  8  1.49   -.00  224.   374.36    262.34    111.2  79.8  223.  261.9   49.7  79.8   94.0 .00152  .17328E-03  .42422E-02 1.00   62.
+  9  1.70    .00  255.   374.36    247.10    125.5  79.8  254.  294.4   54.1  79.8   96.4 .00136  .31003E-03  .41379E-02 1.00   99.
+ 10  2.04    .00  285.   374.36    231.86    148.5  79.8  305.  348.6   60.7  79.8  100.3 .00114  .54932E-03  .39783E-02 1.00  148.
+ 11  2.22   -.00  315.   374.36    216.62    160.8  79.8  333.  378.0   64.0  79.8  102.3 .00106  .82978E-03  .38987E-02 1.00  206.
+ 12  2.51    .00  346.   374.36    201.38    179.3  79.8  375.  423.5   68.9  79.8  105.5 .00094  .12220E-02  .37854E-02 1.00  270.
+ 13  2.86   -.00  376.   374.36    187.18    201.8  79.8  428.  480.2   74.6  79.8  109.3 .00083  .16836E-02  .36613E-02 1.00  329.
+ 14  5.58   -.01  407.   374.36    187.18    357.6  79.8  836.  912.3  109.4  79.8  135.4 .00044  .22663E-02  .30110E-02 1.02  233.
+ 15  5.75   -.01  437.   374.36    187.18    366.5  79.8  861.  939.2  111.2  79.8  136.9 .00042  .22885E-02  .29838E-02 1.02  228.
+ 16  6.05   -.00  468.   374.36    187.18    381.9  79.8  906.  986.2  114.3  79.8  139.4 .00040  .23242E-02  .29388E-02 1.03  221.
+ 17  6.11   -.00  498.   374.36    187.18    385.2  79.8  915.  996.2  115.0  79.8  140.0 .00040  .23314E-02  .29296E-02 1.03  219.
+ 18  6.16    .00  529.   374.36    187.18    387.7  79.8  923. 1004.1  115.5  79.8  140.4 .00040  .23369E-02  .29225E-02 1.03  218.
+ 19  6.19   -.00  559.   374.36    187.18    389.2  79.8  927. 1008.5  115.8  79.8  140.7 .00040  .23400E-02  .29185E-02 1.03  217.
+ 20  6.21    .00  590.   374.36    187.18    390.3  79.8  930. 1011.9  116.0  79.8  140.8 .00039  .23424E-02  .29155E-02 1.03  217.
+ 21  6.23    .00  620.   374.36    187.18    391.0  79.8  932. 1014.2  116.2  79.8  141.0 .00039  .23439E-02  .29135E-02 1.03  217.
+ 22  6.27   -.00  651.   374.36    187.18    393.1  79.8  939. 1020.8  116.6  79.8  141.3 .00039  .23484E-02  .29077E-02 1.03  216.
+ 23  6.29    .00  681.   374.36    187.18    394.2  79.8  942. 1024.2  116.8  79.8  141.5 .00039  .23507E-02  .29047E-02 1.03  215.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 77   1 11
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #    8          YEAR, DAY, HOUR: 77   1 11
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.     15.00      450.        4      293.15     .0800*    .0600*    .0000     .0000     .2000    -.1400    30.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =      .00 M
+UTOP = 10.57 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  101.69 M,  DISTANCE TO FINAL RISE =  1091.15 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  4   .82   -.00  102.   206.20    155.15     63.3  26.7   41.   80.1   33.0  26.7   42.5 .00498  .23640E-04  .93976E-02 1.00   11.
+  5   .99   -.00  133.   217.46    151.16     75.8  30.2   56.   99.2   37.8  30.2   48.4 .00402  .12495E-03  .82475E-02 1.00   48.
+  6  1.25    .00  163.   223.61    142.08     94.3  32.2   75.  124.9   44.2  32.2   54.7 .00319  .49894E-03  .72960E-02 1.00  151.
+  7  1.32   -.00  194.   223.61    126.84     99.3  32.2   80.  131.3   45.9  32.2   56.0 .00304  .10982E-02  .71203E-02 1.00  316.
+  8  1.49   -.00  224.   223.61    111.81    111.2  32.2   90.  146.6   49.7  32.2   59.2 .00272  .22658E-02  .67434E-02 1.00  583.
+  9  1.70    .00  255.   223.61    111.81    125.5  32.2  102.  165.1   54.1  32.2   62.9 .00242  .26138E-02  .63534E-02 1.00  598.
+ 10  2.04    .00  285.   223.61    111.81    148.5  32.2  123.  195.5   60.7  32.2   68.7 .00204  .30881E-02  .58373E-02 1.00  596.
+ 11  2.22   -.00  315.   223.61    111.81    160.8  32.2  134.  211.8   64.0  32.2   71.7 .00188  .32965E-02  .56100E-02 1.01  588.
+ 12  2.51    .00  346.   223.61    111.81    179.3  32.2  151.  236.7   68.9  32.2   76.1 .00169  .35606E-02  .53152E-02 1.01  568.
+ 13  2.86   -.00  376.   223.61    111.81    201.8  32.2  173.  267.5   74.6  32.2   81.2 .00149  .38100E-02  .50261E-02 1.02  538.
+ 14  5.58   -.01  407.   223.61    111.81    357.6  32.2  337.  492.1  109.4  32.2  114.0 .00081  .43528E-02  .42866E-02 1.22  329.
+ 15  5.75   -.01  437.   223.61    111.81    366.5  32.2  347.  505.6  111.2  32.2  115.7 .00079  .43931E-02  .44535E-02 1.29  328.
+ 16  6.05   -.00  468.   223.61    111.81    381.9  32.2  365.  529.1  114.3  32.2  118.8 .00075  .44298E-02  .43391E-02 1.29  310.
+ 17  6.11   -.00  498.   223.61    111.81    385.2  32.2  369.  534.2  115.0  32.2  119.4 .00075  .44316E-02  .42458E-02 1.27  300.
+ 18  6.16    .00  529.   223.61    111.81    387.7  32.2  372.  538.1  115.5  32.2  119.9 .00074  .44329E-02  .37954E-02 1.14  266.
+ 19  6.19   -.00  559.   223.61    111.81    389.2  32.2  373.  540.3  115.8  32.2  120.2 .00074  .44336E-02  .42857E-02 1.29  299.
+ 20  6.21    .00  590.   223.61    111.81    390.3  32.2  375.  542.0  116.0  32.2  120.4 .00074  .44341E-02  .36929E-02 1.11  257.
+ 21  6.23    .00  620.   223.61    111.81    391.0  32.2  376.  543.1  116.2  32.2  120.5 .00073  .44344E-02  .42039E-02 1.27  292.
+ 22  6.27   -.00  651.   223.61    111.81    393.1  32.2  378.  546.4  116.6  32.2  121.0 .00073  .44354E-02  .43721E-02 1.33  302.
+ 23  6.29    .00  681.   223.61    111.81    394.2  32.2  379.  548.1  116.8  32.2  121.2 .00073  .44359E-02  .35928E-02 1.09  247.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 77   1 13
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #    9          YEAR, DAY, HOUR: 77   1 13
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      2.00     9999.        5      293.15     .0600*    .0300*    .0200     .0200     .3000     .2000     5.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =   553.72 M
+UTOP =  3.30 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  126.55 M,  DISTANCE TO FINAL RISE =   263.94 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   248.47   -366.31    170.1  40.0  368.  407.1   49.5  40.0   63.6 .00000  .80013E-09  .64045E-02 1.02    0.
+  4   .82   -.00  102.   248.47    146.36     47.5  40.0   93.  111.6   19.8  40.0   44.7 .00357  .82986E-04  .89344E-02 1.00   90.
+  5   .99   -.00  133.   248.47    115.88     56.9  40.0  112.  131.7   23.0  40.0   46.1 .00303  .73802E-03  .86465E-02 1.00  678.
+  6  1.25    .00  163.   248.47     85.40     70.7  40.0  141.  162.5   27.3  40.0   48.4 .00245  .34791E-02  .82547E-02 1.00 2589.
+  7  1.32   -.00  194.   248.47     54.92     74.4  40.0  149.  171.0   28.4  40.0   49.1 .00233  .86906E-02  .81737E-02 1.01 5781.
+  8  1.49   -.00  224.   248.47     24.44     83.4  40.0  168.  191.7   30.9  40.0   50.6 .00208  .14041E-01  .79309E-02 1.01 5005.
+  9  1.70    .00  255.   248.47     -6.04     94.1  40.0  191.  216.7   33.7  40.0   52.3 .00184  .15144E-01  .76609E-02 1.01 4276.
+ 10  2.04    .00  285.   248.47    -36.52    111.4  40.0  229.  258.2   37.9  40.0   55.1 .00155  .11621E-01  .72500E-02 1.00 3397.
+ 11  2.22   -.00  315.   248.47    -67.00    120.6  40.0  250.  280.6   40.0  40.0   56.6 .00142  .69952E-02  .70863E-02 1.00 3016.
+ 12  2.51    .00  346.   248.47    -97.48    134.4  40.0  282.  315.1   42.9  40.0   58.7 .00127  .34214E-02  .68746E-02 1.01 1313.
+ 13  2.86   -.00  376.   248.47   -127.96    151.3  40.0  322.  358.2   46.2  40.0   61.1 .00111  .14580E-02  .65330E-02 1.00  492.
+ 14  5.58   -.01  407.   248.47   -158.44    268.2  40.0  628.  684.3   62.6  40.0   74.3 .00058  .11053E-02  .53761E-02 1.00  195.
+ 15  5.75   -.01  437.   248.47   -188.92    274.9  40.0  647.  704.5   63.3  40.0   74.9 .00057  .44222E-03  .53380E-02 1.00   76.
+ 16  6.05   -.00  468.   248.47   -219.40    286.4  40.0  681.  739.9   64.5  40.0   75.9 .00054  .16082E-03  .52744E-02 1.00   26.
+ 17  6.11   -.00  498.   248.47   -249.88    288.9  40.0  688.  747.5   64.7  40.0   76.1 .00053  .47681E-04  .52692E-02 1.00    8.
+ 18  6.16    .00  529.   248.47   -280.36    290.8  40.0  694.  753.4   64.9  40.0   76.2 .00053  .12116E-04  .52714E-02 1.01    2.
+ 19  6.19   -.00  559.   248.47   -310.84    291.9  40.0  697.  756.8   65.0  40.0   76.3 .00053  .26183E-05  .52841E-02 1.01    0.
+ 20  6.21    .00  590.   248.47   -341.32    292.7  40.0  700.  759.3   65.1  40.0   76.4 .00053  .48358E-06  .53058E-02 1.02    0.
+ 21  6.23    .00  620.   248.47   -371.80    293.2  40.0  701.  761.0   65.1  40.0   76.4 .00052  .76107E-07  .53392E-02 1.02    0.
+ 22  6.27   -.00  651.   248.47   -402.28    294.8  40.0  706.  766.0   65.3  40.0   76.6 .00052  .10578E-07  .53794E-02 1.03    0.
+ 23  6.29    .00  681.   248.47   -432.76    295.7  40.0  708.  768.6   65.4  40.0   76.6 .00052  .12401E-08  .54692E-02 1.05    0.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 77   1 16
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #   10          YEAR, DAY, HOUR: 77   1 16
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      4.00     9999.        5      293.15     .0600*    .0300*    .0030     .0050     .3000    -.2000    10.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =   493.66 M
+UTOP =  2.43 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  263.84 M,  DISTANCE TO FINAL RISE =   501.25 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   385.76   -229.02    170.1  83.4  767.  789.6   49.5  83.4   97.0 .00011  .50660E-03  .41275E-02 1.00   23.
+  4   .82   -.00  102.   385.76    283.65     47.5  83.4  193.  215.8   19.8  83.4   85.8 .00185  .39153E-04  .46523E-02 1.00   30.
+  5   .99   -.00  133.   385.76    253.17     56.9  83.4  233.  254.2   23.0  83.4   86.5 .00157  .12768E-03  .46102E-02 1.00   83.
+  6  1.25    .00  163.   385.76    222.69     70.7  83.4  293.  313.1   27.3  83.4   87.8 .00127  .36382E-03  .45450E-02 1.00  191.
+  7  1.32   -.00  194.   385.76    192.21     74.4  83.4  310.  329.5   28.4  83.4   88.1 .00121  .83907E-03  .45271E-02 1.00  419.
+  8  1.49   -.00  224.   385.76    161.73     83.4  83.4  350.  369.3   30.9  83.4   89.0 .00108  .17185E-02  .44901E-02 1.00  765.
+  9  1.70    .00  255.   385.76    131.25     94.1  83.4  398.  417.7   33.7  83.4   90.0 .00096  .30609E-02  .44687E-02 1.01 1205.
+ 10  2.04    .00  285.   385.76    100.77    111.4  83.4  478.  498.2   37.9  83.4   91.7 .00080  .47566E-02  .43879E-02 1.01 1449.
+ 11  2.22   -.00  315.   385.76     70.29    120.6  83.4  522.  541.8   40.0  83.4   92.5 .00074  .64620E-02  .43466E-02 1.01 1319.
+ 12  2.51    .00  346.   385.76     39.81    134.4  83.4  588.  609.2   42.9  83.4   93.8 .00065  .77722E-02  .42864E-02 1.01 1157.
+ 13  2.86   -.00  376.   385.76      9.33    151.3  83.4  672.  693.5   46.2  83.4   95.4 .00058  .83270E-02  .41931E-02 1.00  994.
+ 14  5.58   -.01  407.   385.76    -21.15    268.2  83.4 1310. 1339.6   62.6  83.4  104.3 .00030  .74939E-02  .38392E-02 1.00  471.
+ 15  5.75   -.01  437.   385.76    -51.63    274.9  83.4 1350. 1380.1   63.3  83.4  104.7 .00029  .67469E-02  .38323E-02 1.01  457.
+ 16  6.05   -.00  468.   385.76    -82.11    286.4  83.4 1420. 1450.9   64.5  83.4  105.4 .00027  .55880E-02  .38194E-02 1.01  433.
+ 17  6.11   -.00  498.   385.76   -112.59    288.9  83.4 1435. 1466.1   64.7  83.4  105.6 .00027  .42798E-02  .37836E-02 1.00  424.
+ 18  6.16    .00  529.   385.76   -143.07    290.8  83.4 1447. 1477.9   64.9  83.4  105.7 .00027  .30201E-02  .37810E-02 1.00  336.
+ 19  6.19   -.00  559.   385.76   -173.55    291.9  83.4 1453. 1484.6   65.0  83.4  105.8 .00027  .19629E-02  .37807E-02 1.00  217.
+ 20  6.21    .00  590.   385.76   -204.03    292.7  83.4 1458. 1489.8   65.1  83.4  105.8 .00027  .11749E-02  .37814E-02 1.00  130.
+ 21  6.23    .00  620.   385.76   -234.51    293.2  83.4 1462. 1493.1   65.1  83.4  105.8 .00027  .64755E-03  .37833E-02 1.00   71.
+ 22  6.27   -.00  651.   385.76   -264.99    294.8  83.4 1472. 1503.2   65.3  83.4  105.9 .00027  .32976E-03  .37837E-02 1.00   36.
+ 23  6.29    .00  681.   385.76   -295.47    295.7  83.4 1477. 1508.3   65.4  83.4  106.0 .00026  .15453E-03  .37867E-02 1.01   17.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 77   1 19
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #   11          YEAR, DAY, HOUR: 77   1 19
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      2.50     9999.        6      293.15     .0400*    .0160*    .0060     .0200     .4000     .3000     7.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =   476.56 M
+UTOP =  5.29 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  161.45 M,  DISTANCE TO FINAL RISE =   773.49 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   283.37   -331.41    113.4  51.1  625.  637.7   26.4  51.1   57.5 .00006  .83533E-09  .69418E-02 1.00    0.
+  4   .82   -.00  102.   283.37    181.26     31.7  51.1  158.  168.8   10.6  51.1   52.1 .00236  .36312E-04  .76518E-02 1.00   16.
+  5   .99   -.00  133.   283.37    150.78     37.9  51.1  190.  200.7   12.2  51.1   52.5 .00199  .24593E-03  .75984E-02 1.00   92.
+  6  1.25    .00  163.   283.37    120.30     47.1  51.1  239.  249.3   14.5  51.1   53.1 .00160  .11528E-02  .75150E-02 1.00  348.
+  7  1.32   -.00  194.   283.37     89.82     49.6  51.1  253.  262.7   15.1  51.1   53.2 .00152  .36120E-02  .74992E-02 1.00 1036.
+  8  1.49   -.00  224.   283.37     59.34     55.6  51.1  286.  295.3   16.5  51.1   53.6 .00135  .80665E-02  .74434E-02 1.00 1899.
+  9  1.70    .00  255.   283.37     28.86     62.7  51.1  325.  334.9   18.0  51.1   54.1 .00119  .12786E-01  .73770E-02 1.00 1660.
+ 10  2.04    .00  285.   283.37     -1.62     74.3  51.1  390.  400.5   20.2  51.1   54.9 .00100  .14523E-01  .72663E-02 1.00 1367.
+ 11  2.22   -.00  315.   283.37    -32.10     80.4  51.1  426.  436.1   21.3  51.1   55.3 .00091  .12187E-01  .72130E-02 1.00 1246.
+ 12  2.51    .00  346.   283.37    -62.58     89.6  51.1  480.  491.0   22.9  51.1   56.0 .00081  .76298E-02  .71349E-02 1.00 1095.
+ 13  2.86   -.00  376.   283.37    -93.06    100.9  51.1  548.  559.5   24.6  51.1   56.7 .00071  .36583E-02  .70448E-02 1.00  493.
+ 14  5.58   -.01  407.   283.37   -123.54    178.8  51.1 1069. 1084.8   33.4  51.1   61.0 .00037  .16829E-02  .65498E-02 1.00  117.
+ 15  5.75   -.01  437.   283.37   -154.02    183.2  51.1 1101. 1117.7   33.8  51.1   61.2 .00036  .54980E-03  .65329E-02 1.00   37.
+ 16  6.05   -.00  468.   283.37   -184.50    190.9  51.1 1159. 1175.3   34.4  51.1   61.6 .00034  .14514E-03  .64815E-02 1.00    9.
+ 17  6.11   -.00  498.   283.37   -214.98    192.6  51.1 1171. 1187.6   34.5  51.1   61.6 .00034  .29486E-04  .64740E-02 1.00    2.
+ 18  6.16    .00  529.   283.37   -245.46    193.9  51.1 1180. 1197.2   34.6  51.1   61.7 .00033  .47093E-05  .64681E-02 1.00    0.
+ 19  6.19   -.00  559.   283.37   -275.94    194.6  51.1 1186. 1202.7   34.7  51.1   61.7 .00033  .58890E-06  .64649E-02 1.00    0.
+ 20  6.21    .00  590.   283.37   -306.42    195.1  51.1 1190. 1206.9   34.7  51.1   61.7 .00033  .57798E-07  .64624E-02 1.00    0.
+ 21  6.23    .00  620.   283.37   -336.90    195.5  51.1 1193. 1209.6   34.7  51.1   61.8 .00033  .44448E-08  .64608E-02 1.00    0.
+ 22  6.27   -.00  651.   283.37   -367.38    196.6  51.1 1201. 1217.8   34.8  51.1   61.8 .00033  .27324E-09  .64559E-02 1.00    0.
+ 23  6.29    .00  681.   283.37   -397.86    197.1  51.1 1205. 1222.0   34.9  51.1   61.8 .00033  .13091E-10  .64535E-02 1.00    0.
+         WARNING:  HOURLY SEQUENCE OF INPUT DATA HAS BEEN INTERRUPTED AT THE FOLLOWING YEAR/DAY/HOUR: 77   1 22
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ CASE-HOUR #   12          YEAR, DAY, HOUR: 77   1 22
+              WIND     MIXING               AIR      TURB.     TURB.     VPTG,      VPTG,    DELTA      WSPD      WIND
+    WIND    SPEED #1   HEIGHT   STABILITY   TEMP   INTENSITY INTENSITY   PLUME      HCRIT    THETA    PROFILE   SPEED #2
+ DIRECTION  (M/SEC)      (M)      CLASS     (K)       (Y)       (Z)     (DEG K/M) (DEG K/M) (DEG/M)   EXPONENT   (M/SEC)
+
+    220.      4.00     9999.        6      293.15     .0400*    .0160*    .0400     .0060     .4000    -.3000    12.00*
+
+* FLAGGED VALUES REPRESENT OPTIONAL METEOROLOGICAL INPUT NOT USED IN THIS RUN
+
+STACK # 1:  EMISSIONS =  1000.00 G/SEC,  EXIT VELOCITY =  20.00 M/SEC,  STACK GAS TEMP =  370.00 DEG K,  HCRIT =   547.89 M
+UTOP =  1.89 M/SEC,   FLUX =    254.59 M**4/S**3,  FINAL RISE =  120.95 M,  DISTANCE TO FINAL RISE =   106.90 M,  PEN. FRAC. =  .00
+
+
+                  HT                                                                             CONVENTIONAL REFLECTION
+                 ABOVE PLUME HT  PLUME HT           SIGMA-Y                SIGMA-Z        HORIZ.   VERTICAL    VERTICAL       CHI
+                 STACK  BEFORE  CORRECTED                                                 DIST.      DIST.       DIST.
+REC   X     Y    BASE  TERRAIN  BY TERRAIN  AMBIENT BUOY SHEAR  TOTAL AMBIENT BUOY  TOTAL FACTOR    FACTOR      FACTOR        (UG/
+ #   (KM)  (KM)   (M)    (M)       (M)        (M)   (M)   (M)    (M)    (M)   (M)    (M)  (1/M)     (1/M)       (1/M)      R  M**3)
+
+  1  3.26  -1.39  615.   242.87   -371.92    113.4  38.2  469.  483.6   26.4  38.2   46.5 .00001  .21080E-15  .86755E-02 1.01    0.
+  4   .82   -.00  102.   242.87    140.76     31.7  38.2  118.  128.2   10.6  38.2   39.7 .00311  .37213E-04  .10054E-01 1.00   61.
+  5   .99   -.00  133.   242.87    110.28     37.9  38.2  143.  152.4   12.2  38.2   40.2 .00262  .45786E-03  .99339E-02 1.00  634.
+  6  1.25    .00  163.   242.87     79.80     47.1  38.2  179.  189.3   14.5  38.2   40.9 .00211  .29117E-02  .97546E-02 1.00 3247.
+  7  1.32   -.00  194.   242.87     49.32     49.6  38.2  189.  199.5   15.1  38.2   41.1 .00200  .94529E-02  .97061E-02 1.0010004.
+  8  1.49   -.00  224.   242.87     18.84     55.6  38.2  214.  224.3   16.5  38.2   41.6 .00178  .17296E-01  .95954E-02 1.00 9034.
+  9  1.70    .00  255.   242.87    -11.64     62.7  38.2  243.  254.3   18.0  38.2   42.3 .00157  .18175E-01  .94542E-02 1.00 7851.
+ 10  2.04    .00  285.   242.87    -42.12     74.3  38.2  292.  304.1   20.2  38.2   43.3 .00131  .11481E-01  .92252E-02 1.00 6408.
+ 11  2.22   -.00  315.   242.87    -72.60     80.4  38.2  319.  331.0   21.3  38.2   43.8 .00121  .46101E-02  .91245E-02 1.00 2941.
+ 12  2.51    .00  346.   242.87   -103.08     89.6  38.2  360.  372.6   22.9  38.2   44.6 .00107  .12343E-02  .89909E-02 1.00  700.
+ 13  2.86   -.00  376.   242.87   -133.56    100.9  38.2  411.  424.4   24.6  38.2   45.5 .00094  .23562E-03  .87709E-02 1.00  117.
+ 14  5.58   -.01  407.   242.87   -164.04    178.8  38.2  801.  821.2   33.4  38.2   50.8 .00049  .84953E-04  .78603E-02 1.00   22.
+ 15  5.75   -.01  437.   242.87   -194.52    183.2  38.2  825.  846.0   33.8  38.2   51.0 .00047  .10891E-04  .78241E-02 1.00    3.
+ 16  6.05   -.00  468.   242.87   -225.00    190.9  38.2  868.  889.5   34.4  38.2   51.4 .00045  .10823E-05  .77642E-02 1.00    0.
+ 17  6.11   -.00  498.   242.87   -255.48    192.6  38.2  877.  898.8   34.5  38.2   51.5 .00044  .70652E-07  .77564E-02 1.00    0.
+ 18  6.16    .00  529.   242.87   -285.96    193.9  38.2  884.  906.0   34.6  38.2   51.6 .00044  .32762E-08  .77549E-02 1.00    0.
+ 19  6.19   -.00  559.   242.87   -316.44    194.6  38.2  888.  910.1   34.7  38.2   51.6 .00044  .10672E-09  .77629E-02 1.00    0.
+ 20  6.21    .00  590.   242.87   -346.92    195.1  38.2  891.  913.3   34.7  38.2   51.6 .00044  .24605E-11  .77799E-02 1.01    0.
+ 21  6.23    .00  620.   242.87   -377.40    195.5  38.2  893.  915.3   34.7  38.2   51.7 .00044  .39983E-13  .78095E-02 1.01    0.
+ 22  6.27   -.00  651.   242.87   -407.88    196.6  38.2  899.  921.5   34.8  38.2   51.7 .00043  .48202E-15  .78493E-02 1.02    0.
+ 23  6.29    .00  681.   242.87   -438.36    197.1  38.2  903.  924.7   34.9  38.2   51.7 .00043  .40362E-17  .77093E-02 1.00    0.
+   ROUGH TERRAIN DIFFUSION MODEL   VERSION 3.2   LEVEL 861130                            PAGE   7
+
+Stop - Program terminated.
+

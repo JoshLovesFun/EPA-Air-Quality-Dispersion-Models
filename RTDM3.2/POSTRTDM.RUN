@@ -1,0 +1,39 @@
+//uidjobid JOB (acctfimas,bin#),'name',MSGCLASS=A,
+//*       MSGLEVEL=(2,0)
+//        TIME=(,29),NOTIFY=uid,PRTY=3
+/*ROUTE PRINT HOLD
+//*
+//*
+/*JOBPARM LINES=250
+//*
+//*
+//* UNIT 5  - INPUT DATA
+//* UNIT 6  - PRINT OUTPUT
+//* UNIT 8  - UNFORMATTED INPUT DATA
+//* UNIT 10- UNFORMATTED OUTPUT
+//*
+//POSTRTDM EXEC PGM=POSTRTDM,REGION=4096K,COND=(4,LT)
+//STEPLIB DD DSN=uidacct.model.load,DISP=SHR
+//SYSPRINT DD SYSOUT=A
+//FT05F001 DD DDNAME=SYSIN
+//FT06F001 DD DSN=printed output data set,DISP=OLD
+//FT08F001 DD DSN=unformatted input data set,DISP=SHR
+//FT10F001 DD DSN=unformatted output data set,DISP=(NEW,CATLG,DELETE),
+//            UNIT=DISK,
+//            DCB=(BLKSIZE=9440,RECFM=U,LRECL=9440,DSORG=PS),
+//            SPACE=(TRK,(50,10),RLSE)
+//SYSIN DD *
+TOPVAL
+              3    1    5
+                  26  1000000.
+99999
+CUMFREQ
+                                                    1000000.         1    6   26
+                100.      200.      500.     1000.     2000.     3000.
+99999
+PEAK
+              3 1300.
+                              TRUE         26
+99999
+ENDJOB
+/*

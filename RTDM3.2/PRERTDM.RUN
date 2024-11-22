@@ -1,0 +1,27 @@
+//uidjobid JOB (acctfimas,bin#),'name',MSGCLASS=A,
+//        TIME=(,10),NOTIFY=uid,PRTY=3
+/*ROUTE PRINT HOLD
+//*
+//*
+/*JOBPARM LINES=250
+//*
+//*
+//* UNIT 5 - INPUT DATA
+//* UNIT 6 - PRINT OUTPUT
+//* UNIT 2 - UNFORMATTED INPUT DATA SET
+//* UNIT 3 - UNFORMATTED OUTPUT DATA SET TO BE USED BY RTDM
+//*
+//PRERTDM EXEC PGM=PRERTDM,REGION=4096K,COND=(4,LT)
+//STEPLIB DD DSN=uidacct.model.load,DISP=SHR
+//SYSPRINT DD SYSOUT=A
+//FT05F001 DD DDNAME=SYSIN
+//FT06F001 DD DSN=printed output data set,DISP=OLD
+//FT02F001 DD DSN=rammet.file,DISP=SHR
+//FT03F001 DD DSN=formatted met output data set,
+//            DISP=(NEW,CATLG,DELETE),
+//            UNIT=DISK,
+//            DCB=(BLKSIZE=8000,RECFM=FB,LRECL=80,DSORG=PS),
+//            SPACE=(TRK,(50,10),RLSE)
+//SYSIN DD *
+    5    2
+/*

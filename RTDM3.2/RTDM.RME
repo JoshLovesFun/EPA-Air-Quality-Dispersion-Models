@@ -1,0 +1,91 @@
+RTDM3.2
+
+ABSTRACT
+
+THE ROUGH TERRAIN DIFFUSION MODEL (RTDM3.2) IS A SEQUENTIAL GAUSSIAN PLUME
+MODEL DESIGNED TO ESTIMATE GROUND-LEVEL CONCENTRATIONS IN ROUGH (OR FLAT)
+TERRAIN IN THE VICINITY OF ONE OR MORE CO-LOCATED POINT SOURCES.  IT IS
+DESIGNED FOR APPLICATIONS INVOLVING CHEMICALLY STABLE ATMOSPHERIC POLLUTANTS
+AND IS BEST SUITED FOR EVALUATION OF BUOYANT PLUME IMPACTS ON RECEPTORS IN
+TERRAIN ABOVE STACK TOP WITHIN ABOUT 15 KM FROM THE SOURCE(S).  RTDM HAS
+SPECIAL ALGORITHMS TO DEAL WITH PLUME BEHAVIOR IN COMPLEX TERRAIN.  RTDM IS
+A THIRD LEVEL SCREENING TECHNIQUE FOR EVALUATING THE IMPACT OF SOURCES IN 
+RURAL COMPLEX TERRAIN SETTINGS AS DESCRIBED IN SECTION 5.2.1 OF THE GUIDELINE
+ON AIR QUALITY MODELS (REVISED) BY SUPPLEMENT A.
+
+Pre- and post-processing programs for preparing RAMMET meteorological data
+for model input and analyzing the model results respectively, are also
+included.  When other than RAMMET meteorological data is used, PRERTDM is
+not required.
+
+A note of ***CAUTION***, though, is in order when using the preprocessing
+program PRERTDM.  Since the PRERTDM program converts wind speeds input from
+the RAMMET preprocessor file from meters per second to miles per hour, it is
+necessary to use the RTDM3.2 default input for the variable USCALE  (or to
+explicitly set it to .4471). This is accomplished by omitting the PR003 entry
+under the keyword  PARAMETERS.  (Alternatively, USCALE can be set by the
+following entry under the keyword PARAMETERS: PR003=.4471.)  This will convert
+the wind speed back to meters per second within RTDM, as required for proper
+operation of the model.
+
+REFERENCE
+
+ENVIRONMENTAL RESEARCH AND TECHNOLOGY, 1987: USER'S GUIDE TO THE ROUGH TERRAIN
+DIFFUSION MODEL (RTDM), REV. 3.20. ERT DOCUMENT NO. P-D535-585. ENVIRONMENTAL
+RESEARCH AND TECHNOLOGY, INC., CONCORD, MA. (TO BE AVAILABLE FROM NTIS.)
+
+
+************ DESCRIPTION OF FILES:
+
+     PRERTDM.FOR - RTDM Preprocessor source code
+     PRERTDM.EXE - RTDM Preprocessor PC Executable (Microsoft Fortran 4.1)
+     PRERTDM.EXP - RTDM Preprocessor test case control parameters, RAMMET
+                   file is not provided
+     PRERTDM.LST - RTDM Preprocessor example printed output
+     PRERTDM.RUN - Example IBM 3090 Mainframe run with Generic JCL
+
+     TEST.MET    - RTDM Test case meteorological data
+
+     RTDM.FOR - RTDM Model source code
+     RTDM.EXE - RTDM Model PC Executable (Microsoft Fortran 4.1)
+     RTDM.EXP - RTDM Model example input data case
+     RTDM.LST - RTDM Model example printed output
+     RTDM.RUN - Example IBM 3090 Mainframe run with Generic JCL
+
+     POSTRTDM.FOR - RTDM Post processor source code
+     POSTRTDM.EXE - RTDM Post Processor PC Executable (Microsoft Fortran 4.1)
+     POSTRTDM.EXP - RTDM Post Processor example input data case
+     POSTRTDM.LST - RTDM Post Processor example printed output
+     POSTRTDM.RUN - Example IBM 3090 Mainframe run with Generic JCL
+
+     RTDM.RME - Read me "first" file
+
+************ PC EXECUTION:
+
+                             - PRERTDM -
+
+ 1)  PRERTDM < PRERTDM.EXP PREP.FIL > PRERTDM.PRT RAMMET.MET
+
+       where PREP.FIL is a RAMMET Meteorological data file,
+             PRERTDM.PRT is the printed output file,
+             RAMMET.MET is the formatted output file for input to RTDM if
+                        PRERTDM is used.
+
+                               - RTDM -
+
+ 2)  RTDM < RTDM.EXP TEST.MET > RTDM.PRT RTDM.CON
+
+       where TEST.MET is the test input meteorological input data,
+             RTDM.PRT is the printed output file,
+             RTDM.CON is the output unformatted concentrations file from RTDM                      input to POSTRTDM
+                      for input to POSTRTDM.
+
+                             - POSTRTDM -
+
+ 3)  POSTRTDM < POSTRTDM.EXP RTDM.CON > POSTRTDM.PRT POSTRTDM.CON
+
+       where RTDM.CON is the input unformatted concentrations file from RTDM,
+             POSTRTDM.PRT is the printed output file,
+             POSTRTDM.CON is the unformatted output concentrations file from
+                          POSTRTDM.
+

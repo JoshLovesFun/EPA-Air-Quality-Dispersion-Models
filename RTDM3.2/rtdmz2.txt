@@ -1,0 +1,51 @@
+                         Model Change Bulletin
+              
+                                 MCB#2                 8/14/89
+
+                          RTDM32 (dated 89226)
+
+
+     This Model Change Bulletin is formal notification of a change to the
+RTDM3.2 Model.  The updated code is dated 89226 and further identified by
+MCB#2.
+
+     In June, the developer of  RTDM reported a coding error in RTDM3.2
+that will give erroneous results in some model runs.  The error occurs in
+the calculation of the partial reflection factor such that, in a few cases,
+the concentration of a plume can increase as it moves downwind.  This gives
+concentrations that can be too high--by a factor of two in the most extreme
+cases.  The developer also proposed a correction to the code.  We concur
+with both the assessment and correction proposed by the developer.
+
+     The correction requires that the following statement be inserted after
+statement VRT02660 in subroutine VERT:
+
+                              K = K + 1
+
+     THIS CORRECTION HAS BEEN MADE TO THE SOURCE CODE WHICH IS AVAILABLE ON
+THE SCRAM BBS.
+
+                              *  *  *
+
+     In most cases,  this change will probably  make no difference in the
+results.  When there is a change, the revised model will always produce lower
+concentration estimates.  In some cases, the values can be lower by as much
+as a factor of two.
+
+     Three test cases were run to give a first indication of the kinds of
+differences to expect.  These involved a low (35 meter), a medium (100 meter),
+and a high (200 meter) stack.  These are the same test cases that have been
+previously used to  evaluate the effects  of changes to  RTDM.  The only
+differences in the results produced by the corrected model are for the low
+(35 meter) stack.  The 1-hour high and high second high concentrations, and
+the 3-hour high and high second high concentrations decreased by 27, 26, 20,
+and 2 percent, respectively.  Both 24-hour concentrations remained unchanged.
+All values for the medium (100 meter) and tall (200 meter) stacks remained
+unchanged.
+
+                             *** NOTE ***
+
+     With no further changes to the RTDM3.2 Model code, it will compile using
+the Microsoft 4.1 compiler and execute on a PC.  The same holds true for the
+preprocessor program, PRERTDM and the post processor program, POSTRTDM.
+

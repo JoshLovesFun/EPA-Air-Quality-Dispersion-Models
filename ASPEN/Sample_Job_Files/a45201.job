@@ -1,0 +1,17 @@
+cd .
+set verbose
+date
+#
+# Generate time average
+#
+rm 45201.exp.avg
+time /vail2aspen/dyntel/ASPEN/commonfiles/avgdat << ieof
+4 
+/vail2aspen/dyntel/ASPEN/commonfiles/tracts.lst
+45201.exp.avg
+45201
+./
+0
+ieof
+#
+date

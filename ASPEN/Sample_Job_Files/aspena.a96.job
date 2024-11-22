@@ -1,0 +1,8 @@
+#
+date
+rm area.lst
+rm area.con
+time aspena aspena.a96.sys
+mv fort.88 aspena.a96.lst
+#
+date

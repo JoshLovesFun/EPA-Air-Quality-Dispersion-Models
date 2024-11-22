@@ -1,0 +1,8 @@
+#
+date
+rm areapre.lst
+rm areapre.con
+time aspena aspena.a96pre.sys
+mv fort.88 aspena.a96pre.lst
+#
+date

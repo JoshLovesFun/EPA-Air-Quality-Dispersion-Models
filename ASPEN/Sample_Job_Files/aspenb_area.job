@@ -1,0 +1,22 @@
+#!/bin/csh -x
+#
+cd .
+date
+#
+time /vail2aspen/dyntel/ASPEN/commonfiles/aspenb << -ieof-
+AREA SOURCE FILE   |area.con
+TRACT FILE BASENAME|tracts
+FILE LIST FILENAME |filelist.ntl
+NO. OF SRC CATEGORY|4 
+RERUN (Yes/No)     |No
+-ieof-
+#
+time /vail2aspen/dyntel/ASPEN/commonfiles/aspenb << -ieof-
+AREA SOURCE FILE   |areapre.con
+TRACT FILE BASENAME|tracts
+FILE LIST FILENAME |filelist.ntl
+NO. OF SRC CATEGORY|4 
+RERUN (Yes/No)     |No
+-ieof-
+#
+date

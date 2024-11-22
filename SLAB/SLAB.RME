@@ -1,0 +1,140 @@
+                            SLAB.RME
+
+     The SLAB model has been developed to simulate the atmospheric
+dispersion of denser-than-air releases over flat terrain.  The
+model treats continuous, finite duration, and instantaneous
+releases from four types of sources: an evaporating pool, an
+elevated horizontal jet, a stack or vertical jet, and an
+instantaneous volume source.  While the model is designed to treat
+denser-than-air releases, it will also simulate cloud dispersion
+of neutrally-buoyant releases.  Consequently, a typical SLAB
+simulation covers both the near-field dense gas phase and the far-
+field passive gas phase.
+
+     The SLAB archive contains the SLAB FORTRAN source code, a
+PC-executable created from the source code, input and output
+files for 4 test cases, and this file.  Test case execution 
+instructions are further below.
+
+     The user's guide, entitled "User's Manual for SLAB: An
+Atmospheric Dispersion Model for Denser-Than-Air Releases" by
+Donald L. Ermak, has been scanned and saved in an Adobe Acrobat 
+PDF file format.  It is available from EPA's SCRAM web site. 
+Similar copies are available through the 
+National Technical Information Services (NTIS), order number 
+DE91-008443.  The NTIS Sales Desk can be reached at 
+(703)-487-4650, or orders by mail can be sent to 
+NTIS, 5285 Port Royal Road, Springfield VA 22161.
+
+Execution Instructions:
+
+SLAB works best from a Window's Command Prompt located by
+clicking on: Start | All Programs | Accessories | Command Prompt.  
+When SLAB is executed through the Command Prompt window, any 
+error messages that occur will be left open in the Command Prompt 
+window until the messages either scroll up off the window or the 
+window is closed.
+
+The input and output filenames are hardwired in SLAB as "input" 
+and "predict".  The input filename has to be copied to "input" and 
+the output name is always "PREDICT".  "PREDICT" has to be renamed 
+before SLAB is executed again.  The PREDICT File OPEN status has 
+been set to "new" which will not allow "PREDICT" to be overwritten.  
+Instead, an error message will appear that says:
+
+run-time error F6415: OPEN(predict)
+- file already exists
+
+Therefore, PREDICT will have to be renamed before SLAB can be 
+(re)executed.
+
+Here are the general execution instructions for SLAB:
+
+1)  Down load SLAB into its own subdirectory.
+
+2)  Open a Command Prompt window by clicking on: 
+      
+      Start | All Programs | Accessories | Command Prompt
+    
+3)  Change directories to where SLAB is located by using the 
+    Change Directory command (cd).  
+    For example:
+      to change from: "Documents and Settings" subdirectory to 
+      "My Documents", type: cd [your-user-id]\MY*\SLAB.  The 
+      asterick is a wildcard character.  
+    To make things simple, just create a SLAB subdirectory under C:\.
+    Then type: cd \slab 
+ 
+4) Type: DIR                
+     - to see all the files in that subdirectory
+
+5) To run the first test case, 
+   type: copy INPR1 input   
+     - this copies the test case input file, "INPR1", to "input".  
+                           
+6) Type: slab
+     - slab will execute or output an error message.
+     
+7) Type: ren PREDICT Fred1  
+     - renames the hardwired output filename, PREDICT, to Fred1
+
+8) Type: FC OUTPR1 FRED1    
+     - FC is a DOS File Compare command that will compare the contents
+       of one file to the contents of another file and send the lines 
+       with the differences to the screen.  
+      
+       Even if the outputs are "the same", there maybe minor differences
+       such as 0.000002 vs 0.000007 or 0.000 vs .0000.  
+       
+       In running the old and new executables, some of the output lines 
+       are different as displayed in the output below.  The differences
+       are caused by executing 16-bit vs 32-bit programs.
+       
+         ***** old program output segment
+            -6.29E+00    0.00E+00    7.27E-01    5.98E+01    1.07E+02
+             2.38E-06    0.00E+00    7.42E-01    5.35E+01    1.07E+02
+             6.29E+00    0.00E+00    7.45E-01    5.98E+01    1.07E+02
+         ***** new program output segment
+            -6.29E+00    0.00E+00    7.27E-01    5.98E+01    1.07E+02
+             7.63E-06    0.00E+00    7.42E-01    5.35E+01    1.07E+02
+             6.29E+00    0.00E+00    7.45E-01    5.98E+01    1.07E+02
+         *****
+
+      The first and last lines will always be the exact same.  The lines
+      with differences are between the first and last lines.  In the above 
+      case, the first results on the second lines are different.  While
+      they are different by over a factor of in the numerator, 
+      2.38 vs 7.63, the exponents are extremely small, E-06 compared to the
+      results on the rest of the line.     
+ 
+       
+       Some programs will print out date and time and those lines will 
+       be different. 
+       
+       If there are a lot of lines with differences, there are 
+       additional commands that can be used such as:
+       
+       FC OUTPR1 FRED1 | more
+         - will only display a screen full of output at a time. 
+           Press the "Space Key" to go to the next screen. 
+           Press "CTRL+C" to exit early.
+
+       FC OUTPR1 FRED1 > Fred1_PR1_Dif.txt
+         - will redirect all differences to a text file named;
+           Fred1_PR1_Dif.txt.  No information will be sent to the 
+           screen.  The file will be located in the Present Working
+           Directory. (e.g. C:\slab)
+
+       Text Editors such as Ultraedit have file compare functions built 
+       into their software.
+       
+Two batch files were created to help execute the 4 test cases and to aid 
+in comparing user created output files with the output files supplied via
+the EPA SCRAM web site. The SLABbat.bat file executes the test cases 
+while slabfc.bat does a comparison.  The slabdiffn.txt files should all
+have one line that reads similar to: "Comparing files OUTPR1 and NUOUT1"
+
+
+If additional help is needed or problems arise, please contact us 
+through the SCRAM web site "Contact Us" feature at:
+http://www.epa.gov/ttn/scram/comments.htm

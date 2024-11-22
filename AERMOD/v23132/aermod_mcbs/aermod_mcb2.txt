@@ -1,0 +1,93 @@
+
+                        Model Change Bulletin
+
+                                MCB#2                       01/26/2007
+
+                        AERMOD (dated 07026)
+
+This Model Change Bulletin documents changes made to the AERMOD 
+Dispersion Model.  A brief description of the changes is provided 
+below.  Additional details are also available in the Fortran source 
+code.  There are no changes to the user instructions for AERMOD
+associated with this update.
+
+
+   This revised version of AERMOD (dated 07026) includes the following            
+   modifications relative to the previous version (dated 06341):
+                                                                        
+   Bug Fixes:                                                           
+
+   1.  Corrected array indexing problem for POINT, POINTCAP, and
+       POINTHOR sources in subroutine SOPARM that could result 
+       in incorrect processing of SRCPARAM data for some sources 
+       and/or incorrect issuance of fatal runtime errors for number 
+       of parameters specified (error code 'E201').
+
+   2.  Modified subroutine SRCQA to include QA checks on the
+       number of emission factors input for MHRDOW and MHRDOW7
+       options.
+
+   3.  Modified subroutines SRCSIZ and PRESOINC to correct
+       potential problem with assignment of array size for
+       MHRDOW option.
+
+   4.  Modified subroutine SRCQA to use DOUBLE PRECISION in the
+       calculation of area and centroid coordinates for AREAPOLY
+       sources. This change avoids problems encountered with
+       the Compaq Visual Fortran compiler producing erroneous
+       results for some compiler options.
+
+   5.  Modified subroutine MEREAD to assign non-array logical
+       variables STABLE and UNSTAB for use in subroutine COMPTG
+       for EVENT processing mode.
+
+   6.  Modified subroutines PCALC, VCALC, ACALC and OCALC to
+       include calls to subroutine HEFF prior to calculation of
+       zsubp for deposition applications.
+
+   7.  Modified subroutine HRQEXT to correct processing of point
+       sources under the HOUREMIS option to assign the hourly 
+       emission rate, exit velocity, and exit temperature to 0.0 
+       if any of these parameters are missing, in conformance with 
+       Section 3.3.9 of the AERMOD User's Guide.
+
+   8.  Modified subroutine VDP to prevent potential zero-divide
+       condition for cases with zero specific humidity deficit.
+       
+   9.  Modified subroutines VARINI and RESINI to check for 
+       allocation status of allocatable arrays during array 
+       initializations.
+
+   Miscellaneous:
+
+   1.  Included additional error-checking for the non-DFAULT,
+       BETA-test PSDCREDIT option.
+
+   2.  Modified subroutine PRTSRC to correct format for printing
+       QFLAG from A6 to A7 to accommodate SHRDOW7 and MHRDOW7,
+       and other minor adjustments to formatting.
+       
+   3.  Modified code to read the header record of the surface file
+       in subroutines MEOPEN, METEXT, and MEREAD to include a 
+       separate test on the AERMET version date field under the 
+       SCREEN option, to allow for the future use of screening 
+       meteorology that is not directly linked to a specific
+       version of the AERMET processor.  Also modified subroutine
+       METDAT to include meteorological data version date in the
+       summary of met data inputs.
+       
+       
+       
+                       *****************
+                       *   IMPORTANT   *
+                       *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMOD (dated 07026).  Future changes to this model will be identified
+by an updated Julian date found at the beginning of the model source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the SCRAM ALERTS section of this website.
+                                                                 

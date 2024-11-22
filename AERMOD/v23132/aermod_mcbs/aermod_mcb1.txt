@@ -1,0 +1,170 @@
+
+                        Model Change Bulletin
+
+                                MCB#1                       12/07/2006
+
+                        AERMOD (dated 06341)
+
+This Model Change Bulletin documents changes made to the AERMOD 
+Dispersion Model.  A brief description of the changes is provided 
+below.  Additional details are also available in the Fortran source 
+code.  Changes to the user instructions associated with this update 
+are documented in a separate AERMOD User's Guide Addendum.
+
+
+   This revised version of AERMOD (dated 06341) includes the following            
+   modifications relative to the previous version (dated 04300):                                                       
+                                                                        
+   Bug Fixes:                                                           
+                                                                        
+   1.  A bug causing inconsistencies in estimated concentrations for
+       area sources was fixed by initializing the effective plume 
+       height (HE) to equal the release height (HS) prior to first 
+       call to ADISY in subroutines ACALC and OCALC.                                     
+                                                                        
+   2.  The logical variable lbd was undefined in calls to WAKE_XSIG. 
+       The calling argument lbd was replaced with .TRUE. to ignore 
+       BID for the "outside" cavity source in subroutine CAV_SRC.                                           
+                                                                        
+   3.  Subroutine PRMDELH was modified to save L_INWAKE to a local            
+       variable to avoid potential problems on some computer
+       systems.                                                        
+                                                                        
+   4.  Modified subroutines WAKE_DFSN and WAKE_DFSN2 to initialize      
+       dummy variables zkdum and ykdum to 0.0.  Otherwise these         
+       variables may be undefined in subroutine WAKE_SIG under         
+       some circumstances.                                              
+                                                                        
+   5.  Moved call to RSDUMP for MULTYR option from subroutine           
+       HIPER to MAIN to resolve minor discrepancy in ANNUAL             
+       averages for MULTYR option.                                      
+                                                                        
+   6.  Added arrays to store WDSIN and WDCOS by source for use          
+       in determining the wind direction for the dominant source        
+       in the PVMRM option.                                             
+                                                                        
+   7.  Deleted code in subroutine PCALC that adjusts DHCRIT based       
+       on distance to well-mixed layer for stable conditions for        
+       consistency with Model Formulation Document.                     
+                                                                        
+   8.  Added error checking for missing GASDEPOS inputs.                
+                                                                        
+   9.  Corrected variable type from INTEGER to REAL for variable        
+       NEWRAD (effective radius) in subroutine GENCIR for AREACIRC      
+       sources. Use as an integer variable may have resulted in 
+       some truncation of the effective radius.                                                        
+                                                                        
+   Enhancements:                                                        
+                                                                        
+   1.  A new 'BETA' option has been added to the CO MODELOPT card to      
+       identify and allow for new features to be added to the model     
+       that are still in a draft BETA-test status.  The BETA option     
+       is a non-DFAULT option, and will be overridden if the DFAULT     
+       option is specified.  
+       
+       The following two draft enhancements are included in this 
+       update to AERMOD under the BETA option:                     
+                                                                        
+       a) options for capped stacks (source type = POINTCAP) and for    
+          horizontal releases (source type = POINTHOR); and
+                     
+       b) the PSDCREDIT option for PVMRM to account for NO/NO2 plume      
+          chemistry in the computation of PSD increment consumption 
+          with credits.  
+       
+       Inclusion of these draft BETA-test options does not imply
+       any endorsement of their use for regulatory or non-regulatory
+       applications of the model. In addition, the designation of
+       BETA-test to these draft enhancements does not imply that 
+       these options have completed rigorous internal (Alpha) testing
+       prior to being included in a public release of the model.
+                                                                       
+   2.  Additional options included under EMISFACT keyword to vary 
+       emissions by month, hour-of-day, and day-of-week (MHRDOW and 
+       MHRDOW7).     
+                                                                        
+   3.  Expanded urban option to allow multiple urban areas to be         
+       defined in a single run through multiple URBANOPT cards.       
+       A new URBAN-ID parameter has been added to link sources with           
+       specific urban areas.  Existing input files with a single        
+       urban area do NOT need to be modified to run with this           
+       new version of the model.                                            
+                                                                        
+   4.  The following changes have been made to ensure consistency 
+       with the current PM NAAQS:
+       
+       a) Added special processing for PM-2.5 to calculate design          
+          values in accordance with the PM NAAQS.  The design value    
+          for 24-hour averages is based on the high-eighth-high (H8H)      
+          averaged over N years, as an unbiased surrogate for the 98th     
+          percentile.  The long-term design value for PM-2.5 is based      
+          on the highest annual average concentration averaged over        
+          N years using the ANNUAL keyword on the AVERTIME card.          
+                                                                        
+       b) The "post-1997" PM-10 processing based on H4H averaged over 
+          N years has been removed since that standard was vacated.  
+          The PM-10 design value for 24-hour averages is based on the 
+          high-sixth-high (H6H) over five years (for NWS data), or more 
+          generally by the high-N+1-high value over N years. This can 
+          be accomplished using the existing CO MULTYEAR option with 
+          multiple 1-year input met data files, or using single 
+          five-year data files without the MULTYEAR option.                                               
+                                                                        
+   5.  Added option to specify initial in-stack NO2 ratio for           
+       PVMRM and OLM options with CO NO2STACK card.  Default ratio      
+       without the NO2STACK card for OLM is 0.10.  No default ratio     
+       has been determined for PVMRM, so user must either use the       
+       CO NO2STACK card to initialize ratio for all sources, or         
+       specify ratio for each source using the SO NO2RATIO card.        
+       The SO NO2RATIO card can be used to override the value           
+       specified on the CO NO2STACK card for specific sources.
+       
+   6.  The maximum number of vertices for an AREAPOLY source is now
+       allocated dynamically at runtime.  The previous version of 
+       AERMOD allowed a maximum of 20 vertices.  The maximum number
+       of vertices allowed for AREACIRC sources is not allocated 
+       dynamically.  However, if both AREAPOLY and AREACIRC sources 
+       are included in the same model run, then the maximum number 
+       of vertices identified for the AREAPOLY sources will also define 
+       the maximum number allowed for the AREACIRC sources. In addition,
+       the maximum number of vertices allowed for AREACIRC sources will 
+       always be at least 50.
+                                                                        
+   Miscellaneous:                                                       
+                                                                        
+   1.  Added range check on value of vertical potential temperature      
+       gradient above ZI (variable VPTGZI), to avoid problems with      
+       data provided from sources other than AERMET.  A minimum         
+       value of 0.005 K/m is applied for consistency with AERMET,       
+       and a warning message is also generated for values larger        
+       than 0.10 K/m.                                                   
+                                                                        
+   2.  Refined the process of dynamically allocating array storage
+       to skip allocation of arrays that are not needed based on the
+       model options selected, in order to reduce unnecessary memory
+       usage.    
+                                                                        
+   3.  Removed calls to subroutines VDP and SCAVRAT from subroutine     
+       PLUME_VOL.
+       
+   4.  Removed references to obsolete BOUNDARY keyword for receptors
+       in RECSIZ and PREREINC subroutines to allocate receptor arrays,
+       and in subroutines PRTANN, SPRTHT, and PRTPM25 of OUTPUT.FOR.
+
+   5.  Changed AMAX1/AMIN1 intrinsics to MAX/MIN.                       
+       
+       
+       
+                       *****************
+                       *   IMPORTANT   *
+                       *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMOD (dated 06341).  Future changes to this model will be identified
+by an updated Julian date found at the beginning of the model source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the SCRAM ALERTS section of this website.
+                                                                 

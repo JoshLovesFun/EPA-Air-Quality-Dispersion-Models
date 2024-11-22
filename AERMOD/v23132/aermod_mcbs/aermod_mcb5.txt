@@ -1,0 +1,71 @@
+
+                        Model Change Bulletin
+
+                                MCB#5                      04/13/2011
+
+                        AERMOD (dated 11103)
+
+This Model Change Bulletin (MCB) documents changes made to the AERMOD
+Dispersion Model.  A brief description of the changes is provided
+below.  Additional details are available in the Fortran source code.
+Changes to the user instructions associated with this update are
+documented in an updated AERMOD User's Guide Addendum.
+
+
+This revised version of AERMOD (dated 11103) includes the following
+modifications relative to the previous version (dated 11059):
+
+--  Bug Fixes:
+
+    1.  Modified subroutine MXDLYFL to include an IF-THEN block 
+        to account for cases with NHIMXDLY = 1, i.e., only the 
+        1st-highest rank was selected on the RECTABLE keyword.  
+        The previous version (11059) resulted in all short-term 
+        values being 0.0 if only the 1st-highest rank was selected 
+        for applications involving the special processing for 
+        daily maximum values (24hr PM25, 1hr NO2 and 1hr SO2).
+        This bug did not affect the results for applications
+        that included other ranks on the RECTABLE keyword,
+        including single ranks other than 1st-highest or any
+        range of ranks, or applications that do not utilize
+        the special processing for the 24hr PM25, 1hr NO2 and 
+        1hr SO2 NAAQS.
+
+--  Miscellaneous:
+
+    1.  Modified subroutines O3FIL and BACK_GRND to include checks
+        for potential problems with the Fortran format specifier 
+        for hourly ozone files and hourly background files.  The 
+        hourly ozone and/or background concentrations may have been 
+        assigned values of zero (0) in previous versions of AERMOD 
+        if the user-specified Fortran format includes an integer 
+        (I) format to read the concentration values.  This could
+        significantly affect modeled concentrations for the OLM
+        and PVMRM options based on hourly ozone data, without any
+        clear indication of a problem.  The user-specified format
+        must use an integer format to read the date variables and
+        a real format (F, E, or D) to read the concentration 
+        variable.  Warning messages will be generated if the format
+        does not meet these requirements.  In addition, the compiler
+        options for the AERMOD executable distributed on SCRAM have 
+        been modified to include an option to check for consistency 
+        between variable types and format specifiers, which will 
+        cause AERMOD to issue a fatal error when reading the file 
+        in cases where real variables are read with an integer
+        format, or vice versa.  The AERMOD User's Guide Addendum 
+        has also been modified to clarify the requirements for 
+        user-specified Fortran formats with these options.
+
+
+                        *****************
+                        *   IMPORTANT   *
+                        *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMOD (dated 11103).  Future changes to this model will be identified
+by an updated Julian date found at the beginning of the model source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the Recent Additions section of the SCRAM website.

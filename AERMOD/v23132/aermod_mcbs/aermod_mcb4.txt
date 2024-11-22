@@ -1,0 +1,253 @@
+
+                        Model Change Bulletin
+
+                                MCB#4                      02/28/2011
+
+                        AERMOD (dated 11059)
+
+This Model Change Bulletin (MCB) documents changes made to the AERMOD
+Dispersion Model.  A brief description of the changes is provided
+below.  Additional details are available in the Fortran source code.
+Changes to the user instructions associated with this update are
+documented in an updated AERMOD User's Guide Addendum.
+
+
+This revised version of AERMOD (dated 11059) includes the following
+modifications relative to the previous version (dated 09292):
+
+--  Bug Fixes:
+
+    1.  Modified subroutines PVMRM_CALC, MAJOR_CONT, and 
+        MOLES_NOX to include calls to subroutine SETSRC for 
+        all source types, and modified subroutine SETSRC to 
+        initialize arrays for area source dimensions and 
+        initial sigmas to correct initialization problems 
+        with the PVMRM option.  Also modified subroutine 
+        RELDISP to more appropriately account for initial
+        sigmas for volume and area sources in the calculation 
+        of relative dispersion coefficients for determining 
+        plume volume.
+
+    2.  Modified subroutines PVMRM_CALC and MOLES_NOX to
+        include calls to subroutine EMFACT to apply emission
+        factors, if appropriate, in order to use the 
+        EMISFACT-adjusted emission rates in the calculations
+        of the moles of NOx. Previous versions used the 
+        emission rate specified on the SRCPARAM keyword
+        to calculate the models of NOx.
+
+    NOTE:  These bugs related to the PVMRM option could have 
+           significant impacts on modeled concentrations using 
+           the PVMRM option with the EMISFACT option and/or with
+           mixed source types.  The magnitude and bias of the
+           differences associated with these bugs will depend on 
+           the specifics of the application, but there may
+           be a tendency to overestimate NO2 concentrations 
+           for POINT sources due to the first item when the 
+           application also included VOLUME sources with large
+           initial sigma values.
+
+    3.  Modified subroutine HRLOOP to skip call to CHK_ENDYR
+        to determine whether the end of the year has been 
+        reached if the NOCHKD or WARNCHKD options are specified, 
+        since the end-of-year processing is only applicable to
+        sequential meteorological data.  Since the NOCHKD option
+        is invoked if the SCREEN option is specified, the call
+        to CHK_ENDYR will also be skipped for screening met data
+        with AERSCREEN.
+
+    4.  Modified subroutine CHKDAT to correct problems with 
+        date sequence checks involving gaps of complete days 
+        or complete years.  A gap of complete calendar years 
+        is allowed even without the NOCHKD or WARNCHKD options
+        to account for missing years due to data completeness
+        issues for applications involving design values that
+        are based on multi-year averages (e.g., 1hr NO2/SO2
+        and 24hr PM2.5).
+        
+    5.  Modified subroutine TERRST to correct problems with 
+        determining the number of calm and/or missing hours 
+        only for the data period that is processed.   
+
+    6.  Modified subroutine EVLINI to include initializations
+        for SZMAX(:) and HSBLMX(:) arrays used for EVALFILEs.
+
+    7.  Corrected subroutines OUMXFL, OUPOST, OUPLOT, PERPST, 
+        PERPLT, OUTOXX, OUSEAS, OURANK, and OUEVAL to set lower 
+        limit for acceptable user-specified file units to 31, 
+        in order to avoid potential conflicts with hardcoded 
+        file units. Previous version incorrectly used '.LT. 30' 
+        rather than '.LE. 30' for checks on user-specified file 
+        units, allowing for potential file units conflicts with 
+        the debug file for particle deposition velocities.
+
+--  Enhancements:
+
+    1.  A number of enhancements have been incorporated to more 
+        fully support the form of the new 1-hour NO2 and SO2 
+        NAAQS, as well as the 24-hour PM2.5 standard.  The 
+        form of these standards are similar in that they are 
+        based on a ranked percentile value averaged over the 
+        number of years processed.  To more fully support 
+        implementation of recent guidance on these NAAQS, 
+        the RECTABLE keyword has been modified to allow 
+        user-specified ranks of short-term averages (for all 
+        pollutants) up to the 999th highest value.  The 
+        previous version of AERMOD was limited to the 
+        10th-highest value and also restricted the rank 
+        for the 24-hour PM2.5 NAAQS to the 8th-highest value
+        (corresponding to the 98th percentile of daily values
+        during a year).  Note that the range of ranks specified
+        on the RECTABLE keyword (not the individual ranks) also
+        determines the range of ranks that may be considered 
+        with the new MAXDCONT option, described below.
+
+    2.  Added new MAXDAILY option on the OU pathway to output a 
+        summary of daily maximum 1-hour values for each day
+        processed.  These files provide an interim output product
+        that may be used to analyze new 1-hour NO2 and SO2 NAAQS
+        based on a specified percentile rank of daily maximum 
+        1-hour values.
+
+    3.  Added new MXDYBYYR option on the OU pathway to output a
+        summary of daily maximum 1-hour values by year and rank.  
+        These files provide an interim output product that may
+        be used to analyze the new 1-hour NO2 and SO2 NAAQS based 
+        on a specified percentile rank of daily maximum 1-hour 
+        values.
+
+    4.  Added new MAXDCONT option on the OU pathway to output a
+        summary of source group contributions to high ranked values
+        for a target group, averaged across the number of years 
+        processed and paired in time and space.  The new MAXDCONT 
+        option is applicable to daily maximum values for the 24-hour 
+        PM2.5 NAAQS and the new 1-hour NO2 and SO2 standards, and
+        can be used to determine whether a source or a group of 
+        sources contributes significantly to modeled violations of
+        the NAAQS, paired in time and space. 
+
+    5.  For applications addressing the 24-hour PM2.5 standard 
+        or the 1-hour NO2 and SO2 standards, which are based on 
+        ranked values averaged across the number of years modeled, 
+        the PLOTFILE option has been enhanced to include values 
+        for each of the years processed based on the specified 
+        rank, in addition to the multi-year average.
+
+    6.  Added new BACKGRND option on the SO pathway to allow 
+        users to specify background concentrations, which can
+        be added to impacts from modeled emission sources to 
+        determine cumulative impacts.  Background concentrations
+        can be varied temporally using options similar to the
+        EMISFACT keyword for temporally-varying source emissions.
+        The new BACKGRND keyword also allows an option to use
+        a separate file of background concentrations on an hourly
+        basis. Applications with hourly background concentrations
+        can also include temporally-varying background values 
+        based on the EMISFACT options, such as SEASHR for season
+        by hour-of-day, which are used to substitute for missing
+        hourly values.
+
+    7.  For applications using the OLM or PVMRM options for NO2, 
+        a new option for specifying background ozone concentrations 
+        has been incorporated.  Similar to the new BACKGRND keyword, 
+        the new O3VALUES keyword on the CO pathway allows the user 
+        to specify temporally-varying background O3 concentrations 
+        using many of the same options available on the EMISFACT 
+        keyword for source emission factors.  The O3VALUES keyword 
+        can be used by itself or in conjunction with an hourly 
+        ozone file.  In the latter case, the O3VALUES are used to 
+        fill in for missing values in the hourly ozone file.
+        A separate OZONUNIT keyword is also available on the CO
+        pathway to specify units for the concentrations input 
+        through the O3VALUES keyword.
+
+    8.  Incorporated the equilibrium NO2/NOx ratio component of the
+        PVMRM option into the OLM option for estimating conversion 
+        from NOx emissions to ambient NO2 concentrations. The same
+        NO2EQUIL keyword on the CO pathway can be used to specify
+        the equilibrium ratio for either option, and a default 
+        ratio of 0.90 is assumed for both options if the NO2EQUIL
+        option is omitted.
+
+    9.  Modified subroutine DEBOPT to allow user to specify
+        debug output only for PVMRM or deposition options
+        on the DEBUGOPT keyword, avoiding large output files 
+        under the MODEL debug option. Debug output for deposition 
+        options will still be generated if the MODEL debug option 
+        is selected. See AERMOD User's Guide Addendum for details 
+        on the DEBUGOPT keyword.  Also assigned file unit 9 to 
+        variable PVMDBG for the PVMRM debug file, and adjusted 
+        the PVMRM debug output to report total PercentNO2, 
+        including in-stack NO2/NOx contribution.
+
+   10.  A modification to the urban option has been implemented 
+        to address issues with the transition from the nighttime 
+        urban boundary layer to the daytime convective boundary 
+        layer. Under the new default urban option, the model will
+        continue to apply the urban boundary layer approach for
+        urban sources until the daytime convective boundary layer
+        exceeds the population-dependent urban boundary layer 
+        height. This enhancement is desribed in more detail in 
+        Appendix E of the updated AERMOD User's Guide Addendum. 
+        A non-DFAULT option has also been included to allow
+        users to revert to the original urban implementation.
+
+   11.  Increased the maximum length of source IDs from 8 to 12
+        characters, and increased the length of EVENT names from
+        8 to 10 characters, involving modifications to several 
+        subroutines.
+
+   12.  Included a new NOHEADER keyword on the OU pathway to allow
+        users to suppress the file header records for formatted 
+        output files.
+
+
+--  Miscellaneous:
+
+    1.  Modified subroutines CHK_ENDYR, PRTPM25, PRTPM25SUM,
+        OUHIGH, and PRTOPT to allow for user-specified rank for
+        processing PM2.5 24-hour averages to accommodate current
+        recommendations for PM2.5 modeling. Also changed the
+        name of array used to store these values from SUMH8H 
+        to SUMHNH.
+
+    2.  The table of distances used in calculating the dominant 
+        plume volume for the PVMRM option (in subroutine PLUME_VOL)
+        was adjusted to use a more logical progression of distance 
+        intervals and to reduce the total number of intervals. This 
+        change may affect results slightly, but will also reduce 
+        model runtime. 
+
+    3.  Subroutine WAKFLG was modified to no longer ignore potential 
+        downwash effects for stack heights that equal or exceed the 
+        EPA formula height.  The determination of whether building
+        downwash effects apply is based on the criterion implemented
+        within the PRIME downwash algorithm.
+
+    4.  Modified subroutine URBPOP to adjust the limit for issuing 
+        a warning for urban population out-of-range from 10,000 to 
+        21,206, which corresponds to a population density of 
+        750/sq-km for an area within a 3km radius, consistent with 
+        the Appendix W criterion for urban/rural determination based 
+        on the population density.
+
+    5.  Several miscellaneous changes to address output formatting 
+        issues, replace DO loops with array assignments for array
+        initializations, and other minor code cleanup.
+
+    6.  Moved setup-related subroutines for EVENT processing option
+        from the 'evcalc.f' source file to the 'evset.f' source file.
+
+
+                        *****************
+                        *   IMPORTANT   *
+                        *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMOD (dated 11059).  Future changes to this model will be identified
+by an updated Julian date found at the beginning of the model source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the Recent Additions section of the SCRAM website.

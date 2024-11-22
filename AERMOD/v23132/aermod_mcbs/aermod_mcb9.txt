@@ -1,0 +1,178 @@
+                               
+                        Model Change Bulletin
+
+                               MCB#9                      12/16/2013
+
+                        AERMOD (dated 13350)
+
+This Model Change Bulletin (MCB) documents changes made to the AERMOD
+Dispersion Model. A brief description of the changes is provided
+below.  Additional details are available in the Fortran source code.
+Changes to the user instructions associated with this update are
+documented in an updated AERMOD User's Guide Addendum.
+
+This revised version of AERMOD (dated 13350) includes the following
+modifications relative to the previous version (dated 12345):
+
+--  Bug Fixes:
+
+    1.  Modified subroutine HRQEXT to remove the FATAL = .TRUE. 
+        statement for cases when the exit temp < 200K (about -100F) 
+        with non-zero emissions in the HOUREMIS file.  This case was 
+        intended to be treated as a non-fatal warning condition, but 
+        was inadvertently treated as a fatal error in version 12345 
+        by including the FATAL = .TRUE. statement. A fatal error 
+        message is still generated if the hourly exit temperature is 
+        less than 200K (about -100F) and the exit velocity is greater 
+        than 200m/s, unless the hourly emissions are zero (0) for 
+        that hour, since this would likely indicate that exit velocity
+        and exit temperature were switched in the HOUREMIS file.
+
+    2.  Modified subroutine HRLOOP to correct a bug associated with 
+        use of the DAYRANGE keyword for multiple years of meteorological 
+        data, where the YR/MN/DY conversion to Julian may be incorrect in
+        relation to leap-years vs. non-leap-years. This problem was 
+        partially corrected in version 12345.
+
+    3.  Modified subroutine BGREAD to move the unit conversion for 
+        hourly background concentrations to follow the READ statements 
+        to avoid "double counting" unit conversion for non-hourly 
+        background since unit conversion for BGFILL has already been
+        applied in sub_BGVAL.
+
+    4.  Moved calculation of the center of effective area source for 
+        OPENPIT sources from subroutine ARDIST to subroutine PITEFF. 
+        Previous versions would have skipped calculation of center 
+        coordinates if the first receptor was located inside the 
+        actual OPENPIT source.
+
+    5.  Modified subroutine AREAIN to include an additional check 
+        for the number of sides exceeding the maximum number for an 
+        AREAPOLY source and to issue an AERMOD error message to avoid 
+        a compiler-generated runtime error.
+
+    6.  Modified subroutines wake_dfsn and wake_dfsn2 to correct a
+        problem with virtual sigma-z values for the cavity source,
+        which could result in anomalously high concentrations in
+        some cases due to the initial dispersion coefficient for 
+        the "cavity source" being set to zero (0).
+        
+    7.  Modified subroutine OLM_CALC to include a check for the 
+        OLM value (variable OLMVAL) being zero (0) to avoid
+        a zero-divide in calculating PercentNO2.
+
+    8.  Modified subroutine HEFF to include plume rise for penetrated
+        source, DHP3, for purposes of calculating plume height at 20km 
+        for use in wet deposition/depletion calculations.
+        
+    9.  Modified subroutine IBLVAL to use a minimum value of 5m for 
+        ZHI in the calculation of effective parameters.
+        
+   10.  Modified subroutine O3READ to avoid including a substituted 
+        ozone (O3) value for hours with missing O3 data in the calculation 
+        of the maximum ozone value within the past 24 hours, which may be
+        used in the adjustment of the hourly O3 value under stable 
+        conditions.
+
+
+--  Enhancements:
+ 
+    1.  Incorporated new options for modeling NO2, including a new 
+        Default option for the Ambient Ratio Method (ARM) and a 
+        non-Default BETA option for the Ambient Ratio Method - 2 
+        (ARM2).
+    
+    2.  Incorporated options to vary background ozone (O3) data by 
+        wind sector (new CO O3SECTOR keyword), and options to vary 
+        background concentrations for the pollutant being modeled by 
+        wind sector (new SO BGSECTOR keyword).  Any of the existing 
+        options for specifying background data can be used with the
+        new sector-varying options, and will continue to work as 
+        before if no sectors are defined.  The applicable sector 
+        is determined by the flow vector (downwind) based on the 
+        wind direction in the surface meteorological data file.
+        
+    3.  Added new "debug" output file options for the OLM option
+        and for the new ARM and ARM2 options for NO2. Also added
+        a new PRIME debug option to separate the debug information
+        associated with the PRIME downwash algorithm from the 
+        non-PRIME related information provided under the MODEL
+        debug option.  Also removed all debug information from
+        the main 'aermod.out' file.
+
+
+--  Miscellaneous:
+
+    1.  Modified module MAIN1 and subroutine SRCSIZ to include a
+        new NVPOLY parameter for the number of additional vertices 
+        to include for AREAPOLY sources, beyond the number of 
+        vertices used to define the source.  This is needed to 
+        account for the integrated portion of the area intersecting 
+        several sides of the polygon, depending on the geometry of 
+        the source, receptor, and wind direction. The NVPOLY parameter 
+        is assigned a value of 12, which should work in most cases, 
+        but users are cautioned to avoid overly complex shapes for 
+        AREAPOLY sources to avoid model runtime errors. Reducing the 
+        complexity of AREAPOLY sources will also reduce model runtime 
+        in most cases. The value of NVPOLY is added to NVMAX (determined 
+        based on the maximum number of area sources vertices defined 
+        by the user) in subroutine SRCSIZ for purposes of allocating 
+        arrays for AREAPOLY sources. The previous version of AERMOD 
+        added a value of 8 to NVMAX in subroutine SRCSIZ.
+        
+    2.  Incorporated checks on the consistency of concentrations that
+        are calculated during the EVENT processing mode with the original
+        value calculated during normal processing, which is included on 
+        the EVENTPER keyword. Warning messages are generated if the 
+        results are inconsistent, which may indicate a potential error
+        in the AERMOD code. Subroutine EVPER was also modified to make
+        the concentration field (provided by AERMOD during the initial 
+        non-EVENT processing) mandatory.
+
+    3.  Modified several subroutines to include the AERMET version date
+        associated with the input meteorological data in the header records
+        of the 'aermod.out' file and all other output file options. Also
+        modified the earliest acceptable version date for AERMET inputs
+        from 11059 to 12345. However, users are encouraged to use input
+        meteorological data based on the latest version of the AERMET 
+        processor (dated 13350).
+        
+    4.  Modified subroutines MEREAD, MEOPEN, and METEXT to extract met
+        data station IDs from the header record of the surface met data
+        file based on the index of keywords within the header record 
+        to provide more flexibility in the positioning of station IDs 
+        within the surface header record.
+
+    5.  Modified some error/warning messages to improve the clarity of the
+        message and to provide more flexibility in the error reporting.
+        For example:
+        
+        a. Errors associated with allocating arrays have been modified 
+           to identify the type of array(s) being allocated when the
+           error occurs;
+        
+        b. Additional error handling and reporting has been incorporated 
+           for problems associated with opening, reading, and/or writing 
+           to external data files;
+        
+        c. Subroutine JULIAN was modified to provide additional information 
+           when errors occur to facilitate diagnosing and correcting problems;
+        
+        d. Subroutines ERRHDL, TERRST, and other subroutines that call these
+           routines, were modified to include up to 12 characters in the module 
+           names included in error/warning/informational messages. The previous 
+           version limited the module name to 6 characters.
+        
+
+                        *****************
+                        *   IMPORTANT   *
+                        *****************
+
+This program will henceforth be identified by its name and a Julian date,
+i.e.: AERMOD (dated 13350).  Future changes to this model will be identified
+by an updated Julian date found at the beginning of the model source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the Recent Additions section of the SCRAM website.

@@ -1,0 +1,99 @@
+                                                                      02/21/96
+                                                                      14:28:56
+  ***  SCREEN3 MODEL RUN  ***
+  *** VERSION DATED 96043 ***
+
+ POINT SOURCE EXAMPLE WITH BUILDING DOWNWASH                                    
+
+ SIMPLE TERRAIN INPUTS:
+    SOURCE TYPE            =        POINT
+    EMISSION RATE (G/S)    =      100.000    
+    STACK HEIGHT (M)       =     100.0000
+    STK INSIDE DIAM (M)    =       2.0000
+    STK EXIT VELOCITY (M/S)=      15.0000
+    STK GAS EXIT TEMP (K)  =     450.0000
+    AMBIENT AIR TEMP (K)   =     293.0000
+    RECEPTOR HEIGHT (M)    =        .0000
+    URBAN/RURAL OPTION     =        URBAN
+    BUILDING HEIGHT (M)    =      80.0000
+    MIN HORIZ BLDG DIM (M) =      80.0000
+    MAX HORIZ BLDG DIM (M) =     100.0000
+
+ THE REGULATORY (DEFAULT) MIXING HEIGHT OPTION WAS SELECTED.
+ THE REGULATORY (DEFAULT) ANEMOMETER HEIGHT OF 10.0 METERS WAS ENTERED.
+
+
+ BUOY. FLUX =   51.319 M**4/S**3;  MOM. FLUX =  146.500 M**4/S**2.
+
+ *** FULL METEOROLOGY ***
+
+ **********************************
+ *** SCREEN AUTOMATED DISTANCES ***
+ **********************************
+
+ *** TERRAIN HEIGHT OF    0. M ABOVE STACK BASE USED FOR FOLLOWING DISTANCES ***
+
+   DIST     CONC             U10M   USTK  MIX HT   PLUME   SIGMA   SIGMA
+    (M)   (UG/M**3)   STAB  (M/S)  (M/S)    (M)   HT (M)   Y (M)   Z (M)  DWASH
+ -------  ----------  ----  -----  -----  ------  ------  ------  ------  -----
+    100.   .0000        0      .0     .0      .0     .00     .00     .00    NA
+    200.   .0000        0      .0     .0      .0     .00     .00     .00    NA
+    300.   631.6        1     1.5    2.1   480.0  125.11   90.71   82.09    SS
+    400.   517.4        1     1.5    2.1   480.0  140.59  118.85  113.59    SS
+    500.   494.6        6     1.0    2.0 10000.0  113.08   50.21   50.05    SS
+    600.   578.0        6     1.0    2.0 10000.0  113.08   59.27   54.62    SS
+    700.   638.4        6     1.0    2.0 10000.0  113.08   68.06   59.18    SS
+    800.   715.3        6     1.0    2.0 10000.0  113.08   76.59   65.44    SS
+    900.   699.4        6     1.0    2.0 10000.0  113.08   84.89   68.33    SS
+   1000.   681.9        6     1.0    2.0 10000.0  113.08   92.97   71.13    SS
+
+ MAXIMUM 1-HR CONCENTRATION AT OR BEYOND   100. M:
+    800.   715.3        6     1.0    2.0 10000.0  113.08   76.59   65.44    SS
+
+  DWASH=   MEANS NO CALC MADE (CONC = 0.0)
+  DWASH=NO MEANS NO BUILDING DOWNWASH USED
+  DWASH=HS MEANS HUBER-SNYDER DOWNWASH USED
+  DWASH=SS MEANS SCHULMAN-SCIRE DOWNWASH USED
+  DWASH=NA MEANS DOWNWASH NOT APPLICABLE, X<3*LB
+ 
+ ****************************************
+      *** REGULATORY (Default) ***  
+     PERFORMING CAVITY CALCULATIONS 
+   WITH ORIGINAL SCREEN CAVITY MODEL
+           (BRODE, 1988) 
+ ****************************************
+ 
+
+  *** CAVITY CALCULATION - 1 ***       *** CAVITY CALCULATION - 2 ***
+   CONC (UG/M**3)     =    3168.        CONC (UG/M**3)     =    1691.    
+   CRIT WS @10M (M/S) =     3.32        CRIT WS @10M (M/S) =     7.77
+   CRIT WS @ HS (M/S) =     5.26        CRIT WS @ HS (M/S) =    12.32
+   DILUTION WS (M/S)  =     2.63        DILUTION WS (M/S)  =     6.16
+   CAVITY HT (M)      =   114.88        CAVITY HT (M)      =   105.20
+   CAVITY LENGTH (M)  =   142.41        CAVITY LENGTH (M)  =   101.30
+   ALONGWIND DIM (M)  =    80.00        ALONGWIND DIM (M)  =   100.00
+ 
+ ****************************************
+       END OF CAVITY CALCULATIONS 
+ ****************************************
+ 
+
+      ***************************************
+      *** SUMMARY OF SCREEN MODEL RESULTS ***
+      ***************************************
+
+  CALCULATION        MAX CONC    DIST TO   TERRAIN
+   PROCEDURE        (UG/M**3)    MAX (M)    HT (M)
+ --------------    -----------   -------   -------
+ SIMPLE TERRAIN      715.3          800.        0.
+
+ BLDG. CAVITY-1      3168.          142.       --  (DIST = CAVITY LENGTH)
+
+ BLDG. CAVITY-2      1691.          101.       --  (DIST = CAVITY LENGTH)
+
+  
+
+ ***************************************************
+ ** REMEMBER TO INCLUDE BACKGROUND CONCENTRATIONS **
+ ***************************************************
+

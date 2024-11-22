@@ -1,0 +1,139 @@
+                                                                      02/12/13
+                                                                      11:40:00
+  ***  SCREEN3 MODEL RUN  ***
+  *** VERSION DATED 13043 ***
+
+ EXAMPLE POINT SOURCE WITH NON-REGULATORY OPTION INPUTS                         
+
+ SIMPLE TERRAIN INPUTS:
+    SOURCE TYPE            =        POINT
+    EMISSION RATE (G/S)    =     100.0000    
+    STACK HEIGHT (M)       =     100.0000
+    STK INSIDE DIAM (M)    =       2.0000
+    STK EXIT VELOCITY (M/S)=      15.0000
+    STK GAS EXIT TEMP (K)  =     450.0000
+    AMBIENT AIR TEMP (K)   =     293.0000
+    RECEPTOR HEIGHT (M)    =       0.0000
+    URBAN/RURAL OPTION     =        URBAN
+    BUILDING HEIGHT (M)    =      80.0000
+    MIN HORIZ BLDG DIM (M) =      80.0000
+    MAX HORIZ BLDG DIM (M) =     100.0000
+
+ THE NON-REGULATORY BUT CONSERVATIVE BRODE 2 MIXING HEIGHT OPTION WAS SELECTED.
+ A NON-REGULATORY ANEMOMETER HEIGHT (HANE) OF   7.5 METERS WAS ENTERED.
+
+
+ BUOY. FLUX =   51.319 M**4/S**3;  MOM. FLUX =  146.500 M**4/S**2.
+
+ *** FULL METEOROLOGY ***
+
+ **********************************
+ *** SCREEN AUTOMATED DISTANCES ***
+ **********************************
+
+ *** TERRAIN HEIGHT OF    0. M ABOVE STACK BASE USED FOR FOLLOWING DISTANCES ***
+
+   DIST     CONC             UHANE   USTK  MIX HT   PLUME   SIGMA   SIGMA
+    (M)   (UG/M**3)   STAB  (M/S)   (M/S)    (M)   HT (M)   Y (M)   Z (M)  DWASH
+ -------  ----------  ----   -----  -----  ------  ------  ------  ------  -----
+    100.    0.000        0     0.0    0.0     0.0    0.00    0.00    0.00    NA
+    200.    0.000        0     0.0    0.0     0.0    0.00    0.00    0.00    NA
+    300.    1186.        2     1.5    2.2   126.3  122.43   90.71   82.09    SS
+    400.    991.0        2     1.5    2.2   140.8  136.54  118.85  113.59    SS
+    500.    766.9        2     1.5    2.2   156.8  152.04  146.06  146.97    SS
+    600.    648.0        3     2.0    3.4   144.6  135.91  118.54  120.00    SS
+    700.    628.5        6     1.0    2.2 10000.0  111.87   68.06   59.93    SS
+    800.    693.6        6     1.0    2.2 10000.0  111.87   76.59   66.27    SS
+    900.    673.4        6     1.0    2.2 10000.0  111.87   84.89   69.13    SS
+   1000.    652.7        6     1.0    2.2 10000.0  111.87   92.97   71.91    SS
+
+ MAXIMUM 1-HR CONCENTRATION AT OR BEYOND   100. M:
+    286.    1191.        2     1.5    2.2   124.5  120.75   86.98   78.14    SS
+
+  DWASH=   MEANS NO CALC MADE (CONC = 0.0)
+  DWASH=NO MEANS NO BUILDING DOWNWASH USED
+  DWASH=HS MEANS HUBER-SNYDER DOWNWASH USED
+  DWASH=SS MEANS SCHULMAN-SCIRE DOWNWASH USED
+  DWASH=NA MEANS DOWNWASH NOT APPLICABLE, X<3*LB
+ 
+ ****************************************
+        ***  NON-REGULATORY ***     
+     PERFORMING CAVITY CALCULATIONS 
+    WITH SCHULMAN-SCIRE (1993) MODEL
+ ****************************************
+ 
+ Stack x/L (LONGER side ALONG flow) =   0.4000000    
+ Stack x/L (SHORTER side ALONG flow)=   0.3000000    
+ 
+ 
+ 1)  SHORTER Side ALONG flow, STACK nearer UPWIND edge of building
+
+*** CAVITY2 -- Version: 1.0        Level: 940325   ***
+ FLOW IS REATTACHED
+ Stack distance from upwind face (m)   =    16.00000    
+ Cavity Length (m)                     =    138.4615    
+ Cavity Height (m)                     =    80.00000    
+
+ MAX Concentration =     882.1 (ug/m**3) for ws(10m)  =   7.0 (m/s)
+ 
+ 
+ 2)  SHORTER Side ALONG flow, STACK nearer DOWNWIND edge of building
+
+*** CAVITY2 -- Version: 1.0        Level: 940325   ***
+ FLOW IS REATTACHED
+ Stack distance from upwind face (m)   =    64.00000    
+ Cavity Length (m)                     =    138.4615    
+ Cavity Height (m)                     =    80.00000    
+
+ MAX Concentration =    1303.1 (ug/m**3) for ws(10m)  =   8.0 (m/s)
+ 
+ 
+ 3)  LONGER Side ALONG flow, STACK nearer UPWIND edge of building
+
+*** CAVITY2 -- Version: 1.0        Level: 940325   ***
+ FLOW IS REATTACHED
+ Stack distance from upwind face (m)   =    10.00000    
+ Cavity Length (m)                     =    108.6095    
+ Cavity Height (m)                     =    80.00000    
+
+ MAX Concentration =     616.7 (ug/m**3) for ws(10m)  =   7.0 (m/s)
+ 
+ 
+ 4)  LONGER Side ALONG flow, STACK nearer DOWNWIND edge of building
+
+*** CAVITY2 -- Version: 1.0        Level: 940325   ***
+ FLOW IS REATTACHED
+ Stack distance from upwind face (m)   =    90.00000    
+ Cavity Length (m)                     =    108.6095    
+ Cavity Height (m)                     =    80.00000    
+
+ MAX Concentration =     974.5 (ug/m**3) for ws(10m)  =   9.0 (m/s)
+ 
+ ****************************************
+       END OF CAVITY CALCULATIONS 
+ ****************************************
+ 
+
+      ***************************************
+      *** SUMMARY OF SCREEN MODEL RESULTS ***
+      ***************************************
+
+  CALCULATION        MAX CONC    DIST TO     TERRAIN
+   PROCEDURE        (UG/M**3)    MAX (M)      HT (M)
+ --------------    -----------   ---------   -------
+ SIMPLE TERRAIN       1191.          286.        0.
+
+ BUILDING CAVITY      882.1          138.       --  (SHORTER side ALONG flow;
+                                                --  stack nearer upwind face)
+ BUILDING CAVITY      1303.          138.       --  (SHORTER side ALONG flow;
+                                                --  stack nearer dnwind face)
+ BUILDING CAVITY      616.7          109.       --  (LONGER  side ALONG flow;
+                                                --  stack nearer upwind face)
+ BUILDING CAVITY      974.5          109.       --  (LONGER  side ALONG flow;
+                                                --  stack nearer dnwind face)
+  
+
+ ***************************************************
+ ** REMEMBER TO INCLUDE BACKGROUND CONCENTRATIONS **
+ ***************************************************
+

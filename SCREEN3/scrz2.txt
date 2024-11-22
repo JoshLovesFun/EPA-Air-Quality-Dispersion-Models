@@ -1,0 +1,1431 @@
+                            Model Change Bulletin
+
+                                   MCB#2                February 12, 1996
+
+                            SCREEN3 (dated 96043)
+
+
+   This Model Change Bulletin documents changes made to the SCREEN3 model and
+to the user's guide that was available from SCRAM BBS.
+
+Three new non-regulatory optional features have been added to this model.  The
+first feature is the inclusion of an alternative mixing height algorithm based
+on a paper by R. Brode given at the 1991 Seventh Joint Conference on
+Applications of Air Pollution Meteorology with AWMA.  The alternative mixing
+height is determined by using the maximum of a predetermined mixing height or a
+value adjusted slightly higher than the plume height, whichever is greater.
+Both the mixing height and adjustment values to the plume height are based on
+stability class.  Selection of this algorithm results in concentrations that
+are generally more conservative than output from the ISCST3 model.
+
+The second feature allows the optional input of an anemometer height in place
+of the default height which is set to 10 meters.  This affects the stack top
+wind speeds for Choice of Meteorology selections 1 and 2.  The stack top wind
+speed for Choice of Meteorology selection 3 is unaffected.
+
+The third feature is the inclusion of an alternative cavity algorithm based on
+a paper by Lloyd L. Schulman and Joseph S. Scire published in the August 1993
+issue of Air and Waste, The Journal of the Air and Waste Management
+Association.  The published concentration results using this algorithm appear
+to be favorable with respect to sampled wind tunnel test concentrations.
+
+Each of the non-regulatory options can be activated by adding the appropriate
+flag or value to the source type line of the input file.  Details for using
+these options have been added to the SCREEN3 Model User's Guide and to the
+README file.  The process for obtaining regulatory results can be found in
+the SCREEN3 Model User's Guide.
+
+As a result, changes were made to MAIN.INC and to the SCREEN3 source code.
+MAIN.INC is an 'INCLUDE' file and contains many of the COMMON and DIMENSION
+statements used by SCREEN3.  The following is a list of the individual changes
+which have been incorporated into MAIN.INC.  The variable for the anemometer
+height, HANE, and the flag, ICI, indicating that the R. Brode Option 2 is to be
+used, were added to the Labelled Common statement, METVAR along with two arrays
+for holding constant values used in the Brode 2 mixing height algorithm.  The
+line was changed from:
+
+      COMMON /METVAR/ AFV, UREF, TA, KST, ZI, S, RTOFS, ZREF
+
+to:
+
+      COMMON /METVAR/ AFV, UREF, TA, KST, ZI, S, RTOFS, ZREF, HANE, ICI,
+     &                ZIMIN(4), ZIFACT(4),
+
+
+     The following is a list of the individual changes which have been
+incorporated into SCREEN3 (dated 96043) from the SCREEN3A.FOR and SCREEN3B.FOR
+source codes.  The FUNCTION ERF was edited out of SCREEN3A.FOR and was edited,
+by itself, into SCREEN3C.FOR.  The sequence identification codes were shortened
+by deleting one of the zeros in each of the codes so the codes would not wrap
+around to the next line.
+
+1.  A SCRAM header was added to the begining of the source code as follows:
+
+C***********************************************************************SCR0005
+C                                                                       SCR0006
+C                           SCREEN3 (DATED 96043)                       SCR0010
+C                                                                       SCR0011
+C             *** SEE SCREEN MODEL CHANGE BULLETIN MCB#2 ***            SCR0012
+C                                                                       SCR0013
+C     ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS BULLETIN BOARD    SCR0014
+C                                                                       SCR0015
+C                               919-541-5742                            SCR0016
+C                                                                       SCR0017
+C***********************************************************************SCR0018
+C
+C
+C                       **************************
+C                       ***       SCREEN3      ***
+C                       ***   (DATED  96043)   ***
+C                       **************************
+C
+C        MODIFIED FROM:
+
+2.  A modification summary was also added before the previous summaries of
+modifications.  It contains the following text:
+
+
+C                           MODIFICATION HISTORY
+C
+C        MODIFIED BY:
+C
+C              PETER ECKHOFF
+C              EPA
+C              MD-14
+C              RESEARCH TRIANGLE PARK, NC 27711
+C
+C        MODIFICATION DATE:
+C
+C              FEBRUARY 12, 1996
+C
+C        MODIFICATIONS INCLUDE:
+C
+C              THE NEW ANEMOMETER HEIGHT ROUTINE WAS MOVED TOWARD THE
+C              BEGINNING OF THE CODE.  THE ROUTINE WAS PREVIOUSLY PLACED
+C              AFTER THE COMPLEX TERRAIN ALGORITHM WHICH NEEDS AN ANEMOMETER
+C              HEIGHT.  THE INPUT SEQUENCE WAS ALSO ALTERED TO ACCOMODATE THE
+C              NEW ALGORITHM ROUTINE.  SEVERAL OUTPUT STATEMENTS WERE ADDED
+C              OR ENHANCED TO REFLECT THE USE OF THE NEW OPTIONS.
+C
+C              THE ADDITION OF THREE NON-REGULATORY OPTIONS:
+C                1. AN ANEMOMETER HEIGHT OTHER THAN 10 METERS CAN NOW BE
+C                   ENTERED AS AN OPTION, AND
+C                2. THE ABILITY TO PRODUCE RESULTS THAT ARE CONSERVATIVE
+C                   WITH RESPECT TO ISCST3 RESULTS.  OPTION 2, FROM THE
+C                   R. BRODE PAPER GIVEN AT THE 1991 SEVENTH JOINT CONFERENCE
+C                   ON APPLICATIONS OF AIR POLLUTION METEOROLOGY WITH AWMA,
+C                   WAS ADDED AS AN OPTION.  THIS OPTION MINIMIZES THE MIXING
+C                   HEIGHTS FOR UNSTABLE CASES THUS CREATING RESULTS THAT ARE
+C                   MORE CONSERVATIVE WITH RESPECT TO ISCST2 RESULTS.
+C                3. THE ADDITION OF THE SCHULMAN-SCIRE (1993) CAVITY
+C                   FORMULATION FROM AN ARTICLE IN THE AUGUST 1993 OF AIR AND
+C                   WASTE (JOURNAL OF THE AIR AND WASTE MANAGEMENT
+C                   ASSOCIATION).
+C
+C              ALSO PROGRAMMED INTO THIS SOURCE CODE IS THE ABILITY TO USE
+C                   PREVIOUS DATA SETS WITHOUT HAVING TO RE-EDIT THE DATA
+C                   FOR CASES WHERE THE OPTIONS ARE NOT EXERCISED.
+C
+C***********************************************************************
+
+
+3.  A short definition of the CAVITY2 subroutine was added after the definiton
+of CAVITY.  The code was changed from:
+
+C           CAVITY RETURNS MAX CONC, CAVITY HT, AND LENGTH OF
+C                  CAVITY IF PLUME IS FOUND TO BE ENTRAPPED IN
+C                  THE CAVITY RECIRCULATION REGION
+
+to:
+
+C           CAVITY RETURNS MAX CONC, CAVITY HT, AND LENGTH OF
+C                  CAVITY IF PLUME IS FOUND TO BE ENTRAPPED IN
+C                  THE CAVITY RECIRCULATION REGION
+C2         CAVITY2 RETURNS MAX CONC, AND LENGTH OF CAVITY IF
+C2                 SCHULMAN-SCIRE FORMULATION IS SELECTED FOR
+C2                 THE CAVITY REGION (POINT & FLARE SOURCES)
+
+
+4.  Several new variables were typed for the new input options.  The code was
+changed from to include these new variables:
+
+      INCLUDE 'MAIN.INC'
+      INTEGER*2 IPTHR, IPTMIN, IPTSEC, IPTHUN, IPTYR, IPTMON, IPTDAY
+C
+
+to:
+
+      INCLUDE 'MAIN.INC'
+      CHARACTER*1 QZI
+      CHARACTER*2 QSS
+      CHARACTER*50 CINP
+      INTEGER*2 IPTHR, IPTMIN, IPTSEC, IPTHUN, IPTYR, IPTMON, IPTDAY
+      character*27 cavdef1,cavdef2
+      logical lwind, lroof
+C
+
+and from:
+
+      OUTFIL = 'SCREEN.OUT'
+      SYINIT = 0.
+
+to:
+
+      OUTFIL = 'SCREEN.OUT'
+      SOURCE = '    '
+      SYINIT = 0.
+
+
+5.  The following comments and code were added to illustrate and initialize
+part of the new Cavity option.  The code was changed from:
+
+
+      CAVCHI(1) = 0.0
+      CAVCHI(2) = 0.0
+
+to:
+
+      CAVCHI(1) = 0.0
+      CAVCHI(2) = 0.0
+      do i=1,4
+         CAVCHI(i) = 0.0
+         XR(i) = 0.0
+      enddo
+C2
+C2c --- New input variables for CAVITY2: stack location on roof
+C2c
+C2c                                HW
+C2c
+C2c                  +--------------.---------------+
+C2c                  |              .               |
+C2c   (x/HW = .4)--> |  S           .               |
+C2c                  |              .               |      HL
+C2c                  |              .               |
+C2c                  +--------------.---------------+
+C2c                 .5              0              .5
+C2c
+C2c
+C2c                                HL
+C2c
+C2c                          +------.------+
+C2c                          |      .      |
+C2c         (x/HL = .15)---> |      . S    |
+C2c                          |      .      |
+C2c                          |      .      |
+C2c                          |      .      |        HW
+C2c                          |      .      |
+C2c                          |      .      |
+C2c                          |      .      |
+C2c                          |      .      |
+C2c                          +------.------+
+C2c                         .5      0     .5
+C2c
+C2c     xstkl  : position of stack x/HL from CENTER of building
+C2c     xstkw  : position of stack x/HW from CENTER of building
+        xstkl = 0.0
+        xstkw = 0.0
+        lroof = .TRUE.
+C
+
+
+6.  The FORMAT statements in the input section were moved next to their
+respective WRITE statements where they were first viewed.  The following code
+was changed from:
+
+      WRITE(IDAT,79) TITLE
+      IF (TITLE(75:79) .EQ. 'DEBUG') THEN
+
+to:
+
+      WRITE(IDAT,79) TITLE
+79     FORMAT(A79)
+      IF (TITLE(75:79) .EQ. 'DEBUG') THEN
+
+and from:
+
+         READ(IRD,100) QUERY
+         IF (QUERY .EQ. 'Y' .OR. QUERY .EQ. 'y') THEN
+
+to:
+
+         READ(IRD,100) QUERY
+100        FORMAT(A1)
+         IF (QUERY .EQ. 'Y' .OR. QUERY .EQ. 'y') THEN
+
+
+7.  The interactive explanation on how to invoke the three new options were
+added by changing the following statement from:
+
+CRWB     &       '                    VDEP FOR VOLUME - WITH DEPOSITION')
+      READ(IRD,400) OPTG
+      CALL LWRUPR
+      SOURCE = OPTG(1:4)
+79    FORMAT(A79)
+400   FORMAT(A80)
+100   FORMAT(A1)
+40    FORMAT(A4)
+      IF (SOURCE .EQ. 'P   ') THEN
+
+to:
+
+CRWB     &       '                    VDEP FOR VOLUME - WITH DEPOSITION')
+      WRITE(IPRT,*) '   ALSO ENTER ANY OF THE FOLLOWING OPTIONS ',
+     +              'ON THE SAME LINE:'
+      WRITE(IPRT,*) ' '
+      WRITE(IPRT,*) '     N    - TO USE THE NON-REGULATORY BUT ',
+     +              'CONSERVATIVE BRODE 2'
+      WRITE(IPRT,*) '            MIXING HEIGHT OPTION,'
+      WRITE(IPRT,*) '     nn.n - TO USE AN ANEMOMETER HEIGHT OTHER ',
+     +              'THAN THE REGULATORY'
+      WRITE(IPRT,*) '            (DEFAULT) 10 METER HEIGHT.'
+      WRITE(IPRT,*) '     SS   - TO USE A NON-REGULATORY ',
+     +              'CAVITY CALCULATION ALTERNATIVE'
+      WRITE(IPRT,*) '  Example - PN 7.0 SS (entry for a point source)'
+      WRITE(IPRT,*) ' '
+      WRITE(IPRT,*) ' ENTER SOURCE TYPE AND ANY OF THE ABOVE OPTIONS:'
+
+C    READ INPUT LINE AS A SOLID BLOCK OF CHARACTERS, THEN PARSE INTO
+C     SEPARATE VALUES
+
+      READ(IRD,400) CINP
+400     FORMAT(A50)
+         ILEN = LEN_TRIM(CINP)
+       CALL LWRUPR(CINP, ILEN)
+        IFLG = 0
+        ICI = 0
+        ISS = 0
+
+C     PARSE AND PROCESS FIRST LINE OF INPUT DATA
+C      DATA CAN CONSIST OF SOURCE TYPE, AND NON-REGULATORY MIXING HEIGHT,
+C      ANEMOMETER HEIGHT, AND/OR BUILDING DOWNWASH OPTIONS.
+C      NO OPTIONS ENTERED EQUATES TO REGULATORY DEFAULT.
+
+C          DETERMINE THE SOURCE TYPE
+
+         SOURCE(1:1) = CINP(1:1)
+         IF (CINP(2:4) .EQ. 'DEP' .OR. CINP(2:4) .EQ. 'dep') THEN
+           SOURCE = CINP(1:4)
+         END IF
+
+C         DETERMINE MIXING HEIGHT OPTION (BRODE 2 YES/NO)
+C          DETECT AN 'N' UNDER THE OLD SCREEN2 OPTIONAL FORMAT
+
+        DO I = 1, ILEN
+           IF (CINP(I:I) .EQ. 'N' .OR. CINP(I:I) .EQ. 'n') THEN
+             QZI = CINP(I:I)
+             ICI = 1
+           END IF
+        END DO
+
+C        BASED ON POSITION OF DECIMAL POINT, CONVERT ASCII INTEGER VALUES TO
+C         AN ANEMOMETER HEIGHT VALUE.
+
+          HANE = 0.0
+          IDOT = ILEN + 1
+          DO K = 1, ILEN
+            IF (CINP(K:K) .EQ. '.') THEN
+              IDOT = K
+            END IF
+          END DO
+          DO K = 1, ILEN
+            ICN = ICHAR(CINP(K:K)) - 48
+            IF (ICN .GE. 0 .AND. ICN .LE. 9) THEN
+              IDOTK = IDOT - K
+              IF (IDOTK .GT. 0) IDOTK = IDOTK - 1
+              HANE = HANE + ICN * 10. ** (IDOTK)
+            END IF
+          END DO
+
+        ZREF = 10.0
+        IF (HANE .GT. 0.0001) THEN
+          ZREF = HANE
+         ELSE
+          HANE = 10.0
+        END IF
+
+C     SEARCH FOR A SCHULMAN-SCIRE ALTERNATIVE BUILDING DOWNWASH ALTERNATIVE
+C      ALGORITHM FLAG (SS)
+
+        DO I = 1, ILEN-1
+           IF (CINP(I:I+1) .EQ. 'SS'.OR. CINP(I:I+1) .EQ. 'ss') THEN
+             QSS = 'SS'
+             ISS = 1
+           END IF
+        END DO
+
+      WRITE(IDAT,101) SOURCE, QZI, HANE, QSS
+101     FORMAT(A4,1X,A1,1X,F8.1,1X,A2)
+
+      IF (SOURCE .EQ. 'P   ') THEN
+
+
+8.  End of input section comments were added; changing the code from:
+
+C
+C        SEE IF USER WANTS TO STOP AFTER COMPLEX TERRAIN CALCS-STP=.TRUE.
+
+to:
+
+C
+C    END OF SOURCE, MIXING HEIGHT OPTION, AND OPTIONAL ANEMOMETER HEIGHT
+C      INPUT ALGORITHM
+
+C
+C        SEE IF USER WANTS TO STOP AFTER COMPLEX TERRAIN CALCS-STP=.TRUE.
+
+
+9.  The CALL to the new cavity algortihm was added to the area of code where
+the old CALL to the regulatory cavity algortihm is located.  The two CALL
+statements were integrated by changing the code from:
+
+C
+C***********************************************************************
+C        PERFORM CAVITY CALCULATIONS & PRINT RESULTS FOR TWO
+C        ORIENTATIONS - HL ALONGWIND FIRST, THEN HW ALONGWIND.
+C***********************************************************************
+C
+      IF (HB.GT.0. .AND. HW.GT.0. .AND. HL.GT.0.) THEN
+         CALL CAVITY
+      END IF
+
+to:
+
+C***********************************************************************
+C        PERFORM CAVITY CALCULATIONS & PRINT RESULTS FOR TWO
+C        ORIENTATIONS - HL ALONGWIND FIRST, THEN HW ALONGWIND.
+C***********************************************************************
+C
+      IF (HB.GT.0. .AND. HW.GT.0. .AND. HL.GT.0.) THEN
+        IF (ISS .EQ. 0) THEN
+C          PREFORM THE REGULATORY CAVITY CALCULATIONS
+
+            write(iout,*)
+            write(iout,*) '****************************************'
+            write(iout,*) '     *** REGULATORY (Default) ***  '
+            write(iout,*) '    PERFORMING CAVITY CALCULATIONS '
+            write(iout,*) '  WITH ORIGINAL SCREEN CAVITY MODEL'
+            write(iout,*) '          (BRODE, 1988) '
+            write(iout,*) '****************************************'
+            write(iout,*)
+
+            CALL CAVITY
+
+c ---       Redefine summary output vaariables to be consistent with
+c ---       CAVITY2
+            cavchi(3)=cavchi(2)
+            xr(3)=xr(2)
+            cavchi(2)=cavchi(1)
+            xr(2)=xr(1)
+            cavchi(4)=cavchi(3)
+            xr(4)=xr(3)
+
+            write(iout,*)
+            write(iout,*) '****************************************'
+            write(iout,*) '      END OF CAVITY CALCULATIONS '
+            write(iout,*) '****************************************'
+            write(iout,*)
+
+         ELSE IF (ISS .EQ. 1) THEN
+
+            write(iout,*)
+            write(iout,*) '****************************************'
+            write(iout,*) '       ***  NON-REGULATORY ***     '
+            write(iout,*) '    PERFORMING CAVITY CALCULATIONS '
+            write(iout,*) '   WITH SCHULMAN-SCIRE (1993) MODEL'
+            write(iout,*) '****************************************'
+            write(iout,*)
+
+            write(iprt,*) 'Print concentration for all modeled speeds',
+     &                    ' in addition to maximum concentration? '
+            read(ird,100) QUERY
+            write(idat,100) QUERY
+            if (QUERY .EQ. 'Y' .OR. QUERY .EQ. 'y') then
+               lwind=.TRUE.
+            else
+               lwind=.FALSE.
+            endif
+
+            write(iprt,*)
+            write(iprt,*) 'Enter stack location (divided ',
+     &                    'by along-wind building scale, L).'
+            write(iprt,*) 'Origin for this is the CENTER of building,',
+     &                    ' so (absolute) ',
+     &                    'value lies between 0.0 and 0.5 if the stack',
+     &                    ' is on the roof.'
+            write(iprt,*) '(It is reset in the model to 0.5 if larger)'
+            write(iprt,*)
+            write(iprt,*) 'Case 1:  LONGER side ALONG flow'
+            write(iprt,*)
+            write(iprt,*) '         Example for (x/L = .4):'
+            write(iprt,*)
+            write(iprt,*) '             x/L'
+            write(iprt,*) '        :-----------: '
+            write(iprt,*) '     +--------------.---------------+ '
+            write(iprt,*) '     |              .               | '
+            write(iprt,*) '     |  S           .               | '
+            write(iprt,*) '     |              .               | '
+            write(iprt,*) '     |              .               | '
+            write(iprt,*) '     +--------------.---------------+ '
+            write(iprt,*) '    .5              0              .5 '
+            write(iprt,*)
+            write(iprt,*) '             <--- Wind --->           '
+            write(iprt,*)
+            write(iprt,*)
+            write(iprt,*) 'ENTER x/L (LONGER side ALONG flow) = '
+            read(ird,*) xstkw
+            xstkw = ABS(xstkw)
+            if(xstkw .GT. .5) then
+               xstkw = .5
+               lroof = .FALSE.
+               write(iprt,*)
+            endif
+            write(idat,*) xstkw
+
+            write(iprt,*)
+            write(iprt,*)
+            write(iprt,*)
+            write(iprt,*) 'Case 2:  SHORTER side ALONG flow '
+            write(iprt,*)
+            write(iprt,*) '         Example for (x/L = .15)'
+            write(iprt,*)
+            write(iprt,*) '                    x/L  '
+            write(iprt,*) '                    :-:           '
+            write(iprt,*) '             +------.------+      '
+            write(iprt,*) '             |      .      |      '
+            write(iprt,*) '             |      . S    |      '
+            write(iprt,*) '             |      .      |      '
+            write(iprt,*) '             |      .      |      '
+            write(iprt,*) '             |      .      |      '
+            write(iprt,*) '             |      .      |      '
+            write(iprt,*) '             |      .      |      '
+            write(iprt,*) '             |      .      |      '
+            write(iprt,*) '             |      .      |      '
+            write(iprt,*) '             +------.------+      '
+            write(iprt,*) '            .5      0     .5      '
+            write(iprt,*) '                              '
+            write(iprt,*) '             <--- Wind --->       '
+            write(iprt,*)
+            write(iprt,*) 'x/L (SHORTER side ALONG flow) = '
+            read(ird,*) xstkl
+            xstkl = ABS(xstkl)
+            if(xstkl .GT. .5) then
+               xstkl = .5
+               lroof = .FALSE.
+               write(iprt,*)
+            endif
+            write(idat,*) xstkl
+
+c ---       Report stack location
+            if(.not. LROOF) then
+               write(iprt,*)
+               write(iprt,*) 'Stack was placed at location away from',
+     &                       ' the building'
+               write(iprt,*) 'Stack is REPOSITIONED to EDGE of',
+     &                       ' the building'
+            endif
+            write(iprt,*) 'Stack x/L (LONGER side ALONG flow) = ',xstkw
+            write(iprt,*) 'Stack x/L (SHORTER side ALONG flow)= ',xstkl
+            write(iout,*) 'Stack x/L (LONGER side ALONG flow) = ',xstkw
+            write(iout,*) 'Stack x/L (SHORTER side ALONG flow)= ',xstkl
+
+c ---       Make sure that stack height (AGL) is .GE. building height IF
+c ---       stack is on building
+            if(LROOF .AND. hs .LT. hb) then
+               write(iprt,*) 'FATAL:  Stack-top was placed INSIDE ',
+     &                       'building:'
+               write(iprt,*) 'Building Ht = ',hb
+               write(iprt,*) 'Stack-top   = ',hs
+               stop
+            endif
+
+c ---       Process SHORTER side ALONG flow first (2 wind directions)
+            write(iout,*)
+            write(iout,*)
+            write(iout,*) '1)  SHORTER Side ALONG flow, STACK nearer ',
+     &                    'UPWIND edge of building'
+            xstack = (.5-xstkl)*HL
+            call CAVITY2(iprt,iout,xstack,hs,vs,ds,ts,ta,q,
+     &                   hb,hw,hl,lwind,
+     &                   cavchi(1),xr(1))
+c ---       Skip second wind direction if stack is at center of roof
+            if(xstkl .NE. 0.0) then
+               write(iout,*)
+               write(iout,*)
+               write(iout,*) '2)  SHORTER Side ALONG flow, STACK ',
+     &                       'nearer DOWNWIND edge of building'
+               xstack = HL-xstack
+               call CAVITY2(iprt,iout,xstack,hs,vs,ds,ts,ta,q,
+     &                      hb,hw,hl,lwind,
+     &                      cavchi(2),xr(2))
+            else
+               cavchi(2)=cavchi(1)
+               xr(2)=xr(1)
+            endif
+
+c ---       Process LONGER side ALONG flow (2 wind directions)
+            write(iout,*)
+            write(iout,*)
+            write(iout,*) '3)  LONGER Side ALONG flow, STACK nearer ',
+     &                    'UPWIND edge of building'
+            xstack = (.5-xstkw)*HW
+            call CAVITY2(iprt,iout,xstack,hs,vs,ds,ts,ta,q,
+     &                   hb,hl,hw,lwind,
+     &                   cavchi(3),xr(3))
+c ---       Skip second wind direction if stack is at center of roof
+            if(xstkw .NE. 0.0) then
+               write(iout,*)
+               write(iout,*)
+               write(iout,*) '4)  LONGER Side ALONG flow, STACK nearer',
+     &                       ' DOWNWIND edge of building'
+               xstack = HW-xstack
+               call CAVITY2(iprt,iout,xstack,hs,vs,ds,ts,ta,q,
+     &                      hb,hl,hw,lwind,
+     &                      cavchi(4),xr(4))
+            else
+               cavchi(4)=cavchi(3)
+               xr(4)=xr(3)
+            endif
+
+            write(iout,*)
+            write(iout,*) '****************************************'
+            write(iout,*) '      END OF CAVITY CALCULATIONS '
+            write(iout,*) '****************************************'
+            write(iout,*)
+
+        END IF
+      END IF
+
+10.  Output format statements were modified to accommodate the new output
+information from the new option.  The following code was changed from:
+
+       WRITE(IOUT,910)
+910    FORMAT(/2X,'CALCULATION',6X,'MAX CONC',3X,'DIST TO',2X,'TERRAIN',
+     &    /,3X,'PROCEDURE',6X,'(UG/M**3)',3X,'MAX (M)',3X,'HT (M)',
+     &    /,1X,'--------------  -----------  -------  -------')
+       IF (CMAXST .GT. 0.0) THEN
+
+to:
+
+       WRITE(IOUT,910)
+910    FORMAT(/2X,'CALCULATION',8X,'MAX CONC',4X,'DIST TO',3X,'TERRAIN',
+     &    /,3X,'PROCEDURE',8X,'(UG/M**3)',4X,'MAX (M)',4X,'HT (M)',
+     &    /,1X,'--------------    -----------   -------   -------')
+       IF (CMAXST .GT. 0.0) THEN
+
+and from:
+
+          WRITE(IOUT,920) CMAXST,XMAXST,TMAXST
+920       FORMAT(1X,'SIMPLE TERRAIN',3X,G10.4,2X,F7.0,4X,F5.0,/)
+       END IF
+
+to:
+
+          WRITE(IOUT,920) CMAXST,XMAXST,TMAXST
+920       FORMAT(1X,'SIMPLE TERRAIN',5X,G10.4,3X,F7.0,5X,F5.0,/)
+       END IF
+
+and from:
+
+         WRITE(IOUT,930) CMAXCT,XMAXCT,TMAXCT
+930      FORMAT(1X,'COMPLEX TERRAIN',2X,G10.4,2X,F7.0,4X,F5.0,
+     &          ' (24-HR CONC)',/)
+
+to:
+
+         WRITE(IOUT,930) CMAXCT,XMAXCT,TMAXCT
+930      FORMAT(1X,'COMPLEX TERRAIN',4X,G10.4,3X,F7.0,5X,F5.0,
+     &          ' (24-HR CONC)',/)
+
+
+11.  The following format statements were added to accommodate the output from
+the new cavity algorithm:
+
+      END IF
+      IF (CAVCHI(1) .GT. 0.0 .OR. CAVCHI(2) .GT. 0.0) THEN
+         WRITE(IPRT,940) (I,CAVCHI(I),XR(I),I=1,2)
+         WRITE(IOUT,940) (I,CAVCHI(I),XR(I),I=1,2)
+940      FORMAT(1X,'BLDG. CAVITY-',I1,3X,G10.4,2X,F7.0,6X,'--',
+     &          '  (DIST = CAVITY LENGTH)')
+         WRITE(IPRT,*) ' '
+
+to:
+
+      END IF
+      IF (ISS .EQ. 0) THEN
+        IF (CAVCHI(1) .GT. 0.0 .OR. CAVCHI(2) .GT. 0.0) THEN
+           WRITE(IPRT,940) (I,CAVCHI(I),XR(I),I=1,1)
+           WRITE(IPRT,940) (I,CAVCHI(3),XR(3),I=2,2)
+           WRITE(IOUT,940) (I,CAVCHI(I),XR(I),I=1,1)
+           WRITE(IOUT,940) (I,CAVCHI(3),XR(3),I=2,2)
+940        FORMAT(1X,'BLDG. CAVITY-',I1,5X,G10.4,3X,F7.0,7X,'--',
+     &            '  (DIST = CAVITY LENGTH)'/)
+           WRITE(IPRT,*) ' '
+           WRITE(IOUT,*) ' '
+        END IF
+       ELSE
+        IF (CAVCHI(1) .GT. 0.0 .OR. CAVCHI(3) .GT. 0.0) THEN
+         cavdef1='  (SHORTER side ALONG flow;'
+         cavdef2='  stack nearer upwind face)'
+         WRITE(IPRT,942) CAVCHI(1),XR(1),cavdef1
+         WRITE(IPRT,941) cavdef2
+         WRITE(IOUT,942) CAVCHI(1),XR(1),cavdef1
+         WRITE(IOUT,941) cavdef2
+         cavdef1='  (SHORTER side ALONG flow;'
+         cavdef2='  stack nearer dnwind face)'
+         WRITE(IPRT,942) CAVCHI(2),XR(2),cavdef1
+         WRITE(IPRT,941) cavdef2
+         WRITE(IOUT,942) CAVCHI(2),XR(2),cavdef1
+         WRITE(IOUT,941) cavdef2
+         cavdef1='  (LONGER  side ALONG flow;'
+         cavdef2='  stack nearer upwind face)'
+         WRITE(IPRT,942) CAVCHI(3),XR(3),cavdef1
+         WRITE(IPRT,941) cavdef2
+         WRITE(IOUT,942) CAVCHI(3),XR(3),cavdef1
+         WRITE(IOUT,941) cavdef2
+         cavdef1='  (LONGER  side ALONG flow;'
+         cavdef2='  stack nearer dnwind face)'
+         WRITE(IPRT,942) CAVCHI(4),XR(4),cavdef1
+         WRITE(IPRT,941) cavdef2
+         WRITE(IOUT,942) CAVCHI(4),XR(4),cavdef1
+         WRITE(IOUT,941) cavdef2
+942      FORMAT(1X,'BUILDING CAVITY ',3X,G10.4,3X,F7.0,7X,'--',a27)
+941      FORMAT(47X,'--',a27)
+         WRITE(IPRT,*) ' '
+
+and from:
+
+         WRITE(IOUT,*) ' '
+      END IF
+
+to:
+
+         WRITE(IOUT,*) ' '
+       END IF
+      END IF
+
+12.  The following format statements were adjusted to accommodate the new
+option output:
+
+         WRITE(IOUT,950) CMAXIF,XMAXIF
+950      FORMAT(1X,'INV BREAKUP FUMI',1X,G10.4,2X,F7.0,6X,'--',/)
+      END IF
+
+to:
+
+         WRITE(IOUT,950) CMAXIF,XMAXIF
+950      FORMAT(1X,'INV BREAKUP FUMI',3X,G10.4,3X,F7.0,7X,'--',/)
+      END IF
+
+and from:
+
+         WRITE(IOUT,960) CMAXSF,XMAXSF
+960      FORMAT(1X,'SHORELINE FUMI',3X,G10.4,2X,F7.0,6X,'--')
+      END IF
+
+to:
+
+         WRITE(IOUT,960) CMAXSF,XMAXSF
+960      FORMAT(1X,'SHORELINE FUMI',5X,G10.4,3X,F7.0,7X,'--')
+      END IF
+
+and from:
+
+         WRITE(IPRT,1000) OUTFIL
+1000     FORMAT(' THE OUTPUT FILE, "',A12,'", HAS BEEN PRINTED.')
+      ELSE IF (QUERY .EQ. 'N' .OR. QUERY .EQ. 'n') THEN
+
+to:
+
+         WRITE(IPRT,1000) OUTFIL
+1000     FORMAT(' THE OUTPUT FILE, "',A12,'", HAS BEEN PRINTED.'/'1')
+      ELSE IF (QUERY .EQ. 'N' .OR. QUERY .EQ. 'n') THEN
+
+and from:
+
+         WRITE(IDAT,100) QUERY
+         WRITE(IPRT,1001) OUTFIL 
+1001     FORMAT(' THE RESULTS OF THIS RUN ARE IN FILE, "',A12,'".')
+      ELSE
+
+to:
+
+         WRITE(IDAT,100) QUERY
+         WRITE(IPRT,1001) OUTFIL
+1001     FORMAT(' THE RESULTS OF THIS RUN ARE IN FILE, "',A12,'".'/'1')
+      ELSE
+
+13.  The following form feed character, FFEED, variable typing was dropped from
+the INPUT- P, A, F, and V subroutines which changed the code from:
+
+      INCLUDE 'MAIN.INC'
+      CHARACTER*1 FFEED
+      NPD = 0
+
+to:
+
+      INCLUDE 'MAIN.INC'
+      NPD = 0
+
+
+14.  Input is read throught the character variable, OPTG.  A line of code was
+added to delete leading and trailing blank spaces.  The code was changed from:
+
+  402 READ(IRD,9044) OPTG
+ 9044 FORMAT(A80)
+
+to:
+
+  402 READ(IRD,9044) OPTG
+       ILEN = LEN_TRIM(OPTG)
+ 9044 FORMAT(A80)
+
+15.  The subroutine LWRUPR was altered to pass the variables, OPTG and ILEN, to
+LWRUPR from the main program.  The call statement to LWRUPR was changed from:
+
+      CALL LWRUPR
+
+to:
+
+      CALL LWRUPR(OPTG, ILEN)
+
+ 
+16.  In several of the subroutines, the form feed variable was deleted.  The
+code in each subroutine was changed from:
+
+C
+C     Assign ASCII Form Feed Character to Variable FFEED
+      FFEED = CHAR(12)
+      WRITE(IOUT,101) FFEED
+      WRITE(IOUT,102) RUNDAT, RUNTIM
+101   FORMAT(1X,A1)
+102   FORMAT(70X,A8/70X,A8)
+
+to:
+
+C
+      WRITE(IOUT,102) RUNDAT, RUNTIM
+102   FORMAT(70X,A8/70X,A8)
+
+
+17.  The following code was added after each one of the input echoing
+algorithms to print whether a regulatory or non-regulatory option was selected:
+
+      IF (ICI .EQ. 1) THEN
+         WRITE(IOUT, 105)
+        ELSE
+         WRITE(IOUT, 106)
+      END IF
+      IF (HANE .EQ. 10.0) THEN
+         WRITE(IOUT, 107) HANE
+        ELSE
+         WRITE(IOUT, 108) HANE
+      END IF
+105   FORMAT(' THE NON-REGULATORY BUT CONSERVATIVE BRODE 2 MIXING'
+     +       ' HEIGHT OPTION WAS SELECTED.')
+106   FORMAT(' THE REGULATORY (DEFAULT) MIXING HEIGHT OPTION WAS',
+     +       ' SELECTED.')
+107   FORMAT(' THE REGULATORY (DEFAULT) ANEMOMETER HEIGHT OF',F5.1,
+     +       ' METERS WAS ENTERED.'/)
+108   FORMAT(' A NON-REGULATORY ANEMOMETER HEIGHT (HANE) OF',F6.1,
+     +       ' METERS WAS ENTERED.'/)
+
+
+
+
+18.  To accomodate the new format statements, the following format number was
+changed from 105 to 109:
+
+      ELSE
+         WRITE(IOUT,109) ANGLE
+109      FORMAT('    ANGLE RELATIVE TO LONG AXIS = ',F12.4,/)
+      END IF
+
+
+19.  The length of the option line input is determined and later passed to the
+Subroutine LWRUPR to convert lower case characters to upper case.  The code was
+changed from:
+
+  402 READ(IRD,9044) OPTG
+ 9044 FORMAT(A80)
+
+to:
+
+  402 READ(IRD,9044) OPTG
+       ILEN = LEN_TRIM(OPTG)
+ 9044 FORMAT(A80)
+
+
+20.  The variables OPTG and ILEN are passed to Subroutine LWRUPR as arguments
+for processing.  The CALL statement was changed from:
+
+C     Convert Lower Case to Upper Case
+      CALL LWRUPR
+C
+
+to:
+
+C     Convert Lower Case to Upper Case
+      CALL LWRUPR(OPTG, ILEN)
+C
+
+
+21.   In the Subroutine LWRUPR, the code was revised to accept data through the
+use of arguments as opposed to passing the data throught COMMON statements. 
+The code was changed from:
+
+      SUBROUTINE LWRUPR
+
+to:
+
+      SUBROUTINE LWRUPR(OPTG, ILEN)
+
+
+   The INCLUDE statement in Subroutine LWRUPR was commented out:
+
+C      INCLUDE 'MAIN.INC'
+
+   The variable OPTG was typed as follows:
+
+      CHARACTER OPTG*80
+
+22.   Only the first ILEN characters are processed and the DO 20 statement was
+changed from:
+
+      DO 20 I = 1, 80
+
+to:
+
+      DO 20 I = 1, ILEN
+
+23.   The definition of ZREF was added by changing the code from:
+
+C                     3 - INPUT SINGLE STAB CLASS AND WIND SPEED
+C
+
+to:
+
+C                     3 - INPUT SINGLE STAB CLASS AND WIND SPEED
+C             ZREF  - ANEMOMETER HEIGHT (M)
+C
+
+24.  Because of the variable anemometer height option added to the code, the
+following WRITE statements were changed from:
+
+34       WRITE(IPRT,*) 'ENTER 10-METER WIND SPEED (M/S):'
+         READ(IRD,*,ERR=34) UINP
+to:
+
+34       WRITE(IPRT,*) 'ENTER ANEMOMETER HEIGHT WIND SPEED (M/S):'
+         READ(IRD,*,ERR=34) UINP
+
+and from:
+
+         WRITE(IOUT,130) UINP
+130      FORMAT(1X,'*** 10-METER WIND SPEED OF ',F6.2,' M/S ONLY ***')
+C
+
+to:
+
+         WRITE(IOUT,130) UINP
+130      FORMAT(1X,'*** ANEMOMETER HEIGHT WIND SPEED OF ',F6.2,
+     +             ' M/S ONLY ***')
+C
+
+and from:
+
+      IF (LDEP) THEN
+         WRITE(IPRT,317)
+         WRITE(IOUT,317)
+317      FORMAT(23X,'DEPOS AT ',28X,'CONC AT  ',/
+
+to:
+
+      IF (LDEP) THEN
+         IF (HANE .EQ. 10) THEN
+            WRITE(IPRT,317)
+            WRITE(IOUT,317)
+           ELSE
+            WRITE(IPRT,318)
+            WRITE(IOUT,318)
+         END IF
+       ELSE
+        IF (AREA) THEN
+         IF (HANE .EQ. 10) THEN
+            WRITE(IPRT,319)
+            WRITE(IOUT,319)
+           ELSE
+            WRITE(IPRT,320)
+            WRITE(IOUT,320)
+         END IF
+       ELSE
+        IF (HANE .EQ. 10.0) THEN
+           WRITE(IPRT,300)
+           WRITE(IOUT,300)
+         ELSE
+           WRITE(IPRT,301)
+           WRITE(IOUT,301)
+        END IF
+       END IF
+      END IF
+300   FORMAT(3X,'DIST',5X,'CONC',13X,'U10M',3X,'USTK',2X,'MIX HT',
+     &       3X,'PLUME',3X,'SIGMA',3X,'SIGMA',/,4X,'(M)',3X,
+     &       '(UG/M**3)',3X,'STAB',2X,'(M/S)',2X,'(M/S)',4X,'(M)',3X,
+     &       'HT (M)',3X,'Y (M)',3X,'Z (M)',2X,'DWASH',/,1X,
+     &       '-------',2X,'----------',2X,'----',2X,'-----',2X,
+     &       '-----',2X,'------',2X,'------',2X,'------',2X,
+     &       '------',2X,'-----')
+301   FORMAT(3X,'DIST',5X,'CONC',12X,'UHANE',3X,'USTK',2X,'MIX HT',
+     &       3X,'PLUME',3X,'SIGMA',3X,'SIGMA',/,4X,'(M)',3X,
+     &       '(UG/M**3)',3X,'STAB',2X,'(M/S)',2X,'(M/S)',4X,'(M)',3X,
+     &       'HT (M)',3X,'Y (M)',3X,'Z (M)',2X,'DWASH',/,1X,
+     &       '-------',2X,'----------',2X,'----',2X,'-----',2X,
+     &       '-----',2X,'------',2X,'------',2X,'------',2X,
+     &       '------',2X,'-----')
+317      FORMAT(23X,'DEPOS AT ',28X,'CONC AT  ',/
+
+and from:
+
+     &               1X,'----',1X,'-----')
+      ELSE IF (AREA) THEN
+         WRITE(IPRT,319)
+         WRITE(IOUT,319)
+319      FORMAT(3X,'DIST',5X,'CONC',13X,'U10M',3X,'USTK',2X,'MIX HT',
+
+to:
+
+     &               1X,'----',1X,'-----')
+318      FORMAT(23X,'DEPOS AT ',28X,'CONC AT  ',/
+     &          3X,'DIST',4X,'MAX CONC',4X,'MAX CONC ',6X,'UHANE',
+     &                    4X,'MAX DEPOS',4X,'MAX DEPOS',7X,'UHANE',/
+     &   4X,'(M)',3X,'(UG/M**3)',2X,'(G/M**2-HR)',1X,'STAB',1X,'(M/S)',
+     &            3X,'(G/M**2-HR)',2X,'(UG/M**3)',2X,'STAB',1X,'(M/S)',
+     &          /,1X,'-------',2X,'----------',2X,'----------',1X,
+     &               '----',1X,'-----',4X,'----------',2X,'----------',
+     &               1X,'----',1X,'-----')
+319      FORMAT(3X,'DIST',5X,'CONC',13X,'U10M',3X,'USTK',2X,'MIX HT',
+
+and from:
+
+     &          '-------')
+      ELSE
+         WRITE(IPRT,300)
+         WRITE(IOUT,300)
+300      FORMAT(3X,'DIST',5X,'CONC',13X,'U10M',3X,'USTK',2X,'MIX HT',
+     &          3X,'PLUME',3X,'SIGMA',3X,'SIGMA',/,4X,'(M)',3X,
+     &          '(UG/M**3)',3X,'STAB',2X,'(M/S)',2X,'(M/S)',4X,'(M)',3X,
+     &          'HT (M)',3X,'Y (M)',3X,'Z (M)',2X,'DWASH',/,1X,
+     &          '-------',2X,'----------',2X,'----',2X,'-----',2X,
+     &          '-----',2X,'------',2X,'------',2X,'------',2X,
+     &          '------',2X,'-----')
+      END IF
+C
+
+to:
+
+     &          '-------')
+320      FORMAT(3X,'DIST',5X,'CONC',12X,'UHANE',3X,'USTK',2X,'MIX HT',
+     &          3X,'PLUME',2X,'MAX DIR',/,4X,'(M)',3X,
+     &          '(UG/M**3)',3X,'STAB',2X,'(M/S)',2X,'(M/S)',4X,'(M)',3X,
+     &          'HT (M)',3X,'(DEG)',/,1X,
+     &          '-------',2X,'----------',2X,'----',2X,'-----',2X,
+     &          '-----',2X,'------',2X,'------',2X,
+     &          '-------')
+C
+
+and from:
+
+      IF (LDEP) THEN
+         WRITE(IPRT,317)
+         WRITE(IOUT,317)
+317      FORMAT(23X,'DEPOS AT ',28X,'CONC AT  ',/
+
+to:
+
+      IF (LDEP) THEN
+         IF (HANE .EQ. 10) THEN
+            WRITE(IPRT,317)
+            WRITE(IOUT,317)
+           ELSE
+            WRITE(IPRT,318)
+            WRITE(IOUT,318)
+         END IF
+       ELSE
+        IF (AREA) THEN
+         IF (HANE .EQ. 10) THEN
+            WRITE(IPRT,319)
+            WRITE(IOUT,319)
+           ELSE
+            WRITE(IPRT,320)
+            WRITE(IOUT,320)
+         END IF
+       ELSE
+        IF (HANE .EQ. 10.0) THEN
+           WRITE(IPRT,300)
+           WRITE(IOUT,300)
+         ELSE
+           WRITE(IPRT,301)
+           WRITE(IOUT,301)
+        END IF
+       END IF
+      END IF
+300   FORMAT(3X,'DIST',5X,'CONC',13X,'U10M',3X,'USTK',2X,'MIX HT',
+     &       3X,'PLUME',3X,'SIGMA',3X,'SIGMA',/,4X,'(M)',3X,
+     &       '(UG/M**3)',3X,'STAB',2X,'(M/S)',2X,'(M/S)',4X,'(M)',3X,
+     &       'HT (M)',3X,'Y (M)',3X,'Z (M)',2X,'DWASH',/,1X,
+     &       '-------',2X,'----------',2X,'----',2X,'-----',2X,
+     &       '-----',2X,'------',2X,'------',2X,'------',2X,
+     &       '------',2X,'-----')
+301   FORMAT(3X,'DIST',5X,'CONC',12X,'UHANE',3X,'USTK',2X,'MIX HT',
+     &       3X,'PLUME',3X,'SIGMA',3X,'SIGMA',/,4X,'(M)',3X,
+     &       '(UG/M**3)',3X,'STAB',2X,'(M/S)',2X,'(M/S)',4X,'(M)',3X,
+     &       'HT (M)',3X,'Y (M)',3X,'Z (M)',2X,'DWASH',/,1X,
+     &       '-------',2X,'----------',2X,'----',2X,'-----',2X,
+     &       '-----',2X,'------',2X,'------',2X,'------',2X,
+     &       '------',2X,'-----')
+317      FORMAT(23X,'DEPOS AT ',28X,'CONC AT  ',/
+
+and from:
+
+     &               1X,'----',1X,'-----')
+      ELSE IF (AREA) THEN
+         WRITE(IPRT,319)
+         WRITE(IOUT,319)
+319      FORMAT(3X,'DIST',5X,'CONC',13X,'U10M',3X,'USTK',2X,'MIX HT',
+
+to:
+
+     &               1X,'----',1X,'-----')
+318      FORMAT(23X,'DEPOS AT ',28X,'CONC AT  ',/
+     &          3X,'DIST',4X,'MAX CONC',4X,'MAX CONC ',6X,'UHANE',
+     &                    4X,'MAX DEPOS',4X,'MAX DEPOS',7X,'UHANE',/
+     &   4X,'(M)',3X,'(UG/M**3)',2X,'(G/M**2-HR)',1X,'STAB',1X,'(M/S)',
+     &            3X,'(G/M**2-HR)',2X,'(UG/M**3)',2X,'STAB',1X,'(M/S)',
+     &          /,1X,'-------',2X,'----------',2X,'----------',1X,
+     &               '----',1X,'-----',4X,'----------',2X,'----------',
+     &               1X,'----',1X,'-----')
+319      FORMAT(3X,'DIST',5X,'CONC',13X,'U10M',3X,'USTK',2X,'MIX HT',
+
+and from:
+
+     &          '-------')
+      ELSE
+         WRITE(IPRT,300)
+         WRITE(IOUT,300)
+300      FORMAT(3X,'DIST',5X,'CONC',13X,'U10M',3X,'USTK',2X,'MIX HT',
+     &          3X,'PLUME',3X,'SIGMA',3X,'SIGMA',/,4X,'(M)',3X,
+     &          '(UG/M**3)',3X,'STAB',2X,'(M/S)',2X,'(M/S)',4X,'(M)',3X,
+     &          'HT (M)',3X,'Y (M)',3X,'Z (M)',2X,'DWASH',/,1X,
+     &          '-------',2X,'----------',2X,'----',2X,'-----',2X,
+     &          '-----',2X,'------',2X,'------',2X,'------',2X,
+     &          '------',2X,'-----')
+      END IF
+      N = 0
+
+to:
+
+     &          '-------')
+320      FORMAT(3X,'DIST',5X,'CONC',12X,'UHANE',3X,'USTK',2X,'MIX HT',
+     &          3X,'PLUME',2X,'MAX DIR',/,4X,'(M)',3X,
+     &          '(UG/M**3)',3X,'STAB',2X,'(M/S)',2X,'(M/S)',4X,'(M)',3X,
+     &          'HT (M)',3X,'(DEG)',/,1X,
+     &          '-------',2X,'----------',2X,'----',2X,'-----',2X,
+     &          '-----',2X,'------',2X,'------',2X,
+     &          '-------')
+
+      N = 0
+
+25.  To implement the Brode 2 mixing height option, the variable arrays, ZIMIN
+and ZIFACT, were dimensioned in MAIN.INC as part of the METVAR common statement
+and the associated data were initialized in a BLOCK statement.  In the BLOCK
+statement, the code was changed from:
+
+      DATA IRD/5/, IPRT/6/, IOUT/9/, IDAT/7/, IDBG/13/
+
+to:
+
+      DATA IRD/5/, IPRT/6/, IOUT/9/, IDAT/7/, IDBG/13/
+      DATA ZIMIN /300.0, 100.0, 30.0, 30.0/
+      DATA ZIFACT /0.01, 0.02, 0.03, 0.04/
+
+26.  The anemometer reference height, ZREF, was moved to another part of the
+program.  The code was changed in three subroutines from:
+
+C           ADJUST WIND SPEED FROM REFERENCE (ANEMOMETER) HEIGHT, ZREF,
+C           OF 10-METERS, TO STACK HEIGHT
+C
+            ZREF = 10.0
+            IF (RURAL) THEN
+
+to:
+
+C           ADJUST WIND SPEED FROM REFERENCE (ANEMOMETER) HEIGHT, ZREF,
+C           TO STACK HEIGHT
+C
+            IF (RURAL) THEN
+
+27.  The following code was modified to add the Brode 2 Mixing Height option.
+The code was changed in three places from:
+
+            IF (ZI .LT. HE+1.)  ZI = HE + 1.
+C
+C        MIXING HTS ARE NOT USED IN COMPUTING CONCENTRATIONS
+C        DURING STABLE CONDITIONS.  SET TO 10000 M FOR E AND F.
+
+to:
+
+            IF (ZI .LT. HE+1.)  ZI = HE + 1.
+C  FROM R. BRODE 1991 AMS CONFERENCE PREPRINT.  ADJUSTS MIXING HEIGHTS SO
+C   CALCULATED CONCENTRATIONS ARE MORE CONSERVATIVE WITH RESPECT TO ISCST2
+C   RESULTS.
+         U10 = UREF * (10.0/HANE)**P
+           IF (KST .LE. 4 .AND. ICI .EQ. 1) THEN
+             ZI = MAX(ZIMIN(KST), (HE *(1.0 + ZIFACT(KST) * U10)))
+           END IF
+
+C
+C        MIXING HTS ARE NOT USED IN COMPUTING CONCENTRATIONS
+C        DURING STABLE CONDITIONS.  SET TO 10000 M FOR E AND F.
+
+
+
+28.  The model Julian date was changed from:
+
+      DATA VERSN/'95250'/
+
+to:
+
+      DATA VERSN/'96043'/
+
+
+
+Note: The Subroutines CAVITY2, PRISE, FRGAUSS and Function ERF were appended to
+the SCREEN3A.FOR source code and comprise the main parts of the option cavity
+algorithm.
+
+
+The following pertains to changes made to the SCREEN3B.FOR source code:
+
+29.  The following code was changed to accommodate a variable anemometer height
+in the formula determining the critical wind speed value at anemometer height,
+the value 10. was changed to ZREF.  The code was changed from:
+
+         UC10M(I) = UC * (10./AMAX1(10.,HS))**0.20
+
+to:
+
+         UC10M(I) = UC * (ZREF/AMAX1(10,HS))**0.20
+
+30.  The following WRITE statements were re structured to accommodate output
+wind speeds at other than 10 meters.  The code was changed from:
+
+      WRITE(IPRT,610) (UC10M(I),I=1,2)
+      WRITE(IOUT,610) (UC10M(I),I=1,2)
+610   FORMAT(3X,2('CRIT WS @10M (M/S) = ',F8.2,8X))
+      WRITE(IPRT,620) (UCSTK(I),I=1,2)
+
+to:
+
+      IF (ABS(HANE-10.0) .LT. .1) THEN
+         WRITE(IPRT,610) (UC10M(I),I=1,2)
+         WRITE(IOUT,610) (UC10M(I),I=1,2)
+       ELSE
+         WRITE(IPRT,612) (UC10M(I),I=1,2)
+         WRITE(IOUT,612) (UC10M(I),I=1,2)
+      END IF
+610   FORMAT(3X,2('CRIT WS @10M (M/S) = ',F8.2,8X))
+612   FORMAT(3X,2('CRIT WS @HANE(M/S) = ',F8.2,8X))
+      WRITE(IPRT,620) (UCSTK(I),I=1,2)
+
+31.  The following definition was commented in by changing the code from:
+
+C           X2HB  - 2*BUILDING HT (M)
+C     
+to:
+
+C           X2HB  - 2*BUILDING HT (M)
+C           ZREF  - ANEMOMETER HEIGHT
+C     
+
+
+32.  The following comments were reworded from:
+
+C
+C        BEGIN BY SETTING THE INITIAL 10M WIND SPEED TO 1 M/S AND THE
+C        NEXT WIND SPEED AT 20 M/S. THESE TWO WIND SPEEDS SHOULD 
+C        SERVE AS A BOUND FOR THE CRITICAL WIND SPEED.  IF NOT THE
+C        ROUTINE RETURNS TO CAVITY.
+C
+
+to:
+
+C
+C        BEGIN BY SETTING THE INITIAL WIND SPEED AT ANEMOMETER HEIGHT
+C        TO 1 M/S AND THE NEXT WIND SPEED AT 20 M/S. THESE TWO WIND
+C        SPEEDS SHOULD SERVE AS A BOUND FOR THE CRITICAL WIND SPEED.
+C        IF NOT THE ROUTINE RETURNS TO CAVITY.
+C
+
+
+33.  The fixed anemometer height of 10. meters was replaced by a variable
+anemometer height variable, ZREF.  The code was changed from:
+
+      U1TEN = 20.
+      U0 = U0TEN*(AMAX1(10.,HS)/10.)**0.20
+      U1 = U1TEN*(AMAX1(10.,HS)/10.)**0.20
+      UMIN = U0
+
+to:
+
+      U1TEN = 20.
+      U0 = U0TEN*(AMAX1(10,HS)/ZREF)**0.20
+      U1 = U1TEN*(AMAX1(10,HS)/ZREF)**0.20
+      UMIN = U0
+
+
+
+34.  The following code in the VALLEY subroutine was changed in several places
+to add code to print whether the data was processed using regulatory or non-
+regulatory option(s).  The code was changed from:
+
+     &          1X,'   URBAN/RURAL OPTION     = ',7X,A5,/)
+
+      ELSE IF (FLARE) THEN
+         WRITE(IOUT,220) VERSN, TITLE, Q, HSTK, H, ZR, KPRT, HS
+220      FORMAT(' ',1X,'***  SCREEN3 MODEL RUN  ***',
+     &            /,2X,'*** VERSION DATED ',A5,' ***',//,1X,A79,//,
+     &          1X,'COMPLEX TERRAIN INPUTS:',/,
+     &          1X,'   SOURCE TYPE            =        FLARE',/,
+     &          1X,'   EMISSION RATE (G/S)    = ',G16.6,/,
+     &          1X,'   FLARE STACK HEIGHT (M) = ',F12.4,/,
+     &          1X,'   TOT HEAT RLS (CAL/S)   = ',G16.6,/,
+     &          1X,'   RECEPTOR HEIGHT (M)    = ',F12.4,/,
+     &          1X,'   URBAN/RURAL OPTION     = ',7X,A5,/,
+     &          1X,'   EFF RELEASE HEIGHT (M) = ',F12.4,/)
+
+      ELSE
+         RETURN
+      END IF
+
+to:
+
+     &          1X,'   URBAN/RURAL OPTION     = ',7X,A5,/)
+      IF (ICI .EQ. 1) THEN
+         WRITE(IOUT, 105)
+        ELSE
+         WRITE(IOUT, 106)
+      END IF
+      IF (HANE .EQ. 10.0) THEN
+         WRITE(IOUT, 107) HANE
+        ELSE
+         WRITE(IOUT, 108) HANE
+      END IF
+
+
+and from:
+
+      IF (VS .LT. 1.0E-05) VS = 1.0E-05
+
+to:
+
+105   FORMAT(' THE NON-REGULATORY BUT CONSERVATIVE BRODE 2 MIXING'
+     +       ' HEIGHT OPTION WAS SELECTED.')
+106   FORMAT(' THE REGULATORY (DEFAULT) MIXING HEIGHT OPTION WAS',
+     +       ' SELECTED.')
+107   FORMAT(' THE REGULATORY (DEFAULT) ANEMOMETER HEIGHT OF',F5.1,
+     +       ' METERS WAS ENTERED.'/)
+108   FORMAT(' A NON-REGULATORY ANEMOMETER HEIGHT (HANE) OF',F6.1,
+     +       ' METERS WAS ENTERED.'/)
+
+
+      ELSE IF (FLARE) THEN
+         WRITE(IOUT,220) VERSN, TITLE, Q, HSTK, H, ZR, KPRT, HS
+220      FORMAT(' ',1X,'***  SCREEN3 MODEL RUN  ***',
+     &            /,2X,'*** VERSION DATED ',A5,' ***',//,1X,A79,//,
+     &          1X,'COMPLEX TERRAIN INPUTS:',/,
+     &          1X,'   SOURCE TYPE            =        FLARE',/,
+     &          1X,'   EMISSION RATE (G/S)    = ',G16.6,/,
+     &          1X,'   FLARE STACK HEIGHT (M) = ',F12.4,/,
+     &          1X,'   TOT HEAT RLS (CAL/S)   = ',G16.6,/,
+     &          1X,'   RECEPTOR HEIGHT (M)    = ',F12.4,/,
+     &          1X,'   URBAN/RURAL OPTION     = ',7X,A5,/,
+     &          1X,'   EFF RELEASE HEIGHT (M) = ',F12.4,/)
+      IF (ICI .EQ. 1) THEN
+         WRITE(IOUT, 105)
+        ELSE
+         WRITE(IOUT, 106)
+      END IF
+      IF (HANE .EQ. 10.0) THEN
+         WRITE(IOUT, 107) HANE
+        ELSE
+         WRITE(IOUT, 108) HANE
+      END IF
+
+
+      ELSE
+         RETURN
+      END IF
+
+      IF (VS .LT. 1.0E-05) VS = 1.0E-05
+
+and from:
+
+         END IF
+         IF (N .EQ. 1) THEN   
+            WRITE(IPRT,300)
+            WRITE(IOUT,300)
+         END IF
+         IF (N .EQ. 6 .OR. N .EQ. 11 .OR. N .EQ. 16) WRITE(IPRT,300)
+         WRITE(IPRT,310) HTER,X,CHICNT,CHIVAL,HEC,CHISIM,HES,KSTS,
+     &                   UREFOUT,USOUT
+         WRITE(IOUT,310) HTER,X,CHICNT,CHIVAL,HEC,CHISIM,HES,KSTS,
+     &                   UREFOUT,USOUT
+300      FORMAT(26X,'*VALLEY 24-HR CALCS*',3X,'**SIMPLE TERRAIN 24-HR',
+
+to:
+
+         END IF
+         IF (N .EQ. 1) THEN
+           IF (HANE .EQ. 10.0) THEN
+              WRITE(IPRT,300)
+              WRITE(IOUT,300)
+            ELSE
+              WRITE(IPRT,301)
+              WRITE(IOUT,301)
+           END IF
+         END IF
+         IF (N .EQ. 6 .OR. N .EQ. 11 .OR. N .EQ. 16) THEN
+           IF (HANE .EQ. 10.0) THEN
+              WRITE(IPRT,300)
+            ELSE
+              WRITE(IPRT,301)
+           END IF
+         END IF
+300      FORMAT(26X,'*VALLEY 24-HR CALCS*',3X,'**SIMPLE TERRAIN 24-HR',
+
+and from:
+
+     &      1X,'----')
+310      FORMAT(1X,F5.0,1X,F7.0,1X,2(G10.4,2X),F6.1,3X,G10.4,2X,F6.1,3X,
+
+to:
+
+     &      1X,'----')
+301      FORMAT(26X,'*VALLEY 24-HR CALCS*',3X,'**SIMPLE TERRAIN 24-HR',
+     &      ' CALCS**',/,1X,' TERR',9X,'MAX 24-HR',14X,
+     &      'PLUME HT',13X,'PLUME HT',/,3X,'HT',4X,'DIST',2X,
+     &      '  CONC',8X,'CONC',4X,'ABOVE STK',4X,'CONC',4X,'ABOVE STK'
+     &      ,3X,'UHANE',1X,'USTK',/,2X,'(M)',4X,'(M)',3X,'(UG/M**3)',3X,
+     &      '(UG/M**3)',2X,'BASE (M)',2X,'(UG/M**3)',2X,'HGT (M)',
+     &      2X,'SC',3X,'(M/S)',/,1X,'-----',1X,'-------',1X,
+     &      '----------',2X,'----------',2X,'------',3X,
+     &      '----------',2X,'------',2X,'--',1X,'----',
+     &      1X,'----')
+
+         WRITE(IPRT,310) HTER,X,CHICNT,CHIVAL,HEC,CHISIM,HES,KSTS,
+     &                   UREFOUT,USOUT
+         WRITE(IOUT,310) HTER,X,CHICNT,CHIVAL,HEC,CHISIM,HES,KSTS,
+     &                   UREFOUT,USOUT
+310      FORMAT(1X,F5.0,1X,F7.0,1X,2(G10.4,2X),F6.1,3X,G10.4,2X,F6.1,3X,
+
+
+     Any questions should be directed to the SCRAM BBS Sysop via the TTN.

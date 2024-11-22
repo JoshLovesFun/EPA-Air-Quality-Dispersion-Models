@@ -1,0 +1,79 @@
+PLUVUE2 Operating instructions for Test case
+
+General Instructions
+
+Double clicking on an executable name in Windows Explorer will work but if there is an error, the
+window will open and close in a flash and you will not be able to see any error messages. We advise
+users to use the Windows Command Prompt (e.g., Start Button | All Programs |Accessories | Command
+Prompt) and then use DOS commands to change directory (CD) to where the executable and associated
+files are located.
+
+For Windows 8 users, the Command Prompt can be activated by pressing the “Windows Key” and the
+“R” key together . A “Run Command” window will appear. In the text box, type: CMD. After pressing
+the Enter key, the Command Prompt window will appear. An alternative is to press the Windows key
+and the X key together and then click on Command Prompt appearing on a Power Users Menu.
+
+A “File Compare” function can be used in the Command Prompt window to ascertain differences
+between two ASCII text files. The Command is: FC file1 file2. With a test case output file of pluvue2.out,
+the Command would be: FC pluvue2.out pluvue2_32ab.out.
+
+MIETBL test case
+
+Two sets of input files were generated with this test case. Both are based on the original test case input
+from 1996. One input file lists and uses the default MIE file from 1996, DEFAULT.MIE. The other file
+uses the MIE file created with the 13222 mietbl.exe program, Mietbl32ab.out. All the rest of the data
+remain the same and in the same format.
+
+To run the test case, place the MIETBL executable in the same subdirectory as the mieval.inp file. Then
+bring up a Command Prompt and change directory to where the MIETBL files are located. At the
+Command Prompt, enter the executable name: mietbl32ab.exe.
+
+File Compare the mietbl.out file with the mietbl32ab.out file (e.g., FC mietbl.out mietbl32.out)
+and look for major differences.
+
+PLUIN2 test case
+
+Place the PLUIN2_32ab.exe, PLUIN2.CTL, TEMPLATE.INP file in the same subdirectory. Execute the
+PLUIN2_32ab.exe program. Rename the pluin2.out program to Pluvue2.inp and use this file as input to
+run PLUVUE2_32ab.exe.
+
+File Compare PLUIN2test.out PLUVUE2.INP for differences.
+
+PLUVUE2 test case
+
+There are three executables: Pluvue2old.exe, Pluvue2_32ab.exe and Pluvue2_64ab.exe. Pluvue2old.exe
+is the old executable recompiled in 1996. Pluvue2_32ab.exe and Pluvue2_64ab.exe are the current
+recompiled executables. The first is for a 32‐bit operating system and the last one is for a 64‐bit
+operating system. All these programs were recompiled using an Absoft Fortran compiler version 11.5.3.
+
+This current test case is designed to run when the MIE files, the input files, and the executables are all in
+the same subdirectory.
+
+Not all the executables will work for each Windows Operating System. The oldest and the 64‐bit
+executables will not work with Windows XP systems. The latest two executables will work on a
+Windows 64‐bit Operating system such as Windows 7 and 8.
+
+Running PLUVUE2 Test case
+
+To execute Pluvue2, bring up a command prompt, change directory to where the above files are located,
+and type in one of the executable names. The input file will always be Pluvue2.inp. The output will
+always be Pluvue2.out. Rename Pluvue2.out to another name such as Pluvue2_32abtest.out.
+
+A comparison between the old file output and the new file output showed only minor differences
+between 16‐bit and 32‐bit produced files **except** in one place. On Line 208, the fourth values are
+different by about 14.0% instead of being in the 0.037 to 0.063% range. Here are two snippets from the
+respective Line 208 output results:
+
+Old Line 208: “TOTAL AMB: 0.000 0.000 0.000 85.387 …”
+
+New Line 208: “TOTAL AMB: 0.000 0.000 0.000 73.460 …”
+
+An investigation of this result difference points to two very small numbers of the order of E‐09 being
+divided by each other. The width in the number of bytes representing a floating point number has its
+biggest differences when the numbers are very small. As in this case, there were not enough bytes to
+adequately to create the same exact values between 16‐bit and 32‐bit operating system under which
+the divisions occurred. There are likely other factors but we do not have access to older operating
+systems and compilers under which the earlier versions were created in order to do thorough testing.
+
+PLUVUE8.bin will be empty with 0 bytes. PLUVUE7.bin will contain data but not comparison was done
+on this file. Data differences should be clear in the PLUVUE2.OUT file.

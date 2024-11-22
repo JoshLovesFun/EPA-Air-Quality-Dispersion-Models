@@ -1,0 +1,864 @@
+1                            PLUVUE II (VERSION 13222)
+                          AN AIR QUALITY DISPERSION MODEL IN
+                              THE OTHER MODELS SECTION       
+                      EPA SUPPORT CENTER FOR REGULATORY AIR MODELS
+
+0
+ VISUAL IMPACT ASSESSMENT FOR Test Case               
+
+
+     EMISSIONS SOURCE DATA
+
+          ELEVATION OF SITE =      5200.  FEET MSL
+                                   1585.  METERS MSL
+
+          NO. OF UNITS =     1.
+
+          STACK HEIGHT =  150.  FEET
+                           46.  METERS
+
+          FLUE GAS FLOW RATE =    154606.  CU FT/MIN
+                                    72.96  CU M/SEC
+
+          FLUE GAS TEMPERATURE =       351.  F
+                                       450.  K
+
+          FLUE GAS OXYGEN CONTENT =        3.0  MOL PERCENT
+
+          SO2 EMISSION RATE (TOTAL) =       0.27  TONS/DAY
+                                         2.835E+00  G/SEC
+
+          NOX EMISSION RATE (TOTAL,AS NO2) =       1.37  TONS/DAY
+                                                1.439E+01  G/SEC
+
+          PARTICULATE EMISSION RATE (TOTAL) =       0.03  TONS/DAY
+                                                3.150E-01  G/SEC
+
+0
+
+
+
+     METEOROLOGICAL AND AMBIENT AIR QUALITY DATA
+
+          WINDSPEED =   3.0  MILES/HR
+                        1.3  M/SEC
+
+          PASQUILL-GIFFORD-TURNER STABILITY CATEGORY E
+
+          LAPSE RATE =  5.60  F/1000 FT
+                          1.021E-02  K/M
+
+          POTENTIAL TEMPERATURE LAPSE RATE =    2.001E-02  K/M
+
+          AMBIENT TEMPERATURE =  60.0  F
+                                288.7  K
+
+          RELATIVE HUMIDITY =  85.0  %
+
+          MIXING DEPTH =     2000.0  M
+
+          AMBIENT PRESSURE =  0.83  ATM
+
+          BACKGROUND NOX CONCENTRATION =      0.000  PPM
+
+          BACKGROUND NO2 CONCENTRATION =      0.000  PPM
+
+          BACKGROUND OZONE CONCENTRATION =      0.040  PPM
+
+          BACKGROUND SO2 CONCENTRATION =      0.000  PPM
+
+  ROG =  0.1500        SIGMA =  2.0000        REFRACTIVE INDEX = 1.5000 +  0.000000
+ LOG-NORMAL SIZE DISTRIBUTION (101 POINT HISTOGRAM)                             
+  ROG =  3.0000        SIGMA =  2.2000        REFRACTIVE INDEX = 1.5000 +  0.000000
+ LOG-NORMAL SIZE DISTRIBUTION (101 POINT HISTOGRAM)                             
+  ROG =  1.0000        SIGMA =  2.0000        REFRACTIVE INDEX = 1.5000 +  0.000000
+ LOG-NORMAL SIZE DISTRIBUTION (101 POINT HISTOGRAM)                             
+  ROG =  0.0500        SIGMA =  2.0000        REFRACTIVE INDEX = 2.0000 +  1.000000
+ LOG-NORMAL SIZE DISTRIBUTION (101 POINT HISTOGRAM)                             
+
+
+
+          BACKGROUND COARSE MODE CONCENTRATION =        4.8  UG/M3
+
+          BACKGROUND SULFATE CONCENTRATION =        0.8  UG/M3
+
+          BACKGROUND NITRATE CONCENTRATION =        0.0  UG/M3
+
+          BACKGROUND VISUAL RANGE =      170.0  KILOMETERS
+
+          SO2 DEPOSITION VELOCITY =       1.00  CM/SEC
+
+          NOX DEPOSITION VELOCITY =       1.00  CM/SEC
+
+          COARSE PARTICULATE DEPOSITION VELOCITY =       0.10  CM/SEC
+
+          SUBMICRON PARTICULATE DEPOSITION VELOCITY =       0.10  CM/SEC
+
+
+                                       AEROSOL STATISTICS
+
+                                    BACKGROUND                                PLUME
+
+                         ACCUMULATION           COARSE           ACCUMULATION           COARSE           CARBONACEOUS
+          MASS MEDIAN        MODE                MODE                MODE                MODE                AEROSOLS
+          RADIUS
+          MICROMETERS          0.150               3.000               0.100               1.000               0.050
+
+          GEOMETRIC
+          STANDARD
+          DEVIATION            2.000               2.200               2.000               2.000               2.000
+
+          PARTICLE
+          DENSITY
+          G/(CM**3)            1.500               2.500               1.500               2.500               2.000
+
+ CARBONACEOUS FRACTION OF PARTICLATE MASS EMISSIONS =      0.000
+
+ BACKGROUND ATMOSPHERIC ELEMENTAL CARBON =      0.000 UG/M**3
+
+0
+
+
+
+     GEOMETRY OF USER-SPECIFIED PLUME-OBSERVER-SUN ORIENTATION
+
+
+          WIND DIRECTION (DEGREES) =270.0
+
+
+          SIMULATION IS FOR  700. HOURS ON  4/ 1
+
+          SOLAR ZENITH ANGLE (DEGREES) = 80.4
+
+          SOLAR AZIMUTH ANGLE (DEGREES) =    94.9
+
+
+
+          GEOMETRIES FOR LINES-OF-SIGHT THROUGH PLUME PARCELS AT GIVEN DOWNWIND DISTANCES (X)
+
+    X (KM)   AZIMUTH        RP     ALPHA      BETA     THETA
+       1.0     240.9      10.3      29.1       0.8     144.7
+       2.5     236.3       9.0      33.7       0.9     140.2
+       5.0     225.0       7.1      45.0       1.2     129.2
+      10.0     180.0       5.0      90.0       1.7      84.9
+      12.5     153.4       5.6      63.4       1.5      58.8
+      15.0     135.0       7.1      45.0       1.2      40.8
+1                              BACKGROUND CONDITIONS
+
+
+     ACCUMULATION MODE                        COARSE PARTICLE MODE                       PRIMARY PARTICLE MODE
+     MASS RADIUS    SIGMA   BSCAT.55/MASS        MASS RADIUS    SIGMA   BSCAT.55/MASS        MASS RADIUS    SIGMA   BSCAT.55/MASS
+    0.1500E+00   0.2000E+01   0.1629E-01         0.3000E+01   0.2200E+01   0.3218E-03        0.1000E+01   0.2000E+01   0.1046E-02
+
+
+
+                                                  REFRACTION INDEXES
+
+
+     ACCUMULATION MODE     =    0.1500E+01 + I    0.0000E+00
+
+     COARSE MODE           =    0.1500E+01 + I    0.0000E+00
+
+     PRIMARY AEROSOLS      =    0.1500E+01 + I    0.0000E+00
+
+     CARBONACEOUS AEROSOLS =    0.2000E+01 + I    0.1000E+01
+
+
+                               COEFFICIENTS AT 0.55 MICROMETERS , 1./KM
+       BTARAY =0.9885E-02   BTAAER =0.1457E-01   ABSNO2 =0.0000E+00   BTABAC =0.2301E-01
+
+
+0
+                         CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY
+
+                                   Test Case               
+
+ DOWNWIND DISTANCE (KM) =    1.0
+ PLUME ALTITUDE (M)     =   146.
+ SIGMA Y (M)            =    57.
+ SIGMA Z (M)            =    23.
+ SO2-SO4 CONVERSION RATE=      0.0000 PERCENT/HR
+ NOX-NO3 CONVERSION RATE=      0.0000 PERCENT/HR
+
+ ALTITUDE         NOX       NO2       NO3-  NO2/NTOT  NO3-/NTOT     SO2       SO4=  SO4=/STOT     O3     PRIMARY BSP-TOTAL  BSPSN/BSP
+                (PPM)     (PPM)     (PPM)  (MOLE %)  (MOLE %)     (PPM)   (UG/M3)  (MOLE %)     (PPM)   (UG/M3) (10-4 M-1)   (%)
+
+  H+2S
+ INCREMENT:     0.048     0.029     0.000    60.990     0.000     0.007     0.000     0.000    -0.029     1.981     0.021     0.000
+ TOTAL AMB:     0.048     0.029     0.000    60.990     0.000     0.007     0.799     2.902     0.011     7.581     0.166    78.266
+
+  H+1S
+ INCREMENT:     0.216     0.039     0.000    17.933     0.000     0.031     0.000     0.000    -0.039     8.880     0.093     0.000
+ TOTAL AMB:     0.216     0.039     0.000    17.933     0.000     0.031     0.799     0.662     0.001    14.479     0.239    54.600
+
+  H   
+ INCREMENT:     0.355     0.039     0.000    11.084     0.000     0.050     0.000     0.000    -0.039    14.640     0.153     0.000
+ TOTAL AMB:     0.355     0.039     0.000    11.084     0.000     0.050     0.799     0.403     0.001    20.239     0.299    43.592
+
+  H-1S
+ INCREMENT:     0.216     0.039     0.000    17.933     0.000     0.031     0.000     0.000    -0.039     8.880     0.093     0.000
+ TOTAL AMB:     0.216     0.039     0.000    17.933     0.000     0.031     0.799     0.662     0.001    14.479     0.239    54.600
+
+  H-2S
+ INCREMENT:     0.048     0.029     0.000    60.990     0.000     0.007     0.000     0.000    -0.029     1.981     0.021     0.000
+ TOTAL AMB:     0.048     0.029     0.000    60.990     0.000     0.007     0.799     2.902     0.011     7.581     0.166    78.266
+
+   0  
+ INCREMENT:     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000
+ TOTAL AMB:     0.000     0.000     0.000    73.460     0.000     0.000     0.799   100.000     0.040     5.599     0.146    89.396
+
+
+
+
+
+ CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX
+
+
+                 SO2:    0.0000
+                 NOX:    0.0000
+ PRIMARY PARTICULATE:    0.0000
+                 SO4:    0.0000
+                 NO3:    0.0000
+0
+                    VISUAL EFFECTS FOR HORIZONTAL SIGHT PATHS
+                    Test Case               
+
+ DOWNWIND DISTANCE (KM) =    1.0
+ PLUME ALTITUDE (M)     =   146.
+ PLUME-OBSERVER DISTANCE (KM) =   10.3
+ AZIMUTH OF LINE-OF-SIGHT =  240.9
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    0.8
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ SIGHT PATH IS THROUGH PLUME CENTER
+
+ THETA ALPHA  RP/RV0    RV  %REDUCED    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+  145.
+         29.    0.06   169.8    0.12   53.14   77.98  0.3331  0.3507   -0.36   -0.21 -0.0065  0.9806  0.0013  0.0013  1.0006  0.7560
+
+
+**************************************************************************
+Non-horizontal views not calculated for beta less than 5 degrees
+**************************************************************************
+
+
+0
+          PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS
+          OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS
+          FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES
+
+          Test Case               
+
+
+ DOWNWIND DISTANCE (KM) =    1.0
+ PLUME-OBSERVER DISTANCE (KM) =   10.3
+ AZIMUTH OF LINE-OF-SIGHT =  240.9
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    0.8
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ THETA =  145.
+
+ REFLECT  RP/RV0  RO/RV0    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+     0.9    0.06    0.15   69.72   86.87  0.3704  0.3721   -0.52   -0.25 -0.0075  0.9843  0.0012  0.0009  0.8646  0.6935
+     0.3    0.06    0.15   38.17   68.18  0.3342  0.3454   -0.18   -0.13 -0.0046  0.9850  0.0010  0.0010  0.7095  0.5425
+     0.1    0.06    0.15   27.66   59.61  0.3075  0.3257   -0.07   -0.07 -0.0022  0.9831  0.0010  0.0012  0.6846  0.5111
+0
+                         CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY
+
+                                   Test Case               
+
+ DOWNWIND DISTANCE (KM) =    2.5
+ PLUME ALTITUDE (M)     =   146.
+ SIGMA Y (M)            =   123.
+ SIGMA Z (M)            =    39.
+ SO2-SO4 CONVERSION RATE=      0.0002 PERCENT/HR
+ NOX-NO3 CONVERSION RATE=      0.0014 PERCENT/HR
+
+ ALTITUDE         NOX       NO2       NO3-  NO2/NTOT  NO3-/NTOT     SO2       SO4=  SO4=/STOT     O3     PRIMARY BSP-TOTAL  BSPSN/BSP
+                (PPM)     (PPM)     (PPM)  (MOLE %)  (MOLE %)     (PPM)   (UG/M3)  (MOLE %)     (PPM)   (UG/M3) (10-4 M-1)   (%)
+
+  H+2S
+ INCREMENT:     0.013     0.011     0.000    81.019     0.002     0.002     0.000     0.001    -0.011     0.549     0.006     0.112
+ TOTAL AMB:     0.013     0.011     0.000    81.019     0.002     0.002     0.799     9.742     0.029     6.148     0.151    86.010
+
+  H+1S
+ INCREMENT:     0.060     0.032     0.000    53.791     0.000     0.008     0.000     0.000    -0.032     2.459     0.026     0.011
+ TOTAL AMB:     0.060     0.032     0.000    53.791     0.000     0.008     0.799     2.352     0.008     8.058     0.171    75.988
+
+  H   
+ INCREMENT:     0.098     0.036     0.000    36.762     0.000     0.014     0.000     0.000    -0.036     4.053     0.042     0.006
+ TOTAL AMB:     0.098     0.036     0.000    36.762     0.000     0.014     0.799     1.440     0.004     9.653     0.188    69.250
+
+  H-1S
+ INCREMENT:     0.060     0.032     0.000    53.791     0.000     0.008     0.000     0.000    -0.032     2.459     0.026     0.011
+ TOTAL AMB:     0.060     0.032     0.000    53.791     0.000     0.008     0.799     2.352     0.008     8.058     0.171    75.988
+
+  H-2S
+ INCREMENT:     0.013     0.011     0.000    81.019     0.002     0.002     0.000     0.001    -0.011     0.549     0.006     0.112
+ TOTAL AMB:     0.013     0.011     0.000    81.019     0.002     0.002     0.799     9.742     0.029     6.148     0.151    86.010
+
+   0  
+ INCREMENT:     0.000     0.000     0.000     0.000     0.181     0.000     0.000     0.035     0.000     0.008     0.000     6.910
+ TOTAL AMB:     0.000     0.000     0.000    85.181     0.181     0.000     0.799    88.083     0.040     5.607     0.146    89.345
+
+
+
+
+
+ CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX
+
+
+                 SO2:    0.0000
+                 NOX:    0.0000
+ PRIMARY PARTICULATE:    0.0000
+                 SO4:    0.0000
+                 NO3:    0.0000
+0
+                    VISUAL EFFECTS FOR HORIZONTAL SIGHT PATHS
+                    Test Case               
+
+ DOWNWIND DISTANCE (KM) =    2.5
+ PLUME ALTITUDE (M)     =   146.
+ PLUME-OBSERVER DISTANCE (KM) =    9.0
+ AZIMUTH OF LINE-OF-SIGHT =  236.3
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    0.9
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ SIGHT PATH IS THROUGH PLUME CENTER
+
+ THETA ALPHA  RP/RV0    RV  %REDUCED    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+  140.
+         34.    0.05   169.9    0.08   51.76   77.16  0.3329  0.3505   -0.42   -0.25 -0.0076  0.9726  0.0018  0.0018  1.3509  1.0206
+
+
+**************************************************************************
+Non-horizontal views not calculated for beta less than 5 degrees
+**************************************************************************
+
+
+0
+          PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS
+          OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS
+          FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES
+
+          Test Case               
+
+
+ DOWNWIND DISTANCE (KM) =    2.5
+ PLUME-OBSERVER DISTANCE (KM) =    9.0
+ AZIMUTH OF LINE-OF-SIGHT =  236.3
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    0.9
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ THETA =  140.
+
+ REFLECT  RP/RV0  RO/RV0    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+     0.9    0.05    0.15   69.16   86.59  0.3714  0.3728   -0.57   -0.28 -0.0083  0.9756  0.0017  0.0014  1.2232  0.9749
+     0.3    0.05    0.15   37.60   67.75  0.3350  0.3459   -0.25   -0.18 -0.0063  0.9775  0.0015  0.0015  1.0121  0.7748
+     0.1    0.05    0.15   27.08   59.08  0.3078  0.3259   -0.14   -0.13 -0.0047  0.9771  0.0014  0.0016  0.9495  0.7120
+0
+                         CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY
+
+                                   Test Case               
+
+ DOWNWIND DISTANCE (KM) =    5.0
+ PLUME ALTITUDE (M)     =   146.
+ SIGMA Y (M)            =   224.
+ SIGMA Z (M)            =    56.
+ SO2-SO4 CONVERSION RATE=      0.0011 PERCENT/HR
+ NOX-NO3 CONVERSION RATE=      0.0079 PERCENT/HR
+
+ ALTITUDE         NOX       NO2       NO3-  NO2/NTOT  NO3-/NTOT     SO2       SO4=  SO4=/STOT     O3     PRIMARY BSP-TOTAL  BSPSN/BSP
+                (PPM)     (PPM)     (PPM)  (MOLE %)  (MOLE %)     (PPM)   (UG/M3)  (MOLE %)     (PPM)   (UG/M3) (10-4 M-1)   (%)
+
+  H+2S
+ INCREMENT:     0.005     0.004     0.000    83.900     0.040     0.001     0.000     0.007    -0.004     0.208     0.002     1.466
+ TOTAL AMB:     0.005     0.004     0.000    83.900     0.040     0.001     0.800    22.130     0.036     5.808     0.148    88.081
+
+  H+1S
+ INCREMENT:     0.023     0.017     0.000    76.770     0.002     0.003     0.000     0.001    -0.017     0.934     0.010     0.135
+ TOTAL AMB:     0.023     0.017     0.000    76.770     0.002     0.003     0.799     5.962     0.023     6.533     0.155    83.781
+
+  H   
+ INCREMENT:     0.037     0.025     0.000    68.098     0.001     0.005     0.000     0.000    -0.025     1.540     0.016     0.060
+ TOTAL AMB:     0.037     0.025     0.000    68.098     0.001     0.005     0.799     3.703     0.015     7.139     0.162    80.500
+
+  H-1S
+ INCREMENT:     0.023     0.017     0.000    76.766     0.002     0.003     0.000     0.001    -0.017     0.934     0.010     0.135
+ TOTAL AMB:     0.023     0.017     0.000    76.766     0.002     0.003     0.799     5.960     0.023     6.534     0.155    83.779
+
+  H-2S
+ INCREMENT:     0.005     0.004     0.000    83.821     0.040     0.001     0.000     0.007    -0.004     0.219     0.002     1.466
+ TOTAL AMB:     0.005     0.004     0.000    83.821     0.040     0.001     0.800    21.305     0.036     5.818     0.148    88.016
+
+   0  
+ INCREMENT:     0.003     0.002     0.000    84.220     0.507     0.000     0.001     0.089    -0.002     0.110     0.001    15.804
+ TOTAL AMB:     0.003     0.002     0.000    84.220     0.507     0.000     0.801    35.032     0.038     5.709     0.147    88.711
+
+
+
+
+
+ CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX
+
+
+                 SO2:    0.0000
+                 NOX:    0.0000
+ PRIMARY PARTICULATE:    0.0000
+                 SO4:    0.0000
+                 NO3:    0.0000
+0
+                    VISUAL EFFECTS FOR HORIZONTAL SIGHT PATHS
+                    Test Case               
+
+ DOWNWIND DISTANCE (KM) =    5.0
+ PLUME ALTITUDE (M)     =   146.
+ PLUME-OBSERVER DISTANCE (KM) =    7.1
+ AZIMUTH OF LINE-OF-SIGHT =  225.0
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    1.2
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ SIGHT PATH IS THROUGH PLUME CENTER
+
+ THETA ALPHA  RP/RV0    RV  %REDUCED    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+  129.
+         45.    0.04   169.9    0.05   48.98   75.46  0.3315  0.3492   -0.32   -0.20 -0.0062  0.9754  0.0015  0.0016  1.1578  0.8777
+
+
+**************************************************************************
+Non-horizontal views not calculated for beta less than 5 degrees
+**************************************************************************
+
+
+0
+          PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS
+          OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS
+          FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES
+
+          Test Case               
+
+
+ DOWNWIND DISTANCE (KM) =    5.0
+ PLUME-OBSERVER DISTANCE (KM) =    7.1
+ AZIMUTH OF LINE-OF-SIGHT =  225.0
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    1.2
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ THETA =  129.
+
+ REFLECT  RP/RV0  RO/RV0    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+     0.9    0.04    0.15   68.13   86.08  0.3724  0.3734   -0.45   -0.22 -0.0067  0.9772  0.0015  0.0012  1.0655  0.8558
+     0.3    0.04    0.15   36.49   66.92  0.3358  0.3462   -0.21   -0.16 -0.0055  0.9786  0.0014  0.0014  0.9130  0.7041
+     0.1    0.04    0.15   25.94   58.01  0.3078  0.3254   -0.13   -0.12 -0.0045  0.9786  0.0013  0.0015  0.8668  0.6544
+0
+                         CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY
+
+                                   Test Case               
+
+ DOWNWIND DISTANCE (KM) =   10.0
+ PLUME ALTITUDE (M)     =   146.
+ SIGMA Y (M)            =   412.
+ SIGMA Z (M)            =    80.
+ SO2-SO4 CONVERSION RATE=      0.0061 PERCENT/HR
+ NOX-NO3 CONVERSION RATE=      0.0424 PERCENT/HR
+
+ ALTITUDE         NOX       NO2       NO3-  NO2/NTOT  NO3-/NTOT     SO2       SO4=  SO4=/STOT     O3     PRIMARY BSP-TOTAL  BSPSN/BSP
+                (PPM)     (PPM)     (PPM)  (MOLE %)  (MOLE %)     (PPM)   (UG/M3)  (MOLE %)     (PPM)   (UG/M3) (10-4 M-1)   (%)
+
+  H+2S
+ INCREMENT:     0.002     0.002     0.000    84.622     0.273     0.000     0.001     0.047    -0.002     0.080     0.001     8.916
+ TOTAL AMB:     0.002     0.002     0.000    84.622     0.273     0.000     0.800    42.425     0.038     5.680     0.147    88.889
+
+  H+1S
+ INCREMENT:     0.009     0.007     0.000    82.693     0.036     0.001     0.000     0.007    -0.007     0.361     0.004     1.406
+ TOTAL AMB:     0.009     0.007     0.000    82.693     0.036     0.001     0.800    14.112     0.033     5.960     0.150    87.146
+
+  H   
+ INCREMENT:     0.014     0.012     0.000    80.561     0.014     0.002     0.000     0.003    -0.012     0.595     0.006     0.623
+ TOTAL AMB:     0.014     0.012     0.000    80.561     0.014     0.002     0.800     9.052     0.028     6.194     0.152    85.738
+
+  H-1S
+ INCREMENT:     0.009     0.008     0.000    82.548     0.036     0.001     0.000     0.007    -0.008     0.378     0.004     1.405
+ TOTAL AMB:     0.009     0.008     0.000    82.548     0.036     0.001     0.800    13.558     0.032     5.977     0.150    87.041
+
+  H-2S
+ INCREMENT:     0.005     0.005     0.000    83.613     0.260     0.001     0.001     0.044    -0.005     0.222     0.003     8.538
+ TOTAL AMB:     0.005     0.005     0.000    83.613     0.260     0.001     0.801    21.068     0.035     5.822     0.148    88.009
+
+   0  
+ INCREMENT:     0.005     0.004     0.000    83.101     0.882     0.001     0.005     0.150    -0.004     0.222     0.003    24.001
+ TOTAL AMB:     0.005     0.004     0.000    83.101     0.882     0.001     0.804    21.151     0.036     5.822     0.149    88.051
+
+
+
+
+
+ CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX
+
+
+                 SO2:    0.0000
+                 NOX:    0.0000
+ PRIMARY PARTICULATE:    0.0000
+                 SO4:    0.0000
+                 NO3:    0.0000
+0
+                    VISUAL EFFECTS FOR HORIZONTAL SIGHT PATHS
+                    Test Case               
+
+ DOWNWIND DISTANCE (KM) =   10.0
+ PLUME ALTITUDE (M)     =   146.
+ PLUME-OBSERVER DISTANCE (KM) =    5.0
+ AZIMUTH OF LINE-OF-SIGHT =  180.0
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    1.7
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ SIGHT PATH IS THROUGH PLUME CENTER
+
+ THETA ALPHA  RP/RV0    RV  %REDUCED    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+   85.
+         90.    0.03   170.0    0.03   49.96   76.06  0.3381  0.3526   -0.18   -0.11 -0.0035  0.9845  0.0009  0.0009  0.6863  0.5277
+
+
+**************************************************************************
+Non-horizontal views not calculated for beta less than 5 degrees
+**************************************************************************
+
+
+0
+          PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS
+          OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS
+          FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES
+
+          Test Case               
+
+
+ DOWNWIND DISTANCE (KM) =   10.0
+ PLUME-OBSERVER DISTANCE (KM) =    5.0
+ AZIMUTH OF LINE-OF-SIGHT =  180.0
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    1.7
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ THETA =   85.
+
+ REFLECT  RP/RV0  RO/RV0    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+     0.9    0.03    0.15   68.84   86.44  0.3744  0.3749   -0.25   -0.12 -0.0037  0.9853  0.0009  0.0008  0.6392  0.5196
+     0.3    0.03    0.15   37.09   67.37  0.3399  0.3492   -0.12   -0.09 -0.0031  0.9858  0.0009  0.0009  0.5690  0.4445
+     0.1    0.03    0.15   26.51   58.55  0.3136  0.3297   -0.08   -0.07 -0.0026  0.9856  0.0008  0.0010  0.5506  0.4205
+0
+                         CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY
+
+                                   Test Case               
+
+ DOWNWIND DISTANCE (KM) =   12.5
+ PLUME ALTITUDE (M)     =   146.
+ SIGMA Y (M)            =   501.
+ SIGMA Z (M)            =    88.
+ SO2-SO4 CONVERSION RATE=      0.0259 PERCENT/HR
+ NOX-NO3 CONVERSION RATE=      0.1810 PERCENT/HR
+
+ ALTITUDE         NOX       NO2       NO3-  NO2/NTOT  NO3-/NTOT     SO2       SO4=  SO4=/STOT     O3     PRIMARY BSP-TOTAL  BSPSN/BSP
+                (PPM)     (PPM)     (PPM)  (MOLE %)  (MOLE %)     (PPM)   (UG/M3)  (MOLE %)     (PPM)   (UG/M3) (10-4 M-1)   (%)
+
+  H+2S
+ INCREMENT:     0.001     0.001     0.000    84.587     0.481     0.000     0.001     0.079    -0.001     0.060     0.001    14.323
+ TOTAL AMB:     0.001     0.001     0.000    84.587     0.481     0.000     0.800    49.860     0.039     5.659     0.146    89.022
+
+  H+1S
+ INCREMENT:     0.006     0.005     0.000    83.413     0.082     0.001     0.001     0.014    -0.005     0.267     0.003     2.877
+ TOTAL AMB:     0.006     0.005     0.000    83.413     0.082     0.001     0.800    18.145     0.035     5.867     0.149    87.720
+
+  H   
+ INCREMENT:     0.011     0.009     0.000    81.981     0.040     0.002     0.000     0.007    -0.009     0.443     0.005     1.474
+ TOTAL AMB:     0.011     0.009     0.000    81.981     0.040     0.002     0.800    11.807     0.031     6.042     0.150    86.650
+
+  H-1S
+ INCREMENT:     0.007     0.006     0.000    83.170     0.078     0.001     0.001     0.013    -0.006     0.298     0.003     2.759
+ TOTAL AMB:     0.007     0.006     0.000    83.170     0.078     0.001     0.800    16.573     0.034     5.898     0.149    87.529
+
+  H-2S
+ INCREMENT:     0.005     0.005     0.000    83.601     0.249     0.001     0.001     0.041    -0.005     0.225     0.003     7.875
+ TOTAL AMB:     0.005     0.005     0.000    83.601     0.249     0.001     0.801    20.850     0.035     5.825     0.148    87.990
+
+   0  
+ INCREMENT:     0.005     0.005     0.000    83.368     0.531     0.001     0.003     0.085    -0.005     0.225     0.003    15.221
+ TOTAL AMB:     0.005     0.005     0.000    83.368     0.531     0.001     0.802    20.885     0.035     5.825     0.148    88.008
+
+
+
+
+
+ CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX
+
+
+                 SO2:    0.0000
+                 NOX:    0.0000
+ PRIMARY PARTICULATE:    0.0000
+                 SO4:    0.0000
+                 NO3:    0.0000
+0
+                    VISUAL EFFECTS FOR HORIZONTAL SIGHT PATHS
+                    Test Case               
+
+ DOWNWIND DISTANCE (KM) =   12.5
+ PLUME ALTITUDE (M)     =   146.
+ PLUME-OBSERVER DISTANCE (KM) =    5.6
+ AZIMUTH OF LINE-OF-SIGHT =  153.4
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    1.5
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ SIGHT PATH IS THROUGH PLUME CENTER
+
+ THETA ALPHA  RP/RV0    RV  %REDUCED    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+   59.
+         63.    0.03   170.0    0.03   72.81   88.37  0.3561  0.3661   -0.26   -0.12 -0.0035  0.9846  0.0009  0.0009  0.7184  0.5614
+
+
+**************************************************************************
+Non-horizontal views not calculated for beta less than 5 degrees
+**************************************************************************
+
+
+0
+          PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS
+          OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS
+          FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES
+
+          Test Case               
+
+
+ DOWNWIND DISTANCE (KM) =   12.5
+ PLUME-OBSERVER DISTANCE (KM) =    5.6
+ AZIMUTH OF LINE-OF-SIGHT =  153.4
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    1.5
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ THETA =   59.
+
+ REFLECT  RP/RV0  RO/RV0    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+     0.9    0.03    0.15   78.42   90.98  0.3723  0.3751   -0.27   -0.12 -0.0035  0.9855  0.0009  0.0007  0.6642  0.5335
+     0.3    0.03    0.15   46.67   74.00  0.3432  0.3545   -0.14   -0.09 -0.0029  0.9859  0.0009  0.0008  0.5956  0.4623
+     0.1    0.03    0.15   36.09   66.62  0.3240  0.3409   -0.09   -0.07 -0.0024  0.9857  0.0008  0.0009  0.5767  0.4392
+0
+                         CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY
+
+                                   Test Case               
+
+ DOWNWIND DISTANCE (KM) =   15.0
+ PLUME ALTITUDE (M)     =   146.
+ SIGMA Y (M)            =   588.
+ SIGMA Z (M)            =    96.
+ SO2-SO4 CONVERSION RATE=      0.0376 PERCENT/HR
+ NOX-NO3 CONVERSION RATE=      0.2631 PERCENT/HR
+
+ ALTITUDE         NOX       NO2       NO3-  NO2/NTOT  NO3-/NTOT     SO2       SO4=  SO4=/STOT     O3     PRIMARY BSP-TOTAL  BSPSN/BSP
+                (PPM)     (PPM)     (PPM)  (MOLE %)  (MOLE %)     (PPM)   (UG/M3)  (MOLE %)     (PPM)   (UG/M3) (10-4 M-1)   (%)
+
+  H+2S
+ INCREMENT:     0.001     0.001     0.000    84.498     0.687     0.000     0.001     0.113    -0.001     0.047     0.001    19.200
+ TOTAL AMB:     0.001     0.001     0.000    84.498     0.687     0.000     0.800    55.955     0.039     5.646     0.146    89.106
+
+  H+1S
+ INCREMENT:     0.005     0.004     0.000    83.802     0.150     0.001     0.001     0.025    -0.004     0.209     0.002     5.068
+ TOTAL AMB:     0.005     0.004     0.000    83.802     0.150     0.001     0.800    22.063     0.036     5.809     0.148    88.082
+
+  H   
+ INCREMENT:     0.008     0.007     0.000    82.761     0.078     0.001     0.001     0.014    -0.007     0.348     0.004     2.770
+ TOTAL AMB:     0.008     0.007     0.000    82.761     0.078     0.001     0.800    14.534     0.033     5.948     0.149    87.223
+
+  H-1S
+ INCREMENT:     0.006     0.005     0.000    83.483     0.137     0.001     0.001     0.023    -0.005     0.253     0.003     4.633
+ TOTAL AMB:     0.006     0.005     0.000    83.483     0.137     0.001     0.800    19.003     0.035     5.852     0.148    87.814
+
+  H-2S
+ INCREMENT:     0.005     0.004     0.000    83.636     0.273     0.001     0.001     0.045    -0.004     0.218     0.002     8.566
+ TOTAL AMB:     0.005     0.004     0.000    83.636     0.273     0.001     0.801    21.397     0.036     5.817     0.148    88.036
+
+   0  
+ INCREMENT:     0.005     0.004     0.000    83.541     0.386     0.001     0.002     0.062    -0.004     0.218     0.003    11.460
+ TOTAL AMB:     0.005     0.004     0.000    83.541     0.386     0.001     0.801    21.410     0.036     5.817     0.148    88.043
+
+
+
+
+
+ CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX
+
+
+                 SO2:    0.0000
+                 NOX:    0.0000
+ PRIMARY PARTICULATE:    0.0000
+                 SO4:    0.0000
+                 NO3:    0.0000
+0
+                    VISUAL EFFECTS FOR HORIZONTAL SIGHT PATHS
+                    Test Case               
+
+ DOWNWIND DISTANCE (KM) =   15.0
+ PLUME ALTITUDE (M)     =   146.
+ PLUME-OBSERVER DISTANCE (KM) =    7.1
+ AZIMUTH OF LINE-OF-SIGHT =  135.0
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    1.2
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ SIGHT PATH IS THROUGH PLUME CENTER
+
+ THETA ALPHA  RP/RV0    RV  %REDUCED    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+   41.
+         45.    0.04   169.9    0.04  113.07  104.84  0.3706  0.3771   -0.43   -0.15 -0.0039  0.9833  0.0010  0.0008  0.8654  0.6813
+
+
+**************************************************************************
+Non-horizontal views not calculated for beta less than 5 degrees
+**************************************************************************
+
+
+0
+          PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS
+          OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS
+          FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES
+
+          Test Case               
+
+
+ DOWNWIND DISTANCE (KM) =   15.0
+ PLUME-OBSERVER DISTANCE (KM) =    7.1
+ AZIMUTH OF LINE-OF-SIGHT =  135.0
+ ELEVATION ANGLE OF LINE-OF-SIGHT =    1.2
+ SOLAR ZENITH ANGLE =   80.4   AT  700. ON  4/ 1
+ THETA =   41.
+
+ REFLECT  RP/RV0  RO/RV0    YCAP       L       X       Y DELYCAP    DELL  C(550)  BRATIO    DELX    DELY  E(LUV)  E(LAB)
+
+     0.9    0.04    0.15   95.30   98.15  0.3694  0.3752   -0.34   -0.13 -0.0036  0.9846  0.0010  0.0008  0.7754  0.6109
+     0.3    0.04    0.15   63.58   83.76  0.3464  0.3599   -0.18   -0.09 -0.0028  0.9849  0.0009  0.0009  0.6967  0.5336
+     0.1    0.04    0.15   53.00   77.90  0.3334  0.3513   -0.13   -0.08 -0.0023  0.9847  0.0009  0.0009  0.6732  0.5083
+0
+ HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE =   1.0 KM
+
+
+    PARCEL     LOCAL       SO2-TO-SO4= CONVERSION RATE (%/HR)       NOX-TO-HNO3 CONVERSION RATE (%/HR)
+      AGE       TIME
+      (HR)                 H+2S  H+1S  H     H-1S  H-2S   0         H+2S  H+1S  H     H-1S  H-2S   0  
+
+       0.1       700       0.00  0.00  0.00  0.00  0.00  0.00       0.00  0.00  0.00  0.00  0.00  0.00
+0
+ HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE =   2.5 KM
+
+
+    PARCEL     LOCAL       SO2-TO-SO4= CONVERSION RATE (%/HR)       NOX-TO-HNO3 CONVERSION RATE (%/HR)
+      AGE       TIME
+      (HR)                 H+2S  H+1S  H     H-1S  H-2S   0         H+2S  H+1S  H     H-1S  H-2S   0  
+
+       0.1       651       0.00  0.00  0.00  0.00  0.00  0.00       0.00  0.00  0.00  0.00  0.00  0.00
+       0.2       700       0.00  0.00  0.00  0.00  0.00  0.25       0.03  0.00  0.00  0.00  0.03  1.78
+0
+ HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE =   5.0 KM
+
+
+    PARCEL     LOCAL       SO2-TO-SO4= CONVERSION RATE (%/HR)       NOX-TO-HNO3 CONVERSION RATE (%/HR)
+      AGE       TIME
+      (HR)                 H+2S  H+1S  H     H-1S  H-2S   0         H+2S  H+1S  H     H-1S  H-2S   0  
+
+       0.1       637       0.00  0.00  0.00  0.00  0.00  0.00       0.00  0.00  0.00  0.00  0.00  0.00
+       0.2       646       0.00  0.00  0.00  0.00  0.00  0.22       0.02  0.00  0.00  0.00  0.02  1.53
+       0.5       700       0.03  0.00  0.00  0.00  0.03  0.25       0.20  0.02  0.01  0.02  0.20  1.78
+0
+ HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE =  10.0 KM
+
+
+    PARCEL     LOCAL       SO2-TO-SO4= CONVERSION RATE (%/HR)       NOX-TO-HNO3 CONVERSION RATE (%/HR)
+      AGE       TIME
+      (HR)                 H+2S  H+1S  H     H-1S  H-2S   0         H+2S  H+1S  H     H-1S  H-2S   0  
+
+       0.1       609       0.00  0.00  0.00  0.00  0.00  0.00       0.00  0.00  0.00  0.00  0.00  0.00
+       0.2       618       0.00  0.00  0.00  0.00  0.00  0.16       0.01  0.00  0.00  0.00  0.01  1.12
+       0.5       632       0.02  0.00  0.00  0.00  0.02  0.20       0.15  0.01  0.00  0.01  0.15  1.37
+       0.9       700       0.09  0.01  0.01  0.01  0.08  0.18       0.63  0.10  0.04  0.10  0.59  1.25
+0
+ HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE =  12.5 KM
+
+
+    PARCEL     LOCAL       SO2-TO-SO4= CONVERSION RATE (%/HR)       NOX-TO-HNO3 CONVERSION RATE (%/HR)
+      AGE       TIME
+      (HR)                 H+2S  H+1S  H     H-1S  H-2S   0         H+2S  H+1S  H     H-1S  H-2S   0  
+
+       0.1       556       0.00  0.00  0.00  0.00  0.00  0.00       0.00  0.00  0.00  0.00  0.00  0.00
+       0.2       604       0.00  0.00  0.00  0.00  0.00  0.04       0.00  0.00  0.00  0.00  0.00  0.31
+       0.5       618       0.01  0.00  0.00  0.00  0.01  0.08       0.05  0.00  0.00  0.00  0.05  0.55
+       0.9       646       0.04  0.01  0.00  0.01  0.04  0.09       0.31  0.04  0.02  0.04  0.30  0.62
+       1.2       700       0.25  0.05  0.03  0.05  0.08  0.08       1.72  0.34  0.18  0.32  0.58  0.59
+0
+ HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE =  15.0 KM
+
+
+    PARCEL     LOCAL       SO2-TO-SO4= CONVERSION RATE (%/HR)       NOX-TO-HNO3 CONVERSION RATE (%/HR)
+      AGE       TIME
+      (HR)                 H+2S  H+1S  H     H-1S  H-2S   0         H+2S  H+1S  H     H-1S  H-2S   0  
+
+       0.1       542       0.00  0.00  0.00  0.00  0.00  0.00       0.00  0.00  0.00  0.00  0.00  0.00
+       0.2       550       0.00  0.00  0.00  0.00  0.00  0.00       0.00  0.00  0.00  0.00  0.00  0.02
+       0.5       604       0.00  0.00  0.00  0.00  0.00  0.02       0.01  0.00  0.00  0.00  0.01  0.15
+       0.9       632       0.02  0.00  0.00  0.00  0.02  0.05       0.17  0.02  0.01  0.02  0.16  0.34
+       1.2       646       0.18  0.04  0.02  0.03  0.06  0.06       1.28  0.25  0.13  0.23  0.43  0.43
+       1.4       700       0.25  0.07  0.04  0.06  0.08  0.08       1.78  0.47  0.26  0.42  0.58  0.58
+1                                                       PLOT FILE VERIFICATION
+0                                                        OBSERVER-BASED DATA
+0     SKY BACKGROUND
+      For ground level if calculations done for both plume centerline and ground level.
+0         NX             1      2      3      4      5      6
+0   DISTANCE (KM)       1.     3.     5.    10.    13.    15.
+0 REDUCTION OF VISUAL
+      RANGE (%)       0.119  0.083  0.049  0.025  0.028  0.038
+0  BLUE-RED RATIO
+                      0.981  0.973  0.975  0.984  0.985  0.983
+0  PLUME CONTRAST AT
+     0.55 MICRONS    -0.007 -0.008 -0.006 -0.003 -0.003 -0.004
+0PLUME PERCEPTIBILITY
+   DELTA E(L*A*B*)    0.756  1.021  0.878  0.528  0.561  0.681
+
+0   WHITE BACKGROUND
+0         NX             1      2      3      4      5      6
+0   DISTANCE (KM)       1.     3.     5.    10.    13.    15.
+0 REDUCTION OF VISUAL
+      RANGE (%)       0.000  0.000  0.000  0.000  0.000  0.000
+0  BLUE-RED RATIO
+                      0.984  0.976  0.977  0.985  0.986  0.985
+0  PLUME CONTRAST AT
+     0.55 MICRONS
+  EYE ACCOMODATED TO
+       BACKGROUND    -0.007 -0.008 -0.007 -0.004 -0.004 -0.004
+  EYE ACCOMODATED TO
+       SKY           -0.009 -0.011 -0.009 -0.005 -0.004 -0.003
+0PLUME PERCEPTIBILITY
+   DELTA E(L*A*B*)    0.693  0.975  0.856  0.520  0.534  0.611
+
+0    GRAY BACKGROUND
+0         NX             1      2      3      4      5      6
+0   DISTANCE (KM)       1.     3.     5.    10.    13.    15.
+0 REDUCTION OF VISUAL
+      RANGE (%)       0.000  0.000  0.000  0.000  0.000  0.000
+0  BLUE-RED RATIO
+                      0.985  0.977  0.979  0.986  0.986  0.985
+0  PLUME CONTRAST AT
+     0.55 MICRONS
+  EYE ACCOMODATED TO
+       BACKGROUND    -0.005 -0.006 -0.005 -0.003 -0.003 -0.003
+  EYE ACCOMODATED TO
+       SKY           -0.003 -0.005 -0.004 -0.002 -0.002 -0.002
+0PLUME PERCEPTIBILITY
+   DELTA E(L*A*B*)    0.543  0.775  0.704  0.444  0.462  0.534
+1   BLACK BACKGROUND
+0         NX             1      2      3      4      5      6
+0   DISTANCE (KM)       1.     3.     5.    10.    13.    15.
+0 REDUCTION OF VISUAL
+      RANGE (%)       0.000  0.000  0.000  0.000  0.000  0.000
+0  BLUE-RED RATIO
+                      0.983  0.977  0.979  0.986  0.986  0.985
+0  PLUME CONTRAST AT
+     0.55 MICRONS
+  EYE ACCOMODATED TO
+       BACKGROUND    -0.002 -0.005 -0.004 -0.003 -0.002 -0.002
+  EYE ACCOMODATED TO
+       SKY           -0.001 -0.002 -0.002 -0.001 -0.001 -0.001
+0PLUME PERCEPTIBILITY
+   DELTA E(L*A*B*)    0.511  0.712  0.654  0.421  0.439  0.508

@@ -1,0 +1,128 @@
+		   Model Change Bulletin                  6/19/96
+
+			   MCB#3
+
+		  PLUVUE II (dated 96170)
+
+     This Model Change Bulletin initiates the use of the
+PLUVUE II model (dated 96170).  This version supersedes the
+previous version (dated 92243).  The revisions to the PLUVUE
+II model are identified in an Addendum to the User's Manual
+for the Plume Visibility Model, PLUVUE II (Revised), dated
+June 1996.
+
+     The revised PLUVUE II model (dated 96170) corrects
+several errors found in the previous version of the model
+and makes some minor refinements.  A detailed explanation of
+these changes is provided in Section 2.1.8 of the Addendum
+to the User's Manual.  As noted below, some of these changes
+have not been fully tested and are not recommended for
+regulatory use at this time.
+
+      Specific changes to the PLUVUE II model (dated 96170):
+
+1. A missing term was included in the calculation of the
+     apparent radiance in subroutine BACKOBJ.
+2. The default reflectance of the black and white terrain
+     objects was modified from 0.0 and 1.0 to 0.1 and 0.9,
+     respectively.
+3. A second calculation for the contrast of a plume viewed
+     against a terrain background was included, assuming
+     that the eye was accommodated to the radiance of the
+     horizon sky.  This option has not been evaluated at
+     this time.  The output from PLUVUE II for the eye
+     accommodated to the sky SHOULD NOT BE USED FOR
+     REGULATORY PURPOSES.
+     ***NOTE*** The user must select horizontal views with a
+     sky background as well as views with terrain background
+     to obtain numbers for the eye accommodated to the sky.
+     Asterisks will be printed for those values otherwise.
+4. A term for diffuse skylight was added to SUBROUTINE
+     BACOBJ to correct for problems encountered in the
+     calculations when the sun was low in the sky.
+5. Corrections were made to the calculation of primary
+     particle emissions that are carbon and non-carbon.
+6. Some integer variables were replaced with character
+     variables to comply with FORTRAN 90 Compilers.
+7. A check was added at the top of the program to determine
+     if the correct values were being returned from FUNCTION
+     CLOCK and program execution is terminated with a
+     warning message if incorrect values occur.  (Various
+     versions of the LAHEY FORTRAN compiler have had
+     problems with mixed mode division; these versions of
+     the compiler should not be used to compile this model
+     without obtaining updated fix files from LAHEY,
+     therefore, this check was inserted to trap that
+     problem.)
+8. A check was added to ensure that the sun is above the
+     horizon.  A maximum zenith angle (ZMAX) is specified in
+     the code (currently 88 degrees).  If the zenith angle
+     is greater than ZMAX, the time is adjusted until the
+     zenith angle becomes less than ZMAX.  The maximum time
+     adjustment is limited to one hour.  A warning message
+     is printed if adjustments occur.
+9. An informational message is printed if the user specifies
+     non-horizontal views of the sky and the angle BETA is
+     less than 5 degrees.  The model will not calculate non-
+     horizontal views for BETA less than 5 degrees; this
+     feature was not well documented, so the informational
+     message was inserted to avoid confusion.
+
+     The User's Manual for the Plume Visibility Model
+continues to be the primary source of documentation for the
+PLUVUE II model.  Revisions to the PLUVUE II model (dated
+96170) are identified in an Addendum to the User's Manual for
+the Plume Visibility Model, PLUVUE II (Revised), dated June
+1996.  The user should replace the related items in the
+user's manual with the following page numbers from the
+Addendum:
+1. Revise the Title page and Table of Contents (pages iii
+     and iv)
+2. Chapter 1.0 Introduction (pages 1 through 3)
+3. Chapter 2.0, Pages 6,9,18,19,31,32,33, 33a,33b,33c,
+    36, and 54 
+4. Chapter 4, References, page 106 and 107
+
+	Note that the input and output files shown in 
+Figure 10 and 11 of the User's Manual contain different
+values than those used in the revised TEST.INP and TEST.OUT
+shown in the README.TXT file.  However, the information
+in the user's manual continues to be useful in illustrating
+ how to interpret model results.
+     
+	Also, note that Appendix A, Comparison of the Original
+Version of PLUVUE II with the Revised Version for Different
+Stability Classes, in the user's manual is deleted.
+
+
+		     ******************
+		     * Important Note *
+		     ******************
+
+     This program will henceforth be identified by its name
+and a Julian date, i.e., PLUVUE II (dated 96170).  Future
+changes to this model will be identified by an updated
+Julian date found after the first few lines of the model
+source code and followed by a reference to a SCRAM BBS Model
+Change Bulletin Number (MCB#n)which will explain the nature
+and contents of the changes.  All MCB's for this program
+will always be available for back reference on this BBS.  In
+the future, notification of changes to this program will be
+made in the SCRAM ALERTS section of this BBS immediately
+following the LOGON procedure.  A new Model Change Bulletin
+will ONLY be issued when there is a change to the model
+source code.  Changes to test cases that are included in the
+archived file will be addressed and appropriately identified
+in an amendment to the model's latest MCB with notification
+posted in the SCRAM ALERTS section of the BBS.
+
+
+
+
+			 ADDENDUM  --  9/11/96
+			***********************
+
+      The 9/11/96 modifications made to the file RUNPLUVU.ZIP 
+involved the relinking of the PC executable modules to avoid problems
+with memory allocation on DOS/Windows machines.  There were no changes
+made to the code, therefore, the model date has not been changed.

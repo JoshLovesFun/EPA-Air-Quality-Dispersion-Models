@@ -1,0 +1,60 @@
+		   Model Change Bulletin                  8/21/13
+
+			   MCB#4
+
+		  PLUVUE II (dated 24242)
+
+     This Model Change Bulletin initiates the use of the
+PLUVUE II model (dated 24242).  This version supersedes the
+previous version (dated 96170).
+
+     The revised PLUVUE II model (dated 24242) updates the model
+and its associated preprocessor programs so that they can run on 
+32-bit and 64-bit Windows Operating Systems and be portable to
+other more modern operating systems.
+
+Several other updates have been performed:
+
+  1)	The two PLUVUE2 User’s Guides in PDF format on SCRAM have
+         been converted to text searchable PDF documents.
+  2)	Minor corrects were made to all three main programs.
+  3)	The Input/Output structures were changed so that there is
+         no reliance of reading of filenames from the 
+         Command Line.
+  4)	Instructions were prepared for testing and running the
+         PLUVUE2 programs, Pluvue2Instructions.pdf.
+  5)	The RUNPLUVUE program was dropped due to users’
+         suggestions that it was more of a hindrance than a help.
+  6)   A line of text was added as the firt line to the MIETBL 
+         input file.  That line of text can be up to 80 
+         characters long and be used for data identification.
+
+
+The user is advised to down load the various files from SCRAM. 
+It would be easiest to place the executables and test cases in
+just one subdirectory.
+
+If you have any questions, please use the Contact Us page on
+SCRAM.
+
+		     ******************
+		     * Important Note *
+		     ******************
+
+     This program will henceforth be identified by its name
+and a Julian date, i.e., PLUVUE II (dated 24242).  Future
+changes to this model will be identified by an updated
+Julian date found after the first few lines of the model
+source code and followed by a reference to a SCRAM BBS Model
+Change Bulletin Number (MCB#n)which will explain the nature
+and contents of the changes.  All MCB's for this program
+will always be available for back reference on this BBS.  In
+the future, notification of changes to this program will be
+made in the SCRAM ALERTS section of this BBS immediately
+following the LOGON procedure.  A new Model Change Bulletin
+will ONLY be issued when there is a change to the model
+source code.  Changes to test cases that are included in the
+archived file will be addressed and appropriately identified
+in an amendment to the model's latest MCB with notification
+posted in the SCRAM ALERTS section of the BBS.
+

@@ -1,0 +1,6131 @@
++ + + I think I keep coming to this, and having to go to the pdf. nc19
+United States Office of Air Quality 
+Environmental Protection Planning and Standards EPA-454/B-92-008 
+Agency Research Triangle Parle. NC 27711 October 1992 
+
+,~~EPA 
+
+USER'S MANUAL 
+FOR THE 
+PLUME VISIBILITY MODEL, 
+PLUVUE II 
+(REVISED) 
+
+
+'" 
+I. 
+
+EPA -454/B-92-008 
+
+
+USER'S MANUAL 
+FOR THE 
+PLUME VISIBILITY MODEL, 
+PLUVUE II 
+(REVISED) 
+
+
+Office Of Air Quality Planning And Standards 
+Office Of Air And Radiation 
+U.S. Environmental Protection Agency 
+Research Triangle Park, NC 27711 
+
+
+October 1992 
+
+
+
+This report has been reviewed by the Office Of Air Quality Planning And Standards, U. S. Environmental 
+Protection Agency, and has been approved for publication. Any mention of trade names or commercial 
+products is not intended to constitute endorsement or recommendation for use. 
+
+EPA-454/B-92-008 
+
+
+ii 
+
+
+Table of Contents 
+
+
+List of -Tables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . v 
+
+List of Figures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . vi 
+
+Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . vii 
+
+1.0 
+Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 
+
+1.1 
+Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 
+
+1.2 
+Limitations of the System . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 
+
+1.3 
+User's Guide Organization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3 
+
+2.0 
+Technical Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5 
+
+2.1 
+PLUVUE II ............................................. 5 
+
+
+2.1.1 
+Pollutant Transport, Diffusion, and Removal . . . . . . . . . . . . . . . 6 
+
+2.1.2 
+Atmospheric Chemistry . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12 
+
+2.1.3 
+Aerosol Size Distribution . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17 
+
+2.1.4 
+Atmospheric Optics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18 
+
+2.1.5 
+Geometry of Plume, Observer, and Sun . . . . . . . . . . . . . . . . . . 24 
+
+2.1.6 
+Quantifying Visibility Impairment . . . . . . . . . . . . . . . . . . . . . . 28 
+
+2.1.7 
+Code Modifications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 
+
+2.1.8 
+Input Data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33 
+
+2.2 
+PLUIN2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47 
+
+2.3 
+MIETBL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48 
+
+2.3.1 
+Scattering Theory _. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48 
+
+2.3.2 
+Mie Calculations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51 
+
+2.3.3 
+Accuracy of the Interpolated Results of 
+Mie Calculations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53 
+
+2.4 
+Comparison of Revised PLUVUE II with Original 
+PLUVUE II . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54 
+
+3.0 
+User Instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57 
+
+3.1 
+Computer Requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57 
+
+3.2 
+Operating Instructions for RUNPLUVU . . . . . . . . . . . . . . . . . . . . . . . . . 57 
+
+lll 
+
+
+Table of Contents (Continued) 
+
+
+3.3' Level-3 Visibility Modeling Example . . . . . . . . . . . . . . . . . . . . . . . . . . 69 
+
+3.3.1 Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69 
+
+3.3.2 Site Location and Receptors ....................... ; . . 71 
+
+
+3.3.3 Model Inputs and Assumptions . . . . . . . . . . . . . . . . . . . . . . . . 71 
+
+3.3.4 Model Results ....·. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75 
+
+4.0 References ...................................... ·............ 105 
+
+
+Appendix A 
+Comparison of the Original Version of PLUVUE II with the Revised 
+Version 
+
+lV 
+
+
+List of Tables 
+
+
+1 Data Requirements for PLUVUE II . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34 
+2 Default Aerosol Properties for PLUVUE II . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55 
+3 · Emissions Used as PLUVUE II Input for the Three Phases of 
+Construction (tons/day) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 73 
+4 Sensitivity of Plume Visual Impact to Emitted Species . . . . . . . . . . . . . . . . . . . . 77 
+5 Summary of Maximum Calculated Lill Values Associated with the ESF 
+for Each of the PLUVUE II Model Runs for Observer #1 . . . . . . . . . . . . . . . . . 98 
+6 Summary of Maximum Calculated Lill Values for Each of the PLUVUE II 
+Runs for Observers #2 and #3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 99 
+7 Maximum Plume Lill Values for Each Observer Location and Phase 
+of Repository Construction and Operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 100 
+8 Cumulative Frequency of Worst-Case Morning Lill Values for Observers 
+#1, #2, and #3 in the National Park ................................ 102 
+
+v 
+
+
+List of Figures 
+
+
+Figure Page 
+
+1 Gaussian plume visual impact model: observer-plume geometry . . . . . . . . . . . . . 10 
+2 Schematic representation of the plume radiance calculations . . . . . . . . . . . . . . . . 22 
+3 Geometries for plume~based calculations with a sky background . . . . . . . . . . . . . 25 
+4 Geometries for plume-based calculations for viewing white, gray, and black objects 
+for horizontal views perpendicular to the plume . . . . . . . . . . . . . . . . . . . . . . . . 26 
+5 Geometries for plume-based calculations for horizontal views along the axis of the 
+plume.............. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27 
+6 Geometry used for observer-based calculations for nonhorizontal views through the 
+plume for clear-sky backgrounds ............................ ·. . . . . . . 29 
+7 Plan view of geometry for observer-based calculations for views along the 
+plume ...................................................... 30 
+8 Size parameter a as a function of wavelength of the incident radiation and particle 
+radius . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49 
+9 Scattering area coefficient K as a function of size parameter a for refractive indices 
+of 1.330 and 1.486 ............................. ·. . . . . . . . . . . . . . . 50 
+10 Example PLUVU~ II input file . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 78 
+11 Example PLUVUE II output file . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 79 
+
+Vl 
+
+
+1.0 INTRODUCTION 
+1. 1 Overview 
+Sources of air pollution located near Class I areas such as national parks and 
+wilderness areas are required by the United States Environmental Protection Agency's (EPA) 
+Prevention of Significant Deterioration (PSD) and Visibility regulations to evaluate the impact 
+of their facility on such Class I areas. The Workbook for Plume Visual Impact Screening and 
+Analysis (Revised) (EPA, 1992) recommends the use of a plume visual impact screening 
+model (VISCREEN) for two successive levels of screening (Levels 1 and 2). A detailed 
+plume visual impact analysis (Level 3) is conducted using the more sophisticated plume 
+visibility model, PLUVUE II. . 
+
+The PLUVUE II model described in this document refers to a restructured and revised 
+version of the original PLUVUE II model described in the User's Manual for the Plume 
+Visibility Model (PLUVUE ll) (EPA, 1984a and EPA, 1984b). The model was restructured in 
+order to improve the user interface and computing requirements and revised to remove several 
+errors in the original PLUVUE II code. The PLUVUE II algorithm is basically the same 
+algorithm as developed in 1984, except for some changes to correct computer coding errors 
+and to use "lookup" tables for the calculation of the phase functions. Also, a program has 
+been designed to assist the user with the application of the PLUVUE II visibility model on a 
+personal computer by allowing the user to prepare an input file, select or create a library of 
+Mie calculations to reduce computational time, and run the PLUVUE II model. This program 
+is referred to as the RUNPLUVU visibility modeling system. In addition, this user's guide, 
+which duplicates many of the sections contained in the original (EPA, 1984a) user's guide, 
+has been transferred to WordPerfect 5.1 for easy downloading from the EPA's Technology 
+Transfer SCRAM bulletin board. 
+
+The objective of the PLUVUE II model is to calculate visual range reduction and 
+atmospheric discoloration caused by plumes consisting of primary particles, nitrogen oxides, 
+and sulfur oxides emitted by a single emission source. Primary emissions of sulfur dioxide 
+(S02) and nitric oxide (NO) do not scatter or absorb light and therefore do not cause visibility 
+impairment. However, these emissions are converted in the atmosphere to secondary species 
+that do scatter or absorb light and thus have the potential to cause visibility impairment. S02 
+emissions are converted to sulfate (S04=) aerosols. These aerosols are generally formed or 
+grow to a size (0.1 to 1.0 pm) that is effective in scattering light. NO emissions are 
+converted to nitrogen dioxide (N02) gas, which is effective in absorbing light. In turn, N02 is 
+converted to nitric acid vapor (HN03), which in turn neither absorbs nor scatters light. In 
+some situations, nitric acid may form ammonium nitrate or organic nitrate aerosol, which 
+scatters light. However, in many nonurban plumes, nitrate probably remains as HN03 vapor 
+without visual effects. Eventually, all primary particles, secondary aerosols, and gases in a 
+plume are removed from the atmosphere as a result of surface deposition and precipitation 
+
+1 
+
+
+
+scavenging. PLUVUE II is designed to predict the transport, atmospheric diffusion, chemical 
+conversion, optical effects, and surface deposition of point and area source emissions. 
+
+The PLUVUE II model uses a Gaussian formulation for transport and dispersion. The 
+spectral radiance I(A.) (i.e., the intensity of light) at 39 visible wavelengths (0.36 < A. < 0.75 
+pm) is calculated for views with and without the plume. The changes in the spectrum are 
+used to calculate various parameters that predict the perceptibility of the plume and contrast 
+reduction caused by the plume (Latimer et al., 1978). The four key perception parameters for 
+predicting visual impact are: 
+
+reduction in visual range; 
+
+contrast of the plume against a viewing background at the 0.55 pm wavelength; 
+
+blue-red ratio of the plume; and 
+
+color change perception parameter LlE(L*a*b*). 
+
+1.2 Limitations of the System 
+The plume visibility model PLUVUE IT was evaluated with the 1981 VISTT A data 
+base which was collected in the vicinity of the Kincaid Generating Station near Springfield, 
+Illinois, and the Magma Copper Smelter near San Manuel, Arizona. Details of the model 
+evaluation results are given in Seigneur et al. (1983). 
+
+For applications to distant Class I areas (more than 50 km from the emission source), 
+the model is less accurate because of mesoscale wind speed, wind direction, and stability 
+variations. Thus, the use of a Gaussian-based model for downwind distances greater than 50 
+km to predict visual effects is probably a conservative approach; however, this has not yet 
+been demonstrated conclusively. Visual impacts for horizontal lines of sight are inversely 
+proportional to the vertical extent of plume mixing. This vertical extent of plume mixing is 
+defined by the vertical plume dispersion parameter ( crz) and, at farther distances downwind, 
+by the mixing depth. Thus, errors in predicting vertical plume dimensions will carry 
+throughout the calculations of plume visibility impacts. However, until field measurements of 
+mesoscale plume transport and diffusion are carried out, and until better models based on 
+these data are developed and verified, the EPA does not know of a better approach to model 
+plume dispersion for the purposes of plume visual impact analysis. 
+
+Other limitations are basic to the chemical mechanism used in PLUVUE II to predict 
+the conversion of sulfur and nitrogen oxides. Although this mechanism is a reasonable 
+approximation for most applications in nonurban areas, it is not valid for applications in 
+photochemical (urban) atmospheres or for sources of significant quantities of reactive 
+hydrocarbons. For such applications, photochemical plume models or regional models should 
+be used. 
+
+Other approximations are used in the atmospheric optics calculations and are discussed 
+in Latimer et al. (1978). These approximations probably do not introduce significant errors in 
+most situations; however, this has not yet been demonstrated. Terrain viewing backgrounds 
+are idealized as white, gray, and black objects. The background atmosphere is treated as two 
+layers; a homogeneous, surface mixed layer and a relatively clean upper-atmosphere layer. 
+Diffusion radiation is calculated by integrating ·an angle-dependent radiance field according to 
+the algorithm of Isaacs (1981). Errors in predicting diffuse-radiation intensities may 
+adversely affect the accuracy of spectral radiance calculations, but not necessarily the 
+accuracy of calculations of plume contrast, color differences, and reduction in visual range. 
+In PLUVUE II, the calculated visual impact of a plume is quantified using coloration, color 
+difference, and contrast parameters that are related to human visual perception. 
+
+1.3 User's Guide Organization 
+A technical overview of PLUVUE II, PLUIN2 (algorithm which allows the user to 
+edit PLUVUE II input files), and MIETBL (algorithm which allows the user to create Mie 
+library files as input to PLUVUE II) is presented in Section 2.0. Detailed RUNPLUVU user 
+instructions including the basic computer requirements, detailed operating instructions, and a 
+Level-3 plume visibility example are presented in Section 3.0. The references are given in 
+Section 4.0. 
+
+3 
+
+
+
+2.0 TECHNICAL OVERVIEW 
+The PLUVUE II visibility modeling system combines three different algorithms: 
+PLUVUE II, PLUIN2, and MIETBL into one algorithm called RUNPLUVU. The user of 
+RUNPLUVU may edit PLUVUE II input files (PLUIN2 portion of RUNPLUVU), select or 
+create Mie library files as input to PLUVUE II (MIETBL portion of RUNPLUVU), and run 
+the PLUVUE II visibility algorithm: 
+
+RUNPLUVU 
+
+I 
+I 
+
+
+PLUIN2 
+
+MIETBL 
+
+PLUVUE II 
+
+This section gives a detailed overview of the technical aspects of each routine. The PLUVUE 
+II technical discussion is derived primarily from EPA (1984a). Section 2.1 presents in detail 
+the PLUVUE II pollutant transport, diffusion, and removal processes; atmospheric chemistry; 
+aerosol size distribution; atmospheric optics; geometry of the plume, observer, and sun; and 
+how visibility impairment is quantified. Section 2.1 also discusses the most recent 
+modifications made to the PLUVUE-II algorithm and the required input data. A description 
+of PLUIN2 is provided in Section 2.2. Section 2.3 presents in detail a description of 
+MIETBL including a discussion of Mie scattering theory, how Mie calculations are performed 
+within MIETBL, and the accuracy of the Mie calculation methodology. A comparison of the 
+revised PLUVUE II with the original PLUVUE II algorithm is given in Section 2.4 and the 
+Appendix. 
+
+2.1 PLUVUE II 
+The modeling of visibility impairment requires mathematical descriptions for the 
+following physical and chemical atmospheric processes in succession: 
+
+Emissions; 
+
+Atmospheric transport, diffusion, and removal; 
+
+Chemical and physical reactions and transformations of precursors in the atmosphere; 
+
+5 
+
+
+
+Light scattering and absorption characteristics of the resultant aerosol; and 
+
+Radiative transfer through the aerosol along different lines of sight. 
+
+2.1.1 Pollutant Transport, Diffusion, and Removal 
+There are two scales that are of interest in visibility impairment calculations. They 
+require two different types of models: 
+
+A near-source plume model designed to predict the incremental impact of one 
+
+emission source (such as a power plant or smelter) . 
+
+. A regional model designed to predict, over time periods of several days, the impacts 
+of several emissions sources within a region whose spatial scale is in the range of 
+1000 km. 
+
+Calculation of near-source visual impacts, which is the design objective of 
+PLUVUE II, requires a basic model that accurately predicts the spatial distribution of 
+pollutants and the chemical conversion of NO to N02 and SOx and NOx to sulfates and 
+nitrates. The plume model must be capable of handling the spatial scale from emissions at 
+the source to at least 100 km downwind. Because the regional-scale problem may be caused 
+by the long-range transport of pollutants over a spatial scale of 1000 km, an air quality model 
+is needed that can account for multiple sources and for temporal variations in mixing heights, 
+dispersion parameters, emission rates, reaction rates, and wind speed and direction. This 
+second type of model, a regional visibility model, is beyond the scope ofthis user's manual. 
+PLUVUE II is a near-source plume visibility model. 
+
+Initial Dilution in a Buoyant Pl~me 
+
+Modeling of the initial dilution of a plume from the top of the stack to the point of final 
+plume rise is important when modeling the conversion of nitric oxide (NO) to nitrogen 
+dioxide (N02) in a power plant plume because of the quick quenching of the thermal oxidant 
+of NO. The rate of this reaction is second order with respect to NO concentrations; therefore, 
+the rate is fastest in the initial stages of plume dilution. It is also important to account for the 
+initial dilution of buoyant releases because the rate of dilution caused by the turbulent 
+entrainment of ambient air by a rising plume parcel can be considerably greater than that 
+indicated by diffusion coefficients based on measurements for nonbuoyant releases (e.g., 
+Pasquill-Gifford a), a,). Thus, initial plume dilution during plume rise should be taken into 
+account to calculate accurately both plume dilution and atmospheric chemistry. 
+
+Briggs ( 1969) sugges_ted that the characteristic plume radius (~) increases linearly w·ith 
+the height of the plume above the stack and can be represented as follows: 
+
+
+6 
+
+
+
+(1)
+RP =0.5 (Ah) 
+
+Briggs described the plume rise (M), as a function of downwind distance (the "2/3 power 
+law"), as follows: 
+
+(2) 
+where F is the buoyancy flux, x is the downwind distance, and u is the wind speed. For 
+initial dilution, we can assume that the plume is circular in cross section and has a Gaussian 
+proftle. We can also assume that the radius of the plume is the distance from the plume 
+centerline to the point at which the plume concentration is 10 percent of the centerline 
+concentrations. Thus, we have 
+
+(3) 
+where cry is the horizontal dispersion coefficient and crz is the vertical dispersion coefficient. . 
+The concentration (X) of a given species at the centerline of the plume can be calculated by a 
+modified Gaussian model that can be represented as 
+
+(4) 
+where Vis the velocity of the parcel, which has a horizontal component (the wind speed u) 
+and a vertical component w, which can be calculated by differentiating Equation (2). Thus 
+
+(5) 
+where t is the time traveled. With this formulation, time-dependent plume temperature and 
+NO concentrations can be calculated for accurately predicting the thermal oxidation of NO 
+during plume rise. 
+
+Combining Equations (1), (3), and (4), the initial dilution of plume material, after the 
+plume has reached its final height, is calculated as follows: 
+
+2.94 Q
+X=--.:.. (6) 
+
+(Ah)2u 
+
+where Q is the emission rate. 
+
+Thus, plume material is assumed to be at least as dilute as that shown by Equation (6). 
+For emissions sources having more than one stack, it is assumed that there is an overlap of 
+plumes from individual stacks. For cases in which the initial dilution during plume rise is 
+
+7 
+
+
+
+greater than the standard Gaussian formula would predict at the downwind distance of final 
+plume rise, a virtual point-source offset is introduced so that dilution at this distance is at 
+least as much as that shown in Equation (6). 
+
+Plume Rise 
+
+The final plume rise in PLUVUE II is calculated using the modified plume rise formulas 
+of Briggs (1969, 1971, 1972) defined as follows: 
+
+For unstable or neutral atmospheric conditions, the downwind distance of final plume rise is 
+Xr = 3.5 x*, where 
+
+(7) 
+The final plume rise under these conditions is 
+
+(8) 
+For stable atmospheric conditions, the downwind distance of final plume rise is Xr =1t u s"112 , 
+where the stability parameter s is defined as follows: 
+
+s = g -~.....:6/;..__~~z: (9) 
+
+T 
+
+where g is the gravitational acceleration, 88/Bz is the potential temperature gradient, and T is 
+
+the temperature. 
+
+The plume rise for stable atmospheric conditions is 
+
+113 
+
+Ah = minimum of { 2•6(Ff(us)) (10)
+
+S pl/4s-3/8 
+
+The buoyancy flux (F) in the above equations is calculated on the basis of the flue gas 
+volumetric flow rate per stack (V'), flue gas and ambient temperature in degrees Kelvin (Tstack• 
+TambienJ• and gravitational acceleration, as follows: 
+
+F = gV'(l-TQlri}Mnt) (11) 
+x T$111Ck 
+
+8 
+
+
+
+Gaussian Plume Diffusion 
+
+After the plume has achieved its final height (about 1 km downwind), plume 
+concentrations for uniform wind fields can be adequately predicted using a Gaussian model if 
+the wind speed u at plume height H (or h5 +~h. where h5 is the stack height) and the rate of 
+diffusion are known for the particular situation so that diffusion coefficients (cry, crz) can be 
+selected: 
+
+22
+
+X= Q exp [ _ !(i..J2 
+]{ exp [ _ !(H +zl ]+ exp [ _ !(H -zl ] } (12)
+
+2rtaazu 2 a2 az 2 az
+
+11 
+
+Equation (12) is appropriate for a conservative species and can be modified to be appropriate 
+for a nonconservative species by changing the source term Q. 
+
+It is necessary for calculating plume visual impact to integrate, along the line of sight, 
+the plume extinction coefficient, the magnitude of which depends on primary and secondary 
+particulate and nitrogen dioxide concentrations. Equation (12) can be integrated (Ensor et al., 
+1973) in the cross-wind direction y, from y =-oo toy =+oo, to obtain the optical thickness of 
+the plume: 
+
+
+where be"' is the incremental increase in extinction coefficient in the plume and Q' is the flux 
+of the plume extinction coefficient over the entire plume cross section at downwind distance 
+
+x. In the vertical direction z, from z =0 to z =+oo, the plume optical thickness is 
+(14)
+'tpz = j but tk. = Q'(x) exp [ 1 ( Y ]2]
+(2rt)11'2a u 2 a
+
+
+0 1
+
+1 
+
+Observer-Plume Orientation 
+
+The magnitude of the visual impact of a plume depends on the orientation of the 
+observer with respect to the plume because the plume optical thickness will vary depending 
+on this orientation. Figure 1 shows plan and elevation views of an observer and a plume and 
+indicates that the sight path distance through the constituents of the plume ·is a function of 
+angles a and ~. The optical thickness for most combinations of angles a and ~ can be 
+approximated as follows: 
+
+9 
+
+
+
+PLUME 
+
+
+SIGHT PATH 
+
+
+' 
+
+~OBSERVER 
+
+(A) PLAN VIEW 
+PLUME 
+CROSS-SECTION 
+
+
+(B) ELEVATION VIEW 
+Figure 1. Gaussian plume visual impact model: observer-plume geometry. 
+
+10 
+
+
+
+(15) 
+Figure 1 suggests that plume optical thickness is greater for horizontal sight paths than 
+vertical ones, particularly during stable conditions when the plume cross section is flattened. 
+
+Limited Mixing 
+
+When vertical diffusion is limited by a stable capping layer, Equation (12) is no longer 
+valid, and a Gaussian formulation, with terms for reflection from the top of the mixed layer 
+(at altitude IluJ, is used. Let H' be the height of the virtual source positioned above the top 
+of the mixed layer: H' = 2 ~-H . 
+
+The Gaussian formulation for limited mixing is 
+
+X = + 
+(16) 
+In this instance of limited mixing, the plume material eventually becomes uniformly mixed in 
+the vertical direction for 0 < z < ~· In the limit, the concentration is expressed as follows: 
+
+2 
+
+x= exp __ _]_ (17)
+
+Q [ 1 ( ]]
+
+(21C) 1fla.,uHm 2 a., 
+The calculation of plume optical thickness in the y-direction becomes simply 
+
+
+(18) 
+Surface Deposition 
+
+Surface deposition is calculated by integrating the plume concentrations at the ground 
+and multiplying by a deposition velocity, Vd, that characterizes gas and particulate surface 
+depletion: 
+
+11 
+
+
+
+(19) 
+Since nocturnal ground-based stable layers shield a plume from the ground at night, 
+surface deposition is effectively zero at night. This is handled in the model using a flag 
+keyed to the time of day at which the plume parcel is at a given downwind distance. 
+
+Power Law Wind Profile Extrapolation of Surface Winds 
+
+PLUVUE II is designed to use either wind speed aloft or surface wind speed (commonly 
+measured at 10 m above the surface). The power law extrapolation presented in the User's 
+Manual for a Single-Source (CRSTER) Model (EPA, 1977) is used. The surface wind speed 
+is extrapolated to stack height for the plume rise calculation, and the surface wind speed is 
+extrapolated to the final plume height for Gaussian concentration calculations·. The power 
+law extrapolation is as follows: 
+
+(20)
+u = u0(z/10)l' 
+
+where u =wind speed at altitude z (ms-1) and llo = surface wind speed (ms-1). The profile 
+exponent p is a function of stability and has the following values for urban classification*: 
+
+Pasguill Stability Class Wind Speed Profile Exponent (p) 
+
+A Extremely unstable 0.10 
+B Moderately unstable 0.15 
+c Slightly unstable 0.20 
+D Neutral 0.25 
+. 
+E 
+F 
+Slightly stable 
+Moderately stable 
+0.30 
+0.30 
+
+2.1.2 Atmospheric Chemistry 
+The conversion of emission of nitric oxide (NO) and sulfur dioxide (SOJ to nitrogen 
+dioxide (N02) gas and sulfate (S04) aerosol, species responsible for visual effects, must be 
+calculated in the visibility model. 
+
+• 
+
+This is not consistent with current EPA regulatory models. The PLUVUE II algorithm 
+was not modified because of the potential effect on the model performance. 
+
+12 
+
+
+
+The rate of chemical conversion of these primary emissions to secondary species 
+responsible for visual impact is dependent on the concentration of the reacting species and 
+ultraviolet (UV) solar flux. Thus, conversion rates are dependent on both plume dilution and 
+time of day. A plume parcel at a given downwind distance has a specific gas, time of 
+emission, and history of UV irradiation, which can affect the amount of N02 and S04 in the 
+plume at a given time. Thus, the chemical conversion in each plume parcel must be treated 
+separately, taking into account these factors. 
+
+PLUVUE II is· structured to take a "snapshot" of a plume at a given time. In PLUVUE 
+II, the chemical conversion is calculated for each plume parcel, observed at a given distance, 
+in a Lagrangian manner; i.e., the reaction rates are calculated at each of several discrete 
+downwind distances and times from the point of emission to the downwind distance at which 
+the plume parcel is observed. Thus, the age of a plume parcel observed at downwind 
+distance "obs is X0 bju, where u is the wind speed. The time (t) at which a plume parcel is at a 
+given downwind distance (x) related to the time of observation (tobs) is as follows: 
+
+xobs -x 
+
+(21)
+t=t ---
+
+
+ob& U 
+
+The UV flux is calculated as a function of time that a plume parcel is at a given 
+downwind distance x from the solar zenith angle (i.e., the angle between direct solar rays and 
+the normal to the earth's surface). The zenith angle is calculated on the basis of the latitude, 
+longitude, date, and time using a subroutine developed by Schere and Demerjian (1977). 
+
+The rate of chemical conversion is also dependent on the location of the plume parcel 
+within the plume. PLUVUE II makes calculations at the following altitudes within the plume 
+(y = 0): at the plume centerline (z = H) and at z = H ± n O'z, where n = 1 and 2. 
+
+Conversion of NO to N02 
+
+Nitrogen dioxide gas can cause a yellow-brown discoloration of the atmosphere. 
+Although some discoloration is a result of wavelength-dependent light scattering caused by 
+submicron aerosol, the dominant colorant of power plant plumes is N02, which causes a 
+yellow-brown discoloration that may be apparent at significant distances downwind of large 
+coal-fired power plant~, particularly in areas where the background visual range is excellent. 
+
+Very little N02 is emitted directly from combustion sources. However, colorless nitric 
+oxide is formed by the _thermal oxidation of atmospheric nitrogen at the high temperatures 
+experienced in the combustion zone (the boiler in a power plant) and the oxidation of 
+nitrogen that may be present in the fuel. Chemical reactions in the atmosphere can form 
+sufficient N02 from NO to cause atmospheric discoloration. Available measurements of NO 
+
+13 
+
+
+
+and N02 concentrations in power plant plumes in non-urban areas sug.gest that the conversion 
+of NO to N02 can be calculated from a simple set of three reactions.* 
+
+The first of these is the thermal oxidation of NO to N02: 
+
+2NO + ~ 2N02 
+(22)
+
+0 2 
+
+The reaction is termolecular, but bimolecular with respect to NO; it is therefore very fast at 
+high concentrations of NO .but slow at the lower concentrations that exist in the atmosphere 
+or in a plume. The reaction rate for Equation (22), based on Baulch et al. (1973) is 
+
+(23)
+d[N:2] ~ [ 4.015 x 10-12 exp ( ~:~)] [N0]2[0.J (tn ppmjs) 
+
+where R is the universal gas constant and T is the absolute temperature. 
+
+The reaction with ozone also affects the conversion of NO to N02: 
+
+K, 
+
+(24) 
+NO 
++ -N02 :t
+
+
+0 3 0 2 
+
+The reaction is fast, with a rate (Leighton, 1961; Davis et al., 1974; Niki, 1974) at 25°C of 
+
+d[N02] = 0.44 [N0][0] (in ppm/s) 
+(25)
+
+3
+
+dt 
+
+This reaction time accounts for the ozone depletion measured within power plant plumes and 
+is important because ozone concentrations can be high even in nonurban regions. Measured 
+ozone concentrations in nonurban areas of the western United States range from 0.02 to 
+
+0.08 ppm. 
+Whereas the thermal oxidation rate in the reaction shown in Equation (23) decreases as 
+the plume mixes (because the NO concentration decreases), the formation of nitrogen dioxide 
+via Equation (24) is enhanced as the plume mixes because additional ozone from the 
+atmosphere is mixed into the plume, allowing Equation (24) to proceed. When there are no 
+reactions converting N02 to NO (e.g., at night), Equation (24) proceeds until all of the NO in 
+the plume is converted to N02 or until the ozone concentration in the plume drops to zero. 
+Therefore, the rate of conversion of NO to N02 via Equation (24) is limited by the rate of the 
+plume mixing that provides the necessary atmospheric ozone. 
+
+* 
+In urban areas, a complete photochemical mechanism should be applied to calculate N02 
+concentrations. Also, it should be noted that N02 is destroyed by reaction with the 
+hydroxyl radical (OH·), as discussed in the next subsection. 
+14 
+
+
+
+To complete the set of chemical reaction mechanisms, we must consider the photolysis 
+of N02• When sunlight illuminates a plume containing nitrogen dioxide, short wavelength 
+light and ultraviolet radiation are absorbed by the N02• As noted above, absorption of the 
+shorter wavelength light produces the characteristic yellow-brown color associated with N02• 
+Absorption of the more energetic ultraviolet light (UV) results in dissociation of the N02 
+molecule: 
+
+Kd 
+
+(26)
+N02 + hv ~ NO + 0 . , 
+
+(27) 
+Leighton (1961) gave the rate of the reaction presented in Equation (26) as 
+
+d[NO]2 
+
+(28)
+---=-= -Kd [N02] (in ppm/s)
+
+·dt 
+
+where Kd depends on the amount of light incident on the nitrogen dioxide. Davis et al. 
+(1974) gave the following expression for Kd as a function of the solar zenith angle Z5 : 
+
+Kd= 1 10-2 exp-0.38) (' -1) (29)
+
+(
+
+X InS 
+
+cos zs 
+
+With this set of chemical reactions, the chemical conversion of NO to N02 in the 
+atmosphere can be calculated from background pollutant concentrations and from plume NOx 
+increments using the technique suggested by Latimer and Samuelsen (1975) and White 
+(1977). Making the steady-state approximation, we have 
+
+(30) 
+where 
+
+(31) 
+and 
+
+(32) 
+[NO:z], signifies the concentration of N02 formed via the termolecular reaction presented in 
+Equation (22) and [NO:Jb signifies background concentrations. Substituting Equations (31) 
+and (32) into Equation (30) we can solve for the concentration of N02 using the standard 
+
+quadratic equation in the form of (y = (-b ± Vb2 -4ac ) 12a) where y = [NOJ. The positive 
+root of the quadratic was found to be physically unreasonable; therefore, the quadratic was 
+solved using the negative root as follows: 
+
+15 
+
+
+
+Conversion of S02 to S04 = 
+
+It is critical to calculate the conversion of S02 emissions to sulfate (S04=) aerosol, 
+because the latter can effectively scatter light and cause reductions in visual range. The usual 
+approach is to assume that sulfur dioxide (S02) gas is convened to sulfate (S04=) aerosol at 
+some constant rate; this approach employs a user-input value of a pseudo-first-order rate 
+constant whose value is empirically determined. 
+
+There is considerable variation, however, in such measured S02-to-S04 = conversion rates, 
+which range from a few tenths of a percent to several percent per hour. Much of this 
+variance in S02-to-S04 =conversion observed in the field measurement programs in recent 
+years can be explained using a model that accounts for the reactions of plume S02 and N02 
+with the hydroxyl (OH·) radical. This chemical mechanism is incorporated in PLUVUE II. 
+In clean background areas, the gas-phase oxidation of S02 and N02 to sulfate aerosol and 
+nitrate (nitric acid vapor) is due primarily to the reaction of these species with OH·. Previous 
+assessments of homogeneous (gas-phase) oxidation of S02 to sulfate estimated the proportion 
+assignable to the reaction with hydroxyl between about 75 percent in clean atmospheres 
+(Calvert et al., 1978; Altshuller, 1979) and as low as 40 percent in polluted urban air (Isaksen 
+et al., 1978), but more recent estimates place these values much higher. Kinetic models 
+forming the basis of the early estimates used the value of 1.3 x ·10-12 cm3mol"1s·1 for the rate 
+constant of reaction for H02 and CH30 2 with NO. More recently, however, this rate has been 
+measured at 8.1 x 10"12 cm3mol"1s·1 (Hampson and Garvin, 1978). This larger rate constant 
+lowers the expected concentration of these peroxy radicals by a factor of 6 and, in turn, 
+greatly reduces the S02 conversion resulting from reactions with these radicals. When 
+recalculated using the new rate constant, the fraction of S02-to-sulfate conversion that results 
+from reaction with the hydroxyl radical is approximately 95 percent for clean atmospheres 
+and 70 percent for the extremely polluted case. 
+
+These estimates are supported by the work of Miller (1978), who found that the S02 
+oxidation rate was not dependent on the absolute concentrations of hydrocarbons and nitrogen 
+oxides but on the ratio of nonmethane hydrocarbon to nitrogen oxides. 
+
+The rate of sulfate (and nitric acid) formation can be estimated by calculating the steadystate 
+concentration of OH· within a plume. This steady-state plume OH· concentration is 
+calculated by balancing the rate of OH· production with the rate of OH· destruction. 
+
+16 
+
+
+With the assumption of ste-ady-state concentrations of O('D) and OH· in the plume, 
+plume pseudo-first-order S02-to-S04 and N02-to-HN03 conversion rates can be calculated as 
+follows:* 
+
+d[S02] 
+
+---1 = K37[0H·] 
+(34) 
+
+[S02] dt 
+
+1 
+d[N02] 
+
+= K38[0H·] · , 
+(35) 
+
+[N02] dt 
+
+
+Plume OH· concentrations are reduced below background tropospheric values for two 
+reasons: 
+
+Plume ozone (03) concentrations are reduced below background values because of the 
+reaction NO + 0 3 ~ N02 + 0 2 (Eq. 24). 
+
+Plume concentration of N02 and S02 are high, thus reducing steady-state OH· 
+concentrations. 
+
+It should be pointed out that at night there is no production of OH· from ozone photolysis; 
+also, in early morning and later afternoon and in winter, OH· production is diminished 
+because ultraviolet flux decreases as solar zenith angles approach 90°. Thus, sulfate and 
+nitrate are not formed at night and are formed only very slowly in concentrated plumes. 
+Nitrate is expected to remain as HN03 vapor and without visual effects uqtil it is eventually 
+deposited. Ammonium nitrate could exist in aerosol form; however, sulfate competes for 
+available atmospheric ammonia. 
+
+2.1.3 Aerosol Size Distribution 
+The aerosol size distribution is characterized by a series of aerosol modes, each having a 
+log-normal distribution of mass (or volume). Each of the following modes is treated 
+separately in PLUVUE II: 
+
+* 
+The user is given the option in PLUVUE IT of supplementing the S02-to-S04 = conversion 
+rate calculated on the basis of steady-state plume OH· concentrations with a user-input 
+pseudo-first-order rate constant, which 1Can be varied as a function of downwind distance. 
+17 
+
+
+
+· 
+Background accumulation mode (submicron) aerosol (typically having a mass median 
+diameter of about 0.3 pm and a geometric standard deviation of 2). 
+
+Background coarse mode (> 1 pm) aerosol (typically having a mass median diameter 
+of about 6 pm and a geometric standard deviation of 2). 
+
+Background carbonaceous aerosol (typically having a mass median diameter of about 
+
+0.1 pm and a geometric standard deviation of 2). 
+Plume primary particulate aerosol (e.g., fly ash emissions). 
+Plume secondary sulfate (S04=) aerosol (typically having a mass median diameter of 
+0.1 to 0.3 pm and a geometric standard deviation of 2). 
+Plume carbonaceous aerosol (typically having a mass median diameter of 0.1 pm and a 
+geometric standard deviation of 2). 
+
+The expression developed by Winkler (1973) is used to calculate the amount of liquid 
+water associated with submicron background .and plume sulfate aerosol as a function of 
+relative humidity. 
+
+Secondary aerosol is assumed to form in the submicron plume secondary aerosol mode. 
+A time delay equal to the time between successive downwind distances is introduced to 
+account for coagulation and condensation time delays. 
+
+2.1.4 Atmospheric Optics 
+. In the atmospheric optics component of the plume visibility model, the light scattering 
+and absorption properties of the aerosol and the resultant light intensity (spectral radiance) for 
+various illumination and viewing situations are computed. 
+
+Calculation of the Scattering and Absorption Properties 
+
+After the concentrations of the pollutants are specified by the transport and chemistry 
+subroutines, their radiative properties must be determined. For N02, the absorption at a 
+particular wavelength is a tabulated function (Nixon, 1940) multiplied by the concentration. 
+For aerosols, however, the procedure is more complicated. 
+
+In general, a particle's ability to scatter and absorb radiation at a particular frequency is 
+a function of size, composition, shape, and relative humidity. The flexibility to specify the 
+size distribution of both primary and secondary particles was desired. Therefore, the effect of 
+particle size on the wavelength dependence of the extinction coefficient and the phase 
+
+18 
+
+
+
+function, the solution of Maxwell's equations for scattering by a sphere, and the so-called Mie 
+equations were used in PLUVUE ll. These calculations are appropriate for atmospheric 
+aerosol; comparisons of Mie calculations, with empirical correlations of scattering-to-mass, 
+indicate substantial agreement. The Mie calculations are input to the PLUVUE II model 
+using the MIETBL algorithm which is discussed in detail in Section 2.3. 
+
+Calculation of Light Intensity 
+
+The light intensity, or radiance (watts/m2/steradian) at a particular location in the 
+atmosphere is a function of the direction of observation n and the wavelength A.. Calculation 
+of the light intensity in a medium follows from the radiative transfer equation. This equation 
+is a conservation of energy statement that accounts for the light added to the line of sight by 
+scattering and the light lost because of absorption and scattering. Approximations and 
+solution techniques applicable to planetary atmospheres have been discussed by Hansen and 
+Travis (1974) and Irvine (1975). 
+
+To compute the spectral light intensity at the observer, we sum (integrate) the scattered 
+and absorbed light over the path, r, associated with the line of sight n. The resultant general 
+expression for the background sky intensity at a particular wavelength is 
+
+Ib(C) = 
+-;•J ~~) J I(C1,t') p(C1 
+... C,t') d01 e -'C' dt1 , (36) 
+0 D1-4n 
+
+where 
+'t = the optical depth ('t =Jor bext dr, where bext is the extinction coefficient), 
+
+
+(l) = the albedo for single scattering ( ro =bscalbext where bscat is the scattering 
+coefficient), 
+p(O'--+ Q) = the scattering distribution function for the angle Q' --7 Q, and 
+I = the spectral intensity at t' from direct and diffuse solar radiation. 
+
+The intensity seen by an observer in direction Q of a background viewing object of 
+intensity Io at distance R is 
+
+lobJ(C)_ = l (0.)e --;R + 
+
+0 
+
+o;R . (37)f w::') f I(C1;t) p(C1 + C,t') d0. 1 
+
+e -"' dt1 
+
+0 Q 1=4n 
+
+Equations (36) and (37) then completely describe the spectral intensity of the sky and a 
+background object. Once these two quantities are known, the visual effects of the intervening 
+atmosphere can be quantified. In evaluating Equations (36) and (37), we encounter two main 
+
+19 
+
+
+
+difficulties: first, the quantity in the integral is a fairly complicated function, and accurate 
+specification is tedious. Second, the atmosphere is inherently inhomogeneous; thus, the 
+radiative properties of w and p are somewhat complicated functions of r and !l. The · 
+following approximations are therefore made in PLUVUE II: 
+
+Plane parallel atmosphere 
+
+Two homogeneous layers 
+
+Average solar flux approximation 
+
+The equation for the background intensity at the surface becomes, for a given viewing 
+direction: 
+
+or. 
+
+1(0) = I.dy(Q) e -TL + F J<..>~:~ e -orJo,&. P(01 .... O;r' ) e -or'd-r:1 
+
+611 11 
+
+0 (38) 
+
+1
+
++ 
+or.J<..>~:~ J1(01,-r:~ P(01 0,-r: ) d0.1 
+
+... e-T'd.,.
+
+0 C1:4n 
+
+The radiance impinging on the top of the planetary boundary layer, l's~ty(!l), is calculated 
+from average properties of the upper atmospheric layer: 
+
+(39)
+lsky(O.) = ;; P.(6J F 
+T•Je -T/'t', e-T' d't 1 
+
+3 
+
+TL 
+
+where ro.. and P(95) are average albedo and phase functions, respectively, and 'tL is the optical 
+depth of the planetary boundary layer. The atmosphere is then assumed to be composed of 
+two layers of homogeneous properties, i.e., an upper atmospheric layer and a planetary 
+boundary layer. 
+
+In Equation (38), the first term represents the light that travels directly from the object to 
+the observer, the second term is integrated along the line of sight and represents the light that 
+has been scattered once from the sunlight's angle of incidence into the line of sight (singlescattering 
+term), and the third term represents the light that has been scattered at least once 
+before being scattered into the line of sight (multiple-scattering term). 
+
+The ftrst term is calculated from the values of the background object radiance or sky 
+radiance at the top of the boundary layer and extinction coefficient. The background object 
+radiance, l0 (!l), is calculated from the optical depth and from the molecular and aerosol 
+scattering phase functions. Since the sky radiance, l's~ty(!l) is given by Equation (39), it 
+depends on the aerosol concentration, the size distributions, and the scattering angle. 
+
+20 
+
+
+
+For the second term, one assumes spatially averaged albedo 0> and phase functions P(85) 
+for the planetary boundary layer. Equation (37) may be rewritten as follows: 
+
+(40) 
+where es is the single-scattering angle and G(O,'tR) is the multiple-scattering term. The 
+second term is calculated from the values of the extinction coefficient along the line of sight. 
+Similarly, Equation (38) is rewritten as follows: 
+
+(41)
+lb(O) =1ty(O) e -,;L + F : P(6) f,;L 
+e -,;JII. e -,;' dr: 1 + G(O,r:..)
+
+34
+34
+3 
+
+0 
+
+The radiance of a plume with a background object is calculated in three steps, as shown 
+schematically in Figure 2. First, the background radiance incident on the plume, I1(0), is 
+calculated according to Equation (42): 
+
+(42)
+' . 
+
+where 't1 is the optical depth between the background object and the observer. 
+
+The radiance leaving the plume, IiO), is calculated from 11(0) and the scattering and 
+absorption of light in the plume: 
+
+-,;p 
+
+(43)
+12(0) = 1(0) e -,;P + F:: P(6) f e -,;J"• e --r' dr: 1 + G(O,r:)
+
+13 
+0 
+
+
+where 'tP is the optical depth of the plume along the line of sight, and roP is the plume albedo. 
+These variables are calculated from the plume gas and particle scattering and absorption 
+coefficients. The integration of these coefficients is carried out by assuming that 
+the plume is Gaussian (Latimer and Samuelsen, 1978). 
+
+
+The plume radiance at the observer location, ~(0), is then calculated from I2(Q) 
+according to Equation (44): 
+
+21 
+
+
+
+PLUME~ 
+
+LINE OF SIGHT(n)~ \ ----
+
+
+
+Ip(n) I2(n) I ,Cn) 
+
+BACKGROUI 
+
+----------
+Io(n) 
+---< -<------
+
+
+OBJECT 
+
+OBSERVER 
+
+Figure 2. Schematic representation of the plume radiance calculations. 
+22 
+
+
+(44) 
+where 't2 is the optical depth between the plume and the observer. 
+
+The contrast of the plume can then be calculated from the plume and background 
+radiances as follows: 
+
+c = IP(O) -lobi(O) 
+
+(45) 
+[obj(O) 
+
+In calculating the radiances, the multiple-scattering term requires the integration of the 
+angle-dependent sky radiance over all angles and over the optical depth. The calculation is 
+performed in two steps that are summarized as follows. 
+
+First, the scattered intensity source function is calculated according to the algorithm of 
+Isaacs (1981). The formulation is based on a two-stream approximation to the radiative 
+transfer equation and employs the Rayleigh and Henyey-Greenstein phase functions for 
+molecular and aerosol scattering, respectively. The phase functions are calculated according 
+to Mie theory. Then, the multiple-scattering term is calculated by integrating over Q' .and t'. 
+This approach allows an anisotropic description of the multiple-scattering term that is 
+computationally reasonable. 
+
+Thus, the background intensity and the intensity in the direction of an object at distance 
+R from the observer can be computed given the following inputs: 
+
+Background radiative properties (e.g., size distribution visual range), 
+Solar zenith angle, 
+Scattering angle, 
+Viewed object intensity, 
+Direction of observation, and 
+Planetary boundary layer height. 
+
+
+The plume is treated as a homogeneous layer with a given optical thickness and mean 
+properties wplume and Pplume(8). It is also assumed that the plume does not affect the solar 
+radiation illumination (an optically thin plume). 
+
+Spectral radiance, or light intensity I(A.), is calculated for 39 wavelengths spanning the 
+visible spectrum (0.36 pm <A.< 0.74 pm, in 0.01 pm increments). 
+
+23 
+
+
+
+2.1.5 Geometry of Plume, Observer, and Sun 
+For performing as many as four different types of optics calculations at selected points 
+along the plume trajectory, PLUVUE has two modes: plume-based and observer-based 
+calculations. The calculations for plume transport, diffusion, and chemistry are identical for 
+calculations in both modes. The major difference between the two types of calculations is the 
+orientation of the position of the viewer to the source and the plume. 
+
+Plume-based calculations are repeated for several combinations of plume-observer-sun 
+geometries. Because of the repetitions, these plume-based calculations are more time 
+consuming and produce more printed output than the observer-based calculations, which are 
+performed for only the specific line-of-sight orientations corresponding to the given observer 
+position, the portions of the plume being observed, and the specific position of the sun 
+relative to these lines of sight. 
+
+There are four types of optics calculations: (1) horizontal views through the plume with 
+a sky viewing background; (2) nonhorizontal views through the plume with a sky viewing 
+background; (3) horizontal views through the plume with white, gray, and black viewing 
+backgrounds; and (4) horizontal views along the axis of the plume with a sky viewing 
+background. 
+
+Figure 3 illustrates the geometry of the plume-based optics calculations of horizontal 
+views through the plume. This figure depicts schematically the variecy of distances from the 
+observer to the plume and the variety of horizontal azimuthal angles between the line of sight 
+and the plume trajectory.* Calculations for all these geometries are repeated for up to six 
+different scattering angles. 
+
+Figure 4 shows the geometry for the optics calculation for horizontal views perpendicular 
+to the plume with white, gray, and black viewing backgrounds. For each point on the plume 
+trajectory and each scattering angle, the calculations are executed for a range of distances 
+from the observer to the background object, starting at the plume centerline and ending at 80 
+percent of the background visual range. The distances, from the observer to the plume, range 
+from 2 percent to 80 percent of the background visual range. 
+
+Figure 5 illustrates the configuration used for the plume-based calculation for views 
+along the axis of the plume. The calculations are made from the second through the final 
+downwind distances. · At each point, the observer is looking toward the emissions source with 
+a sky background. The calculations are made for views through plume segments defmed by 
+the particular point of analysis, as well as successive analysis points upwind. The 
+
+• 
+
+These azimuthal angles are measured from the plume centerline to the line of sight such 
+that the angles range from 0° to 90°. 
+
+24 
+
+
+
+PLUME CEN TERUNE 
+
+POINTS FOR 
+OPTICAL ANALYSIS 
+
+a "----A-~-_.6. 
+
+a "-:a---
+
+
+OUTLINE OF 
+
+a3 I "-~----.6.
+
+PLUME POSITION A \_ -~---~
+
+
+~ I '-'-'-OBSERVER POSITIONS 0: EACH 
+/ I '>to. LINE Of SIGHT CORRESPONDING 
+I I ..... TO VARIOUS PLUME -OBSERVE I< 
+
+,I. ... '-, DISTANCES (rp) 
+
+/ : ~ ". [ HORIZONTAL LINES OF SIGHT AT 
+'-.A. FOUR AZIMUTHAL ANGLES (ex)
+
+/ • " 
+
+1 I -'-RELATIVE TO PLUME CENTERLiflf~
+
+A/
+
+SOURCE 
+
+I I
+
+I ~ ,~ 
+
+I : ' 
++ 
+
+(A) HORIZONTAL VIEWS 
+Geometties for plume-based calculations with a sky background. 
+Figure 3. 
+
+
+
+VARIOUS BACKGROUND OBJECT 
+POSITIONS (NOT TO SCALE) 
+
+--·--
+
+
+-A----t---.____•__ 
+
+VARIOUS OBSERVER POSITIONS 
+(NOT TO SCALE) 
+
+Figure 4. Geometries for plume-based calculations for viewing ~f white, gray, and black 
+objects for horizontal views perpendicular to the plume~ 
+
+
+FIRST TWO OBSERVEk 
+FOURTH POINT FOR OPTICS POSITIONS 
+ANALYSIS {THE REFERENCE 
+POINT FOR THIS FIGURE) 
+
+POINTS ON PLUME TRAJECTORY 
+FOR OPTICS ANALYSIS 
+
+
+PLUME CENTERLINE 
+
+Figure 5. 
+Geometries for plume-based calculations for horizontal views along the axis of 
+the p~ume. 
+
+
+calculations are repeated for observer positions at a range of distances from the downwind 
+point at which the plume segment is assumed to end. 
+
+The observer-based geometry used for views through the plume center with a clear sky 
+background is shown in Figure 6. At each point of analysis along the plume trajectory, the 
+optics calculation is made for only one scattering angle, one plume-observer distance, and one 
+azimuthal angle specific for the source position, observer position, wind direction, date, and 
+time of day used as input. For calculations with white, gray, and black viewing 
+backgrounds, the geometries are the same as those for horizontal views with a sky 
+background (Figure 7), with the addition of the specific background object distance, along 
+each line of sight, from the observer through the points on the plume trajectory. 
+
+Figure 7 is a plan view of the geometry for an observer-based calculation for views 
+along the plume. At each analysis point along the plume trajectory, the centerline 
+concentration is integrated along a segment on the line of sight that would correspond to a 
+Gaussian distribution. The line of sight is always horizontal. The calculation is performed 
+for a clear sky background and for white, gray, and black viewing objects at the specific 
+distance for each line of sight. 
+
+It should be noted that if the distance (rp) and azimuthal angle (a) are such that the 
+observer is within the plume, the total plume optical thickness along the line of sight is 
+reduced accordingly. _The calculated distance rP is the distance between the observer and tht~ 
+centroid of plume material viewed by the observer. 
+
+2.1.6 Quantifying Visibility Impairment 
+Visibility impairment may be quantified once the spectral light intensity or radiance l(A,) 
+has been calculated for the specific lines of sight of an observer at a given location in an 
+atmosphere with known aerosol and pollutant concentrations. Visibility impairment-including 
+reduction in visual range, the perceptibility of plumes and haze layers, and 
+atmospheric discoloration--is caused by changes in light intensity as a result of light scattering 
+and absorption in the atmosphere. 
+
+Some parameters which may be used to characterize the visibility effects of the plume 
+are listed: 
+
+Visual Range Reduction 
+
+This parameter is the percentage reduction in visual range (the farthest distance one 
+can see a large, black object) caused by the plume material. This parameter can be 
+interpreted to indicate the haziness or loss of contrast of viewed landscape features 
+caused by plume material. 
+
+. 28 
+
+
+SOLAR POSITION SPECIFIED 
+BY SOURCE LOCATION. 
+TIME AND DATE 
+
+----------
+SPECIFIED 
+OBSERVEf 
+--------LOCATION 
+--LINES 
+OF SIGHT 
+SPECIFIED SOURCE 
+LOCATION 
+
+Figure 6. Geometry used for observer-based calculations for nonhorizontal views through 
+the plume for clear-sky backgrounds. 
+
+
+SECOND POINT ON 
+TRAJECTORY FOR 
+OPHCS ANALYSIS 
+
+
+SPECIFIED WIND 
+DIRECTION 
+
+
+LINE OF SIGHT 
+
+w 
+
+0 
+
+7 
+
+SPECIFIED SOURCE 
+LOCATION 
+
+
+
+SPECIFIED 
+
+OBSfRV[R 
+
+Figure 7. Plan view of geometry for observer-based calculations for views along the 
+plume. 
+
+
+Plume Contrast 
+
+This parameter is the relative brightness of a plume compar~d to a viewing 
+background. A contrast that is positive indicates a relatively bright plume and a 
+negative contrast indicates a dark plume. Contrasts with absolute values greater than 
+
+0.02 are generally perceptible. A two percent contrast is used to define visual range. 
+Plume contrast calculations in PLUVUE II are done at one wavelength, 0.55 Jlm, 
+which is a green color in the middle of the visible spectrum, which extends from 0.4 
+pm (blue) to 0.7 pm (red). 
+Blue-Red Ratio 
+
+This parameter indicates the relative coloration of a plume relative to its viewing 
+background. Blue-red ratios less than one indicate relatively yellow, red, or brown 
+plumes. Blue-red ratios greater than one indicate plumes that are whiter, grayer, or 
+bluer than the viewing background. Blue-red ratios less than 0.9 or greater than 1.1 
+would be indicative of perceptible plumes. 
+
+Color Contrast Parameter (LlE) 
+
+The color contrast parameter or LlE is probably the best single indicator of the 
+perceptibility of a plume due both to its contrast and its color with respect to a 
+viewing background. LlE is calculated for the entire visible spectrum and indicates 
+how different the brightness and color of plume and background are. The larger the 
+value of LlE, the greater the perceptibility of the plume. Under ideal viewing 
+conditions, when the viewing background is uniform and the plume is sharp-edged, a 
+just perceptible LlE would be one; for cases of plumes with diffuse edges, a just 
+perceptible LlE threshold would be greater than one, perhaps two (EPA, 1988). 
+
+2.1.7 Code Modifications 
+In 1989 (SAl, 1989), the PLUVUE II model was revised to include an interpolated 
+scheme to calculate the phase functions which significantly decreased the execution time of 
+the PLUVUE II computer code. The development of an interpolative scheme to calculate 
+phase functions needed in the visibility model was performed by Richards and Hammarstrand 
+(1988). The phase function calculation uses "lookup" tables which contain the phase 
+functions for different particle size dfstributions. Further details concerning the phase 
+function calculations are given in Section 2.3. 
+
+Details concerning the most recent modifications to the PLUVUE II ·algorithm are as 
+follows: 
+
+31 
+
+
+
+Under Pasquill-Gifford stability class A conditions, PLUVUE II was found to produce 
+numerical overflows. Diagnostic checks indicated that the interpolation formula based 
+on a series of logarithms to calculate cry and crz ~n PLUVUE II have a ~latively large 
+degree of error (especially for values of O'z). In order to avoid the numerical 
+overflows caused by the logarithmic equations, the subroutines used to calculate cry 
+and O'z in ISC2 (EPA, 1992) were substituted for the original PLUVUE II subroutines. 
+
+The optical depth (called TAUP3) in subroutine PLMOBJ becomes negative and 
+produces light amplification rather than attenuation along a line of sight when the 
+observer and the object lies close to the plum~. Initially PLUVUE II insures· that the 
+plume lies in the foreground of an object for the case where the azimuthal angle for 
+the plume line of sight is 90°. However, this check was not conducted by PLUVUE II 
+for angles other than 90° when the plume moves away from the observer and the 
+distance to the object remains the same. As a result, the plume-observer distance (RP) 
+exceeded the observer-object distance (RO). When this occurs, a negative optical 
+depth (TAUP3) is estimated, which in turns results in light being amplified along the 
+line of sight rather than being attenuated. Code has been added to PLUVUE II to 
+check if RO is less than RP. If this occurs, then the following message is printed 
+"You have placed the plume behind the background -stopped processing" and the 
+program stops. 
+
+When the scattering angle approaches the solar zenith angle near 45°, a PLUVUE II 
+
+code check to avoid an inverse cosine argument outside the range (-1, 1) terminated 
+
+many of the optical computations. Due to the conversion from radians to degrees plus 
+
+other numerical manipulations, the distance calculations produce slight numerical 
+
+arguments greater than 1.0 to the inverse cosine function. The numerical excesses 
+
+were found to be of the order of less than one percent (-1.01, 1.01). As a result, for 
+
+excesses less than two percent (1.000000 to 1.020000), the argument is now truncated 
+
+to 1.00000 so that the estimates continue to be made. For excesses greater than two 
+
+percent, should they occur, the optical estimations are stopped. 
+
+The stability class supplied for intermediate distances seemed to be ignored by 
+
+PLUVUE II. It was decided that the ability to change stability class with downwind 
+
+distance should not be allowed; therefore, the option was disabled in PLUVUE II by 
+
+setting NXSTAB to NX2+1 and INEW to I. NXSTAB (the index for downwind 
+
+distance where stability changes from I (stability index) to INEW (secondary stability 
+
+index)) and INEW are no longer input to PLUVUE II. 
+
+The PLUVUE II model incorrectly predicted impacts for lines of sight with terrain 
+
+background. It was discovered that there were errors in the PLUVUE IT model when 
+
+calculating the effects of multiple scattering because two of the three multiple 
+
+scattering integral terms were missing from the algorithm. The corrected integral 
+
+terms have been incorporated in the revised version of PLUVUE IT. 
+
+32 
+
+
+In addition to the code modifications listed above, a number of cosmetic changes have 
+been made to the code. Headers have been added to all subroutines. Unused variables and 
+arrays, along with commented out statements, have been eliminated. 
+
+2.1.8 Input Data 
+The input data needed to run PLUVUE II are contained in one file of 80 byte, cardimage 
+records. As is discussed in Sections 2.2 and 3.2, the RUNPLUVU visibility modeling 
+system allows the user to interactively edit the PLUVUE II input file. The PLUVUE II input 
+data include the following parameters: 
+
+Wind speed aloft or at the 10-m level 
+Stability category 
+Lapse rate 
+Height of the planetary boundary layer (mixing depth) 
+Relative humidity 
+S02, NOx, and particulate emissions rates 
+Flue gas flow rate, exit velocity, and exit temperature 
+Flue gas oxygen content 
+Ambient air temperature at stack height 
+Ambient background NOx N02, 0 3, and S02 concentrations 
+Properties (including density, mass median radius, and geometric standard deviation) 
+of background and emitted aerosols in accumulation (0.1-1.0 J.lm), coarse (1.0-10.0 
+J.Im), and carbonaceous aerosol size modes 
+Coarse mode background aerosol concentration 
+Background visual range or background sulfate and nitrate concentration 
+Deposition velocities for S02, NOx, coarse mode aerosol, and accumulation mode 
+aerosol 
+UTM coordinates of the source location 
+Elevation of the source location 
+UTM coordinates and elevation of the observer location for an observer-based analysis 
+UTM zone for the site and. observer locations 
+Time, day, month, year, and time zone for the time and date of the simulation 
+For an observer-based run, terrain elevation at the points along the plume trajectory at 
+which the analysis will be performed 
+For an observer-based run with white, gray, and black viewing backgrounds, the 
+distances from the observer to the terrain that will be observed behind the plume 
+For an observer-based run, the wind direction 
+
+The input data file also has numerous switches or flags to allow the user to select the 
+particular subset of the complete model that is required. Table 1 lists the input parameters 
+with formats, summary descriptions, and suggested values for some of the input parameters. 
+
+33 
+
+
+
+TABLE 1 
+DATA REQUIREMENTS FOR PLUVUE II 
+Card No. Format Variables Description 
+
+1 A40 FILE1 Mie library filename 
+2 A40 FILE2 Binary output file #1 
+3 A40 FILE3 Binary output file #2 
+
+4 
+6A4 PLANT Name of source 
+
+5 
+F5.1 u Wind speed (mph) 
+15 r Stability index 
+F5.2 ALAPSE Ambient temperature lapse rate (°F/1000 ft) 
+
+6 12 IUS Fe+ Index for height for U (=1 for 7 m, 0 for effective stack 
+height) 
+7 F10.0 YINITL+ Initial plume y-dimension for area source (m) 
+FIO.O ZINITL+ Initial plume z-dimension for area source (m) 
+8 FIO.l HPBLM Mixing depth (m) 
+9 Fl0.3 RH Relative humidity (percent) 
+
+10 15 IDIS+ 
+Flag indicating diffusion parameters to be used for stability 
+index I ("1" for TV A, "0" for Pasquili-Gifford-Turner 
+values, "9" for user input values) 
+
+11 12 IFLGl+ Flag for optics calculation of horizontal views with sky 
+background· 
+12 IFLG2+ Flag for opti~s calculation with nonhorizontal views and sky 
+background· 
+12 IFLG3+ Flag for optics calculation for white, gray, and black 
+background· 
+
+.
+
+12 IFLG4+ 
+Flag for optics calculation along the plume centerline 
+
+12 NX2 
+Index indicating the number of downwind distances desired 
+(2 < NX2 < 16) 
+
+34 
+
+
+TABLE 1 (Continued) 
+DATA REQUIREMENTS FOR PLUVUE II 
+Card No. Format Variables Description 
+
+12 NTl+ Starting index for the scattering angles used in the generic 
+calculation (set to 1 when executing only observed-based 
+calculations) 
+12 NT2+ Ending index for the scattering angles used in the plume-
+based calculation (set to 7 when executing only observer-
+based calculations) 
+12 NZF* Index for the number of altitudes for visual impact 
+calculations: "1" for plume centerline only, "2" for plume 
+centerline and ground level downwind 
+12 NX3 Number of downwind points selected for optical size 
+calculations (Recommended value is 0) 
+12 NX4 Number of downwind points selected for optical size 
+calculations (Recommended value is 0) 
+12 NXS Number of downwind points selected for optical size 
+calculations (Recommended value is 0) 
+12 12 IDILU+ Switch for printout of table for initial plume rise data 
+12 IlHFAU Number of hundred points to use in generating vertical scans 
+(Recommended value is 0) 
+12 IlDFAU Number of tens and units of points to use in generating 
+vertical scans (Recommended value is 0) 
+12 12FAU Stepping interval for printout of vertical scan 
+(Recommended value is 0) 
+12 I3FAU Option to select individual channel plots (Recommended 
+value is 0) 
+12 I4FAU FORTRAN output unit number (Recommended value is 0) 
+13 8F10.0 DIST(1t 
+1=1, NX2 
+Downwind distances for visibility impact 
+calculations (2 < NX2 < 16) (2 cards for NX2 > 8) 
+14 8Fl0.0 DIST(I)(conl.) 
+15 Fl0.2 QS02 Total S02 emissions rate from all stacks in tons per day 
+Fl0.2 QNOX Total l\0, emissions rate from all stacks in tons per day 
+35 
+
+
+TABLE 1 (Continued) 
+DATA REQUIREMENTS FOR PLUVUE II 
+
+
+Card No. Format Variables Description 
+F10.2 QPART Total primary particulate emissions rates from all stacks in 
+tons per day 
+16 FIO.l FLOW Flue gas flow rate (cfm) per stack 
+FlO. I FGTEMP Flue gas exit temperature (0 F) 
+FIO.l FG02 Flue gas oxygen concentration (mole percent) [3r·· 
+F10.2 WMAX Flue gas stack exit velocity (m/s) 
+17 F5.1 UNITS Number of stacks 
+F5.1 HSTACK Stack height (feet) 
+18 FlO.l TAMB Ambient temperature (0 F) 
+19 F10.3 AMBNOX Ambient [NO.] in ppm [0] 
+F10.3 AMBN02 Ambient [NOJ in ppm [0] 
+F10.3 03AMB Ambient [03] in ppm [0.04] 
+F10.3 AMBS02 Ambient [SOJ in ppm [0] 
+20 F10.3 ROVA Mass median radius (pm) for background accumulation 
+mode aerosol [0.16] 
+F10.3 ROVC Mass median radius (pm) for background coarse mod(: 
+aerosol [3.0] 
+Fl0.3 ROVS Mass median radius (pm) for plume 
+sec.Jndary aerosol ['l.lO] 
+F10.3 ROVP Mass median radius (pm) of emitted primary particulate 
+[1.0] 
+36 
+
+
+TABLE 1 (Continued) 
+DATA REQUIREMENTS FOR PLUVUE ll 
+
+
+Card No. Format Variables Description 
+21 F10.3 SIGA Geometric standard deviation of background accumulation 
+mode aerosol radius [2.0] 
+F10.3 SIGC Geometric standard deviation of background coarse mode 
+aerosol radius [2.2] 
+F10.3 SIGS Geometric standard deviation of plume secondary aerosol 
+radius [2.0] 
+FlOJ SIGP Geometric standard deviation of plume primary aerosol 
+radius [2.0] 
+22 FlOJ DENA Particle density (g/cm3) of background accumulation mode 
+aerosol [1.5] 
+Fl0.3 DENC Particle density (g/cm3) of background coarse mode aerosol 
+[2.5] 
+Fl0.3 DENS Particle density (g/cm3) of plume secondary aerosol [1.5] 
+Fl0.3 DENP Particle density (g/cm3) of emitted primary particulate [2.5] 
+23 Fl0.3 ROVCAR Mass median radius (J.Ull) for carbonaceous aerosol [0.05] 
+Fl0.3 SIGCAR Geometric standard deviation of carbonaceous aerosol radius 
+[2.0] 
+F10.3 DEN CAR Particle density (g/cm3) of carbonaceous aerosol [2.0] 
+Fl0.3 FRACTC Carbonaceous aerosol fraction of plume primary aerosol 
+[0.0] 
+Fl0.3 AMBCAR Background atmospheric carbonaceous aerosol (pg/m3) [0.0] 
+24 Fl0.3 RFRS04 Real part of index of refraction for accumulation mode 
+aerosol [1.5] 
+FIOJ RFIS04 Imaginary part of index of refraction for accumulation mode 
+aerosol [0.0] 
+FlOJ RFRCOR Real part of index of refraction for background coarse mode 
+aerosol [1.5] 
+
+37 
+
+
+
+TABLE 1 (Continued) 
+DATA REQUIREMENTS FOR PLUVUE ll 
+
+Card No. Format Variables Description 
+
+F10.3 RFICOR Imaginary part of index of refraction for background coarse 
+mode aerosol [0.0] 
+2S F10.3 RFRPRM Real part of index of refraction for emitted primary aerosol 
+[l.S] 
+F10.3 RFIPRM Imaginary part of index of refraction for emitted primary 
+aerosol [0.0] 
+F10.3 RFRCAR Real part of index or refraction for carbonaceous aerosol 
+[2.0] 
+F10.3 RFICAR Imaginary part of index of refraction for carbonaceous 
+aerosol [1.0] 
+26 Fl0.3 CORAMB Ambient coarse mode aerosol concentration (pg/m3) 
+27 IS JNTyp+ Switch for next card (=1 for AMBS04 and AMBN03, "# 1 
+for RVAMB) 
+28a (INTYP=1) F10.3 AMBS04 Ambient background sulfate mass concentration (pg/m3) 
+F10.3 AMBN03 Ambient background nitrate mass concentration (pg/m3) 
+28b(INTYP#1) F10.3 RVAMB Ambient background visual range (km) 
+29 FS.2 VDS02 sol deposition velocity (em/sec) [1] 
+FS.2 VDNOX NOx deposition velocity (em/sec) [1] 
+FS.2 VDCOR Coarse mode aerosol deposition velocity (em/sec) [0.1] 
+FS.2 VDSUB Accumulation mode aerosol deposition velocity (em/sec) 
+[0.1] 
+30 IS ICON+ Index for S02~to~S0t conversion rate added to rate 
+predicted from OH chemistry. ICON= 0 for conversion 
+rate, set constant with distance from source. ICON = 1 for 
+separate values for each point of analysis downwind of the: 
+source (0] 
+31 F10.7 RS02C Rate constant for S02~to~S04=conversion to be added to 
+prediction from OH chemistry (%/hr) (0.0] 
+38 
+
+
+TABLE 1 (Continued) 
+DATA REQUIREMENTS FOR PLUVUE II 
+
+Card No. Format Variables Description 
+
+A-1·· 8F10.7 RS02(NXt S02-to-S04 =conversion rates to be added to predictions from 
+(If ICON= 1) NX=1,8 OH chemistry at each point of analysis on plume (%/hr) 
+A-2•• 8F10.7 RS02(NX),+ (Continuation as needed) 
+(continuation of A-1) NX=9,NX2 
+32 IS NC1+ Index to control type of calculations. NC1=1 for plume-
+based calculations, 2 for observer based calculations only 
+IS NC2+ Index to control calculations NC2=1 for plume-based 
+calculations only, 2 for observer-based calculations 
+A-3•• 612 NPP'" Indices for controlling the subset of results (from 
+(If NC1=1) plume-based calculations of horizontal views with sky, 
+white, gray and black backgrounds) to be written to a file 
+for later use by the VISPLOT program for generating plots. 
+NPP controls the distance from the observer to the plume for 
+sky background [3] 
+NAp+ Index for selecting the horizontal azimuthal angle a between 
+the line of sight and the plume trajectory for plots of results 
+for sky backgrounds [4] 
+NTp+ Index for selecting the scattering angle of plume-based data 
+to be plotted 
+NZP'" Index for selecting the level of the li!?-e of sight through the 
+plume for plume-based data to be plotted [3] 
+I01P'" Index for selecting the distance from the observer to the 
+background object for the plume-based data to be plotted 
+IPP'" Index for selecting the distance from the observer to the_ 
+plume for plume-based plot data with background object 
+views 
+A-3•• F10.1 XOBS UTM x-coordinate of observer position (km) for 
+(IfNC2=2) observer-based calculations 
+F10.1 YOBS UTM y-coordinate of observer position (km) 
+FIO.l ZOBS Elevation (ft MSL) of observer position 
+39 
+
+
+TABLE 1 (Continued) 
+DATA REQUIREMENTS FOR PLUVUE II 
+
+Card No. Format Variables Description 
+
+33 F10.1 XSTACK UTM x-coordinate of source (km) 
+F10.1 YSTACK UTM y-coordinate of source (km) 
+F10.1 ZSTACK Elevation of source location (ft MSL) 
+34 15 IZONE UTM grid zone number within which source is located 
+15 IMO Number of month for date of simulation 
+15 IDAY Day of month for date of simulation 
+F5.0 TIME · Time of day (24-hr clock) 
+F5.0 TZONE+ Time zone number 
+15 IYEAR Year for date of simulation 
+A-4•• 8F10.1 TER(NX); Elevation of terrain at the selected points 
+(If NC2=2) NX=1,8 downwind of the source along the plume trajectory (ft MSL) 
+(for observer-based calculation) 
+A-5.. 8F10.1 TER (NX), (Continuation as needed) 
+(If NC2=2) NX=9.NX2 
+A-6·· 8Fl0.1 ROBJCT(NAZ), Distances in kilometers from observer to 
+(If NC2=2) NAZ=l,s• background terrain for observer azimuths of 15°, 30°,45°, 
+60°, 75°, 90°, 105°, 120° 
+A-7•• 8F10.1 ROBJCT(NAZ), Distances for azimuths of 135°, 150°, 165°, 180°, 
+(continuation of A-4) NAZ=9,16 195°, 210°, 225°, 240° 
+A-s·· 8F10.1 ROBJCT(NAZ), Distances for azimuths of 255°, 270°, 285°, 300°, 
+(continuation of A-5) NAZ=17,24 315°, 330°, 345°, 360° 
+A-9•• F10.1 Wind direction azimuth (degrees from North) 
+(If NC2=2) 
+A-10.. F5.1 Dispersion parameters in meters, 
+(If IDIS=9) 
+40 
+
+• 
+
+
+
+TABLE 1 (Continued) 
+
+. 
+
+DATA REQUIREMENTS FOR PLUVUE II 
+Card No. Format Variables Description 
+
+(to A-to•· F5.1 one card for each distance 
+
++ NX2) 
+"0" if table is not desired, "1" if desired. 
+"A-n" refers to cards that are optional. They are inserted only when values of prior flags or indices are 
+set to require additional input data, e.g., when ICON=l, cards A-1 and A-2 are required. 
+Suggested values for some of the input parameters are shown in brackets. 
+
+
++ More details given in Section 2.1.8. 
+41 
+
+
+Some of the options listed in Table 1 are further described below: 
+
+The parameter IUSFC is simply a flag to allow the wind speed to be input at the 
+effective stack height (IUSFC =0) or at the common 10-m instrument height (IUSFC = 1). 
+
+IFLG1 is a flag that allows the user to select or skip the calculation of visibility 
+impairment of the plume for horizontal views with a clear sky background. IFLG2 allows the 
+user to select or skip the calculation of visibility impairment for nonhorizontal views and 
+clear sky background. IFLG3 allows the user to select or skip the calculation of visibility 
+impairment calculations of the plume as seen in front of white, gray, and black backgrounds. 
+IFLG4 allows the user to select or skip the visibility impairment calculation for an observer 
+looking straight down the centerline of various segments of the plume or for an observer 
+looking across the plume at a small acute angle to the plume centerline. For all of these, a 
+value of 1 executes the calculations and a value of 0 branches around them. 
+
+NZF is a switch that indicates whether the visibility impairment calculations will be 
+made for the plume centerline altitude only (NZF = 1) or for both the plume centerline and 
+ground level (NZF =2). 
+
+IDILU is a switch that controls the printing of the table of initial plume rise data. If 
+IDILU =0, the table is not printed, and if IDILU = 1, it is printed. 
+
+INTYP is a switch that allows the user to calculate the background visual range (INTYP 
+=1) from user-input background coarse mode a~rosol concentrations and background sulfate: 
+and nitrate concentrations. If INTYP :;: 1, the user inputs the background visual range and the 
+background coarse mode aerosol concentration, and the model computes the background 
+accumulation mode aerosol concentration that would be needed to cause the given visual 
+range. 
+
+ICON is a switch that allows the user to select the conversion rate of S02 to S04=, in 
+addition to the rate calculated by the OH· model, as a constant with distance from the sourc~: 
+(ICON =0) or as a separate value for each point of analysis downwind from the source 
+(ICON = 1). These conversion rates are in units of percent per hour. RS02C gives the 
+constant conversion rate for all points on the plume trajectory, while RS02 gives the 
+downwind-distance-dependent conversion rates for each point of analysis. 
+
+The parameters NC1 and NC2 are used to control whether the visibility impairment 
+calculations are done for a plume-based scheme, an observer-based scheme, or both. NC1 set 
+to 1 executes the plume-based calculations and NC2 set to 2 calculates the observer-based 
+calculations. If NC1 is set to 1 and NC2 is set ro 2, both types of calculations will be made. 
+If NC1 is set to 1 and NC2 is set to 1, only the plume-based calculations will be made. 
+Finally, if NC1 is set to 2 and NC2 is set to 2, only the observer-based calculations will be 
+made. 
+
+42 
+
+
+
+The stability index I specifies the stability category for the plume dispersion parameters: 
+I = 1 for stability A, I =2 for stability B, I = 3 for stability C, etc. 
+
+NT1 and NT2 assign the starting and ending indices for the scattering angle array used 
+for the plume-based visibility impairment calculations. With NT1 =1 and NT2 =7, the 
+default scattering angles (22°, 45°, goo, 135°, 158°, and 180°) are used. These angles are 
+taken from the array TT, which has 0°, 22°, 45°, goo, 135°, 158°, and 180° as its first seven 
+elements. NTl is one less than the actual starting index of TT, while NT2 corresponds to the 
+actual ending index of TT. For a run with calculations for goo only, set NT1 to 3 and NT2 to 
+
+4. For a run with calculations for goo 135°, 158°, and 180°, set NT1 to 3 and NT2 to 7. 
+The index NX2 defines the number of points downwind along the plume trajectory 
+where visibility impairment calculations will be made. The value of NX2 should be at least 
+2, but not greater than 16. 
+
+The array DIST specifies the distance downwind from the source along the plume 
+trajectory of each point where visibility impairment calculations will be made. The units for 
+this array are kilometers. For accurate preqiction of the oxidation of NOx to N02, it is 
+important to use downwind distances that are close together and near the source. The first 
+downwind distance must be 1 km; 2.5 km, 5 km, and 10 km are recommended for the 
+succeeding three distances. The user is free to select the remaining points according to the 
+needs of the situation. 
+
+YINITL and ZINITL are used for area sources and define the initial lateral and vertical 
+dimensions of the plume. For emissions from stacks, both YINITL and ZINITL should be set 
+to zero. The units for these two variables are meters. 
+
+When plume-based calculations are complete, a subset of the results must be selected for 
+output to a binary file which may be used for further analysis such as plotting. The six 
+indices listed on card A-3 determine the subset of results that will be written to the binary 
+file. NPP selects the distance from the observer to the plume in the following manner: 
+
+Distance from Observer to Plume 
+NPP (fraction of background visual range) 
+
+
+1 0.02 
+2 0.05 
+3 QlO 
+4 0.20 
+5 0.50 
+6 0.80 
+43 
+
+
+
+NAP determines the horizontal azimuthal angle alpha between the plume centerline and the 
+line of sight for a sky background: 
+
+Alpha 
+NAP (degrees) 
+
+1 30° 
+2 45° 
+3 60° 
+4 90° 
+
+NTP selects the scattering angle between the direct solar beam and the line of sight from the 
+point of analysis to the observer. The value of NTP must be greater than or equal to NT1 
+and less than or equal to (NT2-1). The values of NTP for each of the six scattering angles 
+
+are shown below: · 
+
+Scattering Angle 
+NTP (degrees) 
+
+1 22° 
+2 45° 
+3 90° 
+4 135° 
+5 158° 
+6 180° 
+
+NZP selects the results for calculations of views through the center of the plume or views at 
+·ground level across the plume trajectory. The values of NZP are limited by the value of NZF 
+
+(card no. 8). If NZF = 1, the calculations are done only for views through the plume 
+centerline,_ and NZP must be set to 3. If NZF =2, NZP may be set to 3 for values from 
+calculations for views through the plume centerline, or NZP may be set to 6 for values from 
+
+calculations for views at the surface through the plume trajectory. The index IPP selects the 
+
+distance from the observer to the plume for plotting results of the calculations for views with 
+
+white, gray, and black objects behind the plume. The values of IPP correspond to the 
+
+distances shown below: 
+
+Distance from Observer to Plume 
+IPP (fraction of background visual range) 
+1 0.02 
+2 0.05 
+3 ~10 
+4 0.20 
+5 0.50 
+6 0.80 
+44 
+
+• 
+
+
+
+I01P is used to select the distance from the observer through the plume to the white, gray, 
+and black background objects behind the plume. The value of I01P is limited by the value of 
+IPP because the object background can be no farther than a distance equivalent to 80 percent 
+of the background visual range from the observer. If IPP =1, the range of values of 101P is 
+shown below: 
+
+Distance from Observer to Object 
+101P (fraction of background visual range) 
+1 0.02 
+2 0.05 
+3 0.10 
+4 0.20 
+5 Q50 
+6 0.80 
+
+When IPP = 2, the values I01P available are as follows: 
+
+I01P Distance from Observer to Object 
+
+1 0.05 
+2 Q10 
+3 0.20 
+4 0.50 
+5 0.80 
+When IPP = 3, IO 1P is limited to one of the following values: 
+
+101P Distance 
+
+1 0.10 
+2 0.20 
+3 0.50 
+4 0.80 
+When IPP = 4, IOlP is limited to these three values: 
+
+45. 
+
+IOlP Distance 
+
+1 0.20 
+2 0.50 
+3 0.80 
+When IPP =5, IOlP is limited to only two values: 
+101P Distance 
+
+1 0.50 
+2 0.80 
+When IPP = 6, 10lP must be set to 1, which corresponds to a distance from the observer to 
+the background object of 0.80 of the background visual range. These six indices do not place 
+any restrictions on the calculations made by PLUVUE II, but they provide a means of 
+selecting the desired subset of results to be saved for plotting. 
+
+The UTM coordinates and elevations for observer and source locations and the UTM 
+grid zone num~ers are taken from standard USGS maps. TZONE is the number of the time 
+zone, with the Greenwich Meridian defined as 0. Values of TZONE are shown below: 
+
+Time Zone 
+Standard 
+Time 
+Daylight 
+Time 
+Eastern 
+Central 
+Mountain 
+Pacific 
+5 
+6 
+7 
+8 
+4 
+5 
+6 
+7 
+
+The array TER gives the elevation of terrain at each point downwind for the visibility 
+analysis. For the purpose of calculating plume-observer-sun geometry only, the plume 
+centerline is assumed to rise above any terrain higher than the source elevation in order to 
+maintain the same effective height above the terrain for all points downwind. If the terrain is 
+flat or if it is desirable to maintain the same plume elevation at all points, use zero for all 
+TER values. The model will then set all terrain elevations to the elevation of the source 
+location. 
+
+The ROBJT array allows the user to define the distances from the observer to the 
+background terrain. These distances are read in for observer azimuths of from 15° to 360° in 
+
+46 
+
+
+
+15° increments. The distances are measured in kilometers by creating a terrain profile for 
+each azimuth and determining the point at which the line of sight intersects the terrain. The 
+observer-based calculations can be performed without measuring these values by setting all 
+elements of the ROBJT array to zero. The background object distance will then be set to the 
+observer-to-plume distance for each line of sight. WIND is the direction from which the 
+wind is blowing, expressed in degrees. 
+
+For user-defined values of plume dispersion parameters (IDIS =9), SY and SZ are read 
+for each downwind distance. SY is the plume concentration horizontal standard deviation and 
+SZ is the plume concentration vertical standard deviation in meters. 
+
+2.2 PLUIN2 
+The PLUIN2 computer algorithm (Richards and Hammarstrand, 1988) prepares data files 
+of the format required for input to the revised PLUVUE II visibility model. PLUIN2 is 
+designed to be "user friendly" and has the purpose of simplifying and speeding up the process 
+of preparing input files to PLUVUE II. PLUIN2 is useful for both the user new to PLUVUE 
+II, who desires assistance understanding the required inputs and does not wish to learn the 
+details of the required data formats, as well as the experienced user who frequently prepares 
+PLUVUE II input files and finds that PLUIN2 can shorten the time required for the work. 
+
+PLUIN2 is executed within RUNPLUVU when the user wishes to modify an existing 
+PLUVUE II input file. As is discussed in Section 3.2, the user must supply the name of an 
+existing input data file. This file can be either one which was previously prepared and is to 
+be modified, or the data file (TEST.INP) supplied with the RUNPLUVU system diskette. 
+The user will be asked the filename which contains the revisions (the filename can be the 
+same as the input filename) which will then automatically be used as the input file to 
+PLUVUE II. While modifying a file using the PLUIN2 portion of RUNPLUVU, the user will 
+be issued a series of prompts describing the information represented by each quantity in the 
+input data file and its current value. If the current value is satisfactory, it can be accepted 
+with a carriage return. If not, a new value may be entered. If only a few data values in the 
+input file are to be changed, it is possible to branch to the location of the data to be changed, 
+enter the new values, and then branch to the end of the PLUIN2 portion of RUNPLUVU. It 
+is possible to branch to any input data at any time while modifying a data file, so it is easy to 
+review and alter data. Further details concerning branching and the use of PLUIN2 within 
+RUNPLUVU are given in Section 3.2. 
+
+47 
+
+
+
+2.3-MIETBL 
+
+2.3.1 Scattering Theory 
+The following general discussion of scattering of solar radiation is primarily from 
+Wallace and Hobbs (1977). The fraction of parallel beam radiation that is scattered when 
+passing downward through a layer of infinitesimal thickness dz is described as 
+
+dE,_
+
+ds,_ !! -= K A sec cJ> ck (46) 
+
+E,_ 
+
+where K is a dimensionless coefficient, A is the cross-sectional area that the particles in a 
+unit volume present to the beam of incident radiation, and cp is the zenith angle. If all the 
+particles which the beam encounters in its passage through the differential layer were 
+projected onto a plane perpendicular to the incident beam, the product A sec cp dz would 
+represent the fractional area occupied by the particles. Thus, K plays the role of a scattering 
+area coefficient which measures the ratio of the effective scattering cross section of the 
+particles to their geometric cross section. On any given occasion a variety of particle shap1;,s 
+and a whole spectrum of particle sizes are likely to be present simultaneously. For the 
+idealized case of scattering by spherical particles of uniform radius r, the scattering coefficient 
+K can be prescribed on the basis of theory. It is convenient to express K as a function of a 
+dimensionless size parameter a = 2m/)..., which is a measure of the size of the particles in 
+comparison to the wavelength of the incident radiation. Figure 8 shows a plot of a as a 
+function of r and A.. 
+
+The scattering area coefficient K depends not only upon the size parameter but also upon 
+the index of refraction of the particles responsible for the scattering. Figure 9 shows K as a 
+function of a for two widely differing refractive indices. 
+
+Fo~ the special case of a<< 1 (the extreme left-hand side of Figure 9), Rayleigh showed 
+that, for a given value of refractive index, K oc a4 and the scattered radiation is evenly divided 
+between the forward and backward hemispheres. It can be seen from Figure 8 that the 
+scattering of solar radiation by air molecules falls within this so-called Rayleigh scattering 
+regime. 
+
+When a is greater than about 50 (the value of the abscissa at the extreme right-hand side 
+of Figure 9), K =2 and the angular distribution of scattered radiation can be described by the 
+principles of geometric optics. 
+
+For intermediate values of the size parameter between about 0.1 and SO, the scattering 
+phenomenon must be described by Mie (e.g. Gustav Mie, a German physicist who carried out 
+fundamental studies on the theory of electromagnetic scattering and kinetic theory). Within 
+this so-called Mie regime, K exhibits the oscillatory behavior as shown in Figure 9. The 
+angular distribution of scattered radiation is very complicated and varies rapidly with a, 
+
+48 
+
+
+
+410 
+310 
+10 
+1 
+-110 
+Figure 8. 
+1 10 
+RAINDROPS 
+DRIZZLE 
+
+CLOUD DROPLETS 
+
+SMOKE.DUST.HAZE 
+
+AIR MOLECULES 
+
+A (J.l-m ) 
+
+Size parameter a. as a function of wavelength of the incident radiation and 
+particle radius (Wallace and Hobbs, 1977). 
+
+49 
+
+
+5 
+
+4 
+
+I ' 
+
+I 
+I 
+I 1(\ 
+
+3 
+
+\X[/ \ 
+~
+
+!7 
+
+..,...--::::::
+
+
+/ ~ 
+
+~-~ 
+
+/7'~~
+
+v 
+
+--~
+
+2 
+
+:7 
+:7 
+~ 
+
+
+I--"" 
+
+
+\.I I'-/-
+
+
+-
+
+1 
+-
+
+J
+
+0 
+0 5 10 15 20 25 30 35 40 45 
+
+Figure 9. 
+Scattering area coefficient K as a function of size parameter a for refractive 
+indices of 1.330 ( _) and 1.486 (---) (Wallace and Hobbs, 1977). 
+
+50 
+
+
+with forward scattering predominating over back scattering. The scattering of sunlight by 
+particles of haze, smoke, smog, and dust usually falls within the Mie regime. If the particles 
+are rather uniform in size, the scattered sunlight may be either bluish or reddish in hue, 
+depending upon whether BK/Ba is positive or negative a the wavelengths of visible light. 
+Usually such particles exhibit a spectrum of sizes wide enough to span several maxima and 
+minima in the plot of K(a), thus rendering the scattered light neutral or whitish in color. 
+
+2.3.2 Mie Calculations 
+There are only two quantities which need to be known about an isotropic, homogeneous 
+sphere in order to calculate all of its light scattering properties: the relative index of 
+refraction (m-ik), where m is the real and ik is the imaginary portion of the index of 
+refraction, and the size parameter (a). The relative index of refraction is the index of 
+refraction of the particle divided by the (real) index of refraction Il\, of the medium in which 
+it is imbedded. Since the index of refraction of the particle may have a real part, which, for 
+example, describes the bending of light at its surface, and an imaginary part, which describes 
+the absorption, the relative index of refraction will, in general, be complex. It is possible for 
+m to be less than unity; and when there is no absorption, k is equal to zero. 
+
+The size parameter a is given by 
+
+2 1t r 
+
+
+(47)
+a = = 
+
+.t 
+
+where r is the particle radius, A. is the wavelength of light in the medium, and A0 is the 
+wavelength of light in a vacuum. 
+
+Let 10 be the-irradiance of collimated light falling on the sphere (measured in units of 
+energy per area), and I be the irradiance of scattered light measured in units at a large 
+distance b from the sphere. In general, the directions of the incident and scattered light 
+define a plane. If the incident light is plane polarized so that the electric vector is 
+perpendicular to this plane, all of the scattered light will also be plane polarized with the 
+electric vector perpendicular to the plane. The relation between the intensities is given by 
+
+il
+
+I=--I (48) 
+
+r k2 b2 or 
+
+where i1 is a dimensionless quantity calculated from the Mie equations, and k = 2rr().... Here 
+the subscript r specifies the polarization, and is the last letter of perpendicular. The angle e 
+through which the light has been scattered does not appear in Equation (48), but i1 is a 
+functi9n of this angle. It is customary to choose 9 =0° for the unscattered beam, and 9 = 
+180° for light which is scattered directly backwards. As mentioned earlier, i1 also depends on 
+the relative refractive index and a, but on no other variables. · 
+
+51 
+
+
+
+If the incident light is polarized parallel with the plane, all of the scattered light is also 
+polarized parallel, and a similar relation is written 
+
+(49) 
+where the subscript l is the last letter of parallel. If the incident light is unpolarized, then we 
+may regard it as being made up of equal parts of the above two polarizations and obtain 
+
+(50) 
+Since i1 and i2 are in general not equal and the scattered light of the two polarizations 
+have various phase differences, the scattered light is, in general, elliptically polarized. For 
+most work, the three relations just given provide all the information on intensities and 
+polarization that is desired. However, the MIETBL algorithm also calculates the phase 
+difference 8 between the parallel and perpendicular scattered radiation, where 8 is positive if 
+the parallel electric field lags the perpendicular field. Anyone interested in this phase 
+difference should refer to page 36 of van de Hulst (1957). 
+
+In general, four numbers are necessary and sufficient to specify the polarization of a 
+beam of light, and the four Stokes parameters are convenient for this purpose. Chandrasekh.ar 
+(1950) gives an excellent introduction to these parameters and their properties (see pages 24 
+to 36), and it is recommended that anyone interested in more than unpolarized light should 
+read these pages. 
+
+The irradiance of the scattered light is strictly proportional to the intensity of the incident 
+lighh Therefore, the total amount of energy scattered can be represented as a constant times 
+the intensity of the incident light. This constant, which is called the scattering cross section, 
+has the dimensions of area, and can be thought of as the area which would intercept a 
+quantity of light equal to that which is scattered. 
+
+Since Equation (50) gives the intensity of light scattered in any direction, it is possible to 
+integrate it over all directions and find the total amount of light scattered, and hence the 
+scattered cross section Csca· The result is 
+
+52 
+
+
+
+1t 
+
+(51)
+CSCG = k1t2 f (il + iz) sin a d6 
+
+' 0 
+
+A dimensionless quantity Qca can be obtained by dividing Qca by the cross section of the 
+sphere 
+
+(52) 
+and this quantity is sometimes called an efficiency factor. In practice, the computer programs 
+are always set up to calculate Qca directly. The quantities i1 and i2 are calculated separately if 
+they are desired. 
+
+In a similar way, we can define the absorption cross section Cabs as the total amount of 
+light absorbed divided by the incident light irradiance, and the absorption efficiency is 
+
+c. 
+(53)
+Qoln =
+
+
+7t72 
+
+The total amount of light both scattered and absorbed is given by the extinction cross section 
+
+(54)
+cur = cSCG + coln 
+
+Also 
+
+(55) 
+The MIETBL alg~rithm calculates ~xt and Qca from the Mie equations, then evaluates <lbs 
+by taking the difference. Therefore, in practice, it is possible for <lbs to have negative values 
+about the size of the round off error of the computer. 
+
+The book by Kerker (1969) gives an overview of light scattering by particles. 
+
+2.3.3 Accuracy of the Interpolated Results of Mie Calculations 
+One problem that had to be overcome to permit the separation of the Mie calculations 
+from PLUVUE II is that the strength of the aerosol light scattering must be determined at 
+each of the various scattering angles required by each of the sun-plume-observer geometries. 
+
+53 
+
+
+
+In MIETBL, the strength of the aerosol light scattering at the desired angles is determined by 
+linear interpolation using data tabulated every 2°. 
+
+To calculate the light scattering properties of a log-normal size distribution of aerosol . 
+particles, it is necessary to perform Mie calculations for a number of different particle sizes: in 
+the size range of interest. These results are then averaged using weighting factors derived 
+from the relative numbers of particles of each size in the log-normal particle size distribution. 
+
+For large particles, averaging over particle sizes is important because the angular 
+distribution of light scattered by a single size of particles shows man-y peaks and valleys. 
+When results for only a few sizes of particles are averaged, some of these peaks and valleys 
+persist. However, when calculated results for many different particle sizes are weighted 
+according to a log-normal distribution and averaged, the angular distribution of scattered light 
+becomes quite smooth. 
+
+The default aerosol properties for PLUVUE II which are contained in the Mie default 
+library are listed in Table 2. The data were obtained from a listing of input parameters 
+presented in an earlier version of the PLUVUE II User's Manual (Seigneu! et al., 198_3). 
+These six aerosol size distributions provide a compact data set that may be used when no 
+better aerosol size distribution data are available. When using this default library, the only 
+choice to be made is aerosol diameter (D) = 0.2 pm for the plume secondary aerosol in 
+polluted or humid areas (e.g., east of the Mississippi) or D = 0.1 pm in clean or dry areas 
+(e.g., the clean areas in the west or Alaska). 
+
+2.4 Comparison of Revised PLUVUE I~ with Original PLUVUE II 
+A comparison of the original version of PLUVUE II with the revised version for 
+different stability classes is presented in Table A-1 in the Appendix. The example used is the 
+same as that provided with the original version of the PLUVUE II User's Manual. The 
+calculations are made at a downwind distance of 9 km. Four different visibility parameters: 
+visual range reduction, blue-red ratio, plume contrast, and dE are compared for six different 
+stability classes (SC =A, B, C, D, E, and F). Four different backgrounds are examined: sky, 
+white, gray, and black. As shown in Table A-1, the differences between the two versions of 
+PLUVUE II are minimal and are primarily due to the changes in the methods for calculating 
+crY and crz (see explanation in Section 2.1. 7). Due to numerical underflows associated with the 
+calculation of crY and crz, the original version of the model did not run for a number of 
+attempted tests. 
+
+54 
+
+
+• 
+
+
+
+TABLE 2 
+DEFAULT AEROSOL PROPERTIES FOR PLUVUE II 
+
+
+Size Parameters Index of Refraction 
+Particle Radius Diameter Sigma Density Real Imaginary 
+Type (Jllll) (Jllll) (g/cm3) 
+
+Background 
+Accumulation 
+Mode 0.15 0.3 2.0 1.5 1.5 0.0 
+Background 
+Coarse Mode 3.0 6.0 2.2 2.5 1.5 0.0 
+Plume 
+Secondary 0.1 0.2 2.0 1.5 1.5 0.0 
+Plume 
+Primary 1.0 2.0 2.0 2.5 1.5 0.0 
+Carbonaceous 0.05 0.1 2.0 2.0 2.0 1.0 
+
+55 
+
+
+
+3.0 USER INSTRUCTIONS 
+This section describes the basic computer requirements which are necessary to use the 
+RUNPLUVU system, detailed operating instructions, and a Level-3 plume visibility example. 
+
+3.1 Computer Requirements 
+The basic computer requirements for using the RUNPLUVU software are as follows: 
+
+80386 or higher processor 
+
+>1MB of RAM 
+
+Hard Disk with sufficient storage space to handle the executable file, input data 
+
+files, and output files (file sizes will vary depending on application) 
+Math coprocessor (80 x 87 chip) 
+
+The amount of memory available on any particular PC will depend on the machine 
+configuration including the amount of memory used by the operating system, memory used by 
+any special device drivers, and any utility programs resident in memory. The amount of 
+memory needed to actually run the software will be somewhat larger than 1 MB because 
+additional memory is needed for buffers when the program opens files. 
+
+RUNPLUVU is compiled using Lahey F77L-EM/32 Version 5.0. This is the extended 
+memory version for 32-bit ·computers. This will only run on 386 or higher PCs with more 
+than 640K memory. 
+
+3.2 Operating Instructions for RUNPLUVU 
+In this section, shaded texr denotes what will appear on the computer screen during the 
+RUNPLUVU session. All the data files on the RUNPLUVU diskette should be loaded onto 
+your personal computer's hard drive. It is recommended that a separate working directing be 
+used. While using RUNPLUVU, you have the option of aborting the program at any time by 
+pressing the control (Ctrl) and "C" key (e.g., Ctrl-C) at the same time. 
+
+To start a session, the user simply types RUNPLUVU: 
+
+57 
+
+
+
+RUNPLUVU 
+
+
+The following brief description of the run command system will immediately appear 
+on the screen: 
+
+PLUVUE II Run Command System 
+A program designed to assist the user with the application 
+
+of the PLUVUE II visibility model by allowing the user to: 
+1) Prepare an input file or to specify a previously prepared file, 
+2) Select or create a library of Mie calculations for input to PLUVUE II, 
+
+" 
+
+3) Run PLUVUE II 
+
+Press ENTER to Continue 
+
+After the user presses the ENTER key, the following prompt will appear: 
+
+Do you wish to modify an existing PLUVUE II input file (Y or N)? 
+
+If the user responds no (using "N" or "n"), then the user will be prompted to enter the name 
+of an existing PLUVUE II input file: 
+
+Do you wish to use an existing PLUVUE II input file (Y or ~? 
+
+If the user responds yes (using "Y" or "y"), then the user will be prompted for the name of a 
+PLUVUE II input file to modify: 
+
+58 
+
+• 
+
+
+
+Enter the PLUVUE II input file name (up to 24 characters): 
+XXXXX:XXXXXXXXXXXXXXXXXXX =24 characters 
+
+The software will check to make sure the file exists. If the file does not exist, then the 
+following message will appear: 
+
+Error opening file. File does not exist. Try again. 
+
+and the user will then be prompted again for the PLUVUE II input file name. Use the 
+CONTROL-C command to abort the program if the file cannot be located. 
+
+If the user responds yes (using "Y") to the prompt concerning whether or not an 
+existing PLUVUE II input file needs to be modified, then the code enters into the PLUIN2 
+section of RUNPLUVU. The following messages will appear on the screen: 
+
+08:39:12 09/15/92 
+PLUIN2 
+
+A program to assist in the preparation of input 
+data files for PLUVUE II. 
+
+Based on PLUINl, Written by J.A. McDonald and L. W. Richards 
+for WEST Associates. 
+
+PLUIN2 written by R. G. M. Hammarstrand and L. W. Richards 
+for use on PC compatible computers. 
+Funding provided by the NPS and the EPA. 
+
+Enter drive and path where data files are located. 
+(Carriage return to select default directory). 
+
+
+= 50 characters maximum. 
+
+59 
+
+
+
+Once the user has typed the full path name (e.g., C:\A248\RUNPLUVU) of where the data 
+files are located, a listing of the files in that directory will appear as follows: 
+
+Volume in drive C is VOLl 
+Volume Serial Number is 0180-FC67 
+Directory of C:\A248\RUNPLUVU 
+
+DEFAULT MIE 43891 07-29-92 1:58p 
+DEFAULTM LST 605 07-29-92 1:58p 
+TEST 11479 09-08-92 4:33p 
+TEST1 INP 1084 09-14-92 5:27p 
+TEST1 OUT 11479 09-14-92 5:29p 
+TEST2 INP 1084 09-15-92 8:40a 
+F77L3 EER 40584 05-29-92 11:54a 
+LIST OUT 9198 09-15-92 8:40a 
+LIST2 OUT 0 09-15-92 8:4la 
+MIETBL EXE 281152 08-13-92 8:27a 
+PLUIN2 EXE 297708 09-08-92 4:31p 
+P4UVUE INP 3218 09-15-92 8:40a 
+PLUVUE 
+PLUVUE7 
+OUT 
+BIN 
+11479 09-14-92 
+1049 09-14-92 
+5:29p 
+5:29p 
+PLUVUE8 BIN 1 09-0.8-92 4:25p 
+PV2NEW EXE 685076 08-13-92 8:25a 
+README 449 08-13-92 5:07p 
+RUNPLUVU EXE 252044 08-13-92 9:26a 
+SCRATCH 115 09-15-92 8:40a 
+Press any key to continue . . . 
+(continuing C:\A248\RUNPLUVU) 
+SCRATCH2 65 09-15-92 8:40a 
+TEST3 INP 1011 08-07-92 11:13a 
+TEST3 OUT 11479 08-07-92 ll:l4a 
+TEST4 INP 1084 09-08-92 4:33p 
+
+23 file(s) 1665334 bytes 
+58511360 bytes free 
+
+If there are more than 18 files in the directory, the user must press any key to continue listing 
+the files. Once all the files in the directory have been listed, the user must then select the 
+PLUVUE II input file to be modified and an output file which will contain the modifications. 
+This output file will be the PLUVUE II input file which will later be used by RUNPLUVU. 
+
+60 
+
+
+Enter input filename; 12 characters maximum. 
+
+xxxxxxxx.xxx 
+
+Enter filename which contains revisions. 12 characters maximum. 
+(The fllename can be the same as the input filename listed above,) 
+
+xxxxxxxx.xxx 
+
+If the name entered for the output file is already in use, the user is warned. If the user 
+responds with "y" for yes in response to the warning, the new output file will overwrite the 
+existing file. It is possible to use the same name for the both the input and output files, so it 
+is possible to correct a minor error in an input file without the necessity of changing the file 
+name. 
+
+The user will then be notified that a new file is being opened. The user is now ready 
+to modify the file: 
+
+Opening new file c:\a248\runpluvu\test3.inp 
+
+NOTES: 
+
+A <RETURN> accepts the current value. 
+
+Entering "goto n" or "GOTO n" instead of any data value will cause 
+a branch to ENTRY CODE n. 
+
+Each entry code corresponds to a line in the data file, 
+but options in the input parameters make it so the nth 
+entry code may not generate the nth line of data. 
+
+
+Press ENTER to continue ... 
+
+Once the user presses the enter key, each entry code of the PLUVUE II input file will appear, 
+for example, as follows: 
+
+61 
+
+
+ENTRY CODE 1 
+Plant Name (up to 24 characters): Test Case 
+XXXXXXXXXXXXXXXXXXXXXXXX = 24 characters 
+
+ENTRY CODE 2 
+Wind speed: 10.0 mph 
+Stability index: 6. 
+
+For Pasquill-Gifford stability classes, use 1. for class A, 
+
+2. =B, 3. =C, 4. =D, 5. =E, 6. = F, AND 7. =0 
+Ambient temp. lapse rate:-4.00 deg F per 1000 ft. 
+Each ·line of data in the PLUVUE II input data file is identified with an entry code. It 
+is possible to branch to any of these lines at any time during the modification of a file by 
+typing GOTO nn where nn is the entry code number of the desired line. The values of the 
+entry codes are summarized as follows: 
+
+Entry Code Input Data Summary 
+1 Plant name 
+2 Wind speed, stability, lapse rate 
+3 Wind speed measurement height flag 
+4 Initial plume dimensions 
+5 Mixing height 
+6 Relative humidity 
+7 Diffusion parameter flag 
+8 Calculation flags 
+9 Print out flags 
+10 Do~nwind distances 
+11 Emission rates 
+12 Stack parameters 
+13 Stack height 
+14 Ambient air temperature 
+15 Ambient pollutant concentrations 
+16. Mass mean radii for aerosol size distributions 
+17 Geometric standard deviation of aerosol size distributions 
+18 Density of aerosol material 
+19 Carbonaceous aerosol information 
+
+62 
+
+
+
+Entry Code Input Data Summary 
+
+20 Indices of refraction for background aerosol 
+21 Indices of refraction for primary and carbonaceous aerosols 
+22 Background coarse mode aerosol concentration 
+23 Background sulfate/nitrate flag 
+24 Ambient background visual range 
+25 Not in use 
+26 Deposition velocities 
+27 Sulfur dioxide to sulfate conversion flag 
+28 Rate of sulfur dioxide to sulfate conversion 
+29 Not in use 
+30 Calculation flag 
+31 Not in use 
+32 Observer coordinates 
+33 Stack coordinates 
+34 Time zone 
+35 Terrain elevation 
+36 Background object distances 
+37 Wind direction 
+38 Not in use 
+39 Save current values 
+
+
+Various options in PLUVUE II cause the number of lines in the input file to vary. 
+Therefore, entry code 15 may not write the 15th line in the input file. The system will accept 
+several formats for the GOTO nn command. The GOTO can be in either upper or lower 
+case, but must not have a space between GO and TO. The number for the entry code can be 
+entered with or without a decimal, but should be preceded by only one space. The entry code 
+for the end of the program is 39. The system will branch to the end of the modification 
+portion of the system for any value of nn equal to or greater than 39. Also, it is possible to 
+branch to the end of the program, write the output file, then branch to an earlier entry code 
+for continued data entry. This makes it possible to save intermediate stages of the data to 
+guard against data loss. The new user may wish to enter GOTO 1 at the final prompt. This 
+makes it possible to review all values to be written to the output file by entering a succession 
+of carriage returns. Finally, the system will accept data entries with or without a decimal 
+point, regardless of whether the variables are floating point numbers or integers in the input 
+to PLUVUE II. The use of a decimal point is required only when there are digits following a 
+decimal point. 
+
+As an example, if the user only wished to change the wind speed, then the user would: 
+
+(1) type GOTO 2, (2) enter the new wind speed followed by the ENTER key, and (3) GOTO 
+39 to exit. The user is then notified that the PLUIN2 output file (which is the PLUv.uE II 
+input file) is bein~ saved: 
+63 
+
+
+
+Writing output file. 
+
+Current values saved to output file 
+c:\a248\runpluvu\test3.inp 
+Carriage return to exit 
+
+or enter "goto n" to return to entry code n. 
+
+Program PLUIN2 terminating. 
+
+After the user has s~pplied the PLUVUE II input file name or has modified an 
+existing PLUVUE II input file, the user will then be prompted regarding the use or creation 
+of a Mie library file: 
+
+The default Mie library as input to PLUVUE II contains the following: 
+
+Radius Sigma Index of Refraction Number of Phase 
+real imag Wavelengths angles 
+0.1500 2.0000 1.5000 0.000000 9 91 
+3.0000 2.2000 1.5000 0.000000 9 91 
+0.1000 2.0000 1.5000 0.000000 9 91 
+0.0500 2.0000 1.5000 0.000000 9 91 
+1.0000 2.0000 1.5000 0.000000 9 91 
+0.0500 2.0000 2.0000 1.000000 9 91 
+
+If the user wishes to use the default Mie library, then the following question should be 
+answered as yes ("Y" or "y"): 
+
+64 
+
+
+Do you wish to use the default Mie library (Y or N)? 
+
+and the program will then proceed to the PLUVUE II portion of the run system. The default 
+Mie library should be sufficient for the majority of visibility analyses. The use of other 
+values for the sigma, radius, and indices of refraction should be approved by the local EPA 
+regional office. 
+
+If the user wishes to supply a Mie library file, then the following question should be 
+answered in the affirmative ("Y" or "y"): 
+
+Do you wish to supply a Mie library file (Y or N)? 
+
+and then the user will be prompted to enter the Mie library file name: 
+
+Enter the Mie library file name (up to 24 characters): 
+XXXXXXXXXXXXX:XXXXXXXXXXX = 24 characters 
+
+Make sure to supply the full path name of the file, if the file resides in adirectory other than 
+the one you are working in. 
+
+If the J.lSer does not wish to use the default Mie library nor wishes to supply a Mie 
+library file, then the fmal option is to create a Mie library file: 
+
+Do you wish to create a Mie library ftle (Y or N)? 
+
+If the user wishes to create a Mie library file, then the run command system will enter the 
+MIETBL portion of the code. The following message will first appear: 
+
+65 
+
+
+
+CAUTION: The creation of a Mie Library file can take hours depending upon 
+
+the computer being used. 
+
+Mie calculations for large particles take much longer 
+
+than for small particles. 
+
+Therefore, the time required for the calculations for the first 
+
+particle sizes in a given histogram are much shorter than 
+
+for the last ones. 
+
+Press ENTER to Continue 
+
+After the user presses ENTER to continue, the user will be prompted for the output filename 
+which will contain the Mie library data: 
+
+Enter output filename. Include drive and path. 
+30 'characters maximum allowed. 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX = 30 characters 
+
+
+The user will be notified that a new file is being opened. The user will be asked to enter the 
+geometric mean radius by volume (ROG) and the geometric standard deviation (SIGMA) of 
+the log-nonnal aerosol. Then values of the real and imaginary part of the index of refraction 
+(m and k) are requested: · 
+
+Opening new file test.mie 
+
+Enter geometric mean radius (by volume) ROG 
+and geometric standard deviation SIGMA. 
+Separate the numbers by a blank space. 
+(A negative ROO terminates execution,): 
+
+
+Enter m and k for the index of refraction = m-i*k. 
+Separate the numbers by a blank space: 
+
+
+The input data are then echoed back.to the screen and the screen will then display the 
+progress of the calculations. The following is a sample run using a geometric mean radius of 
+0.16, a standard deviation of 1.5, and a m and k of 1.5 and 0.0: 
+
+66 
+
+
+ROO= 0.1600 SIGMA= 1.5000 m = 1.5000 k =0.000 
+Wavelength= 0.35 Size no. 1 
+Wavelength= 0.35 Size no. 2 
+
+Wavelength= 0.35 Size no. 101 
+
+Wave-Cross sections for Average 
+length Extinction Scattering Absorption cosine 
+
+0.35 12.40863 12.40863 0.00000 0.69446 
+Wavelength= 0.75, Size no. 1 
+
+Wavelength= 0.75 Size no. 2 
+
+Wavelength = 0.75 Size no. 101 
+
+Wave-Cross sections for Average 
+length Extinction Scattering Absorption cosine 
+
+0.75 3.01184 3.01184 0.00000 0.52909 
+To terminate the MIETBL calculations, the user must enter a negative value for the geometric 
+mean radius when the following message appears: 
+
+Enter geometric mean radius (by volume) ROO 
+and geometric standard deviation SIGMA. 
+Separate the numbers by a blank space. 
+(A negative ROO terminates execution.): 
+
+
+Mie calculations for large particles take much longer than for small particles. Therefore, the 
+time required for the calculations for the first particle sizes in a given histogram are much 
+shorter than for the last ones. 
+
+67 
+
+
+The user is then asked if he or she would like to run PLUVUE II: 
+
+Do you wish to run PLUVUE II (Y or N)? 
+
+If the user responds in the affirmative ("Y" or "y"), then the PLUVUE II portion of the run 
+command system is entered. The user is told that the algorithm is now running PLUVUE U: 
+
+Running PLUVUE II ... 
+
+When PLUVUE II is finished running, the user will be prompted for the name of the 
+PLUVUE II output file: 
+
+Enter PLUVUE II output filename: 
+
+The user is warned if the output file is about to be overwritten with an existing file of the 
+same name. Finally, the user is asked if he or she wishes to make another run: 
+
+Do you wish to make another run (Y or N)? 
+
+If the user answers in the affirmative ("Y" or "y"), then the user is prompted for a new input 
+file or the name of a file to modify. Otherwise, the program terminates with the following 
+message: 
+
+Exiting PLUVUE II Run Conunand. System 
+
+68 
+
+
+
+3.3 
+Level-3 Visibility Modeling Example 
+This example is provided only for instructional purposes regarding the Level-3 
+visibility modeling methodology. Each visibility modeling study is different; therefore, the 
+approach used must be discussed before the start of any study with the appropriate EPA 
+regional office, state permitting agency, and/or Federal Land Manager. 
+
+3.3.1 
+Overview 
+This example outlines the steps performed in a Level 3 visibility analysis to analyze 
+the visual impacts associated with the exploration, construction, and operation of a nuclear 
+waste repository site at a canyon location near a national park. The PLUVUE-II model was 
+applied to calculate the magnitude of plume visual effects, including visual range reduction, 
+plume contrast, plume coloration, and plume perceptibility, associated with various 
+orientations of the plume with respect to potential observers, the sun, and terrain viewing 
+backgrounds. The visual impact magnitudes were then combined with frequency distributions 
+of meteorological conditions to assess the frequency distribution of plume visual impact using 
+the Level-3 analysis guidance in EPA's Workbook for Plume Visual Impact Screening and 
+Analysis (Revised) (EPA, 1992). 
+
+The Level-l and -2 screening criteria were exceeded, suggesting that the possibility of 
+adverse visibility impairment could not be ruled out without more detailed analysis. As 
+opposed to the more cursory and conservative assessment of potential, worst-case visual 
+impacts performed for Level-l and -2 visibility screening analyses, the Level-3 analysis is a 
+more detailed assessment of plume visual impacts. The Level-3 analysis uses the more 
+sophisticated plume visibility model, PLUVUE II, to calculate the magnitude of plume 
+visibility impacts for a variety of meteorological conditions that might be encountered in a 
+year. These magnitudes of impact are then combined with the frequency of occurrence of 
+corresponding conditions to estimate the frequency of occurrence of plume visual impacts. 
+Because computer software has not yet been developed to iterate through the hourly 
+meteorological conditions encountered in a year, the Levyl-3 analysis is performed by 
+sampling a variety of possible plume transport conditions. 
+
+This example is complex for the following reasons: 
+
+1) 
+The potential emissions source, a proposed nuclear waste repository site, is to 
+be located less than 2 km from the nearest Federal Class I PSD area for which 
+visibility is an important value. 
+
+2) , 
+The emission source consists of emissions that are not continuous and that vary 
+considerably (1) diurnally, due to variations in activity throughout the day, with 
+maximum activities during daylight hours, (2) monthly due to different activity 
+levels, and (3) over longer time frames corresponding to the exploratory shaft 
+
+69. 
+
+facility (ESF) construction, repository construction (RC), and repository 
+operation (RO). Because the emissions are considerably less l;lt night, the 
+opportunity for significant impacts resulting from long transport during 
+nocturnal, stable, drainage flows is considerably less than for continuous 
+emission sources such as power plants. 
+3) The emission source is not a point source, but is an area source, distributed 
+over many acres with the areas changing depending on the phase of operation 
+(ESF, RC, RO). Thus, emissions are initially diluted over a significant vertical 
+and horizontal area. · 
+4) A significant fraction of the emissions from the source are diesel exhaust 
+emissions which are largely fine organic particulate (soot) which has a 
+significant light absorbing effect. The Level-l and -2 screening techniques are 
+not capable of addressing this component; thus, the more sophisticated 
+PLUVUE-11 model was applied. 
+5) The area is characterized by very complex terrain. The emission source will be 
+located in a canyon. All observation points in the national park are located 
+either well above the location of the canyon site or at locations where the 
+plume would need to travel a circuitous route, either up and over or around 
+significant terrain obstacles such as ridges, canyon walls, and mountains. Su~h 
+a complex terrain setting (1) limits the distance an observer can see in certain 
+directions, (2) creates a viewing background of terrain (which can be snow 
+covered, sunlit, or in shadow), (3) enhances dispersion due to mechanical 
+mixing effects, and (4) blocks flows, particularly stable flows, in certain 
+directions. 
+6) There is interest in the visual impact not only at the closest park boundary, as 
+analyzed in the Level-l and -2 screening calculations, but also at more distant, 
+but more frequently visited, locations farther in the park. 
+
+The user needs to review a full range of possible conditions (i.e., time of day, season, 
+meteorological conditions, and observer locations). Therefore, for this example, over 250 
+PLUVUE-11 runs have been made to attempt to characterize the variety of plume visual 
+impacts that might occur. For each of the over 250 PLUVUE-U runs, visual impact 
+calculations were made for several azimuths of view corresponding to different distances of 
+the plume downwind from the source. In addition, an attempt was made to model the effect 
+of viewing background, that is, whether it is a sky or white, gray, or black terrain object 
+
+70 
+
+
+
+3.3.2 Site Location and Receptors 
+The location of the proposed nuclear waste repository site is in a canyon near the 
+eastern boundary of a national park. The repository site is located approximately 1.9 km east 
+of the eastern park boundary at an elevation of approximately 5160 ft MSL. Three observer 
+locations are used in this study. Observer #1 was selected to represent the impact at the 
+closest park boundary to the repository site. This observer location is likely to have the worst 
+visual impacts because it is only 1.9 km from the center of the proposed site and it has a 
+relatively unobstructed view down the canyon toward the site. Although this site is likely to 
+have the worst magnitude and frequency of visual impacts, in reality the site may rarely, if 
+ever, be visited. Observer #2 was chosen at a location that is visited by 4 percent of the 
+national park visitors. The site is approximately 4 km from Observer #1 and 6 km from the 
+canyon site. Finally, the third observer (#3) is immediately adjacent to the ranger station on 
+the entrance road to the national park. This site was chosen because, although it is further 
+from the canyon site (approximately 9 km), it is visited quite often and has a relatively 
+unobstructed view in several directions. This area is visited by 12 percent of the park visitors 
+and more visitors drive past this location. 
+
+3.3.3 Model Inputs and Assumptions 
+Emissions 
+
+The three phases of construction and operation of the proposed nuclear waste 
+repository include the following: 
+
+Exploratory Shaft Facility (ESF) Construction 
+
+Repository Construction (RC) 
+
+Repository Operation (RO) 
+
+The emissions data encompass all stationary and mobile emission sources used at the site 
+during these three phases. Emissions data do not include estimates of natural wind-blown 
+dust; thus, such natural dust sources are not considered in this visibility impact analysis. It 
+may be likely that the construction and operation activities will disturb the natural soil 
+conditions of the area, thereby increasing the quantity of wind-blown dust. However, as will 
+be shown later, the maximum impacts estimated in this analysis occur with light winds (less 
+than 3 m/s) which are not likely to be strong enough to raise wind-blown dust. To the extent 
+wind-blown dust is added to the line of sight in which the sight emissions are located, visual 
+impacts may be diminished due to the obscuring effect of the dust. Therefore, it is believed 
+that the exclusion of wind-blown dust is a conservative assumption for this analysis. 
+
+71 
+
+
+
+The species of emissions include nitrogen oxides (NOx), sulfur dioxide (S02), and 
+particulate. There are two categories of particulate considered: (1) diesel engine exhaust and 
+
+(2) fugitive dust. Because the S02 emissions are minute and because S02 requires several 
+hours before it is converted to sulfate aerosol which interacts with light (thus potentially 
+impairing visibility), this species was not modeled for this example. The particulate emission 
+classes were modeled separately as two distinct aerosol modes. The diesel exhaust was 
+assumed to be elemental carbon, which is an effective light absorber. The mass median 
+diameter of the emitted elemental carbon (soot) from diesel engines was calculated from 
+California Air Resources Board (CARB) emission factors to ·be at a mass median diameter of 
+0.4 pm, which is near the most effective size range for both light scattering and absorption. 
+Fugitive dust emissions were also sized using CARB 's emission factors with a mass median 
+diameter of 5.2 pm, which is consistent with other estimates of coarse mode aerosol size 
+distribution. 
+These emissions vary both diurnally (with maximum emissions generally during the 
+daylight hours) and on a month-to-month basis during any given phase. Daily emission 
+values for the month with highest emissions in the particular year of the given phase of 
+operation with the highest emissions were used as the starting point for emissions 
+calculations. The specific emissions used as PLUVUE II input for each of the three phases 
+are listed in Table 3. Emissions are greatest during the reppsitory construction phase, with 
+NOx emissions of 2.75 tons per day, diesel exhaost emissions of 0.28 tons per day, and 
+fugitive dust emissions of 0.61 tons per day. These emission rates are more than three times 
+the emissions during the ESF construction, the phase with the next highest emissions. 
+Emissions during the repository operation are the lowest. 
+
+For this example, emissions are treated as area sources. ESF construction emissions 
+were distributed over 60 acres and repository construction and operation emissions were 
+distributed over the entire 400 acres of the site. 
+
+Terrain 
+
+The complex terrain surrounding the canyon site and the three observation sites 
+selected for analysis in this study complicates the realistic analysis of the visual impacts in 
+the following ways: 
+
+1) 
+Complex terrain will tend to dramatically effect the transport and dispersion of 
+emissions. Elevated terrain will block and channel the airflow, especially 
+during stable conditions. Also, elevated, rugged terrain tends to enhance 
+diffusion because of mechanical mixing effects and because plume parcels are 
+more easily torn apart and transported in different directions. 
+
+72 
+
+
+
+TABLE 3 
+
+. 
+
+EMISSIONS USED AS PLUVUE IT INPUT FOR THE 
+THREE PHASES OF CONSTRUCfiON (TONS/DAY) 
+
+Diesel Fugitive 
+Phase Exhaust Dust 
+
+ESF Construction 0.86 0.06 0.15 
+Repository Construction 2.75 0.28 0.61 
+Repository Operation 0.58 0.01 0.24 
+
+73 
+
+
+
+2) Complex terrain will limit the direction and distance an observer can see in a 
+given direction. Terrain obstacles may prevent an observer from seeing plumes 
+that would be readily visible to an observer located on flat terrain or on an 
+elevated vantage point. 
+3) Complex terrain will become the viewing background for many plumes. 
+Terrain is either a viewing obstruction or a viewing background depending on 
+whether the plume material is in front of or behind a given terrain object. 
+
+Observer #1 has a direct view of the canyon site, unobstructed by intervening terrain. 
+Observer #2's view is obstructed by elevated terrain at approximately 4 km, and Observer 
+#3's view is obstructed by terrain approximately 9 km from the observer. Terrain 
+obstructions in all directions from the three observer locations were considered in this 
+analysis. If a plume would be located in a position that would be obstructed from view by 
+intervening terrain, its visual impact was assigned to zero. 
+
+Meteorological Conditions 
+
+Since meteorological data were not available for the canyon site or for any of the three 
+observer locations used in this example, meteorological data from the closest monitoring she 
+was used to characterize the frequency of occurrence of various meteorological conditions. 
+The worst year of the available annual meteorological data were used to calculate tables of 
+joint frequency of wind direction and speed and atmospheric ·stability for specific time periods 
+of interest. The worst-case dispersion conditions were ranked in order of decreasing severity 
+and the frequency of occurrence of these conditions associated with the wind direction that 
+could transport emissions toward the Class I area. Dispersion conditions were ranked by 
+evaluating the product crycrzu, where cry and crz are the Pasquill-Gifford horizontal and vertical 
+dispersion coefficients for the given stability class and downwind distance x along the stable 
+plume trajectory, and u is the maximum wind speed for the given wind speed category in the 
+joint frequency table. The frequency of occurrence analysis was conducted for the following 
+worst-case meteorological conditions: 
+
+Pasquill-Gifford Wind 
+Stability Class Speed (rn/s) 
+
+F 1,2,3 
+E 1,2,3,4,5 
+D 1,2,3,4,5,6,7,8 
+
+The dispersion conditions were ranked in ascending order of the value crycrzu. The joint
+
+
+frequency tables were prepared for each observer location at three different downwind 
+
+distances. The transport time from the emissions source to each observer location was 
+
+calculated along the minimum trajectory distance based on the midpoint value of wind speed 
+
+74 
+
+
+
+for each wind speed category. For example, for the wind speed category 0-1 rn/s, a wind 
+speed of 0.5 rn/s was used to evaluate the transport time. 
+
+It is unlikely that steady-state plume conditions will persist for more than 12 hours. 
+Thus, if a transit time of more than 12 hours is required to transport a plume parcel from the 
+emissions source to the observer locations for a given dispersion condition, it was assumed 
+that plume material is more dispersed than a standard Gaussian plume model would predict. 
+The frequencies associated with transport times longer than 12 hours were not included in the 
+cumulative frequency summations. 
+
+To obtain the worst-case meteorological conditions, it was necessary to determine the 
+dispersion condition (a given wind speed and stability class associated with the wind direction 
+that would transport emissions toward the observer locations) that has a apzu product with a 
+cumulative probability of one percent. In other words, the dispersion condition was selected 
+such that the sum of all frequencies of occurrence of conditions worse than this condition 
+totals one percent (i.e., about four days per year). The one-percentile meteorology is assumed 
+to be indicative of worst-day plume visual impacts when the probability of worst-case : 
+meteorological conditions is coupled with the probability of other factors being ideal for 
+maximizing plume visual impacts. Dispersion conditions associated with transport times of 
+more than 12 hours ~ere not considered in this cumulative frequency for the reasons stated 
+above. 
+
+Emissions due to repository construction and operation principally occur during 
+daylight hours, thus nighttime dispersion conditions are irrelevant for this study. (This would 
+not be the case for a continuous emission source whose nighttime emissions could be caught 
+in very stable flows and transported intact to long distances, as occurs with power plant 
+emissions, for example.) For this example, emissions from daytime activities start at 0800 so 
+the daylight hours were divided into three-hour periods starting at 0800 for cumulative 
+frequency calculations. The poorest daylight dispersion conditions were found to occur in the 
+morning for the first 3-hour period (0800-1100). Therefore, the analysis of the frequency of 
+impacts were conducted for the morning (0800-1 fOO) period. 
+
+3.3.4 Model Results 
+Over 250 PLUVUE-11 model calculations of plume visual impact were performed to 
+attempt to characterize the ranges of potential visual impacts for a variety of times of 
+day/season, observer positions, and meteorological and emissions conditions. PLUVUE II 
+calculates a number of parameters that quantify the visual effect of a plume of given 
+dimensions, position (relative to the observer, the sun, and viewing backgrounds), and 
+concentration. These parameters are calculated for each downwind distance considered in the 
+model. In this example, downwind distances of 1, 3, 5, 7, 10, and 15 km were considered. 
+Visual impacts were calculated from the separate perspectives associated with the three 
+observers. The four parameters used to characterize the visibility effects of the plume 
+
+75 
+
+
+
+included: visual range reduction, plume contrast, blue-red ratio, and ~E. The importance of 
+these parameters was discussed in Section 1. 
+
+Table 4 summarizes the results of the first PLUVUE-ll calculations that were 
+performed to determine which of the emitted species (NOx, diesel exhaust, or fugitive dust) 
+caused the most impact. This determination was made by first modeling all emissions and 
+then modeling separately the impacts of each emitted species alone. As expected, the base 
+case (with all emitted species considered) produced the maximum visual impacts. Visual 
+range was reduced 15%, plume contrast was most negative ( -0.016), blue-red ratio was the 
+lowest (0.987), and, as a result of the contrast and color change, the plume ~was highest 
+(0.641). The values of these parameters indicate that for this particular condition the plume 
+would not be visible since ~is less than 1 but that it would be slightly darker (negative 
+contrast) and yellower (blue-red ratio less than 1) than the assumed sky background. 
+
+Diesel exhaust considered alone caused the next largest impact, nearly as great as all 
+species combined. The values of the parameters suggest a darkening effect of the plume. 
+This is not surprising considering that diesel exhaust particulate is elemen~al carbon (soot) 
+which is a very effective light absorber. 
+
+Nitrogen oxide (NOx) emissions caused nearly as large an impact as the diesel exhaust, 
+again a· darkening effect due to the light absorbing nature of the nitrogen dioxide molecule. 
+
+Fugitive dust had a much lower impact than either diesel exhaust particulates or NOx 
+because the particulate is relatively large and therefore not an effective light scatterer. 
+Fugitive dust, which acts to scatter light both into and out of the line of sight, when present 
+with the light absorbing soot and NOx, may actually tend to mask some of the effect of the 
+other emitted species. Thus, for this example, we conclude that the diesel exhaust particulate 
+(largely soot) and NOx from the construction and operation activities at the site are the 
+principal causes of plume visual impacts calculated in this study. However, it should be 
+noted that visual impacts of fugitive dust would be most noticeable against a dark terrain 
+viewing background (e.g., a terrain feature in shadow) in which case the particulate, 
+especially when the sun is in front of the observer, would scatter light into the line of sight 
+thereby appearing brighter than the terrain. 
+
+As discussed, over 250 PLUVUE-II runs were made. For each run, plume visual 
+effects were made for the particular vantage point of one of the three observers in the national 
+park. Each run was based on a particular plume position appropriate for the given wind 
+direction. Calculations were performed for six downwind distances. An input file for one of 
+the many runs is shown in Figure 10. The corresponding output is shown in Figure 11. In 
+this example, Observer #1 would observe the indicated plume visual effect as the plume was 
+scanned from the closest downwind distance to the most distant. Thus, the indicated effects 
+at given distances along the plume can also be interpreted as effects for various azimuths of 
+view. 
+
+76 
+
+
+
+TABLE 4 
+SENSITIVITY OF PLUME VISUAL IMPACT TO EMITfED SPECIES 
+
+
+Visual Range Blue-Red Plume 
+Scenario Reduction (%) Ratio Contrast L\E(L • a*b*) 
+
+
+Base Case 15.2 0.987 -0.016 0.641 
+Diesel Exhaust Only 9.8 0.988 -0.015 0.586 
+NOx Only 5.7 0.998 -0.011 0.497 
+Fugitive Dust Only 1.7 0.996 -0.005 0.175 
+
+Run Description: 
+
+Spring 0800 AM · 
+
+Wind Direction =90° 
+
+Wind Speed =2 rn/s 
+
+Stability =D 
+
+Observer #1 
+
+Emissions: ESF Construction 
+
+Downwind Distance = 3 km 
+
+77 
+
+
+
+all.mie 
+pluvue7.bin 
+pluvue8.bin 
+Test Case 
+4.5 4 0.00 
+0 
+64. 5. 
+10000.0 
+56.000 
+0 
+1 0 1 0 6 1 7 1 0 0 0 
+0 0 0 0 0 0 
+1.0 3.0 5.0 7.0 10.0 15.0 
+0.01 0.86 0.21 
+10.0 80.0 0.0 0.10 
+1.0 0.0 
+72.7 
+0.000 0.000 0.040 0.000 
+0.150 3.000 0.100 1. 000 
+2.000 2.200 2.000 2.000 
+1.500 2.500 1. 500 2.500 
+0.050 2.000 2.000 0.000 0.000 
+1. 500 0.000 1. 500 0.000 
+1. 500 0.000 2.000 1. 000 
+10.000 
+2 
+170.000 
+1.00 1.00 0.10 0.10 
+0 
+0.0000000 
+2 2· 
+-i. 9 0.0 5400.0 
+0.0 0.0 5200.0 
+12 4 1 800. 7. 1988 
+0.0 0.0 0.0 0.0 0.0 0.0 
+50.0 50.0 50.0 50.0 50.0 50.0 50.0 0.0 
+50.0 50.0 50.0 50.0 50.0 50.0 50.0 0.0 
+50.0 50.0 50.0 50.0 50.0 50.0 50.0 0. 0 
+225.0 
+
+Figure 10. Sample PLUVUE II input file. 
+
+78 
+
+
+
+PLUVUE II (VERSION 92243) 
+
+AN AIR QUALITY DISPERSION MODEL IN 
+
+SECTION 2. NON-GUIDELINE MODELS 
+
+SOURCE: FILE 13 ON UNAMAP MAGNETIC TAPE FROM NTIS. 
+
+VISUAL IMPACT ASSESSMENT FOR Test Case 
+
+EMISSIONS SOURCE DATA 
+ELEVATION OF SITE 5200." FEET MSL 
+1585. METERS MSL 
+NO. OF UNITS 1. 
+STACK HEIGHT 0. FEET 
+0. METERS 
+FLUE GAS FLOW RATE = 10. CU FT/MIN 
+0.00 CUM/SEC 
+FLUE GAS TEMPERATURE 80. F 
+300. K 
+
+FLUE GAS OXYGEN CONTENT = 0.0 MOL PERCENT 
+
+S02 EMISSION RATE (TOTAL) 0.01 TONS/DAY 
+:.050E-01 G/SEC 
+
+NOX EMISSION RATE (TOTAL,AS N02) = 0.86 TONS/DAY 
+9.030£+00 G/SEC 
+
+PARTICULATE EMISSION RATE (TOTAL) = 0.21 TONS/DAY 
+2.205E+00 G/SEC 
+
+Figure 11. Example PLUVUE II output file. 
+
+
+METEOROLOGICAL AND AMBIENT AIR QUALITY DATA 
+WINDSPEED 4.5 MILES/HR 
+
+
+2.0 M/SEC 
+PASQUILL-GIFFORD-TURNER STABILITY CATEGORY D 
+LAPSE RATE = 0.00 F/1000 FT 
+O.OOOE+OO K/M 
+POTENTIAL TEMPERATURE LAPSE RATE 9.800E-03 K/M 
+AMBIENT TEMPERATURE 72.7 F 
+
+295.8 K 
+RELATIVE HUMIDITY 56.0 % 
+MIXING DEPTH = 10000.0 M 
+AMBIENT PRESSURE 0.83 ATM 
+BACKGROUND NOX CONCENTRATION 0.000 PPM 
+BACKGROUND N02 CONCENTRATION 0.000 PPM 
+BACKGROUND OZONE CONCENTRATION 0.040 PPM 
+BACKGROUND S02 CONCENTRATION = 0.000 PPM 
+00 ROG = 0.1~00 SIGMA = 2.0000 REFRACTIVE INLIEX 1. 5000 + 0.000000 
+0 LOG-NORMAL SIZE DISTRIBUTION (101 POINT HISTOGRAM) 
+
+ROG = 3.0000 SIGMA = 2.2000 REFRACTIVE INDEX 1. 5000 + 0.000000 
+LOG-NORMAL SIZE DISTRIBUTION (101 POINT HISTOGRAM) 
+
+ROG = 1.0000 SIGMA = 2.0000 REFRACTIVE INDEX 1.5000 + 0.000000 
+LOG-NORMAL SIZE DISTRIBUTION (101 POINT HISTOGRAM) 
+
+ROG = 0.0500 SIGMA = 2.0000 REFRACTIVE INDEX 2.0000 + 1.000000 
+LOG-NORMAL SIZE DISTRIBUTION (101 POINT HISTOGRAM) 
+
+BACKGROUND COARSE MODE CONCENTRATION 10.0 UG/M3 
+BACKGROUND SULFATE CONCENTRATION 2.2 UG/M3 
+BACKGROUND NITRATE CONCENTRATION 0.0 UG/M3 
+BACKGROUND VISUAL RANGE 170.0 KILOMETERS 
+S02 DEPOSITION VELOCITY 1.00 CM/SEC 
+NOX DEPOSITION VELOCITY 1.00 CM/SEC 
+COARSE PARTICULATE DEPOSITION VELOCITY = 0.10 CM/SEC 
+SUBMICRON PARTICULATE DEPOSITION VELOCITY 0.10 CM/SEC 
+
+Figure 11. Example PLUVUE II output file (continued). 
+
+
+AEROSOL STATISTICS 
+
+BACKGROUND PLUME 
+
+ACCUMULATION COARSE ACCUMULATION COARSE CARBONACEOUS 
+MASS MEDIAN MODE MODE MODE MODE AEROSOLS 
+RADIUS 
+MICROMETERS 0.150 3.000 0.100 1. 000 0.050 
+
+GEOMETRIC 
+STANDARD 
+DEVIATION 2.000 2.200 2.000 2.000 2.000 
+
+PARTICLE 
+DENSITY 
+G/(CM**3) 1.500 2.500 1. 500 2.500 2.000 
+
+CARBONACEOUS FRACTION OF PARTICLATE MASS EMISSIONS = 0.000 
+
+BACKGROUND ATMOSPHERIC ELEMENTAL CARBON = 0.000 UG/M**3 
+
+GEOMETRY OF USER-SPECIFIED PLUME-OBSERVER-SUN ORIENTATION 
+
+WIND DIRECTION (DEGREES) =225.0 
+
+00 
+
+....... 
+
+
+SIMULATION IS FOR 800. HOURS ON 4/ 1 
+
+SOLAR ZENITH ANGLE (DEGRE~S) = 61.5 
+
+SOLAR AZIMUTH ANGLE (DEGREES) = 95.5 
+
+GEOMETRIES FOR LINES-OF-SIGHT THROUGH PLUME PARCELS AT GIVEN DOWNWIND DISTANCES (X) 
+
+X (KM) AZIMUTH RP ALPHA BETA THETA 
+
+1.0 74.8 2.7 29.8 -1.3 35.7 
+3.0 62.2 4.5 17.2 -0.7 43.2 
+5.0 57.0 6.5 12.0 -0.5 46.9 
+7.0 54.1 8.5 9.1 -0.4 49.0 
+10.0 51.8 11.4 6.8 -0.3 50.8 
+15.0 49.7 16.4 4.7 -0.2 52.3 
+Figure 11. Example PLUVUE II output file (continued). 
+
+
+BACKGROUND CONDITIONS 
+ACCUMULATION MODE 
+MASS RADIUS SIGMA 
+0.1500E+00 0.2000E+01 
+BSCAT.55/MASS 
+0.5215E-02 
+COARSE PARTICLE 
+MASS RADIUS 
+0.3000E+Ol 
+MODE 
+SIGMA BSCAT.55/MASS 
+0.2200E+Ol 0.3219E-03 
+PRIMARY PARTICLE 
+MASS RADIUS 
+O.lOOOE+Ol 
+MODE 
+SIGMA BSCAT.55/MASS 
+0.2000E+Ol 0.1045E-02 
+REFRACTION INDEXES 
+ACCUMULATION MODE 
+COARSE MODE 
+PRIMARY AEROSOLS 
+CARBONACEOUS AEROSOLS 
+0.1500E+Ol + I 
+0.1500E+Ol + I 
+0.1500E+Ol + I 
+0.2000E+Ol + I 
+O.OOOOE+OO 
+O.OOOOE+OO 
+O.OOOOE+OO 
+O.lOOOE+Ol 
+BTARAY =0.9885E-02 
+COEFFICIENTS AT 
+BTAAER =0.1457E-01 
+0.55 MICROMETERS , 1./KM 
+ABSN02 =O.OOOOE+OO BTABAC =0.2301E-01 
+00 
+N 
+
+Figure 11. Example PLUVUE IT output file (continue-d). 
+
+
+CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY 
+Test Case 
+DOWNWIND DISTANCE (KM) 
+PLUME ALTITUDE (M) 
+SIGMA Y (M) 
+SIGMA Z (M) 
+S02-S04 CONVERSION RATE= 
+NOX-N03 CONVERSION RATE= 
+1.0 
+2. 
+78. 
+33. 
+0.0000 PERCENT/HR 
+0.0000 PERCENT/HR 
+ALTITUDE NOX 
+(PPM) 
+N02 
+(PPM) 
+N03(
+PPM) 
+N02/NTOT 
+(MOLE %) 
+N03-/NTOT 
+(MOLE %) 
+S02 
+(PPM) 
+S04= 
+(UG/M3) 
+S04=/STOT 
+(MOLE %) 
+03 
+(PPM) 
+PRIMARY BSP-TOTAL 
+(UG/M3) (10-4 M-1) 
+BSPSN/BSP 
+(%) 
+H+2S 
+INCREMENT: 
+TOTAL AMB: 
+0.043 
+0.043 
+0.025 
+0.025 
+0.000 
+0.000 
+57.178 
+57.178 
+0.000 
+0.000 
+0.000 
+0.000 
+0.000 
+2.176 
+0.000 
+60.737 
+-0.025 
+0.015 
+19.695 
+31.872 
+0.206 
+0.352 
+0.000 
+32.283 
+H+1S 
+INCREMENT: 
+TOTAL AMB: 
+0.202 
+0.202 
+0.037 
+0.037 
+0.000 
+0.000 
+18.521 
+18.521 
+0.000 
+0.000 
+0.002 
+0.002 
+0.000 
+2.176 
+0.000 
+24.740 
+-0.037 
+0.003 
+92.685 
+104.861 
+0.969 
+1.115 
+0.000 
+10.183 
+H 
+INCREMENT: 
+TOTAL AMB: 
+0.350 
+0.350 
+0.039 
+0.039 
+0.000 
+0.000 
+11".011 
+11.011 
+0.000 
+0.000 
+0.003 
+0.003 
+0.000 
+2.176 
+0.000 
+15.920 
+-0.039 
+0.001 
+160.910 
+173.087 
+1. 682 
+1. 828 
+0.000 
+6.210 
+00 w 
+H-15 
+INCREMENT: 
+TOTAL AMB: 
+H-25 
+INCREMENT: 
+TOTAL AMB: 
+0.351 
+0.351 
+0.351 
+0.351 
+0.039 
+0.039 
+0.039 
+0.039 
+0.000 
+0.000 
+0.000 
+0. 000 
+10.996 
+10.996 
+10.996 
+10.996 
+0.000 
+0.000 
+0.000 
+0.000 
+0.003 
+0.003 
+0.003 
+0.003 
+0.000 
+2.176 
+0.000 
+2.176 
+0.000 
+15.901 
+0.000 
+15.901 
+-0.039 
+0.001 
+-0.039 
+0.001 
+161.138 
+173.314 
+161.138 
+173.314 
+1. 684 
+1. 830 
+1. 684 
+1. 830 
+0.000 
+6.202 
+0.000 
+6.202 
+0 
+INCREMENT: 
+TOTAL AMB: 
+0.351 
+0.351 
+0.039• 
+0.039 
+0.000 
+0.000 
+10.996 
+10.996 
+0.000 
+0.000 
+0.003 
+0.003 
+0.000 
+2.176 
+0.000 
+15.901 
+-0.039 
+0.001 
+161.138 
+173.314 
+1. 684 
+1.830 
+0.000 
+6.202 
+CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX 
+PRIMARY 
+S02: 
+NOX: 
+PARTICULATE: 
+S04: 
+N03: 
+0.0000 
+0.0000 
+0.0000 
+0.0000 
+0.0000 
+
+Figure 11. Example PLUVUE II output file (continued). 
+
+
+VISUAL EFFECTS FOR HORIZONTAL SIGHT PATHS 
+Test Case 
+
+
+DOWNWIND DISTANCE (KM) = 1.0 
+PLUME ALTITUDE (M) 2. 
+PLUME-OBSERVER DISTANCE (KM) = 2.7 
+AZIMUTH OF LINE-OF-SIGHT = 74.8 
+ELEVATION ANGLE OF LINE-OF-SIGHT = -1."3 
+SOLAR ZENITH ANGLE = 61.5 AT BOO. ON 4/ 1 
+SIGHT PATH IS THROUGH PLUME CENTER 
+
+
+THETA ALPHA RP/RVO RV %REDUCED YCAP L X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+
+36. 
+30. 0.02 167.0 1.79 102.10 100.81 0.3370 0.3497 -0.52 -0.20 -0.0050 0.9602 0.0023 0.0022 2.0998 1.3615 
+0 
+
+PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS 
+OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS 
+FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES 
+
+
+Test Case 
+
+DOWNWIND DISTANCE (KM) 1.0 
+PLUME-OBSERVER DISTANCE (KM) = 2. 7 
+
+
+AZIMUTH OF LINE-OF-SIGHT = 74.8 
+ELEVATION ANGLE OF LINE-OF-SIGHT -1.3 
+SOLAR ZENITH ANGLE = 61.5 AT 800. ON 4/ 1 
+
+
+THETA = 36. 
+
+REFLECT RP/RVO RO/RVO YCAP L X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+
+1.0 0.02 0.29 93.27 97.34 0.3328 0.3453 0.15 0.06 0.0018 0.9544 0.0027 0.0026 2.4100 1.5431 
+0.3 0.02 0.29 77.86 90.73 0.3190 0.3352 1. 34 0.61 0. 0171 0.9270 0.0040 0.0038 3.4004 2.1555 
+0.0 0.02 0.29 71.26 87.62 0.3116 0.3298 1. 85 0.90 0.0257 0.9074 0.0048 0.0045 3.9892 2.5334 
+Figure 11. Exa.rnple PLUVUE II output file (continued). 
+
+
+CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY 
+
+Test Case 
+
+DOWNWIND DISTANCE (KM) 3.0 
+PLUME ALTITUDE (M) 2. 
+SIGMA Y (M) 195. 
+SIGMA Z (M) 66. 
+S02-S04 CONVERSION RATE= 0.0019 PERCENT/HR 
+NOX-N03 CONVERSION RATE= 0.0135 PERCENT/HR 
+
+
+ALTITUDE NOX N02 N03-N02/NTOT N03-/NTOT 
+(PPM) (PPM) (PPM) (MOLE %) (MOLE %) 
+
+H+2S 
+INCREMENT: 0.009 0.007 0.000 74.135 0.037 
+TOTAL AMB: 0.009 0.007 0.000 74.135 0.037 
+
+H+lS 
+INCREMENT: 0.042 0.024 0.000 57.897 0.001 
+TOTAL AMB: 0.042 0.024 0.000 57.897 0.001 
+
+H 
+INCREMENT: 0.070 0.031 0.000 44.018 0.000 
+TOTAL AMB: 0.070 0.031 0.000 44.018 0.000 
+
+H-1S 
+INCREMENT: 0.070 0.031 0.000 44.018 0.000 
+TOTAL AMB: 0.070 0.031 0.000 44.018 0.000
+
+00 
+
+lll 
+
+H-2S 
+INCREMENT: 0.070 0.031 0.000 44.018 0.000 
+TOTAL AMB: 0.070 0.031 0.000 44.018 0.000 
+
+0 
+INCREMENT: 0.070 0.031 0.000 44.018 0.000 
+TOTAL AMB: 0.070 0.031 0.000 44.018 0.000 
+
+CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX 
+
+S02: 0.0000 
+NOX: 0.0000 
+PRIMARY PARTICULATE: 0.0000 
+S04: 0.0000 
+N03: 0.0000 
+
+
+S02 
+(PPM) 
+
+0.000 
+
+0.000 
+
+0.000 
+
+0.000 
+
+0.001 
+
+0.001 
+
+0.001 
+
+0.001 
+
+0.001 
+
+0. 001 
+0.001 
+
+0.001 
+
+S04= 
+(UG/M3) 
+
+0.000 
+
+2.176 
+
+0.000 
+
+2.176 
+
+0.000 
+
+2.176 
+
+0.000 
+
+2.176 
+
+0.000 
+
+2.176 
+
+0.000 
+
+2.176 
+
+S04=/STOT 03 PRIMARY ESP-TOTAL BSPSN/BSP 
+(MOLE %) (PPM) (UG/M3) (10-4 M-1) (%) 
+0.009 -0.007 4.157 0.043 0.003 
+87.995 0.033 16.333 0.189 60.007 
+0.001 -0.024 19.110 0.200 0.000 
+61.454 0.016 31.287 0.345 32.855 
+0.001 -0.031 32.343 0.338 0.000 
+48.507 0. 009' 44.520 0.484 23.460 
+0.001 -0.031 32.343 0.338 0.000 
+48.507 0.009 44.520 0.484 23.460 
+0.001 -0.031 32.343 0.338 0.000 
+48.507 0.009 44.520 0.484 23.460 
+0.001 -0.031 32.343 0.338 0.000 
+48.507 0.009 44.520 0.484 23.460 
+
+Figure 11. Example PLUVUE II output file (continued). 
+
+
+VISUAL EFFECTS 
+Test Case 
+FOR HORIZONTAL SIGHT PATHS 
+DOWNWIND DISTANCE (KM) = 3.0 
+PLUME ALTITUDE (M) 2. 
+PLUME-OBSERVER DISTANCE (KM) = 4.5 
+AZIMUTH OF LINE-OF-SIGHT = 62.2 
+ELEVATION ANGLE OF LINE-OF-SIGHT= -0.7 
+SOLAR ZENITH ANGLE= 61.5 AT BOO. ON 
+SIGHT PATH IS THROUGH PLUME CENTER 
+4/ 1 
+THETA ALPHA RP/RVO RV %REDUCED YCAP L X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+43. 
+17. 0.03 167.5 1.4B B2.54 92.B2 0.3356 0.34B1 -1.54 -0.67 -0.0176 0.9235 0.0047 0.0049 4.1465 2.7541 
+PLUME VISUAL 
+OF THE PLUME 
+FOR SPECIFIC 
+EFFECTS FOR HORIZONTAL VIEWS 
+OF WHITE, GRAY, AND BLACK OBJECTS 
+OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES 
+Test Case 
+00 
+0\ 
+~OWNWIND DISTANCE (KM) 3.0 
+PLUME-OBSERVER DISTANCE (KM) = 
+AZIMUTH OF LINE-OF-SIGHT = 62.2 
+ELEVATION ANGLE OF LINE-OF-SIGHT 
+SOLAR ZENITH ANGLE = 61.5 AT 
+THETA = 43. 
+REFLECT RP/RVO RO/RVO YCAP 
+4.5 
+-0.7 
+BOO. ON 
+L 
+4/ 1 
+X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+1.0 
+0.3 
+0.0 
+0.03 
+0.03 
+0.03 
+0.29 
+0.29 
+0.29 
+79.27 
+63.B6 
+57.25 
+91.36 
+B3.91 
+B0.34 
+0.3355 
+0.31BB 
+0.3094 
+0.3467 
+0.3344 
+0.3275 
+-1.29 
+-0.11 
+0.40 
+-0.5B 
+-0.06 
+0.22 
+-0.0151 
+-0.0009 
+0.0076 
+0.9243 
+0.9022 
+O.BB42 
+0.0047 
+0.0057 
+0.0065 
+0.0049 
+0.0061 
+0.0069 
+4.1169 
+4.B232 
+5.2911 
+2.7320 
+3.0601 
+3.3115 
+
+• 
+
+
+Figure 11. Example PLUVUE IT output file (conti!lued). 
+
+
+CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY 
+Test Case 
+DOWNWIND DISTANCE (KM) 
+PLUME ALTITUDE (M) 
+SIGMA Y (M) 
+SIGMA Z (M) 
+S02-S04 CONVERSION RATE; 
+NOX-N03 CONVERSION RATE; 
+5.0 
+2. 
+303. 
+89. 
+0.0154 PERCENT/HR 
+0.1077 PERCENT/HR 
+ALTITUDE NOX 
+(PPM) 
+N02 
+(PPM) 
+N03(
+PPM) 
+N02/NTOT 
+(MOLE %) 
+N03-/NTOT 
+(MOLE %) 
+S02 
+(PPM) 
+S04; 
+(UG/M3) 
+S04;/STOT 
+(MOLE %) 
+03 
+(PPM) 
+PRIMARY BSP-TOTAL 
+(UG/M3) (10-4 M-1) 
+BSPSN/BSP 
+(%) 
+H+2S 
+INCREMENT: 
+TOTAL AMB: 
+0.004 
+0.004 
+0.003 
+0.003 
+0.000 
+0.000 
+75.685 
+75.685 
+0.400 
+0.400 
+0.000 
+0.000 
+0.000 
+2.176 
+0.078 
+93.851 
+-0.003 
+0.037 
+1.998 
+14.174 
+0.021 
+0.167 
+0.028 
+68.138 
+H+1S 
+INCREMENT: 
+TOTAL AMB: 
+0.020 
+0.020 
+0.014 
+0.014 
+0.000 
+0.000 
+69.324 
+69.324 
+0.040 
+0.040 
+0.000 
+0.000 
+0.000 
+2.176 
+0.010 
+76.953 
+-0.014 
+0.026 
+9.12.6 
+21.302 
+0.095 
+0.241 
+0.004 
+47.079 
+H 
+INCREMENT: 
+TOTAL AMB: 
+0.033 
+0.033 
+0.021 
+0.021 
+0.000 
+0.000 
+62.371 
+62.371 
+0.013 
+0.013 
+0.000 
+0.000 
+0.000 
+2.176 
+0.005 
+66.513 
+-0.021 
+0.019 
+15.340 
+27.516 
+0.160 
+0.306 
+0.002 
+37.086 
+00 
+--.J 
+H-1S 
+INCREMENT: 
+TOTAL AMB: 
+H-2S 
+INCREMENT: 
+TOTAL AMB: 
+0.033 
+0.033 
+0.033 
+0.033 
+0.021 
+0.021 
+0.021 
+0.021 
+0.000 
+0.000 
+0.000 
+0.000 
+62.371 
+62.371 
+62.371 
+62.371 
+0.013 
+0.013 
+0.013 
+0.013 
+0.000 
+0.000 
+0.000 
+0.000 
+0.000 
+2.176 
+0.000 
+2.176 
+0.005 
+66.513 
+0.005 
+66.513 
+-0.021 
+0.019 
+-0.021 
+0.019 
+15.340 
+27.516 
+15.340 
+27.516 
+0.160 
+0.306 
+0.160 
+0.306 
+0.002 
+37.086 
+0.002 
+37.086 
+0 
+INCREMENT: 
+TOTAL AMB: 
+0.033 
+0.033 
+0.021 
+0.021 
+0.000 
+0.000 
+62.371 
+62.371 
+0.013 
+0.013 
+0.000 
+0.000 
+0.000 
+2.176 
+0.005 
+66.513 
+-0.021 
+0.019 
+15.340 
+27.516 
+0.160 
+0.306 
+0.002 
+37.086 
+CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX 
+PRIMARY 
+S02: 
+NOX: 
+PARTICULATE: 
+S04: 
+N03: 
+0.0000 
+0.0000 
+0.0000 
+0.0000 
+0.0000 
+
+Figure 11. Example PLUVUE II output file (continued). 
+
+
+VISUAL EFFECTS 
+Test Case 
+FOR HORIZONTAL SIGHT PATHS 
+DOWNWIND DISTANCE (KM) = 5.0 
+PLUME ALTITUDE (M) 2. 
+PLUME-OBSERVER DISTANCE (KM) = 6.5 
+AZIMUTH OF LINE-OF-SIGHT = 57.0 
+ELEVATION ANGLE OF LINE-OF-SIGHT = -0.5 
+SOLAR ZENITH ANGLE = 61.5 AT 800. ON 
+SIGHT PATH IS THROUGH PLUME CENTER 
+4/ 1 
+THETA ALPHA RP/RVO RV %REDUCED YCAP L X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+0 
+47. 
+12. 0.04 167.3 1.57 75.13 89.46 0.3342 0.3474 
+PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS 
+OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS 
+FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES 
+-1.82 -0.84 -0.0227 0.9117 0.0056 0.0058 4.7989 3.1967 
+Test Case 
+00 
+00 
+DOWNWIND DISTANCE (KM) 5.0 
+PLUME-OBSERVER DISTANCE (KM) = 
+AZIMUTH OF LINE-OF-SIGHT = 57.0 
+ELEVATION ANGLE OF LINE-OF-SIGHT 
+SOLAR ZENITH ANGLE = 61.5 AT 
+THETA = 47. 
+REFLECT RP/RVO RO/RVO YCAP 
+6.5 
+-0.5 
+800. ON 
+L 
+4/ 1 
+X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+1.0 
+0.3 
+0.0 
+0.04 
+0.04 
+0.04 
+0.29 
+0.29 
+0.29 
+74.02 
+58.73 
+52 .. 18 
+88.94 
+81.16 
+77.41 
+0.3364 
+0.3183 
+0.3079 
+0.3474 
+0.3341 
+0.3265 
+-1.71 
+-0.41 
+0.15 
+-0.80 
+-0.22 
+0.09 
+-0.0214 
+-0.0056 
+0.0041 
+0. 9152 
+0.8927 
+0.8732 
+0.0055 
+0.0065 
+0.0073 
+0.0057 
+0.0070 
+0.0078 
+4.6587 
+5.3316 
+5.8078 
+3.1248 
+3.4032 
+3.6480 
+
+Figure 11. Ex:frnple PLUVUE IT output file (continued). 
+
+
+CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY 
+Test Case 
+DOWNWIND DISTANCE (KM) 
+PLUME ALTITUDE (M) 
+SIGMA Y (M) 
+SIGMA Z (M) 
+S02-S04 CONVERSION RATE= 
+NOX-N03 CONVERSION RATE= 
+7.0 
+2. 
+406. 
+110. 
+0.0483 PERCENT/HR 
+0.3382 PERCENT/HR 
+ALTITUDE NOX 
+(PPM) 
+N02 
+(PPM) 
+N03(
+PPM) 
+N02/NTOT 
+(MOLE %) 
+N03-/NTOT 
+(MOLE %) 
+S02 
+(PPM) 
+S04= 
+(UG/M3) 
+504=/STOT 
+(MOLE %) 
+03 
+(PPM) 
+PRIMARY BSP-TOTAL 
+(UG/M3) (10-4 M-1) 
+BSPSN/BSP 
+(%) 
+H+2S 
+INCREMENT: 
+TOTAL AMB: 
+0.003 
+0.003 
+0.002 
+0.002 
+0.000 
+0.000 
+75.710 
+75.710 
+1.166 
+1.166 
+0.000 
+0.000 
+0.000 
+2.176 
+0.221 
+96.137 
+-0.002 
+0.038 
+1.227 
+13.403 
+D. 013 
+0.159 
+0.079 
+71.603 
+H+1S 
+INCREMENT: 
+TOTAL AMB: 
+0.012 
+0.012 
+0.009 
+0.009 
+0.000 
+0.000 
+72.758 
+72.758 
+0.164 
+0.164 
+0.000 
+0.000 
+0.000 
+2.176 
+0.035 
+84.514 
+-0.009 
+0.031 
+5.585 
+17.761 
+0.058 
+0.204 
+0.012 
+55.618 
+H 
+INCREMENT: 
+TOTAL AMB: 
+0.020 
+0.020 
+0.014 
+0.014 
+0.000 
+0.000 
+69.078 
+69.078 
+0.068 
+0.068 
+0.000 
+0.000 
+0.000 
+2.176 
+0.017 
+76.511 
+-0.014 
+0.026 
+9.355 
+21.532 
+0.098 
+0.243 
+0.006 
+46. 616 
+• 
+00 
+\0 
+H-1S 
+INCREMENT: 
+TOTAL AMB: 
+H-2S 
+INCREMENT: 
+TOTAL AMB: 
+0.020 
+0.020 
+0.020 
+0.020 
+0.014 
+0.014 
+0.014 
+0.014 
+0.000 
+0.000 
+0.000 
+0.000 
+69.078 
+69.078 
+69.078 
+69.078 
+0.068 
+0.068 
+0.068 
+0.068 
+0.000 
+0.000 
+0.000 
+0.000 
+0.000 
+2.176 
+0.000 
+2.176 
+0.017 
+76.511 
+0.017 
+76.511 
+-0.014 
+0.026 
+-0.014 
+0.026 
+9.355 
+21.532 
+9.355 
+21.532 
+0.098 
+0.243 
+0.098 
+0.243 
+0.006 
+46.616 
+0.006 
+46. 616 
+0 
+INCREMENT: 
+TOTAL AMB: 
+0.020 
+0.020 
+0.014 
+0.014 
+0.000 
+0.000 
+69.078 
+69.078 
+0.068 
+0.068 
+0.000 
+0.000 
+0.000 
+2.176 
+0.017 
+76.511 
+-0.014 
+0.026 
+9.355 
+21.532 
+0.098 
+0.243 
+0.006 
+46. 616 
+CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX 
+PRIMARY 
+S02: 
+NOX: 
+PARTICULATE: 
+S04: 
+N03: 
+0.0000 
+0.0000 
+0.0000 
+0.0000 
+0.0000 
+
+Figure 11. Example PLUVUE II output file (continued). 
+
+
+VISUAL EFFECTS FOR HORIZONTAL SIGHT PATHS 
+
+Test Case 
+
+DOWNWIND DISTANCE (KM) = 7.0 
+PLUME ALTITUDE (M) 2. 
+PLUME-OBSERVER DISTANCE (KM) = 8.5 
+AZIMUTH OF LINE-OF-SIGHT = 54.1 
+
+
+ELEVATION ANGLE OF LINE-OF-SIGHT = -0.4 
+
+SOLAR ZENITH ANGLE = 61.5 AT 800. ON 4/ 1 
+
+SIGHT PATH IS THROUGH PLUME CENTER 
+
+THETA ALPHA RP/RVO RV %REDUCE;D YCAP L X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+
+49. 
+9. 0.05 167.1 1. 70 71.32 87.65 0.3332 0.3462 -1.89 -0.90 -0.0248 0.9112 0.0059 0.0060 4.9299 3.2771 
+0 
+PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS 
+OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS 
+FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES 
+
+
+• 
+
+Test Case 
+
+DOWNWIND DISTANCE (KM) 7.0 
+
+PLUME-OBSERVER DISTANCE (KM) = 8.5 
+
+AZIMUTH OF LINE-OF-SIGHT = 54.1 
+
+ELEVATION ANGLE OF LINE-OF-SIGHT -0.4 
+
+SOLAR ZENITH ANGLE = 61.5 AT 800. ON 4/ 1 
+
+THETA = 49; 
+
+REFLECT RP/RVO RO/RVO YCAP L X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+
+1.0 0.05 0.29 71.34 87.66 0.3367. 0.3472 -1.87 -0.90 -0.0244 0. 9164 0.0057 0.0058 4. 7217 3.1747 
+0.3 0.05 0.29 56.15 79.72 0.3178 0.3333 -0.46 -0.26 -0.0069 0.8929 0.0067 0.0071 5.3901 3.4358 
+0.0 0.05 0.29 49.65 75.87 0.3069 0.3252 0.14 0.09 0.0041 0. 8717 0.0075 0.0080 5.8887 3.6924 
+Figure 11. Exa.'11ple PLUVUE II output file (continued). 
+
+
+CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY 
+Test Case 
+DOWNWIND DISTANCE (KM) 
+PLUME ALTITUDE (M) 
+SIGMA Y (M) 
+SIGMA Z (M) 
+S02-S04 CONVERSION RATE= 
+NOX-N03 CONVERSION RATE= 
+10.0 
+2. 
+554. 
+136. 
+0.0966 PERCENT/HR 
+0.6763 PERCENT/HR 
+ALTITUDE NOX 
+(PPM) 
+N02 
+(PPM) 
+N03(
+PPM) 
+N02/NTOT 
+(MOLE %) 
+N03-/NTOT 
+(MOLE %) 
+S02 
+(PPM) 
+S04= 
+(UG/M3) 
+S04=/STOT 
+(MOLE %) 
+03 
+(PPM) 
+PRIMARY 
+(UG/M3) 
+BSP-TOTAL 
+(10-4 M-1) 
+BSPSN/BSP 
+(%) 
+H+2S 
+INCREMENT: 
+TOTAL AMB: 
+0.002 
+0.002 
+0.001 
+0.001 
+0.000 
+0.000 
+74.635 
+74.635 
+3.061 
+3.061 
+0.000 
+0.000 
+0.000 
+2.177 
+0.572 
+97.675 
+-0.001 
+0.039 
+0.730 
+12.906 
+0.008 
+0.153 
+0.203 
+74.032 
+H+lS 
+INCREMENT: 
+TOTAL AMB: 
+0.007 
+0.007 
+0.005 
+0.005 
+0.000 
+0.000 
+74.527 
+74.527 
+0.514 
+0.514 
+0.000 
+0.000 
+0.000 
+2.176 
+0.102 
+90.206 
+-0.005 
+0.035 
+3.312 
+15.488 
+0.035 
+0.180 
+0. 03•6 
+62.950 
+H 
+INCREMENT: 
+TOTAL AMB: 
+0.012 
+0.012 
+0.009 
+0.009 
+0.000 
+0.000 
+72.760 
+72.760 
+0.245 
+0.245 
+0.000 
+0.000 
+0.000 
+2.176 
+0.052 
+84.645 
+-0.009 
+0.031 
+5.530 
+17.707 
+0.058 
+0.204 
+0.019 
+55.775 
+\0-
+H-1s 
+INCREMENT: 
+TOTAL AMB: 
+H-2S 
+INCREMENT: 
+TOTAL AMB: 
+0.012 
+0.012 
+0.012 
+0.012 
+0.009 
+0.009 
+0.009 
+0.009 
+0.000 
+0.000 
+0.000 
+0.000 
+72.760 
+72.760 
+72.760 
+72.760 
+0.245 
+0.245 
+0.245 
+0.245 
+0.000 
+0.000 
+0.000 
+0.000 
+0.000 
+2.176 
+0.000 
+2.176 
+0.052 
+84.645 
+0.052 
+84.645 
+-0.009 
+0.031 
+-0.009 
+0.031 
+5.530 
+17.707 
+5.530 
+17.707 
+0.058 
+0.204 
+0.058 
+0.204 
+0. 019 
+55.775 
+0. 019 
+55.775 
+0 
+INCREMENT: 
+TOTAL AMB: 
+0.012 
+0.012 
+0.009 
+0.009 
+0.000 
+0.000 
+72.760 
+72.760 
+0.245 
+0.245 
+0.000 
+0.000 
+0.000 
+2.176 
+0.052 
+84.645 
+-0.009 
+0.031 
+5.530 
+17.707 
+0.058 
+0.204 
+0. 019 
+55.775 
+CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX 
+502: 
+NOX: 
+PRIMARY PARTICULATE: 
+504: 
+N03: 
+0.0000 
+0.0000 
+0.0000 
+0.0000 
+0.0000 
+
+Figure 11. Example PLUVUE II output file (continued). 
+
+
+VISUAL EFFECTS 
+Test Case 
+FOR HORIZONTAL SIGHT PATHS 
+DOWNWIND DISTANCE (KM) = 10.0 
+PLUME ALTITUDE (M) 2. 
+PLUME-OBSERVER DISTANCE (KM) = 11.4 
+AZIMUTH OF LINE-OF-SIGHT = 51.8 
+ELEVATION ANGLE OF LINE-OF-SIGHT = -0.3 
+SOLAR ZENITH ANGLE = 61.5 AT 800. ON 
+SIGHT PATH IS THROUGH PLUME CENTER 
+4/ 1 
+THETA ALPHA RP/RVO RV %REDUCED YCAP L X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(Lke) 
+0 
+51. 
+7. 0.07 166.8 1. 90 68.44 86.24 0.3321 0.3452 
+PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS 
+OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS 
+FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES 
+-1.90 -0.94 -0.0263 0.9163 0.0059 0.0058 4.8116 3.1852 
+Test Case 
+DOWNWIND DISTANCE (KM) 10.0 
+PLUME-OBSERVER DISTANCE (KM) = 11.4 
+AZIMUTH OF LINE-OF-SIGHT = 51.8 
+ELEVATION ANGLE OF LINE-OF-SIGHT -0.3 
+SOLAR ZENITH ANGLE= 61.5 AT 800. ON 
+THETA = 51. 
+4/ 1 
+
+REFLECT RP/RVO RO/RVO YCAP L X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+1.0 0.07 0.29 69.29 86.66 0.3367 0.3468 -1.97 -0.96 -0.0267 0.9234 0.0056 0.0055 4.5419 3.0571 
+0.3 0.07 0.29 54.24 78.62 0.3171 0.3323 -0.43 -0.25 -0.0067 0.8981 0.0066 0.0068 5.2072 3.3035 
+0.0 0.07 0.29 47.79 74.72 0.3058 0.3239 0.23 0.15. 0.0059 0.8745 0.0075 0.0078 5.7388 3.5839 
+
+Figure 11. Ex~T.ple PLU\,n...JE II output file (continued). 
+
+
+CONCENTRATIONS OF AEROSOL AND GASES CONTRIBUTED BY 
+
+Test Case 
+DOWNWIND DISTANCE (KM) 
+PLUME ALTITUDE (M) 
+SIGMA Y (M) 
+SIGMA Z (M) 
+S02-S04 CONVERSION RATE= 
+NOX-N03 CONVERSION RATE= 
+15.0 
+2. 
+789. 
+170. 
+0.1868 PERCENT/HR 
+1.3077 PERCENT/HR 
+ALTITUDE NOX 
+(PPM) 
+N02 
+(PPM) 
+N03(
+PPM) 
+N02/NTOT 
+(MOLE %) 
+N03-/NTOT 
+(MOLE %) 
+S02 
+(PPM) 
+S04= 
+(UG/M3) 
+S04=/STOT 
+(MOLE %) 
+03 
+(PPM) 
+PRIMARY BSP-TOTAL 
+(UG/M3) (10-4 M-1) 
+BSPSN/BSP 
+(%) 
+H+2S 
+INCREMENT: 
+TOTAL AMB: 
+0.001 
+0.001 
+0.001 
+0.001 
+0.000 
+0.000 
+72.217 
+72.217 
+6.498 
+6. 4 98 
+0.000 
+0.000 
+0.000 
+2.177 
+1.208 
+98.690 
+-0.001 
+0.039 
+0.410 
+12.586 
+0.004 
+0.150 
+0.429 
+75.684 
+H+1S 
+INCREMENT: 
+TOTAL AMB: 
+0.004 
+0.004 
+0.003 
+0.003 
+0.000 
+0.000 
+74.943 
+74.943 
+1. 550 
+1.550 
+0.000 
+0.000 
+0.000 
+2.177 
+0.296 
+94.281 
+-0.003 
+0.037 
+1. 854 
+14.030 
+0.019 
+0.165 
+0.105 
+68.7 62 
+H 
+INCREMENT: 
+TOTAL AMB: 
+0.007 
+0.007 
+0.005 
+0.005 
+0.000 
+0.000 
+74.499 
+74.499 
+0.814 
+0.814 
+0.000 
+0.000 
+0.000 
+2.177 
+0.161 
+90.811 
+-0.005 
+0.035 
+3.088 
+15.264 
+0.032 
+0.178 
+0.057 
+63.777 
+\0 w 
+H-1S 
+INCREMENT: 
+TOTAL AMB: 
+H-2S 
+INCREMENT: 
+TOTAL AMB: 
+0.007 
+0.007 
+0.007 
+0.007 
+0.005 
+0.005 
+0.005 
+0.005 
+0.000 
+0.000 
+0.000 
+0.000 
+74.499 
+74.499 
+74.499 
+74.499 
+0.814 
+0.814 
+0.814 
+0.814 
+0.000 
+0.000 
+0.000 
+0.000 
+0.000 
+2.177 
+0.000 
+2.177 
+0.161 
+90.811 
+0.161 
+90.811 
+-0.005 
+0.035 
+-0.005 
+0.035 
+3.088 
+15.264 
+3.088 
+15.264 
+0.032 
+0.178 
+0.032 
+0.178 
+0.057 
+63.777 
+0.057 
+63.777 
+0 
+INCREMENT: 
+TOTAL AMB: 
+0.007 
+0.007 
+0.005 
+0.005 
+0.000 
+0.000 
+74.499 
+74.499 
+0.814 
+0.814 
+0.000 
+0.000 
+0.000 
+2.177 
+0.161 
+90.811 
+-0.005 
+0.035 
+3.088 
+15.264 
+0.032 
+0.178 
+0.057 
+63.777 
+CUMULATIVE SURFACE DEPOSITION (MOLE FRACTIONOF INITIAL FLUX 
+PRIMARY 
+S02: 
+NOX: 
+PARTICULATE: 
+504: 
+N03: 
+0.0000 
+0.0000 
+0.0000 
+0.0000 
+0.0000 
+
+Figure 11. Example PLUVUE II output file (continued). 
+
+
+VISUAL EFFECTS FOR HORIZONTAL SIGHT PATHS 
+Test Case 
+
+
+DOWNWIND DISTANCE (KM) = 15.0 
+PLUME ALTITUDE (M) = 2. 
+PLUME-OBSERVER DISTANCE (KM) = 16.4 
+AZIMUTH OF LINE-OF-SIGHT= 49.7 
+ELEVATION ANGLE OF LINE-OF-SIGHT = -0.2 
+SOLAR ZENITH ANGLE= 61.5 AT 800. ON 4/ 1 
+SIGHT PATH IS THROUGH PLUME CENTER 
+
+
+THETA ALPHA RP/RVO RV %REDUCED YCAP L X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+
+52. 
+5. 0.10 166.4 2.11 66.41 85.22 0.3306 0.3432 -1.72 -0.86 -0.0248 0.9366 0.0049 0.0045 3.9218 2.5805 
+PLUME VISUAL EFFECTS FOR HORIZONTAL VIEWS 
+OF THE PLUME OF WHITE, GRAY, AND BLACK OBJECTS 
+FOR SPECIFIC OBSERVER-PLUME AND OBSERVER-OBJECT DISTANCES 
+
+
+Test Case 
+
+DOWNWIND DISTANCE (KM) = 15.0 
+PLUME-OBSERVER DISTANCE CKM) = 16.4 
+AZIMUTH OF LINE-OF-SIGHT = 49.7 
+ELEVATION ANGLE OF LINE-OF-SIGHT = -0.2 
+SOLAR ZENITH ANGLE= 61.5 AT 800. ON 4/ 1 
+THETA = 52. 
+
+
+REFLECT RP/RVO RO/RVO YCAP L X Y DELYCAP DELL C(550) BRATIO DELX DELY E(LUV) E(LAB) 
+
+1.0 0.10 0.29 67.90 85.97 0.3359 0,3454 -1.86 -0.92 -0.0260 0.0045 0.0045 0.0042 3.6034 2.4296 
+0.3 0.10 0.29 52.95 77.87 0.3158 0.3305 -0.21 -0.13 -0.0034 0.9190 0.0055 0.0054 4.2062 2.6373 
+0.0 0.10 0.29 46.55 73.92 0.3041 0.3217 0.49 0.32 0.0110 0.8930 0.0064 0.0064 4.7546 3.9513 
+HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE= 1.0 KM 
+
+PARCEL LOCAL S02-TO-S04= CONVERSION RATE (%/HR) NOX-TO-HN03 CONVERSION RATE (%/HR) 
+AGE TIME 
+(HR) H+ZS H+1S H H-1S H·2S 0 H+ZS H+1S H H-1S H-2S 0 
+
+
+0.1 700 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 
+HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE = 3.0 KM 
+
+PARCEL LOCAL S02-TO-S04= CONVERSION RATE (%/HR) NOX-TO-HN03 CONVERSION RATE (%/HR) 
+AGE TIME 
+(HR) H+2S H+1S H H-1S H-2S 0 H+2S H+1S H H-1S H-2S 0 
+
+
+0.1 643 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 
+0.4 700 0.03 0.00 0.00 0.00 0.00 0.00 0.23 0.03 0.01 0.01 0.01 0.01 
+Figure 11. Example PLUVUE II output file (continued). 
+
+
+HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE = 5.0 KM 
+PARCEL 
+AGE 
+(HR) 
+LOCAL 
+TIME 
+S02-TO-S04= 
+H+2S H+1S 
+CONVERSION 
+H H-1s 
+RATE (%/HR) 
+H-2S 0 
+NOX-TO-HN03 
+H+2S H+1S 
+CONVERSION 
+H H-1s 
+RATE (%/HR) 
+H-2S 0 
+0.1 
+0.4 
+0.7 
+626 
+643 
+700 
+0.00 
+0.02 
+0.26 
+0.00 
+0.00 
+0.03 
+0.00 
+0.00 
+0.02 
+0.00 
+0.00 
+0.02 
+0.00 
+0.00 
+0.02 
+0.00 
+0.00 
+0.02 
+0.00 
+0.17 
+1. 82 
+0.00 
+0.02 
+0.24 
+0.00 
+0.01 
+0.11 
+0.00 
+0.01 
+0.11 
+0.00 
+0.01 
+0.11 
+0.00 
+0.01 
+0.11 
+HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE = 7.0 KM 
+PARCEL 
+AGE 
+(HR) 
+LOCAL 
+TIME 
+S02-TO-S04= CONVERSION 
+H+2S H+1S H H-1s 
+RATE (%/HR) 
+H-2S 0 
+NOX-TO-HN03 
+H+2S H+1S 
+CONVERSION 
+H H-1S 
+RATE (%/HR) 
+H-2S 0 
+0.1 
+0.4 
+0.7 
+1.0 
+610 
+626 
+643 
+700 
+0.00 
+0.02 
+0.20 
+0.58 
+0.00 
+0.00 
+0.03 
+0.10 
+0.00 
+0.00 
+0.01 
+0.05 
+0.00 
+0.00 
+0.01 
+0.05 
+0.00 
+0.00 
+0.01 
+0.05 
+0.00 
+0.00 
+0.01 
+0.05 
+0.00 
+0.11 
+1.39 
+4.09 
+0.00 
+0.01 
+0.18 
+0.70 
+0.00 
+0.01 
+0.08 
+0.34 
+0.00 
+0.01 
+0.08 
+0.34 
+0.00 
+0.01 
+0.08 
+0.34 
+0.00 
+0.01 
+0.08 
+0.34 
+HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE = 10.0 KM 
+\0 
+Ul 
+PARCEL 
+AGE 
+(HR) 
+0.1 
+0.4 
+0.7 
+1.0 
+1.4 
+LOCAL 
+TIME 
+545 
+602 
+618 
+635 
+700 
+S02-TO-S04= CONVERSION 
+H+2S H+1S H H-1S 
+0.00 0.00 0.00 0.00 
+0.01 0.00 0.00 0.00 
+0.14 0.02 0.01 0.01 
+0.45 0.08 0.04 0.04 
+0.98 0.18 0.10 0.10 
+RATE (%/HR) 
+H-2S 0 
+0.00 0.00 
+0.00 0.00 
+0.01 0.01 
+0.04 0.04 
+0.10 0.10 
+NOX-TO-HN03 
+H+2S H+1S 
+0.00 0.00 
+0.07 0.01 
+0.99 0.12 
+3.13 0.53 
+6.88 1.29 
+CONVERSION 
+H H-ls 
+0.00 0.00 
+0.00 0.00 
+0.05 0.05 
+0.25 0.25 
+0.68 0.68 
+RATE (%/HR) 
+H-2S 0 
+0.00 0.00 
+0.00 0.00 
+0.05 0.05 
+0.25 0.25 
+0.68 0.68 
+HISTORY OF PLUME PARCEL AT DOWNWIND DISTANCE = 15.0 KM 
+PARCEL 
+AGE 
+(HR) 
+LOCAL 
+TIME 
+S02-TO-S04= CONVERSION 
+H+2S H+1S H H-1S 
+RATE (%/HR) 
+H-2S 0 
+NOX-TO-HN03 
+H+2S H+1S 
+CONVERSION 
+H H-ls 
+RATE (%/HR) 
+H-2S 0 
+0.1 
+0.4 
+0.7 
+1.0 
+1.4 
+2.1 
+504 
+520 
+537 
+553 
+618 
+700 
+0.00 
+0.00 
+0.06 
+0.26 
+0.64 
+1.24 
+0.00 
+0.00 
+0.01 
+0.04 
+0.12 
+0.34 
+0.00 
+0.00 
+0.00 
+0.02 
+0.06 
+0.19 
+0.00 
+0.00 
+0.00 
+0.02 
+0.06 
+0.19 
+0.00 
+0.00 
+0.00 
+0.02 
+0.06 
+0.19 
+0.00 
+0.00 
+0.00 
+0.02 
+0.06 
+0.19 
+0.00 
+0.03 
+0.42 
+1.80 
+4.51 
+8.67 
+0.00 
+0.00 
+0.05 
+0.29 
+0.84 
+2.36 
+0.00 
+0.00 
+0.02 
+0.14 
+0.43 
+1.31 
+0.00 
+0.00 
+0.02 
+0.14 
+0.43 
+1.31 
+0.00 
+0.00 
+0.02 
+0.14 
+0.43 
+1.31 
+0.00 
+0.00 
+0.02 
+0.14 
+0.43 
+1.31 
+
+Figure 11. Example PLUVUE ll output file (continued). 
+
+
+PLOT FILE VERIFICATION 
+OBSERVER-BASED DATA 
+SKY BACKGROUND 
+NX 1 2 3 4 5 6 
+DISTANCE (KM) 1. 3. 5. 7. 10. 15. 
+REDUCTION OF VISUAL 
+RANGE (%) 1.793 1.476 1.567 1.698 1.895 2. 111 
+BLUE-RED RATIO 
+
+0.960 0.923 0.912 0.911 0.916 0.937 
+PLUME CONTRAST AT 
+0.55 MICRONS -0.005 -0.018 -0.023 -0.025 -0.026 -0.025 
+PLUME 
+PERCEPTIBILITY 
+DELTA E(L*A*B*) 1.362 2.754 3.197 3.2n 3.185 2.581 
+
+
+WHITE BACKGROUND 
+NX 1 2 3 4 5 6 
+DISTANCE (KM) 1. 3. 5. 7. 10. 15. 
+REDUCTION OF VISUAL 
+RANGE (%) 0.000 0.000 0.000 0.000 0.000 0.000 
+BLUE·RED RATIO 
+
+0.954 0.924 0.915 0.916 0.923 0.946 
+PLUME CONTRAST AT 
+0.55 MICRONS 0.002 -0.015 -0.021 -0.024 -0.027 -0.026 
+PLUME 
+PERCEPTIBILITY 
+DELTA E(L*A*B*) 1.543 2.732 3.125 3.175 3.057 2.430 
+
+
+\0 GRAY BACKGROUND 
+
+0\ 
+
+NX 1 2 3 4 5 6 
+DISTANCE (KM) 1. 3. 5. 7. 10. 15. 
+REDUCTION OF VISUAL 
+RANGE (%) 0.000 0.000 0.000 0.000 0.000 0.000 
+BLUE-RED RATIO 
+
+0.927 0.902 0.893 0.893 0.898 0.919 
+PLUME CONTRAST AT 
+0.55 MICRONS 0.017 ·0.001 -0.006 ·0.007 -0.007 -0.003 
+PLUME PERCEPTIBILITY 
+DELTA E(L*A*B*) 2.155 3.060 3.403 3.436 3.303 2.637 
+BLACK BACKGROUND 
+NX 1 2 3 4 5 6 
+DISTANCE (KM) 1. 3. 5. 7. 10. 15. 
+REDUCTION OF VISUAL 
+RANGE (%) 0.000 0.000 0.000 0.000 0.000 0.000 
+BLUE-RED RATIO 
+
+0.907 0.884 0.873 0.872 0.875 0.893 
+PLUME CONTRAST AT 
+0.55 MICRONS 0.026 0.008 0.004 0.004 0.006 0.011 
+PLUME 
+PERCEPTIBILITY 
+DELTA E(l*A*B*) 2.533 3.311 3.648 3.692 3.584 2.951 
+
+
+(,..on+-~nnorl\
+
+'-" .&&V..a...&.&\oo&~\..&} e
+
+Figure lL Example PLUVUE II output file 
+
+
+After the PLUVUE II runs were completed, a check was made to determine whether 
+elevated terrain existed between the observer and the location of the plume. If the plume 
+would not have been visible due to intervening terrain, visual effects were set to zero. Tables 
+5 and 6 summarize the maximum~ values for each of the PLUVUE II runs for Observers 
+#1, #2, and #3. In Table 5, the first series of runs, shown by the matrix of calculations 
+running across the top of the table, was done to determine the sensitivity of visual effects to 
+sun angle (i.e., time of day and season). This sensitivity analysis indicated that visual impacts 
+are not strong functions of sun angle; however, slightly higher magnitudes of effects were 
+noted for the winter morning sun angle. Therefore, subsequent runs were performed for this 
+time of day/year. The next set of runs were performed to test the sensitivity to atmospheric 
+stability and wind speed. Because of the distributed nature of the area sources in this 
+example, plume visual effects were relatively insensitive to stability. This is because the 
+plume L\E values occurred generally at the closest downwind distance where plume 
+dimensions were defmed by the initial dilution of the area source. However, visual effects 
+were found to be sensitive to wind speed, with~ decreasing with increasing wind speed. 
+The final set of calculations sampled the visual effects associated with various wind 
+directions, wind speeds, and emissions corresponding to the three phases of operation: 
+exploratory shaft facility construction (ESF), repository construction (RC), and repository 
+operation (RO). · 
+
+Table 6 shows the results of PLUVUE II runs performed to characterize the visual 
+effects observed from the vantage points of Observers #2 and #3. For this example, 
+calculations were performed for neutral (Stability Class D) conditions only because it is 
+believed that elevated terrain would block the transport of stable plumes within view of these 
+observers and, if stable flow did occur, mechanically induced turbulence caused by the flow 
+over the rugged, elevated terrain would produce the equivalent of D stability conditions. 
+Calculations were also performed for the winter morning (0800) sun angle, for a range of 
+wind speeds and directions, and for each of the three phases of construction and operation. 
+
+Table 7 displays in descending order the calculated maximum plume L\E values for 
+each obsenier position and each phase of repository construction and operation. Generally, 
+the maximum visual impact occurs when the winds are most light and the plume is carried to 
+the observer. 
+
+The magnitudes of the plume visual impact, as characterized by the plume L\E, were 
+combined with meteorological data to estimate the frequency of occurrence of worst-case 
+impacts for each of the three observers. This compilation is summarized in Table 8. For 
+each of the three observers, the maximum and average (across all azimuths of view) plume 
+visual impacts are summarized for five meteorological conditions and for each of the three 
+phases. The five meteorological conditions for each observer were selected from the larger 
+sample of meteorological conditions, as discussed in the meteorology discussion in Section 
+3.3.3, to provide a range of L\E values and cumulative frequencies. All combinations of wind 
+speed and wind direction that yielded L\E values greater than the indicated values were 
+summed to assign a cumulative frequency for each meteorological condition. The cumulative 
+
+97 
+
+
+
+TABLE 5 
+
+SUMMARY OF MAXIMUM CALCULATED Llli VALUES ASSOCIATED WITH THE ESF 
+FOR EACH OF THE PLUVUE ll MODEL RUNS FOR OBSERVER #1 
+
+
+Wind Wind Winter Spring Summer 
+Stability Speed Dir. 8 AM Noon 4 PM 8 AM Noon 4 PM 8 AM Noon 4 PM 
+(m/s) 
+
+D 2.0 E 1.2 0.9 1.2 1.1 0.9 1.0 0.9 0.9 
+D 2.0 WSW 3.1 2.3 3.0 2.7 2.2 2.5 2.1 2.3 
+D 2.0 w 3.2 2.3 3.0 2.2 2.5 2.1 2.3 
+D 2.0 ENE 1.3 0.9 1.2 0.9 1.0 0.9 
+D 2.0 WNW 1.1 0.8 1.0 0.8 0.9 0.7 0.8 
+D 1.0 w 5.0 
+D 3.0 w 2.4 
+D 5.0 w 1.6 
+E 1.0 w 4.9 
+E 2.0 w 3.0 
+E 3.0 w 2.3 
+E 5.0 w 1.6 
+F 2.0 w 4.0 
+F 3.0 w 3.0 
+F 5.0 w 2.1 
+D 1.0 ENE 2.1 
+D 3.0 ENE 1.0 
+D 5.0 ENE 0.7 
+E 1.0 ENE 1.9 
+E 2.0 ENE 1.2 
+E 3.0 ENE 0.9 
+E 5.0 ENE 0.7 
+F 2.0 ENE 1.4 
+F 3.0 ENE 1.1 
+F 5.0 ENE 0.8 
+
+98 
+
+
+
+
+TABLE 6 
+
+
+SUMMARY OF MAXIMUM CALCULATED LlE VALUES FOR EACH 
+OF THE PLUVUE II RUNS FOR OBSERVERS #2 AND #3 
+
+
+Wind Wind Observer #2 Observer #3 
+Stability Speed Direction ESF RC RO ESF RC RO 
+(m/s) 
+
+D 2.0 NNW 0.5 1.0 0.5 
+D 2.0 N 0.4 0.4 
+D 2.0 NNE 0.4 0.4 0.2 
+D 2.0 NE 0.5 0.4 
+D 2.0 ENE 1.0 2.1 0.5 0.4 
+D 2.0 E 0.7 0.4 
+D 2.0 ESE 0.4 4.4 6.6 2.7 
+D 2.0 SE 0.2 0.9 0.2 0.5 
+D 2.0 SSE 0.2 0.3 
+D 2.0 s 0.2 0.2 
+D 1.0 NNW 0.7 1.6 0.4 
+D 1.0 NNE 5.4 1.2 
+D 1.0 SE 3.2 17.1 17.3 
+D 1.0 NNE 0.6 0.3 
+D 1.0 E 3.3 18.0 18.2 
+D 1.0 ESE 10.0 27.3 28.5 
+D 3.0 NNW 0.3 1.1 0.7 
+D 3.0 ENE 0.7 1.7 0.5 
+D 3.0 SE 0.2 7.9 0.4 
+D 3.0 NNE 0.3 0.6 0.2 
+D 3.0 E 0.5 1.0 0.4 
+D 3.0 ESE 3.3 5.3 2.1 
+D 5.0 NNW 0.2 0.6 0.4 
+D 5.0 ENE 0.5 2.0 1.6 
+D 5.0 SE 0.1 1.2 1.0 
+D 5.0 NNE 0.2 0.4 0.1 
+D 5.0 E 0.4 1.2 1.0 
+D 5.0 ESE 2.3 3.9 3.0 
+D 1.0 ENE 24.8 25.2 
+
+99 
+
+
+
+TABLE 7 
+
+MAXIMUM PLUME Llli VALU~S FOR EACH OBSERY£R LOCATION AND PHASE 
+OF REPOSITORY CONSTRUCTION AND OPERATION 
+
+
+OBSERVER #1: 
+sc ws WD ESF sc ws WD RC sc ws WD RO 
+
+
+D 1 w 5.0 .D 1 w 8.4 D 1 WSW 2.0 
+E 1 w 4.9 D 1 WSW 8.2 D 1 w 2.0 
+F 2 w 4.0 D 2 w 5.9 D 2 WSW 1.3 
+D 2 w 3.2 D 2 WSW 5.7 D 2 w 1.3 
+D 2 WSW 3.1 D 3 w 4.6 D 3 w 1.0 
+F 3 w 3.0 D 3 WSW 4.5 D 3 WSW 1.0 
+E 2 w 3.0 D 1 WSW 3.9 D 1 WNW 0.9 
+D 3 w 2.4 D 1 ENE 3.8 D 1 E 0.8 
+E 3 w 2.3 D 1 E 3.6 D 1 ENE 0.8 
+F 5 w 2.1 D 5 w 3.3 D 5 WSW 0.7 
+D 1 ENE 2.1 D 5 WSW 3.3 D 5 w 0.7 
+E 1 ENE 1.9 D 2 WNW 2.6 D 2 WNW 0.6 
+E 5 w 1.6 D 2 ENE 2.5 D 2 E 0.5 
+D 5 w 1.6 D 2 E 2.4 D 2 ENE 0.5 
+F 2 ENE 1.4 D 3 ENE 2.0 D 3 WNW 0.4 
+D 2 ENE 1.3 D 3 WNW 2.0 D 3 E 0.4 
+D 2 E 1.2 D 3 E 1.9 D 3 ENE 0.4 
+E 2 ENE 1.2 D 5 ENE 1.4 D 5 ENE 0.3 
+F 3 ENE 1.1 D 5 WNW 1.4 D 5 E 0.3 
+D 2 WNW 1.1 D 5 E 1.3 D 5 -WNW 0.3 
+D 3 ENE 1.0 
+E 3 ENE 0.9 
+F 5 ENE 0.8 
+D 5 ENE 0.7 
+E 5 ENE 0.7 
+
+Note: 
+
+SC =Stability Class 
+
+WS =Wind Speed (rn/s) 
+
+WD =Wind Direction 
+
+ESF =Exploratory Shaft Facility Construction 
+
+RC =Repository Construction 
+
+· RO =Repository Operation 
+
+100 
+
+
+TABLE 7 (CONTINUED) 
+
+MAXIMUM PLUME Llli VALUES FOR EACH OBSERVER LOCATION AND PHASE 
+OF REPOSITORY CONSTRUCTION AND OPERATION 
+
+
+OBSERVER #2: 
+sc ws WD ESF sc ws WD RC sc ws WD RO 
+
+
+D 1 NNE 5.4 D 1 ENE 25.2 D 1 ENE 24.8 
+D 1 SE 3.2 D 1 SE 17.3 D 1 SE 17.1 
+D 2 ENE 1.0 D 5 ENE 1.5 D 3 SE 7.9 
+D 1 NNW 0.7 D 5 SE 1.0 D 2 ENE 2.1 
+D 3 ENE 0.7 D 3 NNW 0.7 D 5 ENE 2.0 
+D 2 NE 0.5 D 2 ENE 0.5 D 3 ENE 1.7 
+D 5 ENE 0.5 D 3 ENE 0.5 D 1 NNW 1.6 
+D 2 NNW 0.5 D 3 SE 0.4 D 5 SE 1.2 
+D 2 ESE 0.4 D 1 NNW 0.4 D 3 NNW 1.1 
+D 2 N 0.4 D 5 NNW 0.4 D 2 NNW 1.0 
+D 2 NNE 0.4 D 2 SE 0.2 D 2 SE 0.9 
+.o 3 NNW 0.3 D 5 NNW 0.6 
+D 2 s 0.2 
+D 3 SE 0.2 
+D 5 NNW 0.2 
+D 2 SSE 0.2 
+D 2 SE 0.2 
+D 5 SE 0.1 
+
+OBSERVER #3: 
+sc ws WD ESF sc ws WD RC sc ws WD RO 
+
+
+D 1 ESE 10.0 D 1 ESE 27.3 D 1 ESE 28.5 
+D _2 ESE 4.4 D 1 E 18.0 D 1 E 18.2 
+D 3 ESE 3.3 D 2 ESE 6.6 D 5 ESE 3.0 
+D 1 E 3.3 D 3 ESE 5.3 D 2 ESE 2.7 
+D 5 ESE 2.3 D 5 ESE 3.9 D 3 ESE 2.1 
+D 2 E 0.7 D 5 E 1.2 D 5 E 1.0 
+D 1 NNE 0.6 D 1 NNE 1.2 D 3 E 0.4 
+D 2 SE 0.5 D 3 E 1.0 D 2 E 0.4 
+D 2 NNW 0.5 D 3 NNE 0.6 D 1 NNE 0.3 
+D 3 E 0.5 D 5 NNE 0.4 D 3 NNE 0.2 
+D 5 E 0.4 D 2 NNE 0.2 
+D 2 NE 0.4 D 5 NNE 0.1 
+D 2 NNE 0.4 
+D 2 ENE 0.4 
+D 2 N 0.4 
+D 3 NNE 0.3 
+D 2 SSE 0.3 
+D 5 NNE 0.2 
+D 2 s 0.2 
+
+101 
+
+
+
+TABLE 8 
+CUMULATIVE FREQUENCY OF WORST-CASE MORNING ~E VALUES 
+
+
+FOR OBSERVERS #1, #2, AND #3 IN THE NATIONAL PARK 
+
+
+m 
+Speed Wind ESF RC RO Cumulative Frequency (%) 
+(m/s) Direction Max. Avg. Max. Avg. Max. Avg. Ann. Win. Spr. Sum. Fall 
+
+OBSERVER #1: 
+WSW,W,NNW 5.0 4.8 8.2 8.0 2.0 1.9 9.8 17.6 3.4 3.7 13.6 
+I NE ... SE 4.9 4.7 3.6 3.6 0.8 0.8 31.4 49.6 12.9 15.4 45.9 
+2 NE ... SE 3.0 2.8 2.4 2.4 0.5 0.5 65.0 80.3 42.5 59.8 77.4 
+3 NE ... SE 1.0 0.9 1.9 1.9 0.4 0.4 77.8 84.0 60.3 80.8 87.0 
+s NE ... SE 0.7 0.6 1.3 1.3 0.3 0.3 86.1 86.9 74.3 93.0 91.4 
+...... 
+0 
+N OBSERVER #2: 
+ENE,E,ESE 5.4 1.5 "24.8 5.4 25.2 4.5 1.0 0.8 0.0 1.4 1.9 
+1 NE ... SE 3.2 0.9 17.1 4.2 17.3 3.6 2.2 2.4 0.4 2.3 2.9 
+2 NNE ... SSE 1.0 0.2 7.9 1.9 1.6 0.4 14.2 11.1 9.8 23.8 5.8 
+3 NNE ... SSE 0.7 0.2 2.2 1.2 1.0 0.3 17.4 15.1 14.3 29.9 16.3 
+s NNE ... SSE 0.5 0.1 1.2 0.5 0.4 0.2 19.0 15.5 16.3 34.1 16.3 
+OBSERVER #3: 
+1 SE,ESE,SSE 10.0 3.9 27.3 8.1 28.5 6.1 2.3 2.5 1.1 2.3 3.3 
+1 NE ... SSE 4.4 1.5 18.0 4.0 18.2 3.3 3.2 2.6 1.1 4.7 4.1 
+2 NNE ... S 3.3 1.0 6.6 3.0 2.7 1.0 18.3 12.8 12.4 29.0 20.3 
+3 NNE ... S 0.5 0.2 0.6 0.5 0.2 0.2 22.2 14.0 17.3 36.9 22.2 
+5 NNE ... S 0.2 0.2 0.4 0.4 0.1 0.1 24.0 15.2 19.2 41.1 22.5 
+
+
+frequencies were determined separately for each season as well as for the annual period. The 
+cumulative frequency values shown in Table 8 are percentages of morning hours (0800-1100) 
+. which were found to be worst-case for this example. 
+
+For Observer #1 the maximum and azimuth-average plume visual impacts are 
+essentially the same, because this observer's line of sight is limited to just the first few 
+downwind distances modeled. Maximum plume .1E values of about 8 occur nearly 10 percent 
+of the morning hours from this vantage point during repository construction. During ESF 
+construction and repository operation, impacts· are much lower--about 5 and 2, respectively. 
+Nearly a third of the morning .1E values of approximately 4 are calculated to occur from the 
+Observer #1 vantage point during the construction of the ESF and the repository. During the 
+repository operation, the plume .1E values would be greater than 1 less than a third of the 
+morning hours. If we use the range of .1E between 1 and 4 as the approximate threshold of 
+plume perceptibility, these results suggest that the plume would be visible from the vantage 
+point of Observer #1 between a third and two-thirds of the mornings in the year. However, 
+these impacts may not be perceptible this often if the viewing background is dark and/or 
+nonuniform. Essentially all of these observations of plume impact would be of emissions 
+located outside the park boundary while observed within the park boundary. Impacts vary 
+with season with most frequent impacts occurring during the winter and least "frequent impacts 
+during the more· windy spring and summer seasons. Impacts are much less frequent in the 
+afternoon hours than in the morning for Observer #1. Values of .1E greater than 8 occur only 
+one percent of the afternoon hours (as opposed to 10 percent of the morning hours). Values 
+of .1E greater than 4 occur 8 percent of the afternoons as opposed to a third of the mornings. 
+
+For Observer #2, predicted frequencies of visible impacts are lower than for Observer 
+#1, which is not surprising considering that thi~ vantage point does not have a direct view of 
+and is farther away from the canyon site. Somewhat more surprising, however, is the fact 
+that for certain azimuths of view, maximum plume visual impacts are larger than maximum 
+impacts for Observer #1. This results from the fact that this vantage point offers relatively 
+unobstructed lines of sight along which the plume from the repository site can be seen. The 
+maximum plume impacts occur when the wind carries the plume relatively close to the 
+observer and when the observer is looking obliquely through the plume centerline. Unlike the 
+case for Observer #1, the average plume impact, averaged over all azimuths of view for 
+which the plume is unobstructed by intervening terrain, is considerably lower than the plume 
+impact for the worst-case azimuth of view. Azimuth-averaged plume .1E values are roughly a 
+factor of five lower than the azimuth-maximum values. These calculations suggest that 
+during repository construction and operation, about one percent of the mornings in a year may 
+
+-have maximum plume .1E values as large or larger than 25, indicating a very dark, perceptible 
+plume. These maximum impacts would be about five times larger than the average over all 
+visible directions of view, which is a .1E of about 5, still above the perceptibility threshold 
+range of 1 to 4. Impacts during ESF construction are projected to be considerably lower. For 
+about two percent of the morning hours, impacts would be greater than or equal to 17 
+(azimuth-maximum) and 4 (azimuth-average). During repository construction, maximum 
+plume visual impacts would be greater than the just perceptible threshold range of 1 to 4 
+
+103 
+
+
+between 15 and 20 percent of the morning hours in the year. For this observation point, 
+summer impacts would be almost twice as frequent as annual-average impacts due to the 
+increased p~obability of transport winds of the right magnitude and direction. 
+
+Impacts for Observer #3 are somewhat similar to those for Observer #2, both in 
+magnitude and frequency. Maximum impacts --plume ~values of about 28 --are 
+calculated to occur about two percent of the mornings, while impacts above the perceptibility 
+threshold are calculated to occur about 20 percent of the mornings. Again, impacts from the 
+vantage point of Observer #3 are much more frequent in summer than in any other season. 
+For example, above-threshold impacts occur nearly 30 percent of the summer mornings. 
+
+104 
+
+
+• 
+
+
+
+4.0 REFERENCES 
+Altshuller, A.P., 1979: Model Predictions of the Rates of Homogeneous Oxidation of Sulfur 
+Dioxide to Sulfate in the Troposphere. Atmos. Environ., 13:1653-1661. 
+
+Baulch, D.L., D.D. Drysdale, and D.O. Horne, 1973: Evaluated Kinetic Data for High 
+Temperature Reactions, Volume 2 --Homogeneous Gas Phase Reactions of the H2-N2-02 
+System. CRC Press; Cleveland, OH. 
+
+Briggs, G.A., 1969: Plume Rise. U.S. Atomic Energy Commission Critical Review Series, TID25075, 
+NTIS, Springfield, VA. 
+
+Briggs, G.A., 1971: Some Recent Analyses of Plume Rise Observations. Proc. of2nd Int. Clean 
+Air Congress, H.M. Englund and W.T. Berry, eds. Academic Press, New York, NY, 
+1029-1032. 
+
+Briggs, G.A., 1972: Discussion of Chimney Plumes in Neutral and Stable Surroundings. Atmos. 
+Environ., 6:507-610. 
+
+Calvert, J.G., F. Su, J.W. Bottenheim, and O.P. Strausz, 1978: Mechanism of the Homogeneous 
+Oxidation of Sulfur Dioxide in the Troposphere. Atmos. Environ., 12:197-226. 
+
+Chandrasekhar, S., 1960: Radiative Transfer. Dover Publications, New York, NY. 
+
+Davis, D.D., D.O. Smith, and J. Klauber, 1974: Trace Gas Analysis of Power Plant Plumes Via 
+Aircraft Measurements: 03, NOX, and so2 Chemistry. Science, 186:733-736. 
+
+Ensor, D.S., L.E. Sparks, and M.J. Pilat, 1973: Light Transmittance across Smoke Plumes 
+Downwind from Point Sources of Aerosol Emissions. Atmos. Environ., 7:1267-1277. 
+
+EPA, 1977: User's Manual for a Single-Source (CRSTER) Model. EPA-450/2-77-013. U.S. 
+Environmental Protection Agency, Research Triangle Park, NC. 
+
+EPA, 1984a: User's Manual for the Plume Visibility Model (PLUVUE). EPA-450/4-80-032. 
+NTIS PB84-158302. U.S. Environmental Protection Agency, Research Triangle Park, NC. 
+
+EPA, 1984b: Addenda to the User's Manual for the Plume Visibility Model (PLUVUE II). 
+EPA-600/8-84-005. NTIS PB84-158302. U.S. Environmental Protection Agency, 
+Research Triangle Park, NC. 
+
+EPA, 1992: Workbook for Plume Visual Impact Screening and Analysis (Revised). EPA-454/R92-
+023. U.S. Environmental Protection Agency, Research Triangle Park, NC. 
+
+105 
+
+
+
+Hampson, R.F. Jr. and D. Garvin, 1978: Reaction Rate and Photochemical Data for Atmospheric 
+Chemistry-1977. NBS Special Pub. 513, National Bureau of Standards, Washington, D.C. 
+
+Hanson, J.E. and L.D. Travis, 1974: Light Scattering in Planetary Atmospheres. Space Science 
+Reviews, 16:527-610. 
+
+Irvine, W.M., 1975: Multiple Scattering in Planetary Atmospheres Icarus, 25:175-204. 
+
+Isaacs, R.G., 1981: The Role of Radiative Transfer Theory in Visibility Modeling: Efficient 
+Approximate Techniques. Atmos. Environ., 15:1827-1833. 
+
+Isaksen, I., A., Hesstredt, and 0. Hov, 1978: A Chemical Model for Urban Plumes: Test for 
+Ozone and Particulate Sulfur Formation in St. Louis Urban Plume. Atmos. Environ., 
+12:599-604. 
+
+Kerker, M., 1969: The Scattering of Light and Other Electromagnetic Radiation. Academic 
+Press, New York, NY. 
+
+Latimer, D.A. and G.S. Samuelsen, 1975: Visual Impact of Plumes from Power Plants. UCIARTR-
+75-3. UCI Air Quality Laboratory, School of Engineering, University of 
+California, Irvine, CA. 
+
+Latimer, D.A. and G.S. Samuelsen, 1978: Visual Impact of Plumes from Power Plants. Atmos. 
+Environ., 12:1455-1465. 
+
+Latimer, D.A., R.W. Bergstrom, S.R. Hayes, M.K. Liu, J.H. Seinfeld, G.Z. Whitten, M .. A. 
+Wojcik, and M.J. Hillyer, 1978: The Development of Mathematical Models for the 
+Prediction of Anthropogenic Visibility Impairment. EPA-450/3-78-llOa,b,c. U.S. 
+Environmental Protection Agency, Research Triangle Park, NC. 
+
+Leighton, P.A., 1961: Photochemistry of Air Pollution. Academic Press, New York, NY. 
+
+Miller, D.F., 1978: Precursor Effects on S02 Oxidation. Atmos. Environ., 12:273-280. 
+
+Niki, H., 1974: Reaction Kinetics Involving 0 and N Compounds. Can. J. Chern., 52:13971404. 
+
+
+Nixon, J.K., 1940: Absorption Coefficient of Nitrogen Dioxide in the Visible Spectmm. J. 
+Chern. Phys., 8:157-160. 
+
+Richards, L.W. and R.G.M. Hammarstrand, 1988: User's Manual for Running PLUVUE and 
+Performing Mie Calculations on a Personal Computer. Sonoma Technology Inc., Santa 
+. Rosa, CA. 
+
+106 
+
+
+
+SAl, 1989: Addenda User's Manual for the Plume Visibility Model (PLUVUE II). SYSAPP89/
+045. Systems Applications, Inc., San Rafael, CA. 
+
+Schere, K.L. and K.L Demerjian, 1977: Calculation of Selected Photolytic Rate Constants over 
+a Diurnal Range. EPA-600/4-77-015. U.S. Environmental Protection Agency, Research 
+Triangle Park, NC. 
+
+Seigneur, C., R.W. Bergstrom, C.D. Johnson, and L.W. Richards, 1983: Measurements and 
+Simulations of the Visual Effects of Particulate Plumes. Systems Applications, Inc., San 
+Rafael, CA. 
+
+van de Hulst, H.C., 1957: Light Scattering by Small Particles. John Wiley & Sons, New York, 
+NY. 
+
+Wallace, J.M. and P.V. Hobbs, 1977: Atmospheric Science. Academic Press, New York, NY. 
+
+White, W.H., 1977: NOx-03 Photochemistry in Power Plant Plumes: Comparison of Theory with 
+Observation. Environ. Sci. Tecfmol., 11:995-1000. 
+
+Winkler, P., 1973: The Growth of Atmospheric Aerosol Particles as a Function of the Relative 
+Humidity--H. An Improved Concept of Mixed Nuclei. Aerosol Sci., 4:373-387. 
+
+107 
+
+
+
+Appendix 
+
+Comparison of the Original Version of PLUVUE II 
+with the Revised Version 
+
+
+TABLE A-1 
+
+
+COMPARISON OF THE 0RIGINAL VERSION OF PLUVUE II WITH THE REVISED 
+VERSION FOR DIFFERENT STABILITY CLASSES 
+
+
+Visibility SC =A SC = B SC = C SC = D SC = E SC = F 
+Parameter Old New Old New Old New Old New Old New Old New 
+
+Sky Background: 
+Visual Range Reduction .008 .008 .045 .046 .100 .102 .215 .222 .347 .359 .537 .547 
+>I ...... 
+Blue-Red Ratio 
+Plume Contrast 
+1.000 
+.000 
+1.000 
+.000 
+1.000 
+-.001 
+1.000 
+-.001 
+.999 
+-.001 
+.999 
+-.001 
+.999 
+-.003 
+.999 
+-.003 
+.999 
+-.004 
+.998 
+-.005 
+.999 
+-.006 
+.999 
+-.006 
+.!ill .004 .004 .025 .026 .055 .058 .114 .122 .174 .187 .226 .235 
+White Background: 
+Visual Range Reduction .000 .000 .000 .000 .000 .000 .000 .000 .000 .000 .000 .000 
+Blue-Red Ratio 1.000 1.000 1.000 1.000 1.000 1.000 1.001 1.001 1.002 1.002 1.005 1.004 
+Plume Contrast .000 .000 -.001 -.001 -.002 -.002 -.004 -.004 -.006 -.006 -.009 -.009 
+.!ill .004 .004 .027 .028 .060 .063 .127 .134 .197 .209 .280 .287 
+
+
+TABLE A-1 (Continued) 
+COMPARISON OF THE ORIGINAL VERSION OF PLUVUE II WITH THE REVISED 
+
+
+VERSION FOR DIFFERENT STABILITY CLASSES 
+
+
+Visibility SC = A SC = B SC = C SC = D SC = E SC = F 
+Parameter Old New Old New Old New Old New Old New Old New 
+
+Gray Background: 
+:> I 
+N 
+Visual Range Reduction 
+Blue-Red Ratio 
+Plume Contrast 
+.000 
+1.000 
+.000 
+.000 .000 
+1.000 l.oOO 
+.000 .000 
+.000 
+1.000 
+.000 
+.000 
+.999 
+.000 
+.000 
+.999 
+.000 
+.000 
+.998 
+-.001 
+.000 
+.998 
+-.001 
+.000 
+.998 
+-.001 
+.000 
+.998 
+-.001 
+.000 
+.997 
+-.001 
+.000 
+.997 
+-.002 
+Llli .002 .002 .014 .015 .032 .034 .067 .072 .102 .no .130 .136 
+Black Background: 
+Visual Range Reduction .000 .000 .000 .000 .000 .000 .000 .000 .000 .000 .000 .000 
+Blue-Red Ratio 1.000 1.000 .999 .999 .997 .997 .994 .994 .991 .990 .985 .985 
+Plume Contrast .000 .000 .000 .000 .001 .001 .001 .001 .002 .002 .004 .004 
+
+Llli .003 .003 .021 .022 .048 .049 .102 .105 .164 .170 .251 .256 
+
+
+·
+
+
+TECHNICAL REPORT DATA 
+
+(Please read lnstructwlls on the reverse before completing) 
+
+1. REPORT NO. 
+3. RECIPIENT'S ACCESSION NO. 
+EPA-454/B-q2-00H r· 
+
+4. TITLE AND SUBTITLE 
+5. REPORT DATE 
+1<)<)?
+
+User's Manual for the Plume Visibility !bdel 
+
+6. PERFORMING ORGANIZATION CODE
+(PLl.MJ"E II) (Revised) 
+
+8. PERFORMING ORGANIZATION REPORT NO.
+7. AUTHOR($) 
+10. PROGRAM ELEMENT NO.
+9. PERFORMING ORGANIZATION NAME AND ADDRESS 
+Sigma Research Corr:oration 
+
+11. CONTRACT/GRANT NO.
+196 Baker Avenue 
+Concord, MA 01742 
+
+
+EPA Contract No. 68 D90067 
+I.Vork AssiLJrlltterlt 3-3 
+
+12. SPONSORING AGENCY NAME AND ADDRESS 
+13. TYPE OF REPORT AND PERIOD COVERED 
+Final Report
+
+u.s. Environrrental Protection Agenc<.J 
+14. SPONSORING AGENCY CODE
+Office of Air Quality Planning and Standards 
+Teclmical Supp:>rt Division 
+Research Triangle Park, NC 27711 
+
+
+15. SUPPLEMENTARY NOTES 
+EPA \'Vork Assignment Manager: Jawad S. Touma 
+
+16. ABSTRACT 
+This document provides a description for the restructured and revised version 
+of the Plume Visibility ~Ddel (PLWUE II). The :rrodel was restructured in order 
+to improve the user interface and ccmputing requirements and revised to, rerrove 
+several errors in the original code. The objective of the PLWUE II rrodel is 
+to calculate visual range reduction and at:Iros14"'1eric discoloration caused by 
+plumes consisting of primary particles, nitrogen oxides, and sulfur oxides 
+anitted by a single emissicn source. 
+
+
+-
+
+17. KEY WORDS AND DOCUMENT ANALYSIS 
+a. DESCRIPTORS 
+b. IDENTIFIERS/OPEN ENDED TERMS 
+c. COSAT I field/Group 
+Air Pollution 
+
+New Source Review 
+Ivleteorology 
+
+
+l3B 
+Air Quality Dispersion MJdel 
+Visibility 
+Aerosols 
+
+
+Air Pollution Control 
+
+~ 
+
+Nitrogen Dioxide 
+
+18. DISTRIBUTION STATEMENT 
+19. SECURITY CLASS (This Report) 
+21. NO. OF PAGES 
+Unclassified 
+
+ll4
+
+Release Unlimited 
+
+20. SECURITY CLASS (This page) 
+22. PRICE 
+Unclassified 
+
+EPA Form 2220-1 (Rev. 4-77) PREVIOUS EDITION IS OBSOLETE 
+
+

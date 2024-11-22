@@ -1,0 +1,42 @@
+                         Model Change Bulletin
+
+                                 MCB#2                          04/13/93
+
+                        PLUVUE II (dated 92243)
+
+This Model Change Bulletin documents the revisions to the Plume Visibility
+Model, PLUVUE II.  This model was restructured in order to improve the user
+interface requirements, revised to remove several errors in the original
+code, and designed to run on a personal computer.  The PLUVUE II visibility
+modeling system combines three different algorithms: PLUVUE II, PLUIN2, and
+MIETBL into one algorithm called RUNPLUVU.  The user of RUNPLUVU may edit
+PLUVUE II input files (PLUIN2 portion of RUNPLUVU), select or create Mie
+library files as input to PLUVUE II (MIETBL portion of RUNPLUVU), and run the
+PLUVUE II visibility algorithm.  The basic computer requirements for using
+RUNPLUVU software include a 80386 or higher processor and at least 1 MB of
+RAM, a hard disk with sufficient storage space to handle the executable file,
+input data files, and output files (file size will vary depending on
+application), and a math coprocessor (80 x 87 chip).  The amount of memory
+available on any particular PC will depend on the machine configuration
+including the amount of memory used by the operating system, memory used by
+any special device drivers, and any utility programs resident in memory.  The
+amount of memory needed to actually run the software will be somewhat larger
+than 1 MB because additional memory is needed for buffers when the program
+opens files.  RUNPLUVU is compiled using Lahey F77L-EM/32 Version 5.0.  This
+is the extended memory version for 32-bit computers that runs on 386 or
+higher PCs with more than 650K memory.
+
+Technical descriptions for all the components of the RUNPLUVU modeling system
+are provided in the "User's Manual for the Plume Visibility Model, PLUVUE II
+(Revised)," EPA-454/B-92-008.  This document is written in WordPerfect 5.0 and
+can also be downloaded from the BBS.  Section 2.1.7 "Code Modifications,"
+pages 6-7, provides a complete description of all the corrections made to the
+PLUVUE II model.  These changes reflect technical errors in the original code
+that were thought to have existed and now were verified, or other technical
+errors discovered as a result of work sponsored by EPA.  All changes made to
+the model code are those thought to be consistent with the intent by the model
+developer; there are no changes to the theoretical formulations and
+assumptions.  No significant changes in model predictions were found in the
+case tested.
+
+ 

@@ -1,0 +1,70 @@
+                             Model Change Bulletin
+
+                                     MCB#4
+
+                              BPIP (dated 95086)
+
+     This is a formal notification of changes made to the Building Profile
+Input Program (BPIP) source code.  The changes result from a reported
+problem with the roof stack algorithm.  The changes are discussed first and are then
+then followed by a list of changes made to the source code.  The model is
+available for downloading under the Related Programs menu of the Air Quality
+Models area of SCRAM BBS.
+
+     Six pages to the user's guide were revised and discussed in the previous
+Model Change Bulletin.  These pages are available in the current ZIP package,
+BPIP.ZIP, for replacement of original pages in the BPIP user's guide.
+
+DISCUSSION OF SOURCE CODE CHANGES
+
+     A problem was found with the automated roof stack algorithm when tier
+corners are entered in a counterclockwise direction.  Some of the roof stacks
+under certain conditions are not detected as being on a particular roof.  An
+absolute (ABS) function was added to a line of code that corrects this problem.
+
+SOURCE CODE CHANGES
+
+     The following is a list of changes made to BPIP:
+
+1.   The SCRAM header and format line have been changed to reflect the
+     new BPIP version date.  The header lines have been changed from:
+
+C  *              BUILDING PROFILE INPUT PROGRAM (DATED 95039)              *
+C  *                                                                        *
+C  *              *** SEE BPIP MODEL CHANGE BULLETIN MCB#3 ***              *
+
+to:
+
+C  *              BUILDING PROFILE INPUT PROGRAM (DATED 95086)              *
+C  *                                                                        *
+C  *              *** SEE BPIP MODEL CHANGE BULLETIN MCB#4 ***              *
+
+
+and the format line has been changed from:
+
+461   FORMAT(30X,'BPIP (Dated: 95039)')
+
+to:
+
+461   FORMAT(30X,'BPIP (Dated: 95086)')
+
+2.   The following modification comment has been added:
+
+C                       March 27, 1995 - To fix a problem with the roof stack
+C                                        algorithm when tier coordinates are
+C                                        entered in a counterclock-wise
+C                                        direction.  Some stacks were not
+C                                        detected as being on a roof.
+
+3.   An additional absolute (ABS) function was added to the following line of
+     code so tier corners, when entered in a counterclockwise direction,
+     would be properly identified as being or not being on a roof.
+     The line of code was changed from:
+
+
+              IF (ABS(360. - DIRTT) .LT. 0.02) THEN
+
+to:
+
+              IF (ABS(360. - ABS(DIRTT)) .LT. 0.02) THEN
+         

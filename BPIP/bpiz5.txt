@@ -1,0 +1,1783 @@
+                     Model Change Bulletin
+                                
+                             MCB#5
+                                
+                       BPIP (dated 04112)
+
+     This is a formal notification of changes made to the Building Profile
+Input Program (BPIP) source code.  BPIP has been upgraded with allocatable
+arrays while maintaining the basic functionality of the program.  BPIP is
+available for downloading from the Related Programs sub area under the
+Dispersion Models area of the SCRAM web site.
+
+DISCUSSION OF SOURCE CODE CHANGES
+
+     Allocatable arrays is a programming feature that allows a program's
+arrays to vary in size with respect to the amount of input data that needs to
+be stored in those arrays without having to recompile the source code.  During
+execution, the program reads in the input data values and determines the
+maximum number of buildings, tiers per building, tier corners, and stacks
+needed for storage array sizing.  The respective array sizes are set to these
+maximum values and then the program "rewinds" the input file.  The input data
+are read again.  But this time the input values are properly stored in the
+respectively sized arrays.  There is no need to recompile the source code.
+
+     BPIP will continue to serve non-PRIME and legacy models such as ISCST and
+ISCLT while BPIPPRM will be used primarily to generate building downwash input
+for models containing the PRIME algorithm such as ISC-PRIME and AERMOD.  These
+should be the last modifications to BPIP.
+
+SOURCE CODE CHANGES
+
+     The changes to BPIP are extensive.  The underlying algorithms have
+remained the same but the use of allocatable arrays has caused the PARAMETER
+and COMMON statements to be deleted.  All arguments are now passed through the
+CALL statements to the respective subroutines.   Details of the changes can be
+viewed by using the DOS FC command or by using a text editor with a Compare
+function such as Ultraedit (http://www.ultraedit.com).  
+
+     Below is a copy of the change file produced using the FC command.  The
+file is divided into short sections where the previous lines of code from BPIP
+(dated 95086) are on top and the changes to those lines of code appear below
+them.  Most of the changes should be self explanatory to a Fortran programmer.
+
+
+Section by section changes
+
+
+
+Comparing files \OLD\BPIP.FOR and \NEW\BPIP.FOR
+***** BPIP.FOR
+C  *                                                                        *
+C  *              BUILDING PROFILE INPUT PROGRAM (DATED 95086)              *
+C  *                                                                        *
+C  *              *** SEE BPIP MODEL CHANGE BULLETIN MCB#4 ***              *
+C  *                                                                        *
+***** ..\NEW\BPIP.FOR
+C  *                                                                        *
+C  *              BUILDING PROFILE INPUT PROGRAM (DATED 04112)              *
+C  *                                                                        *
+C  *              *** SEE BPIP MODEL CHANGE BULLETIN MCB#5 ***              *
+C  *                                                                        *
+*****
+
+***** BPIP.FOR
+C  *                                                                        *
+C  *                        (919) 541-5742 (8-N-1)                          *
+C  *                                                                        *
+***** ..\NEW\BPIP.FOR
+C  *                                                                        *
+C  *                      http://www.epa.gov/scram001                       *
+C  *                                                                        *
+*****
+
+***** BPIP.FOR
+C        Programmed by: Peter Eckhoff
+C                       EPA
+C                       MD-14
+C                       Research Triangle Park, NC 27711
+***** ..\NEW\BPIP.FOR
+C        Programmed by: Peter Eckhoff
+C                       US EPA
+C                       4930 Page Rd, D243-01
+C                       Research Triangle Park, NC 27711
+*****
+
+***** BPIP.FOR
+C
+C           Written to: FORTRAN 77 Standards
+C
+***** ..\NEW\BPIP.FOR
+C
+C        Written to: FORTRAN 90 Standards
+C
+*****
+
+***** BPIP.FOR
+C                                          Other correction/updates.
+C                       March 27, 1995 - To fix a problem with the roof stack
+***** ..\NEW\BPIP.FOR
+C                                          Other correction/updates.
+C
+C                       March 27, 1995 - To fix a problem with the roof stack
+*****
+
+***** BPIP.FOR
+C
+C  **************************************************************************
+***** ..\NEW\BPIP.FOR
+C
+C                       April 19, 2004 - Added allocatable arrays.
+C                                      - No IMPLICIT variables;  
+C                                          all variables defined.
+C                                      - Edited to Fortran 90 stds. using 
+C                                          Compaq Visual Fortran version 6.6.
+C
+C  **************************************************************************
+*****
+
+***** BPIP.FOR
+C   'Run description' (up to 78 characters)
+C   'ST' or 'LT' processing
+C   'Input Units Name' Conversion to meters factor
+***** ..\NEW\BPIP.FOR
+C   'Run description' (up to 78 characters)
+C   'ST' or 'LT' processing for ISCST or ISCLT algorithms, respectively 
+C   'Input Units Name' Conversion to meters factor
+*****
+
+***** BPIP.FOR
+C   'UTMN' (for no UTM) or 'UTMY'(for UTM coordinates processing), Plant North
+C   Number of Buildings
+C     Building 1 Name, Number of Tiers for Building 1, Base Elevation
+C      Number of Corners for Tier 1, Tier 1 Height
+***** ..\NEW\BPIP.FOR
+C   'UTMN' (for no UTM) or 'UTMY'(for UTM coordinates processing), Plant North
+C    Number of Buildings
+C     'Building 1 Name', Number of Tiers for Building 1, Base Elevation
+C      Number of Corners for Tier 1, Tier 1 Height
+*****
+
+***** BPIP.FOR
+C       .
+C     Building x Name, Number of Tiers for Building x
+C      Number of Corners for Tier 1, Tier 1 Height
+***** ..\NEW\BPIP.FOR
+C       .
+C     'Building x Name', Number of Tiers for Building x
+C      Number of Corners for Tier 1, Tier 1 Height
+*****
+
+***** BPIP.FOR
+C  Number of Stacks
+C    Stack 1 name, Base Elevation, Height, Stack 1 X -, and Y - Coordinates
+C     .
+***** ..\NEW\BPIP.FOR
+C  Number of Stacks
+C    'Stack 1 name', Base Elevation, Height, Stack 1 X -, and Y - Coordinates
+C     .
+*****
+
+***** BPIP.FOR
+C     .
+C    Stack s name, Base Elevation, Height, Stack s X -, and Y - Coordinates
+C
+***** ..\NEW\BPIP.FOR
+C     .
+C    'Stack s name', Base Elevation, Height, Stack s X -, and Y - Coordinates
+C
+*****
+
+***** BPIP.FOR
+C   AP     - X-COORDINATE TRANSLATED FROM PLANT NORTH
+C   BB     - DOUBLE PRECISION INPUT VALUE; GENERALLY AN Y-COORDINATE
+C   BLDGIN - LABELLED COMMON CONTAINING ARRAYS OF BUILDING INPUT VALUES
+C   BLDOUT - LABELLED COMMON CONTAINING TRANSLATED CORNER COORDINATES
+C   BP     - Y-COORDINATE TRANSLATED FROM PLANT NORTH
+C   AU     - TEMPORARY STORAGE VARIABLE ASSOCIATED WITH UTM COORDINATES
+***** ..\NEW\BPIP.FOR
+C   AP     - X-COORDINATE TRANSLATED FROM PLANT NORTH
+C   AU     - TEMPORARY STORAGE VARIABLE ASSOCIATED WITH UTM COORDINATES
+*****
+
+***** BPIP.FOR
+C   B      - TEMPORARY STORAGE VARIABLE ASSOCIATED WITH UTM COORDINATES
+C   BELEV  - BASE ELEVATION OF A BUILDING
+C   BET    - VALUE IN CNRLIN THAT WHEN A PERPENDICULAR LINE DRAWN FROM A TIER
+***** ..\NEW\BPIP.FOR
+C   B      - TEMPORARY STORAGE VARIABLE ASSOCIATED WITH UTM COORDINATES
+C   BB     - DOUBLE PRECISION INPUT VALUE; GENERALLY AN Y-COORDINATE
+C   BELEV  - ARRAY OF BUILDING BASE ELEVATIONS
+C   BELEVV - DUMMY VARIABLE USED DURING INITIAL READ TO MIMIC BELEV
+C   BET    - VALUE IN CNRLIN THAT WHEN A PERPENDICULAR LINE DRAWN FROM A TIER
+*****
+
+***** BPIP.FOR
+C             CORNERS, BET IS POSITIVE.
+C   BTN    - NAME OF STRUCTURE
+C   BU     - TEMPORARY STORAGE VARIABLE ASSOCIATED WITH UTM COORDINATES
+***** ..\NEW\BPIP.FOR
+C             CORNERS, BET IS POSITIVE.
+C   BP     - Y-COORDINATE TRANSLATED FROM PLANT NORTH
+C   BTN    - NAME OF STRUCTURE
+C   BTNV   - USED AS DUMMY VARIABLE IN INITIAL READ
+C   BU     - TEMPORARY STORAGE VARIABLE ASSOCIATED WITH UTM COORDINATES
+*****
+
+***** BPIP.FOR
+C   C      - NUMBER USED TO INDEX A BUILDING TIER (BLDG# - 1) * MXTRS + TIER#
+C             WHERE 4 REPRESENTS THE MAX NUMBER OF TIERS PRE BUILDING
+C   C1     - BUILDING TIER NUMBER COMBINABLE WITH BUILDING TIER NUMBER C2
+***** ..\NEW\BPIP.FOR
+C   C      - NUMBER USED TO INDEX A BUILDING TIER (BLDG# - 1) * MXTRS + TIER#
+C   C1     - BUILDING TIER NUMBER COMBINABLE WITH BUILDING TIER NUMBER C2
+*****
+
+***** BPIP.FOR
+C             INTERCEPTS THE SIDE BETWEEN THE TWO CORNERS OF THE TIER.
+C   CONV   - FACTOR TO CONVERT USER'S UNITS TO METERS
+C   CNVFLG - FLAG TO INDICATE A CONVERSION FACTOR OF 1.00 OR NOT
+C   CSA    - COSINE OF ANG
+***** ..\NEW\BPIP.FOR
+C             INTERCEPTS THE SIDE BETWEEN THE TWO CORNERS OF THE TIER.
+C   CNVFLG - FLAG TO INDICATE A CONVERSION FACTOR OF 1.00 OR NOT
+C   CONV   - FACTOR TO CONVERT USER'S UNITS TO METERS
+C   CSA    - COSINE OF ANG
+*****
+
+***** BPIP.FOR
+C   D      - WIND DIRECTION SUBSCRIPT OR INDEX
+C   DDEG   - INC'ENTAL WIND DIRECTION AND INITIAL WIND DIRECTION
+C   DE     - CURRENT DIRECTION - LAGS ACTUAL DIRECTION - USED IN MXBWH
+***** ..\NEW\BPIP.FOR
+C   D      - WIND DIRECTION SUBSCRIPT OR INDEX
+C   D1     - DOWNWIND DISTANCE FROM A CORNER TO A STACK 
+C   D2     - DOWNWIND DISTANCE FROM A ANOTHER CORNER TO A STACK 
+C   DDEG   - INCREMENTAL WIND DIRECTION AND INITIAL WIND DIRECTION
+C   DE     - CURRENT DIRECTION - LAGS ACTUAL DIRECTION - USED IN MXBWH
+*****
+
+***** BPIP.FOR
+C   DISTMN - MINIMUM DISTANCE BETWEEN BUILDING TIER PAIRS
+C   DMDxx  - NUMBER OF OUTPUT VALUES PER LINE
+C   DPBH   - COMMON HEIGHT OF A COMBINED TIERS FOR A SPECIFIC WIND FLOW
+***** ..\NEW\BPIP.FOR
+C   DISTMN - MINIMUM DISTANCE BETWEEN BUILDING TIER PAIRS
+C   DPBH   - COMMON HEIGHT OF A COMBINED TIERS FOR A SPECIFIC WIND FLOW
+*****
+
+***** BPIP.FOR
+C   DPBW   - PROJECTED WIDTH OF COMBINED TIERS FOR A SPECIFIC WIND FLOW
+C   DR     - WIND DIRECTION FROM A CORNER TO A STACK
+C   DTR    - DEGREES TO RADIANS CONVERSION FACTOR
+***** ..\NEW\BPIP.FOR
+C   DPBW   - PROJECTED WIDTH OF COMBINED TIERS FOR A SPECIFIC WIND FLOW
+C   DTR    - DEGREES TO RADIANS CONVERSION FACTOR
+*****
+
+***** BPIP.FOR
+C   DX2    - MAXIMUM OF TWO X-COORDINATES
+C   ELEV   - LABELLED COMMON CONTAINING BUILDING AND STACK BASE ELEVATIONS
+C   FLG1   - FLAG FOR STACK INDICATING STACK'S X COORDINATE MAYBE WITHIN SIZ
+***** ..\NEW\BPIP.FOR
+C   DX2    - MAXIMUM OF TWO X-COORDINATES
+C   FLG1   - FLAG FOR STACK INDICATING STACK'S X COORDINATE MAYBE WITHIN SIZ
+*****
+
+***** BPIP.FOR
+C   GEPIN  - FLAG INDICATING SOURCE IS IN GEP INFLUENCE OF STRUCTURE C
+C   GETDAT - GET DATE MICROSOFT LIBRARY FUNCTION
+C   GETTIM - GET TIME MICROSOFT LIBRARY FUNCTION
+C   GFS    - GAP-FILLING STRUCTURE. USED TO JOIN TWO SUFFICIENTLY TIERS INTO
+***** ..\NEW\BPIP.FOR
+C   GEPIN  - FLAG INDICATING SOURCE IS IN GEP INFLUENCE OF STRUCTURE C
+C   GFS    - GAP-FILLING STRUCTURE. USED TO JOIN TWO SUFFICIENTLY TIERS INTO
+*****
+
+***** BPIP.FOR
+C             ONE COMBINED STRUCTURE
+C   GP     - LABELLED COMMON CONTAINING GEP DATA
+C   GPC    - SUBROUTINE THAT SET GEPIN TO 1 AND DETERMINES MAX GEP STACK
+HEIGHT
+***** ..\NEW\BPIP.FOR
+C             ONE COMBINED STRUCTURE
+C   GPC    - SUBROUTINE THAT SET GEPIN TO 1 AND DETERMINES MAX GEP STACK
+HEIGHT
+*****
+
+***** BPIP.FOR
+C   GTLIST - ARRAY OF TIER NUMBERS USED TO CALCULATE A GEP STACK HEIGHT VALUE
+C   GTNM   - LABELLED COMMON CONTAINING TIERS AFFECTING STACKS
+C   GTNUM  - COUNTER WITH NUMBER OF TIERS USED TO CALCULATE A GEP STACK HEIGHT
+***** ..\NEW\BPIP.FOR
+C   GTLIST - ARRAY OF TIER NUMBERS USED TO CALCULATE A GEP STACK HEIGHT VALUE
+C   GTNUM  - COUNTER WITH NUMBER OF TIERS USED TO CALCULATE A GEP STACK HEIGHT
+*****
+
+***** BPIP.FOR
+C   I      - BUILDING SUBSCRIPT OR INDEX
+C   Ix     - COUNTER IN A DO LOOP
+C   IBET   - FLAG IN DISLIN THAT WHEN SET INDICATES THAT A STACK IS UP TO
+***** ..\NEW\BPIP.FOR
+C   I      - BUILDING SUBSCRIPT OR INDEX
+C   IBET   - FLAG IN DISLIN THAT WHEN SET INDICATES THAT A STACK IS UP TO
+*****
+
+***** BPIP.FOR
+C   IDAY   - DAY
+C   IG     - FLAG TO INDICATE SINGLE OR COMBINED TIER CALCULATIONS
+C   IHR    - HOUR
+***** ..\NEW\BPIP.FOR
+C   IDAY   - DAY
+C   IFILE  - UNIT NUMBER USED IN DEBUGGING STACK - DIRECTION RELATIONSHIPS
+C   IG     - FLAG TO INDICATE SINGLE OR COMBINED TIER CALCULATIONS
+C   IGMT   - DIFFERENCE BETWEEN LOCAL AND GREENWICH(UNIVERSAL) MEAN TIME 
+C   IHR    - HOUR
+*****
+
+***** BPIP.FOR
+C   IMON   - MONTH
+C   INTRCP - LABELLED COMMON CONTAINING THE INTERCEPT COORDINATES BETWEEN A
+C              STACK AND THE SIDE OF A TIER
+C   ISEC   - SECOND
+***** ..\NEW\BPIP.FOR
+C   IMON   - MONTH
+C   ISEC   - SECOND
+*****
+
+***** BPIP.FOR
+C            FALL UNDER THE L5SQAT DEFINITION
+C   LTN1   - L OF FIRST COMBINABLE TIER
+C   LTN2   - L OF SECOND COMBINABLE TIER OF TWO TIERS
+C   LTN    - GREATER OF LTN1 OR LTN2
+C   LS     - STACK INDEX
+***** ..\NEW\BPIP.FOR
+C            FALL UNDER THE L5SQAT DEFINITION
+C   LS     - STACK INDEX
+*****
+
+***** BPIP.FOR
+C   LT     - TIER INDEX
+C   M      - SLOPE OF A TIER SIDE
+***** ..\NEW\BPIP.FOR
+C   LT     - TIER INDEX
+C   LTN    - GREATER OF LTN1 OR LTN2
+C   LTN1   - L OF FIRST COMBINABLE TIER
+C   LTN2   - L OF SECOND COMBINABLE TIER OF TWO TIERS
+C   M      - SLOPE OF A TIER SIDE
+*****
+
+***** BPIP.FOR
+C   MI     - AN ARRAY OF BUILDING NUMBERS
+C   MIJ    - LABELLED COMMON CONTAINING BUILDING TIER NUMBER
+C   MJ     - AN ARRAY OF TIER NUMBERS
+***** ..\NEW\BPIP.FOR
+C   MI     - AN ARRAY OF BUILDING NUMBERS
+C   MJ     - AN ARRAY OF TIER NUMBERS
+*****
+
+***** BPIP.FOR
+C             PROJECTED WIDTH
+C   MTNM   - LABELLED COMMON CONTAINING TIER(S) PRODUCING MAXIMUM WAKE EFFECT
+C             HEIGHT
+C   MTNUM  - COUNTER HOLDING THE NUMBER OF COMBINED TIERS FOR A MAXIMUM
+***** ..\NEW\BPIP.FOR
+C             PROJECTED WIDTH
+C   MTNUM  - COUNTER HOLDING THE NUMBER OF COMBINED TIERS FOR A MAXIMUM
+*****
+
+***** BPIP.FOR
+C   MW     - ARRAY HOLDING MAXIMUM WIDTHS BY STACK AND SECTOR
+C   MXB    - LABELLED COMMON CONTAINING MAXIMUM WAKE EFFECT VALUES
+C   MXN    - LABELLED COMMON CONTAINING TIER MAX/MIN CORNERS
+C   MXBHW  - SUBROUTINE THAT CALCULATES BUILDING WAKE EFFECT HEIGHT
+***** ..\NEW\BPIP.FOR
+C   MW     - ARRAY HOLDING MAXIMUM WIDTHS BY STACK AND SECTOR
+C   MXBHW  - SUBROUTINE THAT CALCULATES BUILDING WAKE EFFECT HEIGHT
+*****
+
+***** BPIP.FOR
+C   NDIR   - NUMBER OF WIND DIRECTIONS TO BE PROCESSED
+C   NS     - NUMBER OF STACKS ENTERED
+C   NTRS   - NUMBER OF TIERS (MAXIMUM OF 4) / BUILDING
+C   PBH    -           BUILDING HEIGHT BY BUILDING TIER NUMBER
+C   PBW    - PROJECTED BUILDING WIDTH BY BUILDING TIER NUMBER
+***** ..\NEW\BPIP.FOR
+C   NDIR   - NUMBER OF WIND DIRECTIONS TO BE PROCESSED
+C   NDV    - NUMBER OF SIDES TO A TIER ENTERED
+C   NS     - NUMBER OF STACKS ENTERED
+C   NTRS   - NUMBER OF TIERS PER BUILDING
+C   NTRSV  - NUMBER OF TIERS PER BUILDING
+C   PBH    - BUILDING HEIGHT BY BUILDING TIER NUMBER
+C   PBW    - PROJECTED BUILDING WIDTH BY BUILDING TIER NUMBER
+*****
+
+***** BPIP.FOR
+C   SB     - STACK BASE ELEVATION
+C   SH     - STACK HEIGHT
+C   SM     - SLOPE OF A LINE
+***** ..\NEW\BPIP.FOR
+C   SB     - STACK BASE ELEVATION
+C   SBV    - USED AS DUMMY VARIABLE DURING INITIAL READ
+C   SH     - STACK HEIGHT
+C   SHV    - USED AS DUMMY VARIABLE DURING INITIAL READ
+C   SM     - SLOPE OF A LINE
+*****
+
+***** BPIP.FOR
+C   SNM    - TEMPORARY STACK NAME USED TO CHECK FOR BLANK SPACES IN NAME -
+STKN
+C   STKN   - STACK NAME
+C   SWT    - FLAG INDICATING WHETHER TO CALCULATE VALUES FOR ISCST OR ISCLT
+***** ..\NEW\BPIP.FOR
+C   SNM    - TEMPORARY STACK NAME USED TO CHECK FOR BLANK SPACES IN NAME -
+STKN
+C   SS     - USED AS STACK INDEX
+C   STKN   - STACK NAME
+C   STKNV  - USED AS DUMMY VARIABLE DURING INITIAL READ
+C   SWT    - FLAG INDICATING WHETHER TO CALCULATE VALUES FOR ISCST OR ISCLT
+*****
+
+***** BPIP.FOR
+C   TH     - HEIGHT OF A TIER - DIMENSIONED BY BUILDING NUMBER AND TIER NO.
+C   TITLE  - DATA TITLE OR IDENTIFICATION STATEMENT (UP TO 78 CHARACTERS)
+***** ..\NEW\BPIP.FOR
+C   TH     - HEIGHT OF A TIER - DIMENSIONED BY BUILDING NUMBER AND TIER NO.
+C   THV    - USED AS DUMMY VARIABLE DURING INITIAL READ
+C   TITLE  - DATA TITLE OR IDENTIFICATION STATEMENT (UP TO 78 CHARACTERS)
+*****
+
+***** BPIP.FOR
+C   X1     - FIRST OF TWO CONSECUTIVE TIER CORNER X-COORDINATES
+C   X2     - SECOND OF TWO CONSECUTIVE TIER CORNER X-COORDINATES
+C   X11    - X COORDINATE OF FIRST TIER CORNER OF FIRST BUILDING
+***** ..\NEW\BPIP.FOR
+C   X1     - FIRST OF TWO CONSECUTIVE TIER CORNER X-COORDINATES
+C   X11    - X COORDINATE OF FIRST TIER CORNER OF FIRST BUILDING
+*****
+
+***** BPIP.FOR
+C   X12    - X COORDINATE OF SECOND TIER CORNER OF FIRST BUILDING
+C   X21    - X COORDINATE OF FIRST TIER CORNER OF SECOND BUILDING
+***** ..\NEW\BPIP.FOR
+C   X12    - X COORDINATE OF SECOND TIER CORNER OF FIRST BUILDING
+C   X2     - SECOND OF TWO CONSECUTIVE TIER CORNER X-COORDINATES
+C   X21    - X COORDINATE OF FIRST TIER CORNER OF SECOND BUILDING
+*****
+
+***** BPIP.FOR
+C   X22    - X COORDINATE OF SECOND TIER CORNER OF SECOND BUILDING
+C   XC     - X COORDINATE OF A CORNER BY NUMBER
+C   XCOMP  - DOUBLE PRECISION DIFFERENCE BETWEEN A STACK AND TIER CORNER
+***** ..\NEW\BPIP.FOR
+C   X22    - X COORDINATE OF SECOND TIER CORNER OF SECOND BUILDING
+C   XC     - X COORDINATE OF A TRANSLATED TIER CORNER
+C   XCOMP  - DOUBLE PRECISION DIFFERENCE BETWEEN A STACK AND TIER CORNER
+*****
+
+***** BPIP.FOR
+C   XMX    - TEMPORARY STORAGE OF FURTHEST EAST X COORDINATE VALUE
+C   XP     - X COORDINATE OF A TRANSLATED TIER CORNER
+C   XPSTK  - X COORDINATE OF A TRANSLATED STACK
+***** ..\NEW\BPIP.FOR
+C   XMX    - TEMPORARY STORAGE OF FURTHEST EAST X COORDINATE VALUE
+C   XPSTK  - X COORDINATE OF A TRANSLATED STACK
+*****
+
+***** BPIP.FOR
+C   Y1     - FIRST OF TWO CONSECUTIVE TIER CORNER Y-COORDINATES
+C   Y2     - SECOND OF TWO CONSECUTIVE TIER CORNER Y-COORDINATES
+C   Y11    - Y COORDINATE OF FIRST TIER CORNER OF FIRST BUILDING
+***** ..\NEW\BPIP.FOR
+C   Y1     - FIRST OF TWO CONSECUTIVE TIER CORNER Y-COORDINATES
+C   Y11    - Y COORDINATE OF FIRST TIER CORNER OF FIRST BUILDING
+*****
+
+***** BPIP.FOR
+C   Y12    - Y COORDINATE OF SECOND TIER CORNER OF FIRST BUILDING
+C   Y21    - Y COORDINATE OF FIRST TIER CORNER OF SECOND BUILDING
+***** ..\NEW\BPIP.FOR
+C   Y12    - Y COORDINATE OF SECOND TIER CORNER OF FIRST BUILDING
+C   Y2     - SECOND OF TWO CONSECUTIVE TIER CORNER Y-COORDINATES
+C   Y21    - Y COORDINATE OF FIRST TIER CORNER OF SECOND BUILDING
+*****
+
+***** BPIP.FOR
+C   Y22    - Y COORDINATE OF SECOND TIER CORNER OF SECOND BUILDING
+C   YC     - Y COORDINATE OF A CORNER BY NUMBER
+C   YCOMP  - DOUBLE PRECISION DIFFERENCE BETWEEN A STACK AND TIER CORNER
+***** ..\NEW\BPIP.FOR
+C   Y22    - Y COORDINATE OF SECOND TIER CORNER OF SECOND BUILDING
+C   YC     - Y COORDINATE OF A TRANSLATED TIER CORNER
+C   YCOMP  - DOUBLE PRECISION DIFFERENCE BETWEEN A STACK AND TIER CORNER
+*****
+
+***** BPIP.FOR
+C   YMX    - TEMPORARY STORAGE OF FURTHEST EAST Y COORDINATE VALUE
+C   YP     - Y COORDINATE OF A TRANSLATED TIER CORNER
+C   YPSTK  - Y COORDINATE OF A TRANSLATED STACK
+***** ..\NEW\BPIP.FOR
+C   YMX    - TEMPORARY STORAGE OF FURTHEST EAST Y COORDINATE VALUE
+C   YPSTK  - Y COORDINATE OF A TRANSLATED STACK
+*****
+
+***** BPIP.FOR
+C
+      LOGICAL     FLG1, FLG2
+      REAL        L2, L5, MHWE, MXPBH, MXPBW, MH, MW, LTN1, LTN2, LTN
+
+      INTEGER     IHR, IMIN, ISEC, IX, IYR, IMON, IDAY, C, C1, C2, CH,
+     *            CNVFLG, D, DE, GEPIN, GTLIST, GTNUM, MTNUM, MTLIST, S,
+     *            T1, T2, TL1, TL2, TLIST, TLIST2, TN1, TNUM, TNUM2, UTM
+***** ..\NEW\BPIP.FOR
+C
+      IMPLICIT NONE
+
+      LOGICAL     FLG1, FLG2
+      INTEGER     C, C1, C2, CH, CNVFLG, 
+     *            D, DE, DFLG, GEPIN, GTLIST, GTNUM 
+      INTEGER     IDAY, IMON, IYR, 
+     *            IGMT, IHR, IMIN, ISEC, IX, DATE_TIME(8) 
+      INTEGER     I, IBET, ICF, IFILE, IG, 
+     *            II, ISF, ISS, IZ,
+     *            J, JJ, K, K1, K2, KK, L, L5SQAT, LB, LD, LD1, LD2, LT,
+     *            LFLAT, LS
+      INTEGER     M, MB, MBT, MD, MI, MJ, ML, MSK, 
+     *            MT, MTNUM, MTLIST, MTS, MXTRS  
+      INTEGER     NB, ND, ND16, NDIR, NDV,
+     *            NS, NTRS, NTRSV, PN, 
+     *            S, SWT,
+     *            T1, T2, TL1, TL2, TLIST, TLIST2, TN1, TNUM, TNUM2, UTM
+*****
+
+***** BPIP.FOR
+
+      DOUBLE PRECISION A, B, AA, BB, DIRT, DIRTT, DTR2,
+     +                 UEAST, UNORTH, XCOMP, YCOMP
+
+      CHARACTER*2  SWTN
+      CHARACTER*4  UTMP
+      CHARACTER*8  BTN, STKN, SNM
+      CHARACTER*10 UNTS
+      CHARACTER*78 TITLE
+
+***** ..\NEW\BPIP.FOR
+
+      REAL        ADJ, ANG, AP, AU, BELEV, BELEVV, BET, BP, BU, 
+     &            CONV, CSA, CXMN, CXMX, CYMN, CYMX, DDEG, DIF, 
+     &            DHWE, DIST, DISTMN,
+     &            DPBH, DPBW, DTR,
+     &            G65, GDIRS, GEP, GEPBH, GEPBW 
+      REAL        HT, HTA, HTC, 
+     &            L2, L5,  LTN1, LTN2, LTN,
+     &            MH, MHWE,
+     &            MW, MXPBH, MXPBW, PNORTH, PV, R,
+     &            SB, SBV, SH, SHV, SNA, TH, THV, TW, W, WS 
+      REAL        X1, X11, X12, X2, X21, X22,
+     &            XC, XI, XMAX, XMIN, XMN, XMX, XPSTK, XS, 
+     &            Y1, Y11, Y12, Y2, Y21, Y22,
+     &            YC, YI, YMAX, YMIN, YMN, YMX, YPSTK, YS
+
+      DOUBLE PRECISION A, B, AA, BB, DIRT, DIRTT, DTR2,
+     +                 UEAST, UNORTH, X, XCOMP, Y, YCOMP
+
+      CHARACTER(LEN=2)  SWTN
+      CHARACTER(LEN=4)  UTMP
+      CHARACTER(LEN=8)  BTN, BTNV, STKN, STKNV, SNM
+      CHARACTER(LEN=10) UNTS
+      CHARACTER(LEN=12) REAL_CLOCK(3)
+      CHARACTER(LEN=78) TITLE
+
+*****
+
+***** BPIP.FOR
+C
+C  INITIAL PARAMETER SETTINGS
+***** ..\NEW\BPIP.FOR
+C
+C ALLOCATABLE SUBSCRIPT FORMAT: (BUILDING OR STACK #, WD OR TIER #, SIDE #)
+C
+      ALLOCATABLE :: X(:,:,:), Y(:,:,:), ND(:,:)
+      ALLOCATABLE :: XC(:,:), YC(:,:)
+      ALLOCATABLE :: DFLG(:,:), DHWE(:), DPBH(:), DPBW(:)
+      ALLOCATABLE :: BELEV(:)
+      ALLOCATABLE :: GEP(:), GEPBH(:), GEPBW(:),
+     +               GEPIN(:,:,:,:)
+      ALLOCATABLE :: MHWE(:,:), MXPBH(:,:), MXPBW(:,:)
+      ALLOCATABLE :: XMAX(:), XMIN(:), YMAX(:), YMIN(:)
+      ALLOCATABLE :: MI(:,:), MJ(:,:)
+      ALLOCATABLE :: TNUM2(:), TLIST2(:,:)
+      ALLOCATABLE :: GTNUM(:), GTLIST(:,:), GDIRS(:)
+      ALLOCATABLE :: MTNUM(:,:), MTLIST(:,:,:)
+      ALLOCATABLE :: BTN(:), NTRS(:), W(:), HT(:), TH(:,:)
+      ALLOCATABLE :: STKN(:), SB(:), SH(:), XS(:), YS(:)
+      ALLOCATABLE :: DIRT(:), DISTMN(:,:), LFLAT(:,:)
+      ALLOCATABLE :: TNUM(:), TLIST(:,:)
+      ALLOCATABLE :: MH(:,:), MW(:,:)
+C
+C  INITIAL PARAMETER SETTINGS
+*****
+
+***** BPIP.FOR
+C
+C       MAX NUMBER OF BUILDINGS       MB  =  8
+C       MAX NUMBER OF TIERS/BUILDING  MT  =  4
+C       MAX NUMBER OF SIDES/TIER      MTS =  8
+C       MAX NUMBER OF STACK SOURCES   MSK = 14
+C       MAX BUILDING TIER NUMBER      MBT = 32 (MB * MT)
+C       MAX NUMBER OF SECTORS - ST    MD  = 36
+C       MAX NUMBER OF SECTORS - LT    ML  = 16
+C
+C    ********************************************************************
+      PARAMETER (MB = 8,  MT = 4, MTS = 8,  MBT = MB*MT , MSK = 14,     *
+     *           MD = 36, ML = 16)                                      *
+C    *                                                                  *
+C    *   Remember to also change the parameter settings in the          *
+C    *    subroutines !                                                 *
+C    ********************************************************************
+C
+C DIMENSION SUBSCRIPT FORMAT: (BUILDING OR STACK #, WD OR TIER #, SIDE #)
+C
+      COMMON /BLDGIN/ X(MB, MT, MTS), Y(MB, MT, MTS), ND(MB, MT)
+      COMMON /BLDOUT/ XC(MBT,MTS), YC(MBT,MTS)
+      COMMON /DE/ DE, DFLG(MSK, MD), DHWE(MSK), DPBH(MSK), DPBW(MSK)
+      COMMON /ELEV/ BELEV(MB), SB(MSK)
+      COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     +            GEPIN(MSK,MBT,MBT,2)
+      COMMON /INTRCP/ XI,YI
+      COMMON /MXB/ MHWE(MSK, MD), MXPBH(MSK, MD), MXPBW(MSK, MD)
+      COMMON /MXN/ XMAX(MBT), XMIN(MBT), YMAX(MBT), YMIN(MBT)
+      COMMON /MIJ/ MI(MSK,2), MJ(MSK,2)
+      COMMON /TNM/ TNUM2(MBT), TLIST2(MBT,MBT)
+      COMMON /GTNM/ GTNUM(MSK), GTLIST(MSK,MBT), GDIRS(MSK)
+      COMMON /MTNM/ MTNUM(MSK,2), MTLIST(MSK,MBT,2)
+
+      DIMENSION BTN(MB), NTRS(MB), W(MBT), HT(MBT), TH(MB, MT)
+      DIMENSION STKN(MSK), SH(MSK), XS(MSK), YS(MSK)
+      DIMENSION DIRT(MTS), DISTMN(MBT, MBT), LFLAT(MSK, MBT)
+      DIMENSION TNUM(MBT), TLIST(MBT,MBT)
+      DIMENSION MH(MSK, ML), MW(MSK, ML)
+      DIMENSION XP(MSK), YP(MSK)
+
+       DE = 0
+***** ..\NEW\BPIP.FOR
+C
+C
+       IG = 1
+       MD = 36
+       ML = 16 
+       MT = 0
+       MTS = 0
+       DE = 0
+*****
+
+***** BPIP.FOR
+       G65 = 65.
+       MXTRS = MT
+
+C
+C  READ INPUT DATA CONTAINING BUILDING AND STACK DATA
+C
+
+        WRITE(*,*) ' '
+        WRITE(*,*) 'READING INPUT DATA FROM FILE.'
+        WRITE(*,*) ' '
+
+***** ..\NEW\BPIP.FOR
+       G65 = 65.
+
+C  READ THE INPUT FILE TO FIND THE MAXIMUM VALUES
+
+*****
+
+***** BPIP.FOR
+        READ(10,*) TITLE
+
+***** ..\NEW\BPIP.FOR
+        READ(10,*) TITLE
+          WRITE (12,1) TITLE
+          WRITE (14,1) TITLE
+        READ(10,*) SWTN
+        READ(10,*) UNTS, CONV
+        READ(10,*) UTMP, PNORTH
+        READ(10,*) NB
+        MB = NB
+        DO 10 I = 1, NB
+           READ(10,*) BTNV, NTRSV, BELEVV
+             IF (NTRSV .GE. MT) THEN 
+               MT = NTRSV
+             END IF
+         DO 20 J = 1, NTRSV
+            READ(10,*) NDV, THV
+              IF (NDV .GE. MTS) THEN 
+                MTS = NDV
+              END IF
+          DO 30 K = 1, NDV
+             READ(10,*) AA, BB
+30        CONTINUE
+20       CONTINUE
+10      CONTINUE
+        MBT = MB * MT
+        MXTRS = MT
+
+        READ(10,*) NS
+        MSK = NS
+        DO 40 S = 1, NS
+           READ (10,*) STKNV, SBV, SHV, AA, BB
+40      CONTINUE
+        REWIND (10)
+
+C  ALLOCATE AND INITIALIZE THE ARRAYS BASED ON 
+C    THE MAXIMUM PARAMETER VALUES FOUND
+
+      ALLOCATE (X(MB, MT, MTS), Y(MB, MT, MTS), ND(MB, MT))
+        DO I = 1, MB; DO J = 1, MT; ND(I,J) = 0; 
+        DO K = 1, MTS; X(I,J,K) = 0.0; Y(I,J,K) = 0.0; 
+        END DO; END DO; END DO
+
+      ALLOCATE (XC(MBT,MTS), YC(MBT,MTS))
+        DO I = 1, MBT; DO J = 1, MTS; XC(I,J) = 0.0; YC(I,J) = 0.0
+        END DO; END DO
+
+      ALLOCATE (DFLG(MSK, MD), DHWE(MSK), DPBH(MSK),DPBW(MSK))
+        DO I = 1, MSK; DHWE(I) = 0.0; DPBH(I) = 0.0; DPBW(I) = 0.0;
+        DO J = 1, MD; DFLG (I,J) = 0; 
+        END DO; END DO
+
+      ALLOCATE (BELEV(MB))
+        DO I = 1, MB; BELEV(I) = 0.0;END DO 
+
+      ALLOCATE (GEP(MSK), GEPBH(MSK), GEPBW(MSK))                 
+        DO I = 1, MSK; GEP(I) = 0.0; GEPBH(I) = 0.0; GEPBW(I) = 0.0
+        END DO
+
+      ALLOCATE (GEPIN(MSK,MBT,MBT,2))
+        DO I = 1, MSK; DO J = 1, MBT; DO K = 1, MBT; DO L = 1, 2
+          GEPIN(I,J,K,L) = 0; 
+        END DO; END DO; END DO; END DO 
+      
+      ALLOCATE (MHWE(MSK, MD), MXPBH(MSK, MD),  MXPBW(MSK, MD))
+        DO I = 1, MSK; DO J = 1, MD; 
+         MHWE(I,J) = 0.0; MXPBH(I,J) = 0.0; MXPBW(I,J) = 0.0;
+        END DO; END DO    
+
+      ALLOCATE (XMAX(MBT), XMIN(MBT), YMAX(MBT), YMIN(MBT))       
+        DO I = 1 , MBT; 
+          XMAX(I) = 0.0; XMIN(I) = 0.0; YMAX(I) = 0.0
+          YMIN(I) = 0.0
+        END DO
+
+      ALLOCATE (MI(MSK,2), MJ(MSK,2))  
+        DO I = 1, MSK; DO J = 1,2; MI(I,J) = 0; MJ(I,J) = 0;
+        END DO; END DO
+
+      ALLOCATE (TNUM2(MBT), TLIST2(MBT,MBT))                      
+        DO I = 1, MBT; TNUM2(I) = 0; 
+        DO J = 1,MBT; TLIST2(I,J) = 0; END DO; END DO
+
+      ALLOCATE (GTNUM(MSK), GTLIST(MSK,MBT), GDIRS(MSK))         
+        DO I = 1, MSK; GTNUM(I) = 0; GDIRS(I) = 0.0; 
+        DO J = 1, MBT; GTLIST(I,J) = 0; END DO; END DO
+
+      ALLOCATE (MTNUM(MSK,2), MTLIST(MSK,MBT,2))                 
+        DO I = 1, MSK; DO J = 1, 2; MTNUM(I,J) = 0; 
+        DO K = 1, MBT; MTLIST(I,K,J) = 0; END DO; END DO; END DO
+
+      ALLOCATE (BTN(MB), NTRS(MB), W(MBT), HT(MBT), TH(MB, MT))
+        DO I = 1, MB; BTN(I) = "        "; NTRS(I) = 0; END DO
+        DO I = 1, MBT; W(I) = 0.0; HT(I) = 0.0; END DO
+        DO I = 1, MB; DO J = 1, MT; TH(I,J) = 0.0; END DO; END DO
+      
+      ALLOCATE (STKN(MSK), SB(MSK), SH(MSK), XS(MSK), YS(MSK))
+        DO I = 1 , MSK; STKN(I) = "        "; 
+          SB(I) = 0.0; SH(I) = 0.0
+          XS(I) = 0.0; YS(I) = 0.0; 
+        END DO
+
+*****
+
+***** BPIP.FOR
+
+        CALL GETTIM (IHR, IMIN, ISEC, IX)
+        CALL GETDAT (IYR, IMON, IDAY)
+          IYR = MOD(IYR,100)
+            WRITE (12, 461)
+***** ..\NEW\BPIP.FOR
+
+      ALLOCATE (DIRT(MTS), DISTMN(MBT, MBT), LFLAT(MSK, MBT))
+        DO I = 1, MTS; DIRT(I) = 0.0; END DO
+        DO I = 1, MBT; DO J = 1, MBT; DISTMN(I,J) = 0.0; END DO;END DO
+        DO I = 1, MSK; DO J = 1, MBT; LFLAT(I,J) = 0; END DO; END DO
+      
+      ALLOCATE (TNUM(MBT), TLIST(MBT,MBT))
+        DO I = 1, MBT; TNUM(I) = 0; 
+        DO J = 1, MBT; TLIST(I,J) = 0; END DO; END DO
+
+      ALLOCATE (MH(MSK, ML), MW(MSK, ML))
+        DO I = 1, MSK; DO J = 1, ML; MH(I,J) = 0.0; MW(I,J) = 0.0;
+        END DO; END DO
+
+C
+C  READ INPUT DATA CONTAINING BUILDING AND STACK DATA
+C
+
+        WRITE(*,*) ' '
+        WRITE(*,*) 'READING INPUT DATA FROM FILE.'
+        WRITE(*,*) ' '
+
+        READ(10,*) TITLE
+
+
+            CALL DATE_AND_TIME (REAL_CLOCK (1), REAL_CLOCK (2),
+     *                          REAL_CLOCK (3), DATE_TIME) 
+              IYR = DATE_TIME(1)
+              IMON = DATE_TIME(2)
+              IDAY = DATE_TIME(3) 
+C              IGMT = DATE_TIME(4) !C TIME DIFFERENCE 
+C                                     WRT COORDINATED UNIVERSAL TIME (UTC)
+              IHR = DATE_TIME(5)
+              IMIN = DATE_TIME(6) 
+              ISEC = DATE_TIME(7)
+C              IX = DATE_TIME(8)   !C MILLISECONDS
+
+            WRITE (12, 461)
+*****
+
+***** BPIP.FOR
+          IF(SWT .EQ. 2) THEN
+            WRITE(*,*) 'The SWTN variable, ',SWTN,' is incorrectly ',
+     +       'entered.'
+            STOP
+***** ..\NEW\BPIP.FOR
+          IF(SWT .EQ. 2) THEN
+            WRITE(*,*) '**ERR: The SWTN variable, ',SWTN,' is',
+     +       ' incorrectly entered.'
+            WRITE(*,*) '         Please use ST, st, LT, or',
+     +                 ' lt (lowercase LT) as input.'
+            STOP
+*****
+
+***** BPIP.FOR
+          WRITE(14,3) UNTS, CONV
+C             IF CNVFLG IS 1, THE UNITS ARE CONSIDERED TO BE IN METERS
+          CNVFLG = 0
+           IF (ABS(CONV - 1.00) .LT. .05) CNVFLG = 1
+***** ..\NEW\BPIP.FOR
+          WRITE(14,3) UNTS, CONV
+
+          CNVFLG = 0
+C             IF CONV IS 1 OR ALMOST 1, THE UNITS ARE CONSIDERED TO BE IN
+METERS
+C                AND CNVFLG IS SET TO 1 TO INDICATE UNITS ARE IN METERS
+           IF (ABS(CONV - 1.00) .LT. .05) CNVFLG = 1
+*****
+
+***** BPIP.FOR
+
+        DO 10 I = 1, NB
+           READ(10,*) BTN(I), NTRS(I), BELEV(I)
+***** ..\NEW\BPIP.FOR
+
+        DO 15 I = 1, NB
+           READ(10,*) BTN(I), NTRS(I), BELEV(I)
+*****
+
+***** BPIP.FOR
+
+         DO 20 J = 1, NTRS(I)
+             READ(10,*) ND(I, J), TH(I, J)
+***** ..\NEW\BPIP.FOR
+
+         DO 25 J = 1, NTRS(I)
+             READ(10,*) ND(I, J), TH(I, J)
+*****
+
+***** BPIP.FOR
+
+
+          DO 30 K = 1, ND(I, J)
+            READ(10,*) AA, BB
+***** ..\NEW\BPIP.FOR
+
+          DO 35 K = 1, ND(I, J)
+            READ(10,*) AA, BB
+*****
+
+***** BPIP.FOR
+
+30        CONTINUE
+20       CONTINUE
+10    CONTINUE
+
+***** ..\NEW\BPIP.FOR
+
+35        CONTINUE
+25       CONTINUE
+15    CONTINUE
+
+*****
+
+***** BPIP.FOR
+          WRITE (14,42)
+      DO 40 S = 1, NS
+       READ (10,*) STKN(S), SB(S), SH(S), AA, BB
+***** ..\NEW\BPIP.FOR
+          WRITE (14,42)
+      DO 50 S = 1, NS
+       READ (10,*) STKN(S), SB(S), SH(S), AA, BB
+*****
+
+***** BPIP.FOR
+                  WRITE (14,47)
+                  GO TO 40
+               END IF
+***** ..\NEW\BPIP.FOR
+                  WRITE (14,47)
+                  GO TO 50
+               END IF
+*****
+
+***** BPIP.FOR
+48        CONTINUE
+40    CONTINUE
+
+***** ..\NEW\BPIP.FOR
+48        CONTINUE
+50    CONTINUE
+
+*****
+
+***** BPIP.FOR
+        L5SQAT = 0
+        DO 70 LS = 1, NS
+          DO 70 LB = 1, NB
+            DO 70 LT = 1, NTRS(LB)
+              C = (LB-1) * MXTRS + LT
+***** ..\NEW\BPIP.FOR
+        L5SQAT = 0
+        DO LS = 1, NS
+          DO LB = 1, NB
+            DO LT = 1, NTRS(LB)
+              C = (LB-1) * MXTRS + LT
+*****
+
+***** BPIP.FOR
+              DIRTT = 0.0
+              DO 74 LD = 1, ND(LB, LT)
+                IF (YS(LS) .EQ. Y(LB,LT,LD)) THEN
+***** ..\NEW\BPIP.FOR
+              DIRTT = 0.0
+              DO LD = 1, ND(LB, LT)
+                IF (YS(LS) .EQ. Y(LB,LT,LD)) THEN
+*****
+
+***** BPIP.FOR
+                END IF
+   74         CONTINUE
+            DO 76 LD = 1, ND(LB,LT)
+              LD1 = LD
+***** ..\NEW\BPIP.FOR
+                END IF
+              END DO
+            DO LD = 1, ND(LB,LT)
+              LD1 = LD
+*****
+
+***** BPIP.FOR
+                DIRTT = DIRTT + AA
+   76       CONTINUE
+   77       CONTINUE
+***** ..\NEW\BPIP.FOR
+                DIRTT = DIRTT + AA
+            END DO
+   77       CONTINUE
+*****
+
+***** BPIP.FOR
+              END IF
+70      CONTINUE
+          IF (L5SQAT .EQ. 0) THEN
+***** ..\NEW\BPIP.FOR
+              END IF
+            END DO
+          END DO
+        END DO
+          IF (L5SQAT .EQ. 0) THEN
+*****
+
+***** BPIP.FOR
+        WRITE(*,*) ' '
+
+C
+***** ..\NEW\BPIP.FOR
+        WRITE(*,*) ' '
+C
+*****
+
+***** BPIP.FOR
+C
+
+        WRITE(*,*) ' '
+***** ..\NEW\BPIP.FOR
+C
+        WRITE(*,*) ' '
+*****
+
+***** BPIP.FOR
+
+
+
+       IF (SWT .EQ. 0) THEN
+        DDEG = 10
+        NDIR = MD
+***** ..\NEW\BPIP.FOR
+
+       IF (SWT .EQ. 0) THEN
+        DDEG = 10.
+        NDIR = MD
+*****
+
+***** BPIP.FOR
+        ND16 = ML
+        DMD8 = 8
+        DMD12 = 12
+C
+***** ..\NEW\BPIP.FOR
+        ND16 = ML
+C
+*****
+
+***** BPIP.FOR
+C                    and the side of another structure
+               CALL CNRLIN(X21, Y21, X22, Y22, BET, DIST, X11, Y11)
+C                  If the intercept is between the two corners of the
+***** ..\NEW\BPIP.FOR
+C                    and the side of another structure
+               CALL CNRLIN(XI, YI, X21, Y21,X22,Y22,BET,DIST,X11,Y11)
+C                  If the intercept is between the two corners of the
+*****
+
+***** BPIP.FOR
+                 END IF
+               CALL CNRLIN(X11, Y11, X12, Y12, BET, DIST, X21, Y21)
+C                   If the intercept is between the two corners of the
+***** ..\NEW\BPIP.FOR
+                 END IF
+               CALL CNRLIN(XI,YI,X11,Y11,X12,Y12,BET, DIST, X21, Y21)
+C                   If the intercept is between the two corners of the
+*****
+
+***** BPIP.FOR
+           TNUM2(C) = 0
+C                CALCULATE PROJECTED TIER WIDTH, TW
+          CALL WIDTH(ANG, I, J, C, TW)
+             W(C) = TW
+***** ..\NEW\BPIP.FOR
+           TNUM2(C) = 0
+
+C                CALCULATE PROJECTED TIER WIDTH, TW
+
+          CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                  XMAX, XMIN, YMAX, YMIN, ANG, I, J, C, TW)
+
+             W(C) = TW
+*****
+
+***** BPIP.FOR
+C                     Call subroutine to calculate a GEP stk ht. and others
+               CALL GPC (D, I, C, S, TW, WS, HTA, C, 1)
+             END IF
+***** ..\NEW\BPIP.FOR
+C                     Call subroutine to calculate a GEP stk ht. and others
+               CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                   SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                   GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                   D, I, C, S, TW, WS, HTA, C, 1)
+             END IF
+*****
+
+***** BPIP.FOR
+          C1 = (I - 1) * MXTRS + J
+          CALL WIDTH(ANG, I, J, C1, TW)
+          W(C1) = TW
+***** ..\NEW\BPIP.FOR
+          C1 = (I - 1) * MXTRS + J
+          CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                XMAX, XMIN, YMAX, YMIN, ANG, I, J, C1, TW)
+          W(C1) = TW
+*****
+
+***** BPIP.FOR
+           C2 = (II - 1) * MXTRS + JJ
+           CALL WIDTH(ANG, II, JJ, C2, TW)
+           W(C2) = TW
+***** ..\NEW\BPIP.FOR
+           C2 = (II - 1) * MXTRS + JJ
+           CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                  XMAX, XMIN, YMAX, YMIN, ANG, II, JJ, C2, TW)
+           W(C2) = TW
+*****
+
+***** BPIP.FOR
+           HT(C2) = TH(II,JJ)
+C                R is 'L'; combinable if distance between tiers is < L
+C                 If yes, add tier number to TLIST and increment counter TNUM
+               R = MIN(W(C1), HT(C1))
+             IF (DISTMN(C1, C2) .LT. R) THEN
+***** ..\NEW\BPIP.FOR
+           HT(C2) = TH(II,JJ)
+C            R is 'L'; combinable if distance between tiers is < L
+C              If yes, add tier number to TLIST and increment counter TNUM
+             R = MIN( W(C1), HT(C1) )
+             IF (DISTMN(C1, C2) .LT. R) THEN
+*****
+
+***** BPIP.FOR
+                IF (IBET .EQ. 1) THEN
+                  CALL GPC (D, I, C1, S, TW, WS, HTA, TL1,2)
+                   GO TO 136
+***** ..\NEW\BPIP.FOR
+                IF (IBET .EQ. 1) THEN
+                  CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                      SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                      GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                D, I, C1, S, TW, WS, HTA, TL1,2)
+                   GO TO 136
+*****
+
+***** BPIP.FOR
+                 IF (IBET .EQ. 1) THEN
+                   CALL GPC (D, I, C1, S, TW, WS, HTA, TL1, 2)
+                    GO TO 136
+***** ..\NEW\BPIP.FOR
+                 IF (IBET .EQ. 1) THEN
+                   CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                       SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                       GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                D, I, C1, S, TW, WS, HTA, TL1, 2)
+                    GO TO 136
+*****
+
+***** BPIP.FOR
+C          IBET = 1, if at or within 5L
+               DO 133 K = 1, ND(I, J)
+                X11 = XC(C1, K)
+***** ..\NEW\BPIP.FOR
+C          IBET = 1, if at or within 5L
+               DO K = 1, ND(I, J)
+                X11 = XC(C1, K)
+*****
+
+***** BPIP.FOR
+                Y12 = YC(C1, K1)
+               DO 133   L = 1, ND(II,JJ)
+                X21 = XC(C2, L)
+***** ..\NEW\BPIP.FOR
+                Y12 = YC(C1, K1)
+               DO L = 1, ND(II,JJ)
+                X21 = XC(C2, L)
+*****
+
+***** BPIP.FOR
+                   IF (IBET .EQ. 1) THEN
+                     CALL GPC (D, I, C1, S, TW, WS, HTA, TL1, 2)
+                      GO TO 136
+***** ..\NEW\BPIP.FOR
+                   IF (IBET .EQ. 1) THEN
+                     CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                         SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                         GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                         D, I, C1, S, TW, WS, HTA, TL1, 2)
+                      GO TO 136
+*****
+
+***** BPIP.FOR
+C                   perimeter of the GFS
+                CALL CNRLIN(X11, Y11, X12, Y12, BET, DIST, X21, Y21)
+                 IF (DIST .LE. WS .AND. BET .GT. -.001) THEN
+***** ..\NEW\BPIP.FOR
+C                   perimeter of the GFS
+                CALL CNRLIN(XI,YI,X11,Y11,X12,Y12,BET, DIST, X21, Y21)
+                 IF (DIST .LE. WS .AND. BET .GT. -.001) THEN
+*****
+
+***** BPIP.FOR
+                   IF (IBET .EQ. 1) THEN
+                     CALL GPC (D,I,C1,S,TW,WS, HTA, TL1, 2)
+                      GO TO 136
+***** ..\NEW\BPIP.FOR
+                   IF (IBET .EQ. 1) THEN
+                     CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                         SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                         GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                         D,I,C1,S,TW,WS, HTA, TL1, 2)
+                      GO TO 136
+*****
+
+***** BPIP.FOR
+                 END IF
+                CALL CNRLIN(X21, Y21, X22, Y22, BET, DIST, X11, Y11)
+                 IF (DIST .LE. WS .AND. BET .GT. -.001) THEN
+***** ..\NEW\BPIP.FOR
+                 END IF
+                CALL CNRLIN(XI,YI,X21,Y21,X22,Y22,BET, DIST, X11, Y11)
+                 IF (DIST .LE. WS .AND. BET .GT. -.001) THEN
+*****
+
+***** BPIP.FOR
+                   IF (IBET .EQ. 1) THEN
+                     CALL GPC (D, I, C1, S, TW, WS, HTA, TL1, 2)
+                      GO TO 136
+***** ..\NEW\BPIP.FOR
+                   IF (IBET .EQ. 1) THEN
+                     CALL GPC (MB, MBT, MXTRS, MSK, BELEV, 
+     *                         SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                         GTNUM, GTLIST, GDIRS, MI, MJ, 
+     *                         D, I, C1, S, TW, WS, HTA, TL1, 2)
+                      GO TO 136
+*****
+
+***** BPIP.FOR
+                 END IF
+133            CONTINUE
+135          CONTINUE
+***** ..\NEW\BPIP.FOR
+                 END IF
+               END DO 
+               END DO
+135          CONTINUE
+*****
+
+***** BPIP.FOR
+        WRITE(12,297)
+
+
+C
+***** ..\NEW\BPIP.FOR
+        WRITE(12,297)
+C
+*****
+
+***** BPIP.FOR
+         YPSTK = YS(S) * CSA - XS(S) * SNA
+         XP(S) = XPSTK
+         YP(S) = YPSTK
+        DO 320 I = 1, NB
+***** ..\NEW\BPIP.FOR
+         YPSTK = YS(S) * CSA - XS(S) * SNA
+        DO 320 I = 1, NB
+*****
+
+***** BPIP.FOR
+           HTA = TH(I,J)
+           CALL WIDTH (ANG, I, J, C, TW)
+            WS = TW
+***** ..\NEW\BPIP.FOR
+           HTA = TH(I,J)
+           CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                  XMAX, XMIN, YMAX, YMIN, ANG, I, J, C, TW)
+            WS = TW
+*****
+
+***** BPIP.FOR
+                  TLIST2(C,1) = C
+                 CALL MXBWH(D, I, S, C, TW, HTA, WS, CH, 1)
+               END IF
+***** ..\NEW\BPIP.FOR
+                  TLIST2(C,1) = C
+                 IG = 1
+                 CALL MXBWH(MB, MXTRS, MBT, MSK, MD, DFLG, 
+     *                 DE, DHWE, DPBH, DPBW, BELEV, SB,
+     *                 GEP, GEPBH, GEPBW, GEPIN,
+     *                 MHWE, MXPBH, MXPBW,
+     *                 MI, MJ, TNUM2, TLIST2, MTNUM, MTLIST,
+     *                 D, I, S, C, TW, HTA, WS, CH, IG)
+               END IF
+*****
+
+***** BPIP.FOR
+300   CONTINUE
+      DO 345 ISS = 1, NS
+        DO 345 D = 1, NDIR
+          DFLG(ISS, D) = 0
+ 345  CONTINUE
+C
+***** ..\NEW\BPIP.FOR
+300   CONTINUE
+      DO ISS = 1, NS
+        DO D = 1, NDIR
+          DFLG(ISS, D) = 0
+        END DO
+      END DO
+C
+*****
+
+***** BPIP.FOR
+         IF (NB .EQ. 1) THEN
+           WRITE(14,*) 'Dominate combined buildings:  None'
+          ELSE
+***** ..\NEW\BPIP.FOR
+         IF (NB .EQ. 1) THEN
+           WRITE(14,*) 'Dominant combined buildings:  None'
+          ELSE
+*****
+
+***** BPIP.FOR
+           WRITE(*,*) '  Calculating group of tiers downwash values.'
+           WRITE(14,*) 'Dominate combined buildings:'
+         END IF
+***** ..\NEW\BPIP.FOR
+           WRITE(*,*) '  Calculating group of tiers downwash values.'
+           WRITE(14,*) 'Dominant combined buildings:'
+         END IF
+*****
+
+***** BPIP.FOR
+          C1 = (I - 1) * MXTRS + J
+           CALL WIDTH(ANG, I, J, C1, TW)
+            W(C1) = TW
+***** ..\NEW\BPIP.FOR
+          C1 = (I - 1) * MXTRS + J
+           CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                 XMAX, XMIN, YMAX, YMIN, ANG, I, J, C1, TW)
+            W(C1) = TW
+*****
+
+***** BPIP.FOR
+           C2 = (II - 1) * MXTRS + JJ
+            CALL WIDTH(ANG, II, JJ, C2, TW)
+            W(C2) = TW
+***** ..\NEW\BPIP.FOR
+           C2 = (II - 1) * MXTRS + JJ
+            CALL WIDTH (MB, MXTRS, MTS, MBT, X, Y, ND, XC, YC,
+     *                  XMAX, XMIN, YMAX, YMIN, ANG, II, JJ, C2, TW)
+            W(C2) = TW
+*****
+
+***** BPIP.FOR
+         IF (TNUM2(C) .GT. 1) THEN
+          DO 400 S = 1, NS
+***** ..\NEW\BPIP.FOR
+         IF (TNUM2(C) .GT. 1) THEN
+          IG = 2 
+          DO 400 S = 1, NS
+*****
+
+***** BPIP.FOR
+C               If so, calculate the PBW & PBH, save max values
+               CALL MXBWH(D, I, S, C, TW, HTA, WS, CH, 2)
+             END IF
+***** ..\NEW\BPIP.FOR
+C               If so, calculate the PBW & PBH, save max values
+               IG = 2
+               CALL MXBWH(MB, MXTRS, MBT, MSK, MD, DFLG,
+     *                 DE, DHWE, DPBH, DPBW, BELEV, SB,
+     *                 GEP, GEPBH, GEPBW, GEPIN,
+     *                 MHWE, MXPBH, MXPBW,
+     *                 MI, MJ, TNUM2, TLIST2, MTNUM, MTLIST,
+     *                 D, I, S, C, TW, HTA, WS, CH, IG)
+
+             END IF
+*****
+
+***** BPIP.FOR
+         IF (MTNUM(S,2) .LT. 2) THEN
+           WRITE(14,*) '      No combined tiers affect this stack for ',
+     +                 'this direction.'
+C           WRITE(IFILE, 431) S, D
+  431        FORMAT(1X,'S,D', 2I2,'  NO COMBINED TIERS FOR THIS DIRCTN')
+          ELSE
+***** ..\NEW\BPIP.FOR
+         IF (MTNUM(S,2) .LT. 2) THEN
+           WRITE(14,*)   '      No combined tiers affect this stack ',
+     +                 'for this direction.'
+C           WRITE(IFILE, 431) S, D
+C  431        FORMAT(1X,'S,D', 2I2,'  NO COMBINED TIERS FOR THIS DIRCTN')
+          ELSE
+*****
+
+***** BPIP.FOR
+             WRITE(14,2024) (MTLIST(S,M,2), M = 1, MTNUM(S,2))
+  432        FORMAT(1X,'S,D',2I2, 2F6.2, I4, 2X, 10I3)
+           ELSE
+***** ..\NEW\BPIP.FOR
+             WRITE(14,2024) (MTLIST(S,M,2), M = 1, MTNUM(S,2))
+C           WRITE(IFILE, 432) S, D, SB(S), BELEV(MI(S,2)), MTNUM (S,2),
+C     +                       (MTLIST(S,M,2), M = 1, MTNUM(S,2))
+C  432        FORMAT(1X,'S,D',2I2, 2F6.2, I4, 2X, 10I3)
+           ELSE
+*****
+
+***** BPIP.FOR
+               WRITE(12,297)
+            DO 512 I = 1, 6
+              J = (I-1) * 6 + 1
+***** ..\NEW\BPIP.FOR
+               WRITE(12,297)
+            DO I = 1, 6
+              J = (I-1) * 6 + 1
+*****
+
+***** BPIP.FOR
+              K = I * 6
+             WRITE (12,293) STKN(S), (MXPBH(S,D) , D = J,K)
+512         CONTINUE
+            DO 514 I = 1, 6
+              J = (I-1) * 6 + 1
+***** ..\NEW\BPIP.FOR
+              K = I * 6
+              WRITE (12,293) STKN(S), (MXPBH(S,D) , D = J,K)
+            END DO
+            DO I = 1, 6
+              J = (I-1) * 6 + 1
+*****
+
+***** BPIP.FOR
+              K = I * 6
+             WRITE (12,296) STKN(S), (MXPBW(S,D) , D = J,K)
+514         CONTINUE
+510      CONTINUE
+        END IF
+***** ..\NEW\BPIP.FOR
+              K = I * 6
+              WRITE (12,296) STKN(S), (MXPBW(S,D) , D = J,K)
+            END DO  
+  510     CONTINUE
+        END IF
+*****
+
+***** BPIP.FOR
+
+
+
+C
+***** ..\NEW\BPIP.FOR
+
+C
+*****
+
+***** BPIP.FOR
+  1   FORMAT(1X,A78,/)
+  2   FORMAT(/3X,'The ',A2,' flag has been set for processing for an ',
+     +'ISCST2 run.'/)
+  3   FORMAT(3X,'Inputs entered in ', A10,' will be converted to ',
+***** ..\NEW\BPIP.FOR
+  1   FORMAT(1X,A78,/)
+  2   FORMAT(/3X,'The ',A2,' flag has been set for preparing downwash',
+     +           ' data for an ISCST run.'/)
+  3   FORMAT(3X,'Inputs entered in ', A10,' will be converted to ',
+*****
+
+***** BPIP.FOR
+  6   FORMAT(1X,'Number of buildings to be processed :',I4)
+  7   FORMAT(37X,'(',2F12.2,')')
+  8   FORMAT(' Factor to convert from input units to meters is:',F10.4)
+  9   FORMAT(/3X,'The ',A2,' flag has been set for processing for an',
+     *' ISCLT2 run.'/)
+ 11   FORMAT(3X,'The new local coordinates will be displayed in parent',
+***** ..\NEW\BPIP.FOR
+  6   FORMAT(1X,'Number of buildings to be processed :',I4)
+C  7   FORMAT(37X,'(',2F12.2,')')
+C  8   FORMAT(' Factor to convert from input units to meters is:',F10.4)
+  9   FORMAT(/3X,'The ',A2,' flag has been set for preparing downwash',
+     +           ' data for an ISCLT run.'/)
+ 11   FORMAT(3X,'The new local coordinates will be displayed in parent',
+*****
+
+***** BPIP.FOR
+115   FORMAT('      Wind flow passing', I4,' degree direction.')
+292   FORMAT(3(/1X, 8F6.2))
+293   FORMAT(5X,'SO BUILDHGT ', A8, 6F8.2)
+***** ..\NEW\BPIP.FOR
+115   FORMAT('      Wind flow passing', I4,' degree direction.')
+C292   FORMAT(3(/1X, 8F6.2))
+293   FORMAT(5X,'SO BUILDHGT ', A8, 6F8.2)
+*****
+
+***** BPIP.FOR
+297   FORMAT(/)
+411   FORMAT(/1X, A8)
+461   FORMAT(30X,'BPIP (Dated: 95086)')
+462   FORMAT(1X,'DATE : ',I2,'/',I2,'/',I2)
+463   FORMAT(1X,'TIME : ',I2,':',I2,':',I2)
+***** ..\NEW\BPIP.FOR
+297   FORMAT(/)
+C411   FORMAT(/1X, A8)
+461   FORMAT(30X,'BPIP (Dated: 04112)')
+462   FORMAT(1X,'DATE : ',I2,'/',I2,'/',I4)
+463   FORMAT(1X,'TIME : ',I2,':',I2,':',I2)
+*****
+
+***** BPIP.FOR
+     *         '                          (Units: meters)'//)
+1021  FORMAT(10X,'NOTE: The projected width values below are not always'
+     *     ,/10X,'      the maximum width.  They are the minimum value,'
+     *     ,/10X,'      valid for the stack in question, to derive the'
+     *     ,/10X,'      maximum GEP stack height.'/)
+1022  FORMAT(' StkNo:', I3,'  Stk Name:', A8,' Stk Ht:',F7.2,
+***** ..\NEW\BPIP.FOR
+     *         '                          (Units: meters)'//)
+C1021  FORMAT(10X,'NOTE: The projected width values below are not always'
+C     *     ,/10X,'      the maximum width.  They are the minimum value,'
+C     *     ,/10X,'      valid for the stack in question, to derive the'
+C     *     ,/10X,'      maximum GEP stack height.'/)
+1022  FORMAT(' StkNo:', I3,'  Stk Name:', A8,' Stk Ht:',F7.2,
+*****
+
+***** BPIP.FOR
+
+        SUBROUTINE CNRLIN (X1, Y1, X2, Y2, BET, DIST, XKP, YKP)
+C            calculate corner perpendicular to side distance,
+***** ..\NEW\BPIP.FOR
+
+        SUBROUTINE CNRLIN (XI,YI,X1, Y1, X2, Y2, BET, DIST, XKP, YKP)
+C            calculate corner perpendicular to side distance,
+*****
+
+***** BPIP.FOR
+C             corners.
+          COMMON /INTRCP/ XI, YI
+            IF ((X1 .NE. X2) .AND. (Y1 .NE. Y2)) THEN
+***** ..\NEW\BPIP.FOR
+C             corners.
+
+        IMPLICIT NONE
+
+        REAL A1, A2, BET, DIST, SM, X1, X2, XI, XKP, Y1, Y2, YI, YKP
+
+            IF ((X1 .NE. X2) .AND. (Y1 .NE. Y2)) THEN
+*****
+
+***** BPIP.FOR
+C           within 5L of side.
+          REAL L5
+          IBET = 0
+***** ..\NEW\BPIP.FOR
+C           within 5L of side.
+
+          IMPLICIT NONE
+
+          INTEGER IBET
+
+          REAL D1, D2, DIST, DX1, DX2, L5, X1, X2, XSP, Y1, Y2, YI, YSP
+
+          IBET = 0
+*****
+
+***** BPIP.FOR
+      END
+      SUBROUTINE GPC (D, I, C, S, TW, WS, HTA, CH, IG)
+C         calculate GEP values
+***** ..\NEW\BPIP.FOR
+      END
+
+      SUBROUTINE GPC (MB, MBT, MT, MSK, BELEV,
+     *                SB, GEP,GEPBH,GEPBW,GEPIN, TNUM2, TLIST2,
+     *                GTNUM, GTLIST, GDIRS, MI, MJ,
+     *                D, I, C, S, TW, WS, HTA, CH, IG)
+C         calculate GEP values
+*****
+
+***** BPIP.FOR
+
+        INTEGER C, CH, D, S, GEPIN, TNUM2, TLIST2, GTNUM, GTLIST
+
+        PARAMETER (MB = 8,  MT = 4, MTS = 8,  MBT = MB*MT, MSK = 14,
+     *             MD = 36, ML = 16)
+
+        COMMON /ELEV/ BELEV(MB), SB(MSK)
+        COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     *              GEPIN(MSK,MBT,MBT,2)
+        COMMON /TNM/ TNUM2(MBT), TLIST2(MBT,MBT)
+        COMMON /GTNM/ GTNUM(MSK), GTLIST(MSK,MBT), GDIRS(MSK)
+        COMMON /MIJ/ MI(MSK,2), MJ(MSK,2)
+
+***** ..\NEW\BPIP.FOR
+
+        IMPLICIT NONE
+
+        INTEGER C, CH, D, GEPIN, GTLIST, GTNUM,
+     *          I, IG, M, MB, MBT, MSK, MT, MI, MJ, S, TNUM2, TLIST2
+
+        REAL BELEV, GDIRS, GEP, GEPBH, GEPBW, HTA, HWE, SB, TW, WS
+
+        DIMENSION BELEV(MB), SB(MSK)
+        DIMENSION GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     *            GEPIN(MSK,MBT,MBT,2)
+        DIMENSION TNUM2(MBT), TLIST2(MBT,MBT)
+        DIMENSION GTNUM(MSK), GTLIST(MSK,MBT), GDIRS(MSK)
+        DIMENSION MI(MSK,2), MJ(MSK,2)
+
+*****
+
+***** BPIP.FOR
+C
+      SUBROUTINE MXBWH(D, I, S, C, TW, HTA, WS, TL1, IG)
+C    ********************************************************************
+      PARAMETER (MB = 8,  MT = 4, MTS = 8, MBT = MB*MT , MSK = 14,      *
+     *           MD = 36, ML = 16)                                      *
+C    ********************************************************************
+C
+***** ..\NEW\BPIP.FOR
+C
+      SUBROUTINE MXBWH(MB, MT, MBT, MSK, MD, DFLG,
+     *                 DE, DHWE, DPBH, DPBW, BELEV, SB,
+     *                 GEP, GEPBH, GEPBW, GEPIN,
+     *                 MHWE, MXPBH, MXPBW, 
+     *                 MI, MJ, TNUM2, TLIST2, MTNUM, MTLIST,
+     *                 D, I, S, C, TW, HTA, WS, TL1, IG)
+C
+*****
+
+***** BPIP.FOR
+C
+      REAL         MHWE, MXPBH, MXPBW
+      INTEGER      C, D, DE, GEPIN, S, SS, TNUM2, TLIST2, TL1
+
+      COMMON /DE/ DE, DFLG(MSK, MD), DHWE(MSK), DPBH(MSK), DPBW(MSK)
+      COMMON /ELEV/ BELEV(MB), SB(MSK)
+      COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     +            GEPIN(MSK,MBT,MBT,2)
+      COMMON /MXB/ MHWE(MSK, MD), MXPBH(MSK, MD), MXPBW(MSK, MD)
+      COMMON /MIJ/ MI(MSK,2), MJ(MSK,2)
+      COMMON /TNM/ TNUM2(MBT), TLIST2(MBT,MBT)
+      COMMON /MTNM/ MTNUM(MSK,2), MTLIST(MSK,MBT,2)
+C
+***** ..\NEW\BPIP.FOR
+C
+      IMPLICIT NONE
+
+      INTEGER C, D, DE, DFLG, GEPIN, I, IG, 
+     *        M, MB, MBT, MD, MFLG, MI, MJ, MSK, MT, MTLIST, MTNUM,
+     *        S, SS, TNUM2, TLIST2, TL1
+
+      REAL BELEV, DHWE, DPBH, DPBW,
+     *     GEP, GEPBH, GEPBW, HWE, HTA,
+     *     MHWE, MXPBH, MXPBW,
+     *     PBH, PBW, SB, TW, WS
+
+      DIMENSION DFLG(MSK, MD), DHWE(MSK), DPBH(MSK), DPBW(MSK)
+      DIMENSION BELEV(MB), SB(MSK)
+      DIMENSION GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     +          GEPIN(MSK,MBT,MBT,2)
+      DIMENSION MHWE(MSK, MD), MXPBH(MSK, MD), MXPBW(MSK, MD)
+      DIMENSION MI(MSK,2), MJ(MSK,2)
+      DIMENSION TNUM2(MBT), TLIST2(MBT,MBT)
+      DIMENSION MTNUM(MSK,2), MTLIST(MSK,MBT,2)
+C
+*****
+
+***** BPIP.FOR
+
+        PBH = HTA
+***** ..\NEW\BPIP.FOR
+
+        MFLG = 0
+        PBH = HTA
+*****
+
+***** BPIP.FOR
+         DE = D
+         DO 577 SS = 1, MSK
+         DHWE(SS) = 0.0
+         DPBH(SS) = 0.0
+         DPBW(SS) = 0.0
+         MTNUM(SS,IG) = 0
+577      DFLG(SS, D) = 0
+       END IF
+***** ..\NEW\BPIP.FOR
+         DE = D
+         DO SS = 1, MSK
+           DHWE(SS) = 0.0
+           DPBH(SS) = 0.0
+           DPBW(SS) = 0.0
+           MHWE(SS, D) = 0.00
+           MXPBH(SS, D) = 0.00
+           MXPBW(SS, D) = 0.00
+           MTNUM(SS,IG) = 0
+           DFLG(SS, D) = 0
+         END DO
+       END IF
+*****
+
+***** BPIP.FOR
+            MJ(S,IG) = C - (I-1)*MT
+             DO 578 M = 1, MTNUM(S,IG)
+               MTLIST(S,M,IG) = TLIST2(C,M)
+578          CONTINUE
+            MFLG = 0
+***** ..\NEW\BPIP.FOR
+            MJ(S,IG) = C - (I-1)*MT
+             DO M = 1, MTNUM(S,IG)
+               MTLIST(S,M,IG) = TLIST2(C,M)
+             END DO
+            MFLG = 0
+*****
+
+***** BPIP.FOR
+C Determine if any combined buildings exist for a particular sector
+C Save the combination producing the highest HWE for 
+C the Summary Table
+***** ..\NEW\BPIP.FOR
+C Determine if any combined buildings exist for a particular sector
+C Save the combination producing the highest HWE for
+C the Summary Table
+*****
+
+***** BPIP.FOR
+            MJ(S,IG) = C - (I-1) * MT
+            DO 579 M = 1, MTNUM(S,IG)
+              MTLIST(S,M,IG) = TLIST2(C,M)
+579         CONTINUE
+          END IF
+         ENDIF
+        END IF
+***** ..\NEW\BPIP.FOR
+            MJ(S,IG) = C - (I-1) * MT
+            DO M = 1, MTNUM(S,IG)
+              MTLIST(S,M,IG) = TLIST2(C,M)
+            END DO
+          END IF
+         END IF
+        END IF
+*****
+
+***** BPIP.FOR
+C
+      SUBROUTINE WIDTH (ANG, I, J, C, TW)
+C         Calculate projected building width, TW
+        INTEGER C
+        PARAMETER (MB = 8,  MT = 4, MTS = 8,  MBT = MB*MT, MSK = 14,
+     *             MD = 36, ML = 16)
+        COMMON /BLDGIN/ X(MB, MT, MTS), Y(MB, MT, MTS), ND(MB, MT)
+        COMMON /BLDOUT/ XC(MBT, MTS), YC(MBT, MTS)
+        COMMON /MXN/ XMAX(MBT), XMIN(MBT), YMAX(MBT), YMIN(MBT)
+            CSA = COS(ANG)
+            SNA = -SIN(ANG)
+          DO 700 K = 1, ND(I,J)
+             XC(C, K) = X(I, J, K) * CSA + Y(I, J, K) * SNA
+             YC(C, K) = Y(I, J, K) * CSA - X(I, J, K) * SNA
+             IF (K .EQ. 1) THEN
+***** ..\NEW\BPIP.FOR
+C
+      SUBROUTINE WIDTH (MB, MT, MTS, MBT, X, Y, ND, XC, YC,
+     *                  XMAX, XMIN, YMAX, YMIN, ANG, I, J, C, TW)
+C         Calculate projected building width, TW
+
+        IMPLICIT NONE
+
+        INTEGER C, I, J, K, MB, MBT, MT, MTS, ND
+
+        REAL ANG, TW, XC, XMAX, XMIN, YC, YMAX, YMIN
+
+        DOUBLE PRECISION X, Y, CSA, SNA
+
+        DIMENSION X(MB, MT, MTS), Y(MB, MT, MTS), ND(MB, MT)
+        DIMENSION XC(MBT, MTS), YC(MBT, MTS)
+        DIMENSION XMAX(MBT), XMIN(MBT), YMAX(MBT), YMIN(MBT)
+
+            CSA = DCOS(DBLE(ANG))
+            SNA = -DSIN(DBLE(ANG))
+          DO 700 K = 1, ND(I,J)
+             XC(C, K) = SNGL(X(I, J, K) * CSA + Y(I, J, K) * SNA)
+             YC(C, K) = SNGL(Y(I, J, K) * CSA - X(I, J, K) * SNA)
+             IF (K .EQ. 1) THEN
+*****
+
+***** BPIP.FOR
+            TW = XMAX(C) - XMIN(C)
+      RETURN
+***** ..\NEW\BPIP.FOR
+            TW = XMAX(C) - XMIN(C)
+
+      RETURN
+*****
+
+***** BPIP.FOR
+      END
+
+***** ..\NEW\BPIP.FOR
+      END
+
+*****
+

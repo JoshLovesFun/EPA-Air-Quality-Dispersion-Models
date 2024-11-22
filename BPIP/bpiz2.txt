@@ -1,0 +1,1087 @@
+                             Model Change Bulletin
+
+                                     MCB#2
+
+                              BPIP (dated 94074)
+
+     This is a formal notification of changes made to the Building Profile
+Input Program (BPIP) source code.  These changes result from found and reported
+problems with the program.  The problems included:
+
+     1.  No conversion of non-metric units to metric for the stack and building
+     base elevations.
+
+     2.  Slow processing speed for sufficiently close buildings.
+
+     3.  An error where a Y coordinate was equated to a X coordinate when
+     determining whether a stack is within 5L downwind of a Gap Filling
+     Structure.
+
+     4.  The use of the wrong variable with the right value in an ISCLT2
+     related algorithm.
+
+     5.  The use of a subscript of a tier being combined with a focal tier
+     instead of the focal tier subscript.
+
+     There were additional findings that lead to:
+
+     1.  The editing of some of the explanations and identifications terms.
+
+     2.  A revamping of the way the values for the direction-related parts of
+     the Summary Table are calculated.
+
+     3.  The changing of the Preliminary GEP stack height values from emission
+     limitation values to design height values.
+
+     The following is a list of the effects that this change has on the meaning
+of and the values calculated:
+
+     1.  The program will now properly account for the difference between stack
+     and building base elevations when calculating the design GEP stack height. 
+     
+     2.  Except for the 180 degree directions for test case 2 of MCB#1 and #2,
+     the test case 1 and 2 building heights and projected widths will have the
+     same respective output values.  The difference in test case 2 is caused by
+     how wake effect height values are stored in computer memory during a run. 
+     One wake effect height was previously stored as 18.2500004 while the other
+     is currently stored as 18.2499995.  Both values are suppose to be the
+     same.  This is an artifact of how floating point numbers are stored in
+     computer memory.  In cases where a set of wake effect heights are the
+     same, but are produced by different building height and projected width
+     values, the wake effect height produced using the narrower width should
+     cause its associated building height and projected building width values
+     to be saved.  Because of the artifact, this was not the case in the
+     previous version of BPIP (MCB#1).  A slight change in how wake effect
+     heights are compared, now produces the correct results.
+
+     3.  In the Dominate Combined Building section of the Summary Table,  if
+     the maximum wake effect height for a particular direction was caused by a
+     single tier, the single tier number was displayed.  The single tier was
+     displayed in both the Dominate Stand-alone Tier and Combined Building
+     sections.  This has been changed so that in the Dominate Combined Building
+     section, no single tier numbers are displayed.  If any tier numbers are
+     displayed, they are the tier numbers of the combined buildings producing
+     the highest wake effect height of all the combined building sets for that
+     direction; even if the associated wake effect height is not the highest
+     value.
+
+     The following is a list of the changes made to BPIP along with a brief
+explanation:
+
+1.  The BPIP SCRAM header was updated by changing the comment statements from: 
+
+C  *                                                                        *
+C  *              BUILDING PROFILE INPUT PROGRAM (DATED 93320)              *
+C  *                                                                        *
+C  *              *** SEE BPIP MODEL CHANGE BULLETIN MCB#1 ***              *
+C  *                                                                        *
+
+     to:
+
+C  *                                                                        *
+C  *              BUILDING PROFILE INPUT PROGRAM (DATED 94074)              *
+C  *                                                                        *
+C  *              *** SEE BPIP MODEL CHANGE BULLETIN MCB#2 ***              *
+C  *                                                                        *
+
+2.  Several definitions were either added, deleted, or modified:
+
+     a.  Those added:
+
+C   CNVFLG - FLAG TO INDICATE A CONVERSION FACTOR OF 1.00 OR NOT
+C   DE     - CURRENT DIRECTION - LAGS ACTUAL DIRECTION - USED IN MXBWH
+C   DFLG   - TO INDICATE A COMBINED STRUCTURE EXIST FOR A STACK - DIRECTION
+C             COMBINATION
+C   TC     - NUMBER OF TIERS IN COMBINATION (MIN = 1)
+
+     b.  Those modified:
+
+C   G65    - GEP 65 METER DECISION POINT FOR GEP DETERMINATION
+
+     c.  Those deleted:
+
+C   MDIRS  - WIND FLOW DIRECTION MAXIMUM WAKE EFFECT HEIGHT OCCURS IN
+
+
+3.   The variables, CNVFLG and DE, were added and defined as integers while the
+variables AA and BB were added and defined as double precision.  The resultant
+lines of code are shown:
+
+      INTEGER     IHR, IMIN, ISEC, IX, IYR, IMON, IDAY, C, C1, C2, CH,
+     *            CNVFLG, D, DE, GEPIN, GTLIST, GTNUM, MTNUM, MTLIST, S,
+     *            T1, T2, TL1, TL2, TLIST, TLIST2, TN1, TNUM, TNUM2, UTM
+
+      DOUBLE PRECISION AA, BB
+
+
+4.   The variables, DE and DFLG, were added to reset initialization values from
+one sector to the next and to identify those situations where a combined
+building is upwind of a stack for a particular direction.  DE is initialized in
+the main body of the program and used in MXBWH while DFLG is set in MXBWH and
+then used in the main body of the program.
+
+      COMMON /DE/ DE, DFLG(MSK, MD)
+
+5.   The Labeled Common statements /HT/, /PBH/, and /STK/ are no longer needed. 
+The variables TH, SH, XS, and YS were moved to other Dimension statements.
+
+      COMMON /HT/ TH(MB, MT), SH(MSK)
+      COMMON /PWH/ PBH(MBT), PBW(MBT), HWE(MBT)
+      COMMON /STK/ XS(MSK), YS(MSK)
+      COMMON /TNM/ TNUM2(MBT), TLIST2(MBT,MBT)
+
+6.   The variable MDIRS is no longer needed and was removed from the Labeled
+Common statement, /MTNM/.
+
+      COMMON /MTNM/ MTNUM(MSK), MTLIST(MSK,MBT), MDIRS(MSK)
+
+7.   The variables from comment 5 above were placed in the following Dimension
+statements:
+
+      DIMENSION BTN(MB), NTRS(MB), W(MBT), HT(MBT), TH(MB, MT)
+      DIMENSION STKN(MSK), SH(MSK), XS(MSK), YS(MSK)
+
+8.   The G65 statement was moved from well within the program to an area at the
+beginning of the program where other variables are initialized.  The new
+variable, DE, is also initialized in this same area.  The code appears as
+follows:
+
+       DE = 0
+       DTR = 3.141593 / 180
+       G65 = 65.
+
+9.   Several lines of code were modified to improve the output spacing and
+appearance.  The following were changed:
+
+from:
+        WRITE(12,297)
+        WRITE(12,*) '============================'
+to:
+        WRITE(12,*) '============================'
+
+from:
+        WRITE(12,*) '============================'
+        WRITE(12,297)
+        WRITE(14,297)
+        WRITE(14,*) '============================'
+to:
+        WRITE(12,*) '============================'
+        WRITE(14,*) '============================'
+
+from:
+        WRITE(14,*) '============================'
+        WRITE(14,297)
+to:
+        WRITE(14,*) '============================'
+
+10.  The following lines of code did not cover all variations of input.  The
+following lines of code were changed from:
+
+           IF(SWTN .EQ. 'st') SWT = 0
+           IF(SWTN .EQ. 'ST') SWT = 0
+           IF(SWTN .EQ. 'lt') SWT = 1
+           IF(SWTN .EQ. 'LT') SWT = 1
+          WRITE(12,2) SWTN
+          WRITE(14,2) SWTN
+to:
+           IF(SWTN(1:1) .EQ. 's') SWT = 0
+           IF(SWTN(1:1) .EQ. 'S') SWT = 0
+           IF(SWTN(1:1) .EQ. 'l') SWT = 1
+           IF(SWTN(1:1) .EQ. 'L') SWT = 1
+          IF(SWT .EQ. 0) THEN
+            WRITE(12,2) SWTN
+            WRITE(14,2) SWTN
+          ENDIF
+          IF(SWT .EQ. 1) THEN
+            WRITE(12,9) SWTN
+            WRITE(14,9) SWTN
+          ENDIF
+
+11.  The wording in Format statement #3 was improved which resulted in changes
+to the following two write statements.  A flag was also added to identify when
+metric versus non metric input is being entered.  The lines of code were
+changed from:
+
+          WRITE(12,3) UNTS, UNTS, CONV
+          WRITE(14,3) UNTS, UNTS, CONV
+to:
+          WRITE(12,3) UNTS, CONV
+          WRITE(14,3) UNTS, CONV
+C             IF CNVFLG IS 1, THE UNITS ARE CONSIDERED TO BE IN METERS
+          CNVFLG = 0
+           IF (ABS(CONV - 1.00) .LT. .05) CNVFLG = 1
+
+12.  The following lines of code did not cover all variations of input.  The
+following lines of code were changed from:
+
+           IF(UTMP .EQ. 'utmn') UTM = 0
+           IF(UTMP .EQ. 'UTMN') UTM = 0
+           IF(UTMP .EQ. 'utmy') UTM = 1
+           IF(UTMP .EQ. 'UTMY') UTM = 1
+to:
+           IF(UTMP(4:4) .EQ. 'n') UTM = 0
+           IF(UTMP(4:4) .EQ. 'N') UTM = 0
+           IF(UTMP(4:4) .EQ. 'y') UTM = 1
+           IF(UTMP(4:4) .EQ. 'Y') UTM = 1
+
+13.  Format statement #11 was added as a result of editing Format statement #4. 
+The result is the inclusion of another Write statement as shown below this
+first statement:
+
+            WRITE(14,4) UTMP
+            WRITE(14,11)
+
+14.  To improve output appearance the following statement was added in two
+places in the input area:
+
+            WRITE(12,297)
+
+15.  The conversion from non metric to metric base elevations has been added to
+this version.  The coding was changed from:
+
+            WRITE(14,12) BTN(I), NTRS(I), BELEV(I), UNTS
+
+to:
+
+            WRITE(14,12) BTN(I), NTRS(I), BELEV(I), UNTS
+            IF (CNVFLG .EQ. 0) THEN
+              BELEV(I) = BELEV(I) * CONV
+              WRITE(14,13) BELEV(I)
+            END IF
+              WRITE(14,14)
+
+from:
+
+             WRITE(14,13) BTN(I), J, C, TH(I,J), ND(I,J)
+
+to:
+
+             WRITE(14,21) BTN(I), J, C, TH(I,J), ND(I,J)
+              IF (CNVFLG .EQ. 0) THEN
+                TH(I,J) = TH(I,J) * CONV
+                WRITE(14,22)  TH(I,J)
+              END IF
+
+
+16.  Double precision was added so the precision of the entered UTM coordinates
+could be maintained.  The code was changed from:
+
+            READ(10,*) X(I, J, K), Y(I, J, K)
+
+to:
+
+            READ(10,*) AA, BB
+              IF (CNVFLG .EQ. 1 .OR.  UTM .EQ. 1) THEN
+                WRITE (14,32) AA, BB
+              END IF
+              IF (CNVFLG .EQ. 0 .AND. UTM .EQ. 0) THEN
+                WRITE (14,31) AA, BB, UNTS
+                 AA = AA * CONV
+                 BB = BB * CONV
+                  WRITE (14,32) AA, BB
+              END IF
+
+from:
+                  UEAST  = X(1,1,1)
+                  UNORTH = Y(1,1,1)
+                  A = UEAST
+to:
+
+                  UEAST  = AA
+                  UNORTH = BB
+                  A = UEAST
+
+from:
+
+                 ELSE
+                  A = X(I, J, K)
+                  B = Y(I, J, K)
+                  AU = A - UEAST
+to:
+
+                 ELSE
+                  A = AA
+                  B = BB
+                  AU = A - UEAST
+
+from:
+
+                END IF
+                  WRITE (14,14) A, B
+                  WRITE (14,16) AU, BU
+                  X(I, J, K) = AU
+to:
+
+                END IF
+                  WRITE (14,33) AU, BU
+                  X(I, J, K) = AU
+
+from:
+
+                  Y(I, J, K) = BU
+               ELSE
+                WRITE (14,14) X(I, J, K), Y(I, J, K)
+              END IF
+
+to:
+
+                  Y(I, J, K) = BU
+C                WRITE (14,14) X(I, J, K), Y(I, J, K)
+               ELSE
+                X(I, J, K) = AA
+                Y(I, J, K) = BB
+              END IF
+
+17.  The variables, A and B were renamed to AP and BP to distinguish them from
+the variables A and B above.  The code was changed from:
+
+              IF (PN .EQ. 1) THEN
+                A = X(I, J, K) * CSA + Y(I, J, K) * SNA
+                B = Y(I, J, K) * CSA - X(I, J, K) * SNA
+                X(I, J, K) = A
+                Y(I, J, K) = B
+                WRITE (14,19) X(I, J, K), Y(I, J, K)
+
+to:
+
+              IF (PN .EQ. 1) THEN
+                AP = X(I, J, K) * CSA + Y(I, J, K) * SNA
+                BP = Y(I, J, K) * CSA - X(I, J, K) * SNA
+                X(I, J, K) = AP
+                Y(I, J, K) = BP
+                WRITE (14,19) X(I, J, K), Y(I, J, K)
+
+18.  The PRINT * statement was deleted.
+
+19.  Conversion factor statements were added to the stack data processing
+section.  The code was changed from:
+
+          WRITE (14,11) NS
+
+          WRITE (14,21)
+      DO 40 S = 1, NS
+       READ (10,*) STKN(S), SB(S), SH(S), XS(S), YS(S)
+          AU = XS(S) - UEAST
+          BU = YS(S) - UNORTH
+
+        IF (UTM .EQ. 0) THEN
+          WRITE (14, 22) STKN (S), SB(S), SH(S),  XS(S), YS(S)
+         ELSE
+          WRITE (14, 22) STKN(S), SB(S), SH(S), XS(S), YS(S)
+          WRITE (14, 23) AU, BU
+        END IF
+
+to:
+
+          WRITE (14,41) NS
+          WRITE (14,42)
+      DO 40 S = 1, NS
+       READ (10,*) STKN(S), SB(S), SH(S), AA, BB
+          WRITE (14, 43) STKN(S), SB(S), SH(S), UNTS
+            SB(S) = SB(S) * CONV
+            SH(S) = SH(S) * CONV
+          IF (CNVFLG .EQ. 0) WRITE(14,44) SB(S), SH(S)
+
+          IF (CNVFLG .EQ. 1 .OR.  UTM .EQ. 1) WRITE(14,51) AA, BB
+          IF (CNVFLG .EQ. 0 .AND. UTM .EQ. 0) THEN
+            WRITE (14,49) AA, BB, UNTS
+             AA = AA * CONV
+             BB = BB * CONV
+            WRITE (14, 45) AA, BB
+          END IF
+
+          AU = AA - UEAST
+          BU = BB - UNORTH
+
+        IF (UTM .EQ. 1) THEN
+          WRITE (14, 45) AU, BU
+        END IF
+
+20.  A write statement was renumbered from:
+
+          YS(S) = B
+          WRITE (14,42) XS(S), YS(S)
+        END IF
+
+to:
+
+          YS(S) = B
+          WRITE (14,46) XS(S), YS(S)
+        END IF
+
+21.  A comment line was edited.  The line was changed from:
+
+C                     IDENTIFY TIER GROUPS EXAMINE FOR COMBINING
+
+to:
+
+C                     IDENTIFY TIER GROUPS - EXAMINE FOR COMBINING
+
+22.  In several of the CALL GPC argument lists, the argument C2 should have
+been C1.  Also, to improve the execution speed of the program, all the GO TO
+136 lines were commented back into the code.  The affected lines were changed
+from:
+
+                  CALL GPC (D, I, C2, S, TW, WS, HTA, TL1)
+C                  GO TO 136
+                END IF
+
+to:
+
+                  CALL GPC (D, I, C1, S, TW, WS, HTA, TL1)
+                   GO TO 136
+                END IF
+
+23.  A second LFLAT IF statement was omitted from the original code.  The code
+should read:
+
+                CALL DISLIN(X1, Y1, X2, Y2, L5, IBET, XPSTK, YPSTK)
+                 IF (LFLAT (S,C2) .EQ. 1) IBET = 1
+
+24.  The line:
+
+                Y12 = XC(C1, K1)
+
+was corrected to read:
+
+                Y12 = YC(C1, K1)
+
+25.  The G65 line was modified and moved to the initialization section near the
+beginning of the code:
+
+        G65 = 65.
+
+
+26.  The Preliminary GEP stack height was set for calculating an emissions
+limitation height.  The new code is designed to calculate the GEP design
+height.  The code was changed form:
+
+        WRITE(12, 297)
+        WRITE(12,1005) UNTS
+
+        WRITE(14, 1020) UNTS
+      DO 1010 S = 1, NS
+        IF ((SH(S) .GT. GEP(S)) .AND. (GEP(S) .EQ. 0.00)) PV = G65
+        IF (SH(S) .LE. G65) PV = SH(S)
+        IF ((SH(S) .GT. G65) .AND. (SH(S) .LT. GEP(S))) PV = SH(S)
+        IF ((SH(S) .GT. GEP(S)) .AND. (GEP(S) .GT. 0.00)) PV = GEP(S)
+         WRITE(14,1022) S, STKN(S), SH(S), PV, GEPBH(S), GEPBW(S),GEP(S)
+         IF(GTNUM(S) .EQ. 0) THEN
+           WRITE(14,*) '      No tiers affect this stack.'
+          ELSE
+
+to:
+
+        WRITE(12, 297)
+        WRITE(12,1005)
+
+        WRITE(14, 1020)
+      DO 1010 S = 1, NS
+         IF(GTNUM(S) .EQ. 0) THEN
+           PV = G65
+           WRITE(14,1022) S, STKN(S), SH(S), PV, GEPBH(S), GEPBW(S),
+     *                    GEP(S)
+           WRITE(14,*) '      No tiers affect this stack.'
+           WRITE(12,1001) STKN(S), SH(S), GEP(S), PV
+          ELSE
+
+from:
+
+           DIF = SB(S) - BELEV(MI(S))
+           WRITE(14,1025) DIF
+           WRITE(14,1023) GTNUM(S), GDIRS(S)
+           WRITE(14,1024) (GTLIST(S,I), I = 1, GTNUM(S))
+         END IF
+to:
+
+           DIF = SB(S) - BELEV(MI(S))
+           GP = GEP(S) - DIF
+           PV = MAX (G65, GP)
+             WRITE(14,1022) S, STKN(S), SH(S), PV, GEPBH(S), GEPBW(S),
+     *                      GEP(S)
+             WRITE(14,1025) DIF
+             WRITE(14,1023) GTNUM(S), GDIRS(S)
+             WRITE(14,1024) (GTLIST(S,I), I = 1, GTNUM(S))
+             WRITE(12,1000) STKN(S), SH(S), DIF, GEP(S), PV
+         END IF
+
+27.  As a result of comment 26,  the following statement was deleted:
+
+         WRITE(12,1000) STKN(S), SH(S), GEP(S), PV
+
+28.  The BPIP output is in meters.  The following statement was changed from:
+
+         WRITE(14, 2020) UNTS
+
+to:
+
+         WRITE(14, 2020)
+
+29.  To conserve variable names in a labeled common statement, a statement was
+added prior to the call to MXBWH.  The code was changed from:
+
+C                  If so, calculate the PBW & PBH, save max values
+                 CALL MXBWH(D, I, S, C, TW, HTA, WS, CH)
+
+to:
+
+C                  If so, calculate the PBW & PBH, save max values
+                  TLIST2(C,1) = C
+                 CALL MXBWH(D, I, S, C, TW, HTA, WS, CH)
+
+30.  The variable, MI(S), which does not have a directional subscript, was
+replaced by the variable, MHWE(S,D), which does have a directional subscript. 
+Also, the wording in the write statement was edited.  The code was changed
+from:
+
+         IF (MI(S) .EQ. 0) THEN
+           WRITE(14,*) '     No tier affects this stack.'
+          ELSE
+
+to:
+
+         IF (MHWE(S,D) .EQ. 0.0) THEN
+           WRITE(14,*) '     No single tier affects this stack for this
+     &direction.'
+          ELSE
+
+31.  When only one building is being processed, the 'Dominate combined
+building' section is not needed.  The coding was changed from:
+
+        WRITE(14,*) 'Dominate combined buildings:'
+      DO 350 D = 1, NDIR
+
+to:
+
+         IF (NB .EQ. 1) THEN
+           WRITE(14,*) 'Dominate combined buildings:  None'
+          ELSE
+           WRITE(14,*) 'Dominate combined buildings:'
+         END IF
+      DO 350 D = 1, NDIR
+
+
+from:     
+
+        ANG = D * DDEG
+          WRITE(14,604) ANG
+        ANG = ANG * DTR
+
+to:
+
+        ANG = D * DDEG
+          IF (NB .GT. 1) WRITE(14,604) ANG
+        ANG = ANG * DTR
+
+
+from:
+
+430    CONTINUE
+
+      DO 2012 S = 1, NS
+
+to:
+
+430    CONTINUE
+      IF(NB .GT. 1) THEN
+      DO 2012 S = 1, NS
+
+32.  The directional data in the summary table was not always clear as to its
+meaning.  Sometimes a single dominate tier was listed in the dominate combined
+section of the summary table.  The following keeps the dominate stand-alone and
+combined building section 'directional MAX' data separate.  The code was
+changed from:
+
+         IF (MTNUM(S) .EQ. 0) THEN
+           WRITE(14,*) '      No tiers affect this stack.'
+          ELSE
+           DIF = SB(S) - BELEV(MI(S))
+           WRITE(14,1025) DIF
+           WRITE(14,2023) MTNUM(S)
+           WRITE(14,2024) (MTLIST(S,M), M = 1, MTNUM(S))
+         END IF
+
+to:
+
+         IF (MTNUM(S) .EQ. 0) THEN
+           WRITE(14,*) '      No combined tiers affect this stack for th
+     &is direction.'
+          ELSE
+           IF (DFLG(S,D) .EQ. 1) THEN
+             DIF = SB(S) - BELEV(MI(S))
+             WRITE(14,1025) DIF
+             WRITE(14,2023) MTNUM(S)
+             WRITE(14,2024) (MTLIST(S,M), M = 1, MTNUM(S))
+           ELSE
+             WRITE(14,*) '      No combined tiers affect this stack for
+     & this direction'
+          END IF
+         END IF
+
+and from:
+
+2012  CONTINUE
+
+350   CONTINUE
+
+to:
+
+2012  CONTINUE
+      END IF
+350   CONTINUE
+
+33.  The BPIP output needs to be in meters.  The second write statement was
+changed from:
+
+            WRITE (12, 1) TITLE
+            WRITE (12, *) ' BPIP output in ', UNTS
+
+to:
+
+            WRITE (12, 1) TITLE
+            WRITE (12, *) ' BPIP output is in meters'
+
+34.  In the second line, the MBT variable contains the right value but is the
+wrong variable.  MBT was replaced by NDIR.  The code was changed from:
+
+             IF (L .GT. ML) L = L - ML
+             IF (J .GT. MBT) J = J - MBT
+           IF (MHWE(S, D) .GT. 0.0) THEN
+
+to:
+
+             IF (L .GT. ML) L = L - ML
+             IF (J .GT. NDIR) J = J - NDIR
+           IF (MHWE(S, D) .GT. 0.0) THEN
+
+35.  A number of the format statements were modified to improve the meaning and
+appearance.  Two statements were also corrected.  The code was changed from:
+
+     *ST2 run.'/)
+  3   FORMAT(3X,'The inputs units are in: ', A10,' Multiplying ',A10,' b
+     *y a conversion '/3X,' factor of',F10.4, ' will produce internal BP
+     *IP results in meters.'/)
+  4   FORMAT(3X,'The UTMP variable is set to ',A4,'.  The input is assum
+
+to:
+
+     *ST2 run.'/)
+  3   FORMAT(3X,'Inputs entered in ', A10,' will be converted to meters
+     *using '/3X,' a conversion factor of',F10.4, '.  Output will be in
+     *meters.'/)
+  4   FORMAT(3X,'The UTMP variable is set to ',A4,'.  The input is assum
+
+
+from:
+
+     * UTM coordinates entered to form '/4X,' this new local coordinate
+     *system.'//3X,'The new local coordinates will be displayed in paren
+     *theses just below'/4X,' the UTM coordinates they represent.',///)
+  5   FORMAT(3X,'UTMP is set to ',A4,'.  The input is assumed to be in a
+
+to:
+
+     * UTM coordinates entered to form '/4X,' this new local coordinate
+     *system.'/)
+  5   FORMAT(3X,'UTMP is set to ',A4,'.  The input is assumed to be in a
+
+from:
+
+     * local'/3x,' X-Y coordinate system as opposed to a UTM coordinate
+     *system.'/3x,' True North is in the positive Y direction.'///)
+  6   FORMAT(1X,'Number of buildings to be processed :',I4/)
+  7   FORMAT(37X,'(',2F12.2,')')
+
+to:
+
+     * local'/3x,' X-Y coordinate system as opposed to a UTM coordinate
+     *system.'/3x,' True North is in the positive Y direction.'/)
+  6   FORMAT(1X,'Number of buildings to be processed :',I4)
+  7   FORMAT(37X,'(',2F12.2,')')
+
+from:
+
+  8   FORMAT(' Factor to convert from input units to meters is:',F10.4)
+ 11   FORMAT(/1X,'Number of stacks to be processed :',I4/)
+ 12   FORMAT(1X,A8,' has',I2,' tier(s) with a base elevation of', F8.2,
+     *' ',A10, //
+     * ' BUILDING  TIER  BLDG-TIER  TIER   NO. OF      CORNER   COORDINA
+     *TES',
+     */'   NAME   NUMBER   NUMBER  HEIGHT  CORNERS        X           Y'
+
+to:
+
+  8   FORMAT(' Factor to convert from input units to meters is:',F10.4)
+  9   FORMAT(/3X,'The ',A2,' flag has been set for processing for an ISC
+     *LT2 run.'/)
+ 11   FORMAT(3X,'The new local coordinates will be displayed in parenthe
+     *ses just below'/4X,' the UTM coordinates they represent.',/)
+ 12   FORMAT(//1X,A8,' has',I2,' tier(s) with a base elevation of', F8.2
+     *,' ',A10)
+ 13   FORMAT(47X,'(',F8.2,') meters',/)
+ 14   FORMAT(
+     *' BUILDING  TIER  BLDG-TIER  TIER   NO. OF      CORNER   COORDINAT
+     *ES',
+     */'   NAME   NUMBER   NUMBER  HEIGHT  CORNERS        X           Y'
+
+from:
+
+ 13   FORMAT(1X,A8,I5,5X,I4,4X,F6.2,I6)
+ 14   FORMAT(42X,2F12.2)
+ 16   FORMAT(41X,'(',2F12.2,')')
+ 17   FORMAT(3X,'Plant north is',F7.2,' degrees with respect to True Nor
+     *th.  ')
+ 18   FORMAT(4X,'The plant coordinates will appear as entered in the Sum
+
+to:
+
+     */)
+ 17   FORMAT(3X,'Plant north is set to',F7.2,' degrees with respect to T
+     *rue North.  '//)
+ 18   FORMAT(4X,'The plant coordinates will appear as entered in the Sum
+
+
+from:
+
+     *elow between'/4X,'the square brackets.')
+ 19   FORMAT(41X,'[',2F12.2,']')
+ 21   FORMAT('                    STACK            STACK   COORDINATES'/
+     *       '  STACK NAME     BASE  HEIGHT          X           Y'/)
+ 22   FORMAT (2X, A8,3X, 2F8.2, 2X, 2F12.2)
+ 23   FORMAT (30X,'(',2F12.2,')')
+ 42   FORMAT(30X,'[',2F12.2,']')
+ 47   FORMAT('  Caution: Blank spaces are not allowed in Stack names by
+
+to:
+
+     *elow between'/4X,'the square brackets.')
+ 19   FORMAT(41X,'[',2F12.2,'] meters')
+ 21   FORMAT(1X,A8,I5,5X,I4,4X,F6.2,I6)
+ 22   FORMAT(27X,F6.2,' meters')
+ 31   FORMAT(42X,2F12.2, 1X, A10)
+ 32   FORMAT(42X,2F12.2, ' meters')
+ 33   FORMAT(41X,'(',2F12.2,') meters')
+ 41   FORMAT(/1X,'Number of stacks to be processed :',I4/)
+ 42   FORMAT('                    STACK            STACK   COORDINATES'/
+     *       '  STACK NAME     BASE  HEIGHT          X           Y'/)
+ 43   FORMAT (2X, A8,3X, 2F8.2, 1X, A10)
+ 44   FORMAT (12X,'(', 2F8.2, ') meters')
+ 45   FORMAT (30X,'(', 2F12.2,') meters')
+ 46   FORMAT (30X,'[', 2F12.2,'] meters')
+ 47   FORMAT('  Caution: Blank spaces are not allowed in Stack names by
+
+from:
+
+     *ISC2 models.')
+ 71   FORMAT (//' The number of stack-tier combinations entered, where e
+
+to:
+
+     *ISC2 models.')
+ 49   FORMAT(31X,2F12.2, 1X, A10)
+ 51   FORMAT (31X, 2F12.2,' meters')
+ 71   FORMAT (//' The number of stack-tier combinations entered, where e
+
+from:
+
+604   FORMAT(/1X,'Drtcn: ', F6.2/)
+1000  FORMAT(15X, A8,2X, 3(F8.2,2X))
+1005  FORMAT(15X,'PRELIMINARY* GEP STACK HEIGHT RESULTS TABLE'/
+     *       12X,'            (Input Units: ',A10,')'//
+     *15X,'                             Preliminary*'/
+     *15X,' Stack      Stack     GEP**  GEP Stack'/
+     *15X,' Name       Height    EQN1   Height Value'//)
+1007  FORMAT(/'   * Results based on Table 3.1 of the GEP Technical Supp
+     *ort Document.'/
+     *'     Consult Table 3.1 for any additional steps that may be requi
+     *red.'/
+     *'  ** Results using Equation 1, page 6 of GEP Technical Support Do
+     *cument.')
+1020  FORMAT(//'                     Overall GEP Summary Table'/
+     *         '                         (Units: ', A8,')'//)
+1021  FORMAT(10X,'NOTE: The projected width values below are not always'
+
+to:
+
+604   FORMAT(/1X,'Drtcn: ', F6.2/)
+1000  FORMAT(8X, A8, 4(F8.2,5X))
+1001  FORMAT(8X, A8, F8.2, 10X, 'N/A',5X, 3(F8.2,5X))
+1005  FORMAT(16X,'PRELIMINARY* GEP STACK HEIGHT RESULTS TABLE'/
+     *       13X,'            (Output Units: meters)'//
+     *8X,'                    Stack-Building            Preliminary*'/
+     *8X,' Stack    Stack     Base Elevation    GEP**   GEP Stack'/
+     *8X,' Name     Height    Differences       EQN1    Height Value'//)
+1007  FORMAT(/'   * Results are based on Determinants 1 & 2 on pages 1 &
+     * 2 of the GEP'/ '     Technical Support Document.  Determinant 3 m
+     *ay be investigated for'/'     additional stack height credit.  Fin
+     *al values result after'/'     Determinant 3 has been taken into co
+     *nsideration.'/
+     *'  ** Results were derived from Equation 1 on page 6 of GEP Techni
+     *cal'/'     Support Document.  Values have been adjusted for any st
+     *ack-building'/'     base elevation differences.'//
+     *'     Note:  Criteria for determining stack heights for modeling e
+     *mission'/
+     *'     limitations for a source can be found in Table 3.1 of the'/
+     *'     GEP Technical Support Document.'/)
+1020  FORMAT(//'                     Overall GEP Summary Table'/
+     *         '                          (Units: meters)'//)
+1021  FORMAT(10X,'NOTE: The projected width values below are not always'
+
+from:
+
+1024  FORMAT('   Bldg-Tier nos. contributing to GEP:', 10I4)
+1025  FORMAT(11X,'*with a Stack-Building elevation difference applied ='
+     *,F8.2)
+2020  FORMAT(//'                     Summary By Direction Table'/
+     *         '                          (Units: ', A8,')',
+     *// ' Dominate stand alone tiers:'/)
+
+to:
+
+1024  FORMAT('   Bldg-Tier nos. contributing to GEP:', 10I4)
+1025  FORMAT(10X,'*adjusted for a Stack-Building elevation difference of
+     *',F8.2)
+2020  FORMAT(//'                     Summary By Direction Table'/
+     *         '                          (Units:  meters)',
+     *// ' Dominate stand alone tiers:'/)
+
+from:
+
+2022  FORMAT(' StkNo:', I3,'  Stk Name:', A8, 23X,'   Stack Ht:', F8.2)
+2026  FORMAT(11X,'      MAX:  BH:',F7.2,'  PBW:',F7.2,
+     * '  *Wake Effect Ht:', F8.2)
+
+to:
+
+2022  FORMAT(' StkNo:', I3,'  Stk Name:', A8, 23X,'   Stack Ht:', F8.2)
+2026  FORMAT(5X,  'Directional MAX:  BH:',F7.2,'  PBW:',F7.2,
+     * '  *Wake Effect Ht:', F8.2)
+
+36.  The Labeled Common statement, /HT/, is no longer needed and was deleted. 
+The code was changed from:
+
+        COMMON /ELEV/ BELEV(MB), SB(MSK)
+        COMMON /HT/ TH(MB, MT), SH(MSK)
+        COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK), GEPIN(MSK,MBT,MBT)
+
+to:
+
+        COMMON /ELEV/ BELEV(MB), SB(MSK)
+        COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK), GEPIN(MSK,MBT,MBT)
+
+
+37.  The stack-building base elevation difference was brought forward in the
+GPC and MXBWH subroutines.  The following sections of code were changed from:
+
+          HWE = HTA + 1.5 * WS
+           GEPIN(S, C, CH) = 1
+
+to:
+
+          HWE = HTA + BELEV(I) - SB(S) + 1.5 * WS
+           GEPIN(S, C, CH) = 1
+
+
+
+from:
+
+            IF (HWE .GT. GEP(S)) THEN
+              GEP(S) = HWE + BELEV(I) - SB(S)
+              GEPBH(S) = HTA
+
+to:
+
+            IF (HWE .GT. GEP(S)) THEN
+              GEP(S) = HWE
+              GEPBH(S) = HTA
+
+from:
+
+               IF (TW .LT. GEPBW(S)) THEN
+                 GEP(S) = HWE + BELEV(I) - SB(S)
+                 GEPBH(S) = HTA
+
+to:
+
+               IF (TW .LT. GEPBW(S)) THEN
+                 GEP(S) = HWE
+                 GEPBH(S) = HTA
+
+38.  Two variables, DE and DFLG, were added through the Labeled Common
+statement, /DE/, to MXBWH.  See comment #4 above for details.  The code in
+MXBWH was changed from:
+
+      COMMON /ELEV/ BELEV(MB), SB(MSK)
+
+to:
+
+      COMMON /DE/ DE, DFLG(MSK, MD)
+      COMMON /ELEV/ BELEV(MB), SB(MSK)
+
+
+39.  The Labeled Common statements, /HT/ and /PWH/, are no longer needed and
+resulted in the following statements being changed from:
+
+      COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK), GEPIN(MSK,MBT,MBT)
+      COMMON /HT/ TH(MB, MT), SH(MSK)
+      COMMON /MXB/ MHWE(MSK, MD), MXPBH(MSK, MD), MXPBW(MSK, MD)
+      COMMON /PWH/ PBH(MBT), PBW(MBT), HWE(MBT)
+      COMMON /MIJ/ MI(MSK), MJ(MSK)
+
+to:
+
+      COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK), GEPIN(MSK,MBT,MBT)
+      COMMON /MXB/ MHWE(MSK, MD), MXPBH(MSK, MD), MXPBW(MSK, MD)
+      COMMON /MIJ/ MI(MSK), MJ(MSK)
+
+
+40.  The variable, MDIRS, is no longer being used.  The labeled Common
+statement was changed from:
+
+      COMMON /MTNM/ MTNUM(MSK), MTLIST(MSK,MBT), MDIRS(MSK)
+
+to:
+
+      COMMON /MTNM/ MTNUM(MSK), MTLIST(MSK,MBT)
+
+41.  In the MXBHW subroutine, several changes were made to simplify the code
+and add direction-based results for the summary table output.  For these
+results, several variable intialization lines of code were added so that the
+variables would be initialized as the sector changed.  
+
+     The statements begining with MI(S) and ending with the 578 continue
+statement are repeated in three sections.  Also the stack-building base
+elevation difference calculation is repeated three times.  Both can be
+calculated in one section or place.  The code was changed from:
+
+C    Stack is within GEP 5L ?
+      IF (GEPIN(S,C,TL1) .EQ. 1) THEN
+        PBH(C) = HTA
+        PBW(C) = TW
+        HWE(C) = HTA + 1.5 * WS
+          IF (HWE(C) .GT. MHWE(S, D)) THEN
+             MHWE(S, D) = HWE(C) + BELEV(I) - SB(S)
+             MXPBH(S, D) = PBH(C)
+             MXPBW(S, D) = PBW(C)
+             MTNUM(S) = TNUM2(C)
+             MI(S) = I
+             MJ(S) = C - (I-1)*MT
+             MDIRS(S) = FLOAT(D)
+             DO 578 M = 1, MTNUM(S)
+               MTLIST(S,M) = TLIST2(C,M)
+578          CONTINUE
+          END IF
+C When wake effects are equal, use those values with a lesser projected width.
+          IF (HWE(C) .EQ. MHWE(S,D)) THEN
+            IF (PBW(C) .LT. MXPBW(S,D)) THEN
+              MHWE(S, D) = HWE(C) + BELEV(I) - SB(S)
+              MXPBH(S, D) = PBH(C)
+              MXPBW(S, D) = PBW(C)
+              MTNUM(S) = TNUM2(C)
+              MI(S) = I
+              MJ(S) = C - (I-1)*MT
+              MDIRS(S) = FLOAT(D)
+              DO 579 M = 1, MTNUM(S)
+                MTLIST(S,M) = TLIST2(C,M)
+579           CONTINUE
+            END IF
+          END IF
+C When a wake effect height is greater than the GEP STK Ht, use the GEP values
+          IF (GEP(S) .LT. MHWE(S,D))  THEN
+            MHWE(S, D) = GEP(S)
+            MXPBW(S,D) = GEPBW(S)
+            MXPBH(S,D) = GEPBH(S)
+            MTNUM(S) = TNUM2(C)
+            MI(S) = I
+            MJ(S) = C - (I-1)*MT
+            MDIRS(S) = FLOAT(D)
+            DO 580 M = 1, MTNUM(S)
+              MTLIST(S,M) = TLIST2(C,M)
+580         CONTINUE
+          END IF
+        END IF
+C
+C INITIALIZE VALUES FOR NEXT LOOP
+C
+        HWE(C) = 0.0
+        PBH(C) = 0.0
+        PBW(C) = 0.0
+
+to:
+
+C
+C    Stack is within GEP 5L ?
+C
+      IF (GEPIN(S,C,TL1) .EQ. 1) THEN
+
+        PBH = HTA
+        PBW = TW
+        HWE = HTA + BELEV(I) - SB(S) + 1.5 * WS
+
+       IF (DE .NE. D) THEN
+         DE = D
+         DHWE = 0.0
+         DPBH = 0.0
+         DPBW = 0.0
+         DO 577 SS = 1, MSK
+577        DFLG(SS, D) = 0
+       END IF
+
+          IF (HWE - MHWE(S, D) .GT. .001) THEN
+            MHWE(S, D) = HWE
+            MXPBH(S, D) = PBH
+            MXPBW(S, D) = PBW
+            MFLG = 1
+          END IF
+C When wake effects are equal, use those values with a lesser projected width.
+          IF (ABS(HWE - MHWE(S,D)) .LT. .001) THEN
+            IF (PBW .LT. MXPBW(S,D)) THEN
+              MHWE(S, D) = HWE
+              MXPBH(S, D) = PBH
+              MXPBW(S, D) = PBW
+              MFLG = 1
+            END IF
+          END IF
+C When a wake effect height is greater than the GEP STK Ht, use the GEP values
+          IF (GEP(S) .LT. MHWE(S,D))  THEN
+            MHWE(S, D) = GEP(S)
+            MXPBW(S,D) = GEPBW(S)
+            MXPBH(S,D) = GEPBH(S)
+            MFLG = 1
+          END IF
+C Update and retain data for the Summary by Direction Tables
+          IF (MFLG .EQ. 1) THEN
+            DFLG(S,D) = 1
+            MTNUM(S) = TNUM2(C)
+            MI(S) = I
+            MJ(S) = C - (I-1)*MT
+             DO 578 M = 1, MTNUM(S)
+               MTLIST(S,M) = TLIST2(C,M)
+578          CONTINUE
+            MFLG = 0
+          END IF
+C Determine if any combined buildings exist for a particular sector
+C Save the combination producing the highest direction-based HWE for 
+C the Summary Table
+        IF (TNUM2(C) .GT. 1) THEN
+          IF (HWE .GT. DHWE) THEN
+            MFLG = 2
+          END IF
+          IF ((ABS(HWE-DHWE).LT. .001) .AND. (PBW .LT. DPBW)) THEN
+            MFLG = 2
+          END IF
+          IF (MFLG .EQ. 2) THEN
+            DFLG(S, D) = 1
+            DHWE = HWE
+            DPBW = PBW
+            MFLG = 0
+            MTNUM(S) = TNUM2(C)
+            MI(S) = I
+            MJ(S) = C - (I-1) * MT
+            DO 579 M = 1, MTNUM(S)
+              MTLIST(S,M) = TLIST2(C,M)
+579         CONTINUE
+          END IF
+         ENDIF
+        END IF
+

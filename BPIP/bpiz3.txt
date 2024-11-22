@@ -1,0 +1,828 @@
+
+                             Model Change Bulletin
+
+                                     MCB#3
+
+                              BPIP (dated 95039)
+
+     This is a formal notification of changes made to the Building Profile
+Input Program (BPIP) source code.  These changes result from found and reported
+problems with the program and from the need to make several revisions.  The
+changes are discussed first and are then followed by the changes made to the
+source code.
+
+     Revisions were also made to the BPIP User's Guide.  These revisions only
+reflect the changes pertinent to the roof stack algorithm and the roof stack
+input section.  No changes were made to the user's guide test cases nor were
+there any subsequent changes to the Output and Summary file sections.
+
+DISCUSSION OF SOURCE CODE CHANGES
+
+     As part of the previous version of BPIP, the user was required to manually
+determine which stacks were atop which tiers and then enter roof stack values
+into the input file after the stack input section.  This was in response to
+cases where a stack could be atop a tier and more than 5L from an upwind tier
+roof edge.  An algorithm has been added to automatically detect when a stack is
+on top of a tier.  The user is no longer required to enter roof stack data. 
+However, the user must be certain that the corner coordinates for each tier are
+entered sequentially; following the tier perimeter in a clockwise or counter-
+clockwise direction.  
+
+     The new roof stack algorithm determines the direction from a stack to each
+corner of a tier.  The directions are used to calculate each angle formed by
+lines drawn from a stack to each of two consecutive corners of a tier.  If an
+angle is formed in a clockwise direction from the first to second corner, the
+angle is considered positive.  If the angle is formed in a counter-clockwise
+direction, the angle is considered negative.  If the stack is on top of the
+tier, the sum of the angles for the tier equals the absolute value of 360
+degrees.  If the stack is not on top of the tier, the sum is equal to 0.  The
+flag, LFLAT, is set to one if the stack is on the roof of a tier. 
+
+     In producing the Summary file, several arrays and one variable were not
+initialized and reinitialized.  This has led to situations where the same group
+of tiers, influencing a stack for one wind flow direction, are repeated for
+subsequent directions where there is no wake effect influence being exerted by
+that particular group.  The variable and arrays are now being initialized and
+reinitialized.
+
+     In producing the preliminary GEP stack height values for GEP wake effects
+over 65 meters, the stack-terrain difference value was added twice; once in
+calculating the GEP value and again just before printing the GEP value.  The
+problem has been corrected.
+SOURCE CODE CHANGES
+
+     The following is a list of changes made to BPIP:
+
+1.   The SCRAM header has been changed to reflect the new BPIP version date.
+     The header line has been changed from:
+
+C  *              BUILDING PROFILE INPUT PROGRAM (DATED 94074)              *
+
+to:
+
+C  *              BUILDING PROFILE INPUT PROGRAM (DATED 95039)              *
+
+
+2.   The following comment has been added:
+
+C                       February 8, 1995 - Corrections/Updates (See MCB #3)
+
+3.   The following input format structure for the old roof stack input has been
+     deleted:
+
+C  Number of Stacks whose roof location > 5L from a roof edge
+C    Stack number, Building number, Tier Number
+C     .
+C     .
+C     .
+C    Stack number, Building number, Tier Number
+C
+
+4a.  The following definitions have been added:
+
+C   AA     - DOUBLE PRECISION INPUT VALUE; GENERALLY AN X-COORDINATE
+C          - ANGLE FORMED BETWEEN TWO ADJACENT CORNERS OF A TIER AND A STACK
+C   AP     - X-COORDINATE TRANSLATED FROM PLANT NORTH
+C   BB     - DOUBLE PRECISION INPUT VALUE; GENERALLY AN Y-COORDINATE
+C   BLDGIN - LABELLED COMMON CONTAINING ARRAYS OF BUILDING INPUT VALUES
+C   BLDOUT - LABELLED COMMON CONTAINING TRANSLATED CORNER COORDINATES
+C   BP     - Y-COORDINATE TRANSLATED FROM PLANT NORTH
+C   DHWE   - COMBINED BUILDING WAKE EFFECT HEIGHT FOR A WIND FLOW DIRECTION
+C   DIRT   - DIRECTION FROM A STACK TO A CORNER
+C   DIRTT  - TOTAL OF ANGLES (AA) FORMED BETWEEN A STACK AND CONSECUTIVE TIER
+C              CORNERS.  IF TOTAL EQUALS 360 DEGREES, THE STACK IS ON THE ROOF
+C              OF THAT TIER.
+C   DPBH   - COMMON HEIGHT OF A COMBINED TIERS FOR A SPECIFIC WIND FLOW
+C   DPBW   - PROJECTED WIDTH OF COMBINED TIERS FOR A SPECIFIC WIND FLOW
+C   DTR2   - DOUBLE PRECISION DTR
+C   DX1    - MINIMUM OF TWO X-COORDINATES
+C   DX2    - MAXIMUM OF TWO X-COORDINATES
+C   ELEV   - LABELLED COMMON CONTAINING BUILDING AND STACK BASE ELEVATIONS
+C   GETDAT - GET DATE MICROSOFT LIBRARY FUNCTION
+C   GETTIM - GET TIME MICROSOFT LIBRARY FUNCTION
+C   GP     - LABELLED COMMON CONTAINING GEP DATA
+C   GTNM   - LABELLED COMMON CONTAINING TIERS AFFECTING STACKS
+C   IG     - FLAG TO INDICATE SINGLE OR COMBINED TIER CALCULATIONS
+C   II     - COUNTER
+C   INTRCP - LABELLED COMMON CONTAINING THE INTERCEPT COORDINATES BETWEEN A
+C              STACK AND THE SIDE OF A TIER
+C   ISS    - COUNTER FOR (RE)-SETTING STACK RELATED VALUES
+C   L      - COUNTER
+C   LB     - BUILDING NUMBER INDEX
+C   LD     - TIER CORNER INDEX
+C   LD1    - FIRST OF TWO CONSECUTIVE TIER CORNERS
+C   LD2    - SECOND OF TWO CONSECUTIVE TIER CORNERS
+C   LS     - STACK INDEX
+C   LT     - TIER INDEX
+C   MFLG   - FLAG INDICATES A NEW MAXIMUM WAKE EFFECT HEIGHT HAS BEEN FOUND
+C   MIJ    - LABELLED COMMON CONTAINING BUILDING TIER NUMBER
+C   MTNM   - LABELLED COMMON CONTAINING TIER(S) PRODUCING MAXIMUM WAKE EFFECT
+C             HEIGHT
+C   MXB    - LABELLED COMMON CONTAINING MAXIMUM WAKE EFFECT VALUES
+C   MXN    - LABELLED COMMON CONTAINING TIER MAX/MIN CORNERS
+C   SWTN   - OUTPUT FOR 'ST' OR 'LT' VARIABLE
+C   TL1    - FOCAL TIER NUMBER
+C   TL2    - CANDIDATE TIER NUMBER
+C   TNM    - LABELLED COMMON CONTAINING A SET OF COMBINED TIERS
+C   UNTS   - INPUT UNITS NAME
+C   UTM    - FLAG TO INDICATE THE INPUT DATA ARE IN UTM COORDINATES
+C   UTMP   - INPUT FLAG INDICATING USE OF UTM INPUT
+C   X1     - FIRST OF TWO CONSECUTIVE TIER CORNER X-COORDINATES
+C   X2     - SECOND OF TWO CONSECUTIVE TIER CORNER X-COORDINATES
+C   XCOMP  - DOUBLE PRECISION DIFFERENCE BETWEEN A STACK AND TIER CORNER
+C   XSP    - STACK X-COORDINATE ARGUMENT IN SUBROUTINE DISLIN
+C   Y1     - FIRST OF TWO CONSECUTIVE TIER CORNER Y-COORDINATES
+C   Y2     - SECOND OF TWO CONSECUTIVE TIER CORNER Y-COORDINATES
+C   YCOMP  - DOUBLE PRECISION DIFFERENCE BETWEEN A STACK AND TIER CORNER
+C   YSP    - STACK Y-COORDINATE ARGUMENT IN SUBROUTINE DISLIN
+
+
+4b.  The following variables and definitions are no longer being used and have
+     been deleted.
+
+C   JXMAX  - TIER CORNER NUMBER WHICH IS FURTHEST EAST
+C   JXMIN  - TIER CORNER NUMBER WHICH IS FURTHEST WEST
+C   JYMAX  - TIER CORNER NUMBER WHICH IS FURTHEST NORTH
+C   JYMIN  - TIER CORNER NUMBER WHICH IS FURTHEST SOUTH
+C   TC     - NUMBER OF TIERS IN COMBINATION (MIN = 1)
+
+5.   Several new and old variables were made double precision.  These variables
+     are involved with UTM coordinates and the new automated roof stack
+     algorithm.  The double precision statement was changed from:
+
+      DOUBLE PRECISION AA, BB
+
+to:
+
+      DOUBLE PRECISION A, B, AA, BB, DIRT, DIRTT, DTR2,
+     +                 UEAST, UNORTH, XCOMP, YCOMP
+
+6.   In several of the labelled common statement, variables were added or an
+     additional subscript was added as part of the correction to keep a group
+     of tiers from being printed for subsequent directions in the Summary table
+     even though the group was no longer affecting the particular stack.
+
+     Previously, a maximum wake effect height printed for a particular
+     direction in the Dominate Combined Building section could have been
+     produced by a single tier.  The variables DHWE, DPBH, and DPBW, have been
+     added to keep a maximum wake effect height produced by a group of tiers
+     separate from one produced by a single tier.  Also, an extra argument has
+     been added to the variable, GEPIN, in order to flag when a stack is in a
+     GEP wake effect area produced by a group of tiers as opposed to a single
+     tier.  The labelled common statements are not contiguous.
+
+     The labelled common statements were changed from:
+      COMMON /DE/ DE, DFLG(MSK, MD)
+      COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK), GEPIN(MSK,MBT,MBT)
+
+      COMMON /MIJ/ MI(MSK), MJ(MSK)
+      COMMON /MTNM/ MTNUM(MSK), MTLIST(MSK,MBT)
+
+to:
+
+      COMMON /DE/ DE, DFLG(MSK, MD), DHWE(MSK), DPBH(MSK), DPBW(MSK)
+      COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     +            GEPIN(MSK,MBT,MBT,2)
+
+      COMMON /MIJ/ MI(MSK,2), MJ(MSK,2)
+      COMMON /MTNM/ MTNUM(MSK,2), MTLIST(MSK,MBT,2)
+
+7.   Two variables were dimensioned for use with the roof stack algorithm.  The
+     following dimension statement was changed from:
+
+      DIMENSION DISTMN(MBT, MBT), LFLAT(MSK, MBT)
+
+to:
+
+      DIMENSION DIRT(MTS), DISTMN(MBT, MBT), LFLAT(MSK, MBT)
+
+8.   A double precision degrees to radians conversion factor was added:
+
+       DTR2 = 3.141593 / 180.
+
+9.   A BPIP version header print statement was added using Format number 461. 
+     Original Format statement numbers 461 and 462 were increased by one.  This
+     was done in several places throughout the source code. The lines of code
+     were changed from:
+
+            WRITE (12, 461) IMON, IDAY, IYR
+            WRITE (12, 462) IHR, IMIN, ISEC
+            WRITE (12,1) TITLE
+            WRITE (14, 461) IMON, IDAY, IYR
+            WRITE (14, 462) IHR, IMIN, ISEC
+            WRITE (14,1) TITLE
+
+to:
+            WRITE (12, 461)
+            WRITE (12, 462) IMON, IDAY, IYR
+            WRITE (12, 463) IHR, IMIN, ISEC
+            WRITE (12,1) TITLE
+            WRITE (14, 461)
+            WRITE (14, 462) IMON, IDAY, IYR
+            WRITE (14, 463) IHR, IMIN, ISEC
+            WRITE (14,1) TITLE
+
+and from:
+
+560      CONTINUE
+             WRITE (12, 461) IMON, IDAY, IYR
+             WRITE (12, 462) IHR, IMIN, ISEC
+
+461   FORMAT(1X,'DATE : ',I2,'/',I2,'/',I2)
+462   FORMAT(1X,'TIME : ',I2,':',I2,':',I2)
+
+
+to:
+
+560      CONTINUE
+             WRITE (12, 461)
+             WRITE (12, 462) IMON, IDAY, IYR
+             WRITE (12, 463) IHR, IMIN, ISEC
+
+461   FORMAT(30X,'BPIP (Dated: 95039)')
+462   FORMAT(1X,'DATE : ',I2,'/',I2,'/',I2)
+463   FORMAT(1X,'TIME : ',I2,':',I2,':',I2)
+
+10.  VAX Fortran compilation warnings were given because of the way strings
+     were continued from line to line.  The strings in the following write and
+     format statements were rewritten to VAX compilation standards.  The
+     following lines were changed from:
+
+            WRITE(*,*) 'The SWTN variable, ',SWTN,' is incorrectly enter
+     *ed.'
+            WRITE(*,*) 'The UTMP variable, ',UTMP,' is incorrectly enter
+     *ed.'
+
+             WRITE(*, *) 'THE NUMBER OF BUILDINGS ENTERED EXCEEDS THE PA
+     *RAMETER, MB'
+              WRITE(*, *) 'THE NUMBER OF TIERS/BUILDING EXCEEDS THE PARA
+     *METER, MT'
+              WRITE(*, *) 'THE NUMBER OF TIERS/BUILDING EXCEEDS THE PARA
+     *METER, MTS'
+           WRITE(*, *) 'THE NUMBER OF STACKS ENTERED EXCEEDS THE PARAMET
+     *ER, MKS'
+
+  2   FORMAT(/3X,'The ',A2,' flag has been set for processing for an ISC
+     *ST2 run.'/)
+  3   FORMAT(3X,'Inputs entered in ', A10,' will be converted to meters
+     *using '/3X,' a conversion factor of',F10.4, '.  Output will be in
+     *meters.'/)
+  4   FORMAT(3X,'The UTMP variable is set to ',A4,'.  The input is assum
+     *ed to be in'/4X,' UTM coordinates.  BPIP will move the UTM origin
+     *to the first pair of'/4X,' UTM coordinates read.  The UTM coordina
+     *tes of the new origin will '/4X,' be subtracted from all the other
+     * UTM coordinates entered to form '/4X,' this new local coordinate
+     *system.'/)
+  5   FORMAT(3X,'UTMP is set to ',A4,'.  The input is assumed to be in a
+     * local'/3x,' X-Y coordinate system as opposed to a UTM coordinate
+     *system.'/3x,' True North is in the positive Y direction.'/)
+  9   FORMAT(/3X,'The ',A2,' flag has been set for processing for an ISC
+     *LT2 run.'/)
+ 11   FORMAT(3X,'The new local coordinates will be displayed in parenthe
+     *ses just below'/4X,' the UTM coordinates they represent.',/)
+ 12   FORMAT(//1X,A8,' has',I2,' tier(s) with a base elevation of', F8.2
+     *,' ',A10)
+ 13   FORMAT(47X,'(',F8.2,') meters',/)
+ 14   FORMAT(
+     *' BUILDING  TIER  BLDG-TIER  TIER   NO. OF      CORNER   COORDINAT
+     *ES',
+     */'   NAME   NUMBER   NUMBER  HEIGHT  CORNERS        X           Y'
+     */)
+ 17   FORMAT(3X,'Plant north is set to',F7.2,' degrees with respect to T
+     *rue North.  '//)
+ 18   FORMAT(4X,'The plant coordinates will appear as entered in the Sum
+     *mary output'/4x,'file and they will be adjusted to True North prio
+     *r to processing.'/4x,'The True North oriented coordinates appear b
+     *elow between'/4X,'the square brackets.')
+ 47   FORMAT('  Caution: Blank spaces are not allowed in Stack names by
+     *ISC2 models.')
+ 71   FORMAT (//' The number of stack-tier combinations entered, where e
+     *ach stack is at least 5L'/' in from at least one of the edges of t
+     *heir respective tier roofs, is:',I4,/)
+ 73   FORMAT(8x,' These stack/building-tiers are:'//
+     * '    STACK         BUILDING -    TIER'/
+     * ' NAME    NUMBER   NAME      NO.  NO.')
+ 72   FORMAT( 1X, A8,2X, I4, 3x,A8,2X, 2I4)
+1007  FORMAT(/'   * Results are based on Determinants 1 & 2 on pages 1 &
+     * 2 of the GEP'/ '     Technical Support Document.  Determinant 3 m
+     *ay be investigated for'/'     additional stack height credit.  Fin
+     *al values result after'/'     Determinant 3 has been taken into co
+     *nsideration.'/
+     *'  ** Results were derived from Equation 1 on page 6 of GEP Techni
+     *cal'/'     Support Document.  Values have been adjusted for any st
+     *ack-building'/'     base elevation differences.'//
+     *'     Note:  Criteria for determining stack heights for modeling e
+     *mission'/
+     
+1025  FORMAT(10X,'*adjusted for a Stack-Building elevation difference of
+     *',F8.2)
+2020  FORMAT(//'                     Summary By Direction Table'/
+2022  FORMAT(' StkNo:', I3,'  Stk Name:', A8, 23X,'   Stack Ht:', F8.2)
+
+to:
+
+            WRITE(*,*) 'The SWTN variable, ',SWTN,' is incorrectly ',
+     +       'entered.'
+            STOP
+            WRITE(*,*) 'The UTMP variable, ',UTMP,' is incorrectly ',
+     +                 'entered.'
+             WRITE(*, *) 'THE NUMBER OF BUILDINGS ENTERED EXCEEDS THE ',
+     +                   'PARAMETER, MB'
+             WRITE(*, *) 'THE NUMBER OF TIERS/BUILDING EXCEEDS THE ',
+     *                   'PARAMETER, MT'
+              WRITE(*, *) 'THE NUMBER OF TIERS/BUILDING EXCEEDS THE ',
+     *                    'PARAMETER, MTS'
+           WRITE(*, *) 'THE NUMBER OF STACKS ENTERED EXCEEDS THE ',
+     +                 'PARAMETER, MKS'
+
+  2   FORMAT(/3X,'The ',A2,' flag has been set for processing for an ',
+     +'ISCST2 run.'/)
+  3   FORMAT(3X,'Inputs entered in ', A10,' will be converted to ',
+     + 'meters using '/3X,' a conversion factor of',F10.4,
+     + '.  Output will be in meters.'/)
+  4   FORMAT(3X,'The UTMP variable is set to ',A4,'.  The input is ',
+     +'assumed to be in'/4X,
+     +' UTM coordinates.  BPIP will move the UTM origin',
+     *' to the first pair of'/4X,' UTM coordinates read.',
+     *'  The UTM coordinates of the new origin will '/4X,
+     *' be subtracted from all the other UTM coordinates entered to ',
+     *'form '/4X,' this new local coordinate system.'/)
+  5   FORMAT(3X,'UTMP is set to ',A4,'.  The input is assumed to be in',
+     +' a local'/3x,' X-Y coordinate system as opposed to a UTM',
+     +' coordinate system.'/3x,' True North is in the positive Y',
+     +' direction.'/)
+  9   FORMAT(/3X,'The ',A2,' flag has been set for processing for an',
+     *' ISCLT2 run.'/)
+ 11   FORMAT(3X,'The new local coordinates will be displayed in parent',
+     *'heses just below'/4X,' the UTM coordinates they represent.',/)
+ 12   FORMAT(//1X,A8,' has',I2,' tier(s) with a base elevation of',
+     * F8.2,' ',A10)
+ 13   FORMAT(47X,'(',F8.2,') meters',/)
+ 14   FORMAT(' BUILDING  TIER  BLDG-TIER  TIER   NO. OF      CORNER   ',
+     +'COORDINATES',/
+     *'   NAME   NUMBER   NUMBER  HEIGHT  CORNERS        X           Y'
+     */)
+ 17   FORMAT(3X,'Plant north is set to',F7.2,' degrees with respect to',
+     *' True North.  '//)
+ 18   FORMAT(4X,'The plant coordinates will appear as entered in the ',
+     *'Summary output'/4x,'file and they will be adjusted to True ',
+     *'North prior to processing.'
+     */4x,'The True North oriented coordinates appear ',
+     *'below between'/4X,'the square brackets.')
+ 47   FORMAT('  Caution: Blank spaces are not allowed in Stack names ',
+     *'by ISC2 models.')
+ 71   FORMAT (//' The following lists the stacks that have been identi',
+     *'fied'/   ' as being atop the noted building-tiers.'/)
+ 72   FORMAT(9X, ' STACK            BUILDING         TIER'/
+     *       9X, ' NAME      NO.    NAME        NO.  NO.')
+ 73   FORMAT(10X, A8, I4, 5X, A8, 2(1X, I5))
+115   FORMAT('      Wind flow passing', I4,' degree direction.')
+1007  FORMAT(/'   * Results are based on Determinants 1 & 2 on pages 1',
+     *' & 2 of the GEP'/ '     Technical Support Document.  Determinan',
+     *'t 3 may be investigated for'/'     additional stack height cred',
+     *'it.  Final values result after'/'     Determinant 3 has been ta',
+     *'ken into consideration.'/
+     *'  ** Results were derived from Equation 1 on page 6 of GEP Tech',
+     *'nical'/'     Support Document.  Values have been adjusted for a',
+     *'ny stack-building'/'     base elevation differences.'//
+     *'     Note:  Criteria for determining stack heights for modeling',
+     *' emission'/
+1025  FORMAT(10X,'*adjusted for a Stack-Building elevation difference',
+     *' of',F8.2)
+
+
+11.  The roof stack algorithm was rewritten from:
+
+      READ (10,*) L5SQAT
+          WRITE (14,71) L5SQAT
+
+            IF(L5SQAT .GT. 0) THEN
+              WRITE(14,73)
+            END IF
+
+        DO 70 L = 1, L5SQAT
+          READ(10, *) S, I, J
+           C = (I-1) * MXTRS + J
+           GEPIN(S, C, C) = 1
+           LFLAT(S, C) = 1
+          WRITE(14,72) STKN(S), S, BTN(I), I, J
+70      CONTINUE
+
+to:
+
+C     Detect if a stack is on top of a roof
+C       where the stack could be > 5L from an upwind roof edge.
+
+        L5SQAT = 0
+        DO 70 LS = 1, NS
+          DO 70 LB = 1, NB
+            DO 70 LT = 1, NTRS(LB)
+              C = (LB-1) * MXTRS + LT
+              DIRTT = 0.0
+              DO 74 LD = 1, ND(LB, LT)
+                IF (YS(LS) .EQ. Y(LB,LT,LD)) THEN
+                   IF (XS(LS) .GT. X(LB,LT,LD)) THEN
+                      DIRT(LD) = 270.
+                   END IF
+                   IF (XS(LS) .LT. X(LB,LT,LD)) THEN
+                      DIRT(LD) = 90.
+                   END IF
+                   IF (XS(LS) .EQ. X(LB,LT,LD)) THEN
+                      GEPIN(LS,C,C,1) = 1
+                      LFLAT(LS,C) = 1
+                      DIRTT = 360.
+                      GOTO 77
+                   END IF
+                 ELSE
+                  XCOMP =  X(LB,LT,LD) - XS(LS)
+                  YCOMP =  Y(LB,LT,LD) - YS(LS)
+                  DIRT(LD) = DATAN(XCOMP/YCOMP) / DTR2
+                   IF (YCOMP .GT. 0.0) DIRT(LD) = 360. + DIRT(LD)
+                   IF (YCOMP .LE. 0.0) DIRT(LD) = 180. + DIRT(LD)
+                   IF (DIRT(LD) .GT. 360.) DIRT(LD) = DIRT(LD) - 360.
+                END IF
+   74         CONTINUE
+            DO 76 LD = 1, ND(LB,LT)
+              LD1 = LD
+              LD2 = LD + 1
+                IF (LD2 .GT. ND(LB,LT)) LD2 = 1
+              AA = DIRT(LD2) - DIRT(LD1)
+              IF (AA .LE. -180.) AA = 360. + AA
+              IF (AA .GT.  180.) AA = AA - 360.
+                DIRTT = DIRTT + AA
+   76       CONTINUE
+   77       CONTINUE
+              IF (ABS(360. - DIRTT) .LT. 0.02) THEN
+                 L5SQAT = L5SQAT + 1
+                 IF (L5SQAT .EQ. 1) THEN
+                   WRITE (14,71)
+                   WRITE (14,72)
+                 END IF
+                 GEPIN (LS,C,C,1) = 1
+                 LFLAT (LS,C) = 1
+                 WRITE(14,73) STKN(LS), LS, BTN(LB), LB, LT
+              END IF
+70      CONTINUE
+          IF (L5SQAT .EQ. 0) THEN
+            WRITE(14,*) ' '
+            WRITE(14,*) '   No stacks have been detected as being atop',
+     +                    ' any structures.'
+          END IF
+
+12.  An extra argument was added to the CALL GPC statements to identify when
+     the calculations were for a single tier (1) or group of tiers (2).  The
+     lines are not contiguous.  The following lines were changed from:
+
+               CALL GPC (D, I, C, S, TW, WS, HTA, C)
+
+                  CALL GPC (D, I, C1, S, TW, WS, HTA, TL1)
+
+                   CALL GPC (D, I, C1, S, TW, WS, HTA, TL1)
+
+                     CALL GPC (D, I, C1, S, TW, WS, HTA, TL1)
+
+                     CALL GPC (D,I,C1,S,TW,WS, HTA, TL1)
+
+                     CALL GPC (D, I, C1, S, TW, WS, HTA, TL1)
+
+                 CALL MXBWH(D, I, S, C, TW, HTA, WS, CH)
+
+               CALL MXBWH(D, I, S, C, TW, HTA, WS, CH)
+
+to:
+
+               CALL GPC (D, I, C, S, TW, WS, HTA, C, 1)
+
+                  CALL GPC (D, I, C1, S, TW, WS, HTA, TL1,2)
+
+                   CALL GPC (D, I, C1, S, TW, WS, HTA, TL1, 2)
+
+                     CALL GPC (D, I, C1, S, TW, WS, HTA, TL1, 2)
+
+                     CALL GPC (D,I,C1,S,TW,WS, HTA, TL1, 2)
+
+                     CALL GPC (D, I, C1, S, TW, WS, HTA, TL1, 2)
+
+                 CALL MXBWH(D, I, S, C, TW, HTA, WS, CH, 1)
+
+               CALL MXBWH(D, I, S, C, TW, HTA, WS, CH, 2)
+
+13.  Additional message are now written to the screen during program execution
+     to help the user identify how far the program has progressed.  The lines
+     are not contiguous. 
+
+        WRITE(*,*) '  Looking for and calculating',
+     +             ' any group of tiers GEP values'
+        WRITE(*,*) '    for a wind flow starting at 0.25 degrees.'
+
+
+        IF (MOD(D/4.,10.) .EQ. 0.) THEN
+          WRITE(*,115) D/4
+        END IF
+
+         WRITE(*,*) '  Calculating single tier downwash values.'
+
+           WRITE(*,*) '  Calculating group of tiers downwash values.'
+
+
+14.  The line of code causing an additional stack-building elevation difference
+     to be added to the Preliminary GEP Stack Height Value in the Output and
+     Summary tables for values over 65 meters has been deleted.  The two lines
+     of code affected have been changed from:
+
+           GP = GEP(S) - DIF
+           PV = MAX (G65, GP)
+
+to:
+
+           PV = MAX (G65, GEP(S))
+
+15.  The value TNUM2(C) was not initialized in the single tier algorithms. 
+     This contributed to the wrong group of tiers being used occasionally in
+     the Summary file.  The following lines of code were changed from: 
+
+           CH = C
+           HTA = TH(I,J)
+
+to:
+
+           CH = C
+           TNUM2(C) = 1
+           HTA = TH(I,J)
+
+16.  To facilitate a slight restructuring of the Summary file output, the Write
+     statement with a Format number of 2026 was moved down several lines and
+     changed to Format number 1026.  This output is for a single tier.
+
+           WRITE(14,2022) S, STKN(S), SH(S)
+           WRITE(14,2026) MXPBH(S,D), MXPBW(S,D), MHWE(S,D)
+           WRITE(14,2027) GEPBH(S), GEPBW(S), GEP(S)
+         IF (MHWE(S,D) .EQ. 0.0) THEN
+           WRITE(14,*) '     No single tier affects this stack for this
+     &direction.'
+          ELSE
+           DIF = SB(S) - BELEV(MI(S))
+           WRITE(14,1025) DIF
+           WRITE(14,2028) MI(S), BTN(MI(S)), MJ(S)
+         END IF
+
+to:
+
+           WRITE(14,2022) S, STKN(S), SH(S)
+           WRITE(14,2027) GEPBH(S), GEPBW(S), GEP(S)
+         IF (MHWE(S,D) .EQ. 0.0) THEN
+           WRITE(14,*) '     No single tier affects this stack for ',
+     +                 'this direction.'
+          ELSE
+           WRITE(14,1026) MXPBH(S,D), MXPBW(S,D), MHWE(S,D)
+           DIF = SB(S) - BELEV(MI(S,1))
+           WRITE(14,1025) DIF
+           WRITE(14,2028) MI(S,1), BTN(MI(S,1)), MJ(S,1)
+         END IF
+
+17.  The 2026 Format statement was divided into two statements.  The original
+     statement was designed to print a set of directional maximum wake effect
+     height values.  The new statements are designed to print two sets of
+     directional maximum wake effect height values.  One set for a single tier
+     for a particular direction and another set for a group of tiers for a
+     particular direction.  The original statement was changed from:
+
+2026  FORMAT(5X,  'Directional MAX:  BH:',F7.2,'  PBW:',F7.2,
+     * '  *Wake Effect Ht:', F8.2)
+
+to:
+
+1026  FORMAT(5X,  'Single tier MAX:  BH:',F7.2,'  PBW:',F7.2,
+     * '  *Wake Effect Ht:', F8.2)
+2026  FORMAT(3X,'Combined tier MAX:  BH:',F7.2,'  PBW:',F7.2,
+     * '  *Wake Effect Ht:', F8.2)
+
+18.  See statement #16 above.
+
+from:
+
+      DO 2012 S = 1, NS
+         WRITE(14,2022) S, STKN(S), SH(S)
+         WRITE(14,2026) MXPBH(S,D), MXPBW(S,D), MHWE(S,D)
+         WRITE(14,2027) GEPBH(S), GEPBW(S), GEP(S)
+         IF (MTNUM(S) .LT. 2) THEN
+           WRITE(14,*) '      No combined tiers affect this stack for th
+     &is direction.'
+          ELSE
+           IF (DFLG(S,D) .EQ. 1) THEN
+             DIF = SB(S) - BELEV(MI(S))
+             WRITE(14,1025) DIF
+             WRITE(14,2023) MTNUM(S)
+             WRITE(14,2024) (MTLIST(S,M), M = 1, MTNUM(S))
+           ELSE
+             WRITE(14,*) '      No combined tiers affect this stack for
+     & this direction'
+          END IF
+
+to:
+
+      DO 2012 S = 1, NS
+         WRITE(14,2022) S, STKN(S), SH(S)
+         WRITE(14,2027) GEPBH(S), GEPBW(S), GEP(S)
+         IF (MTNUM(S,2) .LT. 2) THEN
+           WRITE(14,*) '      No combined tiers affect this stack for ',
+     +                 'this direction.'
+          ELSE
+           IF (DFLG(S,D) .EQ. 1) THEN
+             WRITE(14,2026) DPBH(S), DPBW(S), DHWE(S)
+             DIF = SB(S) - BELEV(MI(S,2))
+             WRITE(14,1025) DIF
+             WRITE(14,2023) MTNUM(S,2)
+             WRITE(14,2024) (MTLIST(S,M,2), M = 1, MTNUM(S,2))
+           ELSE
+             WRITE(14,*) '      No combined tiers affect this stack ',
+     +                   'for this direction'
+          END IF
+
+19.  A BPIP header has been added to the output file.  The lines of code were
+     changed from:
+
+        IF (SWT .EQ. 0) THEN
+            WRITE (12, 461) IMON, IDAY, IYR
+            WRITE (12, 462) IHR, IMIN, ISEC
+            WRITE (12, 297)
+
+to:
+
+        IF (SWT .EQ. 0) THEN
+            WRITE (12, 461)
+            WRITE (12, 462) IMON, IDAY, IYR
+            WRITE (12, 463) IHR, IMIN, ISEC
+            WRITE (12, 297)
+
+20.  The following non contiguous comment out lines were deleted:
+
+C             WRITE (12,297)
+C              IZ = D
+C              IZ = D
+C             WRITE (12,411) STKN (S)
+C             WRITE (12,297)
+C             WRITE (12,292) (MH(S,L) , L = 1, ND16)
+C             WRITE (12,292) (MW(S,L) , L = 1, ND16)
+
+
+21.  In the Subroutine GPC, an argument was added to the subroutine arguments
+     to pass a flag that differentiates between values for a single tier and
+     values for a group of tiers.  Other changes made to this subroutine are
+     based on this new argument and the need to solidly separate the single
+     tier results from the group of tier results.  The lines below are not
+     contiguous but they are all part of the Subroutine GPC.  The lines were
+     changed from:
+
+
+      SUBROUTINE GPC (D, I, C, S, TW, WS, HTA, CH)
+
+        COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK), GEPIN(MSK,MBT,MBT)
+
+        COMMON /MIJ/ MI(MSK), MJ(MSK)
+
+
+          HWE = HTA + BELEV(I) - SB(S) + 1.5 * WS
+           GEPIN(S, C, CH) = 1
+            IF (HWE .GT. GEP(S)) THEN
+
+              GTNUM(S) = TNUM2(C)
+              MI(S) = I
+              MJ(S) = C - (I-1)*MT
+               GDIRS(S) = FLOAT(D)/4
+
+to:
+
+      SUBROUTINE GPC (D, I, C, S, TW, WS, HTA, CH, IG)
+
+        COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     *              GEPIN(MSK,MBT,MBT,2)
+        COMMON /MIJ/ MI(MSK,2), MJ(MSK,2)
+
+          HWE = HTA + BELEV(I) - SB(S) + 1.5 * WS
+           GEPIN(S, C, CH, IG) = 1
+            IF (HWE .GT. GEP(S)) THEN
+
+              GTNUM(S) = TNUM2(C)
+              MI(S,1) = I
+              MJ(S,1) = C - (I-1)*MT
+               GDIRS(S) = FLOAT(D)/4
+
+22.  In the Subroutine MXBWH, an argument was added to the subroutine arguments
+     to pass a flag that differentiates between values for a single tier and
+     values for a group of tiers.  Other changes made to this subroutine are
+     based on this new argument and the need to solidly separate the single
+     tier results from the group of tier results.  The lines below are not
+     contiguous but they are all part of the Subroutine MXBWH.  The lines were
+     changed from:
+
+      SUBROUTINE MXBWH(D, I, S, C, TW, HTA, WS, TL1)
+
+      COMMON /DE/ DE, DFLG(MSK, MD)
+      COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK), GEPIN(MSK,MBT,MBT)
+      COMMON /MIJ/ MI(MSK), MJ(MSK)
+      COMMON /MTNM/ MTNUM(MSK), MTLIST(MSK,MBT)
+
+      IF (GEPIN(S,C,TL1) .EQ. 1) THEN
+
+         DE = D
+         DHWE = 0.0
+         DPBH = 0.0
+         DPBW = 0.0
+         DO 577 SS = 1, MSK
+577        DFLG(SS, D) = 0
+       END IF
+
+          IF (HWE - MHWE(S, D) .GT. .001) THEN
+
+            DFLG(S,D) = 1
+            MTNUM(S) = TNUM2(C)
+            MI(S) = I
+            MJ(S) = C - (I-1)*MT
+             DO 578 M = 1, MTNUM(S)
+               MTLIST(S,M) = TLIST2(C,M)
+578          CONTINUE
+
+        IF (TNUM2(C) .GT. 1) THEN
+          IF (HWE .GT. DHWE) THEN
+            MFLG = 2
+
+          END IF
+          IF ((ABS(HWE-DHWE).LT. .001) .AND. (PBW .LT. DPBW)) THEN
+            MFLG = 2
+
+            DFLG(S, D) = 1
+            DHWE = HWE
+            DPBW = PBW
+            MFLG = 0
+            MTNUM(S) = TNUM2(C)
+            MI(S) = I
+            MJ(S) = C - (I-1) * MT
+            DO 579 M = 1, MTNUM(S)
+              MTLIST(S,M) = TLIST2(C,M)
+579         CONTINUE
+
+to:
+
+      SUBROUTINE MXBWH(D, I, S, C, TW, HTA, WS, TL1, IG)
+
+      COMMON /DE/ DE, DFLG(MSK, MD), DHWE(MSK), DPBH(MSK), DPBW(MSK)
+      COMMON /GP/ GEP(MSK), GEPBH(MSK), GEPBW(MSK),
+     +            GEPIN(MSK,MBT,MBT,2)
+      COMMON /MIJ/ MI(MSK,2), MJ(MSK,2)
+      COMMON /MTNM/ MTNUM(MSK,2), MTLIST(MSK,MBT,2)
+
+      IF (GEPIN(S,C,TL1,IG) .EQ. 1) THEN
+
+         DE = D
+         DO 577 SS = 1, MSK
+         DHWE(SS) = 0.0
+         DPBH(SS) = 0.0
+         DPBW(SS) = 0.0
+         MTNUM(SS,IG) = 0
+577      DFLG(SS, D) = 0
+       END IF
+          IF (HWE - MHWE(S, D) .GT. .001) THEN
+
+            DFLG(S,D) = 1
+            MTNUM(S,1) = TNUM2(C)
+            MI(S,IG) = I
+            MJ(S,IG) = C - (I-1)*MT
+             DO 578 M = 1, MTNUM(S,IG)
+               MTLIST(S,M,IG) = TLIST2(C,M)
+578          CONTINUE
+
+        IF (TNUM2(C) .GT. 1) THEN
+          IF (HWE .GT. DHWE(S)) THEN
+            MFLG = 2
+
+          END IF
+          IF ((ABS(HWE-DHWE(S)).LT. .001) .AND. (PBW .LT. DPBW(S))) THEN
+            MFLG = 2
+
+            DFLG(S, D) = 1
+            DHWE(S) = HWE
+            DPBW(S) = PBW
+            DPBH(S) = PBH
+            MFLG = 0
+            MTNUM(S,IG) = TNUM2(C)
+            MI(S,IG) = I
+            MJ(S,IG) = C - (I-1) * MT
+            DO 579 M = 1, MTNUM(S,IG)
+              MTLIST(S,M,IG) = TLIST2(C,M)
+579         CONTINUE
+
+
+USER'S GUIDE REVISIONS
+
+     Six pages of the BPIP user's guide were revised.  These pages include the
+user's guide cover and pages 3-1, 3-3, 3-5 through 3-7.  On the front cover, a
+revision date and a note stating that these revisions were made to the
+electronic copy only were added.  On the other five pages, the Model Change
+Bulletin Julian date was added to the bottom right corner of each page.  
+
+     Any edits made to the text of these pages involves the change from
+manually entered roof stack data to the automatic detection of which stacks are
+on which roofs.  No pages were deleted or added.  Therefore, a direct
+substitution of the revised pages with the respective original pages is
+possible without having to print the entire user's guide.

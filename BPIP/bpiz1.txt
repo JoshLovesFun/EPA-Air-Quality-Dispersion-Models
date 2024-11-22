@@ -1,0 +1,42 @@
+                     Model Change Bulletin              
+              
+                            MCB#1                      01/19/94
+
+                    BPIP (dated 93320)
+
+
+
+     This Model Change Bulletin essentially initiates the
+activities of the SCRAM BBS for this model.
+
+     BPIP (Building Profile Input Program) is designed to calculate
+building heights and projected building widths based on an
+implementation of Good Engineering Practice Stack Height and
+building downwash guidance.  The output data from BPIP has to be
+manually edited into the appropriate ISC2 input runstream.
+
+     This program will henceforth be identified by its name and a
+Julian date, i.e.: BPIP (dated 93320). Future changes to this
+program will be identified by an updated Julian date found on the
+first line of the model source code and followed by a reference
+to a SCRAM BBS Model Change Bulletin (MCB#n.txt) which will explain
+the nature and contents of the changes. All Model Change
+Bulletins for this model will always be available for back
+reference on this BBS. In the future, notification of changes
+(MCBs) to this model will be made in the SCRAM ALERTS section
+of this BBS immediately following the LOGON procedure.
+
+      The source code for this model has been compiled and tested
+on an IBM PC computer.  A math coprocessor is required.
+
+                       ******************
+                       * Important Note *  
+                       ******************
+   
+      New Model Change Bulletins will ONLY be issued when there
+is a change to the source code for this model. Changes to test
+cases and/or any pre and post processors that are included in the
+archived file for this model will be addressed and appropriately
+identified in an amendment to the model's latest MCB with
+notification posted in the SCRAM ALERTS section of the BBS.    
+

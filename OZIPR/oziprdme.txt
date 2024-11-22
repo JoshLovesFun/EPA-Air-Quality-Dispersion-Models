@@ -1,0 +1,52 @@
+                                 README.TXT
+
+                                   OZIPR                           February 2005
+
+
+                      
+This file provides introductory information and describes the files related
+to the OZIPR (Ozone Isopleth Plotting Program Revised) model.
+
+This update to the OZIP model provides (1) a simple trajectory model capable
+of utilizing complex chemical mechanisms, emissions, and various
+meteorological parameters, and (2) procedures through which the Empirical
+Kinetics Modeling Approach (EKMA) can be implemented for calculation of
+emission reductions needed to achieve compliance with the National Ambient
+Air Quality Standard for ozone.
+
+The following describes the OZIPR package and indicates where the files can be 
+found on the website shell that presents this ReadMe:
+
+Code/Executable/Test Inputs
+1. OZIPR.ZIP    - OZIPR executables and README.TXT
+2. OZIPREX.ZIP  - OZIPR examples, input and output files
+3. OZIPRSRC.ZIP - OZIPR source code (*.FOR, *.LIB, *.FIN files)
+4. OZINPUT.ZIP  - OZIPR examples of secondary production for 3 target HAPS
+
+User's Guide
+OZIPRD.ZIP - OZIPR User's Guide
+
+Support Document
+OZIPRHPS.pdf - A Simplified Approach for Estimating Secondary Production
+               of Hazardous Air Pollution (HAPS) Using the OZIPR Model
+               
+Appendices A through F of the support document:
+A. APP_A_RN.pdf - Appendix A-Running the OZPIR Model
+B. APP_B_HO.pdf - Appendix B-Secondary Production by Hour
+C. APP_C_HO.pdf - Appendix C-Total, Primary, and Secondary Production by Hour
+D. APP_D_SE.pdf - Appendix D-Secondary Rpoduction by Season
+E. APP_E_UR.pdf - Appendix E-Weighted Seasonal Secondary Production by City
+F. APP_F_UR.pdf - Appendix F-Annual Average Secondary Production by City
+
+
+****************************************************************************
+*                                                                          *
+* NOTE:  File #5 above, OZINPUT.ZIP, requires that the user unzip the file *
+*        using the "PKUNZIP -d " option.   This option preserves the file  *
+*        structure needed to utilize batch files within this zipped file.  *
+*                                                                          *
+****************************************************************************
+
+
+Questions or comments related to OZIPR should be directed to Joe Touma at
+EPA:  919-541-5381, or by e-mail at    Touma.Joe@epa.gov  .

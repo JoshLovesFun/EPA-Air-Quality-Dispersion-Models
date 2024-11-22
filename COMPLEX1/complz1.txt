@@ -1,0 +1,47 @@
+                    Model Change Bulletin              
+              
+                            MCB#1                 5/22/89
+
+                    COMPLEX1 (dated 86064)
+
+ 
+
+     This Model Change Bulletin essentially initiates the
+activities of the SCRAM BBS for this model.
+
+      The COMPLEX1 model code available from this bulletin board
+is the same code that presently (05/22/89) resides on the EPA IBM
+3090 and the EPA UNAMAP Bulletin Board and is dated 86064. The
+computer code could be different from that at the NTIS due to the
+EPA's recent conversion from the UNIVAC to the IBM computer
+system, however there are no known differences in model
+calculations. It is currently the recommended code for this
+model. 
+
+     This model will henceforth be identified by its name and a
+julian date, i.e.: COMPLEX1 (dated 86064). Future changes to this
+model will be identified by an updated julian date found on the
+first line of the model source code and followed by a reference
+to a SCRAM BBS Model Change Bulletin (MCB#n) which will explain
+the nature and contents of the changes. All Model Change
+Bulletins for this model will always be available for back
+reference on this BBS. In the future, notification of changes
+(MCBs) to this model will be made in the SCRAM ALERTS section
+of this BBS immediately following the LOGON procedure.
+
+      The source code for this model has been compiled and tested
+on an IBM 3090 computer. Work is underway to modify the code for
+operation on the PC, VAX and SUN computers. Watch SCRAM ALERTS
+for notification of new MCBs about COMPLEX1. 
+
+                       ******************
+                       * Important Note *  
+                       ******************
+   
+      New Model Change Bulletins will ONLY be issued when there
+is a change to the source code for this model. Changes to test
+cases and/or any pre and post processors that are included in the
+archived file for this model will be addressed and appropriately
+identified in an amendment to the model's latest MCB with
+notification posted in the SCRAM ALERTS section of the BBS.
+ 

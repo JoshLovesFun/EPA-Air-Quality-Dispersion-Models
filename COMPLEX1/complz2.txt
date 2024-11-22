@@ -1,0 +1,113 @@
+
+                           Model Change Bulletin
+
+                                   MCB# 2                      April 26, 1990
+
+                          Complex I (dated 90095)
+
+    Complex I was modified to meet ANSI Fortran 77 standards. Changes to bring
+Complex I to that standard were accomplished by separating the character
+variables from the real and integer variables in the labeled common statement,
+MO. The character variables were transferred to the labeled common statement,
+MOC. The variable, DNAME, was deleted from a CHARACTER*4 statement because the
+variable was not being used. Two GOTO statements were also modified and a
+statement number was added.
+
+    The rest of the changes involved changes to comments, headers, and
+sequence identifiers. Changes made were to comment and header statements used
+in stating the current version of Complex I or identifying the model. The
+sequence identifiers were shortened by dropping the C1 in columns 72 and 73 so
+that 80 column wrap around wouldn't take place after this file model was
+downloaded and dearchived. Otherwise, most of the sequence identifiers would
+begin in column 1 which would have been very confusing to a novice user.
+
+    The following changes have been grouped by the type of change made. The
+ANSI standard related changes were made first while the comment and header
+changes appear last. C1 should be added to the sequence identifiers in columns
+72 and 73 that do NOT begin with XXX or IBM.
+
+1. The character variables in the labeled common statement, MO, were removed
+and placed in the new labeled common statement, MOC. The following lines were
+changed from: 
+
+C         /MO/  BETWEEN MAIN PROGRAM AND OUTHR                          X04290
+      COMMON /MO/ QTHETA(24),QU(24),IKST(24),QHL(24),QTEMP(24),MPS(25),NX04300
+     1SIGP,IO,LINE1(20),LINE2(20),LINE3(20),RNAME(2,180),IRANK(180),STARX04310
+     2(5,180)                                                           X04320
+ 
+      COMMON /MO/ QTHETA(24),QU(24),IKST(24),QHL(24),QTEMP(24),MPS(25),NIBM 
+     1SIGP,IO,LINE1(20),LINE2(20),LINE3(20),RNAME(2,180),IRANK(180),STARIBM 
+     2(5,180)                                                           IBM 
+ 
+      COMMON /MO/ QTHETA(24),QU(24),IKST(24),QHL(24),QTEMP(24),MPS(25),NX27300
+     1SIGP,IO,LINE1(20),LINE2(20),LINE3(20),RNAME(2,180),IRANK(180),STARX27310
+     2(5,180)                                                           X27320
+
+to:
+
+C         /MO/ AND /MOC/ BETWEEN MAIN PROGRAM AND OUTHR                 X04290
+      COMMON /MO/ QTHETA(24),QU(24),IKST(24),QHL(24),QTEMP(24),MPS(25), X04300
+     1            NSIGP,IO,IRANK(180)                                   X04310
+      COMMON /MOC/LINE1(20),LINE2(20),LINE3(20),RNAME(2,180),STAR(5,180)X04320
+
+      COMMON /MO/ QTHETA(24),QU(24),IKST(24),QHL(24),QTEMP(24),MPS(25), X27300
+     1            NSIGP,IO,IRANK(180)                                   X27310
+      COMMON /MOC/LINE1(20),LINE2(20),LINE3(20),RNAME(2,180),STAR(5,180)X27320
+
+      COMMON /MO/ QTHETA(24),QU(24),IKST(24),QHL(24),QTEMP(24),MPS(25), XXX 
+     1            NSIGP,IO,IRANK(180)                                   XXX 
+      COMMON /MOC/LINE1(20),LINE2(20),LINE3(20),RNAME(2,180),STAR(5,180)XXX 
+ 
+
+
+2. The variable DNAME in the following CHARACTER*4 statement was not used. The
+line was changed from:
+
+      CHARACTER*4 RNAME,PNAME,ANAME,DNAME,ENDP,ENDR,DUM,TITLE,          IBM
+
+to:
+
+      CHARACTER*4 RNAME,PNAME,ANAME,ENDP,ENDR,DUM,TITLE,                IBM
+
+
+3. Two GOTO statements appeared with warning messages when compiled. To
+conform with ANSI standards, the following lines were changed from:
+
+      IF(IOPT(27) .EQ. 1) GO TO 270                                     X07900
+      IF(IOPT(26) .NE. 1) GO TO 1112                                    X14690
+      IF (IOPT(27) .EQ. 1) THEN                                         X14770
+
+to:
+
+      IF(IOPT(27) .EQ. 1) GO TO 280                                     X07900
+      IF(IOPT(26) .NE. 1) GO TO 1113                                    X14690
+ 1113 IF (IOPT(27) .EQ. 1) THEN                                         X14770
+
+
+4. The rest of the changes made were to comment and header statements used in
+stating the current version of Complex I or identifying the model. The
+following lines were changed from:
+
+C                        COMPLEXI (DATED 86064)                         X00010
+C           *** SEE COMPLEXI MODEL CHANGE BULLETIN MCB#1 ***            X00012
+C                   COMPLEXI - VERSION 2.0 (DATED 86064)                X00020
+C    IF IOPT(27)=1, COMPLEX1 OPTIONS AND PARAMETERS ARE SET AS          X00950
+***   PRINT HEADERS                                                     X04620
+5     FORMAT('1',21X,'COMPLEXI                (DATED 86064)',/)         X04640
+1399  FORMAT ('1',T40,'COMPLEX I/VALLEY OPTION'/1X,20A4/1X,20A4/1X,20A4)X17320
+1400  FORMAT ('0',T40,'COMPLEX I  - VERSION 2.0'/1X,20A4/1X,20A4/1X,20  X17330
+     1EX I -VERSION 2.0 IS FOR ','THE POLLUTANT ',A4,' FOR   ',I4,1X,I3,X17420
+
+to:
+
+C                       COMPLEX I (DATED 90095)                         X00010
+C           *** SEE COMPLEXI MODEL CHANGE BULLETIN MCB#2 ***            X00012
+C                 COMPLEX I - SCRAM VERSION (DATED 90095)               X00020
+C    IF IOPT(27)=1, COMPLEX I OPTIONS AND PARAMETERS ARE SET AS         X00950
+C**   PRINT HEADERS                                                     X04620
+5     FORMAT('1',21X,'       COMPLEX I (DATED 90095)' / '1'   )         X04640
+1399  FORMAT('1',T30,'COMPLEX I / VALLEY OPTION'/3(/1X,20A4))           X17320
+1400  FORMAT ('0',T30,'COMPLEX I (DATED 90095) '//1X,20A4/1X,20A4/1X,20 X17330
+     1EX I - (DATED 90095) IS FOR THE POLLUTANT ',A4,' FOR ',I4,1X,I3,  X17420
+
+ 

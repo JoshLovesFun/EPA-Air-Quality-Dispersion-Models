@@ -1,0 +1,51 @@
+February 28, 1990 
+
+
+                            *** DIVPGM ***
+
+
+     DIVPGM is a menu driven program that was written in GW-BASIC on an IBM-PC
+compatible. The program however should be compatible with most BASICs. The
+purpose of the program is to divide a Fortran Program into its subroutine,
+function, and block units. This is accomplished by searching the Fortran
+source code line by line for an END statement. When an END statement is found,
+the file used for saving each read line of code, is closed. A search is begun
+on a line by line basis for a SUBROUTINE, FUNCTION, or BLOCK statement. When a
+nameless block statement is found, a file is opened called BLOCK.FOR. When a
+subroutine, function or named block statement is found, a search is begun of
+that line of code for a name. A .FOR extension is added to the name and a file
+is opened using that name or BLOCK.FOR. The statement line and the following
+read lines are stored in that file until the next END statement is
+encountered. The cycle repeats itself until there are no more lines of source
+code to read and store. There upon the program terminates.
+
+    To run this program, five inputs need to be entered. They are:
+
+    1. The full name of the source code file including pathname.
+       (i.e. C:\EKMA\DIVTEST.FOR)
+
+    2. The full pathname for the output files. (i.e. \EKMA\SUBPGMS)
+
+    3. The filename of the first file used for storing lines of code.
+       (i.e. DIVTST.FOR)
+
+    4. The name of the file for storing all the subroutine filenames. No
+       directory or subdirectory locations are stored with these names.
+       (i.e  DIVLIST.LST)
+
+    5. The program will prompt the user as to whether the user wants to see   
+       each line printed to the screen as it is read. By just saying N(o), the 
+       program execution time is reduced from 20 to 4.5 minutes on a 
+       625 kilobyte Fortran program with 60 subroutines.
+
+    A test case has been provided. DIVTEST.FOR is the input file. DIVLST.LST,
+DIVTST.FOR, BLOCK.FOR, SRT.FOR, and SUB.FOR are the output files. The test
+case takes about 5 seconds to run.
+
+    To execute this program on an IBM-PC compatible with GW-BASIC, type:
+
+GWBASIC drive:\pathname\DIVPGM
+
+    If you have any questions or comments, please leave E-mail for Peter
+Eckhoff on the SCRAM BBS.
+

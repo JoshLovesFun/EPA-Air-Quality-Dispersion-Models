@@ -1,0 +1,4 @@
+$DEFINE/USER_MODE SYS$INPUT input.filename
+$DEFINE/USER_MODE SYS$OUTPUT output.filenmame
+$!COPY PMD FOR011.DAT  !remove the first !, if a PMD is used.
+$RUN COMPLEX1

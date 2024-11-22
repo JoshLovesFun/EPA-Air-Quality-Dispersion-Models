@@ -1,0 +1,65 @@
+
+                            Model Change Bulletin
+
+                                    MCB#3                    October 29, 1992
+
+                           COMPLEX I (DATED 92290)
+
+
+     This Model Change Bulletin is formal notification of a change to the
+COMPLEX I model.  The updated code is dated 92290 and is further identified
+by MCB#3.  This version replaces all previous versions of COMPLEX I for
+regulatory use.  The code conforms to the ANSI standard for FORTRAN-77.  The
+PC-executable file (COMPLEX1.EXE) has been compiled for IBM-PC compatible
+microcomputers using the Microsoft FORTRAN 5.0 Optimizing Compiler (TM).  It
+is highly recommended, but not required, that the microcomputer on which this
+program is run be equipped with a math coprocessor.
+
+     This revision improves the implementation of the VALLEY Screening Option
+in COMPLEX I by automatically presetting the wind profile exponent for F
+stability to zero, as is done in the VALLEY Model.  All changes to the code
+are itemized below.
+_______________________________________________________________________________
+
+Version date changed on line C1X00010 and reference to MCB#3 added to
+line C1X00012:
+
+
+C                        COMPLEX I (DATED 92290)                       C1X00010
+C                                                                      C1X00011
+C       *** SEE COMPLEXI MODEL CHANGE BULLETINS MCB#2 & MCB#3 ***      C1X00012
+_______________________________________________________________________________
+
+Note added describing this change to COMPLEXI:
+
+C       NOTE: IN OCT 1992, THE VALLEY SCREENING OPTION WAS MODIFIED    C1X00282
+C             TO AUTOMATICALLY PRESET THE WIND PROFILE EXPONENT TO     C1X00284
+C             ZERO AS IT IS IN THE VALLEY MODEL                        C1X00286
+_______________________________________________________________________________
+
+Version date changed in print format for model output program header:
+
+5     FORMAT('1',21X,'       COMPLEX I (DATED 92290)' / '1'   )        C1X04640
+_______________________________________________________________________________
+
+Version date changed in print format for model output page headers:
+
+1400  FORMAT ('0',T30,'COMPLEX I (DATED 92290) '//1X,20A4/1X,20A4/1X,20C1X17330
+_______________________________________________________________________________
+
+Add comment on line C1X03110 that indicates that the wind profile exponent
+for F stability (PL(6)) is set to 0 when the VALLEY Screening Option
+(OPT(27)) is set to 1:
+
+C                        STABILITY.  (IF IOPT(27)=1, PL(6)=0.)         C1X03110
+_______________________________________________________________________________
+
+The code to implement this change is inserted as line C1X06575:
+
+        PL(6)=0.                                                       C1X06575
+
+
+
+Note:  In the lines of code shown above, the line sequence number (C1X-----)
+has beenmoved one space to the left to improve readability in this file.  In
+the program, all such line sequence numbers begin in column 73.

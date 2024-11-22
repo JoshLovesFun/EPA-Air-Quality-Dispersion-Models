@@ -1,0 +1,25 @@
+1240106                      OBODM (Version xx.x)
+                             METEOROLOGICAL DATA
+                                                  
+                      {F5 displays units abbreviations}
+                                                   
+  Wind speed at 10 meters {units (m/s,kts,etc.)=[     ]} -------- = [        ]
+  Wind direction (degrees from, clockwise from north) ----------- = [        ]
+  Wind direction is From (F) or Towards (T (vector)) ------------- (F/T) = [F]                                                        
+  (Note: this (F/T) option is for USER specified format HOURLY data only)
+
+  {For default meteorological data, specify the stability category or net}
+  {radiation index under A) or specify all parameters under B), otherwise}
+  {go to the next page. (X or C defaults the data field)                 }
+  A) Pasquill stability category (A,B,C,D,E,F) or            
+     Net radiation index (4,3,2,1,0,-1,-2) ---------------------------- = [  ]
+  B) Date/time:  4 digit year = [    ]     Month --- = [  ]     Day --- = [  ]
+                     Julian day --- = [   ]    Hour (std/dst) [   ] - = [    ]
+     Site location/clouds:                         
+     West longitude (deg) * --------------------------------- = [            ]
+     North latitude (deg) * --------------------------------- = [            ]
+     Time zone diff. (GMT - site (std. hrs)) * ----------------------- = [   ]
+     Cloud cover (8ths of celestial dome) ------------------------------ = [ ]
+     Cloud ceiling {units (m,km,ft,etc.)= [  ]} ---------------- = [         ]
+   *(longitude, latitude, zone are required for calcs. restricted to daytime)
+  {PgDn or Enter for next menu}

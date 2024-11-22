@@ -1,0 +1,39 @@
+OBODM Version 01.3.0024
+
+This version corrects a bug in the processing of hourly source input data
+
+*************************************************************************
+
+
+To install the OBODM program from the EPA SCRAM web site:
+
+1) Download all files into a subdirectory (e.g. c:\OBODM\Download) from SCRAM
+2) Copy OBOD1324.zip to C:\OBODM and unzip the contents.  Example3 will 
+     have to be unzipped there also.  OBODM1324.EXE is a self-extracting
+     program that will install OBODM in the directory where it is 
+     being extracted.
+3) copy OBODMSOR.TXT and OBODMSOR.ZIP to C:\OBODM\source 
+     and unzip the contents.
+4) Copy all documentation to C:\OBODM\DOC and unzip the files as necessary.
+5) Read through the documentation until you understand the model and how it 
+     works.
+
+If you desire a different named directory, then create the desired directory,
+on the desired drive and copy OBOD1324.EXE to that desired directory and 
+then type:
+
+   OBOD1324.EXE
+
+OBOD1324.EXE is a self-extracting file that will unpack the OBODM program
+and related files.  OBOD1324.EXE can then be deleted from this directory
+to conserve space.
+
+If you get the message "Authenticity Verification Failed!", then the files
+have been tampered with or are corrupt.  Delete the newly installed files and
+obtain a new copy of the OBOD1324.EXE self-extracting file.
+
+IF you get the message "Authentic files Verified!" or no message, the
+installed files are ok.
+
+If you run into problems or have questions, please contact us through 
+the SCRAM web site "Contact Us" links.

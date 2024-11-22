@@ -1,0 +1,193 @@
+OBODM1.30-        Example 2 - 500 lb TNT Detonation         -07/24/1997 pg  1
+
+                                   Table  1
+
+                           - Program Input Data -
+
+
+
+                        - Program Models Selected -
+
+ - Dosage
+ - Using final cloud rise ht. for all calc. distances.
+ - Flat terrain is assumed.
+ - Grid system origin is not added to source rectangular coordinates
+ - Instantaneous sources can use both stable and adiabatic plume rise.
+ - Grid receptor system is --------------------------------------Rectangular
+
+                          - Print Output Options -
+
+ - Print and save data using Detailed processing mode
+ - Print dosage output units ---------------- Micrograms Seconds/Cubic Meter
+
+                     - Receptor Grid System Geometry -
+
+ Grid system orientation angle (Degrees) ----------------------------     .0
+ Receptor X coordinate units ---------------------------------------- Meters
+          Y coordinate units ---------------------------------------- Meters
+          Z coordinate units ---------------------------------------- Meters
+ X origin -------------------------------------------------------        .00
+ Y origin -------------------------------------------------------        .00
+ X Axis of the grid system (Meters)------------------     100.00,     500.00,
+         1000.00,    1500.00,    2000.00,    2500.00,    3000.00,    3500.00,
+         4000.00,    4500.00,    5000.00,
+ Y Axis of the grid system (Meters)------------------   -2000.00,   -1500.00,
+        -1000.00,    -500.00,        .00,     500.00,    1000.00,    1500.00,
+         2000.00,
+
+                   - Source Geometry/Emission Strength -
+
+ Material or fuel/explosive -------------------- TNT (2,4,6-Trinitrotoluene)
+ Pollutant/species ------------------------------------------ Carbon Dioxide
+ Total number of sources ----------------------------------------------    1
+
+ Source      Ident                          Reference   Source     Emission
+ Number                                       System     Type        Type
+ -----------------------------------------------------------------------------
+   1  TNT only source                      Rectangular  Volume  Instantaneous  
+
+ Source     X            Y            Z          Release        Emission
+ Number Coordinate   Coordinate   Elevation       Height        Strength
+ -----------------------------------------------------------------------------
+    1          .0  m        .0  m        .0  m       7.9~ m  5.00000E+02 lb   
+ ~ Means the value is defaulted for each hour of met. data.
+
+ Source Rect. Expan. Dist. / Reference Dist.   /Air Entrain-/Dispersion Coeff.
+ Number Crosswind  Vertical/Crosswind  Vertical/ment Coeff. /Crosswind Vertical
+ ------------------------------------------------------------------------------
+    1     50.00 m   50.00 m     .00 m     .00 m       .640      1.000     1.000
+OBODM1.30-        Example 2 - 500 lb TNT Detonation         -07/24/1997 pg  2
+
+                               Table  1 (cont.)
+
+                           - Program Input Data -
+
+
+
+                   - Source Geometry/Emission Strength -
+
+
+ Source     Fuel Heat        Fuel Burn      Fuel Burn   Initial
+ Number      Content           Rate           Time      Diameter
+ -----------------------------------------------------------------------------
+    1        925.0 ca/g    90718.48 g/s         2.5  s    15.74~ m
+ ~ Means the value is defaulted for each hour of met. data.
+
+              - Pollutant/Species Material Characteristics -
+
+ Pollutant/species name ------------------------------------- Carbon Dioxide
+ Pollutant/species is -----------------------------------------      Gaseous
+ Particle material half-life -------------------------------------  infinite
+ Molecular weight (g/g-mol) ------------------------------------        44.0
+ Density of species ( g/cm**3) ---------------------------------        .002
+ Fraction of exhaust cloud constituting pollutant/species -----         1.28
+
+                          - Meteorological Data -
+                          ( [#-#] min-max limits )
+
+ Year [1900-2099]------------------------------------------------------ 1996
+ Month [ 1-12]-----------------------------------------------------------  1
+ Day [ 1-31]------------------------------------------------------------- 18
+ Hour (STD) [00-23]---------------------------------------------------- 0800
+ Minute -----------------------------------------------------------------  0
+ Julian day [  1-  1]---------------------------------------------------  18
+ Surface pressure (  mb) [ 600.0-1100.0]------------------------      870.00
+ Cloud cover (8ths) [0-8]---------------------------------------         .00
+ Cloud ceiling ( m) [     .0-20000.0]---------------------------     9999.00
+ Net radiation index [-2- 4]-------------------------------------------   2.
+ Pasquill stability category [A-F]---------------------------------------- C
+ Wind speed reference height (m) -------------------------------       10.00
+ Surface roughness length (cm) [   .00-100.00]------------------        .000
+ Vertical grad. of pot. temp. (  C/m) [-5.000- 5.000]---------            .0
+OBODM1.30-        Example 2 - 500 lb TNT Detonation         -07/24/1997 pg  3
+
+                               Table  1 (cont.)
+
+                           - Program Input Data -
+
+
+
+                          - Meteorological Data -
+                          ( [#-#] min-max limits )
+
+ Reference wind speed (  m/s) [  1.0- 50.0]--------------------------  2.000
+ Minimum (at 2m) wind speed (m/s) -----------------------------------  1.450
+ Air temperature ( C) [-60.0- 60.0]--------------------------------   20.000
+ Standard dev. of wind direction angle ( d) [ 1.0000-80.0000]------  16.0000
+ Standard dev. wind elevation angle ( d) [ 1.0000-50.0000]---------   6.0000
+ Longitudinal turbulence intensity ( d) [ 1.0000-106.4000]---------  21.2800
+ Measurement time for std. dev. wind dir. angle ( s) [ 2.5-3600.0]-   600.00
+ Air humidity (%) (  .0-100.0)----------------------------------------  50.0
+ Surface mixing layer height ( m) [ 1.0-20000.0]------------------   1200.00
+ Wind direction (from) (deg) [    .0- 360.0]------------------------   270.0
+ Wind-direction shear (  d/m) [ -45.0-  45.0]-----------------------     .00
+ Wind-speed power law exponent [ .000-5.000]-----------------------       .2
+ Wind-speed shear (  m/s) [   .00- 20.00]--------------------------- Compute
+
+                          - Other Required Data -
+
+ Quasi-cont. (dosage) integration time inc. (sec) ----------------         C
+
+                        - Input/Output Files Used -
+
+ Input save data file name ------------------------------------ example2.INP
+ Output save data file name ----------------------------------- example2.INP
+ Print solution output file name ------------------------------ example2.OUT
+OBODM1.30-        Example 2 - 500 lb TNT Detonation         -07/24/1997 pg  4
+
+                                   Table  2
+             Carbon Dioxide Dosage (Micrograms Seconds/Cubic Meter)
+
+
+                (Maximum = .15226E+06 at x = 1000.00, Y = .00
+
+                              - X Axis  (Meters)  -
+                    100.000      500.000     1000.000     1500.000
+
+ Y Axis   (Meters)            -           Dosage           -
+              -----------------------------------------------------
+
+      2000.000   .681469E-17  .249019E-16  .194209E-04  .531031    
+      1500.000   .681469E-17  .334617E-08  .414031      120.101    
+      1000.000   .117762E-15  .118182      511.690      5771.39    
+       500.000   .268460      3993.52      36659.9      58927.9    
+          .000   35332.2      129109.      152260.      127840.    
+      -500.000   .268460      3993.52      36659.9      58927.9    
+     -1000.000   .117762E-15  .118182      511.690      5771.39    
+     -1500.000   .681469E-17  .334617E-08  .414031      120.101    
+     -2000.000   .681469E-17  .249019E-16  .194209E-04  .531031    
+
+                              - X Axis  (Meters)  -
+                   2000.000     2500.000     3000.000     3500.000
+
+ Y Axis   (Meters)            -           Dosage           -
+              -----------------------------------------------------
+
+      2000.000   40.7339      357.933      1186.33      2412.44    
+      1500.000   1237.85      3759.71      6632.48      8970.35    
+      1000.000   14182.3      20169.3      22676.9      22919.4    
+       500.000   61262.2      55260.4      47416.3      40238.4    
+          .000   99771.9      77325.3      60633.0      48542.2    
+      -500.000   61262.2      55260.4      47416.3      40238.4    
+     -1000.000   14182.3      20169.3      22676.9      22919.4    
+     -1500.000   1237.85      3759.71      6632.48      8970.35    
+     -2000.000   40.7339      357.933      1186.33      2412.44    
+
+                              - X Axis  (Meters)  -
+                   4000.000     4500.000     5000.000
+ Y Axis   (Meters)            -           Dosage           -
+              -----------------------------------------------------
+
+      2000.000   3781.64      4987.04      5908.01    
+      1500.000   10603.5      11446.9      11706.3    
+      1000.000   22145.6      20722.1      19078.6    
+       500.000   34450.0      29585.8      25575.4    
+          .000   39916.9      33314.4      28199.9    
+      -500.000   34450.0      29585.8      25575.4    
+     -1000.000   22145.6      20722.1      19078.6    
+     -1500.000   10603.5      11446.9      11706.3    
+     -2000.000   3781.64      4987.04      5908.01    
+
+ Elapsed run time =     0 hours,   .50 minutes.
+
+ *** end of OBODM ***

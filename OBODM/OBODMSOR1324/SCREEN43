@@ -1,0 +1,25 @@
+1430009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                         {F3 returns to current menu}                              
+                                                                                
+  C) FIXED FIELD FORMAT INPUT HOURLY METEOROLOGICAL AND/OR SOURCE DATA          
+     (CONTINUED) -                                                              
+                                                                                
+   Gw.d - Value is either Fw.d or Ew.d format as shown above.                   
+                                                                                
+   #X   - Skip over the number of columns specified by #, # > 0.                
+                                                                                
+   T#   - Position the column pointer at the column specified by #, # > 0.      
+                                                                                
+   TL#  - Move the column pointer # columns to the left, # > 0.                 
+                                                                                
+   TR#  - Move the column pointer # columns to the right, # > 0.                
+                                                                                
+   #P   - Multiply values read from the following fields by the power of ten    
+          specified by #.  If the input field contains an exponent the scale    
+          factor P is ignored.  Turn off the scale factor by a following 0P.    
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgUp for prev page, PgDn for next page}                                      

@@ -1,0 +1,219 @@
+69
+2,1, 2,7,22,0,  1,13,4,0, 1,29,8,0, 0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 2,7,22,0,  1,14,4,0, 1,30,8,0, 0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 2,2,22,0,  1,13,4,0, 0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,1, 2,17,22,0, 2,2,8,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   1,17,2,0, 0,0,0,0,  1,30,10,2, 0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,1, 0,0,0,0,   1,17,2,0, 0,0,0,0,  1,30,10,2, 3,12,10,2, 0,0,0,0,   0,0,0,0,
+4,2, 2,13,22,0, 0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+4,1, 0,0,0,0,   2,2,6,0,  3,5,6,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+5,3, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+5,0, 0,0,0,0,   0,0,0,0,  0,0,0,0,  1,30,8,1,  2,7,10,1,  2,21,10,1, 4,8,8,1,
+2,1, 0,0,0,0,   2,38,2,0, 0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,0, 0,0,0,0,   2,2,2,-2, 2,5,2,-2, 2,8,4,-4,  2,16,4,-4, 0,0,0,0,   0,0,0,0,
+2,0, 0,0,0,0,   2,2,2,-2, 2,5,2,-2, 2,8,4,-4,  2,16,4,-4, 0,0,0,0,   0,0,0,0,
+2,0, 0,0,0,0,   2,2,2,-2, 2,5,2,-2, 2,8,4,-4,  2,16,4,-4, 1,27,8,4,  0,0,0,0,
+3,0, 1,11,22,0, 3,2,4,0, 3,11,2,-2, 3,14,2,-2, 3,17,4,-4, 3,25,4,-4, 2,2,12,4,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  1,22,12,4, 0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  1,20,12,4, 0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 1,20,12,0, 0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 1,22,12,0, 0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,2, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,2, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  2,8,12,2,  2,28,12,2, 0,0,0,0,   0,0,0,0,
+2,1, 1,13,22,0, 0,0,0,0,  0,0,0,0,  2,8,12,2,  2,28,12,2, 0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,0, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,0, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,0, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,0, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,0, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+4,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,1, 0,0,0,0,   3,2,6,0,  0,0,0,0,  1,15,12,6, 0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,2, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,0, 0,0,0,0,   1,13,5,-5,0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,0, 0,0,0,0,   1,13,1,0, 0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,0, 0,0,0,0,   1,13,1,0, 0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,2, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,2, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,1, 0,0,0,0,   2,19,3,0, 0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,2, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,  
+1,2, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+1,2, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,2, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+1,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+2,2, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+1,0, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+1,0, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+3,0, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+3,0, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0, 
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+2,1, 0,0,0,0,   0,0,0,0,  0,0,0,0,  0,0,0,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+5,1, 0,0,0,0,  1,23,6,0,  2,3,1,0, 5,29,6,0,   0,0,0,0,   0,0,0,0,   0,0,0,0,
+ Read error iiii, >= record iiiiiiii,
+ file aaaaaaaaaaaaaaaaaaaaaa
+ Write error iiii, >= record iiiiiiii,
+ file aaaaaaaaaaaaaaaaaaaaaa
+ Open error iiii, on file name
+ aaaaaaaaaaaaaaaaaaaaaa
+ Warning, premature end-of-file, record
+ iiiiiiii, file aaaaaaaaaaaaaaaaaaaaaa.
+ Data incomplete.
+       Install a new copy of file
+             OBODMENU.OBD
+ Warning source ii burn time xxxxxxxxxx
+ will be reset to the minimum of 2.5 s.
+ Warning source ii burn time xxxxxxxxxx
+ is inconsistent with emission type.
+ Burn rate xxxxxxxxxx may be wrong.
+ Warning, save data has already been 
+ written to aaaaaaaaaaaaaaaaaaaaaa.  
+ Do you wish to rewrite any changed 
+ input data to this same file?
+ Error max. memory exceeded, requires
+ iiiiii loc. for receptors, etc., max.
+ is iiiiii.  Reduce receptors or quant.
+ to be calculated.
+ Error, particulate material cannot be
+ modeled with complex terrain.
+ Warning, unable to determine type of
+ installed video card.  Enter text/     
+ graphics mode index number.
+ 1 = CGA video card  2 = EGA video card
+ 3 = VGA video card or better.
+ Warning, receptor elevation xxxxxxxx
+ at X=xxxxxxxxxx, Y=xxxxxxxxxx is > the
+ sum of the met. site elev. and mixing
+ depth xxxxxxxx.  Concentration,
+ Dosage, etc. at X,Y are zero.
+ Error, unable to calculate particle
+ settling velocity for particle cat. ii
+ Warning, Air temperature units are
+ normally Kelvin for the hourly data
+ format being used, check data units.
+ Specified directory is
+ invalid or empty
+ Warning, missing hour
+ ii/ii/iiii at iiii
+ Warning, hour out of sequence
+ ii/ii/iiii at iiii
+ Warning, calm wind speed xxxxxxxx on
+ ii/ii/iiii at iiii
+ Error,   aaaaaaaaaaaaaaaaaaaaaa =
+ xxxxxxxxxxxx is out of range, record
+ iiii, on ii/ii/iiii at iiii
+ Warning, data value xxxxxxxxxxxx is
+ questionable.
+ Error, data value xxxxxxxxxxxx is out
+ of range.
+ Error, data value aaaaaaaaaaaa is out
+ of range.
+ Warning, data value aaaaaaaaaaaa is
+ questionable.
+ Found an old work file from a previous
+ session.  Do you wish to initialize
+ from this file?
+ There may not be enough disc room for
+ the work file.  Requires 480 K.
+ Do you wish to continue without the
+ fuels data file?
+ Cannot use terrain data.
+ max = xxxxxxxxxxxx, min = xxxxxxxxxxxx
+ Cannot use aaaaaaaaaaaaaaaaaaaaaa data
+ max = xxxxxxxxxxxx, min = xxxxxxxxxxxx
+ Warning, data may contain erroneous
+ values.  Check data.
+ Set temperature, pressure & material
+ density for correct defaults.
+ Please Wait - Reading work file data.
+ Please Wait - Reading input data file.
+      Processing batch data files.
+  Please Wait - Reading terrain data.
+   Please Wait - Compiling report(s).
+ Database file OBODMENU.OBD cannot be
+ found on current directory.  Move a
+ copy of OBODMENU.OBD into the current
+ directory and rerun OBODM.
+ Data sections 1 through 4 must be SET
+ before you can EXECUTE OBODM.
+ Section 5 (EXECUTE) must be SET before
+ you can produce GRAPHICS or REPRINT.
+ Error, value xxxxxxxxxxxx found in
+ date/time in input data at record
+ xxxxxx
+ Enter to continue.
+ Hard copy? N/Y >
+ Copy to OBD#####.PLT
+ Copy to LPT#, Wait.
+ Copy to COM#, Wait.
+ Cannot open hard copy plot file. Files
+ OBD00001.PLT to OBD99999.PLT already
+ exist.  Move or Delete these files.
+ Do you really want to quit OBODM
+ Execute OBODM?
+ Error, not enough free disc space.
+ Program requires XXX additional kilo-
+ bytes.
+ Warning, Wind speed units are normally
+ m/s for the hourly data format being
+ used, double check hourly data units.
+ Warning, Mixing depth units are
+ normally meters for the hourly data
+ format being used, check data units.
+ Warning, the X and/or Y scales are not 
+ correct for plot parameters specified.
+ Do you want the scales recalculated?
+ Do you wish to continue processing?
+ Do you wish to continue plotting?
+ Erase print file?
+ (No keeps data and appends new data)
+ No data in print file.
+ Are you processing more than one year
+ of meteorological data?
+ Please Wait - Initializing Solution.
+ Please Wait - Processing Solution.
+ Error - Problem with range of hours
+ either 0000-2300 or 0100-2400, check
+ data.
+ Error - longitude, latitude & time
+ zone difference are required for
+ daytime only calcs.
+ Warning - maximum number of data
+ values exceeded.
+ Warning - No averaging times
+ specified.  Default to 1-hour avg.
+ Warning - No dispersion output tables
+ specified.
+ Warning - No dispersion quantity
+ specified.
+ Warning - Specified time-zone is not
+ consistent with daylight savings time.
+ Cannot use particulates with complex
+ terrain
+ Cannot use complex terrain with the
+ /z command line argument.
+ Cannot default source data, heat    
+ content or emission strength is zero.
+ Too many calc. pnts (xxxxxx)&  quant.
+ (x) for Highest & Second High table
+ under Summary mode.   Change to
+ Detailed mode or reduce  calc. pnts:
+ {Nx*Ny+Nxy)*Nquantity*2 <= xxxxxx}

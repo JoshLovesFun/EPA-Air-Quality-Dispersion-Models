@@ -1,0 +1,25 @@
+1185005                      OBODM (Version xx.x)                               
+                      GASEOUS OR PARTICULATE SOURCE DATA                           
+     SOURCE NUMBER (  ), SOURCE ID (                                    )       
+                      {F5 displays units abbreviations}                            
+                                                                                
+  Air entrainment coeff. (default = .64 for OD, .60 for OB) --- = [          ]  
+                                                                                
+  Lateral rectilinear cloud expansion distance {units=[  ]} --- = [          ]  
+  Vertical rectilinear cloud expansion distance {units=[  ]} -- = [          ]  
+                                                                                
+  Lateral reference distance {units=[  ]} --------------------- = [          ]  
+  Vertical reference distance {units=[  ]} -------------------- = [          ]  
+                                                                                
+  Lateral cloud expansion coefficient (default= 1 for OD, .9 for OB) = [     ]  
+  Vertical cloud expansion coefficient (default= 1 for both OB & OD) = [     ]  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

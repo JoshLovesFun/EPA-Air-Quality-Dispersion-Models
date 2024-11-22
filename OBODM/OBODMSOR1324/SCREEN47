@@ -1,0 +1,25 @@
+1470009                      OBODM (Version xx.x)
+                                 DATA FORMAT
+  
+  E) FIXED FIELD FORMAT TERRAIN DATA -
+         Terrain data used to plot contours of terrain.  Values are right-
+    justified in their respective field.  This data file can also be used
+    to input complex terrain in the receptor data section.  The format is:
+  
+    record columns                       contents
+    ------ ------- ---------------------------------------------------------
+       1     1-4   Number of X coordinates (NX) in the terrain data.
+             5-8   Number of Y coordinates (NY) in the terrain data.
+            9-10   Abbreviation for X,Y units, default = meters.
+           11-12   Abbreviation for Z units, default = meters.
+     2 - I  1-80   X coordinates (west to east) in 8 column fields, ten
+                   fields per input record image (I = {(NX + 9)/10} + 1).
+   I+1 - J  1-80   Y coordinates (south to north) in 8 column fields, ten
+                   fields per input record image (J = {(NY + 9)/10} + I).
+   J+1 - K  1-80   Z terrain height data in 8 column fields, ten fields
+                   per input record image.  Enter NX values for each Y
+                   coordinate 1 to NY.  Start a new image for each Y
+                   coordinate (K = {(NX + 9)/10} * NY + J).
+   {} - means integer part
+  
+  {PgUp for prev page, PgDn for next page}

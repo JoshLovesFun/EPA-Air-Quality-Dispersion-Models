@@ -1,0 +1,25 @@
+1730114                      OBODM (Version xx.x)                               
+                         PRINT AND AUXILIARY OPTIONS                               
+                                                                                
+  Print sum of sources only (S) or print subgroups of sources (G) (S/G) -- [ ]  
+  Page column width (80/132) ------------------------------------------- [ 80]  
+                                                                                
+  Heading --------------- [                                                  ]  
+                                                                                
+  Scale/adjustment factor - Ascale * xxxxx + Bscale.  All concentration,        
+  dosage, etc. calculations xxxxx are multiplied by Ascale and then added       
+  to Bscale.  For example, Ascale may be a percent conversion to another        
+  pollutant species, Bscale may be background.  Make sure Bscale is in          
+  the same units as specified in the initial run.                               
+  Ascale ------------------------------------------------------ [            ]  
+  Bscale ------------------------------------------------------ [            ]  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

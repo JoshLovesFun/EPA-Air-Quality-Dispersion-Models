@@ -1,0 +1,25 @@
+1300106                      OBODM (Version xx.x)                               
+               USER SPECIFIED HOURLY METEOROLOGICAL DATA CONTENTS                  
+  {Specify 0 (zero), blank or C, if meteorological parameter is not in data  }  
+  {record. Otherwise specify if the value for the parameter is 1st, 2nd, 3rd,}  
+  {etc. value in the record by a 1, 2, 3, etc.  Zero or blank holds the      }  
+  {initial value constant.  C specifies default from stability category or   }  
+  {net radiation index and wind speed.  Only those parameters marked with an }  
+  {* below can be defaulted.                                                 }  
+                                                                                
+       Pressure (    ) ------------------------------------------ [  ]           
+       Vert. pot. temp. grad. (     ) * ------------------------- [  ]           
+       Mixing layer depth (  ) * -------------------------------- [  ]           
+       Wind speed shear (     ) * ------------------------------- [  ]           
+       Wind direction shear (    ) ------------------------------ [  ]           
+       Pasquill stability category (unitless) * ----------------- [  ]           
+       Net radiation index (unitless) * ------------------------- [  ]           
+       Measurement time for lateral turbulence intensity (  ) --- [  ]           
+       Roughness length (  ) ------------------------------------ [  ]           
+       Air Humidity (%) ----------------------------------------- [  ]           
+       Clearing Index {Hm(ft)*Spd(kts)/100} --------------------- [  ]           
+       Cloud cover (8ths of the Celestial dome) ----------------- [  ]           
+       Cloud ceiling (  ) --------------------------------------- [  ]           
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

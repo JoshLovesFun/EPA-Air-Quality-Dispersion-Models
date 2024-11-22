@@ -1,0 +1,2292 @@
+CC                       Program OBODM
+CC     'Dugway Proving Ground Open Burn/Detonation Model'
+CC                 'Version 01.3 - 07/24/97'                            072497
+CC
+CC     OBODM Version 01.3 program by -
+CC     Jay R. Bjorklund, James F. Bowers & Greg C. Dodd
+CC
+CC     H.E. Cramer Co. Inc., P.O. Box 411, Sandy, UT 84091-0411,
+CC     (801) 561-4964 or 561-7206
+CC                     and
+CC     Meteorological & Modeling Division
+CC     West Desert Test Center, Dugway, Utah 84022-5000, (801) 831-5101
+CC
+CC**********************************************************************
+CC     Last Update -
+CC     03/05/96 - In sub. IDISC.FOR, call to IFNUL.FOR was corrected to
+CC                a function reference rather than a call.
+CC                In IOSCN.FOR, ibackt was used in a CLRPG.FOR call, but 
+CC                should have been int*2.  int*2 iback was added and 
+CC                replaced ibackt in the call.
+CC                In SPDSP.FOR, irow and icol were corrected to int*2
+CC                type variables.
+CC     03/06-96 - In OBODM.FOR, linetl and ifrdwt were double defined.
+CC     03/13/96 - In RLABL.FOR seasonal labels were changed from 
+CC                season-1, season-2, etc. to winter, spring, summer
+CC                and fall.
+CC     07/09/96 - In OBODM.DOC, under constv, the definitions of ppb    070996
+CC                and ppt were corrected.  Also, in subroutine DISPR    070996
+CC                the conversion factors to convert ppm to ppb or ppt   070996
+CC                were changed from 1.0e-3 to 1.0e3.  Also, corrected   070996
+CC                an error in PLUMI and PLUMC.  When distance to final  070996
+CC                plume rise is specified, the program uses the first   070996
+CC                x,y point to determine the distance to final rise.    070996
+CC                The program was erroneously using the distance to the 070996
+CC                receptor, when the receptor distance was less than the070996
+CC                maximum rise distance.  This affected only the first  070996
+CC                x,y point calculated.                                 070996
+CC     07/11/96 - Modified IDISC and STATB, so would turn off menu      071196
+CC                function BACK if at the start of the files list and/or071196
+CC                turn of NEXT if at the end of the files list.         071196
+CC                iswopt(32) is now used to control these special cases.071196
+CC     11/21/96 - Modified DISPR, was only checking to see if zpdist >  112196
+CC                hmdpth if complex terrain was used.  Changed to check 112196
+CC                always.                                               112196
+CC                Also, when an old input file was read and had an x,y  112196
+CC                coordinate data file specified, you could not turn it 112196
+CC                off.  Now, if file name field is blank, the file name 112196
+CC                is blanked.                                           112196
+CC     02/07/97 - Modified command line options and added command line  020797
+CC                option to swap y and z receptor axes.  Also, changed  020797
+CC                debug (ifdbug) code.                                  020797
+CC     03/07/97 - Added description of ifmode to obodm.doc.  Also,      030797
+CC                error return code was improved from routine IFSRD.    030797
+CC     03/12/97 - Corrected problem in PLTSQ and JFCTC where variable   031297
+CC                should be character*2.                                031297
+CC     07/11/97 - Corrected a problem where source inputs were not      071197
+CC                checked for errors in RINPH.                          071197
+CC     07/24/97 - Corrected errors in source data defaults and expanded 072497
+CC                the maximum number of sources from 10 to 50.  These   072497
+CC                required changes to the data save file contents,      072497
+CC                requiring a change from version 1.2 to 1.3.  The      072497
+CC                effected subroutines are: OBODM, RINPH, RINPK, RPRTB, 072497
+CC                RMDLA, RPRTD, RMDLB, RINPC, RINDB, RPRTC, RINPL,      072497
+CC                RINDA, RINPQ, GETID, SAVID, RPLTA.  Also, include     072497
+CC                files OCALCS.INC, OCNTRL.INC, ONAMES.INC and          072497
+CC                OWNTRL.INC and OBODM.DOC were changed.                072497
+CC                moddat=07/24/97, ivrmod=0                             072497
+CC     08/24/97 - Corrected code in GETD6 that was checking for input   082497
+CC                saved data errors even though no input saved data was 082497
+CC                being used.  This resulted in ERR being displayed for 082497
+CC                data categories in the main menu when NONE should have082497
+CC                been displayed.                                       082497
+CC                Also, in GETD2 the first argument to ipack was a      082497
+CC                constant and should have been set from the array      082497
+CC                nsubsc for the correct number of menus for the data   082497
+CC                item.                                                 082497
+CC                moddat=08/24/97, ivrmod=1                             082497
+CC     02/10/98 - Corrected code in DISPR so that initial source        021098
+CC                dimensions (sigxop, sigyop and sigzop) are equal      021098
+CC                for buoyant quasi-continuous sources to comply with   021098
+CC                the derivation of the plume rise models.              021098
+CC                moddat=02/10/98, ivrmod=2                             021098
+CC     07/30/98 - Corrected output code that showed emission strength as073098
+CC                G/S or per time.  Now shows only G or total units.    073098
+CC                moddat=07/30/98, ivrmod=3                             073098
+CC     08/12/98 - Corrected problem where program was not checking for  081298
+CC                missing date/hours and sequence errors.  Also, added  081298
+CC                program date to menu1.  Also, removed the word on from081298
+CC                warning messages 16 and 17 (missing date, sequence    081298
+CC                error) and changed missing date to llyrs rather than  081298
+CC                iniyrs or expected date.                              081298
+CC                moddat=08/12/98, ivrmod=4                             081298
+CC     09/01/98 - Fixed error that did not recognize the character      090198
+CC                abrevations for some units, subroutine LUNIT.         090198
+CC                moddat=09/01/98, ivrmod=5                             090198
+CC     09/04/98 - Corrected error that allowed iofhrs to be 1 for hour  090498
+CC                limits 0100-2400, should have been 0.  Moved update   090498
+CC                date to lower right corner of screen in menu 1.  Moved090498
+CC                code after ROUTA and ROUTB that check to see if input 090498
+CC                data was to be intialized to area near front of code  090498
+CC                so after all of routines RMDLA, RMDLB, RMDLC, ROUTA   090498
+CC                ROUTB were executed a check would be made.  This was  090898
+CC                changed because if an error occurred in other routines090498
+CC                data would not be reinitialized and some changed      090498
+CC                could be within out to a user .OUT file, changing user090498
+CC                data.  Corrected bug where would not append .inp to   090498
+CC                batch input control (=) file when no extension was    090498
+CC                entered.                                              090498
+CC                moddat=09/04/98, ivrmod=6                             090498
+CC     11/01/98 - Corrected code that failed to unpack concentration    110198
+CC                arrays correctly, depending on data values and array  110198
+CC                size.  Corrected parameter ifcalc so -1 indicates     110198
+CC                source not operational, but zeros are included in     110198
+CC                averages.  Corrected strange problem where the highest110198
+CC                and second highest in array vmxhi were not being      110198
+CC                printed correctly in OUTPT, removed vmxhi from OUTPT  110198
+CC                arguments and used calcsa instead.  vmxhi is          110198
+CC                equivalenced to calcsa in ROUTA and ROUTB.  Also,     110198
+CC                corrected some minor labeling problems with table     110198
+CC                headings, page numbers and table numbers.             110198 
+CC                moddat=11/01/98, ivrmod=7                             110198
+CC     11/10/98 - Corrected code in ISODA that errored the program off  110198
+CC                when hourly source data was used.  Corrected code in  110198
+CC                GETD1 that read Version 1.0 data incorrectly.         110198
+CC                Changed code in ROUTA so that tables are not produced 111098
+CC                for user excluded hours and OUTPT prints a message    111098
+CC                that all values are zero when all receptors are zero, 111098
+CC                rather than printing several pages of zeros.  Also,   111098
+CC                corrected several minor labeling problems.            111098
+CC                moddat=11/10/98, ivrmod=8                             111098
+CC     12/06/98 - Corrected labeling problem where time-average calcs   120698
+CC                time units were not labeled correctly when producing  120698
+CC                graphics.                                             120698
+CC                moddat=12/06/98, ivrmod=9                             120698
+CC     12/10/98 - Corrected screen for displaying print files, was not  121098
+CC                displaying "OBODM (Version" in the heading and had    121098
+CC                Entr in the heading rather than Rtrn.  RINPC and STATB121098
+CC                respectively were corrected.  Also, discovered if the 121098
+CC                user scaled output using ascale and bscale and a .SOL 121098
+CC                file and then went back and specified an input file   121098
+CC                and executed the input file data, all in the same run,121098 
+CC                the ascale and bscale values would scale all printed  121098
+CC                results.  Changed this so ascale and bscale are always121098
+CC                reset to 1.0 and 0.0, respectively.  Corrected bug    121098
+CC                where hour counters were not being reset when running 121098
+CC                batch brute force runs under the summary mode.  The   121098
+CC                net effect of this error was the annual average for   121098
+CC                the second batch run would be 1/2 what it should, the 121098
+CC                third batch run would be 1/3 what it should, etc.     121098
+CC                moddat=12/10/98, ivrmod=10                            121098
+CC     12/21/98 - Corrected problem where the first 9 lines of date/time122198
+CC                output in the highest and second highest tables were  122198
+CC                printed as all zeros (routines ROUTA, ROUTB and OUTPT)122198
+CC                moddat=12/21/98, ivrmod=11                            122198
+CC     01/25/99 - Corrected problem where when sources were deleted or  012599
+CC                duplicated (copied), some of the source parameters    012599
+CC                were not copied correctly.  This was caused by        012599
+CC                incorrect dimensioning of equivalenced source arrays  012599
+CC                in subroutine RINPG.  This would affect any run where 012599
+CC                any source except the last was deleted and any run    012599
+CC                where any source was copied from another.             012599
+CC                moddat=01/25/99, ivrmod=12                            012599
+CC     03/04/99 - Corrected problem where results for batch runs using  030499
+CC                hourly meteorological data did not compare to results 030499
+CC                when run outside of a batch run.  Program was not     030499
+CC                opening a new met. input data file or a new source    030499
+CC                input data file if the previous batch file had already030499
+CC                opened either file type.  Program listed name of met. 030499
+CC                and source file, but did not open it because it       030499
+CC                assumed it had already been opened.                   030499
+CC                moddat=03/04/99, ivrmod=13                            030499
+CC     01/04/00 - Added code to RMDLA to help identify data format      010400
+CC                errors.  The program was allowing the friction        010400
+CC                velocity and Monin-Obukhov length read from ISC3      010400
+CC                dry deposition format data to be read as the wind     010400
+CC                profile exponent and vertical potential temperature   010400
+CC                gradient, respectively.  If the program was directed  010400
+CC                to read ISC3 CARD format data, but the data were      010400
+CC                ISC3 dry deposition format, this would cause the      010400
+CC                program to calculate an incorrect wind speed and      010400
+CC                incorrect plume rise, resulting in erroneous          010400
+CC                concentration or deposition calculations.  The OBODM  010400
+CC                program does not process ISC3 dry or wet deposition   010400
+CC                format data.                                          010400
+CC                Also, added function LEAPS to expand leap year        010400
+CC                detection.  There was no problem in this area, the    010400
+CC                code was expanded for completeness.                   010400
+CC                Also, corrected bug in RINPQ where the program was not010400
+CC                detecting an overflow of calculation points and       010400
+CC                calculation quantities when operated in the summary   010400
+CC                mode.                                                 010400
+CC                moddat=01/04/00, ivrmod=14                            010400
+CC     01/07/00 - Continued with related areas for updates under 010400 010700
+CC                above.  Also, added more information to the help      010700
+CC                menus.  Increased screens from 78 to 81.              010700
+CC                moddat=01/07/99, ivrmod=15                            010700
+CC     02/28/00 - Under certain model conditions time-average concen-   022800
+CC                trations exceeded maximum peak concentrations.  This  022800
+CC                has changed to not allow time-average concentration   022800
+CC                to exceed maximum peak concentration.  Also, corrected022800
+CC                a problem where time-average concentration was being  022800
+CC                under-estimated for quasi-continuous sources when     022800
+CC                dosage was also being calculated.                     022800
+CC                moddat=02/28/00, ivrmod=16                            022800
+CC     07/17/00 - When input rectangular discrete coordinates were input071700
+CC                in feet, the y coordinate was not being converted to  071700
+CC                meters, resulting in incorrect results. Sub=RPRTD.FOR 071700
+CC                moddat=07/17/00, ivrmod=17                            071700
+CC     09/05/00 - Added option (ISWOPT(33)) to turn off printing of calm090500
+CC                wind warning messages.                                090500
+CC                moddat=09/05/00, ivrmod=17a                           090500
+CC     05/18/01 - Corrected error where volume units of liters were     051801
+CC                being calculated incorrectly.  The prog was using     051801
+CC                1.0e3 as a conversion factor, but should have been    051801
+CC                using 1.0e-3.                                         051801     
+CC                moddat=05/18/01, ivrmod=18                            051801
+CC     12/07/02 - Modified program so user can now enter a flagpole     120702
+CC                height for each grid receptor.  Previously you could  120702
+CC                only specify one flagpole height for the entire grid  120702
+CC                system.                                               120702
+CC     01/14/03 - Corrected problem where program would not allow annual011403
+CC                or seasonal calculations under certain conditions     011403
+CC                associated with flagpole receptors or misstaking      011403
+CC                flagpole receptors for complex terrain.               011403
+CC                Also, corrected problem where date/time was printed   011403
+CC                incorrectly for highest and second-highest tables     011403
+CC                when a large grid was used and multiple quantities    011403
+CC                (dos., con., etc.) were calculated.  Also, added      011403
+CC                counters to processing display that indicate number of011403
+CC                calms, missing data and data errors.                  011403
+CC                moddat=01/14/03, ivrmod=19 (Combines mods from 12/7/02011403
+CC     05/15/03 - Added two options. You can now specify if the wind    051503
+CC                direction in user specified met. file formats is from 051503
+CC                or towards (vector) when using hourly data.  Single   051503
+CC                hour runs are always direction from.  Preprocessed    051503
+CC                ISCST3 data are always towards (vector).  You can now 051503
+CC                turn off printing of met. data error and warning      051503
+CC                messages.  Routines changed are obodm.for, rindb.for  051503
+CC                rinpq.for, rmdla.for, rinpm.for, rprtc.for            051503
+CC                moddat=05/15/03, ivrmod=20                            051503
+CC     09/29/04 - Corrected error where met. data limits were not       092904
+CC                allowed to change for wind speed, direction, power law092904
+CC                and turbulent intensities.                            092904
+CC                moddat=09/29/04, ivrmod=21                            092904
+CC     02/14/05 - Corrected problem in RMDLA, ISODA, and RPLTF where the021405
+CC                field width in calls to IFSRD was too small for actual021405
+CC                data fields being0 read and was changed from 10 to 30.021405
+CC                if the actual field width was greater than or equal to021405
+CC                to 10 and the field contained a single trailing zero  021405
+CC                with all other characters in the field blank and this 021405
+CC                was the last data field in the record IFSRD returned  021405
+CC                the value as missing (-1.0E20) rather than zero.      021405
+CC                However, in calculations the missing value was treated021405
+CC                as zero.  The field width of 30 will prevent this from021405
+CC                reoccurring.                                          021405
+CC                moddat=02/14/05, ivrmod=22                            021405
+CC     04/18/06 - Corrected problem in RPLTF where it was not allowing  041806
+CC                negative coordinates and was not converting x,y units 041806
+CC                correctly when plotting special map features.         041806
+CC                Also, units conversion in area and volume have been   041806
+CC                correctedin OBODM and RPLTD                           041806
+CC                moddat=04/18/06, ivrmod=23                            041806
+CC     06/06/07 - Corrected problem in RINPK, RINDB where the code was  060607
+CC                checking array IVARSO for values, but was checking by 060607
+CC                summing (2) through (13), but should have been        060607
+CC                checking only (2) through (4). This caused hourly     060607
+CC                input source data to show NONE for source data in the 060607
+CC                main menu.  Also, source greater than mixing depth was060607
+CC                causing a user reponse to the warning on each         060607
+CC                occurrance, so changed to no user response.           060607              060607
+CC                moddat=06/06/07, ivrmod=24                            060607
+CC
+CC
+CC**********************************************************************
+CC
+CC     This program is designed to calculate -
+CC        1) Dosage
+CC        2) Concentration
+CC        3) Time-average concentration
+CC        4) Gravitational deposition
+CC     Downwind of multiple -
+CC        1) Instantaneous
+CC        2) Quasi-continuous square wave
+CC     Sources -
+CC        1) Volume/point
+CC        2) Line
+CC     Program capabilities include -
+CC        1) The ability to model multiple sources.
+CC        2) The ability to model multiple types of sources.
+CC        3) The ability to use either a rectangular or polar receptor
+CC           grid system.
+CC        4) The ability to specify source locations in either rectang-
+CC           ular or polar coordinates.
+CC        5) The ability to specify input and output data files in
+CC           standard or user specified formats.
+CC        7) The ability to provide multiple graphics displays in
+CC           addition to printed output of calculations.
+CC        8) The ability to use complex terrain.
+CC
+CC     All calculations in this program are relative to a rectangular
+CC     coordinate system where 0 degrees north is the positive y axis
+CC     and 90 degrees east is the positive x axis. All sources
+CC     and calculation receptor points are relative to the origin
+CC     of this coordinate system. All vertical measures referenced
+CC     in this program are relative to the ground (zero).
+CC
+CC**********************************************************************
+CC
+CC             - Program Language and Application -
+CC
+CC     This program is written in FORTRAN 77 and C and is designed for use
+CC     on IBM compatible PC computer systems.
+CC
+CC     Program assumptions -
+CC        1) The numerical result of real number operations is
+CC           truncated.
+CC        2) Underflows do not cause an error trap, but result
+CC           in zero.
+CC        3) Integers are size integer*4.
+CC        4) Double precision are greater than or equal to
+CC           size real*8.
+CC        5) All character type parameters begin with the letter
+CC           m (except the single letter m or double mm which
+CC           are used as integer indices).
+CC           All integer type parameters begin with i, j, k, l or
+CC           n and include a single m or double mm.
+CC           All real or double type parameters begin with the
+CC           letters a through h or o through z.
+CC        6) All common variable names are six letters long. all local
+CC           variable names are less than six letters long.
+CC        7) Variable names that are all caps are global names.
+CC        8) All common variables are contained in common blocks
+CC           ONAMES.INC, OCNTRL.INC, OCDSPM.INC, OCALCS.INC, and
+CC           OWNTRL.INC.  All common blocks are compiled via the
+CC           INCLUDE statement.
+CC
+CC     Sections of coding within this program that are computer,
+CC     compiler or graphics dependent begin and end with special
+CC     sentinels in the first few characters of the line image.
+CC     These sentinels are -
+CC
+CC     -Start           -End            -Application
+CC      -----           -----           ------------------------------
+CC      CCOMP1S         CCOMP1E         Hewlett Packard HP9000/800.
+CC      CCOMP1S-HP2645A CCOMP1E-HP2645A HP2645A & 700/92 terminals.
+CC      CCPCITS         CCPCITE         IBM compatible PC.
+CC      CC-DEBUGS       CC-DEBUGE       debug only.
+CC      CC>                             code not presently used
+CC
+CC      Variables within this program that are computer or graphics
+CC      dependent are - 'isystm' in common block 'OCNTRL.INC',
+CC      see BLOCK DATA routine below for current values.
+CC
+CC**********************************************************************
+CC
+CC                - OBODM Programs and Subroutines -
+CC
+CC     The main program is OBODM. The primary routines are - OBODM
+CC     GMENU, RINPA, RINPB, RINDA, RINDB, RINPC, RINPD, RINPE, RINPF,
+CC     RINPG, RINPH, RINPI, RINPJ, RINPK, RINPL, RINPM, RINPN, RINPO,
+CC     RINPP, RINPQ, RINPR, RPRTA, RPRTB, RPRTC, RPRTD, RMDLA, RMDLB,
+CC     RMDLC, ROUTA, ROUTB, RPLTA, RPLTB, RPLTC, RPLTD, RPLTE, RPLTF,
+CC     RPLTG, RPLTH, RPLTI, RPLTJ
+CC     These primary routines are designed to be segments, overlays or
+CC     subroutines depending on the limitations of the computer where
+CC     used.
+CC     The secondary routines are all subroutines referenced by the
+CC     primary routines and are -
+CC       Screen/menu related:
+CC     BLOCK DATA, DTSET, FNAME, GETD1, GETD2, GETD3, GETD4, GETD5,
+CC     GETD6, IDISC, IDSPL, IFRSP, IFULS, IHLPS, IPACK, IRDSC, IWHER,
+CC     IWTSC, JWHER, LUNIT, STODT, UNITS, IOSCN, OBSTR, OBEND, IWRSC,
+CC     SPDSP, IBELL, IFORM, NFORM,
+CC     (PC: OBSIO, IOCRT, INCRT, JFCTL, KFCTL, SHDOW, FILES, IFFLD,
+CC          QSMOD, QRMOD, QVIDB, QLINE, QCLER, QSCLR, QUSCL, QCOLR,
+CC          QPREG, QOVSC, QINKY, QRTXT, QSTXT, CLRPG, DISPG, QCMOV,
+CC          SETMS, RESMS, CLSMS, RDALL, POPBX, INBAR, STATB, PRBAR,
+CC          CRTYP, LFCTL, FRAME, IFCTC, JFCTC, KFCTC, IRSBK, GTBRK,
+CC          STBRK, WRBUF, JFJMP, KNCRT
+CC          SETDM.C, GETDM.C, GETBD.C, SETPX.C, CLRSC.C, SCRUP.C,
+CC          SCRDN.C, MPCGA.C, MPVGA.C, SETOV.C, RDKEY.C, RDCHR.C,
+CC          WRCHR.C, CURSP.C, SETPG.C, GETFL.C, ISMOS.C, SHOWM.C,
+CC          HIDEM.C, GETML.C, SETML.C, GETCL.C, WAITM.C, RDSTA.C,
+CC          CSCAN.C, GTRGC.C, WRKEY.C
+CC     (PC OBJ: IOERROR, SEGREAD, FINDFIRS, INT86, SOUND, GETCBRK
+CC     (HP: OBSIO.C, FILES.C)
+CC       Dispersion related:
+CC     ARTAN, CONCD, CONCE, CRSSA, CRSSE, DECAA, DELTD, DELTU, DISPR,
+CC     DISPS, ERFXF, ERFXS, FSEXP, FGAMA, GRVDP, PLUMC, PLUMI, PWLAW,
+CC     SGXYZ, TZ1Z2, VERT1, VERT2, VERT3, VRXYZ, YLATR
+CC       Meteorology related:
+CC     AIRDN, AIRVS, DFMET, IPSQL, IRNDX, ISODA, IUSDA, JULAN, NETRX,
+CC     NMXDY, PRSVP, SUNAN, WSBAR, UVTWD,
+CC       Particle related:
+CC     DDST1, DRPAV, TRMVS,
+CC       Utility related:
+CC     ACCUM, ICNTR, IFALF, IFCHR, IFCMP, IFEQU, IFNBR, IFNUM, IFSRD,
+CC     IGTDT, INONE, IOPUT, IPKBK, IRDBF, ISUMI, ISVDT, IVGET, ADEXT,
+CC     IVSTO, IWTBF, IZGET, JINIT, JPACK, JRNIT, KERRS, MBLK1, KERRP,
+CC     MVCH1, NUMC1, NUMLB, ORDER, OUTPT, RLABL, LRJST, ANTRU, CMXMN,
+CC     IANYI, JANYI, IFNUL, ISEAS, IDATR, IFFOP, SAVID, GETID, LOCAL,
+CC     IFWER, INRAN, IORAN, INCPT, IOCPT, INITD, JDSKR, JACUM, JHAVG,
+CC     JDSKW, CHXYZ, IFCHS
+CC       Graphics related:
+CC     BKGDQ, CHCKQ, CLRCQ, CMXNQ, CNRXQ, CURVQ, DIFNQ, DMXMQ, FLWKQ,
+CC     HD01Q, HD02Q, HD03Q, HD04Q, ICLRQ, IDOLQ, IFBKQ, IFBXQ, IFOTQ,
+CC     ILXEQ, ITRPQ, JCLRQ, LABLQ, LBLPQ, LSCLQ, NBXPQ, PLT1Q, PLT2Q,
+CC     PLT3Q, PLTSQ, PMAPQ, PNTSQ, SCRLQ, SPCLQ, SPLNQ, STRPQ, SWCHQ,
+CC     SYMBQ, XINTQ, FILLQ, LBITQ, IFANQ, IFSPQ, GLABL, PLABL
+CC
+CC**********************************************************************
+CC
+CC                  - OBODM Common Variables -
+CC
+CC     Note: units shown with parameter names are model calculation
+CC           units and are not necessarily input or print units.
+CC
+CC     airden - air density (g/cm**3)
+CC     airhum - air humidity (%).
+CC     airmol - molecular weight of air (g/mol)
+CC     airprs - air pressure (mb).
+CC     airtmp - average air temperature (deg c).
+CC     airvsc - air viscosity (poise or g/cm.sec).
+CC     alatrl - lateral term of the concentration equation.
+CC     alongw - alongwind term of the concentration equation.
+CC     alphad - model crosswind cloud dispersion coefficient.
+CC     alphas - array of source crosswind dispersion coefficients.
+CC     ascale - scale factor multiplier for dispersion model
+CC              calculations under the reprint option. ascale*dispersion+
+CC              bscale.
+CC     betadf - model vertical cloud dispersion coefficient.
+CC     betale - ratio of lagrangian to eulerian time-scales used in the
+CC              correction factor on sigmeq and sigatr for crossing
+CC              trajectory effects of heavy particles (default
+CC              =0.0 or no correction). the suggested value for betale,
+CC              if  used is 1.0.
+CC              if betale = 0.0 or vspart/(sigmeq*wndspd) <= .2386 the
+CC                       correction is not applied to sigmep or sigmap.
+CC              if betale > 0.0 and vspart/(sigmeq*wndspd) > .2386 the
+CC                       correction factor is applied to sigmeq and
+CC                       sigatr.
+CC
+CC            sigepr=sigmeq/(1.0+(betale*vspart/(wndspd*sigmeq))**2)
+CC                   **.25
+CC            sigapr=sigatr/(1.0+4.0*(betale*vspart/(wndspd*sigmeq))**2)
+CC                   **.25
+CC              where:
+CC                  sigmeq = modified input value
+CC                  sigatr = modified input value
+CC                  vspart = input particle settling velocity
+CC                  wndspd = transport speed
+CC     betass - array of source vertical dispersion coefficients.
+CC     botmrg - bottom margin of hard copy plot (inch).
+CC     brnrat - array containing the fuel burn rate (g/s)
+CC     bscale - scale factor added to dispersion model calculations
+CC              under the reprint option. ascale*dispersion+bscale.
+CC     burndf - default fuel burn rate (g/s).
+CC     calcsa - scratch array containing all dispersion calculations.
+CC     calhgt - array of release heights used in dispersion, same       072497
+CC              as relhgt unless relhgt defaulted.                      072497
+CC     cldang - angle from 0 degrees north to long side of initial
+CC              source dimension cldlng (deg).
+CC     cldcov - cloud cover (8ths of celestial dome)
+CC     clddpt - source initial vertical depth or diameter (m).
+CC     clddst - distance to maximum plume rise (m).
+CC     clddxe - array of end of line source x coordinates (m).
+CC     clddxs - array of source x coordinates or start of line source
+CC              x coordinates (m).
+CC     clddye - array of end of line source y coordinates (m or deg).
+CC     clddys - array of source y coordinates or start of line source
+CC              y coordinates (m or deg).
+CC     clddze - array of end of line source z elevations (m).
+CC     clddzs - array of source z elevations or start of line source
+CC              z elevations (m).
+CC     cldfct - fraction of source strength contributing to dispersion
+CC              when part of cloud exceeds mixing layer height.
+CC     cldhgt - cloud ceiling (m).
+CC     cldlng - source initial length of long side (m).
+CC     cldmax - array containing the maximum plume rise calculated for
+CC              each source (m).
+CC     cldmxd - array containing the distance to maximum plume rise for
+CC              each source (m).
+CC     cldris - plume rise height increment (m).
+CC     cldsht - source initial length of short side (m).
+CC     clearx - clearing index read from input hourly meteorological
+CC              data file or defaulted via hm(ft)*spd(kts)/100.0.
+CC     clrinx - threshold clearing index.  no calculations take place
+CC              if clearx is less than or equal to clrinx.
+CC     consta - array of constants to convert square meters to output
+CC              area units -
+CC              square - meters, kilometers, foot, yards, miles,
+CC              centimeters, millimeters, micrometers, inches, acres,
+CC              hectares.
+CC              area(units) = consta(i) * area(square meters)
+CC     constc - array of constants to convert temperature to degrees c.
+CC              Celsius, Kelvin, Fahrenheit, Rankine.
+CC              temperature(Celsius) = constc(i,2) * (temperature -
+CC                                     constc(i,1))
+CC     constg - array of constants to convert angle to degrees -
+CC              degrees, radians.
+CC              angle(degrees) = constg(i) * angle
+CC     consth - array of constants to convert heat to Joules -
+CC              calorie, kilocalorie, British thermal unit, Joule, erg.
+CC              heat(Joules) = consth(i) * heat
+CC     constl - array of constants to convert length units to meters.
+CC              meters, kilometers, feet, yards, miles, centimeters,
+CC              millimeter, micrometers, inches + knots for speed to
+CC              meters/sec.
+CC              length(meters) = constl(i) * length
+CC     constm - array of constants to convert mass to grams.
+CC              gram, kilogram, pound, ounce, ton, milligram, microgram,
+CC              particles.
+CC              mass(grams) = constm(i) * mass
+CC     constp - array of constants to convert pressure to millibars.
+CC              millibar, pascal, inches mercury, millimeters mercury.
+CC              pressure(millibars) = constp(i) * pressure
+CC     constt - array of constants to convert time to seconds.
+CC              seconds, minutes, hours.
+CC              time(seconds) = constt(i) * time
+CC     constv - array of constants to convert cubic meters to output
+CC              volume units -
+CC              cubic - meters, kilometers , foot, yards, miles,
+CC              centimeters, millimeters, micrometers, inches and
+CC              liters, ppm, ppb, ppt.
+CC              volume(units) = constv(i) * volume(cubic meters)
+CC              for ppm constv(i) = (1.0e3*22.4*1013.25/273.15) or
+CC              ppb = (1.0e6*22.4*1013.25/273.15) or                    070996
+CC              ppt = (1.0e9*22.4*1013.25/273.15) multiplied by -       070996  
+CC              (temperature(k)/(pressure(mb)*molecular wt.)
+CC     contrs - array of contour levels for surface 1 and surface 2.
+CC     convrt - array of units conversion constants for met. input.
+CC     cscale - scale factor multiplier for dispersion model
+CC              calculations under plotting. cscale*dispersion+dscale.
+CC     csmaxs - array containing current maximum value of surface 1
+CC              and surface 2.
+CC     csmins - array containing current minimum value of surface 1
+CC              and surface 2.
+CC     dcutof - minimum possible particle diameter (micrometers) below
+CC              which is assumed gaseous.
+CC     decays - coefficient of time dependent exponential decay for
+CC              the removal of material due to chemical or physical
+CC              processes (/s).
+CC     dekayd - decay depletion term of the concentration equation.
+CC     delthp - wind direction shear over the transport layer (radians).
+CC     densty - density of the pollutant/species (g/cm**3).
+CC     dhincs - saved height increment between line source sources.     110198
+CC     dhssss - height of current volume source in line source calc.    110198
+CC     dirshr - rate of change of wind direction with height in the
+CC              surface layer (degrees/meter). dirshr is positive to the
+CC              right of wnddir and negative to the left when looking
+CC              downwind along wnddir.
+CC     dphidz - vertical gradient of virtual potential temperature
+CC              (deg k/m).
+CC     dqincs - saved emission increment between line source sources.   110198
+CC     drplwr - array of input lower limits of the particle diameters
+CC              (micrometers).
+CC     drpmmd - particle mass-median diameter (micrometers).
+CC     drpsig - geometric standard deviation of the particle
+CC              distribution (micrometers).
+CC     drpupr - array of input upper limits of the particle diameters
+CC              (micrometers).
+CC     dscale - scale factor added to dispersion model calculations
+CC              under plotting. cscale*dispersion+dscale.
+CC     dtorad - conversion from degrees to radians (radians/degrees).
+CC     dxincs - saved x coordinate increment between line source sources110198
+CC     dxssss - x coord of current volume source in line source calc.   110198
+CC     dyincs - saved y coordinate increment between line source sources110198
+CC     dyssss - y coord of current volume source in line source calc.   110198
+CC     dzincs - saved z coordinate increment between line source sources110198
+CC     dzssss - z coord of current volume source in line source calc.   110198
+CC     factrs - factor used to modify sigatr to sigapr.
+CC     functx - array containing the x points used to plot y as a
+CC              function of x (m).
+CC     functy - array containing the y points used to plot y as a
+CC              function of x.
+CC     gammac - air entrainment coefficient for quasi-continuous plume
+CC              rise (0.60).
+CC     gammad - array of particle reflection coefficients for
+CC              each size category.
+CC     gammai - air entrainment coefficient for instantaneous plume
+CC              rise (0.64).
+CC     gammat - array of source air entrainment coefficients.
+CC     geolat - latitude in degrees of location being modeled. north
+CC              latitude is positive.
+CC     geolon - longitude in degrees of location being modeled. west
+CC              longitude is positive.
+CC     gravty - acceleration of gravity (9.80665 m/s**2).
+CC     grdang - calculation grid system orientation angle.
+CC              if the positive y axis of the rectangular grid receptor
+CC              system points to the right (east) of zero degrees north
+CC              when viewed from the south, the angle is positive. if
+CC              it points to north the angle is zero.
+CC     gxendp - end x coordinate for automatic grid generation.
+CC     gxincr - increment in x for automatic grid generation.
+CC     gxstrt - start x coordinate for automatic grid generation.
+CC     gyendp - end y coordinate for automatic grid generation.
+CC     gyincr - increment in y for automatic grid generation.
+CC     gystrt - start y coordinate for automatic grid generation.
+CC     hcminc - minimum character height possible due to device
+CC              resolution (in).
+CC     heatdf - default heat content of the fuel (cal/g).
+CC     hetcnt - array containing the fuel heat content (cal/g).
+CC     hgtmax - maximum source height (m).
+CC     hgtmet - elevation of ground at meteorological data measurement
+CC              location (m).
+CC     hightl - effective source emission height (m).
+CC     hmdpth - mixing layer depth (m).
+CC     htlchr - height of axes labels and legend characters in inches.
+CC     htnchr - height of axis coordinate label characters in inches.
+CC     htpchr - height of special characters in inches.
+CC     ialpnt - array containing the first and last angle of slope of
+CC              each contour segment for the placement of contour
+CC              labels.
+CC     ibackd - menu data field background color index.
+CC     ibackt - menu text background color index.
+CC     ibaudr - baud rate. default = 1200.
+CC     iboard - PC video card index. Type of text/graphics board.
+CC              same as isvbrd.
+CC              1 - CGA card.
+CC              2 - EGA card.
+CC              3 - VGA card.
+CC     ibpage - display page number.
+CC     iceunt - ceiling height (cldhgt) units index, length units.
+CC     ichars - index of special character to use for plotting points,
+CC              see subroutine SPCLQ for indices.
+CC     icnclr - array containing the color index of each contour line
+CC              see icolor for color indices for surface 1 and surface 2
+CC     icndsh - array containing the index of the type of contour line
+CC              to draw, solid, dashed, etc. see ifdash for surface 1
+CC              and surface 2.
+CC     icmbeg - array with column offsets for each command
+CC     icmcol - start column number for command bar
+CC     icmkey - array containing ascii numbers associated with 'alt' keys
+CC     icmlen - array with length of labels for each command field
+CC     icmmap - array that maps command bar commands
+CC     icmnum - number of commands in command bar
+CC     icmrow - row number for command bar
+CC     icmsta - array containing current status of commands
+CC     icolmx - maximum columns on crt screen.
+CC     icolor - current plot color index.  hue     brightness saturation
+CC               0 - black                  0           0          0
+CC               1 - blue                   0          57        100
+CC               2 - green                240          42        100
+CC               3 - cyan                 300          71        100
+CC               4 - red                   90          57        100
+CC               5 - magenta               60          71        100
+CC               6 - yellow               180          57        100
+CC               7 - dark white             0          66          0
+CC               8 - gray                   0          33          0
+CC               9 - light blue            20          71        100
+CC              10 - light green          260          71        100
+CC              11 - light cyan           330          57        100
+CC              12 - light red            120          42        100
+CC              13 - light magenta         60          85        100
+CC              14 - light yellow         180          85        100
+CC              15 - light white            0         100          0
+CC     icontr - contour index
+CC              1 - surface 1.
+CC              2 - surface 2.
+CC     icpont - pointer used to control calculation path between        110198
+CC              subroutines RMDLB and RMDLC.                            110198
+CC     ibcfil - logical unit number of batch processing file.
+CC     ibcrec - record counter for batch processing file.
+CC     idbfil - logical unit number of database screen menu template
+CC              file.
+CC     idcunt - time units index of pollutant/species half-life.
+CC     idpage - display page number.
+CC     idrect - array containing the source dimension length units
+CC              indices. a) length units of long and short side of
+CC              source in 1's position b) length units of source
+CC              vertical dimension in 10's position.
+CC     idsunt - wind direction shear angle units.
+CC     idubrn - default mass units of fuel burn rate.
+CC     iduhet - default heat units of fuel heat content.
+CC     idunit - mass units of pollutant/species density.
+CC     ierfil - logical unit number of error data file OBODMERR.OBD.
+CC     ifanul - print annual tables.
+CC              0 - no.
+CC              1 - yes.
+CC     ifavrg - averaging time/type for plotting.
+CC              1 - single N-hour average event.
+CC              2 - seasonal average.
+CC              3 - quarterly average.
+CC              4 - annual average.
+CC              5 - highest N-hour average.
+CC              6 - second highest N-hour average.
+CC     ifbndx - plotting out of bounds flag (subroutine PLT2Q only)
+CC              see xbndxs and ybndxs.
+CC              0 - point out of plot boundary
+CC              1 - point inside of plot boundary
+CC              2 or 3 - curve crossed over plot boundary
+CC                       2 - curve going out.
+CC                       3 - curve coming in.
+CC     ifbtch - batch process flag.
+CC              0 - no batch processing.
+CC              1 - program processing batch data files.
+CC     ifcalc - calculate dispersion/deposition flag (not used for
+CC              single met. obs).
+CC              0 - no calculations occur, dispersion and deposition are
+CC                  zero for that hour, because the wind speed is calm
+CC                  or data are missing.  these hours are subtracted
+CC                  from the total hours according to EPA's Guideline
+CC                  on Air Quality Models, 1990, Section 9.3.4.2. if
+CC                  the number of hours accumulated for the averaging
+CC                  period is less than 75% of the total possible hours
+CC                  in the period, then 75% of the total possible hours
+CC                  is used.
+CC              1 - yes calc, all data are good or run is single met.
+CC                  obs., all hours are included in averaging.
+CC             -1 - no calculations occur, dispersion and deposition are
+CC                  zero, because the event could not occur due to a
+CC                  clearing index less than or equal to the threshold,
+CC                  a non-daytime hour, or the day was excluded from
+CC                  calculations.  all hours are included in averages,
+CC     ifccok - flag used to indicate if CRTL-C is ok.
+CC             -1 - kills program imediately.
+CC              0 - no, cannot interupt.
+CC              1 - yes, input menus only.
+CC         2 or 3 - general processing, plotting only.
+CC     ifcolr - plot hard copy in color.
+CC              0 - no.
+CC              1 - yes.
+CC     ifchlb - flag to indicate whether or not to change the default
+CC              plot legend.
+CC              0 - no.
+CC              1 - yes.
+CC     ifcnvt - was grid system, etc. converted to output units.
+CC              0 - not converted.
+CC              1 - converted to output units.
+CC     ifctlc - flag used to indicate CRTL-C was typed.
+CC              0 - no
+CC              1 - yes, in input menu.
+CC              2 - yes, in general processing.
+CC     ifdash - solid, dash, dotted line flag.
+CC               0 - curve plotted as solid line
+CC               1 - curve plotted as dashed line
+CC               2 - curve plotted as dotted line
+CC               3 - curve plotted as dash-dot line
+CC               4 - curve plotted as dash-2 dots line
+CC               5 - curve plotted as dash-3 dots line
+CC               6 - curve plotted as dash-4 dots line
+CC               7 - curve plotted as dash-5 dots line
+CC               8 - curve plotted as dash-6 dots line
+CC               9 - curve plotted as dash-7 dots line
+CC              10 - curve plotted as dash-8 dots line
+CC              11 - curve plotted as dash-9 dots line
+CC              12 - curve plotted as dash-10 dots line
+CC              13 - curve plotted as dash-11 dots line
+CC              14 - curve plotted as dash-12 dots line
+CC              15 - curve plotted as dash-13 dots line
+CC     ifdbug - print flag for debug print output or special options.   020797
+CC              1  - /a  See below for options /a through /z.           020797
+CC              2  - /b                                                 020797
+CC              3  - /c                                                 020797
+CC              4  - /d                                                 020797
+CC              5  - /e                                                 020797
+CC              6  - /f                                                 020797
+CC              26 - /z                                                 020797
+CC              Enter a command line argument /a, /b, /c, /d, /e or /f. 020797
+CC              /a - Prints the minimum amount of debug information,    020797
+CC              /f - Prints the maximum amount of debug information.    020797
+CC              Also, special processing options are set via this       020797
+CC              command line argument.                                  020797
+CC              /m - Generate a new menu database file from files       020797
+CC                   SCREEN01, SCREEN02, etc.                           020797
+CC              /z - Swap Y and Z input grid system points.  Assumes the020797
+CC                   Y axis coordinate points specified are to be used  020797
+CC                   as Z heights and the single Z value specified is to020797
+CC                   be used as Y.  Also, assumes the wind direction is 020797
+CC                   specified as 270 degrees.  This allows for the     020797
+CC                   calculation of concentrations in the X,Z plain at a020797
+CC                   lateral distance of Y from the maximum centerline. 020797
+CC                   If Y is zero, maximum centerline values are        020797
+CC                   calculated.  Complex terrain cannot be used with   020797
+CC                   this option.  If the input data or solution data   020797
+CC                   are saved, this command line argument must be used 020297
+CC                   in subsequent runs, because it is not saved with   020297
+CC                   the data or solution.                              020297
+CC     ifdfil - logical unit number of input fuels/explosives default
+CC              data file.
+CC     ifdstm - standard versus daylight savings time.
+CC              0 - standard
+CC             -1 - daylight savings
+CC     iferrm - array indicating if data in each data field of the
+CC              current menu is erroneous or not. if iferrm(k,l) =
+CC              0 - no error.
+CC              1 - erroneous, highlight this field.
+CC     iferrs - i/o and/or program status flag.
+CC               0 - enter key typed, check cursor position for action
+CC                   if any.
+CC               1 - terminate program.
+CC               2 - f2 key typed, return to main menu.
+CC               3 - f3 key typed, return to base or current menu.
+CC               4 - f4 key typed, display program help menus.
+CC               5 - f5 key typed, display units abbrev. menus.
+CC               6 - f6 key typed, display fuel/explosive and pollutant/
+CC                   species menus.
+CC               7 - f7 key typed, display current disc files.
+CC               8 - f8 key typed, n/a.
+CC               9 - f9 key typed, n/a.
+CC              10 - f10 key typed, n/a.
+CC              11 - pgup key typed, go back to previous menu.
+CC              12 - pgdn key typed, go to next menu.
+CC     ifgend - generate particle distribution from drpmmd and drpsig.
+CC              0 - no
+CC              1 - yes
+CC     ifgeng - generate grid system flag.
+CC              <=0 - no.
+CC                1 - yes.
+CC     ifgpol - rectangular versus polar grid system flag
+CC              0 - rectangular
+CC              1 - polar
+CC     ifgpwn - type of material index.
+CC              0 - gaseous
+CC              1 - particulate
+CC     ifgrph - graphics flag.
+CC              0 - no graphics desired.
+CC              1 - generate graphics.
+CC              2 - same as 1, but specify all plot details.
+CC     ifhcpy - hard copy flag.
+CC              0 - no
+CC              1 - HP LaserJet xx.
+CC              2 - HP RuggedWriter 480.
+CC              3 - IBM Proprinter.
+CC              4 - Epson FX.
+CC              5 - Epson LQ.
+CC              6 - Alps P2400C.
+CC              7 - IBM XL24 AGM.
+CC              8 - Okidata.
+CC              9 - Canon BJ200e.
+CC             10 - HP7475A bed plotter.
+CC             11 - DEC Inkjet.
+CC             12 - plot file (logical unit iplfil).
+CC     ifhiof - flag used to turn on or off highlighting for the
+CC              characters [ and ].
+CC              0 - highlight on.
+CC              1 - highlight off.
+CC     ifhrly - single meteorological observation or continuous hourly
+CC              meteorological data.
+CC              0 - single obs.
+CC              1 - hourly.
+CC     ifinit - initialize program data from old work file.
+CC              0 - no.
+CC              1 - yes.
+CC     iflend - end disc record for fuels/explosives and pollutant/
+CC              species default data in file mwknam.
+CC     iflrjs - flag indicating if menu editing is left or right
+CC              justified.
+CC              0 - right.
+CC              1 - left.
+CC     iflstr - start disc record for fuels/explosives and pollutant/
+CC              species default data in file mwknam.
+CC     ifhsly - source data are single set or some source data varies
+CC              with the hourly meteorological data.
+CC              0 - source data are single set.
+CC              1 - some source data varies hourly.
+CC     ifmode - Program calculation and save solution mode.             030797
+CC              0 - Detailed - Saves all calculations in the output     030797
+CC                  solution file.  The solution file can be read       030797
+CC                  and new tables, averages, source combinations,      030797
+CC                  plots, etc. can be generated.                       030797
+CC              1 - summary, only saves summary calculations in the     030797
+CC                  output solution file.  Only the original tables     030797
+CC                  can be printed, scaled or plotted.                  030797
+CC     ifmous - presence of mouse flag.
+CC              0 - no mouse.
+CC              1 - yes mouse.
+CC     ifmxpc - flag used in limiting maximum stable plume rise
+CC              to maximum adiabatic rise for quasi-continuous sources.
+CC              0 - determine if max. stable rise will exceed max.
+CC                  adiabatic rise.
+CC              1 - maximum stable rise is greater than maximum
+CC                  adiabatic rise. when stable rise exceeds adiabatic
+CC                  rise, the adiabatic rise is used. also, the
+CC                  distance to the maximum adiabatic rise is used.
+CC              2 - maximum stable rise is less than maximum adiabatic
+CC                  rise.
+CC     ifmxpi - flag used in limiting maximum stable plume rise
+CC              to maximum adiabatic rise for instantaneous sources.
+CC              if iswopt(25) is > 0, only stable rise is used for
+CC              instantaneous sources.
+CC              0 - determine if max. stable rise will exceed max.
+CC                  adiabatic rise.
+CC              1 - maximum stable rise is greater than maximum
+CC                  adiabatic rise. when stable rise exceeds adiabatic
+CC                  rise, the adiabatic rise is used. also, the
+CC                  distance to the maximum adiabatic rise is used.
+CC              2 - maximum stable rise is less than adiabatic rise.
+CC     ifnewp - flag indicating type of new plot.
+CC              0 - initialize.
+CC              1 - plot y as a function of x.
+CC              2 - plot isopleths or contours.
+CC     ifnext - program logic pointer.  points to major program segments
+CC     ifored - menu data field foreground color index.
+CC     iforet - menu text foreground color index.
+CC     ifpass - flag used to control index of quantity currently being
+CC              plotted.
+CC               <0 - go back to previous quantity.
+CC              >=0 - go to next quantity.
+CC     ifprlp - controls the looping over particle categories in model
+CC              calculations.
+CC               0 - either no particle categories or nvsprt
+CC                   > 0 & betale = 0.0.
+CC                   if nvsprt > 0 loop over categories in VERT2
+CC                   or in VERT3.
+CC               1 - nvsprt > 0 & betale > 0.0 the
+CC                   loop over categories starts in function DISPR.
+CC     ifprno - printer number for graphics hard copies.
+CC              1 - printer LPT1.
+CC              2 - printer LPT2.
+CC              3 - printer LPT3.
+CC              4 - plot file OBD#####.PLT
+CC              5 - COM port 1
+CC              6 - COM port 2
+CC             <0 - if abs value -1 to -10, then abs value = LPT
+CC                  number.  if abs value -11 to -20, then value =
+CC                  COM number.
+CC     ifpsol - reprint solution file flag.
+CC                   0 - not done or not equal to 2 or 6.
+CC              2 or 6 - done.
+CC     ifrddm - flag to read hourly meteorological data record or not.
+CC              0 = no.
+CC              1 = yes.
+CC              also, used for starting hour index in plotting.
+CC     ifrdwt - array set to indicate which of the control/option,
+CC              receptor, source, meteorological and solution/graphics
+CC              data sets are initialized or not.
+CC              -2 - warning, fatal.
+CC              -1 - error, fatal
+CC               0 - not initialized or incomplete.
+CC               1 - no warnings, no errors, data are complete.
+CC               2 - warning, data are complete.
+CC              ifrdwt(1) - options/control data.
+CC              ifrdwt(2) - receptor data.
+CC              ifrdwt(3) - source data.
+CC              ifrdwt(4) - meteorological data.
+CC              ifrdwt(5) - solution/graphics data file.
+CC              ifrdwt(6) - graphics plots.
+CC     ifrsav - flag used to read output save data file to restore input
+CC              data units and values.
+CC              0 - no, do not read.
+CC              1 - yes, read output save data file.
+CC     ifsave - output data save file has been written.
+CC              0 - no
+CC              1 - yes
+CC     ifsean - print seasonal or quarterly tables.
+CC              0 - none.
+CC              1 - seasonal.
+CC              2 - quarterly.
+CC     ifstch - solution direct access file flag.
+CC              0 - file name specified.
+CC              1 - scratch file used.
+CC     ifstco - save input data file scratch flag.
+CC              0 - file name specified.
+CC              1 - scratch file used. 
+CC     ifspol - rectangular versus polar source coordinate flag used
+CC              in plotting.
+CC              0 - rectangular
+CC              1 - polar
+CC              2 - mixed
+CC     ifswxy - hard copy plot orientation.
+CC              0 - x = horizontal, y = vertical (portrait).
+CC              1 - y = horizontal, x = vertical (landscape).
+CC     iftpol - rectangular versus polar terrain grid system (yteran)
+CC              flag.
+CC              0 - rectangular
+CC              1 - polar
+CC     iftran - terrain input data flag.
+CC              0 - no terrain data.
+CC              1 - yes terrain data in file mtrnam or in zcoord.
+CC     ifunit - mass units of total fuel/explosive.
+CC     ifutms - = 1, if grid system is in UTM coords, else = 0          110198
+CC     ifwrtt - Array of flags used to determine whether or not         110198
+CC              concentration data should be read to accumlate results  110198
+CC              for source groups.                                      110198
+CC     igangu - grid orientation angle units.
+CC              0 - degrees
+CC              1 - radians
+CC     igrect - grid system type flag.
+CC              0 - rectangular system, 0 degrees north is positive
+CC                  y axis, 90 degrees east is positive x axis.
+CC              1 - polar system, x is range, y is angle measured
+CC                  clockwise from 0 degrees north.
+CC     igtfil - logical unit of the input save data file.
+CC     igunit - grid system x,y and discrete point x,y units.  unless
+CC              a polar system is used, then y is degrees.
+CC              0 - meters.
+CC              1 - kilometers.
+CC              2 - feet.
+CC              3 - yards.
+CC              4 - miles.
+CC     izunit - grid system z and discrete point z height units.
+CC              0 - meters.
+CC              1 - kilometers.
+CC              2 - feet.
+CC              3 - yards.
+CC              4 - miles.
+CC     ihmunt - units index of the mixing layer height.
+CC     ihrfmt - format of input hourly meteorological data.
+CC              0 - user specified ASCII free field format.
+CC              1 - user specified ASCII fixed field format (format in
+CC                  mformt).
+CC              2 - ISCST preprocessed (CRSTER) binary unformatted
+CC                  24 hour data.
+CC              3 - ISCST hourly ASCII free field format (ISCST3 "FREE"
+CC                  format.
+CC              4 - ISCST hourly ASCII fixed field format (ISCST3 "CARD"
+CC                  format
+CC              5 - ISCST hourly ASCII fixed field format (ISCST3
+CC                  "ASCII" default format)
+CC              6 - ISCST preprocessed (CRSTER) ASCII fixed field format
+CC                  24 hour data (ISCST "SPECIL" format).
+CC     ihsfmt - format of input hourly source data.
+CC              0 - free field format.
+CC              1 - fixed field format (format in mforms).
+CC     ihunit - units of the met. data measurement elevation,
+CC              length units.
+CC     ilbstr - array of indices giving the start of print labels -
+CC              ilbstr(1) - index in array mscrch at which the main
+CC                          calculation label begins.
+CC              ilbstr(2) - index in array mscrch at which the units of
+CC                          the x coordinate begins.
+CC              ilbstr(3) - index in array mscrch at which the units of
+CC                          the y coordinate begins.
+CC              ilbstr(4) - index in array mscrch at which the name of
+CC                          the quantity being calculated begins.
+CC                          dosage concentration or deposition.
+CC              ilbstr(5) - index in array mscrch at which the calc-
+CC                          ulation height for the grid coordinate axes
+CC                          label begins.
+CC     ilinem - array giving the line numbers for lines in mscrnm that
+CC              contain data fields. if ilinem(k) > 0, then the line
+CC              starting at mscrnm(1,ilinem(k)) contains data fields,
+CC              where k = 1 to 20 (maximum number of lines that can
+CC              contain data fields = 20).
+CC     ilstxs - last PCIT x point plotted.
+CC     ilstys - last PCIT y point plotted.
+CC     imodes - PC text/graphics mode index.
+CC     impfil - logical unit number of input digitized map data.
+CC     imsech - number of microseconds high for determination of
+CC              number of mouse clicks.
+CC     imsecl - number of microseconds low for determination of
+CC              number of mouse clicks.
+CC     imxfil - scratch file logical unit number used to compile
+CC              dispersion calculation reports.
+CC     imxpix - maximum number of pixels in horizontal crt screen.
+CC     imxscl - size of mouse in pixels in horizontal direction.
+CC     imypix - maximum number of pixels in vertical crt screen.
+CC     imyscl - size of mouse in pixels in vertical direction.
+CC     inhfil - logical unit number of input hourly met. data file.
+CC     inhrec - hourly input data record counter.
+CC     inidys - day of desired met. data (01 - 31).
+CC     inihrs - hour of desired met. data (0000-2300) or (0100-2400).
+CC     inimin - minute of desired met. data (00 - 59).
+CC     inimon - month of desired met. data (01 - 12).
+CC     iniyrs - year of desired met. data (19yy or yy).
+CC     injdys - julian day of desired met. data (001 - 366).
+CC     insrec - hourly source data input data record counter.
+CC     ioffst - offset indices to plot matrix arrays.
+CC              ioffst(1) - offset index to surface 1 data.
+CC              ioffst(2) - offset index to surface 2 data.
+CC     iofhrs - offset to use hour as index.
+CC              0 - hourly range is 0100-2400.
+CC              1 - hourly range is 0000-2300.
+CC     iogfil - logical unit number of input/output solution/graphics
+CC              data file.
+CC     iogrec - record counter for concentration, dosage, etc. arrays
+CC              in random access solution/graphics file.
+CC     iogpnt - pointer to start of concentration, dosage, etc. arrays
+CC              in random access solution/graphics file data record.
+CC     iotfil - data print logical unit number.
+CC     ipages - print page number.
+CC     iplfil - graphics output file number.
+CC     ipmode - PCIT plot mode -
+CC              0 - no graphics
+CC              5 - 320 by 200 monochromatic
+CC              4 - 320 by 200 color
+CC              6 - 640 by 200 monochromatic
+CC             16 - EGA color card
+CC             18 - VGA color card
+CC     ipoptn - array containing plot option flags for the type of plot
+CC              desired. a single plot is generated from the flags set.
+CC              1 - plot y as a function of x.
+CC              2 - plot line of maximum surface depth, height,
+CC                  magnitude, et.) within x,y axes.
+CC                  2 - surface 1
+CC                 -2 - surface 2
+CC              3 - plot contours of surface depth, height, magnitude
+CC                  using actual values.
+CC                  3 - surface 1
+CC                 -3 - surface 2
+CC              4 - plot contours of surface depth, height, magnitude
+CC                  using log of values. this option is selected,
+CC                  if plots produced under 3 above have stange wavy
+CC                  lines or discontinuities, due to very flat or very
+CC                  steep gradients.
+CC                  4 - surface 1
+CC                 -4 - surface 2
+CC              5 - plot special symbols.
+CC     iprunt - air pressure units index.
+CC     ipsunt - particle diameter units.
+CC     iptbuf - buffer used to read and write direct access solution
+CC              pointer records.
+CC     iptrec - record counter for random access solution file, used for
+CC              counting hour/source pointers.
+CC     iptpnt - counter used for placing hour/source pointers in consec.
+CC              random access records.
+CC     ipvunt - length units of particle settling velocity.
+CC     iquart - quarter of the year index.
+CC     iqunit - array containing a) the index of the source time units
+CC              in the 1's position when emission is a rate. b) the
+CC              index of the source mass units in the 10's position.
+CC              c) the index of the source time or calculation time
+CC              given by taucld in the 100's position.
+CC     ircbuf - buffer used to read and write direction access dispersion
+CC              calculation solution records.
+CC     irdcol - current column number to read from or store into the
+CC              the menu array mscrnm.
+CC     irdrow - current row number to read from or store into the menu
+CC              array mscrnm.
+CC     irndys - current day of run.
+CC     irnhrs - current hour of run.
+CC     irnjdy - current julian day of run
+CC     irnmon - current month of run.
+CC     irnyrs - current year of run.
+CC     irount - roughness length units index.
+CC     irowmx - maximum number of rows on crt screen.
+CC     irxndx - x axis ascending, descending flag.
+CC              0 - ascending.
+CC              1 - descending.
+CC     iryndx - y axis ascending, descending flag.
+CC              0 - ascending.
+CC              1 - descending.
+CC     iscdct - ISC input data day counter.
+CC     iscdys - array specifying which days in the year are to be
+CC              processed.
+CC              0 - do not process.
+CC              1 - process.
+CC     iscfil - logical unit number of scratch file used to generate
+CC              iplfil from.
+CC     ischmd - ISC rural or urban mixing layer depths.
+CC              0 - rural.
+CC              1 - urban.
+CC     ischrs - ISC input data 24 hour counter.
+CC     iscyrs - year of ISC met. data.
+CC     iseasn - season of the year index.
+CC     isgrec - record counter for SigmaPlot output file.
+CC     ishfil - logical unit number of hourly input source data.
+CC     ismunt - array of length units for the source parameters xsmlry,
+CC              xsmlrz, xlrgry and xlrgrz. a) xsmlry units index in 1's
+CC              position. b) xsmlrz units index in 10's position.
+CC              c) xlrgry units index in 100's position. d) xlrgrz
+CC              units index in 1000's position.
+CC     isofrq - array indicating whether or not a source is burned or
+CC              or detonated for each hour of the day.
+CC     isogrp - array containing the source sequence numbers used to
+CC              describe each source print group.
+CC              >0 - include specific source.
+CC              <0 - include all sources up to and including the
+CC                   absolute value or up to the previous positive
+CC                   value in the same group.
+CC     isotyp - array containing a) the index of the source type
+CC              in the 1's position (1-volume/point,2-line).
+CC              b) the index of the source emission type in the 10's
+CC              position (1-instantaneous,2-quasi-continuous square
+CC              wave).
+CC     ispacm - array giving the number of columns in each data field
+CC              in the current menu.  the l'th data field ends at
+CC              mscrnm(itabsm(k,l)+ispacm(k,l)-1,ilinem(k)).
+CC     ispage - saved current display page number.
+CC     ispclc - array containing the type of special symbol to plot.
+CC              1 - box with line from center to upper right
+CC                  corner.
+CC              2 - box with corners cut off with line from
+CC                  center to top center.
+CC              3 - triangle with line from center to top
+CC                  center peak.
+CC              4 - plus sign.
+CC              5 - x symbol.
+CC              6 - diamond with line from center to top center
+CC                  peak.
+CC              7 - upward pointing arrow.
+CC              8 - x symbol with line jointing the upper ends
+CC                  of lines.
+CC              9 - z symbol with small line drawn mid-way down
+CC                  horizontally.
+CC             10 - y symbol.
+CC             11 - box with diagonal lines drawn out from each
+CC                  corner and with a line from the center of
+CC                  the box to the upper right corner.
+CC             12 - asterisk symbol.
+CC             13 - hourglass symbol.
+CC     ispclr - array containing the color index for each special
+CC              symbol to plot
+CC     isppol - array containing a rectangular/polar flag for each
+CC              special symbol to plot
+CC              0 - rectangular
+CC              1 - polar
+CC     ispunt - reference wind speed length units or knots.
+CC     isrect - array containing a) the source x,y units in the 1's
+CC              position. b) the source coord system index in the 10's
+CC              position. c) the source height units in the 100's
+CC              position.
+CC     issunt - wind speed shear length units or knots.
+CC     istabl - Pasquill stability category index.
+CC     istrec - graphics/solution file record counter.
+CC     istunt - time units index of the measurement time of the std.
+CC              dev. of the wind direction angle.
+CC     isunit - mass units of pollutant species.
+CC     isvfil - logical unit number of the output save data file.
+CC     isvbrd - PC video card index. Type of text/graphics board.
+CC              see iboard.
+CC     isvmod - saved current mode of crt screen, same as lmodes.
+CC     iswopt - general program options.
+CC              iswopt(1)  - dosage calculation option.
+CC                           0 - not calculated.
+CC                           1 - dosage calculated.
+CC              iswopt(2)  - concentration calculation option.
+CC                           0 - not calculated.
+CC                           1 - calculated.
+CC              iswopt(3)  - time-average concentration calculation
+CC                           option.
+CC                           0 - not calculated.
+CC                           1 - calculated.
+CC              iswopt(4)  - gravitational deposition calculation
+CC                           option.
+CC                           0 - not calculated.
+CC                           1 - calculated.
+CC              iswopt(5)  - produce output file that can be processed
+CC                           by Sigma Plot routines.
+CC                           0 - no.
+CC                           1 - yes.
+CC              iswopt(6)  - terrain elevation flag for complex terrain
+CC                           dispersion calculations.
+CC                           0 - no terrain, no flag poles.
+CC                           1 - no terrain, but have flag poles. One   120702
+CC                               Grid flag pole zcoord(1) and one or    120702
+CC                               more discrete flag poles zdscrt        120702
+CC                           2 - have complex terrain.
+CC                           3 - have grid system of flag poles         120702
+CC                               plus discrete flag poles               120702
+CC              iswopt(7)  - packed date time of hours met. data.
+CC              iswopt(8)  - final or gradual plume/cloud rise option.
+CC                           1 - final.
+CC                           2 - gradual depending on distance.
+CC              iswopt(9)  - either Pasquill stability was entered or
+CC                           net radiation index.
+CC                           0 - net radiation index.
+CC                           1 - Pasquill stability category.
+CC              iswopt(10) - calms,
+CC                           0 - flag calms as no dispersion calc.,
+CC                               con, dos, dep are all zero for the
+CC                               calm hour.
+CC                           1 - set calms = 1.0 mps and wind direction
+CC                               = to previous hour.
+CC              iswopt(11) - missing met. data
+CC                           0 - flag as no dispersion calc., con, dos,
+CC                               dep are all zero for the missing data
+CC                               hour.
+CC                           1 - default according to stability and wind
+CC                               speed or from previous hour.
+CC              iswopt(12) - option to print table of highest and
+CC                           second highest at each receptor.
+CC                           0 - no.
+CC                           1 - yes.
+CC              iswopt(13) - dosage, concentration, deposition output
+CC                           mass units index.
+CC                           0 - grams         g.
+CC                           1 - kilograms    kg.
+CC                           2 - pounds       lb.
+CC                           3 - ounces       oz.
+CC                           4 - tons         tn.
+CC                           5 - milligrams   mg.
+CC                           6 - micrograms   ug.
+CC                           7 - particles    pa.
+CC              iswopt(14) - print time units option.
+CC                           0 - print units are seconds.
+CC                           1 - print units are minutes.
+CC                           2 - print units are hours.
+CC              iswopt(15) - print output length units.
+CC                           0 - meters
+CC                           1 - kilometers
+CC                           2 - feet
+CC                           3 - yards
+CC                           4 - miles
+CC                           5 - centimeters
+CC                           6 - millimeters
+CC                           7 - micrometers
+CC                           8 - inches
+CC              iswopt(16) - print output area units.
+CC                           0 - square meters
+CC                           1 - square kilometers
+CC                           2 - square foot
+CC                           3 - square yards
+CC                           4 - square miles
+CC                           5 - square centimeters
+CC                           6 - square millimeters
+CC                           7 - square micrometers
+CC                           8 - square inches
+CC                           9 - acres
+CC                          10 - hectares
+CC              iswopt(17) - print output volume units.
+CC                           0 - cubic meters
+CC                           1 - cubic kilometers
+CC                           2 - cubic foot
+CC                           3 - cubic yards
+CC                           4 - cubic miles
+CC                           5 - cubic centimeters
+CC                           6 - cubic millimeters
+CC                           7 - cubic micrometers
+CC                           8 - cubic inches
+CC                           9 - liters
+CC                          10 - parts per million
+CC                          11 - parts per billion
+CC                          12 - parts per trillion
+CC              iswopt(18) - option to print maximum 50 receptors.
+CC                           0 - no.
+CC                           1 - yes.
+CC              iswopt(19) - flag used to indicate more than one year
+CC                           of data under the summary mode.
+CC                           0 - no.
+CC                           1 - yes.
+CC              iswopt(20) - print individual sources and/or sum of
+CC                           sources.
+CC                           0 - print sum only.
+CC                           1 - print source groups.
+CC              iswopt(21) - print source maximum plume rise heights.
+CC                           0 - no.
+CC                           1 - yes.
+CC              iswopt(22) - print line width flag.
+CC                           0 - 132 print columns.
+CC                           1 -  80 print columns.
+CC              iswopt(23) - rectangular source coordinates are added to
+CC                           xorgin,yorgin.
+CC                           0 - no
+CC                           1 - yes
+CC              iswopt(24) - print hourly input met. data option.
+CC                           0 - no
+CC                           1 - yes
+CC              iswopt(25) - option used to either use both stable
+CC                           and adiabatic plume rise for instantaneous
+CC                           sources or only use stable rise.
+CC                           0 - use both stable and adiabatic rise.
+CC                               maximum stable rise is limited to
+CC                               maximum adiabatic rise.
+CC                           1 - use only stable rise. maximum stable
+CC                               rise is limited only by restricting
+CC                               dphidz to be >= 3.344e-4 (deg k/m).
+CC              iswopt(26) - print hourly source data.
+CC                           0 - no.
+CC                           1 - yes.
+CC              iswopt(27) - restrict dispersion calculations to daytime
+CC                           hours (sunrise+1hour to sunset-1hour)
+CC                           0 - no.
+CC                           1 - yes.
+CC              iswopt(28) - print each n-hour averaging period
+CC                           0 - no.
+CC                           1 - yes.
+CC              iswopt(29) - if less then 75% of data is valid for short
+CC                           term averages, use 75% of average interval or
+CC                           use actual valid count to calculate average.
+CC                           0 - 75% minimum
+CC                           1 - Actual count
+CC              iswopt(30) - used to refresh a menu display, but not allow 
+CC                           user interaction.
+CC                           0 - allow interaction.
+CC                           1 - do not allow interaction, display only.
+CC              iswopt(31) - order of terrain elevation coordinates in
+CC                           complex terrain input data file.
+CC                           0 - all x elevations (1 to nxpnts) are read 
+CC                               for each y (1 to nypnts).
+CC                           1 - all y elevations (1 to nypnts) are read 
+CC                               for each x (1 to nxpnts).
+CC              iswopt(32) - Flag to turn off/on menu functions at the  071196
+CC                           top of the CRT screen.                     071196
+CC              iswopt(33) - Print calm wind warning messages.          090500
+CC                           0 - no                                     090500
+CC                           1 - yes                                    090500
+CC              iswopt(34) - Wind direction is From or Towards          051503
+CC                           0 - From                                   051503
+CC                           1 - Towards                                051503
+CC              iswopt(35) - Print met. data error/warning messages     051503
+CC                           0 = no                                     051503
+CC                           1 - yes                                    051503
+CC              iswopt(36) - n/a
+CC              iswopt(37) - n/a
+CC              iswopt(38) - n/a
+CC     iswplt - graphics options.
+CC              iswplt(1)  - flag indicating coordinates adjusted for
+CC                           origin.
+CC                           0 - no.
+CC                           1 - yes.
+CC              iswplt(2)  - axes are linear, log-linear, log-log.
+CC                           0 - linear
+CC                           1 - log x and linear y
+CC                           2 - linear x and log y
+CC                           3 - log-log
+CC              iswplt(3)  - draw curve point to point or smooth curve
+CC                           using spline function. used for y as a
+CC                           function of x curves and line of maximum
+CC                           curves.
+CC                           0 - spline
+CC                           1 - point to point
+CC              iswplt(4)  - plot axes & grid coordinates, plot only
+CC                           grid coordinates or neither.
+CC                           0 - plot axes & grid coordinates
+CC                           1 - plot only grid coordinates
+CC                           2 - plot neither axes or grid coordinates
+CC                           if iswplt(4) = 0 or 1 the inputs xlmrgn,
+CC                           xrmrgn,ytmrgn and ybmrgn must be input >
+CC                           zero.
+CC              iswplt(5)  - plot x and y as horizontal and vertical
+CC                           axes, respectively or vice-versa.
+CC                           0 - x and y are horizontal and vertical
+CC                               axes.
+CC                           1 - x and y are vertical and horizontal
+CC                               axes.
+CC              iswplt(6)  - draw solid, dashed, dotted, or dash-dot
+CC                           line for y as a function of x or line of
+CC                           maximum curve for surface 1. see ifdash.
+CC              iswplt(7)  - center legend according to the length of
+CC                           the longest line and left justify lines or
+CC                           center each line independently.
+CC                           0 - center independently
+CC                           1 - left justify
+CC              iswplt(8)  - plot grid coordinate positions.
+CC                            0 - no
+CC                           >0 - special symbol to draw at grid coord-
+CC                                inates. see subroutine SPCLQ for
+CC                                symbols.
+CC              iswplt(9)  - plot background color index. see icolor for
+CC                           color indices.
+CC              iswplt(10) - option to plot only tick marks on axes to
+CC                           indicate coordinates or to plot entire axis
+CC                           to axis lines.
+CC                           0 - tick marks on axes
+CC                           1 - axis to axis lines
+CC              iswplt(11) - option to draw the actual value to label
+CC                           contour levels or use alpha or numeric
+CC                           indices for surface 1.  if negative,
+CC                           legend is also drawn.
+CC                              0 - label contours with actual value.
+CC                           +- 1 - label contours with alphabetic
+CC                                  characters (a,b,c,...).
+CC                           +- 2 - label contours with index numbers
+CC                                  (1,2,3,...).
+CC                              3 - no labels
+CC              iswplt(12) - color of line of maximum curve for surface 1
+CC                           or y as a function of x curve. see icolor.
+CC              iswplt(13) - color of screen 1 for VT125 and PCIT
+CC              iswplt(14) - color of screen 2 for VT125 and PCIT
+CC              iswplt(15) - color of screen 3 for VT125 and PCIT
+CC              iswplt(16) - color index of plot axes and labels (VT125
+CC                           screen 1).
+CC              iswplt(17) - boundary code - program restricts plotting
+CC                           to inside of specified area.
+CC                           1 - xlft = 0.0, xrit = xnchpl, ybot = 0.0,
+CC                               ytop = ynchpl
+CC                           2 - xlft = xlmrgn, xrit = xrmrpg,
+CC                               ybot = ybmrgn, ytop = ytmrpg
+CC              iswplt(18) - not used.
+CC              iswplt(19) - not used.
+CC              iswplt(20) - where to place legend giving actual value
+CC                           of characters or indices used to label the
+CC                           contour curves for surface 1.
+CC                           0 - upper right corner inside of plot axes.
+CC                           1 - upper left corner inside of plot axes.
+CC                           2 - lower left corner inside of plot axes.
+CC                           3 - lower right corner inside of plot axes.
+CC                           4 - top right margin.
+CC                           5 - top left margin.
+CC                           6 - bottom left margin.
+CC                           7 - bottom right margin.
+CC              iswplt(21) - not used.
+CC              iswplt(22) - draw solid, dashed, dotted, or dash-dot
+CC                           line for surface 2 line of maximum. see
+CC                           ifdash.
+CC              iswplt(23) - color of line of maximum curve for surface
+CC                           2 see icolor.
+CC              iswplt(24) - option to draw the actual value to label
+CC                           isopleth levels or use alpha or numeric
+CC                           indices for surface 2.  if negative,
+CC                           legend is also drawn.
+CC                              0 - label contours with actual value.
+CC                           +- 1 - label contours with alphabetic
+CC                                  characters (a,b,c,...).
+CC                           +- 2 - label contours with index numbers
+CC                                  (1,2,3,...).
+CC                              3 - no labels
+CC              iswplt(25) - where to place legend giving actual value
+CC                           of characters or indices used to label the
+CC                           isopleth curves for surface 2.
+CC                           0 - upper right corner inside of plot axes.
+CC                           1 - upper left corner inside of plot axes.
+CC                           2 - lower left corner inside of plot axes.
+CC                           3 - lower right corner inside of plot axes.
+CC                           4 - top right margin.
+CC                           5 - top left margin.
+CC                           6 - bottom left margin.
+CC                           7 - bottom right margin.
+CC              iswplt(26) - used to control whether or not menus are
+CC                           skipped under the F8 key.
+CC                           0 - not skipped.
+CC                           1 - skipped.
+CC              iswplt(27) - plot arrow indicating north flag.
+CC                           0 - no.
+CC                           1 - yes.
+CC              iswplt(28) - plot background map.
+CC                           0 - no.
+CC                           1 - yes, black/white.
+CC                           2 - yes, color.
+CC              iswplt(29) - plotting on/off flag.
+CC                           0 - off or no.
+CC                           1 - on or yes.
+CC              iswplt(30) - not used
+CC     isxunt - units index of the standard deviation of the longitud-
+CC              inal wind angle.
+CC     isystm - computer system type.
+CC              1 - Hewlett Packard HP9000/800 series.
+CC              2 - PCIT (IBM compatible PC).
+CC     isyunt - units index of the standard deviation of the wind
+CC              direction angle.
+CC     iszunt - units index of the standard deviation of the wind
+CC              elevation angle.
+CC     itable - print table number.
+CC     itabsm - array giving the start columns of each data field on the
+CC              line given by ilinem(k). the data field starts at
+CC              mscrnm(itabsm(k,l),ilinem(k)) for the l'th field on the
+CC              line, where l = 1 to 10 (maximum number of data fields
+CC              per line = 10).
+CC     itmunt - time units of time-mean concentration time timavg.
+CC     itpunt - air temperature units index.
+CC              0 - Celsius
+CC              1 - Kelvin
+CC              2 - Fahrenheit
+CC              3 - Rankine
+CC     itrfil - logical unit number of the terrain data input file.
+CC     ivarmt - array specifying the location of values for met.
+CC              parameter variables in an input record. 0 = parameter
+CC              not in data record, hold constant.  >0 = index of value
+CC              in input record.  <0 = parameter not in input record,
+CC              use default value for parameter.
+CC              parameter variables -
+CC               (1) - year iniyrs.
+CC               (2) - month inimon.
+CC               (3) - day inidys.
+CC               (4) - hour inihrs.
+CC               (5) - julian day injdys.
+CC               (6) - wind speed refspd.
+CC               (7) - wind speed power law coefficient pwrlaw.
+CC               (8) - wind direction wnddir.
+CC               (9) - lateral turbulence intensity sigmap.
+CC              (10) - vertical turbulence intensity sigmep.
+CC              (11) - longitudinal turbulence intensity trbixr.
+CC              (12) - air temperature airtmp.
+CC              (13) - air pressure airprs.
+CC              (14) - vert. pot. temp. gradient dphidz.
+CC              (15) - mixing layer depth hmdpth.
+CC              (16) - wind speed shear spdshr.
+CC              (17) - wind direction shear dirshr.
+CC              (18) - Pasquill stability category stblty.
+CC              (19) - net radiation index radinx.
+CC              (20) - measurement time for lateral turbulence intensity
+CC                     tauosa.
+CC              (21) - roughness length roughl.
+CC              (22) - humidity airhum.
+CC              (23) - clearing index clrinx.
+CC              (24) - cloud cover cldcov.
+CC              (25) - cloud ceiling cldhgt.
+CC     ivarso - array specifying the location of values for source
+CC              parameter variables in an input record. 0 = parameter
+CC              not in data record, >0 = index of value in input record
+CC              corresponding to the parameter variables -
+CC               (1) - source number (required).
+CC               (2) - total mass of material released.
+CC               (3) - material heat content hetcnt.
+CC               (4) - burn rate brnrat.
+CC     ivgunt - temperature units index of the vertical gradient of
+CC              potential temperature.
+CC              0 - Celsius
+CC              1 - Kelvin
+CC              2 - Fahrenheit
+CC              3 - Rankine
+CC     ivrmod - Subversion number for most recent update to the program.090498
+CC              See moddat.  ivrmod is added to the current version     090498
+CC              number.  If the current version is xx.x, then the update090498
+CC              version is xx.x.iiii, where iiii = ivrmod.              090498
+CC     iwkfil - logical unit number of screen menu data work file.
+CC     ixlpnt - array containing the first and last x point of each
+CC              contour segment for the placement of contour labels.
+CC     ixlpts - array containing the x locations where contour labels
+CC              have been drawn to prevent over drawing of labels.
+CC     iylpnt - array containing the first and last y points of each
+CC              contour segment for the placement of contour labels.
+CC     iylpts - array containing the y locations where contour labels
+CC              have been drawn to prevent over drawing of labels.
+CC     jdsunt - wind direction shear length (height) units.
+CC     jdubrn - default time units of fuel burn rate.
+CC     jduhet - default mass units of fuel heat content.
+CC     jdunit - volume units of pollutant/species density.
+CC     jfutms - = 2, if origin specified and is UTM, = 1, if origin     110198
+CC              specified and not UTM, = 0 if origin not specified.     110198
+CC     jjjoff - array containing ofset indices for the calculation of
+CC              dosage, concentration, time-average concentration,
+CC              and gravitational deposition.
+CC     joffs1 - offset index to start of surface 1 data or surface 2
+CC              data in array calcsa.
+CC     jpoptn - counter used to move through the plot option array
+CC              ipoptn.
+CC     jpvunt - time units of particle settling velocity.
+CC     jqunit - array containing the fuel heat content units.  a) heat
+CC              units index in the 1's position. b) mass units index
+CC              in the 10's position.
+CC     jrxndx - prevent irxndx flag.
+CC              0 - do not prevent.
+CC              1 - prevent.
+CC     jryndx - prevent iryndx flag.
+CC              0 - do not prevent.
+CC              1 - prevent.
+CC     jspunt - reference wind speed time units if not knots.
+CC     jssunt - wind speed shear time units if not knots.
+CC     jvgunt - length (height) units index of the vertical gradient of
+CC              potential temperature.
+CC     kfutms - = 1, if discrete points are UTM, else = 0               110198
+CC     kqunit - array containing the fuel burn rate units index.
+CC              a) burn rate mass units in 1's position.  b) burn rate
+CC              time units in 10's position.
+CC     kssndx - source index counter.
+CC     lcolor - last line color plotted.
+CC     lfutms - = 1, if jfutms > 0 and source is in UTM, else = 0       110198
+CC     linetl - total number of lines per print page.
+CC     llines - print line counter.
+CC     lmodes - PC text/graphics mode when OBODM is initialized, same as
+CC              isvmod.
+CC     locxms - current mouse location in the horizontal direction.
+CC     locyms - current mouse location in the vertical direction.
+CC     lswxax - x axis flag. 0 = linear, 1 = log.
+CC     lswyax - y axis flag. 0 = linear, 1 = log.
+CC     malpha - alphabet used for check of input commands (a-z),(a-z).
+CC     mbcnam - file name of batch processing file.
+CC     mblnk1 - one blank character.
+CC     mcolor - array of color names for each color index.  see icolor
+CC              for the respective color index.
+CC               1 - 'black ',
+CC               2 - 'blue  ',
+CC               3 - 'green ',
+CC               4 - 'cyan  ',
+CC               5 - 'red   ',
+CC               6 - 'magent',
+CC               7 - 'yellow',
+CC               8 - 'dkwhit',
+CC               9 - 'gray  ',
+CC              10 - 'ltblue',
+CC              11 - 'ltgren',
+CC              12 - 'ltcyan',
+CC              13 - 'ltred ',
+CC              14 - 'ltmage',
+CC              15 - 'ltyell',
+CC              16 - 'ltwhit'
+CC     mcmlab - array containing command bar labels
+CC     mdbnam - file name of database screen menu template file
+CC              (OBODMENU.OBD).
+CC     mdirec - directory path name.
+CC     mfdnam - file name of input fuels/explosives default data file
+CC              (OBODFUEL.OBD).
+CC     mforms - array containing the format for user specified fixed
+CC              field format source data (151).
+CC     mformt - array containing the format for user specified fixed
+CC              field format meteorological data (151).
+CC     moddat - date of most recent update to current version of        090498
+CC              program.  See ivrmod.                                   090498
+CC     mxfrom - format for x axis data read from file mxynam.
+CC     myform - format for y axis data read from file mxynam.
+CC     mzform - format for z elevation data read from file mxynam.
+CC     mgtnam - name of input save data file.
+CC     mhrlab - plotting label for date/time.
+CC     mlablx - x axis label plotted in x axis margin.
+CC     mlably - y axis label plotted in y axis margin.
+CC     mlngnd - plot legend or caption. the end of each line is given
+CC              by a dollar sign. two consecutive dollar signs means
+CC              end of legend.
+CC     mapnam - file name of digitized map data input file.
+CC     mernam - file name of error data file OBODMERR.OBD.
+CC     mnhnam - file name of input hourly met. data file.
+CC     mnpbuf - general character buffer, primarily input buffer.
+CC     modelt - names of different quantities that can be calculated.
+CC     mognam - file name of input/output solution/graphics data file.
+CC     motnam - name of print output file.
+CC     mplnam - name of plot output file.
+CC     mpolnt - name of fuel/explosive being modeled.
+CC     mscrch - scratch label space.
+CC     mscrnm - nmxcol by nmxrow character array containing the screen
+CC              menu. the first dimension specifies screen columns
+CC              left to right, 1 to nmxcol.  the second dimension
+CC              specifies screen line number top to bottom, 1 to nmxrow.
+CC     msgnam - file name of Sigma Plot output file.
+CC     mshnam - file name of hourly input source data file.
+CC     msoids - source id name for each source.
+CC     mspeci - name of pollutant or species being processed.
+CC     msvnam - name of the output save data file.
+CC     mtitle - run title.
+CC     mtrnam - file name of terrain data input file.
+CC     munita - area unit names.
+CC     munitg - angle unit names.
+CC     munitl - length unit names.
+CC     munitm - mass unit names.
+CC     munitt - time unit names.
+CC     munitv - volume unit names.
+CC     mwknam - name of screen menu data work file (OBODWORK.OBD).
+CC     mxynam - name of data file containing x,y axes and z elevations.
+CC     navhrs - n-hour averaging times or total times for deposition (6).
+CC     nbtchc - number of current batch file case.
+CC     nbxpss - number of special labels or legends drawn on the
+CC              plot. used to prevent other labels or legends from
+CC              writing over those plotted. see xbxpsl, xbxpel, ybxpsl,
+CC              and ybxpel.
+CC     nchlcr - number of total characters in plot legend.
+CC     nchtcr - number of characters in plot title.
+CC     nchtrs - number of characters in title in mtitle.
+CC     nchxcr - number of total characters in x axis label.
+CC     nchycr - number of total characters in y axis label.
+CC     ncolmn - number of columns on crt terminal.
+CC     ncontr - array containing the number of contour levels to plot
+CC              for surface 1 and surface 2 (maximum = nmxctr).
+CC     nctlbl - number of contour labels that have been drawn on a plot
+CC     ncurvs - the number of contour curv segments used to determine
+CC              where to label each contour line.
+CC     ndgxes - number of digits to right of decimal for numbers
+CC              labeling grid coordinates on x axis.
+CC     ndgyes - number of digits to right of decimal for numbers
+CC              grid coordinates on y axis.
+CC     ngrdpt - number of receptors in the grid axis system (nxpnts*
+CC              nypnts).
+CC     ngroup - total number of different source groupings to print
+CC              calculations for.
+CC     ngrpct - number of sources in plot group.
+CC     ngrplt - plot sum of sources or group source flag.
+CC               0 - sum
+CC              >0 - group
+CC     nforms - number of FORTRAN edit codes using e, f or g in the
+CC              format array mforms.
+CC     nformt - number of FORTRAN edit codes using e, f or g in the
+CC              format array mformt.
+CC     nhravg - number of hours in averaging time being plotted.
+CC     nhrlab - number of characters in label mhrlab.
+CC     nincxs - number of minor tick marks to major tick marks at which
+CC              axis coordinate is labeled.
+CC     nincys - number of minor tick marks to major tick marks at which
+CC              axis coordinate is labeled.
+CC     nkeybd - array containing the extension number and character
+CC              number for each of the control keys - enter (return),
+CC              f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, pgup, pgdn,
+CC              up arrow, dn arrow, left tab, right tab, left arrow,
+CC              right arrow, delete, ctrl k or k, backspace, home, end,
+CC              esc, ctrl home, ctrl end.
+CC     nlbsch - array giving the number characters for each respective
+CC              label in mscrch. see ilbstr.
+CC     nlincs - counter over the number of sources in current line      110198
+CC              source simulation.                                      110198
+CC     nlsorc - number of volume sources added for the simulation of
+CC              line sources.
+CC     nmxcol - maximum number of columns in a screen menu.
+CC     nmxcor - maximum calculation space available for all dispersion
+CC              and deposition calculations. dimension of array calcs
+CC              in common 'OCDSPM.INC' in dispersion related routines.
+CC     nmxctr - maximum dimension for number of contours, arrays contrs,
+CC              icndsh, icnclr.
+CC     nmxdrp - maximum number of particle size categories.
+CC              arrays that depend on nmxdrp are - drpupr, drplwr,
+CC              pctmat, vspart and gammad.
+CC     nmxdys - maximum number of days in hourly input data year.
+CC     nmxfld - maximum number of data fields in a screen menu line.
+CC     nmxfnc - maximum number of pairs of points in y plotted as a
+CC              function of x plots, arrays functx, functy.
+CC     nmxgrp - maximum number of source groups that can be printed.
+CC              arrays that depend on nmxgrp are - nsogrp and isogrp
+CC     nmxhrs - maximum number of hours of input data to process.
+CC     nmxlin - maximum number of lines of data in a screen menu.
+CC     nmxrow - maximum number of rows in screen menu.
+CC     nmxscn - maximum number of screen menu templates.
+CC     nmxsor - maximum number of sources possible. one less than source
+CC              arrays dimension.
+CC              arrays that depend of the value of nmxsor are -
+CC                isrect,idrect,iqunit,jqunit,kqunit,ismunt,isotyp,
+CC                qemiss,taucld,relhgt,clddxs,clddys,cldlng,cldsht,
+CC                cldang,clddpt,xsmlry,xsmlrz,xlrgry,xlrgrz,hetcnt,
+CC                brnrat,clddxe,clddye,relhte,cldmax,gammat,alphas,
+CC                betass,cldmxd,isofrq,clddzs,clddze,calhgt.            012599
+CC     nmxspl - maximum dimension for number of special symbols,
+CC              arrays spclxs, spclys, spclht, spclan, ispclc, ispclr.
+CC              number to be plotted is in nspcls.
+CC     nmxxyz - maximum number of receptor coordinates possible.
+CC              arrays that depend on nmxxyz are - xcoord, ycoord,
+CC              xdscrt, ydscrt, zdscrt, xteran and yteran.
+CC     nochar - value returned by RDSTA to indicate no characters are   020797
+CC              waiting in input buffer.                                020797
+CC     nplots - plot number.
+CC     npoptn - number of plot options selected in array ipoptn.
+CC     nquart - array counter for number of hours in each quarter.
+CC     nrecda - array of start record numbers for each screen menu
+CC              data set in file mwknam.
+CC     nrecdt - array giving the number of data records in file mwknam
+CC              for each menu.
+CC     nrecsc - array of start record numbers for each screen menu
+CC              template found in file mdbnam.
+CC     nseasn - array counter for number of hours in each season.
+CC     nsogrp - array containing the number of source ident numbers
+CC              used to describe each source print group.
+CC     nsourc - number of sources to model (nsourc + nlsorc <= nmxsor).
+CC     nspcls - number of special symbols to be plotted (maximum =
+CC              nmxspl).
+CC     nsubsc - array containing the number of data sets found in
+CC              file mwknam for each screen menu template found in
+CC              file mdbnam.
+CC     ntotal - grand total number of calculation points required
+CC              (ntotal <= nmxcor).
+CC     ntothr - hourly met. input data hour or observation counter.
+CC     ntotpt - total number of receptor points (nxpnts*nypnts+nxypnt).
+CC     numbtn - number of mouse buttons.
+CC     numsce - array of end screen numbers for the various menu
+CC              categories shown under numscs below.
+CC     numscs - array of start screen numbers for the various menu
+CC              categories (receptor data, source data, etc.).
+CC              numscs(1) - start menu number for default drive and
+CC                          directory sub. RINPA.
+CC              numscs(2) - start menu number for default data files,
+CC                          sub. RINPB.
+CC              numscs(3) - start menu number for main control menu,
+CC                          sub. RINPC.
+CC              numscs(4) - start menu number for receptor related
+CC                          data, sub. RINPD.
+CC              numscs(5) - start menu number for source related data,
+CC                          sub. RINPE.
+CC              numscs(6) - start menu number for meteorological
+CC                          related data, sub. RINPK.
+CC              numscs(7) - start menu number for control/options
+CC                          related data, sub. RINPP.
+CC              numscs(8) - start menu number for graphics related
+CC                          data, sub. RINPQ.
+CC              numscs(9) - start menu number for help related info.,
+CC                          sub. IHLPS.
+CC              numscs(10)- start menu number for units related info.,
+CC                          sub. IHLPS.
+CC              numscs(11)- start menu number for default fuel/
+CC                          explosives and default pollutant/species
+CC                          info., sub. IFULS.
+CC              numscs(12)- start menu number for current disc files,
+CC                          sub. IDISC.
+CC     nvlprt - particle category index counter.
+CC     nvsprt - number of particle categories.
+CC     nxpnts - number of x (west to east) grid coordinates in the
+CC              receptor grid system (nxpnts+nxypnt <= 100).
+CC     nxtran - number of x (west to east) terrain coordinates.
+CC     nxyfnc - number of x and y points entered for plot of y as a
+CC              function of x (maximum = nmxfnc).
+CC     nxypnt - number of discrete receptor points (nxpnts+nxypnt <= 100
+CC              and nypnts+nxypnt <= 100).
+CC     nypnts - number of y (south to north) grid coordinates in the
+CC              receptor grid system (nypnts+nxypnt <= 100).
+CC     nytran - number of y (south to north) terrain coordinates.
+CC     paperl - length (vertical) in inches of hard copy paper.
+CC     paperw - width (horizontal) in inches of hard copy paper.
+CC     pconav - calculated time-average concentration (g/m**3).
+CC     pctmat - fraction of total volume of material in each
+CC              particle category.
+CC     pdepgr - calculated gravitational deposition (g/m**2).
+CC     pekcon - calculated concentration (g/m**3).
+CC     pekdos - calculated dosage (g.s/m**3).
+CC     pixelx - number of pixels in horizontal x axis of crt screen.
+CC     pixely - number of pixels in vertical y axis of crt screen.
+CC     pwrlaw - wind speed power law exponent coefficient.
+CC     pxmaxs - maximum value of x axis in x axis units.
+CC     pxmins - minimum value of x axis in x axis units.
+CC     pymaxs - maximum value of y axis in y axis units.
+CC     pymins - minimum value of y axis in y axis units.
+CC     qemiss - array of source emission strength in total mass for
+CC              instantaneous or quasi-continuous sources.
+CC     qfract - ratio of mass of source species to total fuel.
+CC     qkemss - scaled source strength (grams).
+CC     qtfuel - mass of total fuel/explosive.
+CC     radinx - net radiation index.
+CC     radtod - conversion from radians to degrees (degrees/radian).
+CC     rastrh - number of rasters per inch in the horizontal screen.
+CC     rastrv - number of rasters per inch in the vertical screen.
+CC     refhgt - reference height for wind speed power law (m).
+CC     refspd - wind speed at height refhgt or average wind speed (m/s).
+CC     relhgt - array containing the effective release height for
+CC              each source or the start effective release height for
+CC              line sources.
+CC     relhte - array containing the end effective release height for
+CC              line sources. also used to save the source number
+CC              after sources have been generated for the line source
+CC              simulation.
+CC     rgtmrg - right margin of hard copy plot (inch).
+CC     rmissc - data to be computed as program runs, set to -1.0e21
+CC     rmissd - missing data indicator, set to -1.0e20.
+CC     roughl - roughness length (cm).
+CC     sclxes - scale of the x axis in inches per x unit.
+CC     sclxys - vector resultant scale of sclxes and sclyes.
+CC     sclyes - scale of the y axis in inches per y unit.
+CC     sigapr - std. dev. of the azimuth wind direction angle after
+CC              modification for crossing trajectories (radians),
+CC              taken from sigatr.
+CC     sigatr - std. dev. of the azimuth wind direction angle after
+CC              modification for cloud rise time (source function, or
+CC              averaging time).  taken from sigmaq.
+CC     sigepr - std. dev. of the wind elevation angle after modification
+CC              for crossing trajectories (radians).
+CC     sigmap - initial standard deviation of the azimuth wind direction
+CC              (radians).
+CC     sigmaq - standard deviation of the azimuth wind direction
+CC              (radians) after adjustment for measurement time and
+CC              roughness, passed from RMDLA to RMDLB.
+CC     sigmep - initial standard deviation of the wind elevation angle
+CC              (radians).
+CC     sigmeq - initial standard deviation of the wind elevation angle
+CC              (radians) passed to dispersion routines.
+CC     sigxax - alongwind std. dev. of the source material distribution
+CC              at the receptor distance (m).
+CC     sigxls - alongwind initial std. dev. of the source material
+CC              distribution (m), adjusted for the effects of plume
+CC              rise.
+CC     sigxop - alongwind std. dev. of the source material distribution
+CC              (m).
+CC     sigyax - crosswind std. dev. of the source material distribution
+CC              at the receptor distance (m).
+CC     sigyls - crosswind initial std. dev. of the source material
+CC              distribution (m), adjusted for the effects of plume
+CC              rise.
+CC     sigyop - crosswind std. dev. of the source material distribution
+CC              (m).
+CC     sigyta - crosswind std. dev. of the source material distribution
+CC              for the averaging time used in time-average con (m).
+CC     sigzax - vertical std. dev. of the source material distribution
+CC              at the receptor distance (m).
+CC     sigzls - vertical initial std. dev. of the source material
+CC              distribution (m), adjusted for the effects of plume
+CC              rise.
+CC     sigzop - vertical initial std. dev. of the source material
+CC              distribution (m).
+CC     spbotm - bottom-most plot position used in the y dimension.
+CC     spclan - array containing the angle at which each special
+CC              symbol is to be plotted. angle clockwise from the pos.
+CC              y axis.
+CC     spclht - array containing the height in inches of each special
+CC              symbol to plot
+CC     spclxs - array containing the x coordinate of the center of
+CC              each special symbol to plot
+CC     spclys - array containing the y coordinate of the center of
+CC              each special symbol to plot
+CC     spdshr - wind speed shear (m/s).
+CC     spfrct - fraction of character height used to calculate space
+CC              between label lines.
+CC     spheat - specific heat of air (0.24 cal/g.deg k).
+CC     splftm - left-most plot position used in the x dimension.
+CC     spmass - mass of pollutant species.
+CC     spmins - minimum space between plotted label lines for
+CC              resolution.
+CC     spshrc - calculated wind speed shear (m/s), if spdshr < 0.0.
+CC     sq2pii - inverse of the square root of 2*pi.
+CC     sqr2pi - square root of 2*pi.
+CC     sqrt2i - inverse of the square root of 2.
+CC     stblty - Pasquill stability category index (same as istabl).
+CC     svdpts - Saved depth of current line source.                     110198
+CC     svdxss - Saved x coordinate of start of current line source.     110198
+CC     svdyss - Saved y coordinate of start of current line source.     110198
+CC     svdzss - Saved z coordinate of start of current line source.     110198
+CC     svhgts - Saved height of start of current line source.           110198
+CC     svhtes - Saved height of end of current line source.             110198
+CC     svisss - Saved emission of current line source.                  110198
+CC     svlngs - Saved length current line source.                       110198
+CC     svshts - Saved width of current line source.                     110198
+CC     taucld - source emission time for instantaneous and quasi-
+CC              continuous sources.
+CC     tauosa - measurement time for sigmap (sec).
+CC     tautmo - reference time base for std. dev. azimuth wind
+CC              direction angle (600.0 s).
+CC     tcosth - cosine of the wind direction angle adjusted for the
+CC              grid system orientation angle and wind direction shear
+CC              if particle categories are being used.
+CC     timinv - integration time increment for quasi-cont. dosage (s).
+CC     timavg - time for the calculation of time-averaged concentration
+CC              (s).
+CC     timris - time to maximum cloud rise (sec).
+CC     timtas - adjusted source emission time, depending on time to
+CC              the receptor (s) for use in adjustments to crosswind
+CC              turbulence.  same as timtau, depending on plume rise.
+CC     timtau - adjusted source emission time, depending on time to
+CC              the receptor (s).
+CC     timtox - time to receptor distance (s).
+CC     topmrg - top margin of hard copy plot (inch).
+CC     trbixp - longitudinal turbulence intensity after modification
+CC              for crossing trajectories (radians).
+CC     trbixq - initial longitudinal turbulence intensity (radians)
+CC              passed to dispersion routines.
+CC     trbixr - initial longitudinal turbulence intensity (radians).
+CC     trbixt - longitudinal turbulence intensity prior to modification
+CC              for crossing trajectories, but after modification for
+CC              calculation time or source emission time (radians).
+CC     tsinth - sin of the wind direction angle adjusted for the
+CC              grid system orientation angle and wind direction shear
+CC              if particle categories are being used.
+CC     twopii - inverse of 2*pi.
+CC     versod - OBODM program current version number.
+CC     verson - OBODM database file OBODMENU.OBD version number.
+CC     vertcl - vertical term of the concentration equation.
+CC     vertgv - vertical term of the gravitational deposition equation.
+CC     vllimt - array of lower limits for the meteorological parameters
+CC              given under ivarmt.
+CC     vspart - settling velocity (m/s) for each particle size category.
+CC     vulimt - array of upper limits for the meteorological parameters
+CC              given under ivarmt.
+CC     whtmol - molecular weight of the pollutant/species (g/mol).
+CC     wnddir - average wind direction (degrees).
+CC     wndspd - transport wind speed (m/s).
+CC     wspmin - minimum wind speed (m/s).
+CC     xbndxs - x plot point of curve and plot boundary intersection,
+CC              if ifbndx = 2 or 3.
+CC     xbxpel - array of x coordinates giving the end position of a
+CC              label or legend already drawn.
+CC     xbxpsl - array of x coordinates giving the start position of a
+CC              label or legend already drawn.
+CC     xcoord - x coordinates defining the x axis of the receptor grid
+CC              system.
+CC     xcord1 - x axis coordinate of the receptor grid system (m).
+CC     xdscrt - x coordinates defining the discrete points.
+CC     xftmrg - left margin of hard copy plot (inch).
+CC     xincax - increment between minor tick marks on the x axis in
+CC              input x units.
+CC     xinchs - number of inches in x axis.
+CC     xlmrgn - number of inches in left margin of CRT plot (pxmins).
+CC              must be greater than zero if iswplt(4) is = 0 or 1.
+CC     xlrgry - array of source lateral reference distances.
+CC     xlrgrz - array of source vertical reference distances.
+CC     xnchpl - number of inches in the x dimension of the plot area.
+CC     xorgin - origin of the x axis of the grid system or x origin
+CC              of the polar grid. if set non-zero all xcoord points,
+CC              rectangular or polar are, relative to this point.  All
+CC              rectangular grid system points are added to xorgin.
+CC              source rectangular coordinates are added to xorgin,
+CC              only if specified by the user.
+CC     xpdist - alongwind distance from source to receptor (m).
+CC     xplpnt - general x plot point.
+CC     xrmrgn - number of inches in right margin of CRT plot (pxmaxs).
+CC              must be greater than zero if iswplt(4) is = 0 or 1.
+CC     xrmrpg - distance in inches from the left-most x dimension to
+CC              the right plot margin.
+CC     xsmins - minimum x plot axis value in x axis units
+CC     xsmlry - array of distances from the virtual point source over
+CC              which rectilinear expansion in the lateral occurs.
+CC     xsmlrz - array of distances from the virtual point source over
+CC              which rectilinear expansion in the vertical occurs.
+CC     xtemp1 - x coordinate system distance between source and receptor
+CC              (m).
+CC     xteran - array of x coordinates of terrain data.
+CC     xxdist - alongwind virtual point source distance (m).
+CC     xydist - crosswind virtual point source distance (m).
+CC     xymins - minimum distance between x or y coordinates.
+CC     xzdist - vertical virtual point source distance (m).
+CC     ybmrgn - number of inches in bottom margin of CRT plot (pymins).
+CC              must be greater than zero if iswplt(4) is = 0 or 1.
+CC     ybndxs - y plot point of curve and plot boundary intersection,
+CC              if ifbndx = 2 or 3.
+CC     ybxpel - array of y coordinates giving the end position of a
+CC              label or legend already drawn.
+CC     ybxpsl - array of y coordinates giving the start position of a
+CC              label or legend already drawn.
+CC     ycoord - y coordinates defining the y axis of the receptor grid
+CC              system.
+CC     ycord1 - y axis coordinate of the recpetor grid system (m).
+CC     ydscrt - y coordinates of the discrete points.
+CC     yincax - increment between minor tick marks on the y axis in
+CC              input y units.
+CC     yinchs - number of inches in y axis.
+CC     ynchpl - number of inches in the y dimension of the plot area.
+CC     yorgin - origin of the y axis of the grid system or y origin
+CC              of the polar grid. if set non-zero all ycoord points,
+CC              rectangular or polar are, relative to this point.  all
+CC              rectangular grid points are added to yorgin. source
+CC              rectangular coordinates are added to yorgin, only if
+CC              specified by the user.
+CC     ypdist - crosswind distance from cloud centerline to receptor (m)
+CC     yplpnt - general y plot point.
+CC     ysmins - minimum y plot axis value in y axis units.
+CC     ytemp1 - y coordinate system distance between source and receptor
+CC              (m).
+CC     yteran - array of y coordinates of terrain data.
+CC     ytmrgn - number of inches in top margin of CRT plot (pymaxs).
+CC              must be greater than zero if iswplt(4) is = 0 or 1.
+CC     ytmrpg - distance from the bottom-most y dimension to the top
+CC              plot margin.
+CC     zbotly - height at the top of the transport layer (m).
+CC     zcoord - array containing complex terrain elevation or height
+CC              data for the x,y grid system.
+CC     zdscrt - dosage, concentration calculation heights for the
+CC              discrete receptor points.
+CC     zmincs - array containing minimum surface value used in plotting
+CC              contours for surface 1 and surface 2 using a log scale
+CC     zminds - array containing the shift factor used in plotting
+CC              surface 1 and surface 2 contours using a log scale.
+CC     zondif - time difference in hours between greenwich england and
+CC              geolon, geolat. positive for west longitude geolon.
+CC     zpdist - calculation height (m).
+CC     zpsave - saved calculation height of the grid system, used for
+CC              labeling purposes.
+CC     ztoply - height at the bottom of the transport layer (m).
+CC
+CC**********************************************************************
+CC
+CC                    - OBODM Dimensional units -
+CC
+CC             Dimension          Index    Units           Abbreviation
+CC             ---------          ----- ------------------ -----------
+CC             length               0   meters                  m
+CC                                  1   kilometers             km
+CC                                  2 - feet                   ft
+CC                                  3 - yards                  yd
+CC                                  4 - miles                  mi
+CC                                  5 - centimeters            cm
+CC                                  6 - millimeters            mm
+CC                                  7 - micrometers            um
+CC                                  8 - inches                 in
+CC             direction            0 - degrees                 d
+CC                                  1 - radians                 r
+CC             heat                 0 - calorie                ca
+CC                                  1 - kilocalorie            kc
+CC                                  2 - British thermal unit  btu
+CC                                  3 - Joule                   j
+CC                                  4 - erg                     e
+CC             mass                 0 - grams                   g
+CC                                  1 - kilograms              kg
+CC                                  2 - pounds                 lb
+CC                                  3 - ounces                 oz
+CC                                  4 - tons                   tn
+CC                                  5 - milligrams             mg
+CC                                  6 - micrograms             ug
+CC                                  7 - particles              pa
+CC             pressure             0 - millibars              mb
+CC                                  1 - pascals                 p
+CC                                  2 - inches mercury       inhg
+CC                                  3 - millimeters mercury  mmhg
+CC             time                 0 - seconds                 s
+CC                                  1 - minutes                mn
+CC                                  2 - hours                   h
+CC             temperature          0 - Celsius                 c
+CC                                  1 - Kelvin                  k
+CC                                  2 - Fahrenheit              f
+CC                                  3 - Rankine                ra
+CC             velocity        0 to 8 - length units
+CC                                  9 - knots                 kts
+CC                             0 to 2 - time units
+CC             ratio                0 - percent                pr
+CC                                  1 - fraction               fr
+CC             area            0 to 8 - square length units
+CC                                  9 - acres                  ac
+CC                                 10 - hectares               he
+CC             volume          0 to 8 - cubic length units
+CC                                  9 - liters                 li
+CC                                 10 - parts per million     ppm
+CC                                 11 - parts per billion     ppb
+CC                                 12 - parts per trillion    ppt
+CC             mass/volume     0 to 7 - mass units
+CC                             0 to 9 - volume units
+CC             mass/time       0 to 7 - mass units
+CC                             0 to 2 - time units
+CC             heat/mass       0 to 4 - heat units
+CC                             0 to 7 - mass units
+CC             angle/length    0 to 1 - angle units
+CC                             0 to 8 - length units
+CC             temp./length    0 to 3 - temperature units
+CC                             0 to 8 - length units
+CC
+CC**********************************************************************
+CC
+CC                     - OBODM Input Data -
+CC
+CC     The OBODM program can only be run in an interactive environment
+CC     where input data are taken from various menus displayed on the
+CC     users terminal screen.  The sequence of menus and data required
+CC     is controlled by the user, but is checked by the OBODM program
+CC     to insure solutions are not calculated with incomplete or
+CC     erroneous data.  Input data can also be taken from saved data
+CC     files written by the OBODM program or from the OBODM work file.
+CC
+CC**********************************************************************
+CC
+CC                     - OBODM Data Files -
+CC
+CC     1) OBODMENU.OBD - required direct access screen menu template
+CC                       database file, created by program OBODMenu
+CC                       and OBODMkey (mdbnam, idbfil=20) (RINPA).
+CC     2) OBODWORK.OBD - required direct access work file created by
+CC                       OBODM (mwknam,iwkfil=21) (RINPA).
+CC     3) OBODFUEL.OBD - optional sequential fuels/explosives and
+CC                       pollutant/species default data file (mfdnam,
+CC                       ifdfil=22) (RINPA).
+CC     4) OBODMERR.OBD - file containing OBODM error messages (mernam,
+CC                       ierfil=17) (KERRS).
+CC     5) user-specified - mgtnam,igtfil- optional input save data file,
+CC                       created in a previous run of the OBODM program,
+CC                       igtfil=23 (RINPB).
+CC     6) user-specified - msvnam,isvfil- optional output save data
+CC                       file, isvfil=24 (RINPB).  Default is
+CC                       SCRATCH2.OBD.
+CC     7) user-specified - motnam,iotfil- optional output solution print
+CC                       file, iotfil=25 (RINPB).  Default OBPRINT.OUT.
+CC     8) user-specified - mognam,iogfil- optional input/output
+CC                       graphics/solution data save file, iogfil=26
+CC                       (RINPB).  Default is SCRATCH1.OBD.
+CC     9) user-specified - mnhnam,inhfil- optional input hourly
+CC                       meteorological data file, inhfil=27 (RINPO).
+CC    10) user-specified - mshnam,ishfil- optional input hourly source
+CC                       data file, ishfil=28 (RINPJ).
+CC    11) user-specified - mplnam,iplfil- optional output plot data
+CC                       file, iplfil=29, (RINPR).
+CC                       format and contents -
+CC
+CC              record 1    - first record in the file contains -
+CC                            (xnchpl,ynchpl,nplots)
+CC                   format - (' S',2f8.4,i4,4e12.6)
+CC                            xnchpl - number of inches in horizontal
+CC                                     plot dimension.
+CC                            ynchpl - number of inches in vertical
+CC                                     plot dimension.
+CC                            nplots - plot number.
+CC
+CC              record 2    - second record contains -
+CC                            (mtitle)
+CC                   format - (80a1)
+CC                            mtitle - run title label.
+CC
+CC              record n    - the third through the second to last
+CC                            record contains plot x,y information -
+CC                            (xp,yp,ipen,icolor)
+CC                   format - (' P',2f8.4,2i2)
+CC                            xp     - move pen to xp inches.
+CC                            yp     - move pen to yp inches.
+CC                            ipen   - pen up/down. 2=down, 3=up, neg.=
+CC                                     establish new origin.
+CC                            icolor - color index.
+CC                                     0 - black
+CC                                     1 - blue
+CC                                     2 - green
+CC                                     3 - cyan
+CC                                     4 - red
+CC                                     5 - magenta
+CC                                     6 - yellow
+CC                                     7 - dark white
+CC                                     8 - gray
+CC                                     9 - light blue
+CC                                    10 - light green
+CC                                    11 - light cyan
+CC                                    12 - light red
+CC                                    13 - light magenta
+CC                                    14 - light yellow
+CC                                    15 - light white
+CC
+CC              record m    - last record in the file indicates end of
+CC                            plot data. if the file is tape (no file
+CC                            name specified), an end of file is written
+CC                            after this record.
+CC                   format - (' END PLOT')
+CC    12) SCRATCH3.OBD - iscfil - scratch sequential file, iscfil=30
+CC                       (RINPR).
+CC    13) user-specified - mtrnam,itrfil- optional input terrain data,
+CC                       itrfil=31 (RINPR).
+CC    14) user-specified - mapnam,impfil- optional input digitized map
+CC                       data, impfil=32 (RINPR).
+CC    15) OBD#####.PLT - optional graphics hard copy print/plot file,
+CC                       ihdfl = 33 (PLTSQ).
+CC    16) user-specified - mbcnam,ibcfil- batch processing file.  file
+CC                       contains sets of four 22 character records,
+CC                       where record one of each set contains the input
+CC                       file name, record two contains the save file
+CC                       name or blanks, record three contains the print
+CC                       file name or blanks and record four contains
+CC                       the solution file name or blanks. ibcfil=19
+CC                       (RINPB).
+CC    17) SCRATCH4.OBD - imxfil- file used to compile highest and second
+CC                       highest concentration, dosage, etc. tables.
+CC                       imxfil = 18 (ROUTA)
+CC    18) user-specified - msgnam,isgfil- file used to save Sigma Plot
+CC                       output information for subsequent plotting.
+CC                       isgfil=34 (OUTPT).
+CC    19) user-specified - mxynam, ixyfl- file used to input x,y
+CC                       coordinates and z elevation data. ixyfl=31
+CC                       (RINPD).
+CC
+CC**********************************************************************
+CC**********************************************************************
+
+

@@ -1,0 +1,25 @@
+1460009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                         {F3 returns to current menu}                              
+                                                                                
+  D) ISCST (continued) data file formats "FREE", "ASCII" and "CARD"               
+     These files contain hourly ASCII records, where the first record contains: 
+     the surface station no.; surface year; upper air station no.; upper air    
+     year (separate values by a blank).                                         
+                                                                                
+    Parameter                            Format  Columns  (values in a "FREE"   
+   ---------------------------------     ------  -------   format are separate  
+    Year                                    I2     1-2     by at least one      
+    Month (1-12)                            I2     3-4     blank)               
+    Day (1-31)                              I2     5-6                          
+    Hour (0-23)                             I2     7-8                          
+    Flow vector (deg) (dir. toward)       F9.4     9-17                         
+    Wind speed (m/s)                      F9.4    18-26                         
+    Air temp. (K)                         F6.1    27-32                         
+    Stability class (1-6)                   I2    33-34                         
+    Rural mixing height (m)               F7.1    35-41                         
+    Urban mixing height (m)               F7.1    42-48                         
+    Wind profile exponent                 F8.4    49-56 ("CARD" only)           
+    Vert. pot. temp. grad. (K/m)          F8.4    57-64 ("CARD" only)           
+                                                                                
+  {PgUp for prev page, PgDn for next page}                                      

@@ -1,0 +1,1458 @@
+TNT (2,4,6-Trinitrotoluene)                925         1  49
+1,3-Butadiene                             54.1    0.6211         0  1.70E-06*
+1-Butene                                  56.1    0.5951         0  1.60E-06*
+1-Hexane                                  86.2    0.6603         0  2.20E-06*
+1-Pentene                                 70.1    0.6405         0  1.40E-06*
+Acetylene                                 26.0    0.6181         0  1.70E-05*
+Aluminum                                  27.0    2.7020         0  1.30E-03*
+Antimony                                 121.8    6.6840         0  6.70E-07*
+Barium                                   137.3    3.5100         0  8.20E-03*
+Benzene                                   78.1    0.8787         0  4.10E-06*
+CO                                        28.0    0.0013         0  1.00E-02*
+CO2                                       44.0    0.0020         0  1.50E+00*
+Cadmium                                  112.4    8.6420         0  4.00E-05*
+Chromium                                  52.0    7.2000         0  2.30E-05*
+Copper                                    63.5    8.9200         0  5.00E-04*
+Cyclohexane                               84.2    0.7781         0  1.60E-06*
+Cyclopentane                              70.1    0.7500         0  4.70E-07*
+Cyclopentene                              68.1    0.8000         0  4.60E-07*
+Ethane                                    30.1    0.5720         0  7.40E-07*
+Ethylbenzene                             106.2    0.8670         0  4.70E-07*
+Ethylene                                  28.1    0.0013         0  2.20E-05*
+Lead                                     207.2   11.3437         0  9.00E-06*
+Methylcyclohexane                         98.2    0.0000         0  5.10E-06*
+Methylcyclopentane                         0.0    0.0000         0  7.00E-07*
+Methylenechloride                         84.9    1.3266         0  1.80E-04*
+NO                                        30.0    0.0013         0  9.70E-03*
+NO2                                       46.0    1.4494      9360  7.60E-04*
+PM10                                       0.0    0.0000         0  9.30E-02*
+Propane                                   44.1    0.5005         0  3.70E-07*
+Propene                                   42.1    0.5193         0  7.20E-06*
+RDX                                      222.1    1.8200         0  9.60E-06*
+SO2                                       64.1    0.0029         0  1.40E-04*
+Styrene                                  104.2    0.9060         0  1.50E-06*
+Toluene                                   92.2    0.8669         0  5.10E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  8.60E-06*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  6.00E-05*
+Total Aromatics (e.g. styrene)           104.2    0.9060         0  1.60E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  4.00E-05*
+Zinc                                      65.4    7.1400         0  1.00E-05*
+cis-2-Pentene                             70.1    0.6556         0  4.60E-07*
+i-Butane                                  58.1    0.0000         0  4.60E-07*
+i-Butene                                  56.1    0.0000         0  3.60E-06*
+i-Pentane                                 72.2    0.0000         0  1.40E-06*
+m-Ethyltoluene                           135.2    0.9391         0  4.80E-07*
+n-Heptane                                100.2    0.6840         0  9.50E-07*
+n-Hexane                                  86.1    0.6548         0  9.30E-07*
+n-Octane                                 114.2    0.7025         0  2.90E-06*   
+n-Pentane                                 72.2    0.6262         0  3.30E-06*
+trans-2-Butene                           125.0    1.1830         0  9.50E-07*
+trans-2-Pentene                           84.2    0.6942         0  4.60E-07*
+Composition B (56/38/6 RDX-TNT-WAX)       1319         1  37
+1-Butene                                  56.1    0.5951         0  1.30E-06*
+1-Hexane                                  86.2    0.6603         0  1.60E-06*
+Acetylene                                 26.0    0.6181         0  1.40E-05*
+Benzene                                   78.1    0.8787         0  2.60E-06*
+CO                                        28.0    0.0013         0  4.20E-03*
+CO2                                       44.0    0.0020         0  1.10E+00*
+Carbon Tetrachloride                     153.8    1.5940         0  3.60E-07*
+Ethane                                    30.1    0.5720         0  1.30E-06*
+Ethylbenzene                             106.2    0.8670         0  2.00E-06*
+Ethylene                                  28.1    0.0013         0  1.40E-05*
+Methylcyclohexane                         98.2    0.0000         0  2.30E-06*
+Methylcyclopentane                         0.0    0.0000         0  3.60E-07*
+Methylenechloride                         84.9    1.3266         0  1.40E-04*
+NO                                        30.0    0.0013         0  9.30E-03*
+NO2                                       46.0    1.4494      9360  1.90E-04*
+PM10                                       0.0    0.0000         0  1.20E-02*
+Propane                                   44.1    0.5005         0  7.40E-07*
+Propene                                   42.1    0.5193         0  3.10E-06*
+SO2                                       64.1    0.0029         0  1.30E-04*
+Tetrachloroethylene                      165.8    1.6227         0  1.80E-05*
+Toluene                                   92.2    0.8669         0  6.00E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7080         0  1.10E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  3.40E-05*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  2.40E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.10E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  4.50E-05*
+i-Butane                                  58.1    0.0000         0  3.70E-07*
+i-Butene                                  56.1    0.0000         0  9.80E-07*
+i-Pentane                                 72.2    0.0000         0  3.70E-07*
+m-Ethyltoluene                           135.2    0.9391         0  3.70E-07*
+n-Decane                                 142.3    0.7300         0  3.60E-07*
+n-Heptane                                100.2    0.6840         0  7.30E-07*
+n-Hexane                                  86.1    0.6548         0  5.50E-07*
+n-Nonane                                 128.3    0.7176         0  1.30E-06*
+n-Octane                                 114.2    0.7025         0  3.70E-07*   
+n-Pentane                                 72.2    0.6262         0  3.70E-07*
+p-Ethyltoluene                           135.2    0.9391         0  9.80E-07*
+Explosive D (ammonium picrate)             800         1   7
+Benzene                                   78.1    0.8787         0  1.10E-04*
+CO                                        28.0    0.0013         0  5.30E-02*
+CO2                                       44.0    0.0020         0  9.90E-01*
+Methane                                   16.0    0.5547         0  2.40E-03*
+NO                                        30.0    0.0013         0  9.00E-04*
+NO2                                       46.0    1.4494      9360  1.10E-03*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  2.00E-03*
+RDX (cyclotrimethylenetrinitramine)       1480         1   7
+Benzene                                   78.1    0.8787         0  6.90E-05*
+CO                                        28.0    0.0013         0  3.10E-02*
+CO2                                       44.0    0.0020         0  5.70E-01*
+Methane                                   16.0    0.5547         0  2.00E-04*
+NO                                        30.0    0.0013         0  9.00E-04*
+NO2                                       46.0    1.4494      9360  6.00E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.30E-03*
+Triple Base (M30-28% Nitrocellulose       1000  1.20E+05   5
+CO                                        28.0    0.0013         0  2.50E-05*
+CO2                                       44.0    0.0020         0  6.60E-01*
+NO                                        30.0    0.0013         0  5.20E-03*
+NO2                                       46.0    1.4494      9360  2.10E-03*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.50E-05*
+Manufacturer's Waste (65% propell.)       1000  1.55E+04  60
+1-Butene                                  56.1    0.5951         0  8.30E-06*
+1-Hexane                                  86.2    0.6603         0  4.80E-06*
+1-Pentene                                 70.1    0.6405         0  5.10E-06*
+1234678-HpCDF                              0.0    0.0000         0  3.40E-08*
+123478-HxCDF                               0.0    0.0000         0  2.10E-08*
+1234789-HpCDF                              0.0    0.0000         0  7.90E-09*
+123678-HxCDF                               0.0    0.0000         0  9.50E-09*
+Acenaphthylene                           152.2    0.8988         0  1.60E-04*
+Aluminum                                  27.0    2.7020         0  3.60E-02*
+Acetylene                                 26.0    0.6181         0  1.60E-03*
+Barium                                   137.3    3.5100         0  8.60E-05*
+Benzene                                   78.1    0.8787         0  4.50E-04*
+CO                                        28.0    0.0013         0  2.00E-02*
+CO2                                       44.0    0.0020         0  1.10E+00*
+Carbon Tetrachloride                     153.8    1.5940         0  5.60E-06*
+Chloroform                               119.4    1.4832         0  2.30E-06*
+Cl2                                       70.9    3.2140         0  2.00E-04*
+Copper                                    63.5    8.9200         0  1.50E-05*
+Cyclohexane                               84.2    0.7781         0  2.00E-06*
+Cyclopentane                              70.1    0.7500         0  2.50E-07*
+Cyclopentene                              68.1    0.8000         0  9.40E-07*
+Ethane                                    30.1    0.5720         0  9.50E-06*
+Ethylbenzene                             106.2    0.8670         0  2.40E-06*
+Ethylene                                  62.0    0.9780         0  2.30E-04*
+Fluoranthene                             202.3    1.2520         0  2.00E-04*
+HCL                                       36.5    1.1870         0  8.30E-02*
+Lead                                     207.2   11.3437         0  2.80E-04*
+Methylchloride                            50.5    0.9159         0  2.00E-05*
+Methylcyclohexane                         98.2    0.0000         0  8.00E-06*
+Methylcyclopentane                         0.0    0.0000         0  1.10E-06*
+Methylenechloride                         84.9    1.3266         0  1.20E-05*
+Nitrogen Oxide                            30.0    0.0013         0  1.00E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  6.60E-06*
+OCDF                                       0.0    0.0000         0  4.00E-08*
+PM10                                       0.0    0.0000         0  1.90E+00*
+Propane                                   44.1    0.5005         0  4.50E-06*
+Propene                                   42.1    0.5193         0  2.60E-05*
+Sulfur Dioxide                            64.1    0.0029         0  8.60E-04*
+Tetrachloroethylene                      165.8    1.6227         0  1.70E-06*
+Toluene                                   92.2    0.8669         0  2.80E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7080         0  1.30E-04*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.90E-03*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  5.70E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  2.90E-03*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  3.50E-04*
+Zinc                                      65.4    7.1400         0  5.70E-04*
+cis-2-Pentene                             70.1    0.6556         0  5.60E-07*
+i-Butane                                  58.1    0.0000         0  1.40E-06*
+i-Butene                                  56.1    0.0000         0  5.80E-06*
+i-Pentane                                 72.2    0.0000         0  2.30E-05*
+m-Ethyltoluene                           135.2    0.9391         0  2.60E-06*
+n-Butane                                  58.1    0.6012         0  9.30E-06*
+n-Decane                                 142.3    0.7300         0  1.40E-05*
+n-Heptane                                100.2    0.6840         0  4.70E-06*
+n-Hexane                                  86.1    0.6548         0  3.70E-06*
+n-Nonane                                 128.3    0.7176         0  1.30E-05*
+n-Octane                                 114.2    0.7025         0  7.60E-06*  
+n-Pentane                                 72.2    0.6262         0  4.30E-06*
+p-Ethyltoluene                           135.2    0.9391         0  5.00E-06*
+trans-2-Butene                           125.0    1.1830         0  2.10E-05*
+trans-2-Pentene                           84.2    0.6942         0  9.60E-07*
+M1 (85% Nitrocellulose)                   1020  1.88E+05  11
+2,4-Dinitrotoluene                       182.1    1.3208         0  1.20E-09*
+Benzene                                   78.1    0.8787         0  4.80E-06*
+Carbon Dioxide                            44.0    0.0020         0  1.10E+00*
+Carbon Monoxide                           28.0    0.0013         0  2.50E-04*
+Diphenylamine                            169.2    1.1600         0  1.10E-10*
+Methane                                   16.0    0.5547         0  8.00E-03*
+Naphthtalene                             128.2    1.0253         0  1.90E-08*
+Nitrogen Oxide                            30.0    0.0013         0  1.20E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  4.70E-04*
+Phenol                                    94.1    1.0576         0  3.43E-09*
+Total Non-methane Hydocarbons              0.0    0.0000         0  4.60E-04*
+M6 (87.7% Nitrocellulose)                 1020  2.18E+05  13
+2,4-Dinitrotoluene                       182.1    1.3208         0  1.00E-09*
+2,6-Dinitrotoluene                       182.1    1.2833         0  1.00E-10*
+Benzene                                   78.1    0.8787         0  1.70E-06*
+Carbon Dioxide                            44.0    0.0020         0  1.06E+00*
+Carbon Monoxide                           28.0    0.0013         0  9.50E-05*
+Diphenylamine                            169.2    1.1600         0  2.60E-10*
+Methane                                   16.0    0.5547         0  4.60E-05*
+Naphthalene                              128.2    1.0253         0  7.50E-08*
+Nitrogen Oxide                            30.0    0.0013         0  2.40E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  5.20E-03*
+Phenol                                    94.1    1.0576         0  1.50E-09*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.30E-05*
+n-Nitronaphthalene                       198.2    1.0000         0  1.40E-10*
+Double Base (50% nitrocellulose)          1020         1  15
+Acetylene                                 26.0    0.6181         0  2.00E-04*
+Benzene                                   78.1    0.8787         0  1.20E-04*
+CO                                        28.0    0.0013         0  1.50E-03*
+CO2                                       44.0    0.0020         0  9.40E-01*
+Copper                                    63.5    8.9200         0  3.70E-02*
+Lead                                     207.2   11.3437         0  1.20E-02*
+Nitrogen Oxide                            30.0    0.0013         0  2.40E-02*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  2.80E-03*
+PM10                                       0.0    0.0000         0  1.90E-02*
+Sulfur Dioxide                            64.1    0.0029         0  3.20E-03*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7080         0  2.20E-04*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  7.30E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  4.40E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.00E-05*
+Zinc                                      65.4    7.1400         0  1.00E-05*
+Tritonal (79% TNT, 21% Aluminum)          1290         1  46
+1,3-Butadiene                             54.1    0.6211         0  9.10E-07*
+1-Butene                                  56.1    0.5951         0  2.00E-06*
+1-Hexane                                  86.2    0.6603         0  2.10E-06*
+1-Pentene                                 70.1    0.6405         0  1.50E-06*
+Acetylene                                 26.0    0.6181         0  1.20E-04*
+Aluminum                                  27.0    2.7020         0  2.50E-02*
+Barium                                   137.3    3.5100         0  1.60E-04*
+Benzene                                   78.1    0.8787         0  5.70E-06*
+CO                                        28.0    0.0013         0  4.70E-03*
+CO2                                       44.0    0.0020         0  6.40E-01*
+Carbon Tetrachloride                     153.8    1.5940         0  3.70E-07*
+Chloroform                               119.4    1.4832         0  3.60E-07*
+Cyclopentane                              70.1    0.7500         0  3.70E-07*
+Cyclopentene                              68.1    0.8000         0  7.30E-07*
+Ethane                                    30.1    0.5720         0  3.60E-07*
+Ethylbenzene                             106.2    0.8670         0  2.50E-06*
+Ethylene                                  62.0    0.9780         0  2.20E-05*
+Lead                                     207.2   11.3437         0  1.10E-03*
+Methylchloride                            50.5    0.9159         0  5.60E-07*
+Methylcyclohexane                         98.2    0.0000         0  7.00E-06*
+Methylcyclopentane                         0.0    0.0000         0  5.60E-07*
+Methylenechloride                         84.9    1.3266         0  1.80E-05*
+Nitrogen Oxide                            30.0    0.0013         0  8.20E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  1.50E-04*
+PM10                                       0.0    0.0000         0  3.70E-01*
+Propane                                   44.1    0.5005         0  7.30E-07*
+Propene                                   42.1    0.5193         0  3.20E-06*
+Sulfur Dioxide                            64.1    0.0029         0  1.60E-04*
+Tetrachloroethylene                      165.8    1.6227         0  2.70E-06*
+Toluene                                   92.2    0.8669         0  1.80E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7080         0  1.00E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.60E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  2.70E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  2.80E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  9.00E-05*
+i-Butane                                  58.1    0.0000         0  5.50E-07*
+i-Butene                                  56.1    0.0000         0  1.40E-06*
+i-Propylbenzene                          120.2    0.0000         0  6.10E-07*
+n-Butane                                  58.1    0.6012         0  1.30E-06*
+n-Decane                                 142.3    0.7300         0  3.70E-07*
+n-Nonane                                 128.3    0.7176         0  1.20E-06*
+n-Octane                                 114.2    0.7025         0  3.70E-07*  
+n-Pentane                                 72.2    0.6262         0  7.30E-07*
+p-Ethyltoluene                           135.2    0.9391         0  3.60E-06*
+trans-2-Butene                           125.0    1.1830         0  1.50E-06*
+trans-2-Pentene                           84.2    0.6942         0  3.70E-07*
+Tritonal with 2.5% Calcium Stearate       1290         1  39
+1,3-Butadiene                             54.1    0.6211         0  1.30E-06*
+1-Butene                                  56.1    0.5951         0  3.70E-06*
+1-Hexene                                  84.2    0.6731         0  2.80E-06*
+1-Pentene                                 70.1    0.6405         0  9.10E-07*
+Acetylene                                 26.0    0.6181         0  1.90E-05*
+Aluminum                                  27.0    2.7020         0  1.70E-02*
+Barium                                   137.3    3.5100         0  3.60E-04*
+Benzene                                   78.1    0.8787         0  3.10E-06*
+CO                                        28.0    0.0013         0  2.70E-03*
+CO2                                       44.0    0.0020         0  1.30E+00*
+Copper                                    63.5    8.9200         0  5.00E-04*
+Cyclopentene                              68.1    0.8000         0  3.60E-07*
+Ethane                                    30.1    0.5720         0  7.40E-07*
+Ethylbenzene                             106.2    0.8670         0  1.60E-06*
+Ethylene                                  62.0    0.9780         0  2.50E-05*
+Lead                                     207.2   11.3437         0  9.20E-04*
+Methylchloride                            50.5    0.9159         0  3.70E-07*
+Methylcyclohexane                         98.2    0.0000         0  4.40E-07*
+Methylenechloride                         84.9    1.3266         0  1.60E-04*
+Nitrogen Oxide                            30.0    0.0013         0  6.60E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  4.50E-05*
+PM10                                       0.0    0.0000         0  2.60E-01*
+Propane                                   44.1    0.5005         0  3.60E-07*
+Propene                                   42.1    0.5193         0  6.10E-06*
+Sulfur Dioxide                            64.1    0.0029         0  1.20E-04*
+Tetrachloroethylene                      165.8    1.6227         0  3.70E-07*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  6.10E-05*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  1.40E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  4.00E-05*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  3.60E-06*
+Zinc                                      65.4    7.1400         0  7.00E-05*
+i-Butane                                  58.1    0.0000         0  7.30E-07*
+i-Butene                                  56.1    0.0000         0  2.00E-06*
+i-Propylbenzene                          120.2    0.0000         0  7.30E-07*
+n-Butane                                  58.1    0.6012         0  3.60E-07*
+n-Decane                                 142.3    0.7300         0  3.60E-07*
+p-Ethyltoluene                           135.2    0.9391         0  7.30E-07*
+trans-2-Butene                           125.0    1.1830         0  1.80E-06*
+trans-2-Pentene                           84.2    0.6942         0  3.60E-07*
+Amatol (50% TNT, 50% Ammn. Nitrate)        836         1  42
+1-Butene                                  56.1    0.5951         0  1.70E-06*
+1-Hexene                                  84.2    0.6731         0  2.00E-06*
+1-Pentene                                 70.1    0.6405         0  1.20E-06*
+Acetylene                                 26.0    0.6181         0  9.50E-05*
+Barium                                   137.3    3.5100         0  6.00E-06*
+Benzene                                   78.1    0.8787         0  2.30E-05*
+CO                                        28.0    0.0013         0  9.70E-03*
+CO2                                       44.0    0.0020         0  7.00E-01*
+Carbon Tetrachloride                     153.8    1.5940         0  3.70E-07*
+Ethane                                    30.1    0.5720         0  4.10E-06*
+Ethylbenzene                             106.2    0.8670         0  1.20E-06*
+Ethylene                                  62.0    0.9780         0  3.10E-05*
+Lead                                     207.2   11.3437         0  3.30E-05*
+Methylchloride                            50.5    0.9159         0  7.50E-07*
+Methyl chloroform                        133.4    1.3390         0  3.70E-07*
+Methylcyclohexane                         98.2    0.0000         0  2.50E-06*
+Methylcyclopentane                         0.0    0.0000         0  1.90E-07*
+Methylenechloride                         84.9    1.3266         0  1.50E-04*
+Nitrogen Oxide                            30.0    0.0013         0  1.80E-02*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  1.20E-04*
+PM10                                       0.0    0.0000         0  1.90E-02*
+Propane                                   44.1    0.5005         0  1.00E-06*
+Propene                                   42.1    0.5193         0  5.50E-06*
+Sulfur Dioxide                            64.1    0.0029         0  2.60E-04*
+Tetrachloroethylene                      165.8    1.6227         0  3.70E-07*
+Toluene                                   92.2    0.8669         0  6.70E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  1.60E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.40E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  4.30E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  4.50E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  2.50E-04*
+i-Butane                                  58.1    0.0000         0  6.20E-07*
+i-Butene                                  56.1    0.0000         0  1.50E-06*
+i-Pentane                                 72.2    0.0000         0  1.50E-06*
+m-Ethyltoluene                           135.2    0.9391         0  3.70E-07*
+n-Butane                                  58.1    0.6012         0  6.20E-07*
+n-Heptane                                100.2    0.6840         0  7.50E-07*
+n-Hexane                                  86.1    0.6548         0  5.60E-07*
+n-Nonane                                 128.3    0.7176         0  3.70E-07*
+n-Octane                                 114.2    0.7025         0  3.70E-07*  
+p-Ethyltoluene                           135.2    0.9391         0  7.60E-06*
+trans-2-Butene                           125.0    1.1830         0  1.50E-06*
+HBX (48/31/17/4 RDX-TNT-Al-WAX)           1405         1  48
+1,3-Butadiene                             54.1    0.6211         0  1.40E-06*
+1-Butene                                  56.1    0.5951         0  6.30E-06*
+1-Hexene                                  84.2    0.6731         0  2.70E-06*
+1-Pentene                                 70.1    0.6405         0  1.50E-06*
+Acetylene                                 26.0    0.6181         0  2.90E-05*
+Aluminum                                  27.0    2.7020         0  8.60E-03*
+Benzene                                   78.1    0.8787         0  7.20E-06*
+CO                                        28.0    0.0013         0  5.20E-03*
+CO2                                       44.0    0.0020         0  1.00E+00*
+Carbon Tetrachloride                     153.8    1.5940         0  3.90E-07*
+Chloroform                               119.4    1.4832         0  3.80E-07*
+Copper                                    63.5    8.9200         0  3.20E-03*
+Cyclopentane                              70.1    0.7500         0  1.10E-06*
+Cyclopentene                              68.1    0.8000         0  3.90E-07*
+Ethane                                    30.1    0.5720         0  1.60E-06*
+Ethylbenzene                             106.2    0.8670         0  1.80E-06*
+Ethylene                                  62.0    0.9780         0  3.20E-05*
+Methylchloride                            50.5    0.9159         0  6.30E-07*
+Methyl chloroform                        133.4    1.3390         0  3.80E-07*
+Methylcyclohexane                         98.2    0.0000         0  6.10E-06*
+Methylcyclopentane                         0.0    0.0000         0  6.40E-07*
+Methylenechloride                         84.9    1.3266         0  2.70E-04*
+Nitrogen Oxide                            30.0    0.0013         0  9.90E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  4.40E-05*
+PM10                                       0.0    0.0000         0  1.80E-01*
+Propane                                   44.1    0.5005         0  8.70E-07*
+Propene                                   42.1    0.5193         0  9.40E-06*
+Sulfur Dioxide                            64.1    0.0029         0  1.10E-03*
+Toluene                                   92.2    0.8669         0  3.30E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  1.40E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  9.40E-05*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  2.10E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.80E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  7.90E-05*
+Zinc                                      65.4    7.1400         0  1.40E-04*
+cis-2-Pentene                             70.1    0.6556         0  3.90E-07*
+i-Butane                                  58.1    0.0000         0  5.50E-07*
+i-Butene                                  56.1    0.0000         0  3.50E-06*
+i-Propylbenzene                          120.2    0.0000         0  5.50E-07*
+n-Butane                                  58.1    0.6012         0  5.00E-07*
+n-Decane                                 142.3    0.7300         0  3.70E-07*
+n-Heptane                                100.2    0.6840         0  5.50E-07*
+n-Hexane                                  86.1    0.6548         0  5.50E-07*
+n-Octane                                 114.2    0.7025         0  7.30E-07*
+n-Pentane                                 72.2    0.6262         0  7.40E-07*
+p-Ethyltoluene                           135.2    0.9391         0  7.30E-07*
+trans-2-Butene                           125.0    1.1830         0  4.50E-06*
+trans-2-Pentene                           84.2    0.6942         0  3.70E-07*
+Diesel and Dunnage                        1000         1  43
+1,3-Butadiene                             54.1    0.6211         0  1.20E-06*
+1-Butene                                  56.1    0.5951         0  4.70E-06*
+1-Hexene                                  84.2    0.6731         0  2.20E-06*
+1-Pentene                                 70.1    0.6405         0  1.70E-06*
+Acetylene                                 26.0    0.6181         0  9.50E-05*
+Benzene                                   78.1    0.8787         0  7.80E-05*
+CO                                        28.0    0.0013         0  6.00E-03*
+CO2                                       44.0    0.0020         0  1.50E+00*
+Cyclohexane                               84.2    0.7781         0  2.70E-05*
+Cyclopentane                              70.1    0.7500         0  1.50E-06*
+Ethane                                    30.1    0.5720         0  9.30E-06*
+Ethylbenzene                             106.2    0.8670         0  5.50E-05*
+Ethylene                                  62.0    0.9780         0  7.40E-05*
+Methylcyclohexane                         98.2    0.0000         0  1.60E-04*
+Methylcyclopentane                         0.0    0.0000         0  9.90E-06*
+Nitrogen Oxide                            30.0    0.0013         0  8.00E-04*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  4.20E-05*
+OCDD                                       0.0    0.0000         0  1.00E-11*
+PM10                                       0.0    0.0000         0  5.40E-03*
+Propane                                   44.1    0.5005         0  2.20E-06*
+Propene                                   42.1    0.5193         0  1.30E-05*
+Sulfur Dioxide                            64.1    0.0029         0  1.90E-04*
+Toluene                                   92.2    0.8669         0  1.20E-04*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  3.50E-03*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.90E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  2.30E-03*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.20E-02*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  6.00E-03*
+Zinc                                      65.4    7.1400         0  6.30E-05*
+i-Butane                                  58.1    0.0000         0  1.20E-06*
+i-Butene                                  56.1    0.0000         0  2.00E-06*
+i-Pentane                                 72.2    0.0000         0  8.90E-06*
+m-Ethyltoluene                           135.2    0.9391         0  1.30E-04*
+n-Butane                                  58.1    0.6012         0  4.60E-06*
+n-Decane                                 142.3    0.7300         0  1.80E-03*
+n-Heptane                                100.2    0.6840         0  5.90E-05*
+n-Hexane                                  86.1    0.6548         0  1.60E-05*
+n-Nonane                                 128.3    0.7176         0  1.00E-03*
+n-Octane                                 114.2    0.7025         0  2.50E-04*
+n-Pentane                                 72.2    0.6262         0  9.10E-06*
+p-Ethyltoluene                           135.2    0.9391         0  1.50E-04*
+trans-2-Butene                           125.0    1.1830         0  2.90E-06*
+trans-2-Pentene                           84.2    0.6942         0  1.10E-06*
+Impluse Cartridge, ARD 446-1              1000         1  48
+1,3-Butadiene                             54.1    0.6211         0  6.70E-06*
+1-Hexene                                  84.2    0.6731         0  1.80E-05*
+1-Pentene                                 70.1    0.6405         0  8.90E-06*
+Acetylene                                 26.0    0.6181         0  2.20E-04*
+Aluminum                                  27.0    2.7020         0  3.90E-03*
+Antimony                                 121.8    6.6840         0  1.80E-04*
+Benzene                                   78.1    0.8787         0  6.70E-05*
+CO                                        28.0    0.0013         0  1.30E-02*
+CO2                                       44.0    0.0020         0  4.80E-01*
+Cyclopentane                              70.1    0.7500         0  2.60E-07*
+Cyclopentene                              68.1    0.8000         0  3.10E-06*
+Ethane                                    30.1    0.5720         0  2.40E-05*
+Ethylbenzene                             106.2    0.8670         0  1.90E-06*
+Ethylene                                  62.0    0.9780         0  3.30E-04*
+Lead                                     207.2   11.3437         0  3.10E-04*
+Methyl Chloride                           50.5    0.9159         0  1.20E-06*
+Methyl Chloroform                        133.4    1.3390         0  1.20E-06*
+Methylcyclopentane                         0.0    0.0000         0  6.00E-07*
+Methylenechloride                         84.9    1.3266         0  5.00E-05*
+Nitrogen Oxide                            30.0    0.0013         0  6.40E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  1.70E-03*
+PM10                                       0.0    0.0000         0  8.30E-02*
+Propane                                   44.1    0.5005         0  5.70E-06*
+Propene                                   42.1    0.5193         0  6.00E-05*
+RDX                                      222.1    1.8200         0  8.40E-04*
+Styrene                                  104.2    0.9060         0  5.40E-06*
+Sulfur Dioxide                            64.1    0.0029         0  2.40E-04*
+Tetrachloroethylene                      165.8    1.6227         0  3.60E-05*
+Toluene                                   92.2    0.8669         0  1.70E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  5.10E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  6.80E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  1.00E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  9.80E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  1.40E-04*
+cis-2-Pentene                             70.1    0.6556         0  5.10E-07*
+i-Butane                                  58.1    0.0000         0  1.40E-06*
+i-Butene                                  56.1    0.0000         0  2.20E-05*
+m-Ethyltoluene                           135.2    0.9391         0  5.70E-07*
+n-Butane                                  58.1    0.6012         0  2.20E-06*
+n-Decane                                 142.3    0.7300         0  3.40E-07*
+n-Heptane                                100.2    0.6840         0  1.80E-06*
+n-Hexane                                  86.1    0.6548         0  1.50E-07*
+n-Nonane                                 128.3    0.7176         0  5.90E-07*
+n-Octane                                 114.2    0.7025         0  7.70E-07*
+n-Pentane                                 72.2    0.6262         0  1.10E-06*
+p-Ethyltoluene                           135.2    0.9391         0  1.10E-06*
+trans-2-Butene                           125.0    1.1830         0  8.30E-06*
+trans-2-Pentene                           84.2    0.6942         0  6.00E-07*
+Impluse BBU-368 Cartridge                 1000         1  53
+1,3-Butadiene                             54.1    0.6211         0  2.80E-06*
+1-Butene                                  56.1    0.5951         0  7.30E-06*
+1-Hexene                                  84.2    0.6731         0  1.90E-05*
+Acetylene                                 26.0    0.6181         0  1.50E-04*
+Allyl Chloride                            76.5    0.9376         0  9.30E-06*
+Aluminum                                  27.0    2.7020         0  1.10E-02*
+Benzene                                   78.1    0.8787         0  2.10E-05*
+CO                                        28.0    0.0013         0  8.40E-03*
+CO2                                       44.0    0.0020         0  5.00E-01*
+Chromium                                  52.0    7.2000         0  2.20E-05*
+Copper                                    63.5    8.9200         0  1.20E-03*
+Cyclohexane                               84.2    0.7781         0  5.60E-07*
+Cyclopentane                              70.1    0.7500         0  2.80E-07*
+Cyclopentene                              68.1    0.8000         0  2.70E-06*
+Diethyl phthalate                        182.1    1.3208         0  4.00E-04*
+Ethane                                    30.1    0.5720         0  3.40E-06*
+Ethylbenzene                             106.2    0.8670         0  2.40E-06*
+Ethylene                                  62.0    0.9780         0  2.70E-04*
+Lead                                     207.2   11.3437         0  6.80E-05*
+Methyl Chloride                           50.5    0.9159         0  1.00E-06*
+Methylcyclohexane                         98.2    0.0000         0  4.10E-07*
+Methylcyclopentane                         0.0    0.0000         0  1.10E-06*
+Methylenechloride                         84.9    1.3266         0  1.70E-04*
+Nitrogen Oxide                            30.0    0.0013         0  4.00E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  1.50E-03*
+Pentaerythritol tetranitrate (PETN)      316.2    1.7730         0  5.80E-04*
+PM10                                       0.0    0.0000         0  1.80E-01*
+Propane                                   44.1    0.5005         0  3.50E-06*
+Propene                                   42.1    0.5193         0  4.90E-05*
+Sulfur Dioxide                            64.1    0.0029         0  4.00E-04*
+Styrene                                  104.2    0.9060         0  3.60E-06*
+Tetrachloroethylene                      165.8    1.6227         0  2.40E-06*
+Toluene                                   92.2    0.8669         0  9.10E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  3.80E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  5.40E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  6.40E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  7.70E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  1.20E-04*
+Vinyl Chloride                            62.5    0.9106         0  1.70E-06*
+cis-2-Pentene                             70.1    0.6556         0  3.70E-07*
+i-Butene                                  56.1    0.0000         0  2.20E-05*
+i-Pentane                                 72.2    0.0000         0  9.70E-07*
+i-Propylbenzene                          120.2    0.0000         0  9.20E-07*
+m-Ethyltoluene                           135.2    0.9391         0  1.00E-06*
+n-Butane                                  58.1    0.6012         0  4.80E-06*
+n-Decane                                 142.3    0.7300         0  4.20E-06*
+n-Heptane                                100.2    0.6840         0  1.50E-06*
+n-Hexane                                  86.1    0.6548         0  1.70E-06*
+n-Nonane                                 128.3    0.7176         0  1.30E-06*
+n-Octane                                 114.2    0.7025         0  1.20E-06*
+n-Pentane                                 72.2    0.6262         0  1.20E-06*
+p-Ethyltoluene                           135.2    0.9391         0  2.30E-06*
+trans-2-Pentene                           84.2    0.6942         0  6.40E-07*
+GGU-2/A Gas prss Prop. Act. Gen.          1000         1  58
+1,3-Butadiene                             54.1    0.6211         0  2.70E-05*
+1-Butene                                  56.1    0.5951         0  4.20E-05*
+1-Hexene                                  84.2    0.6731         0  1.20E-05*
+1-Pentene                                 70.1    0.6405         0  6.00E-06*
+Acetylene                                 26.0    0.6181         0  6.40E-04*
+Allyl Chloride                            76.5    0.9376         0  1.10E-04*
+Aluminum                                  27.0    2.7020         0  5.40E-03*
+Benzene                                   78.1    0.8787         0  1.30E-04*
+CO                                        28.0    0.0013         0  2.80E-02*
+CO2                                       44.0    0.0020         0  4.50E-01*
+Cadmium                                  112.4    8.6420         0  1.00E-04*
+Chloroform                               119.4    1.4832         0  2.60E-06*
+Chromium                                  52.0    7.2000         0  9.60E-05*
+Copper                                    63.5    8.9200         0  6.40E-04*
+Cyclopentene                              68.1    0.8000         0  3.60E-06*
+Diethyl phthalate                        182.1    1.3208         0  8.90E-04*
+Ethane                                    30.1    0.5720         0  3.00E-05*
+Ethyl chloride                            64.5    0.8978         0  4.70E-06*
+Ethylbenzene                             106.2    0.8670         0  1.20E-06*
+Ethylene                                  62.0    0.9780         0  6.10E-04*
+Lead                                     207.2   11.3437         0  3.70E-04*
+Methyl Chloride                           50.5    0.9159         0  1.60E-05*
+Methylcyclopentane                         0.0    0.0000         0  1.50E-06*
+Methylenechloride                         84.9    1.3266         0  8.70E-04*
+Nitrogen Oxide                            30.0    0.0013         0  1.60E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  2.40E-03*
+Pentaerythritol tetranitrate (PETN)      316.2    1.7730         0  4.90E-05*
+PM10                                       0.0    0.0000         0  9.30E-02*
+Propane                                   44.1    0.5005         0  7.70E-06*
+Propene                                   42.1    0.5193         0  7.20E-05*
+RDX                                      222.1    1.8200         0  1.40E-04*
+Sulfur Dioxide                            64.1    0.0029         0  4.00E-04*
+Styrene                                  104.2    0.9060         0  8.30E-06*
+Tetrachloroethylene                      165.8    1.6227         0  5.90E-06*
+Toluene                                   92.2    0.8669         0  1.30E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  4.30E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.40E-03*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  1.60E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.80E-03*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  1.50E-04*
+Vinyl Chloride                            62.5    0.9106         0  4.40E-05*
+Zinc                                      65.4    7.1400         0  1.80E-04*
+cis-2-Pentene                             70.1    0.6556         0  7.90E-07*
+i-Butane                                  58.1    0.0000         0  8.80E-07*
+i-Butene                                  56.1    0.0000         0  2.90E-06*
+i-Pentane                                 72.2    0.0000         0  5.90E-07*
+i-Propylbenzene                          120.2    0.0000         0  1.20E-06*
+m-Ethyltoluene                           135.2    0.9391         0  5.90E-07*
+n-Butane                                  58.1    0.6012         0  3.20E-06*
+n-Decane                                 142.3    0.7300         0  6.00E-07*
+n-Heptane                                100.2    0.6840         0  8.00E-07*
+n-Hexane                                  86.1    0.6548         0  9.90E-07*
+n-Nonane                                 128.3    0.7176         0  5.90E-07*
+n-Octane                                 114.2    0.7025         0  1.20E-06*
+n-Pentane                                 72.2    0.6262         0  1.20E-06*
+p-Ethyltoluene                           135.2    0.9391         0  3.80E-06*
+trans-2-Butene                           125.0    1.1830         0  1.50E-05*
+trans-2-Pentene                           84.2    0.6942         0  1.40E-06*
+Impulse Cartridge, MK107 MOD01            1000         1  53
+1,3-Butadiene                             54.1    0.6211         0  2.00E-06*
+1-Butene                                  56.1    0.5951         0  1.00E-05*
+1-Hexene                                  84.2    0.6731         0  7.10E-06*
+1-Pentene                                 70.1    0.6405         0  4.40E-06*
+Acetylene                                 26.0    0.6181         0  2.40E-04*
+Allyl Chloride                            76.5    0.9376         0  5.10E-06*
+Aluminum                                  27.0    2.7020         0  9.50E-03*
+Barium                                   137.3    3.5100         0  1.60E-05*
+Benzene                                   78.1    0.8787         0  6.40E-05*
+CO                                        28.0    0.0013         0  1.40E-02*
+CO2                                       44.0    0.0020         0  8.50E-01*
+Cadmium                                  112.4    8.6420         0  1.40E-03*
+Chromium                                  52.0    7.2000         0  3.30E-05*
+Copper                                    63.5    8.9200         0  1.40E-03*
+Cyclopentene                              68.1    0.8000         0  9.70E-07*
+Diethyl phthalate                        182.1    1.3208         0  3.00E-04*
+Ethane                                    30.1    0.5720         0  1.60E-06*
+Ethylbenzene                             106.2    0.8670         0  9.70E-07*
+Ethylene                                  62.0    0.9780         0  1.80E-04*
+Methyl Chloride                           50.5    0.9159         0  9.60E-07*
+Methylcyclohexane                         98.2    0.0000         0  5.20E-07*
+Methylcyclopentane                         0.0    0.0000         0  5.30E-07*
+Methylenechloride                         84.9    1.3266         0  2.30E-04*
+Nitrogen Oxide                            30.0    0.0013         0  1.50E-02*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  6.10E-04*
+Pentaerythritol tetranitrate (PETN)      316.2    1.7730         0  5.10E-05*
+PM10                                       0.0    0.0000         0  2.50E-01*
+Propane                                   44.1    0.5005         0  1.40E-06*
+Propene                                   42.1    0.5193         0  2.60E-05*
+RDX                                      222.1    1.8200         0  1.70E-04*
+Sulfur Dioxide                            64.1    0.0029         0  2.60E-04*
+Styrene                                  104.2    0.9060         0  9.40E-06*
+Toluene                                   92.2    0.8669         0  9.00E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  6.90E-06*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  4.80E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  6.40E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  6.60E-05*
+Vinyl Chloride                            62.5    0.9106         0  2.40E-06*
+cis-2-Pentene                             70.1    0.6556         0  2.70E-07*
+i-Butane                                  58.1    0.0000         0  1.10E-06*
+i-Butene                                  56.1    0.0000         0  4.90E-06*
+i-Propylbenzene                          120.2    0.0000         0  5.20E-07*
+m-Ethyltoluene                           135.2    0.9391         0  6.60E-07*
+n-Butane                                  58.1    0.6012         0  6.60E-07*
+n-Decane                                 142.3    0.7300         0  2.60E-07*
+n-Heptane                                100.2    0.6840         0  1.00E-06*
+n-Hexane                                  86.1    0.6548         0  5.30E-07*
+n-Nonane                                 128.3    0.7176         0  5.20E-07*
+n-Octane                                 114.2    0.7025         0  4.40E-07*
+n-Pentane                                 72.2    0.6262         0  2.60E-07*
+p-Ethyltoluene                           135.2    0.9391         0  1.10E-06*
+trans-2-Butene                           125.0    1.1830         0  8.40E-06*
+trans-2-Pentene                           84.2    0.6942         0  2.60E-07*
+Ground Illum. Signal,Red Star,M158        1000         1  51
+1,3-Butadiene                             54.1    0.6211         0  1.20E-05*
+1-Butene                                  56.1    0.5951         0  2.30E-05*
+1-Hexene                                  84.2    0.6731         0  1.70E-05*
+1-Pentene                                 70.1    0.6405         0  1.00E-05*
+Acetylene                                 26.0    0.6181         0  2.70E-04*
+Allyl Chloride                            76.5    0.9376         0  1.60E-05*
+Aluminum                                  27.0    2.7020         0  2.10E-03*
+Barium                                   137.3    3.5100         0  1.70E-04*
+Benzene                                   78.1    0.8787         0  3.00E-05*
+CO                                        28.0    0.0013         0  1.20E-02*
+CO2                                       44.0    0.0020         0  5.10E-01*
+Cadmium                                  112.4    8.6420         0  1.10E-03*
+Chromium                                  52.0    7.2000         0  1.50E-04*
+Diethyl phthalate                        182.1    1.3208         0  7.70E-05*
+Ethane                                    30.1    0.5720         0  2.00E-05*
+Ethylbenzene                             106.2    0.8670         0  7.00E-07*
+Ethylene                                  62.0    0.9780         0  2.30E-04*
+Methyl Chloride                           50.5    0.9159         0  1.30E-06*
+Methylcyclohexane                         98.2    0.0000         0  3.50E-07*
+Methylcyclopentane                         0.0    0.0000         0  1.10E-06*
+Methylenechloride                         84.9    1.3266         0  1.00E-04*
+Nitrogen Oxide                            30.0    0.0013         0  2.60E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  1.50E-03*
+Pentaerythritol tetranitrate (PETN)      316.2    1.7730         0  8.40E-06*
+PM10                                       0.0    0.0000         0  8.20E-02*
+Propane                                   44.1    0.5005         0  4.80E-06*
+Propene                                   42.1    0.5193         0  5.60E-05*
+RDX                                      222.1    1.8200         0  5.50E-05*
+Sulfur Dioxide                            64.1    0.0029         0  1.10E-04*
+Styrene                                  104.2    0.9060         0  2.20E-06*
+Toluene                                   92.2    0.8669         0  2.50E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  2.70E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  6.20E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  6.30E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  7.70E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  5.60E-05*
+Vinyl Chloride                            62.5    0.9106         0  1.10E-06*
+cis-2-Pentene                             70.1    0.6556         0  3.90E-07*
+i-Butane                                  58.1    0.0000         0  1.50E-06*
+i-Butene                                  56.1    0.0000         0  4.50E-06*
+m-Ethyltoluene                           135.2    0.9391         0  3.50E-07*
+n-Butane                                  58.1    0.6012         0  1.20E-06*
+n-Decane                                 142.3    0.7300         0  5.80E-07*
+n-Heptane                                100.2    0.6840         0  9.30E-07*
+n-Hexane                                  86.1    0.6548         0  1.10E-06*
+n-Nonane                                 128.3    0.7176         0  9.30E-07*
+n-Octane                                 114.2    0.7025         0  1.10E-06*
+n-Pentane                                 72.2    0.6262         0  5.80E-07*
+p-Ethyltoluene                           135.2    0.9391         0  1.50E-06*
+trans-2-Butene                           125.0    1.1830         0  5.40E-06*
+trans-2-Pentene                           84.2    0.6942         0  8.20E-07*
+Fuze, Inertia Tail, Bomb, FMU 54A/B      1000         1  52
+1,3-Butadiene                             54.1    0.6211         0  4.50E-06*
+1-Butene                                  56.1    0.5951         0  1.10E-05*
+1-Hexene                                  84.2    0.6731         0  7.20E-06*
+1-Pentene                                 70.1    0.6405         0  5.10E-06*
+Acetylene                                 26.0    0.6181         0  4.60E-04*
+Allyl Chloride                            76.5    0.9376         0  1.50E-05*
+Aluminum                                  27.0    2.7020         0  1.20E-02*
+Benzene                                   78.1    0.8787         0  1.10E-04*
+CO                                        28.0    0.0013         0  1.80E-02*
+CO2                                       44.0    0.0020         0  9.40E-01*
+Cadmium                                  112.4    8.6420         0  3.10E-04*
+Chromium                                  52.0    7.2000         0  3.90E-05*
+Copper                                    63.5    8.9200         0  5.10E-04*
+Cyclopentene                              68.1    0.8000         0  1.30E-06*
+Ethane                                    30.1    0.5720         0  1.10E-05*
+Ethylbenzene                             106.2    0.8670         0  2.40E-06*
+Ethylene                                  62.0    0.9780         0  1.90E-04*
+Methyl Chloride                           50.5    0.9159         0  3.10E-06*
+Methylcyclopentane                         0.0    0.0000         0  3.00E-07*
+Methylenechloride                         84.9    1.3266         0  7.40E-04*
+Nitrogen Oxide                            30.0    0.0013         0  7.00E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  2.50E-03*
+Pentaerythritol tetranitrate (PETN)      316.2    1.7730         0  9.60E-06*
+PM10                                       0.0    0.0000         0  3.30E-01*
+Propane                                   44.1    0.5005         0  1.50E-06*
+Propene                                   42.1    0.5193         0  4.30E-05*
+RDX                                      222.1    1.8200         0  9.00E-05*
+Sulfur Dioxide                            64.1    0.0029         0  4.10E-04*
+Styrene                                  104.2    0.9060         0  7.80E-06*
+Toluene                                   92.2    0.8669         0  3.20E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  2.20E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  7.40E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  1.70E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  9.90E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  6.70E-05*
+Vinyl Chloride                            62.5    0.9106         0  6.80E-07*
+cis-2-Pentene                             70.1    0.6556         0  7.40E-07*
+i-Butane                                  58.1    0.0000         0  3.00E-07*
+i-Butene                                  56.1    0.0000         0  4.80E-06*
+i-Pentane                                 72.2    0.0000         0  2.70E-06*
+i-Propylbenzene                          120.2    0.0000         0  3.00E-07*
+m-Ethyltoluene                           135.2    0.9391         0  4.00E-07*
+n-Butane                                  58.1    0.6012         0  2.50E-06*
+n-Heptane                                100.2    0.6840         0  5.90E-07*
+n-Hexane                                  86.1    0.6548         0  4.40E-07*
+n-Nonane                                 128.3    0.7176         0  1.20E-06*
+n-Octane                                 114.2    0.7025         0  4.00E-07*
+n-Pentane                                 72.2    0.6262         0  4.40E-07*
+n-Propylbenzene                          120.2    0.8620         0  1.90E-06*
+p-Ethyltoluene                           135.2    0.9391         0  1.70E-06*
+trans-2-Butene                           125.0    1.1830         0  7.80E-06*
+trans-2-Pentene                           84.2    0.6942         0  9.00E-07*
+Flare, Cntermeas., Aircraft, M206         1000         1  54
+1,3-Butadiene                             54.1    0.6211         0  3.00E-06*
+1-Butene                                  56.1    0.5951         0  8.10E-06*
+1-Hexene                                  84.2    0.6731         0  6.00E-06*
+1-Pentene                                 70.1    0.6405         0  3.50E-06*
+Acetylene                                 26.0    0.6181         0  2.90E-04*
+Allyl Chloride                            76.5    0.9376         0  1.80E-05*
+Aluminum                                  27.0    2.7020         0  1.50E-02*
+Barium                                   137.3    3.5100         0  2.40E-04*
+Benzene                                   78.1    0.8787         0  4.50E-05*
+CO                                        28.0    0.0013         0  8.30E-03*
+CO2                                       44.0    0.0020         0  8.10E-01*
+Cadmium                                  112.4    8.6420         0  3.40E-05*
+Chromium                                  52.0    7.2000         0  1.60E-04*
+Cyclohexane                               84.2    0.7781         0  3.30E-07*
+Cyclopentene                              68.1    0.8000         0  7.90E-07*
+Ethane                                    30.1    0.5720         0  1.00E-06*
+Ethyl chloride                            64.5    0.8978         0  3.10E-06*
+Ethylbenzene                             106.2    0.8670         0  2.40E-06*
+Ethylene                                  62.0    0.9780         0  1.20E-04*
+Methyl Chloride                           50.5    0.9159         0  1.00E-06*
+Methylcyclohexane                         98.2    0.0000         0  3.40E-07*
+Methylcyclopentane                         0.0    0.0000         0  3.40E-07*
+Methylenechloride                         84.9    1.3266         0  4.10E-04*
+Nitrogen Oxide                            30.0    0.0013         0  5.30E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  2.80E-03*
+Pentaerythritol tetranitrate (PETN)      316.2    1.7730         0  1.60E-06*
+PM10                                       0.0    0.0000         0  5.50E-01*
+Propane                                   44.1    0.5005         0  1.40E-06*
+Propene                                   42.1    0.5193         0  2.20E-05*
+RDX                                      222.1    1.8200         0  6.00E-05*
+Sulfur Dioxide                            64.1    0.0029         0  1.00E-03*
+Styrene                                  104.2    0.9060         0  7.10E-06*
+Toluene                                   92.2    0.8669         0  2.80E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  9.90E-06*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  4.50E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  8.60E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  6.10E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  6.60E-05*
+Vinyl Chloride                            62.5    0.9106         0  1.50E-06*
+cis-2-Pentene                             70.1    0.6556         0  3.40E-07*
+i-Butane                                  58.1    0.0000         0  6.60E-07*
+i-Butene                                  56.1    0.0000         0  2.50E-06*
+i-Pentane                                 72.2    0.0000         0  3.40E-07*
+i-Propylbenzene                          120.2    0.0000         0  8.50E-07*
+m-Ethyltoluene                           135.2    0.9391         0  3.40E-07*
+n-Butane                                  58.1    0.6012         0  5.70E-07*
+n-Decane                                 142.3    0.7300         0  3.40E-07*
+n-Heptane                                100.2    0.6840         0  4.50E-07*
+n-Hexane                                  86.1    0.6548         0  6.80E-07*
+n-Nonane                                 128.3    0.7176         0  6.80E-07*
+n-Octane                                 114.2    0.7025         0  6.70E-07*
+n-Pentane                                 72.2    0.6262         0  5.10E-07*
+p-Ethyltoluene                           135.2    0.9391         0  5.10E-07*
+trans-2-Butene                           125.0    1.1830         0  2.80E-06*
+Fuze, Bomb, Tail, FMU 139A/B              1000         1  58
+1,3-Butadiene                             54.1    0.6211         0  2.10E-05*
+1-Butene                                  56.1    0.5951         0  1.60E-05*
+1-Hexene                                  84.2    0.6731         0  8.70E-06*
+1-Pentene                                 70.1    0.6405         0  6.10E-06*
+Acetylene                                 26.0    0.6181         0  6.20E-04*
+Allyl Chloride                            76.5    0.9376         0  3.00E-05*
+Aluminum                                  27.0    2.7020         0  3.40E-02*
+Antimony                                 121.8    6.6840         0  2.20E-04*
+Benzene                                   78.1    0.8787         0  1.20E-04*
+CO                                        28.0    0.0013         0  2.30E-02*
+CO2                                       44.0    0.0020         0  1.40E+00*
+Cadmium                                  112.4    8.6420         0  2.30E-03*
+Carbon Tetrachloride                     153.8    1.5940         0  2.70E-06*
+Chromium                                  52.0    7.2000         0  1.40E-04*
+Copper                                    63.5    8.9200         0  6.80E-03*
+Cyclohexane                               84.2    0.7781         0  4.90E-07*
+Cyclopentene                              68.1    0.8000         0  8.10E-07*
+Diethyl phthalate                        182.1    1.3208         0  1.50E-03*
+Ethane                                    30.1    0.5720         0  9.80E-06*
+Ethylbenzene                             106.2    0.8670         0  3.20E-06*
+Ethylene                                  62.0    0.9780         0  3.40E-04*
+Lead                                     207.2   11.3437         0  2.60E-03*
+Methyl Chloride                           50.5    0.9159         0  4.70E-06*
+Methyl Chloroform                        133.4    1.3390         0  1.60E-05*
+Methylcyclopentane                         0.0    0.0000         0  4.90E-07*
+Methylenechloride                         84.9    1.3266         0  1.10E-04*
+Nitrogen Oxide                            30.0    0.0013         0  9.90E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  1.70E-02*
+Pentaerythritol tetranitrate (PETN)      316.2    1.7730         0  1.70E-05*
+PM10                                       0.0    0.0000         0  6.00E-01*
+Propane                                   44.1    0.5005         0  3.90E-06*
+Propene                                   42.1    0.5193         0  5.90E-05*
+RDX                                      222.1    1.8200         0  3.40E-04*
+Sulfur Dioxide                            64.1    0.0029         0  1.40E-03*
+Styrene                                  104.2    0.9060         0  2.90E-05*
+Toluene                                   92.2    0.8669         0  2.30E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  1.50E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.10E-03*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  1.90E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.40E-03*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  1.00E-04*
+Vinyl Chloride                            62.5    0.9106         0  1.80E-06*
+Zinc                                      65.4    7.1400         0  6.20E-03*
+cis-2-Pentene                             70.1    0.6556         0  6.50E-07*
+i-Butane                                  58.1    0.0000         0  2.30E-06*
+i-Butene                                  56.1    0.0000         0  5.30E-06*
+i-Pentane                                 72.2    0.0000         0  4.80E-07*
+m-Ethyltoluene                           135.2    0.9391         0  9.70E-07*
+n-Butane                                  58.1    0.6012         0  2.40E-06*
+n-Decane                                 142.3    0.7300         0  1.10E-06*
+n-Heptane                                100.2    0.6840         0  6.50E-07*
+n-Hexane                                  86.1    0.6548         0  6.50E-07*
+n-Nonane                                 128.3    0.7176         0  4.90E-07*
+n-Octane                                 114.2    0.7025         0  4.90E-07*
+n-Pentane                                 72.2    0.6262         0  9.70E-07*
+p-Ethyltoluene                           135.2    0.9391         0  2.10E-06*
+trans-2-Butene                           125.0    1.1830         0  1.30E-05*
+trans-2-Pentene                           84.2    0.6942         0  1.90E-06*
+Signal,Illum,Arcrft,Rd Str,AN-M43A2       1000         1  54
+1,3-Butadiene                             54.1    0.6211         0  1.90E-06*
+1-Butene                                  56.1    0.5951         0  1.20E-05*
+1-Hexene                                  84.2    0.6731         0  9.50E-06*
+1-Pentene                                 70.1    0.6405         0  5.60E-06*
+Acetylene                                 26.0    0.6181         0  3.10E-04*
+Allyl Chloride                            76.5    0.9376         0  1.80E-05*
+Aluminum                                  27.0    2.7020         0  1.90E-02*
+Barium                                   137.3    3.5100         0  1.10E-04*
+Benzene                                   78.1    0.8787         0  3.40E-05*
+CO                                        28.0    0.0013         0  2.20E-02*
+CO2                                       44.0    0.0020         0  1.10E+00*
+Cadmium                                  112.4    8.6420         0  8.80E-05*
+Chromium                                  52.0    7.2000         0  5.70E-05*
+Copper                                    63.5    8.9200         0  3.70E-04*
+Cyclopentene                              68.1    0.8000         0  1.30E-06*
+Ethane                                    30.1    0.5720         0  9.00E-06*
+Ethylbenzene                             106.2    0.8670         0  4.60E-07*
+Ethylene                                  62.0    0.9780         0  2.20E-04*
+Lead                                     207.2   11.3437         0  7.00E-05*
+Methyl Chloride                           50.5    0.9159         0  1.70E-06*
+Methylcyclopentane                         0.0    0.0000         0  3.50E-07*
+Methylenechloride                         84.9    1.3266         0  8.10E-06*
+Nitrogen Oxide                            30.0    0.0013         0  1.30E-02*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  1.10E-03*
+Pentaerythritol tetranitrate (PETN)      316.2    1.7730         0  1.20E-05*
+PM10                                       0.0    0.0000         0  4.50E-01*
+Propane                                   44.1    0.5005         0  2.60E-06*
+Propene                                   42.1    0.5193         0  3.50E-05*
+RDX                                      222.1    1.8200         0  1.90E-04*
+Sulfur Dioxide                            64.1    0.0029         0  1.30E-02*
+Styrene                                  104.2    0.9060         0  4.50E-06*
+Toluene                                   92.2    0.8669         0  3.00E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  1.50E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  6.00E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  7.20E-05*
+Total HpCDD                                0.0    0.0000         0  6.10E-10*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  7.40E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  6.10E-05*
+Vinyl Chloride                            62.5    0.9106         0  2.30E-06*
+Zinc                                      65.4    7.1400         0  3.40E-04*
+cis-2-Pentene                             70.1    0.6556         0  3.50E-07*
+i-Butane                                  58.1    0.0000         0  3.50E-07*
+i-Butene                                  56.1    0.0000         0  3.10E-06*
+i-Pentane                                 72.2    0.0000         0  3.50E-07*
+n-Butane                                  58.1    0.6012         0  2.20E-06*
+n-Decane                                 142.3    0.7300         0  5.20E-07*
+n-Heptane                                100.2    0.6840         0  5.80E-07*
+n-Hexane                                  86.1    0.6548         0  8.10E-07*
+n-Nonane                                 128.3    0.7176         0  7.00E-07*
+n-Octane                                 114.2    0.7025         0  3.50E-07*
+n-Pentane                                 72.2    0.6262         0  5.80E-07*
+p-Ethyltoluene                           135.2    0.9391         0  1.50E-06*
+trans-2-Butene                           125.0    1.1830         0  7.80E-06*
+trans-2-Pentene                           84.2    0.6942         0  4.60E-07*
+Detonating train                          1000         1  50
+1,3-Butadiene                             54.1    0.6211         0  9.00E-06*
+1-Butene                                  56.1    0.5951         0  3.10E-05*
+1-Hexene                                  84.2    0.6731         0  2.40E-05*
+1-Pentene                                 70.1    0.6405         0  1.40E-05*
+Acetylene                                 26.0    0.6181         0  1.30E-04*
+Benzene                                   78.1    0.8787         0  2.50E-05*
+CO                                        28.0    0.0013         0  9.40E-03*
+CO2                                       44.0    0.0020         0  9.10E-01*
+Cadmium                                  112.4    8.6420         0  1.10E-05*
+Cyclohexane                               84.2    0.7781         0  7.30E-07*
+Cyclopentane                              70.1    0.7500         0  3.00E-07*
+Cyclopentene                              68.1    0.8000         0  3.70E-06*
+Ethane                                    30.1    0.5720         0  4.40E-06*
+Ethyl chloride                            64.5    0.8978         0  6.90E-07*
+Ethylbenzene                             106.2    0.8670         0  6.00E-07*
+Ethylene                                  62.0    0.9780         0  3.90E-04*
+Lead                                     207.2   11.3437         0  1.80E-04*
+Methyl Chloride                           50.5    0.9159         0  7.00E-07*
+Methylcyclopentane                         0.0    0.0000         0  2.90E-07*
+Methylenechloride                         84.9    1.3266         0  4.20E-05*
+Nitrogen Oxide                            30.0    0.0013         0  4.90E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  4.40E-03*
+Pentaerythritol tetranitrate (PETN)      316.2    1.7730         0  5.60E-04*
+PM10                                       0.0    0.0000         0  3.60E-02*
+Propane                                   44.1    0.5005         0  4.70E-06*
+Propene                                   42.1    0.5193         0  7.30E-05*
+RDX                                      222.1    1.8200         0  7.40E-03*
+Sulfur Dioxide                            64.1    0.0029         0  4.60E-04*
+Styrene                                  104.2    0.9060         0  4.10E-06*
+Tetrachloroethylene                      165.8    1.6227         0  1.10E-05*
+Toluene                                   92.2    0.8669         0  4.20E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  2.80E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  6.90E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  3.90E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  8.50E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  9.60E-05*
+Vinyl Chloride                            62.5    0.9106         0  1.30E-06*
+cis-2-Pentene                             70.1    0.6556         0  3.90E-07*
+i-Butene                                  56.1    0.0000         0  2.40E-05*
+m-Ethyltoluene                           135.2    0.9391         0  3.00E-07*
+n-Butane                                  58.1    0.6012         0  3.10E-06*
+n-Decane                                 142.3    0.7300         0  6.00E-07*
+n-Heptane                                100.2    0.6840         0  1.40E-06*
+n-Hexane                                  86.1    0.6548         0  1.80E-06*
+n-Nonane                                 128.3    0.7176         0  7.90E-07*
+n-Octane                                 114.2    0.7025         0  1.50E-06*
+n-Pentane                                 72.2    0.6262         0  1.00E-06*
+p-Ethyltoluene                           135.2    0.9391         0  1.20E-06*
+trans-2-Butene                           125.0    1.1830         0  4.00E-06*
+trans-2-Pentene                           84.2    0.6942         0  8.80E-07*
+Mine, Claymore, M18A1                     1000         1  50
+1,3-Butadiene                             54.1    0.6211         0  2.70E-06*
+1-Butene                                  56.1    0.5951         0  7.60E-06*
+1-Hexene                                  84.2    0.6731         0  2.40E-06*
+1-Pentene                                 70.1    0.6405         0  1.40E-06*
+Acetylene                                 26.0    0.6181         0  9.80E-04*
+Aluminum                                  27.0    2.7020         0  6.20E-03*
+Benzene                                   78.1    0.8787         0  8.10E-04*
+CO                                        28.0    0.0013         0  3.00E-02*
+CO2                                       44.0    0.0020         0  5.00E+00*
+Cadmium                                  112.4    8.6420         0  2.40E-04*
+Chromium                                  52.0    7.2000         0  3.80E-05*
+Copper                                    63.5    8.9200         0  4.70E-03*
+Cyclohexane                               84.2    0.7781         0  1.30E-06*
+Cyclopentane                              70.1    0.7500         0  7.20E-07*
+Cyclopentene                              68.1    0.8000         0  4.90E-07*
+Ethane                                    30.1    0.5720         0  5.30E-06*
+Ethylbenzene                             106.2    0.8670         0  3.80E-05*
+Ethylene                                  62.0    0.9780         0  2.40E-04*
+Methyl Chloride                           50.5    0.9159         0  4.40E-06*
+Methyl chloroform                        133.4    1.3390         0  2.30E-06*
+Methylcyclohexane                         98.2    0.0000         0  5.30E-06*
+Methylcyclopentane                         0.0    0.0000         0  1.60E-06*
+Methylenechloride                         84.9    1.3266         0  1.10E-04*
+PM10                                       0.0    0.0000         0  2.30E-01*
+Propane                                   44.1    0.5005         0  3.60E-06*
+Propene                                   42.1    0.5193         0  2.40E-05*
+RDX                                      222.1    1.8200         0  9.90E-06*
+Styrene                                  104.2    0.9060         0  1.70E-03*
+Titanium                                  47.9    4.5000         0  1.30E-04*
+Toluene                                   92.2    0.8669         0  2.50E-04*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  7.10E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.30E-03*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  3.00E-03*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  4.90E-03*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  4.90E-04*
+Vinyl Chloride                            62.5    0.9106         0  1.10E-06*
+Zinc                                      65.4    7.1400         0  1.60E-03*
+i-Butane                                  58.1    0.0000         0  7.30E-07*
+i-Butene                                  56.1    0.0000         0  3.70E-06*
+i-Pentane                                 72.2    0.0000         0  3.90E-06*
+m-Ethyltoluene                           135.2    0.9391         0  5.60E-06*
+n-Butane                                  58.1    0.6012         0  1.80E-06*
+n-Decane                                 142.3    0.7300         0  1.00E-05*
+n-Heptane                                100.2    0.6840         0  3.70E-06*
+n-Hexane                                  86.1    0.6548         0  1.30E-06*
+n-Nonane                                 128.3    0.7176         0  1.30E-06*
+n-Octane                                 114.2    0.7025         0  7.20E-06*
+n-Pentane                                 72.2    0.6262         0  9.10E-06*
+p-Ethyltoluene                           135.2    0.9391         0  1.70E-05*
+trans-2-Butene                           125.0    1.1830         0  1.80E-05*
+T45E7 Adapter Booster                     1000         1  53
+1,3-Butadiene                             54.1    0.6211         0  2.30E-05*
+1-Butene                                  56.1    0.5951         0  4.90E-05*
+1-Hexene                                  84.2    0.6731         0  2.90E-05*
+1-Pentene                                 70.1    0.6405         0  1.90E-05*
+Acetylene                                 26.0    0.6181         0  5.20E-04*
+Aluminum                                  27.0    2.7020         0  8.80E-03*
+Barium                                   137.3    3.5100         0  6.10E-04*
+Benzene                                   78.1    0.8787         0  1.30E-04*
+CO                                        28.0    0.0013         0  2.90E-02*
+CO2                                       44.0    0.0020         0  4.80E+00*
+Cadmium                                  112.4    8.6420         0  5.80E-03*
+Carbon Tetrachloride                     153.8    1.5940         0  3.20E-06*
+Chromium                                  52.0    7.2000         0  9.40E-05*
+Copper                                    63.5    8.9200         0  2.70E-03*
+Cyclohexane                               84.2    0.7781         0  2.30E-06*
+Cyclopentane                              70.1    0.7500         0  5.80E-07*
+Cyclopentene                              68.1    0.8000         0  3.70E-06*
+Ethane                                    30.1    0.5720         0  2.50E-05*
+Ethylbenzene                             106.2    0.8670         0  9.20E-06*
+Ethylene                                  62.0    0.9780         0  5.70E-04*
+Lead                                     207.2   11.3437         0  1.80E-04*
+Methyl Chloride                           50.5    0.9159         0  2.20E-06*
+Methylcyclohexane                         98.2    0.0000         0  2.90E-06*
+Methylcyclopentane                         0.0    0.0000         0  2.90E-06*
+Methylenechloride                         84.9    1.3266         0  5.00E-04*
+PM10                                       0.0    0.0000         0  2.60E-01*
+Propane                                   44.1    0.5005         0  1.10E-05*
+Propene                                   42.1    0.5193         0  1.60E-04*
+RDX                                      222.1    1.8200         0  2.40E-04*
+Styrene                                  104.2    0.9060         0  1.20E-04*
+Titanium                                  47.9    4.5000         0  8.70E-05*
+Toluene                                   92.2    0.8669         0  5.20E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  8.70E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.40E-03*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  3.60E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.90E-03*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  3.10E-04*
+Zinc                                      65.4    7.1400         0  2.90E-03*
+cis-2-Pentene                             70.1    0.6556         0  2.70E-06*
+i-Butane                                  58.1    0.0000         0  1.70E-06*
+i-Butene                                  56.1    0.0000         0  3.10E-05*
+i-Pentane                                 72.2    0.0000         0  6.20E-06*
+m-Ethyltoluene                           135.2    0.9391         0  2.50E-06*
+n-Butane                                  58.1    0.6012         0  9.10E-06*
+n-Decane                                 142.3    0.7300         0  1.20E-06*
+n-Heptane                                100.2    0.6840         0  3.30E-06*
+n-Hexane                                  86.1    0.6548         0  5.80E-06*
+n-Nonane                                 128.3    0.7176         0  1.40E-06*
+n-Octane                                 114.2    0.7025         0  1.80E-06*
+n-Pentane                                 72.2    0.6262         0  5.00E-06*
+p-Ethyltoluene                           135.2    0.9391         0  1.10E-05*
+trans-2-Butene                           125.0    1.1830         0  2.00E-05*
+trans-2-Pentene                           84.2    0.6942         0  4.10E-06*
+20 mm HEI Cartridge                       1000         1  50
+1,3-Butadiene                             54.1    0.6211         0  5.10E-06*
+1-Butene                                  56.1    0.5951         0  2.40E-05*
+1-Hexene                                  84.2    0.6731         0  4.40E-06*
+1-Pentene                                 70.1    0.6405         0  3.50E-06*
+Acetylene                                 26.0    0.6181         0  1.80E-04*
+Aluminum                                  27.0    2.7020         0  9.60E-04*
+Benzene                                   78.1    0.8787         0  1.10E-04*
+CO                                        28.0    0.0013         0  1.10E-01*
+CO2                                       44.0    0.0020         0  2.10E+00*
+Cadmium                                  112.4    8.6420         0  8.60E-04*
+Carbon Tetrachloride                     153.8    1.5940         0  7.60E-06*
+Chromium                                  52.0    7.2000         0  3.50E-05*
+Copper                                    63.5    8.9200         0  2.60E-02*
+Cyclohexane                               84.2    0.7781         0  6.90E-07*
+Cyclopentane                              70.1    0.7500         0  7.00E-07*
+Ethane                                    30.1    0.5720         0  9.40E-05*
+Ethylbenzene                             106.2    0.8670         0  4.60E-06*
+Ethylene                                  62.0    0.9780         0  2.90E-04*
+Lead                                     207.2   11.3437         0  7.00E-04*
+Methyl Chloride                           50.5    0.9159         0  1.30E-06*
+Methyl chloroform                        133.4    1.3390         0  3.30E-06*
+Methylcyclohexane                         98.2    0.0000         0  2.80E-06*
+Methylcyclopentane                         0.0    0.0000         0  2.80E-06*
+Methylenechloride                         84.9    1.3266         0  4.50E-04*
+Propane                                   44.1    0.5005         0  1.30E-05*
+Propene                                   42.1    0.5193         0  5.10E-05*
+RDX                                      222.1    1.8200         0  1.20E-05*
+Styrene                                  104.2    0.9060         0  3.60E-06*
+Toluene                                   92.2    0.8669         0  3.00E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  1.70E-04*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  5.80E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  2.10E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.20E-03*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  2.20E-04*
+Zinc                                      65.4    7.1400         0  1.60E-02*
+cis-2-Pentene                             70.1    0.6556         0  6.80E-07*
+i-Butane                                  58.1    0.0000         0  1.40E-06*
+i-Butene                                  56.1    0.0000         0  2.20E-05*
+i-Pentane                                 72.2    0.0000         0  1.20E-05*
+m-Ethyltoluene                           135.2    0.9391         0  3.70E-06*
+n-Butane                                  58.1    0.6012         0  7.40E-06*
+n-Decane                                 142.3    0.7300         0  6.50E-06*
+n-Heptane                                100.2    0.6840         0  5.30E-06*
+n-Hexane                                  86.1    0.6548         0  3.50E-06*
+n-Nonane                                 128.3    0.7176         0  6.90E-07*
+n-Octane                                 114.2    0.7025         0  9.50E-06*
+n-Pentane                                 72.2    0.6262         0  1.30E-05*
+p-Ethyltoluene                           135.2    0.9391         0  1.40E-05*
+trans-2-Butene                           125.0    1.1830         0  9.50E-06*
+trans-2-Pentene                           84.2    0.6942         0  1.40E-06*
+40 mm HEI Cartridge                       1000         1  49
+1,3-Butadiene                             54.1    0.6211         0  5.10E-06
+1-Butene                                  56.1    0.5951         0  2.40E-05
+1-Hexene                                  84.2    0.6731         0  4.40E-06
+1-Pentene                                 70.1    0.6405         0  3.50E-06
+Acetylene                                 26.0    0.6181         0  4.20E-05*
+Aluminum                                  27.0    2.7020         0  1.50E-02*
+Benzene                                   78.1    0.8787         0  2.80E-05*
+CO                                        28.0    0.0013         0  2.10E-02*
+CO2                                       44.0    0.0020         0  2.10E-01*
+Cadmium                                  112.4    8.6420         0  3.20E-05*
+Carbon Tetrachloride                     153.8    1.5940         0  4.50E-06*
+Chromium                                  52.0    7.2000         0  8.80E-05*
+Copper                                    63.5    8.9200         0  8.90E-03*
+Cyclohexane                               84.2    0.7781         0  7.50E-06*
+Cyclopentane                              70.1    0.7500         0  1.70E-06*
+Cyclopentene                              68.1    0.8000         0  8.30E-07*
+Ethane                                    30.1    0.5720         0  3.00E-05*
+Ethylbenzene                             106.2    0.8670         0  2.50E-06*
+Ethylene                                  62.0    0.9780         0  8.10E-05*
+Lead                                     207.2   11.3437         0  3.70E-04*
+Methylcyclohexane                         98.2    0.0000         0  2.50E-06*
+Methylcyclopentane                         0.0    0.0000         0  9.10E-06*
+Methylenechloride                         84.9    1.3266         0  8.70E-04*
+PM10                                       0.0    0.0000         0  4.70E-01*
+Propane                                   44.1    0.5005         0  3.80E-06*
+Propene                                   42.1    0.5193         0  1.60E-05*
+RDX                                      222.1    1.8200         0  3.70E-05*
+Styrene                                  104.2    0.9060         0  4.20E-05*
+Toluene                                   92.2    0.8669         0  2.60E-05*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  1.60E-04*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.50E-04*
+Total Aromatics (e.g. Styrene)           104.2    0.9060         0  1.00E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  3.30E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  1.90E-04*
+Zinc                                      65.4    7.1400         0  1.10E-03*
+cis-2-Pentene                             70.1    0.6556         0  8.30E-07*
+i-Butane                                  58.1    0.0000         0  1.60E-06*
+i-Butene                                  56.1    0.0000         0  8.80E-06*
+i-Pentane                                 72.2    0.0000         0  9.10E-06*
+n-Butane                                  58.1    0.6012         0  1.40E-06*
+n-Decane                                 142.3    0.7300         0  5.20E-06*
+n-Heptane                                100.2    0.6840         0  5.00E-06*
+n-Hexane                                  86.1    0.6548         0  1.90E-05*
+n-Nonane                                 128.3    0.7176         0  1.90E-06*
+n-Octane                                 114.2    0.7025         0  3.60E-06*
+n-Pentane                                 72.2    0.6262         0  1.30E-05*
+p-Ethyltoluene                           135.2    0.9391         0  5.20E-06*
+trans-2-Butene                           125.0    1.1830         0  1.90E-06*
+trans-2-Pentene                           84.2    0.6942         0  5.00E-06*
+Propellant, ammonium perc., alum.         1000         1  18
+Acetylene                                 26.0    0.6181         0  1.00E-05*
+Aluminum                                  27.0    2.7020         0  1.10E-02*
+Barium                                   137.3    3.5100         0  1.00E-05*
+Cl2                                       70.9    3.2140         0  4.60E-03*
+CO                                        28.0    0.0013         0  2.00E-02*
+CO2                                       44.0    0.0020         0  3.20E-01*
+Chromium                                  52.0    7.2000         0  1.00E-05*
+HCL                                       36.5    1.1870         0  2.10E-01*
+Lead                                     207.2   11.3437         0  4.00E-05*
+Nitrogen Oxide                            30.0    0.0013         0  1.90E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  1.40E-04*
+PM10                                       0.0    0.0000         0  4.20E-01*
+Sulfur Dioxide                            64.1    0.0029         0  5.00E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  2.00E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  5.00E-05*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  2.50E-05*
+Zinc                                      65.4    7.1400         0  4.00E-05*
+i-Butene                                  56.1    0.0000         0  1.00E-05*
+Propellant, ammonium perc., nonal.        1000         1  14
+2-Chlorophenol                           128.6    1.2634         0  1.00E-05*
+Cl2                                       70.9    3.2140         0  9.20E-03*
+CO                                        28.0    0.0013         0  1.40E-04*
+CO2                                       44.0    0.0020         0  3.70E-01*
+Chromium                                  52.0    7.2000         0  1.00E-05*
+Copper                                    63.5    8.9200         0  8.00E-05*
+HCL                                       36.5    1.1870         0  2.15E-01*
+Nitrogen Oxide                            30.0    0.0013         0  4.00E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  2.40E-03*
+PM10                                       0.0    0.0000         0  1.50E-02*
+Sulfur Dioxide                            64.1    0.0029         0  1.10E-04*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.00E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  4.00E-05*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  2.50E-05*
+Propellant, M-3                           1000         1  37
+1-Hexane                                  86.2    0.6603         0  1.80E-07*
+1-Pentene                                 70.1    0.6405         0  1.60E-07*
+Acetylene                                 26.0    0.6181         0  1.30E-05*
+Aluminum                                  27.0    2.7020         0  5.10E-06*
+Benzene                                   78.1    0.8787         0  1.00E-05*
+CO                                        28.0    0.0013         0  1.40E-02*
+CO2                                       44.0    0.0020         0  1.20E+00*
+Copper                                    63.5    8.9200         0  4.40E-06*
+Cyclohexane                               84.2    0.7781         0  1.65E-07*
+Ethane                                    30.1    0.5720         0  1.30E-06*
+Ethylbenzene                             106.2    0.8670         0  2.60E-07*
+Ethylene                                  28.1    0.0013         0  7.80E-06*
+Methylchloride                            50.5    0.9159         0  1.40E-07*
+Methylcyclohexane                         98.2    0.0000         0  5.80E-08*
+Methylcyclopentane                         0.0    0.0000         0  2.50E-06*
+Methylenechloride                         84.9    1.3266         0  2.30E-05*
+Propane                                   44.1    0.5005         0  5.00E-07*
+Propene                                   42.1    0.5193         0  2.00E-06*
+PM10                                       0.0    0.0000         0  8.60E-03*
+Toluene                                   92.2    0.8669         0  1.80E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  2.60E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  2.90E-05*
+Total Aromatics (e.g. styrene)           104.2    0.9060         0  1.40E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  9.30E-05*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  2.40E-05*
+i-Butene                                  56.1    0.0000         0  7.90E-07*
+i-Pentane                                 72.2    0.0000         0  3.00E-08*
+m-Ethyltoluene                           135.2    0.9391         0  9.70E-08*
+n-Butane                                  58.1    0.6012         0  1.50E-07*
+n-Decane                                 142.3    0.7300         0  5.90E-07*
+n-Heptane                                100.2    0.6840         0  3.10E-07*
+n-Hexane                                  86.1    0.6548         0  1.90E-05*
+n-Nonane                                 128.3    0.7176         0  1.20E-07*
+n-Octane                                 114.2    0.7025         0  4.30E-07*   
+n-Pentane                                 72.2    0.6262         0  8.60E-07*
+p-Ethyltoluene                           135.2    0.9391         0  9.80E-07*
+trans-2-Butene                           125.0    1.1830         0  1.90E-07*
+Propellant, M-43                          1000         1  34
+1,3-Butadiene                             54.1    0.6211         0  9.10E-08*
+1-Butene                                  56.1    0.5951         0  2.70E-07*
+1-Pentene                                 70.1    0.6405         0  9.10E-08*
+Acetylene                                 26.0    0.6181         0  5.90E-06*
+Benzene                                   78.1    0.8787         0  1.70E-06*
+CO                                        28.0    0.0013         0  6.60E-04*
+CO2                                       44.0    0.0020         0  7.70E-01*
+Cyclohexane                               84.2    0.7781         0  9.10E-08*
+Cyclopentene                              68.1    0.8000         0  9.10E-08*
+Ethane                                    30.1    0.5720         0  1.80E-07*
+Ethylene                                  28.1    0.0013         0  4.80E-06*
+HCL                                       36.5    1.1870         0  1.00E-03*
+Nitrogen Oxide                            30.0    0.0013         0  6.30E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  4.70E-04*
+Propene                                   42.1    0.5193         0  1.10E-06*
+PM10                                       0.0    0.0000         0  1.20E-03*
+Sulfur Dioxide                            64.1    0.0029         0  1.20E-04*
+Toluene                                   92.2    0.8669         0  5.40E-07*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  5.40E-07*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.30E-05*
+Total Aromatics (e.g. styrene)           104.2    0.9060         0  2.80E-06*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  4.10E-05*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  2.50E-05*
+cis-2-Pentene                             70.1    0.6556         0  9.10E-08*
+i-Butene                                  56.1    0.0000         0  5.40E-07*
+i-Pentane                                 72.2    0.0000         0  9.10E-08*
+n-Butane                                  58.1    0.6012         0  9.10E-08*
+n-Decane                                 142.3    0.7300         0  8.20E-07*
+n-Heptane                                100.2    0.6840         0  9.10E-08*
+n-Hexane                                  86.1    0.6548         0  9.10E-08*
+n-Octane                                 114.2    0.7025         0  9.10E-08*  
+n-Pentane                                 72.2    0.6262         0  8.60E-07*
+p-Ethyltoluene                           135.2    0.9391         0  1.80E-07*
+trans-2-Butene                           125.0    1.1830         0  1.80E-07*
+Propellant, M-9                           1000         1  24
+1-Butene                                  56.1    0.5951         0  2.60E-07*
+1-Hexane                                  86.2    0.6603         0  2.10E-07*
+1-Pentene                                 70.1    0.6405         0  4.30E-08*
+Acetylene                                 26.0    0.6181         0  9.00E-06*
+Benzene                                   78.1    0.8787         0  3.20E-06*
+CO                                        28.0    0.0013         0  2.70E-03*
+CO2                                       44.0    0.0020         0  9.40E-01*
+Carbon Tetrachloride                     153.8    1.5940         0  2.30E-07*
+Copper                                    63.5    8.9200         0  6.50E-06*
+Cyclopentane                              70.1    0.7500         0  4.30E-08*
+Ethane                                    30.1    0.5720         0  5.60E-07*
+Ethylene                                  28.1    0.0013         0  6.50E-06*
+Methylchloride                            50.5    0.9159         0  1.50E-07*
+Propene                                   42.1    0.5193         0  7.30E-07*
+PM10                                       0.0    0.0000         0  1.60E-02*
+Styrene                                  104.2    0.9060         0  4.70E-07*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.70E-05*
+Total Aromatics (e.g. styrene)           104.2    0.9060         0  5.40E-06*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.50E-05*
+i-Butane                                  58.1    0.0000         0  4.30E-08*
+i-Butene                                  56.1    0.0000         0  2.60E-07*
+m-Ethyltoluene                           135.2    0.9391         0  4.30E-08*
+n-Butane                                  58.1    0.6012         0  4.30E-08*
+p-Ethyltoluene                           135.2    0.9391         0  4.00E-06*
+Propellant, MK-23                         1000         1  20
+1,3-Butadiene                             54.1    0.6211         0  2.00E-07*
+1-Butene                                  56.1    0.5951         0  5.90E-07*
+Acetylene                                 26.0    0.6181         0  5.50E-06*
+CO                                        28.0    0.0013         0  2.70E-04*
+CO2                                       44.0    0.0020         0  5.40E-01*
+Carbon Tetrachloride                     153.8    1.5940         0  1.10E-06*
+Chloroform                               119.4    1.4832         0  4.20E-07*
+Ethylene                                  28.1    0.0013         0  9.80E-07*
+HCL                                       36.5    1.1870         0  1.90E-03*
+Methylchloride                            50.5    0.9159         0  7.10E-07*
+Methylenechloride                         84.9    1.3266         0  6.00E-07*
+Propane                                   44.1    0.5005         0  4.90E-07*
+Propene                                   42.1    0.5193         0  1.70E-06*
+PM10                                       0.0    0.0000         0  5.90E-02*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.10E-05*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  2.90E-06*
+Vinyl Chloride                            62.5    0.9106         0  1.50E-06*
+i-Butene                                  56.1    0.0000         0  4.90E-07*
+m-Ethyltoluene                           135.2    0.9391         0  3.00E-07*
+trans-2-Butene                           125.0    1.1830         0  2.00E-07*
+Propellant, M31A1E1                       1000         1  10
+CO                                        28.0    0.0013         0  1.30E-04*
+CO2                                       44.0    0.0020         0  5.90E-01*
+Copper                                    63.5    8.9200         0  1.00E-05*
+Nitrogen Oxide                            30.0    0.0013         0  1.20E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  1.00E-04*
+PM10                                       0.0    0.0000         0  9.10E-01*
+Sulfur Dioxide                            64.1    0.0029         0  1.20E-03*
+Total Aromatics (e.g. styrene)           104.2    0.9060         0  5.00E-05*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.00E-04*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  2.00E-05*
+Propellant, PBXN-110                      1000         1  31
+1,3-Butadiene                             54.1    0.6211         0  5.00E-07*
+1-Butene                                  56.1    0.5951         0  6.00E-07*
+1-Pentene                                 70.1    0.6405         0  1.00E-07*
+Acetylene                                 26.0    0.6181         0  3.10E-06*
+Benzene                                   78.1    0.8787         0  4.90E-06*
+CO                                        28.0    0.0013         0  1.20E-03*
+CO2                                       44.0    0.0020         0  1.00E+00*
+Cyclopentene                              68.1    0.8000         0  1.00E-07*
+Ethane                                    30.1    0.5720         0  1.00E-06*
+Ethylbenzene                             106.2    0.8670         0  8.00E-07*
+Ethylene                                  28.1    0.0013         0  6.70E-06*
+HCL                                       36.5    1.1870         0  1.80E-04*
+Methylchloride                            50.5    0.9159         0  1.80E-07*
+Nitrogen Oxide                            30.0    0.0013         0  2.60E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  2.80E-04*
+Propane                                   44.1    0.5005         0  3.00E-07*
+Propene                                   42.1    0.5193         0  3.00E-06*
+PM10                                       0.0    0.0000         0  4.90E-01*
+Sulfur Dioxide                            64.1    0.0029         0  3.50E-04*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.60E-05*
+Total Aromatics (e.g. styrene)           104.2    0.9060         0  7.10E-06*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  5.10E-05*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  4.40E-05*
+Vinyl Chloride                            62.5    0.9106         0  2.20E-07*
+i-Butene                                  56.1    0.0000         0  1.30E-06*
+m-Ethyltoluene                           135.2    0.9391         0  2.00E-07*
+n-Butane                                  58.1    0.6012         0  1.00E-07*
+n-Decane                                 142.3    0.7300         0  1.30E-06*
+n-Nonane                                 128.3    0.7176         0  2.00E-07*
+p-Ethyltoluene                           135.2    0.9391         0  4.30E-07*
+trans-2-Butene                           125.0    1.1830         0  4.00E-07*
+Propellant, Smokey Sam                    1000         1  38
+1,3-Butadiene                             54.1    0.6211         0  1.20E-06*
+1-Butene                                  56.1    0.5951         0  1.20E-06*
+Acetylene                                 26.0    0.6181         0  8.30E-04*
+Benzene                                   78.1    0.8787         0  6.60E-05*
+CO                                        28.0    0.0013         0  7.20E-02*
+CO2                                       44.0    0.0020         0  4.20E-01*
+Cyclohexane                               84.2    0.7781         0  1.20E-06*
+Ethylbenzene                             106.2    0.8670         0  1.20E-06*
+Ethylene                                  28.1    0.0013         0  7.20E-05*
+HCL                                       36.5    1.1870         0  2.90E-02*
+Methylchloride                            50.5    0.9159         0  5.70E-06*
+Methylcyclohexane                         98.2    0.0000         0  7.80E-07*
+Methylcyclopentane                         0.0    0.0000         0  1.60E-06*
+Methylenechloride                         84.9    1.3266         0  1.20E-06*
+Nitrogen Oxide                            30.0    0.0013         0  1.10E-02*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  2.70E-04*
+Propane                                   44.1    0.5005         0  1.60E-06*
+Propene                                   42.1    0.5193         0  2.70E-06*
+PM10                                       0.0    0.0000         0  2.60E-01*
+Sulfur Dioxide                            64.1    0.0029         0  1.50E-04*
+Toluene                                   92.2    0.8669         0  8.60E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  2.30E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  9.10E-04*
+Total Aromatics (e.g. styrene)           104.2    0.9060         0  1.00E-04*
+Total Non-methane Hydrocarbons             0.0    0.0000         0  1.10E-03*
+Total Unidentified Hydrocarbons            0.0    0.0000         0  7.50E-05*
+Vinyl Chloride                            62.5    0.9106         0  8.80E-07*
+i-Butene                                  56.1    0.0000         0  2.40E-06*
+i-Pentane                                 72.2    0.0000         0  7.80E-07*
+m-Ethyltoluene                           135.2    0.9391         0  2.00E-06*
+n-Decane                                 142.3    0.7300         0  5.90E-06*
+n-Heptane                                100.2    0.6840         0  2.00E-06*
+n-Hexane                                  86.1    0.6548         0  2.70E-06*
+n-Nonane                                 128.3    0.7176         0  1.20E-06*
+n-Octane                                 114.2    0.7025         0  1.20E-06* 
+n-Pentane                                 72.2    0.6262         0  7.80E-07*
+p-Ethyltoluene                           135.2    0.9391         0  7.10E-06*
+trans-2-Butene                           125.0    1.1830         0  2.40E-06*
+Smokeless Powder                          1000         1  24
+Acetylene                                 26.0    0.6181         0  1.20E-06*
+Benzene                                   78.1    0.8787         0  1.20E-06*
+CO                                        28.0    0.0013         0  1.60E-03*
+CO2                                       44.0    0.0020         0  8.70E-01*
+Cyclohexane                               84.2    0.7781         0  4.80E-07*
+Ethylene                                  28.1    0.0013         0  2.40E-07*
+Methylcyclohexane                         98.2    0.0000         0  4.80E-07*
+Methylcyclopentane                         0.0    0.0000         0  7.20E-07*
+Methylenechloride                         84.9    1.3266         0  7.20E-07*
+Propane                                   44.1    0.5005         0  2.40E-07*
+Propene                                   42.1    0.5193         0  2.40E-07*
+PM10                                       0.0    0.0000         0  1.80E-03*
+Sulfur Dioxide                            64.1    0.0029         0  6.10E-04*
+Toluene                                   92.2    0.8669         0  3.40E-06*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  6.70E-06*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  2.20E-06*
+Total Aromatics (e.g. styrene)           104.2    0.9060         0  6.20E-06*
+i-Butene                                  56.1    0.0000         0  9.60E-07*
+i-Pentane                                 72.2    0.0000         0  2.60E-06*
+n-Butane                                  58.1    0.6012         0  4.80E-07*
+n-Heptane                                100.2    0.6840         0  7.20E-07*
+n-Hexane                                  86.1    0.6548         0  9.60E-07*
+n-Pentane                                 72.2    0.6262         0  9.60E-07*
+p-Ethyltoluene                           135.2    0.9391         0  4.80E-07*
+Propellant, Composite (MK-6)              1000         1  13
+Acetylene                                 26.0    0.6181         0  2.10E-05*
+Barium                                   137.3    3.5100         0  1.60E-06*
+Benzene                                   78.1    0.8787         0  5.70E-05*
+CO                                        28.0    0.0013         0  4.20E-03*
+CO2                                       44.0    0.0020         0  4.20E-01*
+Chromium                                  52.0    7.2000         0  4.80E-05*
+HCL                                       36.5    1.1870         0  9.40E-02*
+Nitrogen Oxide                            30.0    0.0013         0  2.10E-03*
+Nitrogen Dioxide (peroxide)               46.0    1.4494      9360  1.00E-03*
+Sulfur Dioxide                            64.1    0.0029         0  1.10E-03*
+Total Alkanes (Paraffins) (e.g. Octa     114.0    0.7030         0  5.90E-05*
+Total Alkenes (Olefins) (e.g. Ethyle      62.0    0.9780         0  1.00E-04*
+Total Aromatics (e.g. styrene)           104.2    0.9060         0  1.60E-04*

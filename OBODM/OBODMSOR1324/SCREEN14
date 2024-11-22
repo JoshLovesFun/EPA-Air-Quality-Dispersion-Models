@@ -1,0 +1,25 @@
+1145005                      OBODM (Version xx.x)                               
+                      GASEOUS OR PARTICULATE SOURCE DATA                           
+                              SOURCE NUMBER (  )                                   
+                      {F5 displays units abbreviations}                            
+                                                                                
+  SOURCE IDENTIFICATION NAME ---------- [                                    ]  
+                                                                                
+  Source type (Volume(point),Line) --------------------------------------- [V]  
+  Source emission type (Instantaneous,Quasi-continuous) ------------------ [I]  
+                                                                                
+  Total mass of material burned or released                                     
+       {units (g,kg,lb,etc.)=[ g]} ------------------------ = [           1.0]  
+  Fuel material heat content {units(CA/g,J/lb,etc.)=[ CA/g]}= [              ]  
+  Fuel material burn rate (quasi-continuous sources only)                       
+       {units (g/s,lb/s,etc.)=[  g/s]} -------------------- = [              ]  
+                                                                                
+  Hours in a day during which this source is burned or detonated, starting  
+  with hour 00 (or 01) and ending with hour 23 (or 24).  Enter Yes or No   
+  (blank is default yes).                hour - 00 01 02 03 04 05 06 07 08 09   
+                                                [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]  
+   (Add 1 to the heading values if your         10 11 12 13 14 15 16 17 18 19   
+    data hours are from 01 through 24)          [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]  
+                                                20 21 22 23                     
+                                                [ ][ ][ ][ ]                    
+  {PgDn or Enter for next menu}                                                 

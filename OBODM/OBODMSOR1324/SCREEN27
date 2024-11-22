@@ -1,0 +1,25 @@
+1270106                      OBODM (Version xx.x)
+                          HOURLY METEOROLOGICAL DATA
+
+  Name of hourly meteorological data file ----------- [                      ]
+  Format of hourly data file (A/B/C/D/E/F) ------------------------------- [ ]
+    A) {USER SPECIFIED} {ASCII, free field, unblocked hourly records       }
+    B)   "       "      {ASCII, fixed field, unblocked hourly records      }
+    C) {ISCST3    *   } {Preprocessed RAMMET or MPRM unformatted 24 hour   }
+                        {blocked binary records (ISCST3 "UNFORM" format)   }
+    D)    "       "     {ISCST3 "FREE" field format hourly unblocked ASCII }
+                        {records                                           }
+    E)    "       "     {ISCST3 "CARD" format fixed field hourly unblocked }
+                        {ASCII records                                     }
+    F)    "       "     {ISCST3 "ASCII" format fixed field hourly unblocked}
+                        {records (PCRAMMET)                                }
+    * means first record is surface and upper air station numbers and years.
+
+  Calm hours are Not calculated or calms are Set to 1.0 mps (N/S) -------- [N]
+  Missing met. data hours Not calculated or met. data Defaulted (N/D) ---- [N]
+  If short term averages have less than 75% valid (non-calm, non-missing)
+  hours, either 75% (EPA guideline) of the possible hours rounded up to the
+  nearest integer or the actual count can be used to calculate the average.
+  Use 75% Minimum or Actual count (M/A) ---------------------------------- [M]
+
+  {PgDn or Enter for next menu}

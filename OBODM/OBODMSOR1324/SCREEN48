@@ -1,0 +1,25 @@
+1480009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                                                                                
+  F) FREE FIELD FORMAT DIGITIZED MAP DATA -                                     
+         Map data are used to plot a background map.  The first record in the   
+    file must contain the distance units abbreviation in columns 53 & 54; the   
+    rest of the record can contain any information.  All remaining records      
+    identify map features to plot.  Map features to be plotted are specified    
+    by a data record containing a special code (1-5) and map label.  If the     
+    code is positive, the label is plotted to the right of the first X,Y        
+    coordinate entered for the feature.  If negative, the label is plotted to   
+    the left.  This map code record is immediately followed by one or more      
+    records containing the X,Y coordinates of points defining the feature to    
+    be plotted.  The special map codes are:                                     
+    1 - Geographic boundary, such as a coastline, body of water, mountain       
+        range, etc.  The accompanying label is not plotted, but must be         
+        present.                                                                
+    2 - Political boundary, such as a city, county, government installation,    
+        etc.  This label is plotted.                                            
+    3 - Roads or highways.  The label is not plotted, but must be present.      
+    4 - Special sites, such as buildings, data sites, etc.  This label is       
+        plotted.                                                                
+    5 - Air-field.  This label is plotted.                                      
+                                                                                
+  {PgUp for prev page, PgDn for next page}                                      

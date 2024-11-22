@@ -1,0 +1,25 @@
+1110105                      OBODM (Version xx.x)                               
+                               PARTICULATE DATA                                    
+                                                                                
+                      {F5 displays units abbreviations}                            
+                                                                                
+   Particle diameter units (um,mm,cm,etc.) ---------------------------- = [um]  
+   Particle settling velocity units (m/s,mi/h,kts,etc.) ------------ = [  m/s]  
+                                                                                
+          {The following three parameters are for the automatic}                
+          {generation of the particle size distribution only.  }                
+                                                                                
+   Number of particle size categories in distribution (max=50) -------- = [  ]  
+   Mass-median diameter of particle distribution ------------ = [            ]  
+   Geometric standard deviation of particle distribution(>1)- = [            ]  
+                                                                                
+   Automatically generate the particle size distribution (N/Y) ----------- [N]  
+                                                                                
+   Ratio of Lagrangian to Eulerian time scales (used in correction of           
+   turbulent intensities for crossing trajectory effects of heavy               
+   particles) (>=0) ----------------------------------------- = [           1]  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

@@ -1,0 +1,25 @@
+1570108                      OBODM (Version xx.x)                               
+                                   GRAPHICS                                         
+                                                                                
+  Produce hard copy on (A/B/C...) ---------------------------------------- [ ]  
+    A) HP Laserjet xx                      B) HP RuggedWriter (HP mode)         
+    C) IBM Proprinter                      D) Epson FX                          
+    E) Epson LQ                            F) Alps P2400C                       
+    G) IBM XL24 AGM                        H) OKIDATA                           
+    I) Canon BJ200e                        J) HP7475A Hewlett Packard plotter.  
+    K) DEC Inkjet                                                               
+    L) Plot data output file name (X,Y data) -------- [                      ]  
+                                                                                
+                                                                                
+                                                                                
+  Terrain input data file name ---------------------- [                      ]  
+                                                                                
+  Digitized map input data file name (rect coord only)[                      ]  
+                                                                                
+  Type of PC graphics board (normally set by prog.) (CGA,EGA,VGA) -------- [ ]  
+  Number of pixels in horizontal screen axis (normally set by prog) -- [     ]  
+  Number of pixels in vertical screen axis (normally set by prog) ---- [     ]  
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

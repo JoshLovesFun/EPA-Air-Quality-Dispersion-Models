@@ -1,0 +1,25 @@
+1390009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                         {F3 returns to current menu}                              
+                                                                                
+  B) FREE FIELD FORMAT INPUT HOURLY METEOROLOGICAL AND/OR SOURCE DATA -         
+                                                                                
+      The user specifies via interactive screen menu which meteorological       
+  or source variables are to be read from the input hourly data file(s).        
+  Also, the user specifies the relative position in the input record of         
+  the value for each input variable.  There can be more values in the input     
+  record than variables being read.  Only numeric data values can appear in     
+  the input data record.  Input data values must be separated by a comma or     
+  a blank.  Leading blanks are ignored.  Two or more consecutive commas         
+  indicate one or more skipped or non-existent values.  Multiple consecutive   
+  blanks are treated as one blank.  Variables that have skipped over values     
+  due to multiple consecutive commas retain their previous value.  If a blank   
+  precedes or follows a comma, the blank(s) is ignored.  Numeric data values    
+  may be entered as whole numbers (101), decimal fractions (101.012) or in      
+  exponent form (1.01012E2), but must not contain imbedded blanks.  If data     
+  errors are detected (data out of range or erroneous characters), a message    
+  is written to the print output file as to the nature of the error and where   
+  it occurred.                                                                  
+                                                                                
+                                                                                
+  {PgUp for prev page, PgDn for next page}                                      

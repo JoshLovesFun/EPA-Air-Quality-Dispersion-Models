@@ -1,0 +1,25 @@
+1050104                      OBODM (Version xx.x)
+             GENERATE/READ CALCULATION GRID SYSTEM RECEPTOR DATA
+                   {Use F5 to display units abbreviations}
+
+  Generate X axis (  m)
+    Start - [            ], Increment - [            ], End - [            ]
+  Generate Y axis (  m)
+    Start - [            ], Increment - [            ], End - [            ]
+
+  Read X, Y axes and/or Z terrain elevations from a data file.
+    File name ------------------------------------- [                      ]
+     {The first record in the file contains the number of X coords. (Nx)  }
+     {and number of Y coords. (Ny) separated by a blank or comma, the next}
+     {record group are X coords., then Y coords., and last Z elevations.  }
+    X format- [                                                            ]
+    Y format- [                                                            ]
+    Z format- [                                                            ]
+     {Type a single asterisk (*) for free field (list directed) format.}
+     {Leave field blank if respective X,Y,Z data are not in data file. }
+    Order of Z data (A/B) ---------------------------------------------- [A]
+     A) Elevs. for each X coord. (1-Nx) are read from record groups, one
+        group for each Y coord. (1-Ny). Each Y starts a new record group.
+     B) Elevs. for each Y coord. (1-Ny) are read from record groups, one
+        group for each X coord. (1-Nx). Each X starts a new record group.
+  {PgDn or Enter for next menu}

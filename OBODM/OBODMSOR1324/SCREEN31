@@ -1,0 +1,25 @@
+1310106                      OBODM (Version xx.x)                               
+               USER SPECIFIED HOURLY METEOROLOGICAL DATA FORMAT                    
+                                                                                
+   {Specify the fixed format for each data record (line) of the data file}      
+                                                                                
+  {Use FORTRAN edit codes: Fw.d; Ew.d; Gw.d; #X; T#; TL#; TR#; #P; BN; or BZ}    
+  {Where: w is field width or number of columns occupied by the value.      }    
+  {       d is the number of digits following the decimal point.            }    
+  {       # is the number of columns or power of 10 for code P.             }    
+  {Separate each edit code sequence with a comma.                           }    
+                                                                                
+                                FORMAT                                          
+  123456789012345678901234567890123456789012345678901234567890123456789012345   
+  ---------------------------------------------------------------------------   
+ [                                                                           ]  
+ [                                                                           ]  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

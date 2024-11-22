@@ -1,0 +1,25 @@
+1360009                      OBODM (Version xx.x)                               
+                               PROGRAM CONTROL                                     
+                         {F3 returns to current menu}                              
+      Program options and parameter data required by the OBODM program are      
+  specified in various screen menus.  The menus are organized as to the type    
+  of data required in the menu, such as source data or meteorological data.     
+  Access to the various menus is controlled through a main menu, where this     
+  main menu shows the various types of data required and whether or not data    
+  are present (SET/NONE/WARN/ERR).  If SET or WARN is displayed for each        
+  data type in the main menu, the OBODM model may be executed.  However, if    
+  NONE or ERR is displayed for any data type, the OBODM model may not be       
+  executed and the user must transfer to the respective data type menus to      
+  set or correct the data.  Also, if WARN or ERR is displayed, a message        
+  concerning the warning or error has been written to the print output file.    
+  You must execute the OBODM model or specify a previously generated           
+  solution/graphics file prior to executing graphics.  Input data for the       
+  different data types may be specified via optional input data files.          
+  These optional input data files were generated in a previous run of the       
+  OBODM program as output data save files.  When the OBODM program is           
+  executed, a work file OBODWORK.OBD is created.  This work file can also       
+  be used to initialize OBODM input data if the file exits in the user's        
+  directory.                                                                    
+                                                                                
+                                                                                
+  {F2 for main menu, PgDn for next page}                                        

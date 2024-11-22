@@ -1,0 +1,25 @@
+1030103                      OBODM (Version xx.x)                               
+                                  MAIN MENU                                        
+   {Position cursor at DATA SECTION or EXECUTE or GRAPHICS and press Enter}     
+                                                                                
+                   DATA SECTION                          DATA                   
+                                                                                
+      1) @CALCULATION GRID SYSTEM RECEPTOR DATA~ [  ]  {@    ~}                 
+                                                                                
+      2) @METEOROLOGICAL DATA~ ----------------  [  ]  {@    ~}                 
+                                                                                
+      3) @SOURCE DATA~ ------------------------  [  ]  {@    ~}                 
+                                                                                
+      4) @CONTROL/OPTIONS DATA~ ---------------  [  ]  {@    ~}                 
+                                                                                
+      5) @EXECUTE~ ----------------------------  [  ]  {@    ~}                 
+                                                                                
+      6) @GRAPHICS~ ---------------------------  [  ]  {@    ~}                 
+                                                                                
+      7) @DISPLAY~ print file -----------------  [  ]                           
+                                                                                
+      8) @REPRINT/SCALE~ old solution file ----  [  ]                           
+                                                                                
+      9) @FINISH (end program)~ ---------------  [  ]                           
+                                                                                
+  {PgDn for data sections not SET}                                              

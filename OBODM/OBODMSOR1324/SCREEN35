@@ -1,0 +1,25 @@
+1350107                      OBODM (Version xx.x)
+                             PRINT SOURCE GROUPS
+   {Enter source index numbers of sources you wish combined for output.  }
+   {A pos. source index number includes one source.  A neg. index includes}
+   {all sources from the previous pos. index up through the absolute value}
+   {of the neg. index.  A negative index not preceded by a lesser pos.    }
+   {index assumes one as the preceding index.  Separate each different    }
+   {group by a blank field.  A maximum of 50 different groups may be      }
+   {specified with a maximum of 100 source index numbers for all groups.  }
+  Source indices =[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+  {PgDn or Enter for next menu}

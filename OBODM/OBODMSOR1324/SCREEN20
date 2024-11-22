@@ -1,0 +1,25 @@
+1200105                      OBODM (Version xx.x)                               
+                           SOURCE POLLUTANT/SPECIES                                
+  {Specify 0 (zero) or blank, if source parameter is not in data record.  }     
+  {Otherwise specify if the value for the parameter is 1st, 2nd, 3rd, etc.}     
+  {value in the record by a 1, 2, 3, etc.                                 }     
+                                                                                
+  Source Number (required) ---------------------------------------------- [  ]  
+                                                                                
+  Total mass of material burned or detonated (     ) -------------------- [  ]  
+  Fuel heat content of source material (     ) -------------------------- [  ]  
+  Fuel burn rate (     ) ------------------------------------------------ [  ]  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

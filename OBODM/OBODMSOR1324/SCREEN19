@@ -1,0 +1,25 @@
+1190105                      OBODM (Version xx.x)                               
+                           SOURCE POLLUTANT/SPECIES                                
+                                                                                
+    {Note: Source data read from an hourly chronologically-ordered data set }   
+    {      override any value(s) set in the above source input data menus.  }   
+    {      Also, parameters that are not read from the hourly data set must }   
+    {      be specified in the above source data menus.  All source data    }   
+    {      units must be specified.  The source input data file cannot be   }   
+    {      the same as the hourly meteorological input data file.  Sources  }   
+    {      that vary hourly are identified by their source numbers.  There  }   
+    {      must be a source data record(s) for each of these sources for    }   
+    {      each hour in the meteorological data file.  Use F4 for more      }   
+    {      information on the contents and format of this file.             }   
+                                                                                
+  Source input data file name ----------------------- [                      ]  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

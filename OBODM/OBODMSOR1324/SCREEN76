@@ -1,0 +1,25 @@
+1760114                      OBODM (Version xx.x)                               
+                                   GRAPHICS                                         
+  Plot contents {A/(BorC)/D/(EorF)/G} -(max of 5 options)- [E],[ ],[ ],[ ],[ ]  
+   A) Line of maximum terrain.                                                  
+   B) Contours of actual terrain heights.                                       
+   C) Contours of log of terrain heights.                                       
+   D) Line of maximum                                                           
+   E) Isopleths using actual values of                                          
+   F) Isopleths using log of values of                                          
+   G) Special symbols at specified points.                                      
+                                                                                
+  For hourly meteorological data only -                                         
+    Plot which calculation {B/C/D/E/F} ----------------------------------- [ ]  
+    B) Plot seasonal average or total.   C) Plot quarterly average or total.    
+    D) Plot annual average or total.     E) Plot highest for N-hour average.    
+    F) Plot second highest values for                                           
+       N-hour average.                                                          
+                                                                                
+    For E) or F), enter number of hours in average (  /  /  /  /  /  )          
+      (select from N-hour options shown). ------------------------------- [  ]  
+                                                                                
+    For B) or C), seasonal or quarterly, enter the season or quarter            
+      number (1,2,3,4). ------------------------------------------- [        ]  
+                                                                                
+  {PgDn or Enter for next menu}                                                 

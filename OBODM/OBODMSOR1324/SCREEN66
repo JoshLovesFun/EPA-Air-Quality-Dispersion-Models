@@ -1,0 +1,25 @@
+1660108                      OBODM (Version xx.x)                               
+                                 PLOT DETAILS                                       
+  Log/linear axes        - A) LINEAR X,Y          B) LOG X, LINEAR Y ----- [ ]  
+                           C) LINEAR X, LOG Y     D) LOG X,Y                    
+  Indicate north         - A) DO NOT INDICATE NORTH ---------------------- [ ]  
+                           B) USE ARROW WITH N AT BASE                          
+  Plot background map    - A) NO BACKGROUND MAP PLOTTED ------------------ [ ]  
+                           B) PLOT BACKGROUND MAP IN BLACK/WHITE                
+                           C) PLOT BACKGROUND MAP IN COLOR                      
+  Axes, coordinates      - A) PLOT AXES AND LABEL GRID COORDINATES ------- [ ]  
+                           B) ONLY LABEL GRID COORDINATES                       
+                           C) NEITHER AXES OR GRID COORDINATE LABELS            
+  Horizontal, vertical   - A) X,Y ARE HORIZONTAL,VERTICAL AXES ----------- [ ]  
+  axes orientation         B) X,Y ARE VERTICAL,HORIZONTAL AXES                  
+  Smooth or point to     - A) SMOOTH CURVES ------------------------------ [ ]  
+  point curves             B) JOIN POINTS WITH STRAIGHT LINES                   
+  Left justify or center - A) CENTER ALL LINES --------------------------- [ ]  
+  each legend line         B) CENTER ACCORDING TO LONGEST LINE AND LEFT         
+                              JUSTIFY OTHER LINES                               
+  Tick marks or axis to  - A) PLOT MINOR AND MAJOR TIC-------------------- [ ]  
+  axis lines               B) PLOT MINOR TICK MARKS AND JOIN OPPOSITE AXES      
+                              AT MAJOR TICKS WITH SOLID LINE                    
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu, F8 starts plot}                                 

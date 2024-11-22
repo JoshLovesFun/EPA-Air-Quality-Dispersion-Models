@@ -1,0 +1,25 @@
+1320107                      OBODM (Version xx.x)
+                            CONTROL/PRINT OPTIONS
+                      {F5 displays units abbreviations}
+
+        Heading --- [                                                  ]
+
+        Calculate dosage (N/Y) ------------------------------------- [N]
+        Calculate concentration (N/Y) ------------------------------ [Y]
+        Calculate time-average concentration (N/Y) ----------------- [N]
+        Concentration averaging time {units (s,mn,h)= [ s]} = [        ]
+        Calculate gravitational deposition (N/Y) ------------------- [N]
+
+        Quasi-cont. (dosage) integration time interval(s) - = [       C]
+        Use Final or Distance dependent cloud rise (F/D) (Complex
+          terrain requires Final) -----------------------------------[F]
+        Restrict calcs. to a clearing index greater than ------ [      ]
+        Restrict calcs. to daytime hours {SR+1h to SS-1h} (N/Y)
+         (requires longitude, latitude and time zone difference)---- [ ]
+        Mass units (g,kg,mg,ug,lb,oz,tn,pa) -------------------- =  [ug]
+        Length units (m,km,ft,yd,mi,etc.) ---------------------- =  [ m]
+        Area units (square - m,km,ft,yd,mi,etc. or ac,he) ------ =  [ m]
+        Volume units (cubic - m,km,etc. or li,ppm,ppb) --------- = [  m]
+        Time units (s,mn,h) ------------------------------------ =  [ s]
+
+  {PgDn or Enter for next menu}

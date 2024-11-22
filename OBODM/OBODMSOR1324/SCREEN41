@@ -1,0 +1,25 @@
+1410009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                         {F3 returns to current menu}                              
+                                                                                
+  C) FIXED FIELD FORMAT INPUT HOURLY METEOROLOGICAL AND/OR SOURCE DATA          
+     (CONTINUED) -                                                              
+                                                                                
+       The FORTRAN edit codes that can be used in the format specified for      
+  the input data records are shown below.  Each code must be separated from     
+  the next by a COMMA.                                                          
+                                                                                
+   Fw.d - Value is in whole number or decimal form and occupies a total of         
+          w columns with d digits as the fractional part.  If the field
+          contains a period (decimal point) it overrides the d value.  If
+          no period is used and there are fewer than d digits, zeros are        
+          appended to the left of the digits to form the fraction.              
+                                                                                
+          format            data record          variable value                 
+          ------            -----------          --------------                 
+           F8.5               23456789              234.56789                   
+           F8.5               -1234.56               -1234.56                   
+           F8.5                 1234E3                  12.34                   
+                                                                                
+                                                                                
+  {PgUp for prev page, PgDn for next page}                                      

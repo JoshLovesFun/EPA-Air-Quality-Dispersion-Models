@@ -1,0 +1,25 @@
+1120505                      OBODM (Version xx.x)                               
+                               PARTICULATE DATA                                    
+                                                                                
+                                                                                
+  CATEGORY /UPPER BOUND /LOWER BOUND /    MASS    /  SETTLING  / REFLECTION /   
+   NUMBER  /OR AVERAGE  /IF NOT AVG  /  FRACTION  /  VELOCITY  /COEFFICIENT /   
+           /  DIAMETER  /  DIAMETER  / (fraction  /   (  m/s)  / (unitless) /   
+           /    (um)    /    (um)    /  of total) / C=computed / C=computed /   
+  ---------/------------/------------/------------/------------/------------/   
+            [          ] [          ] [          ] [          ] [          ]    
+            [          ] [          ] [          ] [          ] [          ]    
+            [          ] [          ] [          ] [          ] [          ]    
+            [          ] [          ] [          ] [          ] [          ]    
+            [          ] [          ] [          ] [          ] [          ]    
+            [          ] [          ] [          ] [          ] [          ]    
+            [          ] [          ] [          ] [          ] [          ]    
+            [          ] [          ] [          ] [          ] [          ]    
+            [          ] [          ] [          ] [          ] [          ]    
+            [          ] [          ] [          ] [          ] [          ]    
+                                                                                
+                   {X defaults value, then F3 displays values here}             
+                   {C defaults values at execution time           }             
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

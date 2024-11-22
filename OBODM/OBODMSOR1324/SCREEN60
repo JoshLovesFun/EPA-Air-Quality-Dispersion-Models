@@ -1,0 +1,25 @@
+1600108                      OBODM (Version xx.x)
+                              PLOT SOURCE GROUP
+   {Enter source index numbers of sources you wish combined for output.  }
+   {A positive source index number includes one source.  A negative index}
+   {includes all sources from the previous positive index up through the }
+   {absolute value of the negative index.  A negative index not preceded }
+   {by a lesser positive index assumes one as the preceding index.  Only }
+   {one source group may be entered.                                     }
+
+  Source indices =[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+                  [   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ],[   ]
+  {PgDn or Enter for next menu}

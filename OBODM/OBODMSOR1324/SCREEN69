@@ -1,0 +1,25 @@
+1690108                      OBODM (Version xx.x)                               
+                                 PLOT DETAILS                                       
+  Plot grid coordinate positions ----------------------------------------- [ ]  
+     A) Grid coordinate positions are indicated only on axes                    
+     B) Internal grid coordinate positions are indicated by a PLUS symbol       
+  Label                isopleth lines ------------------------------------ [ ]  
+     A) Label each isopleth with actual numeric value                           
+     B) Label each isopleth with the indices A,B,C, etc.                        
+     C) Label each isopleth with the indices 1,2,3, etc.                        
+     D) Do not label isopleths                                                  
+  Legend of indices for                isopleth levels ------------------- [ ]  
+     A) Plot legend showing isopleth values of indices                          
+     B) Do not plot legend of indices                                           
+  Placement of legend of indices for                isopleth levels ------ [ ]  
+     A) Upper right corner inside of plot axes                                  
+     B) Upper left corner inside of plot axes                                   
+     C) Lower left corner inside of plot axes                                   
+     D) Lower right corner inside of plot axes                                  
+     E) Top right margin         Warning: for E,F,G & H the legend may          
+     F) Top left margin                   be relocated or eliminated if         
+     G) Bottom left margin                the margin is not big enough.         
+     H) Bottom right margin                                                     
+     Note: Options A through H require room to place the legend.                
+                                                                                
+  {PgDn or Enter for next menu, F8 starts plot}                                 

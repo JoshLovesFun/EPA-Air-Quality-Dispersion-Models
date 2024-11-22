@@ -1,0 +1,25 @@
+1220106                      OBODM (Version xx.x)                               
+                             METEOROLOGICAL DATA                                   
+                                                                                
+   Specify whether meteorological input data are for a Single event or        
+   are Hourly observations in chronological order (S/H) ------------------ [S]  
+                                                                                
+   {Note: For hourly chronologically-ordered meteorological data (H):   }
+   {      Values specified in the following menus should be the same as }
+   {      those found in the first hour of the data set.  Parameters    }
+   {      not read from the data set and not defaulted must be set here,}
+   {      and should be set to average values.  All data units must be  }
+   {      specified and must be the same as the input data set.         }
+   
+   {Note: There are several options to exclude certain hours or days    }
+   {      from processing.  OBODM assumes these hours are excluded due  }
+   {      to no emissions or no sources are operating.  These hours are }
+   {      averaged as zero concentration.  These options include days   }
+   {      excluded in Menu 28, source hours excluded in Menu 14, Hours  }
+   {      excluded due to clearing index, and hours excluded due to     }
+   {      night-time.  However, other hours excluded due to a calm wind }
+   {      speed or missing or erroneous data are not counted and not    }
+   {      included in the averaging period.                             }
+
+   Specify minimum and maximum limits for meteorological data (N/Y) ------ [N]
+  {PgDn or Enter for next menu}                                                 

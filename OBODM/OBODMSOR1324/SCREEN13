@@ -1,0 +1,25 @@
+1130105                      OBODM (Version xx.x)
+                                SOURCE NUMBER 
+                                              
+                          {Number of sources =[  ]}
+                                       
+                                     
+  GET OR SPECIFY DATA FOR SOURCE NUMBER (01 to 50) ---------------------- [  ]
+                                                     
+  COPY SOURCE DATA FROM SOURCE NUMBER ----------------------------------- [  ]
+                                                    
+  DELETE SOURCE NUMBER -------------------------------------------------- [  ]
+                           
+                     
+                               
+   {The source number indicates the sequence number of sources used.  If  }
+   {source number 3 of 5 sources is deleted, sources 4 and 5 become 3 and }
+   {4.  If both a copy and a delete number are specified, the copy is done}
+   {prior to the delete.  If a copy or delete number is specified, this   }
+   {menu is redisplayed after the copy and/or delete.  Use Enter to copy  }
+   {and/or delete.                                                        }
+                                      
+                                
+                                      
+                                       
+  {PgDn or Enter to copy, delete, specify source}

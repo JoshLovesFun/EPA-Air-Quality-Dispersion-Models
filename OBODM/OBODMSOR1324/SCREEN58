@@ -1,0 +1,25 @@
+1580108                      OBODM (Version xx.x)                               
+                                   GRAPHICS                                         
+                                                                                
+  Printer number (A/B/C/D/E/F) ------------------------------------------- [A]  
+     A) Print Port 1 (LPT1)  B) Print Port 2 (LPT2)  C) Print Port 3 (LPT3)     
+     D) File (OBP#####.PLT)  E) COM Port 1           F) COM Port 2              
+     COM or Print Port number if not given above, also set A or E above         
+     to indicate whether an LPT port (A) or COM port (E) ---------------- [  ]  
+  Paper size                                                                    
+     width (horizontal inches) (plotting width is 0.5 inches less) --- [     ]  
+     length (vertical inches) (plotting length is 1.5 inches less) --- [     ]  
+                                                                                
+  Additional paper margins in inches (added to CRT margins) (default = 0)       
+     Left ---------------------------------------------------------- [       ]  
+     Right --------------------------------------------------------- [       ]  
+                                                                                
+     Bottom -------------------------------------------------------- [       ]  
+     Top ----------------------------------------------------------- [       ]  
+                                                                                
+  Color (N/Y) -------------------------------------------------------------[N]  
+  Plot orientation (A/B) --------------------------------------------------[A]  
+     A) X is horizontal, Y is vertical (portrait).                              
+     B) X is vertical, Y is horizontal (landscape).                              
+                                                                                
+  {PgDn or Enter for next menu}                                                 

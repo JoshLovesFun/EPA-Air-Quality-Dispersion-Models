@@ -1,0 +1,21 @@
+OBODM Version 01.3.0024 - executable creation date of 6/11/2007
+
+This version corrects a bug in the processing of hourly source input data
+
+*************************************************************************
+Summary of file content
+
+obod1324.txt - instructions on installing OBODM
+
+OBOD1324.ZIP - contains executable and 3 test cases
+
+OBODMSOR.TXT - Contains list of files that will decompressed when OBODM.EXE
+               is unzipped from OBODMSOR.ZIP and then executed
+
+OBODMSOR.ZIP - Contains C and Fortran source code, include, batch, object, 
+               link, build, library, and executable files. 
+               Obodm.doc is a detailed reference containing the contents of
+               obodm1324.txt along with variable definitions, units used.
+               program structure, etc.
+               
+OBODREAD.ME  - Chronological list of corrections made to OBODM code               

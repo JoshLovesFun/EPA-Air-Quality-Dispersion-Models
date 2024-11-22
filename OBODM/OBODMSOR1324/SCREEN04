@@ -1,0 +1,25 @@
+1040104                      OBODM (Version xx.x)                               
+                    CALCULATION GRID SYSTEM RECEPTOR DATA                          
+                                                                                
+                      {F5 displays units abbreviations}                            
+                                                                                
+  Receptor grid system is Rectangular or Polar (R/P) ------------------- = [R]  
+  Receptor grid system length units (m,km,ft,yd,mi,etc.) -------------- = [m ]  
+  Receptor grid system height or elevation units (m,km,ft,yd,mi,etc.) - = [m ]  
+  Receptor grid X,Y origin ------------------- = [            ],[            ]  
+  (Note: Origin is added to rectangular receptor points.)                       
+  Add origin to source rectangular coordinates (N/Y) --------------------- [ ]  
+
+  Enter zero or blank for flat terrain, Height of flag pole for all grid 
+  coordinates, X for flag poles at each grid coordinate or C for complex 
+  terrain at each grid coordinate (blank or 0/height/X/C) --- = [            ]  
+                                                                                
+  Grid system orientation angle {units (d,r)= [d]} ---------- = [            ]  
+  (Note: Orientation angle is positive when positive Y axis points              
+   east of north when viewed from the south.)                                   
+                                                                                
+  Generate receptor grid system axes (Y/N) ------------------------------- [N]  
+                                                                                
+  Delete current X,Y,Z grid system receptor points (N/Y) ----------------- [N]  
+  Delete current discrete receptor points (N/Y) -------------------------- [N]  
+  {PgUp or F2 for main menu, PgDn for next menu}                                

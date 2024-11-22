@@ -1,0 +1,25 @@
+1280106                      OBODM (Version xx.x)
+                          HOURLY METEOROLOGICAL DATA
+   Specify year of meteorological data (required, four digits) -------- [    ]
+   Use Rural or Urban mixing layer depths (ISCST3 data only) (R/U) ------- [ ]
+                                                   
+   If all days in the input data set are to be processed, enter Y here. -- [ ]
+   Otherwise fill the fields below with a Y to include the day or a N or
+   blank to exclude the day from processing.
+                                          
+  ----------------------------------------------------------------------------
+  MONTH           DAY OF MONTH          MONTH           DAY OF MONTH   
+        1234567890123456789012345678901       1234567890123456789012345678901
+  ----------------------------------------------------------------------------
+  {JAN}[                               ]{FEB}[                             ]
+  {MAR}[                               ]{APR}[                              ]
+  {MAY}[                               ]{JUN}[                              ]
+  {JUL}[                               ]{AUG}[                               ]
+  {SEP}[                              ] {OCT}[                               ]
+  {NOV}[                              ] {DEC}[                               ]
+  ----------------------------------------------------------------------------
+                                                           
+                                                         
+                                                     
+                                            
+  {PgDn or Enter for next menu}

@@ -1,0 +1,25 @@
+1490009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                                                                                
+  F) FREE FIELD FORMAT DIGITIZED MAP DATA (CONTINUED) -                         
+                                                                                
+    The special code identifying the feature to be plotted is entered on the    
+    input record image, followed by a blank, followed by the label.  A maximum  
+    of 20 characters are used from the label.  The X,Y coordinate pairs         
+    defining the map feature are entered on the next record image(s) with up    
+    to 4 X,Y pairs (8 values) per input image.  Values must be separated by a   
+    comma or a blank.  For closed features, the first X,Y point must equal the  
+    last.  For discontinuous features, use multiple code and X,Y pair record    
+    groups to define each continuous segment.                                   
+                                                                                
+  G) PLOT OUTPUT DATA FILE -                                                    
+                                                                                
+    This file is intended for use with other programs or processes and is not   
+    further processed by OBODM.  Multiple plots are stacked on this file in     
+    the order of generation.  The format and contents are shown on the next     
+    page.                                                                       
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgUp for prev page, PgDn for next page}                                      

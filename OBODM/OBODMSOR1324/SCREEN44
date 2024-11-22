@@ -1,0 +1,25 @@
+1440009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                         {F3 returns to current menu}                              
+                                                                                
+  C) FIXED FIELD FORMAT INPUT HOURLY METEOROLOGICAL AND/OR SOURCE DATA          
+     (CONTINUED) -                                                              
+                                                                                
+   BN   - Ignore all embedded or trailing blanks within a field (w columns).    
+          The effect is to remove the blanks and right justify the field.       
+                                                                                
+   BZ   - Treat all embedded and trailing blanks within a field as zeros.       
+                                                                                
+   /    - Indicate end of record.  If the input data for a single hour          
+          occupies more than one input record, the slash can be used to         
+          divide the variable values into multiple records.  Do not precede     
+          or follow the slash with a comma.  The FORTRAN edit codes between     
+          the slashes are unique to that record, except for edit codes P, BN    
+          and BZ.                                                               
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgUp - prev page, F2 - main menu, PgDn - next page}                          

@@ -1,0 +1,25 @@
+1340107                      OBODM (Version xx.x)
+                         PRINT AND AUXILIARY OPTIONS
+  
+  Use Detailed or Summary mode to save calculations (D/S) ---------------- [D]
+  Print sum of sources only (S) or print subgroups of sources (G) (S/G) -- [S]
+  Page column width (80/132) ------------------------------------------- [ 80]
+  Print maximum plume rise height and distance (N/Y) --------------------- [N]
+  File name of output Sigmaplot file ---------------- [                      ]
+  Print table of highest and second highest values at each receptor (N/Y)- [N]
+  Print table of maximum 50 values over all receptors (N/Y) -------------- [N]
+  Number of hours N in each average, where:  N = [  ],[  ],[  ],[  ],[  ],[  ]
+  Print table for each N hour period (avg. con.,etc. or total dep.) (N/Y)- [N]
+  Print table of Seasonal or Quarterly average con. or total dep. (N/S/Q)- [N]
+  Print table of Annual average con. or total dep. (N/A) ----------------- [N]
+  Print hourly input meteorological data (N/Y) --------------------------- [N]
+  Print hourly input source data (N/Y) ----------------------------------- [N]
+  Print calm wind warning messages (Y/N) --------------------------------- [Y]
+  Print meteorological data error/warning messages (Y/N) ----------------- [Y]
+  Plume rise option for instantaneous sources (duration <= 15 s) (A/B) --  [A]
+   (A) EITHER use stable rise for stable thermal stratification and
+       adiabatic rise for unstable/neutral stratification.  Final rise
+       for stable stratification is limited to the minimum of the two.
+   (B) OR use stable rise for all thermal stratifications, where the vert.
+       gradient of potential temp. is limited to >= 3.344E-4 (K/m).
+  {PgDn or Enter for next menu}

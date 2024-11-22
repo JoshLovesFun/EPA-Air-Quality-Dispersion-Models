@@ -1,0 +1,25 @@
+1780115                      OBODM (Version xx.x)                               
+                         PRINT AND AUXILIARY OPTIONS                               
+                                                                                
+  Page column width (80/132) ------------------------------------------- [ 80]  
+  Print table of highest and second highest at each receptor (N/Y) ------- [ ]  
+  Print table of maximum 50 receptors (N/Y) ------------------------------ [ ]  
+  Number of hours N in each average, select from - (  /  /  /  /  /  )          
+    -------------------------------------------- [  ],[  ],[  ],[  ],[  ],[  ]  
+  Print table of Seasonal or Quarterly average con. or total dep. (N/S/Q)- [ ]  
+  Print table of Annual average con. or total dep. (N/A) ----------------- [ ]  
+                                                                                
+  Heading --------------- [                                                  ]  
+                                                                                
+  Scale/adjustment factor - Ascale * xxxxx + Bscale.  All concentration,        
+  dosage, etc. calculations xxxxx are multiplied by Ascale and then added       
+  to Bscale.  For example, Ascale may be a percent conversion to another        
+  pollutant species, Bscale may be background.  Make sure Bscale is in          
+  the same units as specified in the initial run.                               
+  Ascale ------------------------------------------------------ [            ]  
+  Bscale ------------------------------------------------------ [            ]  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

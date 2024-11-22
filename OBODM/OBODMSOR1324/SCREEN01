@@ -1,0 +1,25 @@
+1010101                      OBODM (Version xx.x)                               
+                  OPEN BURN/OPEN DETONATION DISPERSION MODEL                       
+                                                                                
+                           by H. E. CRAMER CO., INC.                                
+              PO Box 411, Sandy, Utah 84091-0411, (801) 561-4964                   
+                                     and
+                       Meteorology & Modeling Division
+       West Desert Test Center, Dugway, Utah 84022-5000, (801) 831-5101
+
+    
+    {Specify the PATHNAME to the directory on which the OBODM data files }      
+    {reside (Example: \OBODM\SUBOBOD\).  Precede the PATHNAME by the disk}      
+    {drive if applicable (Example: C:\OBODM\SUBOBOD\). All blanks default}      
+    {to the current drive and directory.                                 }      
+                                                                                
+       DIRECTORY pathname -- [                                    ]             
+                                                                                
+    {If OBODM data save file names are preceded by an asterisk (*) symbol,}     
+    {the above directory path name replaces the * and the files reside on }     
+    {the specified directory.  Data save file names not preceded by an *  }     
+    {reside on the current directory.                                     }     
+                                                                                
+       SETUP (change edit mode, colors) (N/Y) ----------------- [N]             
+                                                                                
+  {F4 for help, PgDn or Enter for next menu}

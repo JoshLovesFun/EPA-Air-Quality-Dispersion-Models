@@ -1,0 +1,25 @@
+1370009                      OBODM (Version xx.x)                               
+                               KEYBOARD CONTROL                                    
+     KEY            ACTION                     KEY          ACTION              
+  Left Arrow  - Move cursor left.              F1  - Exit OBODM.                
+  Right Arrow - Move cursor right.             F2  - Return to main menu.       
+  Up Arrow    - Move cursor up.                F3  - Return to current menu     
+  Down Arrow  - Move cursor down.                    (from F4,F5,F6,F7).        
+  Right TAB   - Move to next data field.       F4  - Display program operation  
+  Left TAB    - Move to prev. data field.            help menus.                
+  DELete      - Delete current character.      F5  - Displays units abbrev.     
+  INSert      - Insert after current char.     F6  - Displays fuel/explosive    
+  Ctrl k or K - Clear current data field.            default data values.       
+  Page Up     - Go back to prev. menu.         F7  - Display OBOD files names.  
+  Page Down   - Go to next menu. Data errors   F8  - Skip remaining plot input  
+                do not stop progress.                data menus and go plot.    
+  Enter/Return- Same as Page Down, except   Ctrl C - Interrupt program.         
+                data errors do not allow       ESC - Same as F1, F2 or F3,      
+                next page.  Open files.              depending on current       
+  Backspace   - Delete character to left             menu.                      
+                of cursor.                                                      
+  Home        - Go to first char of data field.                                 
+  End         - Go to last char of data field.                                  
+  Ctrl Home   - Go to first data field in menu.                                 
+  Ctrl End    - Go to last data field in menu.                                  
+  {PgUp for prev page, PgDn for next page}                                      

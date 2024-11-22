@@ -1,0 +1,25 @@
+1330107                      OBODM (Version xx.x)                               
+                         PRINT AND AUXILIARY OPTIONS                               
+                                                                                
+  Print sum of sources only (S) or print subgroups of sources (G) (S/G) -- [S]  
+  Page column width (80/132) ------------------------------------------- [ 80]  
+  Print maximum plume rise height and distance (N/Y) --------------------- [N]  
+  File name of output Sigmaplot file ---------------- [                      ]  
+                                                                                
+  Plume rise option for instantaneous sources (duration <= 15 s) (A/B) --  [A]
+   (A) EITHER use stable rise for stable thermal stratification and
+       adiabatic rise for unstable/neutral stratification.  Final rise
+       for stable stratification is limited to the minimum of the two.
+   (B) OR use stable rise for all thermal stratifications, where the vert.
+       gradient of potential temp. is limited to >= 3.344E-4 (K/m).
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

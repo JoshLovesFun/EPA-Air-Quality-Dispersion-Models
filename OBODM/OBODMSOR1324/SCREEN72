@@ -1,0 +1,25 @@
+1720113                      OBODM (Version xx.x)                               
+                  OPEN BURN/OPEN DETONATION DISPERSION MODEL                       
+                                                                                 
+                                    SETUP                                           
+                                                                                
+   Use Left or Right justification for editing data fields (L/R) --------- [L]  
+                                                                                
+   Text background color (A/B/C...H) ------------------------------------- [B]  
+   Data field background color (A/B/C...H) ------------------------------  [H]  
+   Text foreground color (A/B/C...H) ------------------------------------- [E]  
+                                                                                
+       A - black       B - blue        C - green       D - cyan                 
+       E - red         F - magenta     G - yellow      H - white                
+                                                                                
+   Data field foreground color (A/B/C...O) ------------------------------  [O]  
+                                                                                
+       A - black       B - blue        C - green       D- cyan                  
+       E - red         F - magenta     G - yellow      H - white                
+       I - grey        J - lt. blue    K - lt. green   L - lt. cyan             
+       M - light red   N - lt. magenta O - lt. yellow                           
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+{F4 for help, PgDn or Enter for next menu}                                      

@@ -1,0 +1,25 @@
+1230106                      OBODM (Version xx.x)                               
+                          METEOROLOGICAL DATA LIMITS                               
+                      {F5 displays units abbreviations}                            
+                                                                                
+   {@WARNING: If any value in this menu is changed, program results may be~}    
+   {@invalid and cannot be supported by the authors of the OBODM program. ~}    
+  Parameter         Minimum  Maximum       Parameter         Minimum  Maximum   
+ ------------------------------------ ----------------------------------------  
+  **** Hour limits                    Air pressure (mb) ----[       ][       ]  
+  are restricted to:                  Vertical gradient of                      
+  either 0000 - 2300                  pot. temp. (K/m) -----[       ][       ]  
+  or     0100 - 2400                  Mixing layer depth (m)[       ][       ]  
+  Hour ----------- [       ][       ] Wind speed shear (m/s)[       ][       ]  
+  Wind speed (m/s) [       ][       ] Wind direction (d/m)                      
+  Wind direction(d)[       ][       ] shear ----------------[       ][       ]  
+  Wind speed power                    Air temp. (C) --------[       ][       ]  
+  law exponent --- [       ][       ] Air humidity (%) -----[       ][       ]  
+  Lateral turbulent                   Turb. meas. time (s) -[       ][       ]  
+  intensity (d) -- [       ][       ] Clearing index -------[       ][       ]  
+  Vertical turbulent                  Roughness length (cm)-[       ][       ]  
+  intensity (d) -- [       ][       ]                                           
+  Alongwind turbulent                                                           
+  intensity (d) -- [       ][       ]                                           
+                                                                                
+  {PgDn or Enter for next menu}                                                 

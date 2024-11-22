@@ -1,0 +1,25 @@
+1290106                      OBODM (Version xx.x)                               
+               USER SPECIFIED HOURLY METEOROLOGICAL DATA CONTENTS                  
+  {Specify 0 (zero), blank or C, if meteorological parameter is not in data  }  
+  {record. Otherwise specify if the value for the parameter is 1st, 2nd, 3rd,}  
+  {etc. value in the record by a 1, 2, 3, etc.  Zero or blank holds the      }  
+  {initial value constant.  C specifies default from stability category or   }  
+  {net radiation index and wind speed.  Only those parameters marked with an }  
+  {* below can be defaulted.                                                 }  
+                                                                                
+       Year ----------------------------------------------------- [  ]           
+       Month ---------------------------------------------------- [  ]           
+       Day ------------------------------------------------------ [  ]           
+       Hour -(limits are set to [    ]-[    ] standard time)----- [  ]           
+       Julian day ----------------------------------------------- [  ]           
+       Wind speed (     ) --------------------------------------- [  ]           
+       Wind speed power law coefficient * ----------------------- [  ]           
+       Wind direction (deg) ------------------------------------- [  ]           
+       Lateral turbulence intensity (lateral std. dev.) ( ) * --- [  ]           
+       Vertical turbulence intensity (vertical std. dev.) ( ) * - [  ]           
+       Alongwind turbulence intensity (alongwind std. dev.) ( ) * [  ]           
+       Air temperature (  ) ------------------------------------- [  ]           
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

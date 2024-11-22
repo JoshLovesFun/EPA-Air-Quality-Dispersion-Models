@@ -1,0 +1,25 @@
+1520010                      OBODM (Version xx.x)                               
+                             UNITS ABBREVIATIONS                                   
+                         {F3 returns to current menu}                              
+                                                                                
+       length: {m}=meters, {km}=kilometers, {ft}=feet, {yd}=yards,              
+               {mi}=miles, {cm}=centimeters, {mm}=millimeters,                  
+               {um}=micrometers, {in}=inches.                                   
+         mass: {g}=gram, {kg}=kilogram, {lb}=pound, {oz}=ounce, {tn}=ton,       
+               {mg}=milligram, {ug}=microgram, {pa}=particles.                  
+         time: {s}=second, {mn}=minute, {h}=hour, {std}=standard time,          
+               {dst}=daylight savings time.                                     
+         heat: {ca}=calorie, {kc}=kilocalorie, {btu}=British thermal unit,      
+               {J}=joule, {e}=erg.                                              
+  temperature: {C}=Celsius, {K}=Kelvin, {F}=Fahrenheit, {Ra}=Rankine.           
+    direction: {d}=degrees, {r}=radian.                                         
+     velocity: {kts}=knots or {m/s},{ft/s},{mi/h},etc.=length/time.             
+     pressure: {mb}=millibars, {P}=Pascals, {inhg}=inches Hg,                   
+               {mmhg}=millimeters Hg.                                           
+         area: square length or {ac}=acre, {he}=hectare.                        
+       volume: cubic length or {li}=liter, {ppm}=parts per million,             
+               {ppb}=parts per billion, {ppt}=parts per trillion.               
+                                                                                
+                                                                                
+                                                                                
+  {PgUp or F2 for main menu, PgDn for next page}                                

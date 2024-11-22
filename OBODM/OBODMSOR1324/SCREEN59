@@ -1,0 +1,25 @@
+1590108                      OBODM (Version xx.x)                               
+                                   GRAPHICS                                         
+                                                                                
+  Select quantity to be plotted (A/B/C/D/E/F) ---------------------------- [ ]  
+                                                                                
+            Quantity                Calculated                                  
+    ------------------------------  ----------                                  
+    A - Dosage                        {   }                                     
+    B - Concentration                 {   }                                     
+    C - Time-average concentration    {   }                                     
+    D - Gravitational deposition      {   }                                     
+    E - None, terminate graphics                                                
+                                                                                
+                                                                                
+  Plot Sum of sources or a source Group combination (S/G) ---------------- [ ]  
+                                                                                
+  Scale/adjustment factor - Cscale * xxxxx + Dscale.  All concentration,        
+  dosage, etc. calculations xxxxx are multiplied by Cscale and then added       
+  to Dscale.  For example, Cscale may be a percent conversion to another        
+  pollutant species, Dscale may be background.  Make sure Dscale is in          
+  the same units as specified in the initial run.                               
+  Cscale ------------------------------------------------------ [            ]  
+  Dscale ------------------------------------------------------ [            ]  
+                                                                                
+{PgDn or Enter for next menu}                                                   

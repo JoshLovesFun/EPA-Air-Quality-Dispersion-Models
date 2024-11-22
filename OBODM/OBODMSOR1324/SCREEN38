@@ -1,0 +1,25 @@
+1380009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                         {F3 returns to current menu}                              
+                                                                                
+  A) INTERACTIVE DATA SCREEN MENUS -                                            
+                                                                                
+      Data values for both numeric and alphanumeric data are entered between
+  the start and end brackets [] for the respective parameter.  Values cannot
+  overwrite the start bracket or the end bracket.  Options for the parameter
+  value are shown in parentheses ().  If a value already appears within the
+  start and end brackets, it is the default value.  Numeric data may be
+  entered as whole numbers 101, as decimal fractions 101.012 or in exponent
+  form 1.01012E2.  Leading or trailing blanks are allowed for both numeric
+  and alphanumeric values, but numeric values and data file names must not 
+  contain imbedded blanks.  Either upper or lower case letters can be used.  
+  Abbreviations for units must be strictly followed.  In order to save entered 
+  data you must exit a menu via the Enter key.  Otherwise, If PgDn is used, 
+  entered data may be lost.  If the program detects data errors, the screen 
+  menu will be re-displayed if Enter was typed.  If PgDn was typed and errors 
+  are detected, the menu may not be redisplayed, but when you return to the 
+  main menu, the data section will be flagged with ERR.
+                                                                                
+                                                                                
+                                                                                
+  {PgUp for prev page, PgDn for next page} 

@@ -1,0 +1,26 @@
+1610108                      OBODM (Version xx.x)                               
+                                   GRAPHICS                                         
+                                                                                
+  Plot contents (A and/or B) ----------------------------------------- [A],[ ]  
+   A) Distance versus                                                           
+   B) Special symbols at specified points.                                      
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  For hourly meteorological data only -                                         
+    Plot which calculation {A/B/C/D/E/F} --------------------------------- [ ]  
+    A) Plot single N-hour event.         B) Plot seasonal average or total.     
+    C) Plot quarterly average or total.  D) Plot annual average or total.       
+    E) Plot highest for N-hour average.  F) Plot second highest values for      
+                                            N-hour average.                     
+    For A), E) or F), enter number of hours in average (N-hour). -------- [  ]  
+                                                                                
+    For A), enter the start date time (YYMMDDHH or YYJJJHH) or sequential       
+      hour number (1,2,3,...,8784). -OR-                                        
+    For B) or C), seasonal or quarterly, enter the season or quarter            
+      number (1,2,3,4). ------------------------------------------- [        ]  
+                                                                                
+  {PgDn or Enter for next menu}                                                 
+                                                                                

@@ -1,0 +1,25 @@
+1700108                      OBODM (Version xx.x)                               
+                                 PLOT DETAILS                                       
+                                                                                
+  Label terrain contour lines -------------------------------------------- [ ]  
+     A) Label each contour with actual numeric value                            
+     B) Label each contour with the indices A,B,C, etc.                         
+     C) Label each contour with the indices 1,2,3, etc.                         
+     D) Do not label contours                                                   
+  Legend of indices for terrain contour levels --------------------------- [ ]  
+     A) Plot legend showing contour values of indices                           
+     B) Do not plot legend of indices                                           
+  Placement of legend of indices for terrain contour levels -------------- [ ]  
+     A) Upper right corner inside of plot axes                                  
+     B) Upper left corner inside of plot axes                                   
+     C) Lower left corner inside of plot axes                                   
+     D) Lower right corner inside of plot axes                                  
+     E) Top right margin                                                        
+     F) Top left margin                                                         
+     G) Bottom left margin                                                      
+     H) Bottom right margin                                                     
+     Note: Options A through H require room to place the legend.                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu, F8 starts plot}                                 

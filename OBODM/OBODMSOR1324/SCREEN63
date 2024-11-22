@@ -1,0 +1,25 @@
+1630208                      OBODM (Version xx.x)                               
+                             PLOT SPECIAL SYMBOLS                                  
+                                                                                
+    symbol      X (m)          Y (m)     symbol  symbol  symbol Rect./Polar     
+    number   coordinate     coordinate  ht. (in)  angle  code # coord.(R/P)     
+    -----------------------------------------------------------------------     
+           [            ] [            ] [    ]  [     ]  [  ]      [ ]         
+           [            ] [            ] [    ]  [     ]  [  ]      [ ]         
+           [            ] [            ] [    ]  [     ]  [  ]      [ ]         
+           [            ] [            ] [    ]  [     ]  [  ]      [ ]         
+           [            ] [            ] [    ]  [     ]  [  ]      [ ]         
+           [            ] [            ] [    ]  [     ]  [  ]      [ ]         
+           [            ] [            ] [    ]  [     ]  [  ]      [ ]         
+           [            ] [            ] [    ]  [     ]  [  ]      [ ]         
+           [            ] [            ] [    ]  [     ]  [  ]      [ ]         
+           [            ] [            ] [    ]  [     ]  [  ]      [ ]         
+ {symbol code: 1=box (+ line cntr to top rt crnr), 2=box (box 1 + crnrs rmvd)}  
+ {3=triangle (+ line cntr to top cntr), 4=+, 5=X, 6=diamond (+ line cntr to  }  
+ {top cntr), 7=up arrow, 8=X (+ line cnectg upr ends), 9=Z (+mid-horiz line),}  
+ {10=Y, 11=box (+ diag lines out frm crnrs), 12=*, 13=hourglass, 14=circle   }  
+ {+ mid-vert line), 15=flag (+ pole)                                         }  
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

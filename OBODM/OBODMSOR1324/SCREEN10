@@ -1,0 +1,25 @@
+1100105                      OBODM (Version xx.x)                               
+                           SOURCE POLLUTANT/SPECIES                                
+      {F6 displays common fuels and explosives with the respective    }         
+      {quantity of pollutant/species per quantity of fuel or explosive}         
+                                                                                
+  FUEL OR EXPLOSIVE LABEL ----------- = [                                    ]  
+  POLLUTANT/SPECIES LABEL ----------- = [                                    ]  
+  POLLUTANT/SPECIES IS GASEOUS OR PARTICULATE (G/P) ---------------------- [G]  
+  Pollutant/species molecular weight (grams/gram-mole) ------- =[            ]  
+     (Required for print output units of PPM or PPB)                           
+  Pollutant/Species density {units (g/cm**3,etc.)=[        ]}- =[            ]  
+     (Required for PARTICLES)                            
+  Poll/species half-life (0=infinite) {units (s,mn,h)=[  ]} -- =[            ]  
+                                                                                
+                           {SPECIFY EITHER}                                     
+  Ratio of mass of pollutant/species {units(g,kg,lb,etc.)=[  ]}=[            ]  
+  per mass of fuel or explosive burned {units=(g,kg,etc.)=[  ]}=[            ]  
+                                {OR}                                            
+  Fraction of exhaust cloud constituting pollutant/species --- =[            ]  
+                                                                                
+  Some source data vary with hourly input met. data (N/Y) -----------------[N]  
+                                                                                
+                                                                                
+                                                                                
+  {PgUp or F2 for main menu}                                                    

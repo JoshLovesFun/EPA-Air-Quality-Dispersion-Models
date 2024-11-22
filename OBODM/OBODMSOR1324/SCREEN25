@@ -1,0 +1,25 @@
+1250106                      OBODM (Version xx.x)                               
+                             METEOROLOGICAL DATA                                   
+                                                                                
+                      {F5 displays units abbreviations}                            
+                                                                                
+  Ground elev. at met. measurement site {units(m,km,etc.=[  ])}= [           ]  
+                                                                                
+  Wind speed power law coefficient (unitless) ---------------- = [           ]  
+                                                                                
+  Measure time of std. dev. wind dir. angle {units (s,mn)=[  ]}= [           ]  
+  Standard deviation of wind direction angle {units (d,r)= [ ]}= [           ]  
+  Standard deviation of wind elevation angle {units (d,r)= [ ]}= [           ]  
+  Longitudinal turbulence intensity {units (d,r)= [ ]} ------- = [           ]  
+                                                                                
+  Mixing layer depth {units (m,km,ft,etc.)= [  ]} ------------ = [           ]  
+                                                                                
+  Air humidity {units = percent} ----------------------------- = [           ]  
+  Vert. gradient of pot. temp. {units (C/m,K/m,etc.)= [     ]} = [           ]  
+   {Default values for the vert. gradient of pot. temp. depend on }
+   {humidity.  If humidity > 70%, assume a humid region, otherwise}
+   {assume an arid region.                                        }
+                                                                       
+                                                                         
+
+  {PgDn or Enter for next menu}                                                 

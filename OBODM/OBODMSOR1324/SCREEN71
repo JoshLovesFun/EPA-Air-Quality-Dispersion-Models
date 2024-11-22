@@ -1,0 +1,25 @@
+1710108                      OBODM (Version xx.x)                               
+                                 PLOT DETAILS                                       
+                                                                                
+                                                                                
+                                                                                
+  Total X and Y plot dimensions (inches) --- X=[            ],Y=[            ]  
+  Margins (inches) --------------------- X left  =[       ], X right=[       ]  
+                                         Y bottom=[       ], Y top  =[       ]  
+  Axes MIN/MAX (X,Y units) ------- MIN. X=[            ],MIN. Y=[            ]  
+  (if log, use min/max power of 10)MAX. X=[            ],MAX. Y=[            ]  
+  Axes scale (inches/ X,Y units) ---------- X=[            ], Y=[            ]  
+  Height of axis label and legend characters (inches) ----------- = [        ]  
+  Height of axis coordinate numbers (inches) -------------------- = [        ]  
+  Height of special symbols (inches) ---------------------------- = [        ]  
+  Increment between minor tick marks (X,Y units) X=[          ],Y=[          ]  
+  Number of digits to right of decimal for coordinate numbers -- X=[  ],Y=[  ]  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter starts plot}                                                   

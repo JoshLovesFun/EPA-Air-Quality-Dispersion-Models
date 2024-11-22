@@ -1,0 +1,25 @@
+1790016                      OBODM (Version xx.x)
+                             OUTPUT PRINT OPTIONS 
+                     {Use F3 to return to current menu} 
+
+                  data if gravitational deposition or depletion due to
+                  gravitational deposition is desired.
+
+       The mode used to save hourly or N-hour average dispersion calculations
+  is set via the print and auxiliary options menu.  The detailed mode (D)
+  saves each calculated hour for each source on disk to be retrieved for
+  printing or plotting desired averages and source combinations.  A maximum
+  of 1 year of data (8784 hours) is allowed.  The summary (S) mode saves
+  only final averages on disk.  These include: seasonal (quarterly),
+  annual, maximum-50, highest and second highest averages.  Source grouping
+  must be specified in the print and auxiliary options menu.  Up to 6
+  averaging times can be specified for each source group.  An unlimited
+  number of hours is allowed under the summary mode.
+
+        The only time you can use an averaging time greater than one hour is
+  when the actual detonation or burn is less than 1-hour and could only occur
+  for one of the modeled hours during a day.  For example, if we have a
+  single source that is to be detonated during some unknown hour of the day
+  and 8-hour average concentration is desired.  Set the possible hours the
+  source could be detonated in the source data menu (detonation window,
+  {PgUp for prev page, PgDn for next page}

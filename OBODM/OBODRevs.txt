@@ -1,0 +1,199 @@
+Corrections to the OBODM code include:
+
+Version 1.3.xxxx (xxxx = ivrmod below in each update)
+
+02/10/98 - Corrected code in DISPR so that initial source        
+           dimensions (sigxop, sigyop and sigzop) are equal      
+           for buoyant quasi-continuous sources to comply with   
+           the derivation of the plume rise models.              
+           moddat=02/10/98, ivrmod=0002                             
+07/30/98 - Corrected output code that showed emission strength as
+           G/S or per time.  Now shows only G or total units.    
+           moddat=07/30/98, ivrmod=0003                             
+08/12/98 - Corrected problem where program was not checking for  
+           missing date/hours and sequence errors.  Also, added  
+           program date and revision number to menu01.  Also, removed
+           the word on from warning messages 16 and 17 (missing date,
+           sequence error) and changed missing date to llyrs rather
+           than iniyrs or expected date.                              
+           moddat=08/12/98, ivrmod=0004                             
+09/01/98 - Fixed error that did not recognize the character      
+           abrevations for some units, subroutine LUNIT.         
+           moddat=09/01/98, ivrmod=0005                             
+09/04/98 - Corrected error that allowed iofhrs to be 1 for hour  
+           limits 0100-2400, should have been 0.  Moved
+           code after ROUTA and ROUTB that checks to see if input 
+           data was to be intialized to area near front of code,  
+           so after all of routines RMDLA, RMDLB, RMDLC, ROUTA   
+           ROUTB were executed a check would be made.  This was 
+           changed because if an error occurred in other routines,
+           data would not be reinitialized and some changed data     
+           could be written out to a user .OUT file, changing user
+           data.  Corrected bug where program would not append .inp to   
+           batch input control (=) file when no extension was    
+           entered.                                              
+           moddat=09/04/98, ivrmod=0006                             
+11/01/98 - Corrected code that failed to unpack concentration    
+           arrays correctly, depending on data values and array  
+           size.  Corrected parameter ifcalc so -1 indicates     
+           source not operational, but zeros are included in     
+           averages.  Corrected strange problem where the highest
+           and second highest in array vmxhi were not being      
+           printed correctly in OUTPT, removed vmxhi from OUTPT  
+           arguments and used calcsa instead.  vmxhi is          
+           equivalenced to calcsa in ROUTA and ROUTB.  Also,     
+           corrected some minor labeling problems with table     
+           headings, page numbers and table numbers.              
+           moddat=11/01/98, ivrmod=0007                             
+11/10/98 - Corrected code in ISODA that errored the program off  
+           when hourly source data was used.  Corrected code in  
+           GETD1 that read Version 1.0 data incorrectly.         
+           Changed code in ROUTA so that tables are not produced 
+           for user excluded hours and OUTPT prints a message    
+           that all values are zero when all receptors are zero, 
+           rather than printing several pages of zeros.  Also,
+           corrected several minor labeling problems.  
+           moddat=11/10/98, ivrmod=0008                             
+12/06/98 - Corrected labeling problem where time-average calcs 
+           time units were not labeled correctly when producing
+           graphics.
+           moddat=12/06/98, ivrmod=0009
+12/10/98 - Corrected screen for displaying print files, was not  
+           displaying "OBODM (Version" in the heading and had    
+           Entr in the heading rather than Rtrn.  RINPC and STATB
+           respectively were corrected.  Also, discovered if the 
+           user scaled output using ascale and bscale and a .SOL 
+           file and then went back and specified an input file   
+           and executed the input file data, all in the same run, 
+           the ascale and bscale values would scale all printed  
+           results.  Changed this so ascale and bscale are always
+           reset to 1.0 and 0.0, respectively.  Corrected bug    
+           where hour counters were not being reset when running 
+           batch brute force runs under the summary mode.  The   
+           net effect of this error was the annual average for   
+           the second batch run would be 1/2 what it should, the 
+           third batch run would be 1/3 what it should, etc.     
+           moddat=12/10/98, ivrmod=0010                            
+12/21/98 - Corrected problem where the first 9 lines of date/time
+           output in the highest and second highest tables were
+           printed as all zeros (routines ROUTA, ROUTB and OUTPT)
+           moddat=12/21/98, ivrmod=0011
+01/25/99 - Corrected problem where when sources were deleted or
+           duplicated (copied), some of the source parameters 
+           were not copied correctly.  This was caused by 
+           incorrect dimensioning of equivalenced source arrays 
+           in subroutine RINPG.  This would affect any run where
+           any source except the last was deleted and any run
+           where any source was copied from another. 
+           moddat=01/25/99, ivrmod=12 
+03/04/99 - Corrected problem where results for batch runs using
+           hourly meteorological data did not compare to results
+           when run outside of a batch run.  Program was not
+           opening a new met. input data file or a new source
+           input data file if the previous batch file had already
+           opened either file type.  Program listed name of met.
+           and source file, but did not open it because it
+           assumed it had already been opened.
+           moddat=03/04/99, ivrmod=13
+01/04/00 - Added code to RMDLA to help identify data format      
+           errors.  The program was allowing the friction        
+           velocity and Monin-Obukhov length read from ISC3      
+           dry deposition format data to be read as the wind     
+           profile exponent and vertical potential temperature   
+           gradient, respectively.  If the program was directed  
+           to read ISC3 CARD format data, but the data were      
+           ISC3 dry deposition format, this would cause the      
+           program to calculate an incorrect wind speed and      
+           incorrect plume rise, resulting in erroneous          
+           concentration or deposition calculations.  The OBODM  
+           program does not process ISC3 dry or wet deposition   
+           format data.                                          
+           Also, added function LEAPS to expand leap year        
+           detection.  There was no problem in this area, the    
+           code was expanded for completeness.                   
+           Also, corrected bug in RINPQ where the program was not
+           detecting an overflow of calculation points and       
+           calculation quantities when operated in the summary   
+           mode.                                                 
+           moddat=01/04/99, ivrmod=14                            
+01/07/00 - Continued with related areas for updates under 010400 
+           above.  Also, added more information to the help      
+           menus.  Increased screens from 78 to 81.              
+           moddat=01/07/99, ivrmod=15                            
+02/28/00 - Under certain model conditions time-average concen- 
+           trations exceeded maximum peak concentrations.  This
+           has changed to not allow time-average concentration 
+           to exceed maximum peak concentration.  Also, corrected
+           a problem where time-average concentration was being
+           under-estimated for quasi-continuous sources when   
+           dosage was also being calculated.                   
+           moddat=02/28/00, ivrmod=16                          
+07/17/00 - When input rectangular discrete coordinates were input
+           in feet, the y coordinate was not being converted to  
+           meters, resulting in incorrect results. Sub=RPRTD.FOR 
+           moddat=07/17/00, ivrmod=17                            
+09/05/00 - Added option to turn off printing of calm wind warning
+           messages.
+           moddat=09/05/00, ivrmod=17a
+05/18/01 - Corrected error where volume units of liters were   
+           being calculated incorrectly.  The prog was using 
+           1.0e3 as a conversion factor, but should have been 
+           using 1.0e-3.                                           
+           moddat=05/18/01, ivrmod=18
+01/14/03 - Modified program so user can now enter a flagpole     
+           height for each grid receptor.  Previously you could  
+           only specify one flagpole height for the entire grid  
+           system.                                               
+           Corrected problem where program would not allow annual
+           or seasonal calculations under certain conditions     
+           associated with flagpole receptors or misstaking      
+           flagpole receptors for complex terrain.               
+           Also, corrected problem where date/time was printed   
+           incorrectly for highest and second-highest tables     
+           when a large grid was used and multiple quantities    
+           (dos., con., etc.) were calculated.  Also, added      
+           counters to processing display that indicate number of
+           calms, missing data and data errors.                  
+           moddat=01/14/03, ivrmod=19 (combines mods from 12/07/02)
+05/15/03 - Added two options. You can now specify if the wind    
+           direction in user specified met. file formats is from 
+           or towards (vector) when using hourly data.  Single   
+           hour runs are allways direction from.  Preprocessed   
+           ISCST3 data are allways towards (vector).  You can now
+           turn off printing of met. data error and warning      
+           messages.  Routines changed are obodm.for, rindb.for  
+           rinpq.for, rmdla.for, rinpm.for, rprtc.for            
+           moddat=05/15/03, ivrmod=20
+09/29/04 - Corrected error where met. data limits were not       
+           allowed to change for wind speed, direction, power law
+           and turbulent intensities.                    
+           moddat=09/29/04, ivrmod=21                            
+02/14/05 - Corrected problem in RMDLA, ISODA, and RPLTF where the   
+           field width in calls to IFSRD where too small for      
+           actual data fields being read and was changed from 10
+           to 30.  if the actual field width was greater than or
+           equal to 10 and the field contained a single trailing zero
+           with all other characters blank and it was the last data
+           field in the record, then IFSRD returned the value as
+           missing (-1.0E20) rather than zero.  However, in calculations
+           the missing value was treated as zero.  The field value of
+           30 will prevent this problem from reoccurring.
+           moddat=02/14/05, ivrmod=22                            
+04/18/06 - Corrected problem in RPLTF where it was not allowing 
+           negative coordinates and was not converting x,y units
+           correctly when plotting special map features.        
+           Also, units conversion in area and volume have been  
+           correctedin OBODM and RPLTD                          
+           moddat=04/18/06, ivrmod=23
+06/06/07 - Corrected problem in RINPK, RINDB where the code was  
+           checking array IVARSO for values, but was checking by 
+           summing (2) through (13), but should have been        
+           checking only (2) through (4). This caused hourly     
+           input source data to show NONE for source data in the 
+           main menu.  Also, source greater than mixing depth was
+           causing a user reponse to the warning on each         
+           occurrance, so changed to no user response.  Also,    
+           part of a warning message was left on the screen      
+           during processing and was cleaned up.                 
+           moddat=06/06/07, ivrmod=24                            
+           executable creation date of 6/11/2007

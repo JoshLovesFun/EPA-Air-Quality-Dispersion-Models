@@ -1,0 +1,25 @@
+1175005                      OBODM (Version xx.x)
+                      GASEOUS OR PARTICULATE SOURCE DATA
+     SOURCE NUMBER (  ), SOURCE ID (                                    )
+                      {F5 displays units abbreviations}
+                                                     
+                  {X,Y is mid point of end of line source}
+              (C=default, I=instantaneous Q=quasi-continuous)
+  X,Y source coordinates are Rectangular/Polar ------------------------- = [R]
+  Start of Line Source
+   X coordinate or range {units (m,km,etc.)=[ m]} ----------- = [            ]
+   Y coordinate or bearing (X units or degrees if polar) ---- = [            ]
+   Z source base elevation (X units)(complex terrain) ----------- = [        ]
+   Release ht. above grnd.(C=1/2 depth I or 0.0 Q) {units=[ m]} - = [        ]
+  End of Line Source                                    
+   X coordinate or range (X units) -------------------------- = [            ]
+   Y coordinate or bearing (Y units) ------------------------ = [            ]
+   Z base elevation (Z units) (complex terrain) ----------------- = [        ]
+   Release height above ground (C=start ht.) (height units) ----- = [        ]
+  Width and Depth                                     
+   Width of line source (C=depth I or 10.0 Q) {(m,km,etc.)=[ m]}  = [        ]
+   Depth or vertical dimension of initial source material (C=compute I or
+   10.0 Q)             {units (m,km,etc.)=[ m]} ----------------- = [        ]
+                                                           
+  Do you wish to specify or review auxiliary source data (N/Y) ----------- [N]
+  {PgDn or Enter for next menu}

@@ -1,0 +1,25 @@
+1400009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                         {F3 returns to current menu}                              
+                                                                                
+  C) FIXED FIELD FORMAT INPUT HOURLY METEOROLOGICAL AND/OR SOURCE DATA -        
+                                                                                
+      The user specifies via interactive screen menu which meteorological       
+  or source variables are to be read from the input hourly data file(s).        
+  Also, the user specifies the relative position in the input record of         
+  the value for each input variable and the format (FORTRAN edit codes) 
+  of the input data record.  There can be more values in the input record 
+  than variables being read.  Input data values must appear in the same 
+  field (data columns) in each input record.  Leading and trailing blanks 
+  within an input field are ignored, but data must not contain imbedded 
+  blanks.  Numeric data values may be entered as a whole number (101), 
+  decimal fraction (101.012) or in exponent form (1.01102E2), depending 
+  on the FORTRAN edit code specified for the data field.  If data errors 
+  are detected (data out of range or erroneous characters), a message is 
+  written to the print output file as to the nature of the error and where   
+  it occurred.                                                                  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgUp for prev page, PgDn for next page}                                      

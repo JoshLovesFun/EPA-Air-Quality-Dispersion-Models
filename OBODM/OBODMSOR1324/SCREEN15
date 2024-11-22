@@ -1,0 +1,25 @@
+1155005                      OBODM (Version xx.x)
+                      GASEOUS OR PARTICULATE SOURCE DATA 
+     SOURCE NUMBER (  ), SOURCE ID (                                    )
+                      {F5 displays units abbreviations}
+                                                     
+                        {X,Y is center of source} 
+                                                 
+  X,Y source coordinates are Rectangular/Polar ------------------------- = [R]
+                                                       
+  X coordinate or range {units (m,km,etc.=[ m]} ------------- = [            ]
+  Y coordinate or bearing (X units or degrees if polar) ----- = [            ]
+  Z source base ground elevation (X units)(complex terrain) - = [            ]
+  Release height above ground (C=default=1/2 depth)
+                              {units(m,km,etc.=[ m]} ----------- = [         ]
+                                                           
+  Length of long dimension of initial source material (C=default=10.0)
+                                    {units (m,km,etc.=[ m]} ---- = [         ]
+  Length of short dimension of initial source material (C=default=10.0)
+                             (same as long dimension units) ---- = [         ]
+  Angle of long dimension from zero degrees north (degrees) ---- = [         ]
+  Depth or vertical dimension of initial source material (C=default=10.0)
+                                    {units (m,km,etc.=[ m]} ---- = [         ]
+                                                                
+  Do you wish to specify or review auxiliary source data (N/Y) ----------- [N]
+  {PgDn or Enter for next menu}

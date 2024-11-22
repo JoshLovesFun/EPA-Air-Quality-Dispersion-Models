@@ -1,0 +1,25 @@
+1450009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                         {F3 returns to current menu}                              
+                                                                                
+  D) ISCST data file format "UNFORM"                                              
+     These data are binary (unformatted) record blocks using four bytes per     
+     binary word.  Record one contains: the surface station no.; surface        
+     year; upper air station no.; and upper air year.  Records two through      
+     the end of data contain-                                                   
+                                                                                
+                      Parameter                   Binary Word                   
+           ------------------------------         -----------                   
+           Year                                        1                        
+           Month                                       2                        
+           Day                                         3                        
+           Stability class                            4-27                      
+           Wind speed (m/s)                          28-51                      
+           Air temperature (K)                       52-75                      
+           Flow vector (deg) (dir. toward)           76-99                      
+           Randomized flow vector (deg)             100-123                     
+           Rural,Urban mixing height (m)            124-171                     
+   Each parameter from stability on down consists of 24 values, except          
+   mixing heights include both rural, urban (48) values.                         
+                                                                                
+  {PgUp for prev page, PgDn for next page}                                      

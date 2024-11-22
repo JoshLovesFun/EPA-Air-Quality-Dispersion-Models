@@ -1,0 +1,25 @@
+1800016                      OBODM (Version xx.x)
+                             OUTPUT PRINT OPTIONS 
+                     {Use F3 to return to current menu} 
+
+  permitted hours).  Under output options select time-average concentration.
+  Set the averaging time to 8 hours.  Select the output tables desired -
+  maximum-50, Highest and Second Highest tables.  This method selects the
+  maximum 8-hour value that could occur during the day.  These calculations
+  cannot be further averaged.
+
+        For print output table averages where the number of hours in
+  each average are specified by N=[_],[_],etc. specify the number of
+  hours for the measurement or standard, generally 1, 3, 8 and 24 hours.
+  Each average uses a unique set of contiguous hours, not a running or
+  overlapping average.  If the averaging time is greater than 1 hour,
+  the program will only let you select 1 for this option, because only
+  one event could possibly occur during a day invalidating any averaging.
+
+  Output Table Labels:
+
+  "Maximum 50 1-hour average hydrogen chloride time-average (15-min)
+  concentrations": This label indicates a single 15 minute average
+  concentration was calculated for each hour of the data period.  To
+  simplify the construction of labels for OBODM output, the "1-hour
+  {PgUp for prev page, PgDn for next page}

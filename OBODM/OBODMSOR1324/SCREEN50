@@ -1,0 +1,25 @@
+1500009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                                                                                
+  G) PLOT OUTPUT DATA FILE (CONTINUED) - (^ means blank character)              
+                                                                                
+    record columns format                 contents                              
+    ------ ------- ------  ------------------------------------------------     
+      1     1-2      2a1   ^S (blank followed by S for start).                  
+            3-10    f8.4   Number of inches in horizontal X plot dimension.     
+           11-18    f8.4   Number of inches in vertical Y plot dimension.       
+           19-22      i4   Plot number.                                         
+      2     1-50    50a1   Plot title.                                          
+      N     1-2      2a1   ^P (blank followed by P for plot point).             
+            3-10    f8.4   X coordinate to move pen to.                         
+           11-18    f8.4   Y coordinate to move pen to.                         
+           19-20      i2   Pen up/down, 2=down, 3=up, neg.=new origin.          
+           21-22      i2   Color index - 1=black, 2=blue, 3=green, 4=cyan,      
+                           5=red, 6=magenta, 7=yellow, 8=dk-white, 9=gray,    
+                           10=lt-blue, 11=lt-green, 12=lt-cyan, 13=lt-red,
+                           14=lt-magenta, 15=lt-yellow.     
+      M     1-9      9a1   ^END PLOT (blank followed by END PLOT).              
+                                                                                
+                                                                                
+
+  {PgUp for prev page, PgDn for next page}                                      

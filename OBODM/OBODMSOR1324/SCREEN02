@@ -1,0 +1,25 @@
+1020102                      OBODM (Version xx.x)                               
+                             OPTIONAL DATA FILES                                   
+                                                                                
+                        {F7 Displays OBOD data files}                              
+                                                                                
+       INPUT DATA SAVE FILE (.INP)           OUTPUT DATA SAVE FILE (.INP)  
+                                                                                
+  GET DATA FROM-[                      ] SAVE DATA TO-[                      ]  
+                                                                                
+      PRINT OUTPUT SAVE FILE (.OUT)      GET/SAVE SOLUTION FOR GRAPHICS (.SOL)  
+                                         (scratch/temporary if not specified)   
+  SAVE DATA TO -[                      ] SAVE DATA TO-[                      ]  
+                                                                                
+                                                                                
+                                                                                
+   {A plus (+) symbol prior to any file name forces all remaining file  }       
+   {names to be the same name (with different extension name .INP, .OUT }       
+   {or .SOL).  An equals (=) symbol prior to the name specified for     }       
+   {INPUT DATA SAVE FILE indicates a batch file that contains data file }       
+   {names for batch processing of multiple cases.  Include four records }       
+   {(lines) for each batch case.  Order the names INPUT, OUTPUT, PRINT  }       
+   {and SOLUTION.  Leave record (line) blank if no file name.           }       
+                                                                                
+                                                                                
+  {@Enter~to get data from/initialize files}                                    

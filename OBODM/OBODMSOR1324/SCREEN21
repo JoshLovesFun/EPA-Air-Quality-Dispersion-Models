@@ -1,0 +1,25 @@
+1210105                      OBODM (Version xx.x)                               
+                           SOURCE POLLUTANT/SPECIES                                
+                                                                                
+  {If the source data are free field format, ignore this menu, but make sure}   
+  {the format area below is all blanks.  If the source data are fixed field }   
+  {format, you must enter the format of each data field in the input record.}   
+                                                                                
+                                                                                
+  {Use FORTRAN edit codes: Fw.d; Ew.d; Gw.d; #X; T#; TL#; TR#; #P; BN; or BZ}   
+  {Where: w is field width or number of columns occupied by the value.      }   
+  {       d is the number of digits following the decimal point.            }   
+  {       # is the number of columns or power of 10 for code P.             }   
+  {Separate each edit code sequence with a comma.  See help menus.          }   
+                                                                                
+                                   FORMAT                                          
+  123456789012345678901234567890123456789012345678901234567890123456789012345   
+  ---------------------------------------------------------------------------   
+ [                                                                           ]  
+ [                                                                           ]  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+  {PgDn or Enter for next menu}                                                 

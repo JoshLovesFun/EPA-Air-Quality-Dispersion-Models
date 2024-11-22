@@ -1,0 +1,25 @@
+1165005                      OBODM (Version xx.x)
+                      GASEOUS OR PARTICULATE SOURCE DATA
+     SOURCE NUMBER (  ), SOURCE ID (                                    )
+                      {F5 displays units abbreviations}
+                                               
+                       {X,Y is center of source}
+                                                  
+  X,Y source coordinates are Rectangular/Polar ------------------------- = [R]
+  X coordinate or range {units (m,km,etc.)=[ m]} ------------ = [            ]
+  Y coordinate or bearing (X units or degrees if polar) ----- = [            ]
+  Z source base ground elevation (X units)(complex terrain) - = [            ]
+  Effective height of release above ground (C=default=1/2 diameter)
+                                           {units(m,km,etc.)=[ m]}=[         ]
+                                                                          
+  Diameter of initial source material immediately after detonation  
+     (type C for default) {units (m,km,etc.)=[ m]} ------------- = [         ]
+                                                                  
+  Do you wish to specify or review auxiliary source data (N/Y) ----------- [N]
+                                                             
+                                                           
+                                                         
+                                                          
+                                                    
+                                                       
+  {PgDn or Enter for next menu}

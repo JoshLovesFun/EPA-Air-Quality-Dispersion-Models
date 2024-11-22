@@ -1,0 +1,25 @@
+1510009                      OBODM (Version xx.x)
+                            QUANTITIES CALCULATED 
+                     {Use F3 to return to current menu} 
+  Peak-Concentra- Maximum hourly quantity of pollutant/species material
+  tion            in mass per unit volume of air. 
+  Dosage        - Time-integrated concentration of pollutant/species
+                  material in mass-time per unit volume of air.
+  Time-average  - Concentration averaged over a user specified time interval,
+                  where the averaging time can be less than or greater than
+                  the source release (duration) time.  A single time-average
+                  concentration value is calculated, generally with an
+                  averaging time less than or equal to one hour (15 min,
+                  30 min, etc.), for the meteorological data hour.  The user
+                  then has the option of further averaging these values over
+                  N-hour periods.  Time-average concentration is calculated
+                  by centering the averaging time around the peak concen-
+                  tration distribution.  The units are mass per unit volume
+                  of air.
+  Gravitational - Ground level total accumulation of material in mass per unit
+  Deposition      area due to the gravitational settling of pollutant/species
+                  material.  If dosage, con. or other quantity is calculated
+                  along with grav. deposition, then the other quantities are
+                  depleted due to the gravitational settling of particles.
+                  A particulate distribution must be included in the source
+  {PgUp for prev page, PgDn for next page}

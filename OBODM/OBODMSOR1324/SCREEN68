@@ -1,0 +1,25 @@
+1680108                      OBODM (Version xx.x)                               
+                                 PLOT DETAILS                                       
+                                COLOR OPTIONS                                       
+  Plot background -------------------------------------------------------- [ ]  
+  Plot axes and labels --------------------------------------------------- [ ]  
+                 as a function of distance curve ------------------------- [ ]  
+  Line of maximum TERRAIN curve ------------------------------------------ [ ]  
+  Line of maximum                curve ----------------------------------- [ ]  
+                                                                                
+  TERRAIN contour levels ------------- [ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ]  
+                                       [ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ]  
+                 isopleth levels ----- [ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ]  
+                                       [ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ]  
+                                                                                
+  Special symbols -------------------- [ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ]  
+                                       [ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ]  
+                                       [ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ]  
+                                       [ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ]  
+                                       [ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ],[ ]  
+                                                                                
+        A=black, B=blue, C=green, D=cyan, E=red, F=magenta, G=yellow,                                                                        
+        H=dk-white, I=gray, J=lt-blue, K=lt-green, L=lt-cyan, M=lt-red,                                                                                
+        N=lt-magenta, O=lt-yellow, P=lt-white.                                                                                
+                                                                                
+  {PgDn or Enter for next menu, F8 starts plot}                                 

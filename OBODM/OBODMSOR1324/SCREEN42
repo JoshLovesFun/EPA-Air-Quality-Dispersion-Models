@@ -1,0 +1,25 @@
+1420009                      OBODM (Version xx.x)                               
+                                 DATA FORMAT                                       
+                         {F3 returns to current menu}                              
+                                                                                
+  C) FIXED FIELD FORMAT INPUT HOURLY METEOROLOGICAL AND/OR SOURCE DATA          
+     (CONTINUED) -                                                              
+                                                                                
+   Fw.d - Continued.                                                            
+                                                                                
+          format            data record          variable value                 
+          ------            -----------          --------------                 
+           F8.5               1.2345E1                 12.345                   
+           F8.0                   1990                   1990                   
+                                                                                
+   Ew.d - Value is in exponent form and occupies a total of w columns with     
+          d digits as the fractional part.                                      
+                                                                                
+          format            data record          variable value                 
+          ------            -----------          --------------                 
+           E9.3              734.432E3               734432.0                   
+           E12.4            1022.43E-6             1022.43E-6                   
+           E10.3                 5.234                  5.234                   
+                                                                                
+                                                                                
+  {PgUp for prev page, PgDn for next page}                                      

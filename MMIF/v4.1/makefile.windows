@@ -1,0 +1,63 @@
+#
+# Makefile for MMIF VERSION 3.4.2 2021-06-30
+#
+# Edit this file to un-comment the section for your compiler.  
+# You will also need to edit the line that specifies where to find the 
+# NetCDF libraries, which must be compiled by the same compiler.
+# The directory "netcdf.4.1.1-mingw" is used to commpile under MS Windows.
+# It was compiled using MinGW version 20110802, see http://www.mingw.org, 
+# and the script compile_netcdf_mingw.sh.
+
+# PGI Fortran:
+###FC = pgf90
+###FFLAGS = -g -fast -Mlfs
+###FFLAGS += -Mbounds                # for bounds checking/debugging
+###FFLAGS += -Bstatic_pgi            # to use static libraries
+###FFLAGS += -Bstatic                # to use static netCDF libraries
+###NETCDF = netcdf-4.1.1-pgi-ce
+###INCL = -I$(NETCDF)/include
+###LIBS = -L$(NETCDF)/lib -lnetcdf
+
+# GNU gfortran (Windows or Linux, just set NETCDF below correctly)
+FC = gfortran
+FFLAGS = -g -Wall 
+FFLAGS += -m32                    # to create 32bit i386 code
+###FFLAGS += -m64                    # to create 64bit x86-64 code
+###FFLAGS += -fbounds-check -g          # for bounds checking/debugging
+FFLAGS += -static         # to use static libraries, not supported in cygwin64
+NETCDF = ./netcdf-4.1.1-mingw
+INCL = -I$(NETCDF)/include
+LIBS = -L$(NETCDF)/lib -lnetcdf 
+
+# Intel Fortran:
+###FC = ifort
+###FFLAGS = -O2 -align dcommons -ipo
+###FFLAGS += -static                 # to use static libraries
+###NETCDF = /path/to/netcdf-4.1.1.ifort
+###INCL = -I$(NETCDF)/include
+###LIBS = -L$(NETCDF)/lib -lnetcdf 
+
+
+PROGRAM = mmif.exe
+
+MODULES = met_fields.f90 functions.f90 module_llxy.f90 wrf_netcdf.f90     \
+	parse_control.f90
+
+SOURCES = aggregate.f90 avg_zface.f90 cloud_cover.f90 interpolate.f90     \
+	landuse.f90 mmif.f90 output_aercoare.f90 output_aermet.f90        \
+	output_calmet.f90 output_onsite.f90 output_scichem.f90            \
+	pasquill_gifford.f90 pbl_height.f90 read_mm5.f90 read_wrf.f90     \
+	sfc_layer.f90 timesubs.f90 
+
+OBJECTS = $(SOURCES:.f90=.o)
+MODOBJS = $(MODULES:.f90=.o)
+MODMODS = $(MODULES:.f90=.mod)
+
+$(PROGRAM): $(MODOBJS) $(OBJECTS)
+	$(FC) $(FFLAGS) $(MODOBJS) $(OBJECTS) $(LIBS) -o $@
+
+%.o : %.f90 
+	$(FC) $(FFLAGS) $(INCL) -c $< -o $@
+
+clean:
+	rm -f $(MODMODS) $(MODOBJS) $(OBJECTS) $(PROGRAM)

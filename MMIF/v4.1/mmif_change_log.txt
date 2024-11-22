@@ -1,0 +1,320 @@
+
+------ Change log for MMIF VERSION 4.1 2023-10-30 -----
+
+Note: each *.f90 souce code file has comments at the top detailing its
+own changes. 
+
+Overview of important dates:
+
+Date        Version      Comment
+            MMIFv0.1     ENVIRON starts work on MMIF, starting with 
+                         Bret Anderson's "proof of concept" project.
+2009-05-26  MMIFv1.0     Original public release.
+2011-09-30  MMIFv2.0     Major upgrade - Added AERMOD, SCICHEM support.
+2012-01-31  MMIFv2.1     Major upgrade - Added vertical Interpolation.
+2012-02-21  MMIFv2.1p1   Patch fix for AERMOD modes - use MET convention.
+2012-08-23  MMIFv2.2     Minor upgrade, ongoing development.
+2013-04-30  MMIFv2.3     Minor upgrade, fixes for SCICHEM and AERMOD modes.
+2013-09-30  MMIFv3.0     Major upgrade - switch from fixed-format to keyword-
+                         driven control file, to support multiple outputs.
+2014-08-01  MMIFv3.1     Minor upgrade, to support SCICHEM 3.0.
+2015-07-24  MMIFv3.2     Minor upgrade, functionality fixes.
+2016-12-09  MMIFv3.3     Minor upgrade, two bug fixes, functionality fixes.
+2018-07-18  MMIFv3.4     Minor upgrade, bug fixes, functionality fixes. 
+2019-03-11  MMIFv3.4.1   Minor upgrade, bug fixes, functionality fixes.
+2021-06-30  MMIFv3.4.2   Minor upgrade, bug fixes, functionality improvements,
+                         add ability to use WRF's hybrid vertical coordinate.
+2021-09-30  MMIFv4.0     Major upgrade, for compatiblity with AERMET 22112 and later.
+2023-10-30  MMIFv4.1     Minor upgrade, bug fixes, added variables for overwater
+
+Date        Details/changes
+----------  ----------------
+2009-05-26  Original Development: EPA R7, ENVIRON International Corp.
+            Initially only output CALPUFF format (mimic CALMET).
+2011-08-01  (FWS) Support for 50-cat NLCD data used in EPA 2008 WRF.
+2011-09-30  MMIFv2.0 released.
+
+2011-09-30  ENVIRON Added output for several other models, lat-lon/LCC
+            subsetting, etc.  Required a major re-write and 
+            generalization of the core code.  A placeholder for vertical
+            interpolaction to fixed levels is included.
+2011-09-30  New in v2.0: command_line().
+2011-09-30  Moved aggregation code from mmif.f90 to aggregate.f90.
+2011-09-30  New in v2.0: cloud_cover() code taken from program mm5aermod.
+2011-09-30  New in v2.0: sample_input() to have "mmif --sample" create a
+            sample control (*.inp) file.
+2011-09-30  New in v2.0: functions.f90, mostly thermodyanic functions developed
+            by Bart Brashers over the years.
+2011-09-30  New in v2.1: interpolate() as an alternative to aggregate().
+2011-09-30  Bug fix: in landuse.f90, albedo for water (cat. 16) was 0.8, should 
+            be 0.08.
+2011-09-30  Major re-write of met_fields.f90 to support more output formats.
+2011-09-30  Added calmet_terrain() routine.
+2011-09-30  Added code in read_mm5() and read_wrf() to look for z0,
+            albedo, MOL, LAI, etc. in MM5/WRF file.  Support for other 
+            projections than LCC, and sub-set by Lat-Lon & km, etc.
+2011-09-30  In pblmet.f90, handle case when Monin-Obukhov length L not
+            found in MM5/WRF file.
+2011-11-15  Print MM5/WRF sigma levels with heights in read_mm5(),
+            even for CALPUFF. 
+2011-12-12  Minor fix: clear up confusion between central and std lat/lon.
+2011-12-12  Clear up confusion between central and std lat/lon in projections.
+2012-01-17  Moved zface2 and avg_zface to their respective routines, out of
+            met_fields.f90.
+2012-01-31  Added support for WRF's 50-category NLCD land-use method.
+            Removed user control of ZiMin, ZiMax.  Set to "sane" values.
+2012-01-31  Moved definition of zmid to earlier in the flow of aggregate().
+2012-01-31  Moved code for vertmap() to aggregate.f90, eliminated vertmap.f90.
+2012-01-31  avg_zface.f90 moved from the top of aggregate.f90.
+2012-01-31  Added --debug flag to command_line(), updated sample control file.
+2012-01-31  New subroutine names (landuse_usgs and landuse_nlcd) and remove
+            unused vars.
+2012-01-31  Made sure aggregation parts (moving/adding levels) in
+            output_calmet() gets skipped if ZFACE(1) is 20m, either by
+            chance or if using interpolation.
+            Many more small changes, some cosmetic or helpful.
+2012-01-31  Bug fix: in calmet_hour(), pOut(,,1) was interpolated
+            between 0 and pOut(,,2). 
+            Changed 2D fields DENSITY and RH in calmet_hour() to use
+            2m values, like CALMET would if using observational data.
+            To avoid the dependence on T10 (calculated) in
+            calmet_hour(), we instead set the new 0-20m T to be
+            interpolated between known T2 and T(1).  This was fixed
+            later, when a more accurate version of the PBL routines
+            was developed.  CALPUFF isn't very sensitive to T anyway,
+            and I suspect that aggregation will become unpopular -- I
+            believe interpolation will prove to be more accurate that
+            aggregation. 
+2012-01-31  Write out the final zmid values to screen in
+            onsite_header(), like in calmet_header(). 
+2012-01-31  Bug fix: scichem_terrain() was writing the whole grid, not
+            just sub-grid.  Note: this routine not currently used,
+            retained in case it's useful in the future.
+2012-01-31  Renamed subroutine pgstb() to pg_srdt() to be more
+            consistent.  Changed delt from t10-t0 to tt(i,j,1)-t2, to
+            follow guidance, and remove dependence on t10 (a
+            calculated variables).  It is only used at night, and then
+            only the sign is used, so we don't need to be too precise
+            about it. 
+2012-01-31  New routine pg_golder(), following CTDMplus's LSTAB
+            routine, which is also used by CALPUFF.
+2012-01-31  Tested and discarded routine ltopg() after it didn't match
+            either Fig 4 or 5 in the 1972 paper.
+2012-01-31  Moved PBL height calculation from pblmet() to pbl_height()
+            to make it more general.  Also created pbl_limits() to set
+            limits on PBL Height required by downstream dispersion
+            models. 
+2012-01-31  New routines sfc_layer() and stratify(), following
+            MCIPv3.6 pblsup.f90 procedure, to replace pblmet().  
+2012-01-31  MMIFv2.1 released.
+
+2012-02-21  Bug fix: wind direction changed to MET convention (0 deg is N)
+            for AERMOD modes.  Resulted in MMIFv2.1 patch 1.
+2012-02-21  uv2sd() now supports wind direction in MET convention (0 deg is 
+            North) to support AERMOD-like output.
+2012-02-21  MMIFv2.1p1  released.
+
+2012-03-07  Bug fix: CALPUFFv6 time-stamps were off by 1 hour.
+            Simplified the calculation of irlg, ndathr, and jday.
+2012-03-07  Clarified the 6.x output beginning time-stamp to be more
+            consistent with CALMET v5.8 output.  
+2012-03-07  Minor fix: use new ymdh2nDatHr routine in read_mm5(),
+            eliminating jday.
+2012-03-07  Added ymdh2nDatHr to timesubs.f90, increased usage of
+            Leap_yr() routine to be more efficient. 
+2012-03-13  Bug fix: in read_wrf(), XTIME and saving of precip were
+            wrong for the first WRFOUT file from a WRF initialization.
+2012-03-16  Calculate q2 too in sfc_layer() if it's missing.
+2012-03-16  Testing of the new sfc_layer() routine shows that its T10 
+            calculation is better than the old pblmet() routine.  The
+            workaround for reliance on a calcuated T10 (see 2012-01-31
+            above) can now be reversed.
+2012-08-23  MMIFv2.2 released.
+
+2012-09-04  Bug fix: some compilations of netCDF don't blank text strings
+            passed to nf_get_att_text().  We'll blank them before passing.
+2012-09-04  Added more logic to detect un-supported LANDUSE versions,
+            when z0,Albedo, and/or LAI were _not_ included in the MET data.
+2012-10-01  Removed ZiMin,ZiMax from call to scichem_useful().
+2012-10-01  Bug fix: ZiMin and ZiMax always -999 in scichem_useful().
+            Fix that. 
+2013-01-17  Moved allocation of zavg from met_fields.f90 to avg_zface().
+2013-01-22  Aggregation no longer supported for SCICHEM output.
+            Added sanity check for SCICHEM output: zmid(nzOut) > max(topo).
+2013-01-22  Bug fix: interpolate to _transformed_ layers for SCICHEM, after
+            Corresponding with the SCICHEM authors.  
+2013-01-22  In scichem_useful(), removed ZB, changed ZMAX from
+            zface(nzOut) to zmid(nzOut), following feedback from model
+            authors. 
+2013-01-22  Force vertical velocity at H = zmid(nzOut) to be zero in
+            medoc_hour().  Also see changes in interpolate.f90, for a
+            bug fix related to the vertical grid structure in SCICHEM.
+2013-01-25  Bug fix: cloud_cover() output was in tens, wanted a fraction.
+2013-01-25  New in v2.3: cloud cover algorithm cloud_cover_COAMS() following 
+            Angevine (2012).  cloud_cover() renamed cloud_cover_mm5aermod(),
+            no longer called by anything, but retained in the code.
+2013-01-25  Added routine scichem_sampler() to create SAM file,
+            containing the centers of each grid cell in the modeling
+            domain. 
+2013-02-25  Lengthened file/path strings from 120 to 256 characters, based
+            on user feedback.
+2013-03-05  Changed sanity check for AERCOARE output: print a warning for hours
+            that are not over water (i.e. over ice).
+2013-03-05  Added --version switch to command_line().
+2013-03-05  Set iswater(:,:) every time step - it changes with time due 
+            to changing sea ice in WRF files.
+2013-03-18  Added tsky = cloud cover to output for AERCOARE, just so it
+            appears in the eventual SFC file (used only for deposition).
+2013-03-18  Bug fix: surface level report in upperair_hour() was in
+            kts, now in 10th of a m/s. 
+2013-04-30  MMIFv2.3 released.
+
+2013-05-01  Reduce number of AERMOD warnings for stable conditions.
+2013-05-01  Implement minimum AERMOD wind speed, following AERMET v12345.
+2013-05-02  Tidied up the declarations in mmif.f90, with better comments.
+2013-05-02  Bug fix in TimeDiff(), needed to call leap_yr(i) inide loop.
+2013-05-02  Moved sanity check for CALMET and WRF using same projection from
+            read_wrf.f90 to mmif.f90, to facilitate moving outform
+	    from met_fields.f90 to mmif.f90.
+2013-05-02  Added more sanity checks to inside_grid(), which gets called
+            by both read_mm5() and read_wrf() after iBeg etc. calculated.
+2013-05-02  Add fixed-control-file-format support for multiple outputs.
+2013-05-03  Add per-line specification of location for AER* modes.
+2013-05-06  Increased printing of Roughness lenght from F7.4 to F9.6.
+2013-06-18  Moved check for supported landuse types to mmif.f90, which
+            allowed the removal of logical force_run (no longer used).
+2013-06-21  Changed all the nc* (netcdf version 2 C-style) calls to
+            nf_* (netcdf version 3 Fortran-style) calls.
+2013-07-12  For aggregation, use zPt(,) instead of zmid(), because the 
+            latter is the average over the full 3-D domain.
+2013-07-15  Added support for multiple CALPUFF output files from a single run.
+2013-07-15  Moved call to calc_vptg() in mmif.f90 so only called when needed.
+2013-07-15  Added point_in_grid() checking routine, and renamed 
+            inside_grid() to grid_in_grid().
+2013-07-15  Bug fix: when using KM to set output in quadrant 3 of the 
+            domain, wrong grid cell was being selected.
+2013-07-16  If useful filename ends in .csh, make a csh script instead
+            of a batch file in onsite_header().
+2013-07-16  Bug fix in legal_timestamp(), was returning range 0-24, when
+            it should return either range 0-23 or 1-24.
+2013-07-16  Fixed ending XDATES time, so AERMET runs stop when data does.
+2013-07-16  Made screen output more regular and pretty.
+2013-07-18  Prevent output of MM5/WRF levels below 15m in AER* modes.
+2013-07-18  Updated sample_input() for new multi-out format.
+2013-07-18  MMIFv3.0rc1 released.
+
+2013-09-05  Auto-detect MM5 vs. WRF files, no need to specify MetForm.
+2013-09-05  Started change from fixed-format to keyword-driven control file.
+            New module parse_control.f90 added, in place of command_line.f90.
+2013-09-20  Separated the *_header() routines, which also wrote the Useful 
+            Info file, into *_useful() and *_header().  
+2013-09-20  Made calmet_header() write EITHER a CALMET.DAT or a CALMET.AUX
+            file, but not both in one call.
+2013-09-21  All non-hourly outputs now open and close their files in their
+            own subroutines.  Hourly files are still opened in mmif.f90.
+2013-09-21  Bug fix: endif in the wrong place near the USGS/NLCD checks for
+            missing z0,bowen,LAI (thanks to Bret Anderson for the report).
+2013-09-23  Added support for several other land-use methods: NLCD40,
+            MODIS, and IGBP_MODIS.  Also updated USGS to support 33 cats.
+            Look-up tables have been updated, following MCIPv4.1 (see file
+            metvars2ctm.f90, arrays laimod and laimnmod) and WRFv3.5.1 (see
+            file run/LANDUSE.TBL).
+2013-09-24  Moved the check for supported land-use types from read_mm5.f90 
+            and read_wrf.90 to mmif.f90.
+2013-09-28  Added support the each 1-D output to have its own timezone.
+2013-09-30  Added support for multiple time-stamp methods (remove delimiters).
+2013-09-30  MMIFv3.0 released.
+
+2014-02-30  Added support for SCICHEM 3.0 headers in the MEDOC file.
+2014-03-06  Renamed uv2sd to uv2sd_lcc, and added a more general version
+            of uv2sd to support PS/EM projections.
+2014-03-06  Added calculation of cosalpha,sinalpha for PS/EM wind rotation.
+2014-03-06  In SCICHEM 3.0: LAT,LON now where X,Y = 0,0 (cenlat,cenlon).
+2014-03-06  Added MetForm, z0, ustar, albedo, and bowen to MEDOC output.
+2014-04-24  Interpolate PBL to 1/20 of a layer, or < 10m, whichever is less.
+2014-04-24  Added option to force re-diagnosis of u10,T2,q2.
+2014-05-19  Changed AERMOD-mode output version to v14134 to match AERMET.
+2014-06-06  Changed the flags on each line of an SFC file, per EPA discussions.
+2014-07-30  Now prints both LST and GMT of each output timestamp.
+2014-07-30  Prevent output outside requested timestamps in each POINT's timezone.
+2014-07-30  Assure run is long enough to cover the end in each POINT's timezone.
+2014-08-01  MMIFv3.1 released.
+
+2014-09-18  Add optional minimum mixing height and abs(L) in AERMOD modes.
+2014-09-18  Move calls to pbl_limits() from mmif.f90 to output routines.
+2014-09-22  Improved error reporting when parsing control file.
+2014-10-09  Bug fix: only first AERSFC output file contained values.
+2014-10-09  Improved detection of related outputs (useful info needs filenames)
+2014-10-09  MMIFv3.2rc1 released.
+
+2014-11-26  No reason RH needs to be rounded to nearest integer for aercoare.
+2015-01-29  Added terrain elevation (topo) at the screen output for points.
+2015-02-24  MEDOC time-stamps now forced to be in GMT, so LOCAL_MET = F.
+2015-02-24  Updated Useful Info file based on discussions with SCICHEM authors.
+2015-03-25  *.IN1's UPPERAIR block's LOCATION timezone should be point-specific.
+2015-03-31  Change AER_MIN_SPEED to be calm, not set to min. speed.
+2015-07-24  ONSITE bat/csh file should not include the path to the *.IN1 files.
+2015-07-24  Uppercase just the filename, not path, for ONSITE output.
+2015-07-24  MMIFv3.2 released.
+
+2016-03-16  Bug fix: ZMID not the middle when using LAYERS MID keywords.
+2016-03-16  Set AERMET THRESHOLD equal to AER_MIN_SPEED rather than always 0.5
+2016-03-17  PBL_recalc changed to MIXHT, with possible values WRF or MMIF.
+2016-03-17  Added AER_MIXHT option, possible values WRF, MMIF or AERMET.
+2016-07-06  LCC > max possible - probably means Xlcc givin in meters, not km.
+2016-08-05  Changed MIXHT to CALSCI_MIXHT to avoid confusion with AER_MIXHT.
+2016-08-14  Don't write PROFILE-related stuff when none requested.
+2016-08-14  New BAT and CSH keywords, useful file now same as AERMOD's.
+2016-09-15  Updated Useful file based on discussions with SCICHEM authors.
+2016-09-30  MMIFv3.3rc3 released.
+
+2016-10-10  Add flush() calls for easier re-starts.
+2016-12-08  Added range checks to ORIGIN keyword values when reading mmif.inp.
+2016-12-08  Allow all projections to specify origin; required for Mercator.
+2016-12-09  MMIFv3.3 released.
+
+2017-01-24  Bug fix: cenlat,cenlon should be origlat,origlon. Only affects
+	    CALPUFF and SCICHEM modes. Introduced in MMIFv3.3.
+2017-02-16  Set default values for tlat1,tlat2 to support EM projections.
+2017-06-20  New outputs: BLN, BNA, or KML of WRF and sub-domains, DAT
+	    (or in KML) of requested points.
+2017-06-20  Write a terr.lvl file with the CALMET terrain.
+2017-06-23  Added LAI to MEDOC file, to support SCICHEM 3.2.
+2017-09-22  Added beg/end timestamps and run-length to calpuff useful file.
+2018-02-07  Increased significant figures for DGRIDKM to support <1km grids.
+2018-04-03  Added units to the MEDOC file for SCICHEM, supported by SCICHEM 3.2.
+2018-05-02  Changed AER_MIN_SPEED from 0.5 to 0.0 m/s: revised MMIF guidance.
+2018-05-04  Turned on STABLEBL ADJ_U* by default.
+2018-07-17  Added detection of skipped/missing hours in MMIF output,
+	    which can happen when there's a gap in WRF data.
+2018-07-18  MMIFv3.4 released.
+
+2018-11-24  Bug fix: cenlat,cenlon should be origlat,origlon in read_mm5.f90.
+2018-12-21  Lon values in KML file did not have enough sig figs for lat<0.
+2018-12-26  New keyword: CC (cloud cover) data source.
+2018-12-26  Read WRF's CLDFRA output for use in cloud cover output.
+2019-03-11  Bug fix: remove extra spaces in lat-lon strings in QAPLOT KML files.
+2019-03-11  MMIFv3.4.1 released.
+
+2019-09-05  Added "UAWINDOW -6 6 " keyword for AERMOD mode. At high latitudes, 
+            the morning sounding falls outside the default "UAWINDOW -1 1" so  
+	    no convective mixing heights were being calculated by AERMET. Only
+	    affects "aer_mixht AERMET" modes. 
+2019-11-08  Added reading CLDFRA, if it exists in MM5 files.
+2019-11-08  Bug fix: some older versions of WRF don't have CLDFRA, so test
+	    and skip if it's not found. Error if CLOUDCOVER WRF has been chosen.
+2020-03-02  Bug fix: lat's for points in KML output formatted incorrectly.
+2020-04-17  Change Bowen ratio calculation to use day-time hours only. It was
+            using all hours, which conflicts with the AERMET User Guide.
+2020-07-09  Use lowest layer instead of U10, V10 if Z(1) < 13, to match the
+            methodology when running in AERMET mode.
+2020-10-17  Add ALPHA options to use TSKY in AERMET mode, and BULKRN option.
+2020-11-30  Changed format statement for ASCII MEDOC files to avoid rounding
+            roughness length values to 0.0000 (impossible value).
+2020-12-15  When using MMIF’s re-diagnosis of the mixing height, use temporal 
+            smoothing – the same as AERMET does.
+2021-06-24  Add ability to use WRF's hybrid vertical coordinate.
+2021-09-30  Added capability to create inputs for AERMET 22112 and later, including
+            additional variables required for overwater processing.
+2023-10-30  Added additional variables for overwater processing in ONSITE file 
+            needed for COARE algorithms in AERMET

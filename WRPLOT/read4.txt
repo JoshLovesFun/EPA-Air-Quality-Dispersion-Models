@@ -1,0 +1,41 @@
+                    TUTORIAL PACKAGE FOR THE WRPLOT PROGRAM
+
+                                   READ.TXT
+
+     The WRPLOT tutorial files are part of the "Instructional Package on
+Regulatory Air Quality Modeling - Part II:  Tutorials for Five PC-Based Air
+Quality Models and Two Utility Programs," EPA-454/C-92-003.  It contains
+instructional materials for the WRPLOT program.
+
+     The WRPLOT tutorial contains the following files:
+
+     (1) INSTALL.EXE - WRPLOT model and demonstration (self-extracting)
+     (2) 13722-84.ZIP - Meteorological data for RDU, NC
+     (3) 13722-85.ZIP - Meteorological data for RDU, NC
+     (4) 13722-86.ZIP - Meteorological data for RDU, NC
+     (5) 13722-87.ZIP - Meteorological data for RDU, NC
+     (6) 13722-88.ZIP - Meteorological data for RDU, NC
+     (7) 13722-89.ZIP - Meteorological data for RDU, NC
+     (8) WRPLTTUT.ZIP - Tutorial documentation in WP51
+     (9) READ.TXT - Instructions on WRPLOT tutorial.
+
+     In order to execute the WRPLOT tutorial, all of the files listed above
+must be downloaded and stored in the same DOS directory (i.e., C:\WRPLOT)
+on your PC.
+
+     All files with a "ZIP" extention name must then be unzipped (dearchived)
+using the unzip program available for downloading from the System Utilities
+menu of the TTN.  The unzip program "PKUNZIP.EXE" must also be stored in the
+same DOS directory with the tutorial ZIP files.  Simply type PKUNZIP followed
+by a space and the name of the ZIP file and the files included in the ZIP will
+be generaged in your DOS directory.  After dearchiving all of the above files,
+type WRPLOT to invoke the WRPLOT demonstration.
+
+     Files with the "WPF" extention name are in WordPerfect format and must
+be imported into your WordPerfect word processor.  The original documentation
+was formatted for an HP LaserJet II series printer.  The pagination of your
+printed file may differ due to variations in printer and font types.
+
+     Any questions or comments concerning the WRPLOT tutorial may be directed
+to Dennis Atkinson, U.S. EPA, MD-14, Research Triangle Park, N.C.  27711
+or call (919) 541-0518.  

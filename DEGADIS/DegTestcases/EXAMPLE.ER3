@@ -1,0 +1,30 @@
+! This is an example for an "ER3" run parameter file.
+! The same rules apply as for the "ER1" files.
+!
+!23456789012345678901234567890
+!--------1---------2---------3
+!
+! These values are in common area /ERROR/
+!
+ERT1       20.       FIRST SORT TIME
+ERDT       5.        SORT TIME DELTA
+ERNTIM     20.       NUMBER OF TIMES FOR THE SORT
+!
+!    Note: ERNTIM is entered as a real variable even though 
+!           it is an integer type variable in the program.
+!
+!  The value of CHECK5 determines whether the above sort parameters
+!     are used.  CHECK5 is initialized through the passed transfer
+!     files to .FALSE.  CHECK5 is set to .TRUE. if a real value of 1.
+!     is passed in this file.
+!
+CHECK5       0.       USE THE DEFAULT TIME PARAMETERS
+!CHECK5      1.       USE THE TIME PARAMETERS GIVEN ABOVE
+!
+!
+sigx_flag    1.       correction for x-direction dispersion is to be made
+!sigx_flag    0.       no correction for x-direction dispersion
+!
+!
+!
+! End-of-File

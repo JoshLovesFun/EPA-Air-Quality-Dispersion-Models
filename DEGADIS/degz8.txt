@@ -1,0 +1,36 @@
+                         Model Change Bulletin
+
+                                 MCB#8                  9/16/12
+
+                       DEGADIS 2.1 (dated 12260)
+
+
+This Model Change Bulletin is to announce some minor changes
+to the DEGADIS 2.1 model.  The changes implemented through this MCB here 
+did not change the model computations in any way.  These changes are 
+as follows:
+
+     1)  Update of the operating system calls to be compatible with the
+         Intel Visual Fortran Compiler XE.
+
+     2)  Development of files to compile and link the code using the
+         standard utility NMAKE.
+     
+     3)  Elimination of computer system calls through the source code.
+     
+     4)  Elimination of the use of the Interface statement and C programming
+         language based code.
+         
+     5)  Improved file handling to eliminate file-not-found errors.    
+     
+     6)  Revision of the batch files for running the jet/plume model 
+         to avoid file-not-found messages for some cases.
+         
+     7)  Enhancements to the Batch test case files.    
+
+Problems, questions, or comments concerning DEGADIS 2.1 should be sent
+through our SCRAM website "Contact Us" link or to the original developer, 
+Dr. Tom Spicer, University of Arkansas (tos@uark.edu).
+
+Special thanks to Thomas Baker for his checking over the DEGADIS package 
+and for his very good suggestions.

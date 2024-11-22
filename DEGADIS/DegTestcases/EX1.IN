@@ -1,0 +1,23 @@
+Methylisocyanate (MIC) release simulation
+
+
+
+2.9  10.                               U0, Z0
+0.1                                    ZR
+1  6   0.                              INDVEL, ISTAB, RML
+298.  1.  50.                          TAMB, PAMB, RELHUM
+298.                                   TSURF
+MIC                                    GASNAM
+57.                                    GASMW
+3600.                                  AVTIME - based on 1 hr toxic levels
+298.                                   TEMJET
+0.00003   0.00002  0.5                 GASULC, GASLLC, ZLL
+0  2000.  0.                           INDHT,  CPK, CPP
+-1                                     NDEN
+6.72                                   ERATE
+33. 0.2                                ELEJET, DIAJET
+0.0                                    TEND
+100.                                   DISTMX
+
+This is the end of the file.  Any comments can be included here since the
+file is not read after the line for DISTMX above.

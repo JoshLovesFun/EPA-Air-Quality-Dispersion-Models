@@ -1,0 +1,8 @@
+c..........................................................
+c
+c	declarations for DEGADIS4
+c
+	include 'DEG3.prm'
+c
+	parameter (ndos=10)
+c

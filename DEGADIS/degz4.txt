@@ -1,0 +1,40 @@
+                     Model Change Bulletin
+
+                            MCB#4                 9/14/90
+
+                   DEGADIS 2.1 (dated 90257)
+
+
+
+     This Model Change Bulletin announces corrections in the
+source code for the subprograms JETPLU_IN.FOR and RKGST.FOR in
+DEGADIS 2.1.  The corrections (1) allow for the input of a user-
+specified Monin-Obukhov length through the jet/plume initiation
+of the model, and (2) correct an error which would cause the
+integration method to incorrectly appear to fail.  Only these two
+subprograms have been changed.
+
+     In the subprogram JETPLU_IN.FOR, the ".or." in line 214 has
+been changed to ".and." as follows:
+
+       if( indvel.ne.1 .and. indvel.ne.2) indvel = 1
+
+     In the subprogram RKGST.FOR, lines 381 to the end have been
+changed as follows:
+
+       GOTO 389
+ 370   IHLF=12
+       GOTO 389
+ 380   IHLF=13
+ 389   CALL FCT(X,Y,DERY,PRMT)
+       CALL OUTP(X,Y,DERY,IHLF,NDIM,PRMT)
+       RETURN
+ 390   CALL FCT(X,Y,DERY,PRMT)
+       CALL OUTP(X,Y,DERY,IHLF,NDIM,PRMT)
+ 400   IHLF=0
+       RETURN
+       END
+
+     Numerical results from the model execution remain unchanged
+by these corrections.
+

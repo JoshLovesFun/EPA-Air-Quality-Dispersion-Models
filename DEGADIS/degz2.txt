@@ -1,0 +1,92 @@
+                     Model Change Bulletin
+
+                            MCB#2                 6/11/90
+
+                   DEGADIS 2.1 (dated 90162)
+
+
+
+     This Model Change Bulletin documents changes made to the
+DEGADIS 2.1 model FORTRAN source code since its installation on
+the SCRAM bulletin board in January of 1990.  The new source code
+will become available on the bulletin board on the date of this
+notice, replacing the previous version dated 90012.
+
+     This bulletin also announces the availability of "User's
+Guide for the DEGADIS 2.1 Dense Gas Dispersion Model" through the
+National Technical Information Service under the order number
+PB90-213893.  It should be noted that the specific code changes
+outlined in this Model Change Bulletin will not be included in
+the code listing contained in that document.
+
+     The specific changes incorporated into DEGADIS 2.1 date
+90162 are as follows:
+
+     1.  The program JETPLU has been modified so that maximum
+concentration and plume centerline elevation as a function of
+downwind distance are printed in the output.  Infinite values of
+the Monin-Obukhov length are appropriately labeled (versus equal
+to zero in the previous version).
+
+     2.  The SURFACE program has been modified to allow for zero
+windspeed simulations.
+
+     3.  A coding error in ZBRENT has been corrected.
+
+     4.  The PSS program has been extended to allow for lengthier
+searches for the variable value of SZ before stopping.
+
+     5.  The size of input arrays to the program DEGADISIN has
+been increased from 30 to 42 by increasing the value of IGEN in
+DEGADISIN.DEC from 30 to 42.
+
+     6.  Initial and maximum integration step sizes have been
+increased in the parameter file EXAMPLE.ER2.
+
+     7.  Convergence criteria have been altered in the program
+TPROP.
+
+     8.  The computational method in the SERIES program has been
+improved.
+
+     9.  The convergence criteria in the ALPH program has been
+changed.
+
+     10. The initial specification of SY and SZ for transient
+releases in the program SSSUP has been changed.
+
+     11. The method of solving for b=0 in the programs PSSOUT and
+PSSOUTSS has been improved.
+
+     12. The output format for SRTOUT has been changed.
+ 
+     As a reminder, the DEGADIS 2.1 model code available from
+this bulletin board is a FORTRAN source code intended for
+compilation and execution on a VAX computer using the VMS
+operating system.  This code is not intended for use
+on an IBM PC or clone.  A PC version is currently under
+development and will be provided through this bulletin board when
+it is cleared for public access.
+
+     After the source code programs have been dearchived, the
+file AAREADME.TXT should be consulted for information concerning
+the transfer and compilation of that code on a VAX machine. 
+Included with the source code are two example input files (EX1.IN
+and EX2.IN) and their associated output files (EX1.OPT and
+EX2.OPT), which may be used to test the code after compilation.
+
+     This model will henceforth be identified by its name and a 
+julian date, i.e.: DEGADIS 2.1 (90162). Future changes to this 
+model will be identified by an updated julian date found on the 
+first line of the model source code and followed by a reference 
+to a SCRAM BBS Model Change Bulletin (MCB#n) which will explain 
+the nature and contents of the changes. All Model Change 
+Bulletins for this model will always be available for back 
+reference on this BBS. In the future, notification of changes 
+(MCBs) to this model will be made in the SCRAM ALERTS section 
+of this BBS immediately following the LOGON procedure. 
+ 
+      The source code for this model has been compiled and tested
+on a VAX 8650 computer.  Watch SCRAM ALERTS for notification 
+of new MCBs about DEGADIS 2.1.    
+

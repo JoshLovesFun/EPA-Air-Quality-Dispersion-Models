@@ -1,0 +1,13 @@
+C..........................................................
+C
+C
+C	DIMENSIONS/DECLARATIONS for DEGADIS2
+C
+	include 'DEG1.prm'
+C
+C   MAXNOB IS THE MAXIMUM NUMBER OF OBSERVERS ALLOWED.
+C
+	parameter(	maxnob = 50,
+     .			RT2= 1.41 421 3562D0,	! sqrt(2.0)
+     .			sqpio2= 1.25 331 4137D0)	! sqrt(pi/2.)
+C

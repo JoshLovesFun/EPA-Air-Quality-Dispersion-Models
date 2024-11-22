@@ -1,0 +1,23 @@
+                     Model Change Bulletin
+
+                            MCB#3                 6/29/90
+
+                   DEGADIS 2.1 (dated 90180)
+
+
+
+     This Model Change Bulletin announces corrections in the
+source code for the subprograms TUPF.FOR, TPROP.FOR,
+DEGBRIDGE.FOR, and LIMIT.FOR in DEGADIS 2.1.  The corrections in
+TIPF.FOR allow for a more robust treatment of large releases
+under low wind speed conditions.  The corrections in TPROP.FOR
+allow for a more consistent treatment of the variables "tmin0",
+"tmax0", and "iwtfl".  The corrections in DEGBRIDGE.FOR effect a
+consistent treatment of the cloud thermodynamic properties in the
+JETPLU portion of the model and the DEGADIS portion of the model.
+
+     The corrections have been made possible through observations
+made by the users of this SCRAM bulletin board system.  If you
+have additional questions or comments about the DEGADIS 2.1
+model, please leave a message on the bulletin board for Dave
+Guinnup.

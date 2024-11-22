@@ -1,0 +1,25 @@
+Enid, Oklahoma ammonia pipeline release simulation
+
+
+
+4.5  10.                              U0, Z0
+0.01                                  ZR
+1  4   0.                             INDVEL, ISTAB, RML
+298.  0.98  50.                       TAMB, PAMB, RELHUM
+298.                                  TSURF
+NH3                                   GASNAM
+17.                                   GASMW
+3600.                                 AVTIME - to compare with vegitation damage
+298.                                  TEMJET
+0.001  0.0001  0.                     GASULC, GASLLC, ZLL
+0  3845.000  1.000000                 INDHT,  CPK, CPP
+ 2                                    NDEN
+  0.0000000E+00     0.0000000E+00      1.153908    
+   1.000000          4.149494          4.149494    
+56.                                   ERATE
+0.0 0.2                               ELEJET, DIAJET
+0.0                                   TEND
+20.                                   DISTMX
+
+This is the end of the file.  Any comments can be included here since the
+file is not read after the line for DISTMX above.

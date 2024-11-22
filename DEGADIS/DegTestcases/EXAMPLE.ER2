@@ -1,0 +1,47 @@
+! This is an example for an "ER2" run parameter file.
+! The same rules apply as for the "ER1" files.
+!
+!23456789012345678901234567890
+!--------1---------2---------3
+!
+! These values are in common area /ERROR/
+!
+SY0ER       0.0      SSSUP - RKGST - INITIAL SY
+ERRO        0.003    SSSUP - RKGST(OBS) - ERROR BOUND
+SZ0ER       0.00001  SSSUP - RKGST(OBS) - INITIAL SZ
+WTAIO       1.0      SSSUP - RKGST(OBS) - WEIGHT FOR AI
+WTQOO       1.0      SSSUP - RKGST(OBS) - WEIGHT FOR Q
+WTSZO       1.0      SSSUP - RKGST(OBS) - WEIGHT FOR SZ
+ERRP        0.003    SSSUP - RKGST(PSS) - ERROR BOUND
+SMXP        80.      SSSUP - RKGST(PSS) - MAXIMUM STEP
+WTSZP       1.0      SSSUP - RKGST(PSS) - WEIGHT FOR SZ
+WTSYP       1.0      SSSUP - RKGST(PSS) - WEIGHT FOR SY
+WTBEP       1.0      SSSUP - RKGST(PSS) - WEIGHT FOR BEFF
+WTDH        1.0      SSSUP - RKGST(PSS) - WEIGHT FOR DH
+ERRG        0.003    SSSUP - RKGST(SSG) - ERROR BOUND
+SMXG        120.     SSSUP - RKGST(SSG) - MAXIMUM STEP SIZE
+ERTDNF      0.0005   TDNF - CONVERGENCE CRITERION
+ERTUPF      0.0005   TUPF - CONVERGENCE CRITERION
+WTRUH       1.0      SSSUP - RKGST(SSG) - WEIGHT FOR RUH
+WTDHG       1.0      SSSUP - RKGST(SSG) - WEIGHT FOR DH
+!
+! These values are in common area /STP/
+!
+STPO        0.05     SSSUP - RKGST(OBS) - INITIAL STEP
+STPP        0.05     SSSUP - RKGST(PSS) - INITIAL STEP
+ODLP        0.06     SSSUP - RKGST(PSS) - RELATIVE OUTPUT DELTA
+ODLLP       80.      SSSUP-RKGST(PSS)-MAXIMUM DISTANCE BETWEEN OUTPUTS(m)
+STPG        60.0     SSSUP - RKGST(SSG) - INITIAL STEP
+ODLG        0.045    SSSUP - RKGST(SSG) - RELATIVE OUTPUT DELTA
+ODLLG       80.      SSSUP-RKGST(SSG)-MAXIMUM DISTANCE BETWEEN OUTPUTS(m)
+!
+! The last variable NOBS is in /CNOBS/
+!
+! Note: it is read in as a real value even though it is integer type
+!     in the program.
+!
+NOBS        30.
+!
+!
+!
+! End-of-File

@@ -1,0 +1,79 @@
+!This is an example of how to set up and use the run parameter
+! input files.  Comment lines start with an exclamation mark(!)
+! in the first column.  The only restrictions for data input are
+! as follows:
+!		1) The data must be entered in the same order
+!			all of the time.
+!		2) Only the number can be between columns 10 and 20.
+!		3) Always include the decimal point in the number
+!
+! Column layout:
+!23456789012345678901234567890
+!--------1---------2---------3
+!        I         I
+STPIN      0.01      MAIN - RKGST - INITIAL STEP SIZE
+ERBND      0.0025    MAIN - RKGST - ERROR BOUND
+WTRG        1.       MAIN - RKGST - WEIGHT FOR RG
+WTTM        1.       MAIN - RKGST - WEIGHT FOR Total Mass
+WTYA        1.       MAIN - RKGST - WEIGHT FOR ya
+WTYC        1.       MAIN - RKGST - WEIGHT FOR yc
+WTEB        1.       MAIN - RKGST - WEIGHT FOR Energy Balance
+WTmB        1.       MAIN - RKGST - WEIGHT FOR Momentum Balance
+XLI        0.05      ALPH - LOWER LIMIT OF SEARCH FOR ALPHA
+XRI        0.50      ALPH - UPPER LIMIT OF SEARCH FOR ALPHA
+EPS        0.00001   ALPH - convergence criteria USED BY "ZBRENT"
+ZLOW       0.01      ALPHI - maximum BOTTOM HEIGHT FOR FIT OF ALPHA
+!
+STPINZ     -0.1      ALPHI - INITIAL RKGST STEP <0.
+!
+ERBNDZ     0.005     ALPHI - ERROR BOUND FOR RKGST
+!
+!
+!  Note that comment lines can be mixed with the numbers.
+!
+SRCOER     0.007     SRC1O - OUTPUT Error criterion
+SRCSS       5.2      SRC1O - min time for Steady; STPMX
+SRCcut     .00001    SRC1O - min height for blanket
+ERNOBL     1.0005    NOBL - CONVERGENCE ratio
+NOBLPT     100.      NOBL - NUMBER OF POINTS
+!                       USED ON THE LAST PORTION OF THE SOURCE
+!
+crfger     0.008     error criterion in building GEN3 vectors
+!
+epsilon    0.59      epsilon USED IN AIR ENTRAINMENT SPECIFICATION
+!
+! /SPRD_CON/
+!
+ce         1.15      constant in gravity slumping equation
+delrhomin  0.0       stop cloud spread if delrho<delrhomin
+!
+!
+! /SZFC/
+!
+szstp0     0.01      SZF - Initial step size
+szerr      0.001     SZF - Error criterion
+szsz0      0.01      SZF - Initial Value of dellay*Ueff*Heff
+!
+!
+!	/ALPHcom/
+!
+ialpfl     1.        ALPHI - calculation flag; 0) alpha=alpco; 1)1/(1+z); 2)1
+alpco      0.2       ALPHI - Value for alpha if IALPFL = 0
+!
+!
+!	/PHIcom/
+!
+iphifl     3.        PHIF - calc flag
+dellay     2.15      Ratio of Hl/Heff
+!
+!
+!
+!	/VUcom/
+!
+vua        1.3       Constant Av in source model
+vub        1.2       Constant Bv in source model
+vuc        20.0      Constant Ev in source model
+vud        .64       Constant Dv in source model
+vudelta    0.20      Constant DELTAv in source model
+!
+! End-of-File

@@ -1,0 +1,8 @@
+Gas |  Description  | GASMW  | GASTEM | GASRHO |  CPK   |  CPP   | GASULC | GASLLC | GASZZC |
+NH3 | Ammonia vapor |  17.   |        |        |        |        |  .02   |  .002  |   1.6  |
+CL2 | Chlorine      |  70.91 |  238.7 | 3.672  | 484.2  |  1.0   | 10.E-6 | 3.E-6  |  1.6   |
+LNG | Methane       | 16.04  | 111.7  | 1.792  | 5.6e-8 |  5.00  |  0.15  |  0.05  |  0.5   |
+NO2 | NO2           |   46.  |        |        |        |        |1000.E-6| 500.E-6|  1.6   |
+N2O | N2O4          |  92.   |        |        |        |        | 500.E-6| 250.E-6|  1.6   |
+LPG | Propane       | 44.09  | 231.   | 2.400  | 15.4   | 2.25   |  0.10  |  0.02  |  0.5   |
+PH  | phosgene      | 98.92  |        |        |        |        | 20.E-6 | 0.1E-6 |

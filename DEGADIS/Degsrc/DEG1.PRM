@@ -1,0 +1,15 @@
+C..........................................................
+C
+C
+C	DIMENSIONS/DECLARATIONS for DEGADIS1
+C
+	include 'DEGIN.prm'
+c
+c  maxl is the length of the /GEN3/ output vectors
+c
+	parameter (	lunlog= 6,
+     .			sqrtpi= 1.77 245 3851D0,		! sqrt(pi)
+     .			maxl= 650,
+     .			maxl2= 2*maxl,
+     .			iousrc= 13)
+C

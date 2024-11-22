@@ -1,0 +1,16 @@
+C.............................................................
+C
+c	declarations for DEGADISIN
+C
+C
+	parameter( igen= 42)   ! dimension of /gen1/ and /gen2/
+	parameter( pi= 3.14 159 265 358D0)
+	parameter( wma= 28.96D0)	! molecular weight of air
+	parameter( wmw = 18.02D0)	! molecular weight of water
+	parameter( cpa = 1006.3D0)	! heat capacity of air, J/kg K
+	parameter( cpw = 1865.D0)	! heat capacity of water vapor, J/kg K
+	parameter( rhowl = 1000.D0)	! liquid water density, kg/m**3
+	parameter( dhvap = 2.5023D6)	! H2O latent heat of vaporization, J/kg
+	parameter( dhfus = 0.33D6)	! water latent heat of fusion, J/kg
+	parameter( rgas = 0.08205D0)	! gas constant, atm m**3/kmol/K
+c

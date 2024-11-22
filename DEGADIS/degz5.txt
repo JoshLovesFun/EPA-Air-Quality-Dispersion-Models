@@ -1,0 +1,71 @@
+                      Model Change Bulletin
+
+                            MCB#5                 12/21/90
+
+                   DEGADIS 2.1 (dated 90355)
+
+
+
+     This Model Change Bulletin is to announce that a new version
+of DEGADIS 2.1 has been installed on the SCRAM Bulletin Board. 
+This version represents the culmination of several long-term
+projects which have been independently funded by the American
+Petroleum Institute, the Gas Research Institute, and the
+Environmental Protection Agency.  The model package combines the
+best features of each of these efforts to result in a unified
+version of DEGADIS 2.1 which can be operated on either a personal
+computer (IBM-PC or equivalent) or a VAX computer.  The model
+development work was performed by the original DEGADIS authors, Tom
+Spicer and Jerry Havens of the University of Arkansas.
+
+     In addition to incorporating all of the features of the
+previous VAX version, this version allows user interaction to
+develop model inputs as well as batch model operation through the
+use of previously-developed input files.  A few minor changes have
+been made to the model in the past several months, mostly as a
+result of feedback from SCRAM users.  These changes have generally
+been associated with making the model more widely applicable, and
+have not significantly changed the model predictions.  The current
+version produces results which are numerically consistent between
+the VAX and the PC (within computer roundoff), and which are
+consistent with the previous VAX version.  
+
+     Since this version operates in both VAX and IBM-PC computing
+environments, it replaces completely the previous version of
+DEGADIS 2.1 available on SCRAM.  The user's guide released by EPA
+in early 1990 (NTIS PB90-213893) is still the official user's
+guide, and supplemental information on installation and PC
+operation is available in a text file named README.DOC which is
+included in the modeling package.  In addition, documentation
+will shortly be available through the American Petroleum Institute
+detailing PC-specific features, and documentation is available
+through the Gas Research Institute detailing the model's use in
+simulating the dispersion of spills of liquefied natural gas.
+
+      The DEGADIS 2.1 model code available from this bulletin board
+is a FORTRAN source code intended for compilation and execution on
+either a VAX computer using the VMS operating system or an IBM-PC
+using the DOS operating system.
+
+     After the source code programs have been dearchived, the file
+README.DOC should be consulted for information concerning the
+compilation of that code in the selected computing environment. 
+Included with the source code are three example input files
+(EX1.IN, EX2.IN and EX3.IN) and their associated output files
+(EX1.OPT, EX2.OPT, and EX3.OPT), which may be used to test the code
+after compilation.
+
+      The source code for this model has been compiled and tested
+on a VAX 8650 computer and on an IBM-PC using the Microsoft FORTRAN
+compiler (math coprocessor optional).
+
+     Watch SCRAM ALERTS for notification of new MCBs about DEGADIS
+2.1.  
+
+     All SCRAM users with an interest in dense gas dispersion
+modeling are encouraged to download the new model package and give
+it a trial run.  You should find it much more user-friendly than
+the previous versions.  Problems, questions, or comments concerning
+the new package of DEGADIS 2.1 may be referred to Dave Guinnup at
+(919) 541-5368 or FTS 629-5368.
+

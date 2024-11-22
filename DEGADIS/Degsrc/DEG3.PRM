@@ -1,0 +1,9 @@
+c..........................................................
+c
+c	declarations for DEGADIS3
+c
+	include 'DEG2.prm'
+c
+	parameter (	maxnt=40,
+     .			maxtnob=maxnt*maxnob)
+c

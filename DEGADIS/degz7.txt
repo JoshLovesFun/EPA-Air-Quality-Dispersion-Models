@@ -1,0 +1,33 @@
+                      Model Change Bulletin
+
+                            MCB#7                  9/16/92
+
+                   DEGADIS 2.1 (dated 92260)
+
+
+
+     This Model Change Bulletin is to announce some minor changes
+to the DEGADIS 2.1 model.  These changes are as follows:
+
+     1)  The subroutine PSS.FOR has been modified to correct the
+apparent failure of some valid transient simulations.
+
+     2)  The output for transient jet/plume cases has been
+corrected to list the appropriate downwind distances.
+
+     3)  A correction has been made to enable simulations with
+initial mass of diluted contaminant over the source.
+
+     4)  Some clarifications have been made to the output.
+
+     5)  The input method for diluted sources was clarified to
+reduce the potential for user input error.
+
+     The README.DOC file has been altered to include the above
+information.
+
+     Watch SCRAM ALERTS for notification of new MCBs about DEGADIS
+2.1.  
+
+     Problems, questions, or comments concerning DEGADIS 2.1
+may be referred to Dave Guinnup at (919) 541-5368 or FTS 629-5368.

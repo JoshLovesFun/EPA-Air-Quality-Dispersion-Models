@@ -1,0 +1,85 @@
+                            WINDROSE
+
+                          Read Me File 
+
+
+      The Windrose program is a PC compatible computer program
+designed to calculate the frequency of occurrence of wind direction
+with different windspeed categories for the purpose of identifying
+prevailing winds for air pollution studies. The program generates
+tables of both the count of the number of entries for each
+windspeed/wind direction category and the percent frequency for
+each wind speed/wind direction category. Totals for each speed
+category and for each wind direction are given below and to the
+right of the main table, respectively. The meteorological data file
+used as input to the program consists of hourly wind direction and
+hourly windspeed values. The user may generate a frequency
+distribution for an entire year or for any set of contiguous months
+within that year. The meteorological data used for the windrose
+analysis are available from the National Climatic Center,
+Asheville, North Carolina. The data are in the CD-144 format and
+are identified by a station number which identifies the National
+Weather Service surface observation station which the data
+represent. This station number is the first five characters in each
+record of the file.
+
+      For the operation of the program the user may choose up to
+six windspeed categories, which are specified in meters per second
+(m\s). If the user chooses zero windspeed categories only a
+'Totals' column showing a frequency distribution by direction will
+be generated. The 36 wind direction categories range from 10 to 360
+degrees in 10 degree increments. The total number of observations
+are calculated and printed as well as the total number and
+percentage of calms. A calm wind is defined as a 'zero' speed and
+a 'zero' direction. If either is zero and the other greater than
+zero an error message will print out and processing will stop.
+
+      In addition to the meteorological data file there is a
+parameter input file that is also required. This file provides the
+program with run identification and information regarding the
+station, time period and wind speed categories being requested. The
+file is comprised of three records as described below:
+
+      Record 1     Title of the run. (up to 80 alpha characters)
+
+      Record 2     Station number               I5
+                   Year                         I2
+                   Beginning month              I2
+                   Ending month                 I2
+                   Number of speed categories   I2
+ 
+      Record 3     Speed Category Limit 1       F5.0
+                   Speed Category Limit 2       F5.0
+                   Speed Category Limit 3       F5.0
+                   Speed Category Limit 4       F5.0
+                   Speed Category Limit 5       F5.0
+
+       Note: The number of speed categories identified in the above
+             Record 2 will always be 1 greater than the number of
+             category limits actually filled in Record 3. Reason
+             being that the last category limit is used to identify
+             the last two categories. An example of four speed   
+             categories with three limits would be:
+ 
+                <1.5     <2.6     <3.8     > or = 3.8
+
+
+
+
+      In order to run the test case for the program all files
+should first be loaded to the users C drive. Subsequently, at the
+prompt type the following and hit 'enter':
+
+             WINDROSE.EXE <TEST.IN SFC.DAT >OUTPUT
+   
+       where the file OUTPUT is the file into which the results of
+       the run will be stored. This file can be printed by entering
+       the following:   TYPE OUTPUT >PRN. This will direct the   
+       output to the printer. This output can be compared with the 
+       included TEST.OUT file which can be printed in the same way.
+
+
+      The program has been compiled with the Microsoft 5.0 FORTRAN
+compiler. For questions regarding the operation of this program
+call Dennis Atkinson at (919) 541-0518.
+

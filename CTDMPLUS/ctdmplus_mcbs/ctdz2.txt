@@ -1,0 +1,363 @@
+
+
+                            Model Change Bulletin              
+              
+                                   MCB#2                         4/04/91
+
+                           CTDMPLUS (dated 91051)
+
+
+     This Model Change Bulletin documents the changes made to the CTDMPLUS 
+model and its associated programs since their original installation as
+CTDMPLUS (dated 90152) on the SCRAM bulletin board.  The list of specific
+changes, divided according to program name, is provided below.  The dates of
+some executable files have changed even though the source code was not
+modified.  This was done to assure that all executables were created using the
+same compiler (Microsoft).
+
+CTDMPLUS: 
+
+1.   In the main program, CTDMPLUS, two of the header lines were changed to
+reflect the new CTDMPLUS julian date and model change bulletin number.  The
+following two lines were changed from:
+
+C                          CTDMPLUS (DATED 90152)                           *
+C             *** SEE CTDMPLUS MODEL CHANGE BULLETIN MCB#1 ***              *
+
+to:
+
+C                          CTDMPLUS (DATED 91051)                           *
+C             *** SEE CTDMPLUS MODEL CHANGE BULLETIN MCB#2 ***              *
+
+
+2.  Three non-consecutive commented lines with asterisks were shortened from:
+    [ Note: The asterisks in the following 3 lines extend outward to the far
+            right hand columns.  To prevent wrap around problems, the far
+            right asterisks were deleted. ]
+
+C****************************************************************************
+C****************************************************************************
+C****************************************************************************
+
+
+to :
+
+C********************************************************************
+C********************************************************************
+C********************************************************************
+
+
+3.  The  initialization of the variable NO was deleted by changing the
+following two lines from:
+
+      INTEGER  YES, NO
+      DATA    YES/1/,NO/0/
+
+to:
+
+      INTEGER  YES
+      DATA    YES/1/
+
+
+4)  In the DAYCALC.FOR subroutine, the following changes were made:
+
+    a) The calculation of the variable DTHETA was corrected to account for
+       subtracting wind directions through 360. The coding was changed from:
+
+       DTHETA = (GETWD(PLTOP) - GETWD(PLBOT))/RISE
+
+to:
+
+C       DTHETA = (GETWD(PLTOP) - GETWD(PLBOT))/RISE
+C      MAKE SURE WD IS MOD360 - DJB 2/1/91
+       DTHETA = GETWD(PLTOP) - GETWD(PLBOT)
+       IF (DTHETA .GT.  180.) DTHETA = DTHETA - 360.
+       IF (DTHETA .LT. -180.) DTHETA = DTHETA + 360.
+       DTHETA = DTHETA/RISE
+
+    b) In the call to WPDF, the variable U, not US, is now passed.
+       The coding was changed from:
+
+     X                 SWPLUS,SWMINUS,US,ZELEV,BOUNCE)
+
+to:
+
+     X                 SWPLUS,SWMINUS,U,ZELEV,BOUNCE)
+
+and from:
+
+     X                  SWPLUS,SWMINUS,US,ZELEV,BOUNCE)
+
+to:
+
+     X                  SWPLUS,SWMINUS,U,ZELEV,BOUNCE)
+
+    c) In the DO 219 loop, I = 1, NRECPT was changed to NR = 1,NRECPT.
+       The coding was changed from:
+
+      DO 219 I = 1,NRECPT
+
+to:
+
+      DO 219 NR = 1,NRECPT
+
+    d) The following lines were indented less by changing them from:
+
+             INDEX = NRHILL(NR)
+             IF(INDEX .GT. 0) THEN
+                 IF(KHILL(INDEX) .EQ. YES) GO TO 230
+             ENDIF
+             XR = RECPT(1,NR)
+             YR = RECPT(2,NR)
+             CALL PSRCE(SND,CSD,IUPW(NR),Y,X,XS,YS,XR,YR)
+             IF(IUPW(NR) .EQ. NO .AND. INDEX .GT. 0) KHILL(INDEX) = YES
+ 230     CONTINUE
+
+to:
+
+           INDEX = NRHILL(NR)
+           IF (INDEX .GT. 0) THEN
+             IF (KHILL(INDEX) .EQ. YES) GO TO 230
+           ENDIF
+           XR = RECPT(1,NR)
+           YR = RECPT(2,NR)
+           CALL PSRCE(SND,CSD,IUPW(NR),Y,X,XS,YS,XR,YR)
+           IF (IUPW(NR) .EQ. NO .AND. INDEX .GT. 0) KHILL(INDEX) = YES
+ 230     CONTINUE
+
+5)  In the SEQMOD.FOR subroutine, the date and time of the hour being modeled
+are written to the screen instead of writing once each day.  The coding was
+changed from:
+
+        IHROUT=IHROUT+1
+        IF(IHROUT/24*24 .EQ. IHROUT) WRITE(0,9500) IHROUT/24
+
+to:
+
+C        IHROUT=IHROUT+1
+C        IF(IHROUT/24*24 .EQ. IHROUT) WRITE(0,9500) IHROUT/24
+C -- WRITE DATE EACH HOUR ---- DJB 2/6/91
+         WRITE(0,9502) KYR,KMO,KDY,KHR
+
+
+6)  The subroutines LIFTIN.FOR, PATH.FOR, and SEQMOD.FOR were modified so
+that, if an 'endless loop in path' error occurs, concentrations are set to 
+-999 for the hour, an error message is written to the CTDM.OUT file and the 
+screen, and calculations continue with the next hour. An additional variable, 
+ILOOP, is now passed in the call to PATH.
+
+    a)  In LIFTIN.FOR, the following changes were made:
+
+        1) The following three lines were added just prior to the comment line
+           as shown below:
+
+C  INITIALIZE IFLOW--DJB 2/11/91
+      IFLOW = 0
+
+C  ANGLE (CCW) FROM THE X-AXIS (ALONG FLOW) TO THE MINOR AXIS OF THE
+
+        2) ILOOP was added to the call to PATH along with the additional
+           coding:
+
+            CALL PATH(THM,TLM,TUM,XM,YSEPL,HS,ALF,FR,ILOOP)
+
+C           IF ENDLESS LOOP IN PATH, DO NOT MODEL THIS HOUR
+            IF (ILOOP .EQ. 1) THEN
+              IFLOW = 2
+              RETURN
+            ENDIF
+
+        3) IFLOW was commented out as shown:
+
+C            IFLOW = 0  -- INITIALIZED AT BEGINNING 2/1/91
+
+
+    b) In the subroutine PATH.FOR, the following changes were made:
+
+        1) The variable, ILOOP, was added to the subroutines arguments. The
+           code was changed from:
+
+      SUBROUTINE PATH(TH,TL,TU,X,YI,ZI,ALF,FR)
+
+           to:
+
+      SUBROUTINE PATH(TH,TL,TU,X,YI,ZI,ALF,FR,ILOOP)
+
+        2) The following three lines were added just prior to the comment line
+           shown:
+
+C     INITIALIZE ENDLESS LOOP FLAG
+      ILOOP = 0
+
+C *** SET INITIAL GUESSES FOR Y AND Z
+
+       3) The following line was commented out:
+
+              STOP 'ENDLESS LOOP IN PATH'
+
+          as shown below and two additional lines were added following the
+          commented line:
+
+C              STOP 'ENDLESS LOOP IN PATH' -- CHANGED 2/11/91 DJB
+            ILOOP = 1
+            RETURN
+
+    c) In the subroutine SEQMOD.FOR, the following changes were made for the
+       occurrance of 'endless loop in path' errors:
+
+        1) This line of code was changed from:
+
+          IF(IFLOW .EQ. 1) GO TO 360
+
+           to:
+
+          IF(IFLOW .GT. 0) GO TO 360
+
+
+        2) from:
+
+C       FLOW ALGORITHM BEYOND DESIGN CRITERIA
+
+           to:
+
+C       FLOW ALGORITHM BEYOND DESIGN CRITERIA OR ENDLESS LOOP IN PATH
+
+
+        3) from:
+
+        WRITE(IOUT,9365) JYR, JMO, JDY, KJCD, JHR
+
+           to:
+
+        IF (IFLOW .EQ. 1) WRITE(IOUT,9365) JYR, JMO, JDY, KJCD, JHR
+        IF (IFLOW .EQ. 2) THEN
+          WRITE(IOUT,9366) NS,NHL,JYR,JMO,JDY,KJCD,JHR
+          WRITE(0,9366) NS,NHL,JYR,JMO,JDY,KJCD,JHR
+        ENDIF
+
+        4) from:
+
+9375    FORMAT(/' WIND SPEED LT 1 M/S, NO PREDICTIONS THIS HOUR',
+
+           to:
+
+9366    FORMAT(/' ENDLESS LOOP IN PATH; STACK ',I2,' HILL ',I2,
+     *  /' NO PREDICTIONS: YEAR = ',
+     *  I2,'  MONTH = ',I2,'  DAY = ',I2,'  JCD = ',I3,'  HOUR = ',I2/)
+9375    FORMAT(/' WIND SPEED LT 1 M/S, NO PREDICTIONS THIS HOUR',
+
+        5) and by adding the following format statement:
+
+9502    FORMAT(' CALCULATING HOUR ',4I3)
+
+
+
+8)  In the subroutine WRITIT.FOR, the TIME array was used as a 6 element array
+instead of a 5 in the section of code that writes in binary format.  It should
+be a 5 element array. The coding was changed from:
+
+          WRITE(IOCONC) (TIME(I),I=1,6), UNITS,CONC
+
+to:
+
+          WRITE(IOCONC) (TIME(I),I=1,5), UNITS,CONC
+
+9)  In the subroutine PAGE.FOR, the following lines were changed:
+
+    1) ILOOP was added to the Subroutine PATH arguments as follows:
+
+      SUBROUTINE PATH(THM,TLM,TUM,XM,YSEPL,HS,ALF,FR,ILOOP)
+
+    2) The CTDMPLUS julian date was updated to reflect the model update. The 
+       coding was changed from:
+
+6010   FORMAT('1','CTDMPLUS Dated(90152)',T72,'PAGE',1X,I3/)
+
+to:
+
+6010   FORMAT('1','CTDMPLUS Dated(91051)',T72,'PAGE',1X,I3/)
+6020   FORMAT(' ',20A4/)
+
+    3) The following code was indented further by changing the code from:
+
+C      DEFINE ARGUMENTS
+        INTEGER         IFLAG
+C      DEFINE LOCAL VARAIBLES
+        INTEGER         YES
+        DATA YES/ 1/
+
+to:
+
+C       DEFINE ARGUMENTS
+         INTEGER         IFLAG
+C       DEFINE LOCAL VARIABLES
+         INTEGER         YES
+        DATA YES/ 1/
+
+
+METPRO:
+
+1)  In the main program, the use of the variable HT in the calculation of 
+PTEMP was corrected.  Note: To prevent wrap around problems on 80 column long
+lines of code, the sequence identifiers in columns 73 to 80 were shortened by
+changing the first four characters from MET0 to MT.  To reproduce this revised
+code faithfully, the MT should be converted back to MET0.
+
+   a) the variable VONK was dropped from the following REAL statement:
+
+        REAL WD(24),RN,RHOCP,QR,THSTAR                                 MT0770
+
+
+   b) The use of the variable HT in the calculation of PTEMP was corrected by
+      changing the following lines of code from:
+
+        DO 160 ILEV=1,NLEV                                             MT4860
+        PTMP(ILEV)=TMP(ILEV)*(1000./PRS(ILEV))**0.285714               MT4870
+        HT(ILEV)=HT(ILEV)-HT(1)                                        MT4880
+160     CONTINUE                                                       MT4890
+
+      to:
+
+        BASEHT = HT(1)
+        DO 160 ILEV=1,NLEV                                             MT4860
+        PTMP(ILEV)=TMP(ILEV)*(1000./PRS(ILEV))**0.285714               MT4870
+C        HT(ILEV)=HT(ILEV)-HT(1)  -- CHANGED 2/6/91 DJB                MT4880
+        HT(ILEV)=HT(ILEV)-BASEHT
+160     CONTINUE                                                       MT4890
+
+
+
+DRIVEIT:
+
+1)  The structure of this progam has been changed to an overlay structure and 
+the routines used to draw concentration isopleths were combined into a 
+separate program (called CONDIS). This reduced the size of the memory 
+requirements of DRIVEIT and eliminated an earlier problem with using CHIDIS on
+a VGA system.  Also, the overlay will be loaded into EMS if available.
+
+2)  The restriction of the directories being located on the C drive has been 
+removed.  Path names are now '\CTDM\EXE\' , '\CTDM\FILES\', and 
+'\CTDM\TERRAIN\'.  This should allow for installation on D and E drives of 
+partioned hard disks. 
+
+3)  The format of the field for specifying the lowest critical elevation for 
+use with HCRIT has been corrected.
+
+4)  CTSCREEN can now be run from the menu driver.  This screening mode of 
+CTDMPLUS is available under the Screening Models area of the bulletin board.
+
+
+RECGEN:
+
+1)  A write statement used when a hill has multiple contours at the same level
+has been corrected.
+
+
+     All the CTDMPLUS archival files have been rearchived in the ZIP format. 
+However, to update the current executable and data files, only CTDMP1.ZIP,
+CTDMP2.ZIP,  CTDMP10.ZIP, and CTDMP11.ZIP need to be downloaded, dearchived,
+and copied over the old files.  CTDMP3.ZIP, CTDMP4.ZIP, and CTDMP8.ZIP contain
+new source codes. No revisions were made to the files in CTDMP5.ZIP,
+CTDMP6.ZIP, CTDMP7.ZIP, and CTDMP9.ZIP.  For further details, read the README
+file that is part of CTDMP11.ZIP.
+

@@ -1,0 +1,145 @@
+                       Model Change Bulletin
+
+                               MCB#5                       8/19/93
+
+                       CTDMPLUS (dated 93228)
+
+
+     This Model Change Bulletin is to notify users of changes
+made to correct problems in CTDMPLUS (dated 93076).  The specific
+changes, the problems addressed, and the consequences of the
+changes are summarized below.
+
+     These revisions constitute CTDMPLUS (dated 93228) and
+completely replace CTDMPLUS (dated 93076).  With this bulletin,
+the source codes and executables for CTDMPLUS (dated 93228) are
+being made available for downloading from the Air Quality Models
+area of the File Transfer Section of SCRAM.  CTDMPLUS (dated
+93076) is obsolete and, with this bulletin, will no longer be
+available on SCRAM.  All copies of such should be discarded.
+
+1.  Non-convergence in WPDF
+
+PROBLEM:
+
+      The WPDF subroutine determines the vertical velocity that connects
+the source to the receptor through the terrain-disturbed flow.  Thirty
+iterations are allowed to converge on a value for the vertical velocity.  The
+resulting vertical velocity (wprime) is used in the probability density
+function calculation and the y-coordinate of the position of the streamline is
+used in the calculation of sigma-y.  In CTDMPLUS (dated 93076), when
+convergence was not obtained, the last value of wprime was retained
+correctly.  However, the position was incorrectly reset to the receptor
+location.
+
+SOLUTION:
+
+      In CTDMPLUS (dated 93228), the position that is returned is the
+one corresponding to the last guess for wprime.  For most cases, this coding
+change will have no effect on predicted concentrations.  For cases in which
+the non-convergence occurred, we can not predict the magnitude or the
+direction of changes that could be expected.
+
+SUBROUTINES MODIFIED:
+
+      WPDF.FOR
+
+
+2.  Wind speed used in WPDF subroutine
+
+PROBLEM:
+
+      In CTDMPLUS (dated 93076), the wind speed used in determining the
+vertical velocity needed to connect the source to the receptor through the
+terrain-disturbed flow was set to the wind speed at stack height.  This is
+inconsistent since the wind speed at half the plume height is used in the
+concentration equation.
+
+SOLUTION:
+
+      In CTDMPLUS (dated 93228), the wind speed at half the plume height is
+used for all calculations.  The effect of this change will depend on the wind
+speed profile between stack top and plume height.  This coding change will
+have a greater effect with increased wind shear.
+
+SUBROUTINES MODIFIED:
+      WPDF.FOR, FLOWSP.FOR, DAYCALC.FOR
+
+
+3.  Problem with circular ellipses
+
+PROBLEM:
+
+      In CTDMPLUS (dated 93076), the code for handling the special case of a
+circular ellipse did not account for a value of the variable ARSQ less than
+1.0.
+
+SOLUTION:
+
+      A check for a value of ARSQ greater than 1.0 has been added to
+CTDMPLUS (dated 93228).  For most cases, this change will have no effect.  A
+runtime error would have been reported if this problem had been encountered in
+a particular run.
+
+SUBROUTINES MODIFIED:
+      SEQMOD.FOR
+
+
+4.  New value for IUNSTA switch
+
+        A new value for the IUNSTA switch has been added that allows the
+user to model only unstable hours.  The possible values for this switch are
+now:
+         0 = model only stable hours
+         1 = model both stable and unstable hours
+         2 = model only unstable hours
+
+
+5.  Changes made to the menu driver
+
+      a.  DRIVEIT now deletes any existing output files (e.g. CONC, CTDM.OUT)
+          before a new model run begins.
+
+      b.  The error handling associated with running CTDMPLUS has been
+          improved.  In addition to the detection of runtime errors that
+          was a part of the last version, DRIVEIT now indicates when
+          non-runtime errors (e.g.  lowest contour above base elevation) occur
+          and refers you to the CTDM.OUT file for more information.
+
+6.  Changes to RECGEN
+
+      In some cases (especially multiple contours), RECGEN did not correctly
+repaint the screen when the F2 key was pressed.  This has been corrected.
+
+
+7.   Contacts for Questions (NO CHANGE)
+
+     Questions related to the use of CTDMPLUS in specific
+regulatory applications should be directed to the appropriate
+regulatory agency or Regional Modeling Contact (see State/Local
+Modeling Contacts in the Agency Communications Section of SCRAM).
+
+     Generic questions related to the use and regulatory
+applicability of the model should be directed to Desmond Bailey
+via SCRAM EMAIL or phone (919) 541-5248.
+
+     Questions or problems related to program execution should be
+reported to Donna Schwede via SCRAM EMAIL or phone (919) 541-3255
+or to Steve Perry phone (919) 541-1341.
+
+     Users who would like to share comments, suggestions, or
+helpful hints are encouraged to use the Model Conferencing area
+on the SCRAM Bulletin Board (see Model Conferencing area in the
+Public Communications Section of SCRAM).
+
+
+     Technical correspondence should be directed to:
+
+     Ms. Donna Schwede or
+     Dr. Steven Perry
+     Applied Modeling Research Branch
+     ACMD/AREAL/USEPA
+     MD-80
+     Research Triangle Park, NC  27711
+
+     Fax: (919) 541-1379

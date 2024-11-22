@@ -1,0 +1,460 @@
+
+
+                          README FILE
+
+                     CTDMPLUS (dated 93228)
+
+                         August 19, 1993
+
+
+
+      The CTDMPLUS model is a refined air quality model for use
+in all stability conditions for complex terrain applications.  It
+contains, in its entirety, the technology of the Complex Terrain
+Dispersion Model (CTDM) for stable and neutral conditions.  In
+addition, CTDMPLUS can also be used to model daytime, unstable
+conditions, and has a number of other capabilities for improved
+user friendliness.  Please refer to the user's guide for complete
+details of the differences between CTDMPLUS and CTDM.
+
+
+Notes on Downloading and Dearchiving:
+==================================== 
+
+     In order to conserve disk space, it is recommended that you
+download and dearchive only files that you actually need.  As a
+minimum, you will need to download three of the nine archive
+files as follows: CTDMP1.ZIP and CTDMP2.ZIP, which contain the
+executable files, and CTDMP9.ZIP, which contains the test case
+files.  If you intend to run CTDMPLUS on a '386 or '486 PC system
+with extended memory, you will also need to download CTDMP2E.ZIP. 
+The other six archive files can be downloaded as needed.  File
+descriptions are given below.  It is best to place each archival
+file in a separate subdirectory as this will facilitate compiling
+of the source code.
+
+     A screening mode of CTDMPLUS, called CTSCREEN, is also
+available on the bulletin board (See SCREENING MODELS).  CTSCREEN
+uses the same terrain and receptor files as CTDMPLUS, but uses a
+predetermined matrix of meteorology in place of the on-site
+meteorology required to run CTDMPLUS.  CTSCREEN can be run from
+the CTDMPLUS menu driver.
+
+
+Model Setup Instructions:
+========================
+
+     CTDMPLUS is a sophisticated model which requires
+meteorological and terrain preprocessors, associated input files,
+and post-processors.  A menu driver is provided to facilitate the
+file management associated with these processors.  CTDMPLUS, and
+the terrain and meteorological preprocessors can also be run on a
+mainframe.  Note that CTDMPLUS is a "complex"  model - users are
+advised to read the manuals (see list below) before attempting to
+setup and run the model.  Users should also download the file
+CTDMSUP.ZIP from the Documentation area of the File Transfer
+section of SCRAM.  This document contains important supplemental
+information to the CTDMPLUS user's guide.
+
+     The following is a list of the documents associated with
+CTDMPLUS.  These documents can be ordered from NTIS (See NEWS,
+Section 3 on SCRAM BBS).
+
+
+  1. User's Guide to the Complex Terrain Dispersion Model Plus    
+     Algorithms for Unstable Situations (CTDMPLUS) Volume 1     
+     (EPA/600/8-89/041), NTIS Accession No. PB89-181424, paper    
+     copy $31.00.
+
+  2. User's Guide to the CTDM Meteorological Preprocessor Program 
+     (EPA/600/8-88/004), NTIS Accession No. PB88-162102, paper 
+     copy $23.00.
+
+  3. The Complex Terrain Dispersion Model Terrain Preprocessor    
+     System User's Guide and Program Description     
+     (EPA/600/8-88/003), NTIS Accession No. PB88-162094, paper    
+     copy $23.00.
+
+  4. EPA Complex Terrain Model Development: Final Report     
+     (EPA/600/3-88/006),   NTIS Accession No. PB88-162110, paper  
+     copy $45.00.
+
+  5. User's Guide to the CTDMPLUS: Volume 2.  The Screening Mode  
+     (CTSCREEN) (EPA/600/8-90/087), NTIS Accession No. PB91-     
+     136564, paper copy $17.00.
+
+     Questions related to the use of CTDMPLUS in specific
+regulatory applications should be directed to the appropriate
+regulatory agency or Regional Modeling Contact (see State/Local
+Modeling Contacts in the Agency Communications Section of SCRAM).
+
+     Generic questions related to the use and regulatory
+applicability of the model should be directed to Desmond Bailey
+via SCRAM EMAIL or phone (919) 541-5248.
+
+     Questions or problems related to program execution should be
+reported to Donna Schwede via SCRAM EMAIL or phone (919)
+541-3255.
+
+     Users who would like to share comments, suggestions, or
+helpful hints are encouraged to use the Model Conferencing area
+on the SCRAM Bulletin Board (see Model Conferencing area in the
+Public Communications Section of SCRAM).
+
+Description of Files: 
+==================== 
+ 
+.ZIP  Archived Files: 
+ 
+CTDMP1  ZIP Executables: CHIDIS, CHIRET, DRIVEIT, METPRO,  READ62
+                         + DRIVEIT.OVR, README.TXT file
+
+CTDMP2  ZIP Executables: CTDMPLUS, FITCON, HCRIT, PLOTCON,       
+                         RECGEN + MENU.BAT, README.TXT file
+
+CTDMP2E ZIP    Lahey extended memory executable and error files: 
+               CTDMPLUS.EXE and F77L3.EER
+
+CTDMP3  ZIP    CTDMPLUS - main program and subroutines in FORTRAN
+CTDMP4  ZIP    METPRO - FORTRAN source code files 
+CTDMP5  ZIP    FITCON & HCRIT - FORTRAN source code files 
+CTDMP6  ZIP    READ62 - FORTRAN source code files 
+CTDMP7  ZIP    CHIRET - FORTRAN source code files 
+CTDMP8  ZIP    CHIDIS, DRIVEIT, PLOTCON, RECGEN Pascal source
+               code files
+
+CTDMP9  ZIP    Test case input/output and readme files  
+
+CTDMP10 ZIP    README.TXT file + two .BAT files for compiling and
+               linking the FORTRAN code
+
+
+Executable files:  
+ 
+CHIDIS   EXE   Concentration display program 
+CHIRET   EXE   Concentration retrieval program (used before
+               CHIDIS)
+
+RECGEN   EXE   Program used to create the RECEPTOR file  
+FITCON   EXE   First terrain preprocessor program 
+HCRIT    EXE   Second terrain preprocessor program
+METPRO   EXE   Meteorological preprocessor
+PLOTCON  EXE   Program used to display the fitted hill 
+READ62   EXE   Program used to create the RAWIN file 
+DRIVEIT  EXE   Menu driver program (requires the overlay file
+               DRIVEIT.OVR)
+CTDMPLUS EXE   CTDMPLUS model                        
+
+Batch files: 
+ 
+MENU     BAT   Batch file for executing the menu driver from any
+               directory
+
+CTDMPC   BAT   Batch file for compiling CTDMPLUS source code 
+CTDMPL   BAT   Batch file for linking CTDMPLUS object files 
+ 
+CTDMPLUS source code:    Include files (*.INC), Common blocks
+                         (*.CMN), and FORTRAN files (*.FOR)
+
+
+PARAMS   INC    ANGINT   FOR    HCRIT    FOR    PAGE     FOR   WFLAT    FOR
+CONST    CMN    BULKFR   FOR    HILHGT   FOR    PATH     FOR   WPDF     FOR
+FLVAR    CMN    CTDMPLUS FOR    HILROT   FOR    PENFCT   FOR   WRAP     FOR
+HEAD     CMN    DAYCALC  FOR    INPAR    FOR    PICK4    FOR   WRAPIN   FOR
+HILL     CMN    DEFLECT  FOR    INPEMS   FOR    PLAVG    FOR   WRITIT   FOR
+IO       CMN    DELWD    FOR    INPREC   FOR    PSRCE    FOR   XINTRP   FOR
+PARAMS   CMN    DTHDZ    FOR    INPSOR   FOR    RDSFC    FOR 
+PASL     CMN    ERF      FOR    INPTER   FOR    SEQMOD   FOR 
+PASVAL   CMN    FLAT     FOR    INPTOW   FOR    SIGB     FOR 
+PASW     CMN    FLOW     FOR    KLOSE    FOR    SIGMAY   FOR 
+PROFIL   CMN    FLOWSP   FOR    LIFT     FOR    SOURCES  FOR 
+RECEPT   CMN    GETDTH   FOR    LIFTIN   FOR    SPEED    FOR 
+SFCMET   CMN    GETFR    FOR    LINES    FOR    SRISE    FOR 
+STACK    CMN    GETHILL  FOR    LSTAB    FOR    SUN      FOR 
+STACKS   CMN    GETSV    FOR    LVDF     FOR    TERAX    FOR 
+TIME     CMN    GETSW    FOR    MAP      FOR    TOPN     FOR 
+TOP      CMN    GETTA    FOR    MIX      FOR    TRANPR   FOR 
+TOWER    CMN    GETUV    FOR    MUNU     FOR    URISE    FOR 
+VARS     CMN    GETWD    FOR                    UVWD     FOR 
+                GETWS    FOR
+ 
+Meteorological preprocessor (METPRO) source code: 
+
+CUBIC  FOR     INITT  FOR     SENSE  FOR     TOTAL  FOR 
+DEFAUL FOR     JULIAN FOR     SUMHH  FOR     TT     FOR 
+HDAYUS FOR     METPRO FOR     SUMI   FOR     WNUS   FOR 
+HOUR   FOR     MINUTE FOR     SUMVV  FOR     ZILL   FOR 
+HV     FOR     RHOO   FOR     SUN    FOR     ZZI    FOR 
+HVNET  FOR 
+ 
+Rawinsonde preprocessor (READ62) source code: 
+ 
+READ62 FOR 
+     GOOD  FOR 
+ 
+Terrain preprocessor source code (FITCON and HCRIT; respective subroutines
+are indented):
+
+FITCON   FOR                HCRIT    FOR 
+     ARCM     FOR                PSORTR   FOR 
+     CONCOMP  FOR 
+     ISORT    FOR 
+     MULTC    FOR 
+     SKIPCN   FOR 
+     SMOMNT   FOR 
+     VECTOR   FOR                        
+ 
+Utility program CHIRET source code (subroutine names are indented):
+ 
+CHIRET   FOR 
+     CHOUR    FOR 
+     PSORTR   FOR 
+     READIT   FOR 
+ 
+ 
+Graphics programs source code written in Pascal: 
+ 
+PLOTCON  PAS 
+CHIDIS   PAS 
+RECGEN   PAS 
+ 
+Menu Driver (DRIVEIT) source code written in Pascal: 
+ 
+DRIVEIT  PAS 
+     DRINIT   PAS
+     DRIVE2   PAS  
+     DRIVE3   PAS 
+     DRIVE4   PAS 
+     DRIVE5   PAS 
+     DRIVE6   PAS 
+     DRIVE1   INC 
+     INPUT    INC 
+     PRINT    INC 
+     SPACES   INC 
+     COMMON   INC
+     SWITCHES INC
+     MYDEFS   PAS 
+ 
+ 
+Test case using two sources, one hill, and twenty-four hours of
+meteorology: 
+ 
+TST         XY        Digitized terrain  
+TST         OPT       FITCON options file 
+TSTFO       BAK       FITCON output file (BACKUP)
+TSTPLT      BAK       FITCON plot file - RECGEN input file (BACKUP)
+TSTDAG      BAK       FITCON diagnostic output file (BACKUP)
+TST         HOP       HCRIT options file
+TSTHCO      BAK       HCRIT output file - TERRAIN File (BACKUP)
+TSTHPT      BAK       HCRIT plot file (BACKUP)
+TSTRCT      BAK       RECGEN output file - RECEPTOR file (BACKUP)
+TST         MOP       METPRO options file 
+TSTMOF      BAK       METPRO output file (BACKUP)
+TST         SF1       METPRO input file - SURF1 file 
+TST         SF2       METPRO input file - SURF2 file 
+TSTSFC      BAK       METPRO output file - SURFACE file (BACKUP)
+TST         RAW       CTDMPLUS input file - RAWIN file
+TST         PFL       PROFILE file 
+TST         CIN       CTDM.IN file 
+TSTOUT      BAK       CTDM.OUT file (BACKUP)
+TSTCON      BAK       CTDMPLUS output file - CONC file (BACKUP)
+TSTCHI      BAK       CHIRET output file containing a subset of 5 hours
+                      (BACKUP)
+
+Test case for the READ62 meteorological preprocessor: 
+ 
+TSTR62      R62       READ62 options file 
+TSTR62      TD        READ62 TD6201 rawinsonde input data 
+R62RAW      BAK       READ62 output file - RAWIN file (BACKUP)
+R62ROF      BAK       READ62 informational output file (BACKUP)
+ 
+ 
+Notes on Compiling, and Linking: 
+=============================== 
+ 
+     CTDMPLUS and its accessory programs have been compiled and tested on
+various types of PCs using Microsoft FORTRAN 5.0 and Borland
+International's Turbo Pascal 5.0 as applicable.  The extended memory
+executable was compiled using the Lahey F77L-EM/32 FORTRAN compiler
+(version 5.01);  this executable should be run on '386 and '486 PC systems
+using MSDOS or PCDOS, and having at least 4 Megabytes of Random Access
+Memory (RAM).  CTDMPLUS has also been compiled and tested on a VAX 8650
+operating under VMS.  Users generally will not need to recompile the source
+code, however some example instructions for compiling and linking are
+provided below.
+
+Example instructions for recompiling and linking source codes: 
+ 
+     Batch files for recompiling and linking the source codes in Microsoft
+FORTRAN 5.0 have been created and reside in the CTDMP10 archival file
+(CTDMPC.BAT and CTDMPL.BAT).  Similar batch files can be created by the
+user for use with other compilers.
+
+For FORTRAN files only: 
+ 
+  1. Download archive files as necessary to individual subdirectories and
+     expand (dearchive).  Copy CTDMPC.BAT and CTDMPL.BAT to each
+     subdirectory which contains FORTRAN source code.
+
+  2. Compile each subroutine and link together to create the executable. 
+     The description of files indicates which files link together to create
+     each executable.  You can use batch files such as CTDMPC.BAT and
+     CTDMPL.BAT for compiling and linking.  Note that the ANSI FORTRAN 77
+     standard switch is off in CTDMPC.BAT.  Also, remember to rename
+     'executable' in CTDMPL.BAT to the desired executable filename.
+
+  3. Repeat step 2 until all of the needed executable files have been
+     created.
+
+For Pascal files only: 
+ 
+    Turbo Pascal 5.0 compiler option codes have been set within the PASCAL
+source codes.  In addition, some Turbo Pascal specific graphics library
+functions have been called within the source codes.  These files can be
+compiled using the integrated environment or the command-line.
+
+Instructions for Running the Test Case: 
+====================================== 
+ 
+     The test case input files are identified by the filename TST.  Backup
+copies of the output files are indentified as TST*.BAK.  Extensions are
+used to differentiate between files as shown in the listing of test case
+files given above.  The test case can be run from the menu driver or the
+user can run each of the processors separately to test and verify the
+proper functioning of each program on the users system.  The menu driver
+should be run first in order to become acquainted with all of the
+processors.  For either method, it should be noted that:
+
+  1. The RAWIN file produced from TSTR62.TD (TSTR62.RAW) does not match
+     TST.RAW; there is no corresponding TD6201 file for TST.RAW.  The
+     TSTR62.* files are provided only for the purpose of testing the READ62
+     preprocessor.
+
+
+  2. In order to duplicate the RECEPTOR file used in the test case
+     (TST.RCT) using the RECGEN program, the user needs to select option 2
+     for the reply to the receptor spacing method prompt.  For the "Nbr of
+     Receptors" prompt, the user needs to enter data, in succession and one
+     number per prompt, from the following list:
+
+                             Number of Receptors
+ 
+                                     6
+                                     8
+                                     8
+                                     8
+                                     8
+                                     6
+                                     4
+ 
+
+  3. In order to duplicate the CHIRET output file in the test case
+     (TST.CHI), users should select the following options:  hill #1,
+     concentration record selection mode 3 (hours between a start and stop
+     time), start time 80/06/26:03, and stop time 80/06/26:08.
+
+
+     For instructions on running CTDMPLUS and its associated programs using
+the menu driver, the user should read Chapter 5 in the volume 1 of the
+CTDMPLUS user's guide.  After the programs have been run, users should
+verify that the output files created match the "BACKUP" versions of these
+files that are provided with the model.  The following table lists the
+files created by the menu driver and their corresponding "BACKUP" files.
+
+  Executable:         Output file:                  Backup file:
+  ===========         ============                  ============
+  FITCON              \CTDM\TERRAIN\TST.DAG         TSTDAG.BAK
+                      \CTDM\TERRAIN\TST.PLT         TSTPLT.BAK
+                      \CTDM\TERRAIN\TST.FO          TSTFO.BAK
+
+  HCRIT               \CTDM\FILES\TST.HCO           TSTHCO.BAK
+                      \CTDM\TERRAIN\TST.HPT         TSTHPT.BAK
+
+  PLOTCON             Output is sent to the screen
+
+  RECGEN              \CTDM\FILES\TST.RCT           TSTRCT.BAK
+
+  METPRO              \CTDM\FILES\TST.MOF           TSTMOF.BAK
+                      \CTDM\FILES\TST.SFC           TSTSFC.BAK
+
+  READ62              \CTDM\FILES\TST.RAW           R62RAW.BAK
+                      \CTDM\FILES\TST.ROF           R62ROF.BAK
+
+  CTDMPLUS            \CTDM\FILES\TST.OUT           TSTOUT.BAK
+                      \CTDM\FILES\TST.CON           TSTCON.BAK
+
+
+     If the menu driver system is not used, the user should be aware that
+CTDMPLUS and all accessory programs use OPEN statements with fixed
+filenames. Therefore, several of the test case filenames have to be
+renamed.  Also, PLOTCON and RECGEN use the file locating convention of the
+menu driver system.  The following instructions and table are a guide for
+executing the programs associated with the testcase and CTDMPLUS when the
+menu driver is not used.  The executable filenames are listed in the table
+in order of precedence leading up to the execution of CTDMPLUS.  To execute
+one of the programs:
+
+  1. Find the program to be executed under the executable heading in the
+     table below.
+
+  2. To the right of the executable filename is a list of input TST
+     filenames.  It should be noted that PLOTCON and RECGEN can only access
+     files in the \CTDM\TERRAIN subdirectory with a .PLT extention and only
+     send data to files in the \CTDM\FILES subdirectory.  PLOTCON is a
+     postprocessor to FITCON and only outputs a graph to the user's screen.
+
+     a.   Copy the filenames in the "Filename" column to the subdirectory
+          where the executable resides.  Note that this differs from the
+          file organization used by the menu driver which looks for these
+          files in th CTDM\FILES\ subdirectory.
+
+     b.   Rename or copy the files to the required names listed in the
+          "Required Name" column in the table below (except as noted for
+          PLOTCON and RECGEN).
+
+  3. At the DOS prompt, type the executable name and press ENTER.
+     
+ 
+  4. After the program finishes, you should verify that your output file
+     matches the "BACKUP" output file provided with the model.  Compare the
+     file in the "Output file" column with the file in the "Compare with"
+     column.
+
+                            Input                      Output
+                            =====                      ======
+Executable:     Filename:   Required name:    Output file:  Compare with:
+==========      ==========  =============     ===========   ============
+FITCON          TST.OPT     FOPTIONS.         TST.DAG       TSTDAG.BAK
+                                              TST.PLT       TSTPLT.BAK
+                                              TST.FO        TSTFO.BAK
+
+HCRIT           TST.HOP     HOPTIONS.         TST.HCO       TSTHCO.BAK
+                                              TST.HPT       TSTHPT.BAK
+
+PLOTCON         TST.PLT     TST.PLT           (Output is sent to the
+screen)
+
+RECGEN          TST.PLT     TST.PLT           TST.RCT       TSTRCT.BAK
+                           (Interactive - see above)
+
+METPRO          TST.MOP     OPTIONS.          OUTPUT.       TSTMOF.BAK
+                TST.PFL     PROFILE.          SURFACE.      TSTSFC.BAK
+                TST.SF1     SURF1.
+                TST.SF2     SURF2.
+
+READ62          TSTR62.R62  OPT62.            RAWIN.        R62RAW.BAK
+                TSTR62.TD   TD6201.           R62OUT        R62ROF.BAK
+
+
+CTDMPLUS        TST.CIN     CTDM.IN           CTDM.OUT      TSTOUT.BAK
+                TST.HCO     TERRAIN.          CONC.         TSTCON.BAK
+                TST.PFL     PROFILE.
+                TST.SFC     SURFACE.
+                TST.RCT     RECEPTOR.
+                TST.RAW     RAWIN.
+
+     There are two postprocessor programs for CTDMPLUS.  They are CHIRET
+and CHIDIS.  Both of these programs can be accessed most effectively
+through the menu driver program.  The user is advised to follow the
+instructions in the users guide.
+

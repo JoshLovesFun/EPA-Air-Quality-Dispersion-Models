@@ -1,0 +1,154 @@
+
+
+                            Model Change Bulletin              
+              
+                                   MCB#3                         7/18/91
+
+                           CTDMPLUS (dated 91107)
+
+
+     This Model Change Bulletin documents the changes made to the CTDMPLUS 
+model and its associated programs since the version dated 91051.  In earlier
+model versions, the effective stack height was not being reset to its initial
+value.  This occurred after finishing calculations for receptors utilizing
+transitional plume rise.  These changes correct that problem.  Concentration
+results should vary from previous model version results depending upon the
+height of the receptor with respect to the plume height.  Also several
+improvements have been made to the menu driven program used in running the
+model.
+
+
+Model Changes Implemented:
+=========================
+
+CTDMPLUS: 
+
+1.   In the main program, CTDMPLUS, two of the header lines were changed to
+reflect the new CTDMPLUS julian date and model change bulletin number.  The
+following two lines were changed from:
+
+C                          CTDMPLUS (DATED 91051)                           *
+C             *** SEE CTDMPLUS MODEL CHANGE BULLETIN MCB#2 ***              *
+
+to:
+
+C                          CTDMPLUS (DATED 91107)                           *
+C             *** SEE CTDMPLUS MODEL CHANGE BULLETIN MCB#3 ***              *
+
+
+2.  In the DAYCALC.FOR subroutine, the following changes were made to 
+correctly model situations in which transitional plume rise is used.
+
+        a) The coding was changed from:
+
+C  RISE, XFIN ARE RETURNED
+
+to:
+
+C  ADDED FLAG ITRANPR - A 1 MEANS THAT TRANPR WAS CALLED.  THIS IS 
+C  NECESSARY BECAUSE IF WE RESET THE EFFECTIVE STACK HEIGHT ARRAY,
+C  WE NEED TO RESET IT AFTER OUR CALCULATIONS FOR THIS RECEPTOR ARE
+C  COMPLETED -DJB 4/16/91
+
+C  RISE, XFIN ARE RETURNED
+
+
+        b) The coding was changed from:
+
+       IF (XP .GE. XF .OR. FB .EQ. 0.0) THEN
+         TRISE = -999.0
+
+to:
+
+       IF (XP .GE. XF .OR. FB .EQ. 0.0) THEN
+         ITRANPR = 0
+         TRISE = -999.0
+
+
+        c) The coding was changed from:
+
+       ELSE 
+         CALL TRANPR(XP,TRISE)
+
+to:
+
+       ELSE 
+         ITRANPR = 1
+         CALL TRANPR(XP,TRISE)
+
+
+        d) The coding was changed from:
+
+         IF (RISE .NE. TRISE) XF = XP
+         HPL = HS + RISE
+         EFFSH(1) = HPL
+         EFFSH(2) = HPL
+         EFFSH(3) = 2.0*XMH - HPL
+         EFFSH(4) = 2.0*XMH - HPL
+         EFFSH(5) = 2.0*XMH + HPL
+         EFFSH(6) = 2.0*XMH + HPL
+       ENDIF            
+
+to:
+
+         IF (RISE .NE. TRISE) XF = XP
+         HPLTR = HS + RISE
+         EFFSH(1) = HPLTR
+         EFFSH(2) = HPLTR
+         EFFSH(3) = 2.0*XMH - HPLTR
+         EFFSH(4) = 2.0*XMH - HPLTR
+         EFFSH(5) = 2.0*XMH + HPLTR
+         EFFSH(6) = 2.0*XMH + HPLTR
+       ENDIF            
+
+
+        e) The coding was changed from:
+
+260    CONTINUE
+
+to:
+
+C IF WE CALLED TRANPR (ITRANPR = 1) THE RESET THE EFFSH ARRAY USING
+C FINAL PLUME HEIGHT (HPL) FOR NXT RECEPTOR 
+        IF (ITRANPR .GT. 0) THEN
+          EFFSH(1) = HPL
+          EFFSH(2) = HPL
+          EFFSH(3) = 2.0*XMH - HPL
+          EFFSH(4) = 2.0*XMH - HPL
+          EFFSH(5) = 2.0*XMH + HPL
+          EFFSH(6) = 2.0*XMH + HPL
+        ENDIF
+
+260    CONTINUE
+
+
+3.  In the PAGE.FOR subroutine the CTDMPLUS julian date was updated to reflect 
+the model update. The coding was changed from: 
+
+6010   FORMAT('1','CTDMPLUS Dated(91051)',T72,'PAGE',1X,I3/)
+
+to:
+
+6010   FORMAT('1','CTDMPLUS Dated(91107)',T72,'PAGE',1X,I3/)
+
+DRIVEIT :
+
+1.  The code was modified to better trap and display run-time errors returned 
+by the FORTRAN programs. 
+
+2.  The use of batch files to run the FORTRAN programs was eliminated; the DOS 
+commands are issued directly from the menu driver now.
+
+3.  The program tests for the existence of the PSCRAT file and deletes it if 
+it exists.
+
+4.  The program now determines the location of the COMMAND.COM file instead of 
+assuming it to be in the root directory.
+
+RECGEN:
+
+1.  A format statement used in writing to the DUMMY.PDF scratch file was 
+changed to eliminate problems encountered with large numbers that overran the 
+field size.
+
+ 

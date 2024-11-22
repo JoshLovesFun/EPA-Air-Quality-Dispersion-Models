@@ -1,0 +1,59 @@
+
+
+                            Model Change Bulletin              
+              
+                                   MCB#1                         6/01/90
+
+                           CTDMPLUS (dated 90152)
+
+
+     This Model Change Bulletin essentially initiates the activities of the
+SCRAM BBS for this model.
+
+      The CTDMPLUS model code and supporting programs are available from this
+bulletin board and complete documentation will be available from the National
+Technical Information Service about July 16, 1990. An ALERT will be posted to
+SCRAM BBS when the NTIS documentation is ready. For further details, read the
+README file that is part of the CTDMPnn archival files that have been uploaded
+to the Other Models section of the SCRAM BBS.
+
+     This model will henceforth be identified by its name and a Julian date,
+i.e.: CTDMPLUS (dated 90152). Future changes to this model will be identified
+by an updated Julian date found on the first line of the model source code and
+followed by a reference to a SCRAM BBS Model Change Bulletin (MCB#n) which
+will explain the nature and contents of the changes. All Model Change
+Bulletins for this model will always be available for back reference on this
+BBS. In the future, notification of changes (MCBs) to this model will be made
+in the SCRAM ALERTS section of this BBS immediately following the LOGON
+procedure.
+
+     The source code for this model has been compiled and tested on: 1) an IBM
+PC/XT, PC/AT, and a Compaq 286 using Ryan-McFarland Fortran 2.10, 2) an IBM
+PC/AT compatible using Microsoft Fortran 5.0, and 3) a VAX 8650 running VMS. A
+math coprocessor chip was installed in each of the PCs. Several accessory
+programs were written and tested in Borland International's Turbo PASCAL 4.0.
+
+                             ******************
+                             * Important Note *
+                             ******************
+
+     New Model Change Bulletins will ONLY be issued when there is a change to
+the source code for this model. Changes to test cases and/or any pre and post
+processors that are included in the archival file for this model will be
+addressed and appropriately identified in an amendment to the model's latest
+MCB with notification posted in the SCRAM ALERTS section of the BBS. 
+
+              **************************************************
+              *                                                *
+              *    Amendment #1 to Model Change Bulletin #1    *
+              *                   July 12, 1990                *
+              *                                                *
+              **************************************************
+
+     The source codes remain unchanged.  An older, output file, containing
+some erroneous concentration data, was copied to the file, TSTORG.OUT,
+located in archival file, CTDMP10.ARC.  A corrected copy was uploaded to
+CTDMP10.ARC on SCRAM BBS.  One omission in the last table of the Readme file
+concerning the surface input filename to CTDMPLUS was also detected, added,
+and uploaded to CTDMP11.ARC.  CTDMP10.ARC and CTDMP11.ARC are ready for
+downloading from SCRAM BBS.

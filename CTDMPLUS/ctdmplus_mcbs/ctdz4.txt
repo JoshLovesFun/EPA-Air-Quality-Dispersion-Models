@@ -1,0 +1,172 @@
+                       Model Change Bulletin
+
+                               MCB#4                       3/18/93
+
+                       CTDMPLUS (dated 93076)
+
+
+     This Model Change Bulletin is to notify users of changes
+made to correct problems in CTDMPLUS (dated 91107).  The specific
+changes, the problems addressed, and the consequences of the
+changes are summarized in the following.  Reevaluation of the
+revised model demonstrated that these modifications did not
+affect design concentrations and, thus, should not have a
+significant regulatory impact.
+
+     These revisions constitute CTDMPLUS (dated 93076) and
+completely replace CTDMPLUS (dated 91107).  With this bulletin,
+the source codes and executables for CTDMPLUS (dated 93076) are
+being made available for downloading from the Air Quality Models
+area of the File Transfer Section of SCRAM.  CTDMPLUS (dated
+91107) is obsolete and, with this bulletin, will no longer be
+available on SCRAM.  All copies of such should be discarded.
+
+
+     Users of CTDMPLUS are referred to a companion WordPerfect
+5.1 document (CTPLSMOD.WPF) "Modifications to the CTDMPLUS and
+CTSCREEN Models" for more detailed discussion of these problems
+(see Documentation below).  All of the problems described in the
+following have been corrected in CTDMPLUS (dated 93076).  The
+subheadings in Section 1 below follow the outline of the
+companion WordPerfect 5.1 document, CTPLSMOD.WPF.
+
+
+1. PROBLEMS IN CTDMPLUS (dated 91107)
+
+
+1.1  Wrap Calculations
+
+     Two problems are related to situations where a source is
+very close to the terrain feature:  1) model adjustment of WRAP
+ellipse size to prevent a source from being located inside the
+fitted ellipse (to prevent a mathematical error) and 2) a travel
+time problem for receptors located on actual terrain contours
+that 'jut out' in the upwind direction from the fitted ellipse. 
+Both problems may inappropriately affect concentrations during
+stable/neutral conditions.  The second problem, in particular,
+may result in significant overestimates.
+
+
+1.2  Convergence Problem
+
+     The algorithm in CTDMPLUS for computing the position of the
+streamline that passes through the source occasionally has
+problems converging on a solution.  This results in the error
+message "ENDLESS LOOP IN PATH" and a null concentration
+calculation for the given simulation.  Calculations for other
+simulations are not affected.  This error occurs only in
+stable/neutral conditions.
+
+
+1.3  Meteorological PROFILE file
+
+     CTDMPLUS expects that the instrumentation levels for the
+meteorological tower are entered in increasing order in the
+PROFILE file.  The check for this was coded incorrectly.  In some
+cases this may result in an abnormal termination with the error
+message "PROFILE HEIGHT VALUE INCORRECT ..."; this may occur even
+when the data are entered correctly.  This coding error does not
+affect concentration estimates.
+
+
+1.4  Limit on Convective Scaling Velocity
+
+     CTDMPLUS places a lower limit on the convective scaling
+velocity of 0.167 times the wind speed half-way between stack-top
+and plume height.  In multiple stack situations this algorithm
+may result in an incorrect scaling velocity.  This affects
+CTDMPLUS calculations in convective conditions only.
+
+
+1.5  Negative Emission Rates
+
+     The model does not currently allow negative emission rates. 
+This prevents the use of negative emission rates to estimate air
+quality improvement when an existing source is retired.
+
+
+1.6  Source Contribution Table
+
+     The CTDMPLUS option for source contribution tables
+potentially can result in an extremely large output file
+(CTDM.OUT).  To avoid this, source contribution tables in
+CTDMPLUS (dated 93076) are written to a separate file (ASCII or
+Binary).
+
+1.7  Special handling of receptors below stack top
+
+     An additional switch (ISTKTP) has been added to the CTDM.IN
+file.  Setting this switch to 1 will cause the contribution from
+a particular source to be set to 0 for all receptors with
+elevations below stack- top for that source.  This switch will
+facilitate analysis of results for situations requiring both
+simple and complex terrain modeling.
+
+
+2.   Documentation
+
+     Modifications to correct these problems have been completed
+and are described in a companion WordPerfect 5.1 document
+(CTPLSMOD.WPF) "Modifications to the CTDMPLUS and CTSCREEN
+Models".  This document provides detailed discussion of these
+problems, how they were resolved, the likely effect of the
+modifications on modeled concentrations, and the results of a
+model reevaluation.  It is available for downloading from SCRAM
+as CTPLSMOD.ZIP.  Additional material is provided in the
+WordPerfect 5.1 document (CTDMSUP.WPF) which describes
+modifications to the CTDMPLUS user's guide.  The latter document
+is available for downloading from SCRAM as CTDMSUP.ZIP.  Note
+that the unziped files have the same name with a 'WPF' extension.
+
+
+3.   CTDMPLUS Design Value Comparisons
+
+     CTDMPLUS (dated 93076) was tested and reevaluated using the
+Lovett, Westvaco, and Widows Creek data sets from previous
+evaluations.  Convective and neutral/stable results are
+summarized separately in the following.  For convective
+conditions, the one modification which could affect
+concentrations (section 1.4), was found to have no effect on the
+top 25 1-hour concentration estimates for each of the three data
+sets.  For neutral/stable conditions, the results were as
+follows:  for the Lovett data base, there were no changes in the
+top 25 concentration estimates; for the Westvaco data base, 14 of
+the top 25 concentrations were affected - the maximum absolute
+difference between CTDMPLUS (dated 93076) and CTDMPLUS (dated
+91107) was less than 1 percent; for the Widows Creek data base,
+23 of the top 25 concentrations were affected - the maximum
+absolute difference was less than 5 percent.
+
+
+4.   Contacts for Questions
+
+     Questions related to the use of CTDMPLUS in specific
+regulatory applications should be directed to the appropriate
+regulatory agency or Regional Modeling Contact (see State/Local
+Modeling Contacts in the Agency Communications Section of SCRAM).
+
+     Generic questions related to the use and regulatory
+applicability of the model should be directed to Desmond Bailey
+via SCRAM EMAIL or phone (919) 541-5248.
+
+     Questions or problems related to program execution should be
+reported to Donna Schwede via SCRAM EMAIL or phone (919) 541-3255
+or to Steve Perry phone (919) 541-1341.
+
+     Users who would like to share comments, suggestions, or
+helpful hints are encouraged to use the Model Conferencing area
+on the SCRAM Bulletin Board (see Model Conferencing area in the
+Public Communications Section of SCRAM).
+
+
+     Technical correspondence should be directed to:
+
+     Dr. Steven Perry or
+     Ms. Donna Schwede
+     Applied Modeling Research Branch
+     ACMD/AREAL/USEPA
+     MD-80
+     Research Triangle Park, NC  27711
+
+     Fax: (919) 541-1379
+

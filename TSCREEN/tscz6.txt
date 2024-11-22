@@ -1,0 +1,137 @@
+
+                          Model Change Bulletin
+
+                                 MCB #6
+
+                          TSCREEN (dated 94133)
+
+This Model Change Bulletin documents the updated TSCREEN (dated 94133) and
+initiates its use by the modeling community.  The TSCREEN (dated 92334) model
+is now obsolete and should be replaced by this update.  TSCREEN, a model for
+screening toxic air pollutant concentrations, is based on the release scenarios
+and methods described in "Workbook of Screening Techniques for Assessing
+Impacts of Toxic Air Pollutants," EPA-454/R-92-024.  In order to continue
+providing improved modeling techniques, the new TSCREEN model (dated 94133)
+contains several changes from the workbook that are described below.  These
+changes will be incorporated into the workbook at a later date.
+
+The changes to the TSCREEN model include the following:
+
+   1. The SCREEN model used in the previous version of TSCREEN has been
+      replaced with the current version of the SCREEN2 model (dated 92245)
+      available from the SCRAM BBS.  This version of the SCREEN2 model is
+      consistent with the ISCST2 model (dated 93109), and uses a finite
+      line segment algorithm for modeling area sources, instead of a virtual
+      point source algorithm as used in the previous version.  For the new
+      SCREEN2 model, area source distances are measured from the center of the
+      area source, instead of from the downwind edge.  The SCREEN2 model also
+      includes other modifications relative to the previous TSCREEN model
+      in order to maintain consistency with the ISCST2 model.
+
+   2. Two new Superfund scenarios have been added -- Soil Vapor Extraction
+      and Thermal Incineration.  These are available as scenarios 4.2 and
+      4.4, respectively from the Superfund Release Type menu.  Both make use
+      of the SCREEN2 model point source option, and are based on the "Air/
+      Superfund National Technical Guidance Study Series:  Models for
+      Estimating Air Emission Rates from Superfund Remedial Actions,"
+      EPA-451/R-93-001, U.S. Environmental Protection Agency, March 1993.
+
+   3. Based on extensive diagnostic testing of the TSCREEN model, several
+      bugs have been identified and corrected.  These are briefly summarized
+      below:
+
+      a. A correction was made in the order of inputs read by the Britter-
+         McQuaid model.  The order of the Latent Heat of Vaporization and
+         the Gas Heat Capacity variables was reversed in the Britter-McQuaid
+         model in order to be consistent with the order on the output from
+         the model and the order of variables sent to the model by TSCREEN.
+
+      b. The calculation of the variables QC and MO, which are passed to
+         the RVD model by TSCREEN, was corrected.
+
+      c. The equation for calculating the variable BETA was corrected (by
+         removing a factor of 2) in scenarios 2.3, 2.4, 2.5, 2.6, and 3.8.
+
+      d. The density ratio check was corrected in scenarios 2.5 and 2.6.
+
+      e. The calculation of the variable TS was corrected to use MAX instead
+         of MIN in scenarios 3.8 and 3.9.
+
+      f. The confidence interval for calculation of annual averages was
+         corrected from +/- 0.2 to +/- 0.02.
+
+      g. The liquid density values in the Chemical Database were corrected.
+         The previous values were inconsistent with the stated units of
+         kg/m^3.  Additional data fields in the data base were also filled in.
+
+      h. A warning message was added for cases when the ratio of release
+         density to air density is between 1.00 and 1.02.  The model currently
+         treats such cases as passive releases, but application of other
+         criteria, such as a Richardson number check, may indicate denser-
+         than-air effects for certain release characteristics and
+         meteorological conditions.
+
+Due to these revisions in the model, user's comparing this version of the
+TSCREEN model to that illustrated in the workbook will note that: a) the
+new Superfund scenarios (item 3 above) are not described; b) the changes to
+TSCREEN identified above have not been incorporated; c) several TSCREEN
+menus and screens, as well as estimated ambient air impacts are different
+than those shown in the workbook.  The following is a summary of the
+differences that a user may encounter:
+
+        1. For scenarios involving continuous stack releases in which TSCREEN
+        uses the SCREEN2 model, the user may find minor differences due to
+        changes in the SCREEN2 model.
+
+        2. For scenarios involving continuous releases from ground level area
+        sources in which TSCREEN uses the SCREEN2 model, the user will find
+        major differences due to the new area source algorithm used in SCREEN2.
+
+        3. For scenarios involving instantaneous releases in which TSCREEN uses
+        the PUFF model, the user will find no differences.
+
+        4. For scenarios involving pressurized releases in which TSCREEN uses
+        the RVD model, the user will find a few differences due to corrections
+        explained in (3)(b) above.
+
+        5. For scenarios involving liquids spills from which denser-than-air
+        gases are released and TSCREEN uses the Britter and McQuaid model, the
+        user may find minor differences due to changes explained in (3)(a)
+        above.
+
+The TSCREEN model user's guide has been revised.  The "User's Guide to TSCREEN,
+a Model for Screening Toxic Air Pollutant Concentrations (Revised),"
+EPA-454/B-94-023 can be downloaded from the documentation section.  It can also
+be purchased from NTIS.  This user's guide contains information, especially
+useful for first time users, on how to operate the model.
+
+The TSCREEN model has been zipped into 4 files for convenient downloading.
+These are TSCREEN1.ZIP; TSCREEN2.ZIP; TSCREEN3.ZIP; and TSCREEN4.ZIP.  These
+contain the executable files that are necessary to run the model.  Users of
+the previous version of the TSCREEN model (dated 92334) have the following
+options for downloading the new TSCREEN model:
+
+   1. For simplicity, they may download all four zip files, copy them
+      to a new subdirectory, and unzip them using PKUNZIP.
+
+   2. Since the contents of TSCREEN1.ZIP and TSCREEN2.ZIP have not changed,
+      users of the previous version may want to download only the TSCREEN3.ZIP
+      and TSCREEN4.ZIP files, copy them to the subdirectory where the
+      previous version is located, and unzip them to replace the old files.
+      They must replace all of the old files, including the OLDRUNS.DBF file
+      that saves data from previous scenarios, since the database structure
+      has changed.  The user may note that the date and size of the
+      TSCREEN1.ZIP and TSCREEN2.ZIP files has changed.  This is because they
+      were re-zipped with the new version of PKZIP.
+
+   3. Previous users may also download TSCREEN3.ZIP and TSCREEN4.ZIP, copy
+      them to a new subdirectory, and then copy the TSCREEN1.ZIP and
+      TSCREEN2.ZIP files previously downloaded to the same directory,
+      before unzipping the files.  In this way the two versions will be in
+      separate directories, and they should then delete the previous version.
+
+New users should download all four zipped files, copy them to a subdirectory,
+unzip them using the PKUNZIP utility program, and then type TSCREEN.  The
+program pop-up menus will appear, and you are on your way.  Some users may
+also want the model source code, which is contained in the zipped file
+called TSCRCODE.ZIP.

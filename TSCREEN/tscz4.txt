@@ -1,0 +1,28 @@
+                           Model Change Bulletin
+
+                                   MCB#4
+
+                           TSCREEN (dated 91303)
+
+
+     The TSCREEN model code available from this bulletin board is the
+upgraded version of the TSCREEN model.  The TSCREEN model has been
+completely recoded in a data base language and revised to include the
+following:
+
+
+     1)  incorporation of terrain features that are a part of the SCREEN
+         model;
+
+     2)  a new scenario for air stripper at Superfund sites;
+
+     3)  a number of miscellaneous editoral changes and corrections.
+
+
+     Because the program has been entirely recoded, it is impractical to
+update the older version by making line-by-line changes.
+
+     This model will henceforth be identified by its name and a julian date
+(i.e., TSCREEN (dated 91303)).  The model is available for downloading from
+the file transfer section of the SCRAM BBS.
+

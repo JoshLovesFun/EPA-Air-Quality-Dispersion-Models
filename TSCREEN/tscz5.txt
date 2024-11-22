@@ -1,0 +1,31 @@
+
+                          Model Change Bulletin
+
+                                 MCB #5
+
+                          TSCREEN (dated 92334)
+
+This Model Change Bulletin documents the revisions to the TSCREEN model
+(dated 92334).  TSCREEN, a model for screening toxic air pollutant
+concentrations, is based on the release scenarios and methods described in
+"Workbook of Screening Techniques for Assessing Impacts of Toxic Air
+Pollutants," EPA-454/R-92-024.  Both TSCREEN and the workbook have been
+significantly revised from the earlier version.  These changes include
+revised methodology, additions of new scenarios and model; thus the entire
+model must be downloaded, and the previous version deleted.  In addition, the
+workbook has now been written in Wordperfect 5.0 and can be downloaded also.
+Users who do not wish to download the workbook text files can still purchase
+this document from the NTIS.
+
+The TSCREEN model has been zipped in 4 files for convenient downloading.
+These are TSCREEN1.ZIP; TSCREEN2.ZIP; TSCREEN3.ZIP; and TSCREEN4.ZIP.  These
+are the executable files that are necessary to run the model.  Some users may
+want the model source code as well, and this file is called TSCODE.ZIP.  If you
+wish to download the workbook, you should download the following files
+beginning with TSCRD1.ZIP, TSCRD2.ZIP, ... etc. 
+
+After you download the 4 executable files, copy them on a subdirectory, and the
+type TSCREEN.  The program pop-up menus will appear, and you are on your way.
+
+Due to the major revisions in the model, ambient air impact may be different
+than that obtained from the previous version of TSCREEN.

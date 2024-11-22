@@ -1,0 +1,118 @@
+
+
+                            Model Change Bulletin              
+              
+                                   MCB#2                  March 11, 1991
+
+                            TSCREEN (dated 91070)
+
+
+
+     SCRAM BBS files are no longer being archived (compressed) using an ARC
+program.  They are being ZIPed using a PKZIP program.  The user will need to
+download PKZIP110.EXE in order to unZIP TSCREEN archived files.  For more
+information, please read about ZIPing and unZIPing in the Download
+Instructions under System Utilities just prior to entering SCRAM BBS.  ZIPed
+files require less disk space and therefore, can be downloaded in less time. 
+
+     Several users have brought to our attention some minor problems with the
+functioning of TSCREEN.  Corrections to these problems have been made and
+posted to SCRAM BBS.  These changes will not effect concentrations calculated
+with the previous version of TSCREEN.  The following is a list of the files
+where changes have been made and the archival file in which they reside:
+
+ Archival
+ Filename        Filenames of corrected files       
+
+TSCRN01.ZIP     GLOSS.TXT
+
+TSCRN02.ZIP     TSHELP.DOC    TSMAIN.BAS   
+
+TSCRN03.ZIP     GLOSS.HLP     GLOSS.NDX
+
+TSCRN04.ZIP     SCREENTS.EXE  TSCREEN.EXE  TSHELP.HLP  TSHELP.IDX  TSHELP.NDX
+
+TSCRN05.ZIP     TSMAIN.EXE
+
+     Changes made to the executable and data files, which are stored in
+archival files, TSCRN03.ZIP through TSCRN05.ZIP, need to be downloaded, in
+order to run TSCREEN.  It is NOT necessary to download the archival files,
+TSCRN01.ZIP and TSCRN02.ZIP, which contain the source codes.  The source codes
+are there for your use if the need arises.  For further details, please read
+the README file that is part of the TSCRN04.ZIP archival file and which has
+been uploaded to the Screening Models section of the SCRAM BBS.  
+
+
+     The following changes have been made to the source code of TSMAIN.BAS:
+
+
+1) The SCRAM BBS header for TSCREEN has been changed from:
+
+' *                         TSCREEN (DATED 91011)                           *
+' *             *** SEE TSCREEN MODEL CHANGE BULLETIN MCB#1 ***             *
+
+to:
+
+' *                         TSCREEN (DATED 91070)                           *
+' *             *** SEE TSCREEN MODEL CHANGE BULLETIN MCB#2 ***             *
+
+2) To correct misspellings and several errors, the source code in lines 17,
+   159, 168, 177, 501, 502 and 650 have been changed. The following are those
+   respective changes:
+
+2a) Line 17 was changed from:
+
+'  original date: 7/23/1990
+
+to:
+
+'  original data: 7/23/1990
+
+2b) Line 159 was changed from:
+
+   label$ = " Releases from Stacks, Relief Valves, Vents - Scenario 4.1.2 "
+
+to:
+
+   label$ = " Releases from Stacks, Vents, Point Sources - Scenario 4.1.2 "
+
+2c) Line 168 was changed from:
+
+   label$ = " Releases from Stacks, Relief Valves, Vents - Scenario 4.6 "
+
+to:
+
+   label$ = " Releases from Stacks, Vents - Scenario 4.6 "
+
+2d) Line 177 was changed from:
+
+   label$ = " Gaseous Leaks from Tanks or Pipes - Scenario 4.5 "
+
+to:
+
+   label$ = " Gaseous Leaks from Tanks, Pipes, Relief Values - Scenario 4.5 "
+
+2e) Lines 501 and 502 were changed from:
+
+     menu$(2) = "  B.  Stacks, Relief Valves, Vents                       "
+     menu$(3) = "  C.  Leaks from Holes in Tanks, Pipes                   "
+
+to:
+
+     menu$(2) = "  B.  Stacks, Vents, Conventional Point Sources          "
+     menu$(3) = "  C.  Leaks from Holes in Tanks, Pipes, Relief Values    "
+
+2f) Line 650 was changed from:
+
+st$ = "WARNING: Error has occured"
+
+to:
+
+st$ = "WARNING: Error has occurred"
+
+
+     TSCREEN documentation is now available from NTIS.  The NTIS ordering
+number for the 'User's Guide to TSCREEN' is: PB91-141820.  Additional
+information on contacting NTIS is available for viewing in the SCRAM BBS
+COMMUNICATIONS area under NEWS, Section 3.
+

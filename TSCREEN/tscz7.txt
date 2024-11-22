@@ -1,0 +1,58 @@
+
+                          Model Change Bulletin
+
+                                 MCB #7
+
+                          TSCREEN (dated 95260)
+
+This Model Change Bulletin documents the revisions to the TSCREEN
+model (dated 95260).  TSCREEN, a model for screening toxic air
+pollutant concentrations, is based on the release scenarios and
+methods described in "Workbook of Screening Techniques for
+Assessing Impacts of Toxic Air Pollutants," EPA-454/R-92-024.  In
+order to continue providing improved modeling techniques, the new
+TSCREEN model (dated 95260) contains several changes from the
+workbook that are described below.  These changes will be
+incorporated into the workbook at a later date.
+
+The changes to the TSCREEN model include the following:
+
+   1. The SCREEN2 model used in the previous version of TSCREEN
+has been replaced with the current version of the SCREEN3 model
+(dated 95250) available from the SCRAM BBS.  This version of the
+SCREEN3 model is consistent with the ISCST3 model (dated 95250).
+ 
+   2. For scenarios that utilize the area source option of the
+SCREEN3 model, the new area source algorithm is now based on a
+double integration of the Gaussian plume kernel for area sources
+instead of the finite line segment algorithm as used in the
+previous version.  Area source distances continue to be measured
+from the center of the area source.  The capability of making
+concentration estimates within the area source is now possible.
+The option to use a revised (draft) version of the SCREEN2 model
+(dated 94133) that incorporates a numerical integration algorithm
+for modeling area sources is thus not necessary any longer and is
+removed. 
+
+Due to these revisions in the model, ambient air impacts for
+those scenarios that utilize the area source algorithm are
+different than those obtained from the previous version of
+TSCREEN, or shown in the current version of the workbook.
+
+The TSCREEN model has been zipped into 4 files for convenient
+downloading. These are TSCREEN1.ZIP; TSCREEN2.ZIP; TSCREEN3.ZIP;
+and TSCREEN4.ZIP.  These contain the executable files that are
+necessary to run the model.  Users of the previous version of the
+TSCREEN model (dated 94133) need only download the files
+TSCREEN3.ZIP and TSCREEN4.ZIP, since the information in files
+TSCREEN1.ZIP and TSCREEN2.ZIP has not changed.  Some users may
+want the model source code as well, and this file is called
+TSCRCODE.ZIP.
+
+After you download the 4 zipped files, copy them on a
+subdirectory, unzip them using the PKUNZIP utility program, and
+then type TSCREEN.  The program pop-up menus will appear, and you
+are on your way.
+
+If you should have questions or comments about the TSCREEN model,
+contact Joe Touma at (919) 541-5381.

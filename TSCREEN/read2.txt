@@ -1,0 +1,41 @@
+                    TUTORIAL PACKAGE FOR THE TSCREEN MODEL
+
+                                   READ.TXT
+
+     The TSCREEN tutorial files are part of the "Instructional Package on
+Regulatory Air Quality Modeling - Part II:  Tutorials for Five PC-Based Air
+Quality Models and Two Utility Programs," EPA-454/C-92-003.  It contains
+instructional materials for the TSCREEN model.
+
+     The TSCREEN tutorial contains the following files:
+
+     (1) TSCREEND.ZIP - TSCREEN demonstration
+     (2) TSCRN01.ZIP - TSCREEN model, file 1
+     (3) TSCRN02.ZIP - TSCREEN model, file 2
+     (4) TSCRN03.ZIP - TSCREEN model, file 3
+     (5) TSCRNTUT.ZIP - Tutorial documentation in WP51
+     (6) READ.TXT - Instructions on TSCREEN tutorial.
+
+     In order to execute the TSCREEN tutorial, all of the files listed above
+must be downloaded and stored in the same DOS directory (i.e., C:\TSCREEN)
+on your PC.
+
+     All files with a "ZIP" extention name must then be unzipped (dearchived)
+using the unzip program available for downloading from the System Utilities
+menu of the TTN.  The unzip program "PKUNZIP.EXE" must also be stored in the
+same DOS directory with the tutorial ZIP files.  Simply type PKUNZIP followed
+by a space and the name of the ZIP file and the files included in the ZIP will
+be generaged in your DOS directory.  After dearchiving all of the above files,
+type TSCREEND to invoke the TSCREEN demonstration.
+
+     Files with the "WPF" extention name are in WordPerfect format and must
+be imported into your WordPerfect word processor.  The original documentation
+was formatted for an HP LaserJet II series printer.  The pagination of your 
+printed file may differ due to variations in printer and font types.
+
+     Any questions or comments concerning the TSCREEN tutorial may be directed
+to Dennis Atkinson, U.S. EPA, MD-14, Research Triangle Park, N.C.  27711
+or call (919) 541-0518.  Technical questions concerning the TSCREEN model may
+be directed to Jawad (Joe) Touma, U.S. EPA, MD-14, Research Triangle Park,
+N.C.  27711, or call (919) 541-5381.
+

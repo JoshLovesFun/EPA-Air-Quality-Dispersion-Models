@@ -1,0 +1,279 @@
+
+
+                            Model Change Bulletin              
+              
+                                   MCB#3                     April 18, 1991
+
+                            TSCREEN (dated 91098)
+
+
+
+    Three source code files have been affected by the problems recently
+encountered in the TSCREEN model.  These files are TSMAIN.BAS, S5.BAS, and
+GRAF.BAS.  All three files are written in a structured BASIC format (ie no
+line numbers).  
+
+
+     NOTE:  Normally, line numbers or sequence identifiers would enable
+     the user to edit simple changes, such as the ones below, into the
+     previous source codes with a high degree of confidence.  However,
+     the lack of formal line identification makes this task riskier.  For
+     example, any line identification displayed with the changes listed
+     below, refers to line numbering extracted from a printout generated
+     by a computer program that compared the previous GRAF.BAS source
+     code with the revised GRAF.BAS source code and printed the
+     differences out. Any software that the user uses may not produce the
+     same line numbering sequence. 
+
+
+     THEREFORE, IT IS RECOMMENDED THAT THE USER DOWNLOAD THE REVISED
+     FILES FROM SCRAM BBS INSTEAD OF MAKING CHANGES FROM THE INFORMATION
+     BELOW.
+
+
+    The only major correction is in subroutine S5.BAS which affects
+calulations for Scenario 4.5, Continuous Gaseous Leaks from Tanks/Pipes.  A
+pair of parentheses were inadvertently omitted from an exponential expression
+which is used to determine whether to use a critical or subcritical flow rate
+equation.  Read page 4.9 of "A Workbook of Screening Techniques for Assessing
+Impacts of Toxic Air Pollutants" for more technical information on this
+equation and scenario.
+
+    Some minor problems with the functioning of TSCREEN's save and graph
+functions were alleviated. 
+
+
+
+                         *** TSMAIN.BAS Changes ***
+    
+
+    The SCRAM BBS header for TSCREEN has been changed from:
+
+' *                         TSCREEN (DATED 91067)                           *
+' *             *** SEE TSCREEN MODEL CHANGE BULLETIN MCB#2 ***             *
+
+to:
+
+' *                         TSCREEN (DATED 91098)                           *
+' *             *** SEE TSCREEN MODEL CHANGE BULLETIN MCB#3 ***             *
+
+
+
+
+                           *** S5.BAS Changes ***
+
+
+     In the subroutine, S5.BAS, a pair of parentheses were inadvertently
+omitted from the exponential expression in the following expression.  The
+expression was changed from:
+
+IF VAL(pt$) / VAL(pad$) < ((VAL(k$) + 1) / 2) ^ VAL(k$) / (VAL(k$) - 1) THEN
+
+to:
+
+IF VAL(pt$) / VAL(pad$) < ((VAL(k$) + 1) / 2) ^ (VAL(k$) / (VAL(k$) - 1)) THEN
+
+
+
+
+
+                              *** GRAF.BAS ***
+
+     In the program GRAF.BAS, the following changes were made:
+
+
+1) Prior to the following line (old line 24):
+
+IF LEN(FileToGraf$) <> 0 THEN
+
+the following statements were added:
+
+FileToGraf$ = RTRIM$(LTRIM$(FileToGraf$))
+
+IF FileToGraf$ = "/F" THEN
+   SecondFromProgram = 0
+   CameFromTS = 1
+   FileToGraf$ = ""
+ENDIF
+IF FileToGraf$ = "/S" THEN
+   SecondFromProgram = 1
+   CameFromTS = 1
+   OPEN "Disthold" FOR INPUT AS #4
+   INPUT #4, Dist$
+   CLOSE #4
+   KILL "Disthold"
+   FileToGraf$ = ""
+ENDIF
+
+2) Prior to the following line (old line 28):
+
+      GOTO GrafEnd
+
+the following line was added:
+
+      FileToGraf$ = ""
+
+
+3) Prior to the following line (old line 68):
+
+'++++++++++++++++++++++ Check for zero concentration +++++++++++++++++++++++
+
+the following lines were added:
+
+IF SecondFromProgram  THEN
+   GOTO CameFromProgram
+ENDIF
+
+4) The following two lines (old lines 222 and 223) were commented out as
+shown:
+
+           ' CALL EXIST("helpfile",found)
+           ' IF (found) THEN
+
+5) The first END IF of the following two were commented out as shown: 
+   [ Note: In the old listing, the first END IF would be on line 227
+           In the new listing, the first END IF would be on line 250 ]
+
+           ' END IF
+         END IF
+
+
+6) The following label was added just prior to the comment (old line 264)
+shown:
+
+CameFromProgram:
+'Get the adapter and display
+
+
+7) The following two lines (old lines 382 and 383) were commented out as
+shown:
+
+           'CALL EXIST("helpfile",found)
+           'IF (found) THEN
+
+8) The first END IF of the following two were commented out as shown:
+   [ Note: In the old listing, the first END IF would be on line 387
+           In the new listing, the first END IF would be on line 411 ]
+
+           ' END IF
+         END IF
+
+9) The following two lines (old lines 620 and 621) were commented out as
+shown:
+
+           'CALL EXIST("helpfile",found)
+           'IF (found) THEN
+
+10) The first END IF of the following two were commented out as shown: 
+   [ Note: In the old listing, the first END IF would be on line 625
+           In the new listing, the first END IF would be on line 649 ]
+
+           ' END IF
+         END IF
+
+11) The following two lines (old lines 699 and 700) were commented out as
+shown:
+
+'   CALL EXIST("devices",found)
+'   IF found THEN
+
+12) The following lines (old lines 705 through 714) were changed from:
+
+   ELSE
+      IF adapter <> viNONE THEN
+         GOTO MainMenu1
+      ELSE
+         GOTO MainMenu2
+      END IF
+   END IF
+   OPEN "graph.fil" FOR INPUT AS #2
+   CALL EXIST("graph.fil",found)
+   IF found THEN
+
+to:
+
+'   ELSE
+'      IF adapter <> viNONE THEN
+'         GOTO MainMenu1
+'      ELSE
+'         GOTO MainMenu2
+'      END IF
+'   END IF
+   OPEN "graph.fil" FOR INPUT AS #2
+'   CALL EXIST("graph.fil",found)
+'   IF found THEN
+
+
+13)  The following lines (old lines 727 through 738) were restructured from:
+
+   END IF
+   shell "graph"
+   CALL EXIST("devices",found)
+   IF found THEN
+     KILL "devices"
+   END IF
+
+   IF adapter <> viNONE THEN
+      GOTO MainMenu1
+   ELSE
+      GOTO MainMenu2
+   END IF
+
+
+to:
+
+   'END IF
+
+
+   IF CameFromTS THEN
+      OPEN "Disthold" FOR OUTPUT AS #4
+      PRINT #4, Dist$
+      CLOSE #4
+      END
+   ELSE
+      shell "graph"
+      CALL EXIST("devices",found)
+      IF found THEN
+        KILL "devices"
+      END IF
+
+      IF adapter <> viNONE THEN
+         GOTO MainMenu1
+      ELSE
+         GOTO MainMenu2
+      END IF
+   ENDIF
+
+
+14) The following two lines (old lines 819 and 820) were commented out as
+shown:
+
+                        CALL EXIST("helpfile",found)
+                        IF (found) THEN
+
+
+15) The first END IF of the following two were commented out as shown: 
+   [ Note: In the old listing, the first END IF would be on line 824
+           In the new listing, the first END IF would be on line 857 ]
+
+                        'END IF
+                     END IF
+
+
+
+     Revised executable files, GRAF.EXE, TSCREEN.EXE, and TSMAIN.EXE were
+generated from the revised source code files.  The revised files replaced
+their older versions in various archival (compressed) files.  GRAF.EXE was
+packed into the archival file, TSCRN01.ZIP.  TSCREEN.EXE and TSMAIN.EXE were
+packed into archival files, TSCRN02.ZIP, and TSCRN03.ZIP, respectively.  The
+revised source codes, GRAF.BAS and S5.BAS together with the previously omitted
+files, GRAPH.C, LOPTION0, and TSCREEN.C were packed into archival files,
+TSCRN04.ZIP and TSCRN05.ZIP.  All five files are available from the Screening
+Models section of the SCRAM BBS.  Only the files in archival files
+TSCRN01.ZIP, TSCRN02.ZIP, and TSCRN03.ZIP are needed for running the TSCREEN
+model.  The source code files, which are packed into archival files
+TSCRN04.ZIP and TSCRN05.ZIP, are not needed for running the TSCREEN model. 
+For further details, please read the README file that is part of the
+TSCRN02.ZIP archival file. 
+
+

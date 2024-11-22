@@ -1,0 +1,67 @@
+
+
+                            Model Change Bulletin              
+              
+                                   MCB#1                  February 19, 1991
+
+                            TSCREEN (dated 91011)
+
+
+
+     This Model Change Bulletin essentially initiates the activities of the
+SCRAM BBS for this model.
+
+      The TSCREEN model code, supporting programs and user's guide are
+available from this bulletin board and complete documentation will be
+available from the National Technical Information Service about March 1,
+1990. An ALERT will be posted to SCRAM BBS when the NTIS documentation is
+ready. For further details, read the README file that is part of the TSCRNnn
+archival files that have been uploaded to the Screening Models section of
+the SCRAM BBS.
+
+     This model will henceforth be identified by its name, Julian date, and
+a MCB #, i.e.: TSCREEN (dated 91011), MCB #1. Future changes to this model
+will be identified by an updated Julian date found on the first line of the
+model source code and followed by a reference to a SCRAM BBS Model Change
+Bulletin (MCB#n) which will explain the nature and contents of the changes.
+All Model Change Bulletins for this model will always be available for back
+reference on this BBS. In the future, notification of changes (MCBs) to this
+model will be made in the SCRAM ALERTS section of this BBS immediately
+following the LOGON procedure.
+
+     The source code for this model has been compiled and tested on an IBM
+PC/AT compatible using Microsoft BASIC 7.0, and Microsoft C version 5.1. A
+math coprocessor chip was installed in the PC.  The program requires 500
+kilobytes (Kb) of free Random Access Memory (RAM).  The TSCREEN program
+executable files occupy about 1 megabyte (MB) of disk space.  
+
+                             ******************
+                             * Important Note *
+                             ******************
+
+     New Model Change Bulletins will ONLY be issued when there is a change
+to the source code for this model. Changes to test cases and/or any pre and
+post processors that are included in the archival file for this model will
+be addressed and appropriately identified in an amendment to the model's
+latest MCB with notification posted in the SCRAM ALERTS section of the BBS. 
+
+
+                          ************************
+                          *                      *
+                          *     Amendment #1     *
+                          *                      *
+                          *   February 19, 1991  *
+                          *                      *
+                          ************************
+
+
+     Programming errors were discovered in the BASIC source codes files,
+CHEMBASE.BAS and CHEMMENU.BAS, which are an accessory program and subroutine
+to the TSCREEN model, respectively.  These two BASIC source codes were
+corrected and compiled into an executable code, CHEMBASE.EXE.  All three files
+have been uploaded to SCRAM BBS and now reside in the archival files
+TSCN01.ARC, which contains the source codes, and TSCN03.ARC, which contains
+the executable code.  TSCN01.ARC does not have to be downloaded in order to
+run TSCREEN.  In addition, the HELPnnn.PCX files have been deleted from
+TSCRN01.ARC since they are available as text files in TSCRN01.ARC or as a
+compiled file, TSCREEN.PCL, in TSCRN04.ARC.

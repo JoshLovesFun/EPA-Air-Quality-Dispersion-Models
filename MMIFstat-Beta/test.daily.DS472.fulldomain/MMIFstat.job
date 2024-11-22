@@ -1,0 +1,28 @@
+#!/bin/csh
+#
+mkdir output
+cat > MMIFstat.inp  << IEOF
+Run note           |mmifstat test Full
+Hourly output file |./output/hrly.12km.Full.0804.csv
+Daily  output file |./output/daly.12km.Full.0804.csv
+Daily Station out  |./output/stat.12km.Full.0804.csv
+Obs/Model out file |./output/obsprd.12km.Full.0804.csv
+Observation Format |DS472
+Station File       |../../../mmifstat.2009-10-26/testdir/station.tbl-SEP07
+Number of Obs Files|1
+Obs File Name      |../../../mmifstat.2009-10-26/testdir/hre200508-asc
+Tstart(yyyymmddhh) |2005 08 04 00
+Tend               |2005 08 05 23
+Time Zone          |-8
+# sites to proc    |0
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-03.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-04.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-05.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-06.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-07.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-08.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-09.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-10.met
+IEOF
+
+../src/MMIFstat

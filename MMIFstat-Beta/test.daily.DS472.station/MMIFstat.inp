@@ -1,0 +1,22 @@
+Run Description    |mmifstat test Station
+Hourly Output File |./output/hrly.12km.Station.0804.csv
+Daily  Output File |./output/daly.12km.Station.0804.csv
+Daily Station out  |./output/stat.12km.Station.0804.csv
+Obs/Model out file |./output/obsprd.12km.Station.0804.csv
+Observation Format |DS472
+Station List File  |../../../mmifstat.2009-10-26/testdir/station.tbl-SEP07
+Number of Obs Files|1
+Obs File Name      |../../../mmifstat.2009-10-26/testdir/hre200508-asc
+Start time y m d h |2005 08 04 00
+End time y m d h   |2005 08 05 23
+Time Zone          |-8
+# sites to process |1
+                   |KAKO            
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-03.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-04.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-05.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-06.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-07.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-08.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-09.met
+../../../mmif.2009-10-08/alpine.compile/mm5.daily.test/mmif_mm5.2008-08-10.met

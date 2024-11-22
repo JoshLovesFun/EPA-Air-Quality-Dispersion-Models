@@ -1,0 +1,70 @@
+                        Viscreen_READTHIS.txt FILE:
+                             
+                             August 15, 2013
+
+        INSTRUCTIONS FOR USING THE VISCREEN MODEL AND SPREADSHEET
+
+The "Workbook for Plume Visual Impact Screening and Analysis", EPA report
+number EPA-450/4-88-015, describes the use of a plume visual impact
+prediction model called VISCREEN.  The model is designed to be run on an 
+Windows-based personal computer and consists of the file named VISCREEN.EXE. 
+Complete operating instructions for VISCREEN.EXE are found in the above
+workbook and with other instructions.  (The file VISCREEN.FOR is the 
+listing of the VISCREEN FORTRAN program source code.)
+
+The VISCREEN model on SCRAM consists of the following packages and files:
+
+	Model Code
+	1) Viscreen.zip
+	      VISCREEN.FOR - Viscreen source code
+	      Viscreen.exe - Viscreen executable
+	
+	Model Documentation     
+	2) Viscreen_Documentation.zip
+	      WB4PlumeVisualOCR.pdf - User's Guide (with pages updated)
+	      Viscreen_MCB2.txt - Model Change Bulletin #2 for Viscreen
+	      viscrdu.pdf - User's Guide Update Pages
+	      Viscreen_READTHIS.txt - This readme file
+	   
+	Tutorial  
+	3) Viscreen_Tutorial.zip
+	      Viscreen_Tutorial_Package.pdf - Tutorial Package for the
+	                                      VISCREEN Model
+	      Viscreen_Tutorial.pdf - VISCREEN Tutorial (PDF Format)
+	      Viscreen_Tutorial.pptx - VISCREEN Tutorial (PowerPoint Format)
+
+	VISCREEN Excel Spreadsheet
+	4) Viscreen_Excel.zip
+              VISCREEN.xlms - Viscreen Excel Spreadsheet with macros included
+              RESULTS.TST - Sample output file
+              Results.xlms - Output file data results as
+                             post-processed through an Excel spreadsheet
+                             using Visual Basic macros
+	      VISCREEN Excel Instructions.pdf
+
+       Testcase
+       5) Viscreen_Testcase.zip
+	     TestCaseInstructions.pdf
+	     TestCase.inp
+	     Testcase.SUM        
+	     Testcase.TST
+	     Testcase.OUT
+
+These five ZIP files should be downloaded to respective subdirectories 
+under the main VISCREEN directory and then unzipped.  All five files with a 
+"ZIP" extention can be unzipped (dearchived) using the unzip program 
+available for downloading from the File Utilities menu of the TTN 
+(http://www.epa.gov/ttn/tools.html) .  The unzip program "PKUNZIP.EXE" is 
+DOS based and needs to be executed from a Command Prompt while WINZIP is a 
+Windows based program that can be executed as a Windows Application.  
+
+To run the Testcase, the VISCREEN executable needs to reside in the same
+subdirectory as the test case data.  Additional instructions are providedd.
+The user is encouraged to run the test case first, followed by the tutorial.
+The user should become familiar with the technology in VISCREEN by reading 
+the above workbook, viewing Vistutorial.pptx (also available in PDF format),
+reading vistut.doc, and following the instructions in "VISCREEN Excel 
+Instructions" before attempting to run VISCREEN.
+
+Additional information can be found at: http://www.epa.gov/ttn/scram/
+Inquiries can be directed through: http://www.epa.gov/ttn/scram/comments.htm.

@@ -1,0 +1,55 @@
+
+               Visual Effects Screening Analysis for
+                 Source: 'POWER PLANT'           
+                 Class I Area: 'NATIONAL PARK'         
+
+
+                 ***   Level-1 Screening   ***
+ Input Emissions for 
+
+    Particulates    10.00  G  /S  
+    NOx (as NO2)    10.00  G  /S  
+    Primary NO2       .00  G  /S  
+    Soot              .00  G  /S  
+    Primary SO4       .00  G  /S  
+  
+
+     **** Default Particle Characteristics Assumed
+
+               Transport Scenario Specifications:
+
+     Background Ozone:                  .04 ppm
+     Background Visual Range:        150.00 km
+     Source-Observer Distance:        25.00 km
+     Min. Source-Class I Distance:    20.00 km
+     Max. Source-Class I Distance:    35.00 km
+     Plume-Source-Observer Angle:     11.25 degrees
+     Stability:   6
+     Wind Speed:   1.00 m/s
+
+                            R E S U L T S
+
+ Asterisks (*) indicate plume impacts that exceed screening criteria
+
+          Maximum Visual Impacts INSIDE  Class I Area
+             Screening Criteria ARE Exceeded
+                                     Delta E       Contrast
+                                   ===========   ============
+ Backgrnd Theta Azi Distance Alpha Crit  Plume   Crit  Plume
+ ======== ===== === ======== ===== ====  =====   ====  =====
+  SKY      10. 144.   35.0    25.  2.00  8.232*   .05   .152*
+  SKY     140. 144.   35.0    25.  2.00  2.693*   .05  -.083*
+  TERRAIN  10.  36.   20.0   133.  2.00 18.908*   .05   .148*
+  TERRAIN 140.  36.   20.0   133.  2.00  1.760    .05   .028 
+  
+
+          Maximum Visual Impacts OUTSIDE Class I Area
+             Screening Criteria ARE Exceeded
+                                     Delta E       Contrast
+                                   ===========   ============
+ Backgrnd Theta Azi Distance Alpha Crit  Plume   Crit  Plume
+ ======== ===== === ======== ===== ====  =====   ====  =====
+  SKY      10.   0.    1.0   168.  2.00 33.730*   .05   .708*
+  SKY     140.   0.    1.0   168.  2.00  9.617*   .05  -.315*
+  TERRAIN  10.   0.    1.0   168.  2.00 40.686*   .05   .460*
+  TERRAIN 140.   0.    1.0   168.  2.00 13.896*   .05   .360*

@@ -1,0 +1,60 @@
+                    Model Change Bulletin             
+             
+                            MCB#2                 7/9/13
+
+                    VISCREEN (dated 13190)
+
+
+
+	This Model Change Bulletin (MCB) documents changes
+made to the VISCREEN Visibility Screening Model. A brief
+description of the changes is provided below.  Additional
+details are available in the Fortran source code and with
+other documentation.
+
+	Viscreen (88341) was recompiled after minor source
+code changes and assigned the creation date above.  These
+changes have been commented in lines above each respective
+change and in the source code just below the SCRAM header. 
+These changes have not affected the results.
+
+	Previous output files have been processed through a
+Lotus 1-2-3 spreadsheet using macros created with the Lotus
+1-2-3 macro language.  Due to the EPA switching to Microsoft
+based applications, the Lotus 1-2-3 spreadsheets and macros
+were rewritten based on Microsoft Excel.  The macros were
+reprogrammed using Visual Basic for Applications.  While
+this Excel spreadsheet can be run using Open Source
+applications, the macros may not be useable in those
+applications
+
+	A “courseware” introduction to Viscreen was rewritten
+using most of the old Paint Shop Pro formatted graphics
+(*.PCX) and translated into JPG formats and then inserted
+into this introduction.  This introduction is available for
+viewing in PDF and Microsoft PowerPoint versions. 
+
+	The Workbook for Plume Visual Impact Screening and
+Analysis was revised in October of 1992.  Minor changes were
+made to this document such as processing the work book
+through an Adobe based Optical Character Recognition program
+and in straightening out three skewed figures.
+
+	Other instructions were updated according to need.
+
+If you have any issues, please use the SCRAM Web Site
+Contact Us page at
+http://www.epa.gov/ttn/scram/comments.htm.  Your comments
+will be received and directed to a person who will be able
+to reply to your issues.
+
+                       ******************
+                       * Important Note * 
+                       ******************
+  
+      New Model Change Bulletins will ONLY be issued when there
+is a change to the source code for this model. Changes to test
+cases and/or any pre and post processors that are included in the
+archived file for this model will be addressed and appropriately
+identified in an amendment to the model's latest MCB with
+notification posted in the SCRAM ALERTS section of the BBS.

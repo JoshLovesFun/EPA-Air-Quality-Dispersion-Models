@@ -1,0 +1,66 @@
+                        Model Change Bulletin
+
+                                MCB#5                       06/30/2015
+
+                        AERSCREEN (dated 15181)
+
+This Model Change Bulletin (MCB) documents changes made to the AERSCREEN 
+screening model.  A brief description of the changes is provided below. 
+Additional details are available in the FORTRAN source code and in 
+the AERSCREEN user's guide.
+
+
+This revised version of AERSCREEN (dated 15181) includes the following
+modifications relative to the previous version (14147):
+
+Enhancements
+
+1.  Added subroutine FUMINP to prompt user for inversion break-up and
+    shoreline fumigation inputs, including distance from source to shoreline,
+    optional direction from source to shoreline, and option to not run the 
+    full AERSCREEN program and only run fumigation calculations.
+2.  Added subroutine SUBSETMET to determine stable hours from meteorological files
+    that fit criteria for fumigation, F stability and stack top wind speed of 2.5 m/s.
+3.  Added subroutine RECALCPLUME to calculate effective plume heights for fumigation.
+4.  Added function THETA to calculate potential temperature and potential temperature
+    gradient at specified height.
+5.  Added subroutine BRUNT to calculate Brunt-Vaisala frequency from potential
+    temperature and potential temperature gradient.
+6.  Added subroutine BID to calculate sigma-y and sigma-z contributions from
+    buoyancy induced turbulence.
+7.  Added functions SIGMAV and SIGMAW to calculate sigma-v and sigma-w.
+8.  Added functions SIGMAY and SIGMAZ to calculate sigam-y and sigma-z.
+9.  Modified subroutine plumehght to output potential temperature,
+    potential temperature gradient, plume flux due to buoyancy, and
+    plume flux due to momentum as well as calculate plume height under
+    stable conditions.
+10. Added subroutine FUMIGATE and INVMAX to loop through stable hours
+    to calculate inversion break-up fumigation concentrations.
+11. Added subroutines SHORELINE, SHOREMAX, and TIBL to calculate
+    shoreline fumigation concentrations.
+12. Added debug option to output intermediate outputs from PROBE,
+    FLOWSECTOR, SUBSETMET, INVMAX, and SHORELINE.
+13. Modified subroutine FINDSEC to accomodate optional source to
+    shoreline direction.
+
+
+
+Miscellaneous
+
+1.  Eliminated system calls to copy files and use write statements instead
+    to make code more portable across operating systems.
+2.  Eliminated system calls to delete files and use close statements instead
+    to make code more portable across operating systems.
+3.  No longer copy surface and profile files to AERSCREEN.SFC and AERSCREEN.PFL,
+    instead using actual filenames.
+4.  Added diagonal angle for AREA sources in maximum concentrations file.
+5.  Make variables RUNDATE and RUNTIME global variables.
+6.  Modified subroutine METDATA that if user selects option 3 for
+    surface characteristics by accident, enter return to return
+    to option selection when prompted for filename.
+7.  Modified subroutine MAKEMET2 to enter "N" for surface friction
+    velocity adjustment in MAKEMET version 15181 when called by AERSCREEN.
+
+Bug Fixes
+1.  Corrected bug in WRITETOLOG for flare diameter output.
+    

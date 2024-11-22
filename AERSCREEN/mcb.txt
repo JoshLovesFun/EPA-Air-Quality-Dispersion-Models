@@ -1,0 +1,292 @@
+                        Model Change Bulletin
+
+                                MCB#1                       03/11/2011
+
+                        AERSCREEN (dated 11060)
+
+This Model Change Bulletin (MCB) documents changes made to the AERSCREEN 
+screening model.  A brief description of the changes is provided below. 
+Additional details are available in the FORTRAN source code and in 
+the AERSCREEN user's guide.
+
+
+This revised version of AERSCREEN (dated 11060) includes the following
+modifications relative to the previous version (BETA1):
+
+Bug Fixes
+
+1.  Modified subroutine MAKEGRID for REFINE AERMOD run to correct an
+    error in calculating y-receptor coordinates for the fence line 
+    receptor for rectangular area sources.  The y-coordinate in the beta 
+    version of AERSCREEN was set to zero and not calculated based on 
+    the diagonal of maximum concentration from FLOWSECTOR output.
+    
+2.  Modified subroutine CHECKANSWER to also check responses that 
+    requires a numeric answer in addition to responses that require a 
+    character response (not including responses that are 
+    filenames). CHECKANSWER is called with a flag denoting if the 
+    response is supposed to be character or numeric.  If response is to
+    be a character answer, CHECKANSWER checks the character string for
+    all blanks.  For numeric responses, CHECKANSWER checks the response
+    for any non-numeric characters, excluding the letter E, plus sign,
+    dashes, and periods.  CHECKANSWER also checks the response for 
+    placement of characters to ensure that is a number.  This change to 
+    CHECKANSWER ensures that if a non-numeric response is entered for a 
+    numeric response, AERSCREEN will not abnormally abort but will
+    tell the user that an invalid response was entered and re-prompt for
+    a response.  CHECKANSWER does not check to see if numeric is 
+    reasonable in regards to variable (i.e., CHECKANSWER does not check
+    for negative emission rate).
+
+3.  Created subroutine CHECKLINE to read the data lines in 
+    AERSCREEN.INP.  CHECKLINE reads the data lines to ensure that all
+    fields are present in the file and calls CHECKANSWER to ensure
+    that numeric fields are indeed numeric.  If CHECKLINE finds missing
+    data or invalid data, AERSCREEN notifies the user and stops 
+    processing.  CHECKLINE does not check to see if numeric is 
+    reasonable in regards to variable (i.e., CHECKLINE does not check
+    for negative emission rate).
+
+4.  AERSCREEN now checks for the presence of demlist.txt when reading
+    inputs from AERSCREEN.INP or prompts and terrain is being used.  
+    If demlist.txt is not present, AERSCREEN alerts the user and stops 
+    processing. 
+    
+5.  When reading demlist.txt file location of NADGRIDs file, AERSCREEN
+    checks to see if a a "\" is at the end of the folder path in case
+    users forget to add "\" to complete file pathname.  If "\" is not
+    at the end of the pathname, AERSCREEN will add it.  In the beta
+    version of AERSCREEN, if the "\" was not at the end of the pathname
+    in demlist.txt AERSCREEN stopped processing.
+
+6.  Added a logical variable, fixdum, when reading data from 
+    AERSCREEN.INP.  This variable is used when reading rectangular
+    or circular area sources.  For rectangular area sources, this
+    variable is set to true when the rotation angle is non-zero. The
+    rotation angle should always be zero.  For circular area sources, 
+    this variable is set to true when the number of vertices, NVERT, 
+    is not 20.  The number of vertices should always be 20. If fixdum 
+    is true, AERSCREEN alerts the user and stops processing.
+
+7.  For point sources, if stack temperature is negative, AERSCREEN
+    interprets this as a stack-ambient temperature difference.
+    Subroutines VALIDATE, WRITETOLOG, and OUTPUT have been modified
+    to express this as a temperature difference.
+    
+8.  Changed logic in subroutines READINP and STACKS for volume sources
+    and ambient distances from "less than or equal" to "less than".
+
+9.  Corrected format error when reading terrain files that are in
+    quotation marks in subroutine READDEM.
+
+10. Initialize variables before processing data via prompts.  Emissions
+    data are initialized to zero in subroutine READINP before reading
+    AERSCREEN.INP
+
+11. Corrected file checking in subroutine OLDMAP, so that quotations
+    do not affect checking.  In beta version of AERSCREEN, if filename
+    is entered in quotations in one AERSCREEN run but not in another,
+    absence of quotations would trigger AERSCREEN to rerun AERMAP,
+    when in fact, same file was being used.
+
+12.  In subroutine READINP, make sure all data lines present, i.e.
+     source data, building data, terrain data, meteorological data,
+     discrete receptor use line, miscellaneous data, and output filename.
+     If source data, building data, terrain data, meteorological data,
+     or miscellaneous data is missing, AERSCREEN will notify the user
+     and stop processing.  If the discrete receptor use line is missing,
+     AERSCREEN will assume no discrete receptors.  If the output filename
+     line is missing, AERSCREEN will use the default AERSCREEN.OUT filename.
+      
+13.  In subroutine READINP, now check to make sure emissions line is
+     before building, terrain, and miscellaneous data lines.  Because
+     of logic used in READINP, source type must be known before other
+     data requirements.  If emissions line is not before building,
+     terrain, or miscellaneous data, AERSCREEN alerts user and stops
+     processing.
+
+14.  Changed input probe distance units from kilometers to meters.
+
+15.  Probe distance is checked to see if it is a multiple of 25.  If
+     not, the probe distance is reset to the next multiple of 25 that
+     is higher than the current probe distance.  The user is notified
+     of the change. The change is made because receptor spacings may
+     be multiples of 25 m.
+     
+16.  Changed receptor spacing methodology for probe distances greater
+     than 5 km.  Between 0 and 5 km, receptor spacing is 25 m.  Past
+     5 km, the spacing is calculated as the difference between the probe
+     distance and 5 km divided by 100 receptors.  If the result is
+     less than 25 m, then the spacing is reset to 25 m and the number
+     of receptors past 5 km is reset based on 25 m spacing.  This
+     change in methodology was to ensure that a receptor was
+     located at the probe distance.
+ 
+17.  AERSCREEN now checks surface characteristics for reasonable values.
+     If any value of albedo is negative or greater than 1.0, AERSCREEN
+     alerts the users and stops processing.  Surface roughness is 
+     checked for values less than 0.001 or greater than 2.0 m.  If 
+     surface roughness is positive but less 0.001 m, AERSCREEN resets
+     the value to 0.001 m and alerts the user.  AERSCREEN continues
+     processing.  If the surface roughness exceeds 2.0 m, AERSCREEN
+     alerts the user but uses the entered values.  If the absolute
+     value of Bowen ratio exceeds 10, AERSCREEN alerts the user
+     but continues processing.
+
+18.  AERSCREEN checks surface characteristics files for reasonable
+     values and to make sure the files are correctly formatted.
+     AERSCREEN checks that there are values for each temporal period/
+     spatial sector combination.  If the file is incorrectly formatted,
+     AERSCREEN alerts the user and stops processing.
+     
+19.  AERSCREEN warns the user if entered ambient temperatures are less
+     than 183 K or greater than 331 K.  These are representative of 
+     current world record temperatures.  AERSCREEN will not stop
+     processing but use the entered temperatures unless the user
+     changes them.
+
+20.  If changing the ambient temperatures from the options list in
+     subroutine metdata and the user wishes to use defaults (option 1),
+     AERSCREEN will automatically reset the temperatures and the user
+     will not be shown the prompt to set to defaults.
+
+21.  AERSCREEN now includes the DOMAINXY keyword on the AERMAP.INP file
+     created by subroutine FLOWSECTOR or REFINE.  The DOMAINXY keyword
+     speeds up processing by allowing AERMAP to not have to use the 
+     entire set of terrain files listed in demlist.txt.  In FLOWSECTOR,
+     DOMAINXY is set to 1.1 times the probe distance and in REFINE,
+     DOMAINXY is set to 1.1 times the maximum distance being
+     processed in REFINE.
+     
+22.  Source elevation included in the validation page, even when
+     terrain is not used.
+     
+23.  If the NAD datum option is not 1 or 4 or non-numeric, AERSCREEN  
+     will alert the user and re-prompt the user for the NAD when 
+     entering data from the prompts or stop processing if data is 
+     entered using the AERSCREEN.INP file.
+     
+24.  If the UTM zone is zero or less or non-numeric, AERSCREEN
+     will alert the user and re-prompt the user for the UTM zone when 
+     entering data from the prompts or stop processing if data is  
+     entered using the AERSCREEN.INP file.
+     
+25.  AERSCREEN alerts the user if the source UTM coordinates are
+     x=0 and y=0 if terrain is used.
+
+26.  Added space between user albedo and Bowen ratio to accommodate
+     negative Bowen ratios.
+     
+27.  If user is changing terrain from no to yes using prompts, AERSCREEN
+     checks the UTM zone and NAD option.  If values are invalid
+     AERSCREEN automatically prompts for correct values.  UTM zone
+     is only checked when input coordinates are UTM coordinates.
+
+28.  If building downwash is set to no, the user cannot change 
+     parameters using the options list.  The user cannot change
+     building parameters if downwash is set to yes and an BPIPPRM input
+     file is being used.  
+
+29.  If downwash is initially no and all building parameters are zero
+     and the user changes downwash to yes using the options list and 
+     hits return to return to the validation page, AERSCREEN checks 
+     the building parameters for valid values and if any values are 
+     invalid, the user is prompted for new values.
+
+30.  Added a new subroutine, CHECKBPIP, to ensure BIPPRM input file
+     is correctly formatted for AERMOD.  CHECKBPIP checks to make sure
+     the process flag is set to 'P' for PRIME downwash and that only
+     one stack is included in the input file.  If reading data
+     from the AERSCREEN.INP and the file is not correctly formatted,
+     AERSCREEN alerts the user and stops processing.  If entering
+     the filename from the prompts, AERSCREEN will re-prompt for
+     the filename if the file is incorrectly formatted.
+     
+31.  Changed processing in subroutine GETDEM, to check for complete
+     text string "LATLON" or "UTM" when entering coordinates.
+     
+32.  Changed receptor coordinates in maximum concentration file and 
+     AERSCREEN.OUT to be 2 places past the decimal.
+
+33.  Change subroutine MAKEGRID so that receptor coordinates matched
+     those output by AERMAP.
+     
+34.  Logical variables used in subroutine CHECKDAT now part of module 
+     MAIN1 and included in subroutine READINP.  Added logical variables
+     fixsurf and fixclim for the surface code and moisture code.
+     
+35.  Added warning in subroutines VALIDATE and WRITETOLOG if stack
+     exit velocity reset to 1E-05.
+     
+36.  Added variable istage2 used in subroutine AERMAPQA.  Istage2 is
+     used as a counter for ierr2.  If istage = 0 (source elevation  
+     calculation) then istage2=1, otherwise istage2=istage.
+     
+37.  Variable ipass, used to denote if data from AERSCREEN.INP is used,
+     now part of module MAIN1.
+
+38.  Corrected terrain options list in subroutine GETDEMs for cases
+     that do not use terrain.  Correction is to source elevation option
+     so that it reads "Source elevation input (user entered or zero)"
+     instead of "Source elevation input (user entered or AERMAP)" since
+     AERMAP is not used for flat cases.
+
+39.  Changed AERMOD, MAKEMET, BPIPPRM, and AERMAP executable checks
+     to be non-fatal warnings if not found in current folder. If not
+     found, AERSCREEN prompts user for location and they are copied
+     to current folder.  Checks are now done in subroutine VALIDATE.
+     BPIPPRM and AERMAP checks are only done if downwash or terrain
+     are being used.
+
+40.  Changed prompts that require a y or n to be lowercase for both
+     y and n to avoid confusion that capital N was a default.
+
+41.  In the case AERMAP is unsuccessful and there is no error message
+     AERSCREEN issues the message to check source coordinates and that
+     they may not be located in the terrain file(s).
+     
+42.  Corrected references to "FLOWVECTOR" and changed to "FLOWSECTOR."
+
+43.  Changed references to "BPIP" in write statements to "BPIPPRM."
+            
+Enhancements
+
+1.  User can specify output filename, other than default AERSCREEN.OUT.
+    If user specifies a filename other than AERSCREEN.OUT, AERSCREEN
+    checks to make sure the filename is valid, either checking for
+    its existence or that the pathname of the file exists.  Output
+    filenames cannot be AERSCREEN.LOG and must have an ".OUT" extension.
+    If AERSCREEN.OUT is not used as the filename, the 
+    max_conc_distance.txt file is renamed using the path and file prefix
+    of the output file.  AERSCREEN also copies the new version of 
+    AERSCREEN.INP to a file with the output filename's prefix and an
+    ".inp" extension.  AERSCREEN.LOG is also copied to a file with
+    the output file's prefix and an ".log" extension. The copy of the
+    log file does not occur if the user stops AERSCREEN processing
+    in the VALIDATE subroutine.
+
+2.  The user can include up to 10 discrete receptor distances using
+    a simple text file of distances, one distance per line.  The
+    first line must contain the text "units: " followed by a units
+    descriptor:  meters, km, kilometers, kilo-meters, feet, ft, or miles.
+    If the units line is not found or invalid units indicated, AERSCREEN
+    will alert the user.  If processing data from AERSCREEN.INP, 
+    AERSCREEN will stop processing.  If processing data from the 
+    prompts, AERSCREEN will re-prompt for a filename.  If the units line 
+    is found but no units are listed, AERSCREEN will assume units of 
+    meters.  AERSCREEN does not include receptors with distances less than
+    the entered ambient distance or receptors with distances greater than
+    the probe distance.  Receptors with distances already part of the 
+    automatic array are also not included.  New subroutine, CALCREC
+    created to calculate receptor network, including discrete receptors.
+
+3.  AERSCREEN will process NOx to NO2 chemistry using PVMRM or OLM.  The
+    user must specify either PVMRM or OLM, the NO2/NOx in stack ratio, and
+    a representative ozone concentration.  This can be done using the prompts
+    in the source parameters prompts list, or by including the appropriate
+    parameters in the CO PATHWAY of the AERSCREEN.INP file.
+
+Miscellaneous
+
+1.  When using a non-default name for AERSCREEN output file, write to 
+    screen at end of processing new input and log filenames.      

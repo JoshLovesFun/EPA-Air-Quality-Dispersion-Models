@@ -1,0 +1,31 @@
+                        Model Change Bulletin
+
+                                MCB#6                       08/03/2016
+
+                        AERSCREEN (dated 16216)
+
+This Model Change Bulletin (MCB) documents changes made to the AERSCREEN 
+screening model.  A brief description of the changes is provided below. 
+Additional details are available in the FORTRAN source code and in 
+the AERSCREEN user's guide.
+
+
+This revised version of AERSCREEN (dated 16216) includes the following
+modifications relative to the previous version (15181):
+
+Enhancements
+
+1.  Added ability to use the u* adjustment in MAKEMET.
+
+
+Miscellaneous
+
+1.  Modified subroutine OUTPUT to only include non-zero minimum
+    building widths when outputting minimum building width from
+    BPIPPRIM output.
+2.  Modified subroutine MAKEINPUT to remove BETA flags for point
+    and capped stacks
+
+Bug Fixes
+1.  Corrected bug in SUBSETMET to use correct meterological file.
+    

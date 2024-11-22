@@ -1,0 +1,25 @@
+                        Model Change Bulletin
+
+                                MCB#2                       03/17/2011
+
+                        AERSCREEN (dated 11076)
+
+This Model Change Bulletin (MCB) documents changes made to the AERSCREEN 
+screening model.  A brief description of the changes is provided below. 
+Additional details are available in the FORTRAN source code and in 
+the AERSCREEN user's guide.
+
+
+This revised version of AERSCREEN (dated 11076) includes the following
+modifications relative to the previous version (11060):
+
+Bug Fixes
+
+1.  Modified subroutine MAKETERRAIN to change the variable xdist
+    to always be 1.1 times the probe distance for the DOMAINXY
+    keyword that goes into AERMAP.  In version 11060, for the
+    FLOWSECTOR stage of AERSCREEN, xdist was set to 1.1 times the
+    probe distance while in FLOWSECTOR it is set to
+    1.1 times the final distance.  In complex terrain, this change
+    in DOMAINXY can affect hill height scales, affecting concentrations.
+    

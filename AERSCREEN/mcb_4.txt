@@ -1,0 +1,41 @@
+                        Model Change Bulletin
+
+                                MCB#4                       05/27/2014
+
+                        AERSCREEN (dated 14147)
+
+This Model Change Bulletin (MCB) documents changes made to the AERSCREEN 
+screening model.  A brief description of the changes is provided below. 
+Additional details are available in the FORTRAN source code and in 
+the AERSCREEN user's guide.
+
+
+This revised version of AERSCREEN (dated 14147) includes the following
+modifications relative to the previous version (11126):
+
+Modifications
+
+1.  Modified subroutines MAKETERRAIN and MAKEGRID to include a new variable,
+    REFDIST for calculating receptors for the REFINE stage.  Previously, the
+    variable NUMPT was used in these subroutines to represent the number of 
+    receptor points for the PROBE and FLOWSECTOR stages and distance for
+    the REFINE stage.  REFDIST was created to avoid confusion with different
+    meanings of NUMPT.  REFDIST is also set to the probe distance if REFDIST
+    exceeds the probe distance.
+2.  Modifed subroutine MAKEINPUT to eliminate a blank line as the first line
+    of the AERMOD input file.  This makes AERSCREEN compatible with AERMOD
+    version 14134 and later due to the skipping of blank lines in AERMOD (see
+    miscellaneous change #3 of AERMOD MCB #10).
+3.  Modified subroutine FINDMAX to read the AERMOD version number from AERSCREEN.FIL
+    so that it is independent of the AERMOD version.  Previous versions of AERSCREEN
+    read the version number using a fixed format that changed with AERMOD 12345.
+    AERSCREEN no longer uses a fixed format to read the version number and is flexible
+    for later AERMOD versions.
+
+Bug Fixes
+
+1.  Modified subroutine READINP to set the discrete receptor use flag
+    DISCFLAG to N instead of setting the logical variable DISCDAT to N.
+    Previous versions of AERSCREEN were setting the wrong variable (DISCDAT).
+
+    

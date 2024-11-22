@@ -1,0 +1,26 @@
+                        Model Change Bulletin
+
+                                MCB#3                       05/06/2011
+
+                        AERSCREEN (dated 11126)
+
+This Model Change Bulletin (MCB) documents changes made to the AERSCREEN 
+screening model.  A brief description of the changes is provided below. 
+Additional details are available in the FORTRAN source code and in 
+the AERSCREEN user's guide.
+
+
+This revised version of AERSCREEN (dated 11126) includes the following
+modifications relative to the previous version (11076):
+
+Modifications
+
+1.  Modified subroutine MAKETERRAIN to accomodate the 12-character
+    source identifier for AERMAP version 11103
+Bug Fixes
+
+1.  Modified subroutine READINP to set the discrete receptor use flag
+    to N and discrete receptor file to "NA" when the discrete receptor
+    data section is missing in AERSCREEN.INP
+
+    

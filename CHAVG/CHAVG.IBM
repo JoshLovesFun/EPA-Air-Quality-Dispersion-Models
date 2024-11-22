@@ -1,0 +1,657 @@
+C***********************************************************************AVG00005
+C                                                                       AVG00006
+C                          CHAVG (DATED 81180)                          AVG00010
+C                                                                       AVG00011
+C              *** SEE CHAVG MODEL CHANGE BULLETIN MCB#1 ***            AVG00012
+C                                                                       AVG00013
+C     ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS BULLETIN BOARD    AVG00014
+C                                                                       AVG00015
+C                              919-541-5742                             AVG00016
+C                                                                       AVG00017
+C***********************************************************************AVG00018
+C                    CHAVG - VERSION 1.0 (DATED 81180)                  AVG00020
+C                                                                       AVG00060
+C        ABSTRACT:                                                      AVG00070
+C             CHAVG IS A PERIPHERAL PROGRAM DESIGNED TO READ HOURLY     AVG00080
+C        CONCENTRATIONS FROM A DISK/TAPE FILE AND DETERMINE LENGTH      AVG00090
+C        OF RECORD AVERAGES, RUNNING AVERAGES, AND END-TO-END AVERAGES  AVG00100
+C        FOR FOUR OR FIVE AVERAGING PERIODS.  THE USER SELECTS THE      AVG00110
+C        OPTIONAL FIFTH AVERAGING PERIOD.  AVERAGES ARE RANKED, AND     AVG00120
+C        A NUMBER OF THE HIGHEST AVERAGES ARE OUTPUT FOR EACH RECEPTOR. AVG00130
+C*****  RAMF USERS NOTE THE FOLLOWING  *********************************AVG00140
+C    RECORD ONE IN RAMF'S OUTPUT CONCENTRATION FILE DIFFERS             AVG00150
+C    SLIGHTLY FROM THE READ REQUIREMENT IN CHAVG.                       AVG00160
+C    CONSEQUENTLY, IT IS NECESSARY TO MAKE A MINOR CHANGE               AVG00170
+C    TO THE RAMF CODE.  THE VARIABLE NDAYS ON SEQUENCE LINE             AVG00180
+C    RMF3280 SHOULD BE REPLACED BY THE VARIABLES NPER,NAVG              AVG00190
+C***********************************************************************AVG00200
+C                                                                       AVG00210
+C        AUTHORS: J. A. CATALANO, AND F. V. HALE                        AVG00220
+C                 AEROCOMP, INC.                                        AVG00230
+C                 3303 HARBOR BLVD., SUITE F-4                          AVG00240
+C                 COSTA MESA, CA  92626                                 AVG00250
+C                 BASED UPON TPHI5 AND TPRN25 BY:                       AVG00260
+C                 D. B. TURNER, AND T. E. PIERCE                        AVG00270
+C                  (ON ASSIGNMENT FROM NOAA TO EPA)                     AVG00280
+C                 ENVIRONMENTAL PROTECTION AGENCY  MD-80                AVG00290
+C                 METEOROLOGY AND ASSESSMENT DIVISION                   AVG00300
+C                 ENVIRONMENTAL OPERATIONS BRANCH                       AVG00310
+C                 RESEARCH TRIANGLE PARK, NC    27711                   AVG00320
+C                 PHONE: (919) 541-4564    FTS 629-4564                 AVG00330
+C                                                                       AVG00340
+C                                                                       AVG00350
+C        DATA INPUT:                                                    AVG00360
+C         TAPE/DISK FILE OF HRLY CONCENTRATIONS (UNIT NO. 12)           AVG00370
+C         CARD INPUT (UNIT NO. 5)                                       AVG00380
+C         CARD ONE WITH FIFTH AVG TIME                                  AVG00390
+C            FIFTH TIME=XX      (I2)                                    AVG00400
+C            (SHOULD BE 2,4,6, OR 12 HRS OR ZERO)                       AVG00410
+C         CARD TWO -- SELECTED AVERAGING TYPE                           AVG00420
+C            AVERAGES=E(END-TO-END AND LENGTH OF RECORD)   (A1)         AVG00430
+C                     R(RUNNING,END-TO-END, AND LENGTH OF RECORD) (A1)  AVG00440
+C         CARD THREE -- NUMBER OF RECEPTORS                             AVG00450
+C            RECEPTORS=XXX     (I3)                                     AVG00460
+C            LEAVE BLANK TO PROCESS ALL RECEPTORS                       AVG00470
+C         CARDS FOUR TO N -- SELECTED RECEPTOR NUMBERS                  AVG00480
+C            X,XX,XX,XX,XX,XXX   (FREE FORMAT)                          AVG00490
+C            OMIT IF PROCESSING ALL RECEPTORS                           AVG00500
+C                                                                       AVG00510
+C        PROGRAM OUPUT:                                                 AVG00520
+C         LENGTH OF RECORD AVERAGES FOR EACH RECEPTOR.                  AVG00530
+C         THE N+1 HIGHEST RUNNING AVERAGES FOR EACH RECEPTOR AND        AVG00540
+C            EACH AVERAGING TIME OF N HOURS.  THE SECOND HIGHEST        AVG00550
+C            NONOVERLAPPING RUNNING AVERAGE IS INDICATED FOR EACH       AVG00560
+C            RECEPTOR AND AVERAGING TIME. THE DEFINITION OF THE SECOND  AVG00570
+C            HIGHEST NONOVERLAPPING RUNNING AVERAGE IS DERIVED FROM     AVG00580
+C            'GUIDELINES FOR AIR QUALITY MAINTENANCE PLANNING AND       AVG00590
+C            ANALYSIS VOLUME 11: AIR QUALITY MONITORING AND DATA        AVG00600
+C            ANALYSIS' (EPA 450/4-74-012, SEPT. 1974; OAQPS NO.         AVG00610
+C            1.2-030) P. 78-81 AND 'GUIDELINES FOR THE INTERPRETATION   AVG00620
+C            OF AIR QUALITY STANDARDS' (OAQPS NO. 1.2-008, REV. FEB.    AVG00630
+C            1977) ISSUE 7B.                                            AVG00640
+C            NOTE THAT ONE HOUR RUNNING AVERAGES ARE NOT COMPUTED.      AVG00650
+C            THIS IS BECAUSE 1) IT IS NOT POSSIBLE FOR THEM TO OVERLAP, AVG00660
+C            AND 2) THEY ARE A SUBSET OF THE END-TO-END AVERAGES.       AVG00670
+C         FIVE HIGHEST END-TO-END AVERAGES FOR EACH RECEPTOR AND        AVG00680
+C            AVERAGING TIME.                                            AVG00690
+C                                                                       AVG00700
+C***   MODIFICATION NECESSARY FOR A CHANGE IN THE NUMBER OF RECEPTORS   AVG00710
+C***   WHICH CAN BE SELECTED.                                           AVG00720
+C***   (BE SURE THAT COMMON IS CHANGED IN ALL ROUTINES.  MORE CHANGES   AVG00730
+C***    DESCRIBED IN BLOCK DATA.)                                       AVG00740
+C***                                                                    AVG00750
+C***   XXX = NUMBER OF RECEPTORS                                        AVG00760
+C***                                                                    AVG00770
+C***   COMMON HMAXA(5,XXX,5),CUM(XXX,5),STAR(2,XXX), . . .              AVG00780
+C***  1       . . .  IHR(5,XXX,5),NRECP(XXX), . . .                     AVG00790
+C***   DIMENSION CNHR(XXX,24),RNMX3(4,XXX),RNMX8(9,XXX),RNMX24(25,XXX), AVG00800
+C***  1          RNMXX(13,XXX),. . .         . . .,SUM(XXX),            AVG00810
+C***  2          JHR3(4,XXX),JHR8(9,XXX),JHR24(25,XXX),JHRX(13,XXX), ...AVG00820
+C***                                                                    AVG00830
+C***   2XX =  2 TIMES THE NUMBER OF RECEPTORS                           AVG00840
+C***   4XX =  4 TIMES THE NUMBER OF RECEPTORS                           AVG00850
+C***   9XX =  9 TIMES THE NUMBER OF RECEPTORS                           AVG00860
+C***   13X = 13 TIMES THE NUMBER OF RECEPTORS                           AVG00870
+C***   24X = 24 TIMES THE NUMBER OF RECEPTORS                           AVG00880
+C***   25X = 25 TIMES THE NUMBER OF RECEPTORS                           AVG00890
+C***                                                                    AVG00900
+C***   DATA CNHR/24X*0./,RNMX3/4XX*0./,RNMX8/9XX*0./,RNMX24/25X*0./,    AVG00910
+C***  1     RNMXX/13X*0./,JHR3/4XX*0/,JHR8/9XX*0/,JHR24/25X*0/,         AVG00920
+C***  2     JHRX/13X*0/,SUM/XXX*0./,MAXRCP/XXX/, . . .                  AVG00930
+C***                                                                    AVG00940
+C                                                                       AVG00950
+      COMMON /ALL/ HMAXA(5,20,5),CUM(20,5),STAR(2,20),HEAD1(20),        AVG00960
+     1             HEAD2(20),HEAD3(20),IHR(5,20,5),NRECP(20),NDAY(25),  AVG00970
+     2             NHRS(25),NRSEL,NAV5,JDAY,LH,NHR,IPAG,IO,BLNK,STR     AVG00980
+      CHARACTER*4 HEAD1,HEAD2,HEAD3
+      CHARACTER*2 BLNK
+      CHARACTER*1 STAR,STR
+      CHARACTER*1 MODE,MR,ME
+      DIMENSION CNHR(20,24),RNMX3(4,20),RNMX8(9,20),RNMX24(25,20),      AVG00990
+     1          RNMXX(13,20),CHI(180),RREC(180),SREC(180),SUM(20),      AVG01000
+     2          JHR3(4,20),JHR8(9,20),JHR24(25,20),JHRX(13,20),         AVG01010
+     3          ATM(5),NATM(5)                                          AVG01020
+      DATA CNHR/480*0./,RNMX3/80*0./,RNMX8/180*0./,RNMX24/500*0./,      AVG01030
+     1     RNMXX/260*0./,JHR3/80*0/,JHR8/180*0/,JHR24/500*0/,           AVG01040
+     2     JHRX/260*0/,SUM/20*0./,MAXRCP/20/,LCHK/0/,IN/5/,             AVG01050
+     3     ILIN/0/,NAVT/4/,NH3/0/,NH8/0/,NHX/0/,NATM/1,3,8,24,0/,       AVG01060
+     4     ATM/1.,3.,8.,24.,0./,ME/'E'/,MR/'R'/,J3/21/,J8/16/           AVG01070
+C                                                                       AVG01080
+C* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *AVG01090
+      WRITE (6,1234)                                                    AVG01100
+ 1234 FORMAT ('1',21X,'CHAVG               (DATED 81180) '/)            AVG01110
+C                                                                       AVG01160
+C        READ CARD TYPE ONE - OPTIONAL AVG TIME                         AVG01170
+C                                                                       AVG01180
+      READ (IN,810) NAV5                                                AVG01190
+      IF ((NAV5.EQ.2).OR.(NAV5.EQ.4).OR.(NAV5.EQ.6).OR.(NAV5.EQ.12))    AVG01200
+     .   GO TO 8                                                        AVG01210
+      IF (NAV5.EQ.0) GO TO 10                                           AVG01220
+      WRITE(IO,320) NAV5                                                AVG01230
+      STOP                                                              AVG01240
+8     ATM(5)=NAV5                                                       AVG01250
+      NATM(5)=NAV5                                                      AVG01260
+      NAVT=5                                                            AVG01270
+      NAV51 = NAV5 + 1                                                  AVG01280
+      J5 = 24-NAV5                                                      AVG01290
+C                                                                       AVG01300
+C        READ CARD TYPE TWO - AVERAGE TYPE SELECTION                    AVG01310
+C                                                                       AVG01320
+10    READ(IN,820)MODE                                                  AVG01330
+      IF ((MODE.EQ.ME).OR.(MODE.EQ.MR)) GO TO 20                        AVG01340
+      WRITE(IO,830)                                                     AVG01350
+      STOP                                                              AVG01360
+C                                                                       AVG01370
+C        READ CARD TYPES THREE AND FOUR - RECEPTORS                     AVG01380
+C                                                                       AVG01390
+20    READ(IN,840)NRSEL                                                 AVG01400
+      IF (NRSEL.EQ.0) GO TO 40                                          AVG01410
+      READ(IN,*)(NRECP(I),I=1,NRSEL)                                    AVG01420
+C        READ FIRST TWO RECORDS FROM HOURLY FILE                        AVG01430
+C        PROGRAM IS DESIGNED TO HANDLE A MAXIMUM OF 180 RECEPTORS IN    AVG01440
+C        THE HOURLY FILE.                                               AVG01450
+40    READ (12) NPER,NAVG,HEAD1,HEAD2,HEAD3                             AVG01460
+      READ (12) NR,(RREC(I),I=1,NR),(SREC(J),J=1,NR)                    AVG01470
+C                                                                       AVG01480
+C        CHECK NUMBER OF RECEPTORS IN FILE                              AVG01490
+C                                                                       AVG01500
+      IF ((NR.GT.0).AND.(NR.LT.181)) GO TO 50                           AVG01510
+         WRITE(IO,850)                                                  AVG01520
+         STOP                                                           AVG01530
+C                                                                       AVG01540
+C        SET FOR PROCESSING ALL RECEPTORS                               AVG01550
+C                                                                       AVG01560
+50    IF (NRSEL.GT.0) GO TO 80                                          AVG01570
+         NRSEL = NR                                                     AVG01580
+         DO 60 I=1,NR                                                   AVG01590
+            NRECP(I) = I                                                AVG01600
+60    CONTINUE                                                          AVG01610
+C                                                                       AVG01620
+C        DETERMINE TOTAL NUMBER OF HOURS.                               AVG01630
+C            NPER - NUMBER OF PERIODS                                   AVG01640
+C            NAVG - NUMBER OF HOURS WITHIN EACH PERIOD                  AVG01650
+C                                                                       AVG01660
+80    NT=NPER*NAVG                                                      AVG01670
+C        CHECK TO SEE THAT NUMBER OF RECEPTORS IS ACCEPTABLE            AVG01680
+      IF (NRSEL.LE.MAXRCP) GO TO 90                                     AVG01690
+C        WRITE ERROR MESSAGE.                                           AVG01700
+      WRITE (IO,330) NRSEL,MAXRCP                                       AVG01710
+      STOP                                                              AVG01720
+90    CONTINUE                                                          AVG01730
+C                                                                       AVG01740
+C* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *AVG01750
+C        INPUT LOOP READS HOURLY DATA AND CALCULATES AVERAGES           AVG01760
+C                                                                       AVG01770
+      DO 150 IR=1,NT                                                    AVG01780
+C                                                                       AVG01790
+C        SET HOUR INDEX                                                 AVG01800
+C                                                                       AVG01810
+      LCHK=LCHK+1                                                       AVG01820
+      IF (LCHK.GT.24) LCHK=1                                            AVG01830
+C                                                                       AVG01840
+C        SET END-TO-END PERIOS INDICES                                  AVG01850
+C                                                                       AVG01860
+      NH3 = NH3 + 1                                                     AVG01870
+      NH8 = NH8 + 1                                                     AVG01880
+      IF (NH3.GT.3) NH3 = 1                                             AVG01890
+      IF (NH8.GT.8) NH8 = 1                                             AVG01900
+C                                                                       AVG01910
+C        READ DATA FOR ONE HOUR                                         AVG01920
+C                                                                       AVG01930
+      READ (12) JDAY,LH,(CHI(I),I=1,NR)                                 AVG01940
+C        CHECK TO SEE THAT HOUR MATCHES WHAT IS EXPECTED.               AVG01950
+      IF (LH.EQ.LCHK) GO TO 120                                         AVG01960
+C        WRITE ERROR MESSAGE.                                           AVG01970
+      WRITE (IO,340) LH,JDAY,LCHK                                       AVG01980
+      GO TO 155                                                         AVG01990
+120   NHR=NHR+1                                                         AVG02000
+C                                                                       AVG02010
+C        DETERMINE WHICH AVERAGES ARE TO BE COMPUTED                    AVG02020
+C                                                                       AVG02030
+      IF (MODE.EQ.ME) GO TO 130                                         AVG02040
+C                                                                       AVG02050
+C        *****  CALCULATIONS FOR RUNNING AND END-TO-END  *****          AVG02060
+C                                                                       AVG02070
+      J3 = J3 + 1                                                       AVG02080
+      J8 = J8 + 1                                                       AVG02090
+      IF (J3.GT.24) J3 = 1                                              AVG02100
+      IF (J8.GT.24) J8 = 1                                              AVG02110
+      IF (NAVT.EQ.4) GO TO 122                                          AVG02120
+         J5 = J5 + 1                                                    AVG02130
+         IF (J5.GT.24) J5 = 1                                           AVG02140
+122   CONTINUE                                                          AVG02150
+C                                                                       AVG02160
+C        LOOP OVER RECEPTORS                                            AVG02170
+C                                                                       AVG02180
+      DO 125 I=1,NRSEL                                                  AVG02190
+      A=CHI(NRECP(I))                                                   AVG02200
+C        ADD FOR LENGTH-OF-RECORD AVERAGE.                              AVG02210
+      SUM(I)=SUM(I)+A                                                   AVG02220
+C        ADD CURRENT HOUR TO SUM AND SUBTRACT THE OLDEST HOUR           AVG02230
+      CUM(I,1) = A                                                      AVG02240
+      CUM(I,2) = (CUM(I,2) + A) - CNHR(I,J3)                            AVG02250
+      CUM(I,3) = (CUM(I,3) + A) - CNHR(I,J8)                            AVG02260
+      CUM(I,4) = (CUM(I,4) + A) - CNHR(I,LCHK)                          AVG02270
+      IF (NAVT.EQ.5) CUM(I,5) = (CUM(I,5) + A) - CNHR(I,J5)             AVG02280
+C        SAVE CURRENT CONCENTRATION                                     AVG02290
+      CNHR(I,LCHK) = A                                                  AVG02300
+C                                                                       AVG02310
+125   CONTINUE                                                          AVG02320
+C                                                                       AVG02330
+C        END LOOP OVER RECEPTORS. NEXT UPDATE TABLES                    AVG02340
+C                                                                       AVG02350
+      CALL RNRK(RNMX3,JHR3,4,MAXRCP,2)                                  AVG02360
+      CALL RNRK(RNMX8,JHR8,9,MAXRCP,3)                                  AVG02370
+      CALL RNRK(RNMX24,JHR24,25,MAXRCP,4)                               AVG02380
+      CALL RNK5(1)                                                      AVG02390
+      IF (NH3.EQ.3) CALL RNK5(2)                                        AVG02400
+      IF (NH8.EQ.8) CALL RNK5(3)                                        AVG02410
+      IF (LCHK.EQ.24) CALL RNK5(4)                                      AVG02420
+      IF (NAVT.EQ.4) GO TO 150                                          AVG02430
+         CALL RNRK(RNMXX,JHRX,NAV51,MAXRCP,5)                           AVG02440
+         NHX = NHX + 1                                                  AVG02450
+         IF (NHX.NE.NAV5) GO TO 150                                     AVG02460
+            CALL RNK5(5)                                                AVG02470
+            NHX = 0                                                     AVG02480
+      GO TO 150                                                         AVG02490
+C                                                                       AVG02500
+C        *****  CALCULATIONS FOR END-TO-END ONLY  ***                   AVG02510
+C                                                                       AVG02520
+130   CONTINUE                                                          AVG02530
+C                                                                       AVG02540
+C        LOOP OVER RECEPTORS                                            AVG02550
+C                                                                       AVG02560
+      DO 135 I=1,NRSEL                                                  AVG02570
+      A=CHI(NRECP(I))                                                   AVG02580
+C        ADD FOR LENGTH-OF-RECORD AVERAGE.                              AVG02590
+      SUM(I)=SUM(I)+A                                                   AVG02600
+C        ADD FOR END-TO-END AVERAGES.                                   AVG02610
+      CUM(I,1) = A                                                      AVG02620
+      CUM(I,2) = CUM(I,2) + A                                           AVG02630
+      CUM(I,3) = CUM(I,3) + A                                           AVG02640
+      CUM(I,4) = CUM(I,4) + A                                           AVG02650
+      IF (NAVT.EQ.5) CUM(I,5) = CUM(I,5) + A                            AVG02660
+C                                                                       AVG02670
+135   CONTINUE                                                          AVG02680
+C                                                                       AVG02690
+C        END OF LOOP OVER RECEPTORS. NEXT UPDATE TABLES.                AVG02700
+C                                                                       AVG02710
+      CALL RNK5(1)                                                      AVG02720
+      IF (NH3.NE.3) GO TO 142                                           AVG02730
+         CALL RNK5(2)                                                   AVG02740
+         DO 141 I=1,NRSEL                                               AVG02750
+            CUM(I,2) = 0.                                               AVG02760
+141      CONTINUE                                                       AVG02770
+142   IF (NH8.NE.8) GO TO 144                                           AVG02780
+         CALL RNK5(3)                                                   AVG02790
+         DO 143 I=1,NRSEL                                               AVG02800
+            CUM(I,3) = 0.                                               AVG02810
+143   CONTINUE                                                          AVG02820
+144   IF (LCHK.NE.24) GO TO 146                                         AVG02830
+         CALL RNK5(4)                                                   AVG02840
+         DO 145 I=1,NRSEL                                               AVG02850
+            CUM(I,4) = 0.                                               AVG02860
+145      CONTINUE                                                       AVG02870
+146   IF (NAVT.EQ.4) GO TO 150                                          AVG02880
+         NHX = NHX + 1                                                  AVG02890
+         IF (NHX.NE.NAV5) GO TO 150                                     AVG02900
+            CALL RNK5(5)                                                AVG02910
+            NHX = 0                                                     AVG02920
+            DO 147 I=1,NRSEL                                            AVG02930
+               CUM(I,5) = 0.                                            AVG02940
+147         CONTINUE                                                    AVG02950
+C                                                                       AVG02960
+150   CONTINUE                                                          AVG02970
+C        END OF HOURLY LOOP                                             AVG02980
+C                                                                       AVG02990
+C * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * AVG03000
+C        OUTPUT TITLE PAGE                                              AVG03010
+C                                                                       AVG03020
+155   WRITE(IO,400)                                                     AVG03030
+      WRITE(IO,410)                                                     AVG03040
+      WRITE(IO,420)                                                     AVG03050
+      WRITE(IO,430)                                                     AVG03060
+      WRITE(IO,440)                                                     AVG03070
+      WRITE(IO,450)                                                     AVG03080
+C                                                                       AVG03090
+C * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * AVG03100
+C        OUTPUT LENGTH OF RECORD AVERAGES.                              AVG03110
+C        DETERMINE AVG CONC FOR LENGTH OF RECORD AND LABEL HIGHEST      AVG03120
+C         VALUE WITH AN ASTERISK.                                       AVG03130
+      SUM(1)=SUM(1)/NHR                                                 AVG03140
+      A=SUM(1)                                                          AVG03150
+      MX=1                                                              AVG03160
+      IF (NRSEL.EQ.1) GO TO 162                                         AVG03170
+      DO 160 K=2,NRSEL                                                  AVG03180
+      SUM(K)=SUM(K)/NHR                                                 AVG03190
+      IF (SUM(K).LE.A) GO TO 160                                        AVG03200
+      MX=K                                                              AVG03210
+      A=SUM(K)                                                          AVG03220
+160   CONTINUE                                                          AVG03230
+162   STAR(1,MX)=STR                                                    AVG03240
+C        PRINT AVG CONCS.                                               AVG03250
+      DO 170 I=1,NRSEL                                                  AVG03260
+      IF (ILIN.GT.0) GO TO 168                                          AVG03270
+      IPAG = IPAG + 1                                                   AVG03280
+      ILIN = 52                                                         AVG03290
+      WRITE (IO,350) HEAD1,HEAD2,IPAG,HEAD3                             AVG03300
+      WRITE (IO,360) NT,JDAY,LH                                         AVG03310
+      WRITE (IO,365)                                                    AVG03320
+168   ILIN = ILIN - 1                                                   AVG03330
+170   WRITE (IO,370) NRECP(I),RREC(NRECP(I)),SREC(NRECP(I)),            AVG03340
+     .SUM(I),STAR(1,I)                                                  AVG03350
+C                                                                       AVG03360
+C* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *AVG03370
+C        OUTPUT RUNNING AVERAGES                                        AVG03380
+C                                                                       AVG03390
+C        FIND RECEPTORS WITH HIGHEST AND SECOND HIGHEST CONCENTRATIONS. AVG03400
+      IF (MODE.EQ.ME) GO TO 500                                         AVG03410
+      STAR(1,MX) = BLNK                                                 AVG03420
+      CALL OUTRA(RNMX3,JHR3,4,MAXRCP)                                   AVG03430
+      CALL OUTRA(RNMX8,JHR8,9,MAXRCP)                                   AVG03440
+      CALL OUTRA(RNMX24,JHR24,25,MAXRCP)                                AVG03450
+      IF (NAVT.EQ.5) CALL OUTRA(RNMXX,JHRX,(NAV5+1),MAXRCP)             AVG03460
+500   CONTINUE                                                          AVG03470
+C* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *AVG03480
+C        OUTPUT END-TO-END AVERAGES.                                    AVG03490
+C        DIVIDE HI-FIVE CONCS. BY THE APPROPRIATE AVG-TIME              AVG03500
+      DO 670 L=2,NAVT                                                   AVG03510
+      DX = ATM(L)                                                       AVG03520
+      DO 660 K=1,NRSEL                                                  AVG03530
+      DO 650 J=1,5                                                      AVG03540
+650   HMAXA(J,K,L)=HMAXA(J,K,L)/DX                                      AVG03550
+660   CONTINUE                                                          AVG03560
+670   CONTINUE                                                          AVG03570
+C        WRITE TABLE OF HIGH-FIVE CONCENTRATIONS                        AVG03580
+C        FOR EACH AVERAGING TIME.                                       AVG03590
+      DO 710 L=1,NAVT                                                   AVG03600
+C        FIND RECEPTOR WITH HIGHEST CONCENTRATION AND RECEPTOR WITH     AVG03610
+C         SECOND HIGHEST CONC FOR EACH AVERAGING TIME AND LABEL EACH    AVG03620
+C         WITH AN ASTERISK.                                             AVG03630
+      ILIN = 0                                                          AVG03640
+      K1=1                                                              AVG03650
+      K2=1                                                              AVG03660
+      A=HMAXA(1,1,L)                                                    AVG03670
+      B=HMAXA(2,1,L)                                                    AVG03680
+      IF (NRSEL.EQ.1) GO TO 692                                         AVG03690
+      DO 690 K=2,NRSEL                                                  AVG03700
+      IF (HMAXA(1,K,L).LE.A) GO TO 680                                  AVG03710
+      A=HMAXA(1,K,L)                                                    AVG03720
+      K1=K                                                              AVG03730
+680   IF (HMAXA(2,K,L).LE.B) GO TO 690                                  AVG03740
+      B=HMAXA(2,K,L)                                                    AVG03750
+      K2=K                                                              AVG03760
+690   CONTINUE                                                          AVG03770
+692   STAR(1,K1)=STR                                                    AVG03780
+      STAR(2,K2)=STR                                                    AVG03790
+C        PRINT TABLE OF HIGH-FIVE CONCENTRATIONS FOR THIS AVERAGING TIMEAVG03800
+      DO 700 K=1,NRSEL                                                  AVG03810
+      DO 695 IX=1,5                                                     AVG03820
+      IY = IHR(IX,K,L) - 1                                              AVG03830
+      NDAY(IX) = IY/24                                                  AVG03840
+      NHRS(IX)  = 1 + (IY - 24*NDAY(IX))                                AVG03850
+695   CONTINUE                                                          AVG03860
+      IF (ILIN.GT.0) GO TO 698                                          AVG03870
+      IPAG = IPAG + 1                                                   AVG03880
+      ILIN = 52                                                         AVG03890
+      WRITE (IO,790) HEAD1,HEAD2,IPAG,HEAD3                             AVG03900
+      WRITE (IO,795) NATM(L),(I,I=1,5)                                  AVG03910
+698   ILIN = ILIN - 1                                                   AVG03920
+      WRITE (IO,800) NRECP(K),(HMAXA(J,K,L),STAR(J,K),NDAY(J),          AVG03930
+     1NHRS(J),J=1,2),(HMAXA(J,K,L),NDAY(J),NHRS(J),J=3,5)               AVG03940
+700   CONTINUE                                                          AVG03950
+      STAR(1,K1)=BLNK                                                   AVG03960
+      STAR(2,K2)=BLNK                                                   AVG03970
+710   CONTINUE                                                          AVG03980
+      STOP                                                              AVG03990
+C                                                                       AVG04000
+C* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *AVG04010
+C                                                                       AVG04020
+320   FORMAT (' INVALID FIFTH AVERAGING TIME --',I7)                    AVG04030
+330   FORMAT (' THE NUMBER OF INPUT RECEPTORS SELECTED (',I6,           AVG04040
+     1') EXCEEEDS THE ALLOWABLE NUMBER OF RECEPTORS (',I6,').'/         AVG04050
+     2' EXECUTION TERMINATED.')                                         AVG04060
+340   FORMAT ('0READ ',I4,' HOUR ON DAY ',I4,'. DID NOT MATCH HOUR',    AVG04070
+     1I3,'. RUN NOT COMPLETED.'/' TABLES ARE FOR PARTIAL RUN')          AVG04080
+350   FORMAT (1H1,20A4,30X,'CHAVG REPORT'/1X,20A4,30X,'PAGE',I4/1X,20A4)AVG04090
+360   FORMAT ('0AVERAGE CONCENTRATIONS FOR LENGTH OF RECORD TOTALING'   AVG04100
+     1,I5,' HOURS.  PERIOD ENDS AT DAY',I4,' AND HOUR',I3,'.'/6X,'(ASTERAVG04110
+     2ISK INDICATES HIGHEST CONCENTRATIONS.)')                          AVG04120
+365   FORMAT (/6X,'RECEPTOR    EAST COORDINATE',                        AVG04130
+     3'    NORTH COORDINATE           CONCENTRATION'/20X,'(USER UNITS)',AVG04140
+     47X,'(USER UNITS)',5X,'(MICRO-GRAMS PER CUBIC METER)')             AVG04150
+370   FORMAT (1H ,I10,F15.3,F20.3,3X,6P,F25.3,1X,A1)                    AVG04160
+400   FORMAT (1H1,12(/),57X,'CHAVG - VERSION 1.0'/'0',52X,'NOTES ',     AVG04170
+     1'PERTAINING TO THE REPORT'//'0',38X,'1.  THE HIGHEST LENGTH ',    AVG04180
+     2'OF RECORD AVERAGE IS INDICATED'/43X,'BY AN ASTERISK (*).')       AVG04190
+410   FORMAT ('0',38X,'2.  THE HIGHEST AND HIGHEST SECOND RUNNING ',    AVG04200
+     1'AVERAGE'/43X,'FOR EACH AVERAGING PERIOD ARE INDICATED BY AN'/    AVG04210
+     243X,'ASTERISK (*).')                                              AVG04220
+420   FORMAT ('0',38X,'3.  THE SECOND HIGHEST NONOVERLAPPING RUNNING',  AVG04230
+     1' AVERAGE'/43X,'FOR EACH RECEPTOR AND EACH AVERAGING TIME IS'/    AVG04240
+     243X,'INDICATED BY (SH).  THE SECOND HIGHEST NONOVER-')            AVG04250
+430   FORMAT (43X,'LAPPING RUNNING AVERAGE IS DETERMINED ACCORDING'/    AVG04260
+     143X,'TO METHODS DESCRIBED IN ''GUIDELINES FOR AIR'/43X,           AVG04270
+     2'QUALITY MAINTENANCE PLANNING AND ANALYSIS VOLUME')               AVG04280
+440   FORMAT (43X,'11: AIR QUALITY MONITORING AND DATA ANALYSIS'''/     AVG04290
+     143X,'(EPA 450/4-74-012, SEPT. 1974; OAQPS NO. 1.2-030)'/43X,      AVG04300
+     2'AND ''GUIDELINES FOR THE INTERPRETATION OF AIR')                 AVG04310
+450   FORMAT (43X,'QUALITY STANDARDS'' (OAQPS NO. 1.2-008 REV. FEB.'/   AVG04320
+     143X,'1977).'/'0',38X,'4.  THE HIGHEST AND HIGHEST SECOND END',    AVG04330
+     2'-TO-END AVERAGE'/43X,'FOR EACH AVERAGING PERIOD ARE INDICATED',  AVG04340
+     3' BY AN'/43X,'ASTERISK (*).')                                     AVG04350
+790   FORMAT ('1',20A4,30X,'CHAVG REPORT'/1X,20A4,30X,'PAGE',I4/        AVG04360
+     11X,20A4)                                                          AVG04370
+795   FORMAT ('0FIVE HIGHEST',I3,'-HOUR END-TO-END AVERAGE CONCEN',     AVG04380
+     1'TRATIONS IN MICROGRAMS/M**3 (ENDING ON JULIAN DAY, HR)'/         AVG04390
+     2'0RECEPTOR',6X,4(I1,24X),I1,/1X)                                  AVG04400
+800   FORMAT (I5,2(3X,6P,F11.2,A1,2X,'(',I3,',',I2,')'),                AVG04410
+     13(3X,6P,F11.2,3X,'(',I3,',',I2,')'))                              AVG04420
+810   FORMAT (11X,I2)                                                   AVG04430
+820   FORMAT (9X,A1)                                                    AVG04440
+830   FORMAT (' INVALID AVERAGES SELECTOR (MUST BE E FOR END-TO-END ',  AVG04450
+     .'AVERAGES OR R FOR RUNNING AND END-TO-END)')                      AVG04460
+840   FORMAT(10X,I3)                                                    AVG04470
+850   FORMAT(' LESS THAN ONE OR MORE THAN 180 RECEPTORS IN HOURLY ',    AVG04480
+     .'CONCENTRATION FILE')                                             AVG04490
+      END                                                               AVG04500
+C
+      SUBROUTINE RNRK(RNMX,JHX,LIM,NRX,I)                               AVG04510
+C                                                                       AVG04510
+C        SUBROUTINE TO RANK RUNNING AVERAGES.                           AVG04530
+C        PARAMETERS ARE:                                                AVG04540
+C          RNMX - TABLE OF HIGH AVERAGES FOR EACH RECEPTOR              AVG04550
+C          JHX  - TABLE OF HOURS CORRESPONDING TO ENTRIES IN RNMX       AVG04560
+C          LIM  - FIRST DIMENSION OF RNMX AND JHX; 1 + AVERAGING        AVG04570
+C                 PERIOD                                                AVG04580
+C          NRX  - SECOND DIMENSION OF RNMX AND JHX; MAXIMUM NUMBER      AVG04590
+C                 OF RECEPTORS                                          AVG04600
+C          I    - INDEX OF AVERAGING PERIOD FOR CUM                     AVG04610
+C                                                                       AVG04620
+      COMMON /ALL/ HMAXA(5,20,5),CUM(20,5),STAR(2,20),HEAD1(20),        AVG00960
+     1             HEAD2(20),HEAD3(20),IHR(5,20,5),NRECP(20),NDAY(25),  AVG00970
+     2             NHRS(25),NRSEL,NAV5,JDAY,LH,NHR,IPAG,IO,BLNK,STR     AVG00980
+      CHARACTER*4 HEAD1,HEAD2,HEAD3
+      CHARACTER*2 BLNK
+      CHARACTER*1 STAR,STR
+      DIMENSION RNMX(LIM,NRX),JHX(LIM,NRX)                              AVG04660
+C                                                                       AVG04670
+C***  LIM1 IS THE AVERAGING PERIOD; MAKE SURE THAT THE RUNNING AVERAGE  AVG04680
+C***  IS COMPLETE.                                                      AVG04690
+      LIM1 = LIM-1                                                      AVG04700
+      IF (NHR.LT.LIM1) RETURN                                           AVG04710
+C***   LOOP OVER ALL RECEPTORS                                          AVG04720
+      DO 500 K=1,NRSEL                                                  AVG04730
+C        IS CONC. LOWER THAN LEAST?                                     AVG04740
+      IF (CUM(K,I).LE.RNMX(LIM,K)) GO TO 500                            AVG04750
+      A=CUM(K,I)                                                        AVG04760
+      DO 10 J=1,LIM                                                     AVG04770
+      IF (A.GT.RNMX(J,K)) GO TO 20                                      AVG04780
+C        CONCENTRATION IS ONE OF THE TOP CONC.'S FOR THIS RECEPTOR      AVG04790
+10    CONTINUE                                                          AVG04800
+C        WRITE ERROR STATEMENT IF TABLE IS INCORRECT                    AVG04810
+      WRITE (IO,70)                                                     AVG04820
+      GO TO 500                                                         AVG04830
+20    IF (J.EQ.LIM) GO TO 40                                            AVG04840
+C        J IS BETWEEN 1 AND LIM1.                                       AVG04850
+C        CASCADE DATA DOWN ENDING WITH JTH TO J+1ST                     AVG04860
+      JL = J+LIM1                                                       AVG04870
+      DO 30 JAX=J,LIM1,1                                                AVG04880
+      JA = JL-JAX                                                       AVG04890
+      JB=JA+1                                                           AVG04900
+      RNMX(JB,K)=RNMX(JA,K)                                             AVG04910
+      JHX(JB,K)=JHX(JA,K)                                               AVG04920
+30    CONTINUE                                                          AVG04930
+C        PUT NEW VALUES IN JTH POSITION.                                AVG04940
+40    RNMX(J,K)=A                                                       AVG04950
+      JHX(J,K)=LH + (24*JDAY)                                           AVG04960
+500   CONTINUE                                                          AVG04970
+      RETURN                                                            AVG04980
+C                                                                       AVG04990
+70    FORMAT (' ERROR IN RANKING RUNNING AVERAGES')                     AVG05000
+C                                                                       AVG05010
+      END                                                               AVG05020
+C
+      SUBROUTINE RNK5 (L)                                               AVG05030
+C                                                                       AVG05040
+C        SUBROUTINE RNK5 IS CALLED BY CHAVG AND IS DESIGNED             AVG05050
+C        TO ARRANGE CONCENTRATION ARRAYS SO THAT HIGH-FIVE              AVG05060
+C        CONCENTRATION TABLES CAN BE OUTPUT.                            AVG05070
+C              OUTPUT VARIABLES:                                        AVG05080
+C                  HMAXA(J,K,L) : CONCENTRATION ARRAY FOR               AVG05090
+C                        J - RANK OF THE CONCENTRATION (1 - 5)          AVG05100
+C                        K - RECEPTOR NUMBER                            AVG05110
+C                        L - AVERAGING TIME                             AVG05120
+C                  IHR(J,K,L)  : HR OF ENDING CONC                      AVG05130
+C                                                                       AVG05140
+      COMMON /ALL/ HMAXA(5,20,5),CUM(20,5),STAR(2,20),HEAD1(20),        AVG00960
+     1             HEAD2(20),HEAD3(20),IHR(5,20,5),NRECP(20),NDAY(25),  AVG00970
+     2             NHRS(25),NRSEL,NAV5,JDAY,LH,NHR,IPAG,IO,BLNK,STR     AVG00980
+      CHARACTER*4 HEAD1,HEAD2,HEAD3
+      CHARACTER*2 BLNK
+      CHARACTER*1 STAR,STR
+C                                                                       AVG05180
+      DO 50 K=1,NRSEL                                                   AVG05190
+      IF (CUM(K,L).LE.HMAXA(5,K,L)) GO TO 50                            AVG05200
+      DO 10 J=1,5                                                       AVG05210
+      IF (CUM(K,L).GT.HMAXA(J,K,L)) GO TO 20                            AVG05220
+C           CONCENTRATION IS ONE OF THE TOP FIVE                        AVG05230
+10    CONTINUE                                                          AVG05240
+      WRITE (IO,70)                                                     AVG05250
+      GO TO 50                                                          AVG05260
+C        THE FOLLOWING DO-LOOP HAS THE EFFECT OF INSERTING A NEW        AVG05270
+C        CONCENTRATION ENTRY INTO ITS PROPER POSITION WHILE SHIFTING    AVG05280
+C        DOWN THE 'OLD' LOWER CONCENTRATIONS THUS ESTABLISHING THE      AVG05290
+C        'HIGH-FIVE' CONCENTRATION TABLE.                               AVG05300
+20    IF (J.EQ.5) GO TO 40                                              AVG05310
+      I4 = J+4                                                          AVG05320
+      DO 30 IJX=J,4,1                                                   AVG05330
+      IJ = I4-IJX                                                       AVG05340
+      IJP1=IJ+1                                                         AVG05350
+      HMAXA(IJP1,K,L)=HMAXA(IJ,K,L)                                     AVG05360
+30    IHR(IJP1,K,L)=IHR(IJ,K,L)                                         AVG05370
+C           INSERT LATEST CONC, DAY AND START HR INTO THE               AVG05380
+C           PROPER RANK IN THE HIGH-FIVE TABLE                          AVG05390
+40    HMAXA(J,K,L)=CUM(K,L)                                             AVG05400
+      IHR(J,K,L)=LH + (24*JDAY)                                         AVG05410
+50    CONTINUE                                                          AVG05420
+      RETURN                                                            AVG05430
+C                                                                       AVG05440
+70    FORMAT (' ERROR IN RANKING END-TO-END AVERAGES')                  AVG05450
+C                                                                       AVG05460
+      END                                                               AVG05470
+C
+      SUBROUTINE OUTRA (RNMX,JHX,LIM,NRX)                               AVG05480
+C                                                                       AVG05490
+      COMMON /ALL/ HMAXA(5,20,5),CUM(20,5),STAR(2,20),HEAD1(20),        AVG00960
+     1             HEAD2(20),HEAD3(20),IHR(5,20,5),NRECP(20),NDAY(25),  AVG00970
+     2             NHRS(25),NRSEL,NAV5,JDAY,LH,NHR,IPAG,IO,BLNK,STR     AVG00980
+      CHARACTER*4 HEAD1,HEAD2,HEAD3
+      CHARACTER*2 BLNK,SECHI(25),CTWO
+      CHARACTER*1 STAR,STR
+      DIMENSION RNMX(LIM,NRX),JHX(LIM,NRX)                              AVG05530
+      DATA SECHI/25*'  '/,CTWO/'SH'/                                    AVG05540
+      LIM1 = LIM - 1                                                    AVG05550
+      ILIN = 0                                                          AVG05560
+      K1=1                                                              AVG05570
+      K2=1                                                              AVG05580
+      A=RNMX(1,1)                                                       AVG05590
+      B=RNMX(2,1)                                                       AVG05600
+C        IF NEW CONC. IS HIGHER THAN A, REPLACE A.                      AVG05610
+      IF (NRSEL.EQ.1) GO TO 191                                         AVG05620
+      DO 190 K=2,NRSEL                                                  AVG05630
+      IF (RNMX(1,K).LE.A) GO TO 180                                     AVG05640
+      A=RNMX(1,K)                                                       AVG05650
+      K1=K                                                              AVG05660
+180   IF (RNMX(2,K).LE.B) GO TO 190                                     AVG05670
+      B=RNMX(2,K)                                                       AVG05680
+      K2=K                                                              AVG05690
+190   CONTINUE                                                          AVG05700
+191   STAR(1,K1)=STR                                                    AVG05710
+      STAR(2,K2)=STR                                                    AVG05720
+C                                                                       AVG05730
+C***   LOOP OVER ALL RECEPTORS                                          AVG05740
+      DO 240 J=1,NRSEL                                                  AVG05750
+C***   PREPARE DATE FOR OUTPUT, LOCATE SECOND HIGHEST NONOVERLAPPING    AVG05760
+C***   AVERAGE, AND PRINT CONCENTRATIONS                                AVG05770
+         ISW = 0                                                        AVG05780
+         DO 220 K=1,LIM                                                 AVG05790
+         I = JHX(K,J) - 1                                               AVG05800
+         NDAY(K) = I/24                                                 AVG05810
+         NHRS(K)  = 1 + (I - 24*NDAY(K))                                AVG05820
+         RNMX(K,J) = RNMX(K,J)/LIM1                                     AVG05830
+         IF ((ISW.EQ.1).OR.(K.EQ.1)) GO TO 220                          AVG05840
+         DO 218 L=1,K                                                   AVG05850
+         IF (IABS(JHX(K,J)-JHX(L,J)).LT.LIM1) GO TO 218                 AVG05860
+         ISW = 1                                                        AVG05870
+         K3 = K                                                         AVG05880
+         SECHI(K) = CTWO                                                AVG05890
+218      CONTINUE                                                       AVG05900
+220      CONTINUE                                                       AVG05910
+      IF (ILIN.GT.0) GO TO 238                                          AVG05920
+      IPAG = IPAG + 1                                                   AVG05930
+      ILIN = 52                                                         AVG05940
+      WRITE (IO,380) HEAD1,HEAD2,IPAG,HEAD3,LIM1                        AVG05950
+238   ILIN = ILIN - ((LIM/5) + 1)                                       AVG05960
+      WRITE (IO,410) NRECP(J),(RNMX(K,J),STAR(K,J),SECHI(K),NDAY(K),    AVG05970
+     1NHRS(K),K=1,2),(RNMX(K,J),SECHI(K),NDAY(K),NHRS(K),K=3,LIM)       AVG05980
+      IF (LIM.LE.5) GO TO 240                                           AVG05990
+      WRITE(IO,420)                                                     AVG06000
+      ILIN = ILIN-1                                                     AVG06010
+240   SECHI(K3) = BLNK                                                  AVG06020
+      STAR(1,K1)=BLNK                                                   AVG06030
+      STAR(2,K2)=BLNK                                                   AVG06040
+C        REPLACE ASTERISKS WITH BLANKS.                                 AVG06050
+      RETURN                                                            AVG06060
+380   FORMAT ('1',20A4,30X,'CHAVG REPORT'/1X,20A4,30X,'PAGE',I4/        AVG06070
+     11X,20A4/'0',I3,'-HOUR RUNNING AVERAGE CONCENTRATIONS IN ',        AVG06080
+     2'MICROGRAMS/M**3 (ENDING ON JULIAN DAY, HR)'/'0RECEPTOR')         AVG06090
+410   FORMAT (1H ,I4,2(3X,6P,F11.2,A1,A2,'(',I3,',',I2,')'),3(3X,       AVG06100
+     16P,F11.2,1X,A2,'(',I3,',',I2,')'),3(/5X,5(3X,6P,F11.2,1X,A2,      AVG06110
+     2'(',I3,',',I2,')'))/5X,5(3X,6P,F11.2,1X,A2,'(',I3,',',            AVG06120
+     3I2,')'))                                                          AVG06130
+420   FORMAT(' ')                                                       AVG06140
+      END                                                               AVG06150
+C
+      BLOCK DATA                                                        AVG06160
+C                                                                       AVG06170
+C***                                                                    AVG06180
+C***   INSTRUCTIONS FOR CHANGING NUMBER OF RECEPTORS                    AVG06190
+C***   (ALSO SEE COMMENTS IN MAIN PROGRAM)                              AVG06200
+C***                                                                    AVG06210
+C***   25X = 25 TIMES NUMBER OF RECEPTORS                               AVG06220
+C***   5XX =  5 TIMES NUMBER OF RECEPTORS                               AVG06230
+C***   2XX =  2 TIMES NUMBER OF RECEPTORS                               AVG06240
+C***                                                                    AVG06250
+C***   DATA HMAXA/25X*0./,CUM/5XX*0./,STAR/2XX*' '/, . . .              AVG06260
+C***  1     . . . ,IHR/25X*0/, . . .                                    AVG06270
+C                                                                       AVG06280
+      COMMON /ALL/ HMAXA(5,20,5),CUM(20,5),STAR(2,20),HEAD1(20),        AVG00960
+     1             HEAD2(20),HEAD3(20),IHR(5,20,5),NRECP(20),NDAY(25),  AVG00970
+     2             NHRS(25),NRSEL,NAV5,JDAY,LH,NHR,IPAG,IO,BLNK,STR     AVG00980
+      CHARACTER*4 HEAD1,HEAD2,HEAD3
+      CHARACTER*2 BLNK
+      CHARACTER*1 STAR,STR
+      DATA HMAXA/500*0./,CUM/100*0./,STAR/40*' '/,BLNK/'  '/,           AVG06320
+     1     STR/'*'/,IHR/500*0/,NHR/0/,IPAG/0/,IO/6/                     AVG06330
+      END                                                               AVG06340

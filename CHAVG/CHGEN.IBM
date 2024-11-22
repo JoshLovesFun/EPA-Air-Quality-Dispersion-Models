@@ -1,0 +1,103 @@
+C***********************************************************************GEN00005
+C                                                                       GEN00006
+C                          CHGEN (DATED 81180)                          GEN00007
+C                                                                       GEN00008
+C***********************************************************************GEN00009
+C                    CHGEN - VERSION 1.0 (DATED 81180)                  GEN00010
+C
+C***   DATA GENERATION FOR POSTPROCESSORS                               GEN00070
+C                                                                       GEN00080
+      INTEGER I                                                         GEN00090
+      CHARACTER*4 LINE1(20),LINE2(20),LINE3(20)                         GEN00110
+      DIMENSION RREC(20),SREC(20),IDATE(2),PHCHI(20)                    GEN00120
+      DATA LINE1/'POST','PROC','ESSO','R TE','ST  ',15*'    '/,         GEN00130
+     .     LINE2/'GENE','RATE','D DA','TA  ','    ',15*'    '/,         GEN00140
+     .     LINE3/'05 J','AN 8','1   ','    ','    ',15*'    '/,         GEN00150
+     .     RREC/0.,0.,0.,1.414,2.121,1.,2.,3.,1.414,2.121,              GEN00160
+     .          0.,0.,0.,-1.414,-2.121,-1.,-2.,-3.,-1.414,-2.121/,      GEN00170
+     .     SREC/1.,2.,3.,1.414,2.121,0.,0.,0.,-1.414,-2.121,            GEN00180
+     .         -1.,-2.,-3.,-1.414,-2.121,0.,0.,0.,1.414,2.121/          GEN00190
+      WRITE (6,1234)                                                    GEN00200
+ 1234 FORMAT ('1',21X,'CHGEN               (DATED 81180) '/)            GEN00210
+C                                                                       GEN00270
+C***   YEAR AND JULIAN DAY                                              GEN00280
+C                                                                       GEN00290
+      IDATE(1) = 81                                                     GEN00300
+      IDATE(2) =  1                                                     GEN00310
+C                                                                       GEN00320
+C***   240 ONE HOUR PERIODS (TEN DAYS)                                  GEN00330
+C                                                                       GEN00340
+      NPER = 240                                                        GEN00350
+      NAVG = 1                                                          GEN00360
+C                                                                       GEN00370
+C***   TWENTY RECEPTORS                                                 GEN00380
+C                                                                       GEN00390
+      NRECEP = 20                                                       GEN00400
+C                                                                       GEN00410
+      WRITE(8)NPER,NAVG,LINE1,LINE2,LINE3                               GEN00420
+      WRITE(8)NRECEP,(RREC(J),J=1,NRECEP),(SREC(J),J=1,NRECEP)          GEN00430
+C                                                                       GEN00440
+      LH  = 1                                                           GEN00450
+      PI = 3.14159                                                      GEN00460
+C                                                                       GEN00470
+C***   BASELINE CONCENTRATION                                           GEN00480
+C                                                                       GEN00490
+      BASE = 20                                                         GEN00500
+      DO 100 L = 1,NPER                                                 GEN00510
+C                                                                       GEN00520
+C***   DIURNAL VARIATION (PEAK AT 9)                                    GEN00530
+C                                                                       GEN00540
+         DIURN = 0.5 * (1. + SIN(PI/12.*(LH-3)) )                       GEN00550
+C                                                                       GEN00560
+C***   RUN VARIATION (15 DAY CYCLE)                                     GEN00570
+C                                                                       GEN00580
+         RUNVAR = 0.25 * SIN(PI/180.*L) + 0.75                          GEN00590
+C                                                                       GEN00600
+C***   WIND SHIFT (ABOUT 180 DEGREES IN 12 HOURS)                       GEN00610
+C                                                                       GEN00620
+         DTH = 0.4 * SIN(PI/12.*LH)                                     GEN00630
+         DO 90 K = 1,NRECEP                                             GEN00640
+            X = RREC(K)                                                 GEN00650
+            Y = SREC(K)                                                 GEN00660
+C                                                                       GEN00670
+C***   CARRY OUT WIND DIRECTION VARIATION                               GEN00680
+C                                                                       GEN00690
+         TH = ATAN2(Y,X) + DTH                                          GEN00700
+         R = SQRT(X*X+Y*Y)                                              GEN00710
+         X = R * COS(TH)                                                GEN00720
+         Y = R * SIN(TH)                                                GEN00730
+C                                                                       GEN00740
+C***   CALCULATE CONCENTRATION (ELLIPTICAL PARABOLOID WITH              GEN00750
+C***   VERTEX AT (0,2,260) )                                            GEN00760
+C                                                                       GEN00770
+         C = AMAX1(0.,25.*(4.-(Y-2.)**2) + 10.*(16.-X*X))               GEN00780
+C                                                                       GEN00790
+C***   INCLUDE MULTIPLIERS AND BASELINE                                 GEN00800
+C                                                                       GEN00810
+         PHCHI(K) = 1.E-06 * (BASE + DIURN * RUNVAR * C)                GEN00820
+         RREC(K) = X                                                    GEN00830
+         SREC(K) = Y                                                    GEN00840
+ 90   CONTINUE                                                          GEN00850
+      WRITE(8)IDATE(2),LH,(PHCHI(J),J=1,NRECEP)                         GEN00860
+      LH = LH + 1                                                       GEN00870
+      IF (LH.LE.24) GO TO 100                                           GEN00880
+         LH = 1                                                         GEN00890
+         IDATE(2) = IDATE(2) + 1                                        GEN00900
+100   CONTINUE                                                          GEN00910
+C                                                                       GEN00920
+C***   LIST GENERATED POSTPROCESSOR DATA                                GEN00930
+C                                                                       GEN00940
+      REWIND 8                                                          GEN00950
+      READ(8)NPER,NAVG,LINE1,LINE2,LINE3                                GEN00960
+      READ(8)NRECEP,(RREC(J),J=1,NRECEP),(SREC(J),J=1,NRECEP)           GEN00970
+      WRITE(6,900)NPER,NAVG,LINE1,LINE2,LINE3,NRECEP,(RREC(I),SREC(I),  GEN00980
+     .I=1,NRECEP)                                                       GEN00990
+  900 FORMAT('1NPER,NAVG=',2I8/1X,20A4/1X,20A4/1X,20A4/' NRECEP=',I5/   GEN01000
+     .20(2F10.1/))                                                      GEN01010
+      DO 200 I=1,NPER                                                   GEN01020
+         READ(8)IDATE(2),LH,(PHCHI(J),J=1,NRECEP)                       GEN01030
+         WRITE(6,910)IDATE(2),LH,(PHCHI(J),J=1,NRECEP)                  GEN01040
+  910    FORMAT(2I5,6P,10F10.2/10X,10F10.2/)                            GEN01050
+  200 CONTINUE                                                          GEN01060
+      STOP                                                              GEN01070
+      END                                                               GEN01080

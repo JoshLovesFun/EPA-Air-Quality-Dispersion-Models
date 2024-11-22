@@ -1,0 +1,2140 @@
+                                        CALMET   Version: 5.8        Level: 070623  
+ **********************************************************************************************************************************
+
+
+
+  Clock time: 15:46:42
+        Date: 05-27-2009
+
+
+ Internal Coordinate Transformations by 
+  ---  COORDLIB   Version: 1.98   Level: 060911    
+
+
+
+  Run Title:
+     Testing CALMIP, using a full CALMET analysis                                    
+     NOOBS = 2                                                                       
+     No surface stations, no precip stations, no bouys.                              
+
+                                                                                                                                     
+                                                                                                                                     
+ -------------------------------------------------------------------------------                                                     
+                                                                                                                                     
+ INPUT GROUP: 1 -- General run control parameters                                                                                    
+ --------------                                                                                                                      
+                                                                                                                                     
+                                                                                                                                     
+      Starting date:   Year (IBYR) -- No default       ! IBYR = 2005  !                                                              
+                      Month (IBMO) -- No default       ! IBMO = 01 !                                                                 
+                        Day (IBDY) -- No default       ! IBDY = 01 !                                                                 
+                       Hour (IBHR) -- No default       ! IBHR = 01 !                                                                 
+                                                                                                                                     
+      Note: IBHR is the time at the END of the first hour of the simulation                                                          
+            (IBHR=1, the first hour of a day, runs from 00:00 to 01:00)                                                              
+                                                                                                                                     
+      Base time zone        (IBTZ) -- No default       ! IBTZ = 8  !                                                                 
+         PST = 08, MST = 07                                                                                                          
+         CST = 06, EST = 05                                                                                                          
+                                                                                                                                     
+      Length of run (hours) (IRLG) -- No default       ! IRLG = 24  !                                                                
+                                                                                                                                     
+      Run type            (IRTYPE) -- Default: 1       ! IRTYPE = 1  !                                                               
+                                                                                                                                     
+         0 = Computes wind fields only                                                                                               
+         1 = Computes wind fields and micrometeorological variables                                                                  
+             (u*, w*, L, zi, etc.)                                                                                                   
+         (IRTYPE must be 1 to run CALPUFF or CALGRID)                                                                                
+                                                                                                                                     
+      Compute special data fields required                                                                                           
+      by CALGRID (i.e., 3-D fields of W wind                                                                                         
+      components and temperature)                                                                                                    
+      in additional to regular            Default: T    ! LCALGRD = T !                                                              
+      fields ? (LCALGRD)                                                                                                             
+      (LCALGRD must be T to run CALGRID)                                                                                             
+                                                                                                                                     
+       Flag to stop run after                                                                                                        
+       SETUP phase (ITEST)             Default: 2       ! ITEST=  2   !                                                              
+       (Used to allow checking                                                                                                       
+       of the model inputs, files, etc.)                                                                                             
+       ITEST = 1 - STOPS program after SETUP phase                                                                                   
+       ITEST = 2 - Continues with execution of                                                                                       
+                   COMPUTATIONAL phase after SETUP                                                                                   
+                                                                                                                                     
+                                                                                                                                     
+      Test options specified to see if                                                                                               
+      they conform to regulatory                                                                                                     
+      values? (MREG)                   No Default       ! MREG =  0   !                                                              
+                                                                                                                                     
+         0 = NO checks are made                                                                                                      
+         1 = Technical options must conform to USEPA guidance                                                                        
+                   IMIXH    -1       Maul-Carson convective mixing height                                                            
+                                     over land; OCD mixing height overwater                                                          
+                   ICOARE   0        OCD deltaT method for overwater fluxes                                                          
+                   THRESHL  0.0      Threshold buoyancy flux over land needed                                                        
+                                     to sustain convective mixing height growth                                                      
+                                                                                                                                     
+ !END!                                                                                                                               
+                                                                                                                                     
+ -------------------------------------------------------------------------------                                                     
+                                                                                                                                     
+ INPUT GROUP: 2 -- Map Projection and Grid control parameters                                                                        
+ --------------                                                                                                                      
+                                                                                                                                     
+      Projection for all (X,Y):                                                                                                      
+      -------------------------                                                                                                      
+                                                                                                                                     
+      Map projection                                                                                                                 
+      (PMAP)                     Default: UTM    ! PMAP = LCC  !                                                                     
+                                                                                                                                     
+          UTM :  Universal Transverse Mercator                                                                                       
+          TTM :  Tangential Transverse Mercator                                                                                      
+          LCC :  Lambert Conformal Conic                                                                                             
+           PS :  Polar Stereographic                                                                                                 
+           EM :  Equatorial Mercator                                                                                                 
+         LAZA :  Lambert Azimuthal Equal Area                                                                                        
+                                                                                                                                     
+      False Easting and Northing (km) at the projection origin                                                                       
+      (Used only if PMAP= TTM, LCC, or LAZA)                                                                                         
+      (FEAST)                    Default=0.0     ! FEAST  = 0.000  !                                                                 
+      (FNORTH)                   Default=0.0     ! FNORTH = 0.000  !                                                                 
+                                                                                                                                     
+      UTM zone (1 to 60)                                                                                                             
+      (Used only if PMAP=UTM)                                                                                                        
+      (IUTMZN)                   No Default      ! IUTMZN =  -1 !                                                                    
+                                                                                                                                     
+      Hemisphere for UTM projection?                                                                                                 
+      (Used only if PMAP=UTM)                                                                                                        
+      (UTMHEM)                   Default: N      ! UTMHEM = N  !                                                                     
+          N   :  Northern hemisphere projection                                                                                      
+          S   :  Southern hemisphere projection                                                                                      
+                                                                                                                                     
+      Latitude and Longitude (decimal degrees) of projection origin                                                                  
+      (Used only if PMAP= TTM, LCC, PS, EM, or LAZA)                                                                                 
+      (RLAT0)                    No Default      ! RLAT0 =  49.0N !                                                                  
+      (RLON0)                    No Default      ! RLON0 = 121.0W !                                                                  
+                                                                                                                                     
+          TTM :  RLON0 identifies central (true N/S) meridian of projection                                                          
+                 RLAT0 selected for convenience                                                                                      
+          LCC :  RLON0 identifies central (true N/S) meridian of projection                                                          
+                 RLAT0 selected for convenience                                                                                      
+          PS  :  RLON0 identifies central (grid N/S) meridian of projection                                                          
+                 RLAT0 selected for convenience                                                                                      
+          EM  :  RLON0 identifies central meridian of projection                                                                     
+                 RLAT0 is REPLACED by 0.0N (Equator)                                                                                 
+          LAZA:  RLON0 identifies longitude of tangent-point of mapping plane                                                        
+                 RLAT0 identifies latitude of tangent-point of mapping plane                                                         
+                                                                                                                                     
+      Matching parallel(s) of latitude (decimal degrees) for projection                                                              
+      (Used only if PMAP= LCC or PS)                                                                                                 
+      (XLAT1)                    No Default      ! XLAT1 = 30.0N !                                                                   
+      (XLAT2)                    No Default      ! XLAT2 = 60.0N !                                                                   
+                                                                                                                                     
+          LCC :  Projection cone slices through Earth's surface at XLAT1 and XLAT2                                                   
+          PS  :  Projection plane slices through Earth at XLAT1                                                                      
+                 (XLAT2 is not used)                                                                                                 
+                                                                                                                                     
+      ----------                                                                                                                     
+      Note:  Latitudes and longitudes should be positive, and include a                                                              
+             letter N,S,E, or W indicating north or south latitude, and                                                              
+             east or west longitude.  For example,                                                                                   
+             35.9  N Latitude  =  35.9N                                                                                              
+             118.7 E Longitude = 118.7E                                                                                              
+                                                                                                                                     
+                                                                                                                                     
+      Datum-region                                                                                                                   
+      ------------                                                                                                                   
+                                                                                                                                     
+      The Datum-Region for the coordinates is identified by a character                                                              
+      string.  Many mapping products currently available use the model of the                                                        
+      Earth known as the World Geodetic System 1984 (WGS-84).  Other local                                                           
+      models may be in use, and their selection in CALMET will make its output                                                       
+      consistent with local mapping products.  The list of Datum-Regions with                                                        
+      official transformation parameters is provided by the National Imagery and                                                     
+      Mapping Agency (NIMA).                                                                                                         
+                                                                                                                                     
+      NIMA Datum - Regions(Examples)                                                                                                 
+      ------------------------------------------------------------------------------                                                 
+      WGS-84    WGS-84 Reference Ellipsoid and Geoid, Global coverage (WGS84)                                                        
+      NAS-C     NORTH AMERICAN 1927 Clarke 1866 Spheroid, MEAN FOR CONUS (NAD27)                                                     
+      NAR-C     NORTH AMERICAN 1983 GRS 80 Spheroid, MEAN FOR CONUS (NAD83)                                                          
+      NWS-84    NWS 6370KM Radius, Sphere                                                                                            
+      ESR-S     ESRI REFERENCE 6371KM Radius, Sphere                                                                                 
+                                                                                                                                     
+      Datum-region for output coordinates                                                                                            
+      (DATUM)                    Default: WGS-G     ! DATUM = NWS-84  !                                                              
+                                                 *** Same as UW MM5 ***                                                              
+                                                                                                                                     
+                                                                                                                                     
+      Horizontal grid definition:                                                                                                    
+      ---------------------------                                                                                                    
+                                                                                                                                     
+      Rectangular grid defined for projection PMAP,                                                                                  
+      with X the Easting and Y the Northing coordinate                                                                               
+                                                                                                                                     
+             No. X grid cells (NX)      No default     ! NX = 26  !                                                                  
+             No. Y grid cells (NY)      No default     ! NY = 26  !                                                                  
+                                                                                                                                     
+      Grid spacing (DGRIDKM)            No default     ! DGRIDKM = 4. !                                                              
+                                        Units: km                                                                                    
+                                                                                                                                     
+      Reference grid coordinate of                                                                                                   
+      SOUTHWEST corner of grid cell (1,1)                                                                                            
+                                                                                                                                     
+         X coordinate (XORIGKM)         No default     ! XORIGKM = -50 !                                                             
+         Y coordinate (YORIGKM)         No default     ! YORIGKM = -102 !                                                            
+                                        Units: km                                                                                    
+                                                                                                                                     
+                                                                                                                                     
+      Vertical grid definition:                                                                                                      
+      -------------------------                                                                                                      
+                                                                                                                                     
+         No. of vertical layers (NZ)    No default     ! NZ = 10 !                                                                   
+                                                                                                                                     
+         Cell face heights in arbitrary                                                                                              
+         vertical grid (ZFACE(NZ+1))    No defaults                                                                                  
+                                        Units: m                                                                                     
+         ! ZFACE = 0., 20.,  72.750, 109.328, 146.043, 294.292, 444.819, 753.026,1317.144,2368.885,3874.348 !                        
+                                                                                                                                     
+ !END!                                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+ -------------------------------------------------------------------------------                                                     
+                                                                                                                                     
+ INPUT GROUP: 3 -- Output Options                                                                                                    
+ --------------                                                                                                                      
+                                                                                                                                     
+                                                                                                                                     
+     DISK OUTPUT OPTION                                                                                                              
+                                                                                                                                     
+        Save met. fields in an unformatted                                                                                           
+        output file ?              (LSAVE)  Default: T     ! LSAVE = T !                                                             
+        (F = Do not save, T = Save)                                                                                                  
+                                                                                                                                     
+        Type of unformatted output file:                                                                                             
+        (IFORMO)                            Default: 1    ! IFORMO =  1  !                                                           
+                                                                                                                                     
+             1 = CALPUFF/CALGRID type file (CALMET.DAT)                                                                              
+             2 = MESOPUFF-II type file     (PACOUT.DAT)                                                                              
+                                                                                                                                     
+                                                                                                                                     
+     LINE PRINTER OUTPUT OPTIONS:                                                                                                    
+                                                                                                                                     
+        Print met. fields ?  (LPRINT)       Default: F     ! LPRINT = F !                                                            
+        (F = Do not print, T = Print)                                                                                                
+        (NOTE: parameters below control which                                                                                        
+               met. variables are printed)                                                                                           
+                                                                                                                                     
+        Print interval                                                                                                               
+        (IPRINF) in hours                   Default: 1     ! IPRINF = 12  !                                                          
+        (Meteorological fields are printed                                                                                           
+         every  1  hours)                                                                                                            
+                                                                                                                                     
+                                                                                                                                     
+        Specify which layers of U, V wind component                                                                                  
+        to print (IUVOUT(NZ)) -- NOTE: NZ values must be entered                                                                     
+        (0=Do not print, 1=Print)                                                                                                    
+        (used only if LPRINT=T)        Defaults: NZ*0                                                                                
+        ! IUVOUT =  1 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0  !                                                                
+        -----------------------                                                                                                      
+                                                                                                                                     
+                                                                                                                                     
+        Specify which levels of the W wind component to print                                                                        
+        (NOTE: W defined at TOP cell face --  6  values)                                                                             
+        (IWOUT(NZ)) -- NOTE: NZ values must be entered                                                                               
+        (0=Do not print, 1=Print)                                                                                                    
+        (used only if LPRINT=T & LCALGRD=T)                                                                                          
+        -----------------------------------                                                                                          
+                                             Defaults: NZ*0                                                                          
+         ! IWOUT =  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0  !                                                                
+                                                                                                                                     
+                                                                                                                                     
+        Specify which levels of the 3-D temperature field to print                                                                   
+        (ITOUT(NZ)) -- NOTE: NZ values must be entered                                                                               
+        (0=Do not print, 1=Print)                                                                                                    
+        (used only if LPRINT=T & LCALGRD=T)                                                                                          
+        -----------------------------------                                                                                          
+                                             Defaults: NZ*0                                                                          
+         ! ITOUT =  1 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0  !                                                                
+                                                                                                                                     
+        Specify which meteorological fields                                                                                          
+        to print                                                                                                                     
+        (used only if LPRINT=T)             Defaults: 0 (all variables)                                                              
+        -----------------------                                                                                                      
+                                                                                                                                     
+                                                                                                                                     
+          Variable            Print ?                                                                                                
+                          (0 = do not print,                                                                                         
+                           1 = print)                                                                                                
+          --------        ------------------                                                                                         
+                                                                                                                                     
+       !  STABILITY  =           1           ! - PGT stability class                                                                 
+       !  USTAR      =           0           ! - Friction velocity                                                                   
+       !  MONIN      =           0           ! - Monin-Obukhov length                                                                
+       !  MIXHT      =           1           ! - Mixing height                                                                       
+       !  WSTAR      =           0           ! - Convective velocity scale                                                           
+       !  PRECIP     =           1           ! - Precipitation rate                                                                  
+       !  SENSHEAT   =           0           ! - Sensible heat flux                                                                  
+       !  CONVZI     =           0           ! - Convective mixing ht.                                                               
+                                                                                                                                     
+                                                                                                                                     
+        Testing and debug print options for micrometeorological module                                                               
+                                                                                                                                     
+           Print input meteorological data and                                                                                       
+           internal variables (LDB)         Default: F       ! LDB = F !                                                             
+           (F = Do not print, T = print)                                                                                             
+           (NOTE: this option produces large amounts of output)                                                                      
+                                                                                                                                     
+           First time step for which debug data                                                                                      
+           are printed (NN1)                Default: 1       ! NN1 =  1  !                                                           
+                                                                                                                                     
+           Last time step for which debug data                                                                                       
+           are printed (NN2)                Default: 1       ! NN2 =  1  !                                                           
+                                                                                                                                     
+           Print distance to land                                                                                                    
+           internal variables (LDBCST)      Default: F       ! LDBCST = F !                                                          
+           (F = Do not print, T = print)                                                                                             
+           (Output in .GRD file DCST.GRD, defined in input group 0)                                                                  
+                                                                                                                                     
+        Testing and debug print options for wind field module                                                                        
+        (all of the following print options control output to                                                                        
+         wind field module's output files: TEST.PRT, TEST.OUT,                                                                       
+         TEST.KIN, TEST.FRD, and TEST.SLP)                                                                                           
+                                                                                                                                     
+           Control variable for writing the test/debug                                                                               
+           wind fields to disk files (IOUTD)                                                                                         
+           (0=Do not write, 1=write)        Default: 0       ! IOUTD =  0  !                                                         
+                                                                                                                                     
+           Number of levels, starting at the surface,                                                                                
+           to print (NZPRN2)                Default: 1       ! NZPRN2 =  1  !                                                        
+                                                                                                                                     
+           Print the INTERPOLATED wind components ?                                                                                  
+           (IPR0) (0=no, 1=yes)             Default: 0       !  IPR0 =  0  !                                                         
+                                                                                                                                     
+           Print the TERRAIN ADJUSTED surface wind                                                                                   
+           components ?                                                                                                              
+           (IPR1) (0=no, 1=yes)             Default: 0       !  IPR1 =  0  !                                                         
+                                                                                                                                     
+           Print the SMOOTHED wind components and                                                                                    
+           the INITIAL DIVERGENCE fields ?                                                                                           
+           (IPR2) (0=no, 1=yes)             Default: 0       !  IPR2 =  0  !                                                         
+                                                                                                                                     
+           Print the FINAL wind speed and direction                                                                                  
+           fields ?                                                                                                                  
+           (IPR3) (0=no, 1=yes)             Default: 0       !  IPR3 =  0  !                                                         
+                                                                                                                                     
+           Print the FINAL DIVERGENCE fields ?                                                                                       
+           (IPR4) (0=no, 1=yes)             Default: 0       !  IPR4 =  0  !                                                         
+                                                                                                                                     
+           Print the winds after KINEMATIC effects                                                                                   
+           are added ?                                                                                                               
+           (IPR5) (0=no, 1=yes)             Default: 0       !  IPR5 =  0  !                                                         
+                                                                                                                                     
+           Print the winds after the FROUDE NUMBER                                                                                   
+           adjustment is made ?                                                                                                      
+           (IPR6) (0=no, 1=yes)             Default: 0       !  IPR6 =  0  !                                                         
+                                                                                                                                     
+           Print the winds after SLOPE FLOWS                                                                                         
+           are added ?                                                                                                               
+           (IPR7) (0=no, 1=yes)             Default: 0       !  IPR7 =  0  !                                                         
+                                                                                                                                     
+           Print the FINAL wind field components ?                                                                                   
+           (IPR8) (0=no, 1=yes)             Default: 0       !  IPR8 =  0  !                                                         
+                                                                                                                                     
+ !END!                                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+ -------------------------------------------------------------------------------                                                     
+                                                                                                                                     
+ INPUT GROUP: 4 -- Meteorological data options                                                                                       
+ --------------                                                                                                                      
+                                                                                                                                     
+     NO OBSERVATION MODE             (NOOBS)  Default: 0     ! NOOBS =  2   !                                                        
+           0 = Use surface, overwater, and upper air stations                                                                        
+           1 = Use surface and overwater stations (no upper air observations)                                                        
+               Use MM4/MM5/3D for upper air data                                                                                     
+           2 = No surface, overwater, or upper air observations                                                                      
+               Use MM4/MM5/3D for surface, overwater, and upper air data                                                             
+                                                                                                                                     
+     NUMBER OF SURFACE & PRECIP. METEOROLOGICAL STATIONS                                                                             
+                                                                                                                                     
+        Number of surface stations   (NSSTA)  No default     ! NSSTA = 0 !                                                           
+                                                                                                                                     
+        Number of precipitation stations                                                                                             
+        (NPSTA=-1: flag for use of MM5/3D precip data)                                                                               
+                                     (NPSTA)  No default     ! NPSTA = -1 !                                                          
+                                                                                                                                     
+     CLOUD DATA OPTIONS                                                                                                              
+        Gridded cloud fields:                                                                                                        
+                                    (ICLOUD)  Default: 0     ! ICLOUD =  3  !                                                        
+        ICLOUD = 0 - Gridded clouds not used                                                                                         
+        ICLOUD = 1 - Gridded CLOUD.DAT generated as OUTPUT                                                                           
+        ICLOUD = 2 - Gridded CLOUD.DAT read as INPUT                                                                                 
+        ICLOUD = 3 - Gridded cloud cover computed from prognostic fields                                                             
+                                                                                                                                     
+     FILE FORMATS                                                                                                                    
+                                                                                                                                     
+        Surface meteorological data file format                                                                                      
+                                    (IFORMS)  Default: 2     ! IFORMS =  2  !                                                        
+        (1 = unformatted (e.g., SMERGE output))                                                                                      
+        (2 = formatted   (free-formatted user input))                                                                                
+                                                                                                                                     
+        Precipitation data file format                                                                                               
+                                    (IFORMP)  Default: 2     ! IFORMP =  2  !                                                        
+        (1 = unformatted (e.g., PMERGE output))                                                                                      
+        (2 = formatted   (free-formatted user input))                                                                                
+                                                                                                                                     
+        Cloud data file format                                                                                                       
+                                    (IFORMC)  Default: 2     ! IFORMC =  2  !                                                        
+        (1 = unformatted - CALMET unformatted output)                                                                                
+        (2 = formatted   - free-formatted CALMET output or user input)                                                               
+                                                                                                                                     
+ !END!                                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+ -------------------------------------------------------------------------------                                                     
+                                                                                                                                     
+ INPUT GROUP: 5 -- Wind Field Options and Parameters                                                                                 
+ --------------                                                                                                                      
+                                                                                                                                     
+                                                                                                                                     
+     WIND FIELD MODEL OPTIONS                                                                                                        
+        Model selection variable (IWFCOD)     Default: 1      ! IWFCOD =  1  !                                                       
+           0 = Objective analysis only                                                                                               
+           1 = Diagnostic wind module                                                                                                
+                                                                                                                                     
+        Compute Froude number adjustment                                                                                             
+        effects ? (IFRADJ)                    Default: 1      ! IFRADJ =  1  !                                                       
+        (0 = NO, 1 = YES)                                                                                                            
+                                                                                                                                     
+        Compute kinematic effects ? (IKINE)   Default: 0      ! IKINE  =  0  !                                                       
+        (0 = NO, 1 = YES)                                                                                                            
+                                                                                                                                     
+        Use O'Brien procedure for adjustment                                                                                         
+        of the vertical velocity ? (IOBR)     Default: 0      ! IOBR =  0  !                                                         
+        (0 = NO, 1 = YES)                                                                                                            
+                                                                                                                                     
+        Compute slope flow effects ? (ISLOPE) Default: 1      ! ISLOPE  =  1  !                                                      
+        (0 = NO, 1 = YES)                                                                                                            
+                                                                                                                                     
+        Extrapolate surface wind observations                                                                                        
+        to upper layers ? (IEXTRP)            Default: -4     ! IEXTRP = 1  !                                                        
+        (1 = no extrapolation is done,                                                                                               
+         2 = power law extrapolation used,                                                                                           
+         3 = user input multiplicative factors                                                                                       
+             for layers 2 - NZ used (see FEXTRP array)                                                                               
+         4 = similarity theory used                                                                                                  
+         -1, -2, -3, -4 = same as above except layer 1 data                                                                          
+             at upper air stations are ignored                                                                                       
+                                                                                                                                     
+        Extrapolate surface winds even                                                                                               
+        if calm? (ICALM)                      Default: 0      ! ICALM  =  0  !                                                       
+        (0 = NO, 1 = YES)                                                                                                            
+                                                                                                                                     
+        Layer-dependent biases modifying the weights of                                                                              
+        surface and upper air stations (BIAS(NZ))                                                                                    
+          -1<=BIAS<=1                                                                                                                
+        Negative BIAS reduces the weight of upper air stations                                                                       
+          (e.g. BIAS=-0.1 reduces the weight of upper air stations                                                                   
+        by 10%; BIAS= -1, reduces their weight by 100 %)                                                                             
+        Positive BIAS reduces the weight of surface stations                                                                         
+          (e.g. BIAS= 0.2 reduces the weight of surface stations                                                                     
+        by 20%; BIAS=1 reduces their weight by 100%)                                                                                 
+        Zero BIAS leaves weights unchanged (1/R**2 interpolation)                                                                    
+        Default: NZ*0                                                                                                                
+                 *BIAS =  -1 ,  1 ,  1 ,  1 ,  1 ,  1 ,  1 ,  1 ,  1 ,  1  *                                                         
+                 ! BIAS =  10*0 !                                                                                                    
+                                                                                                                                     
+        Minimum distance from nearest upper air station                                                                              
+        to surface station for which extrapolation                                                                                   
+        of surface winds at surface station will be allowed                                                                          
+        (RMIN2: Set to -1 for IEXTRP = 4 or other situations                                                                         
+         where all surface stations should be extrapolated)                                                                          
+                                              Default: 4.     ! RMIN2 = -1.0 !                                                       
+                                                                                                                                     
+        Use gridded prognostic wind field model                                                                                      
+        output fields as input to the diagnostic                                                                                     
+        wind field model (IPROG)              Default: 0      ! IPROG =  14  !                                                       
+        (0 = No, [IWFCOD = 0 or 1]                                                                                                   
+         1 = Yes, use CSUMM prog. winds as Step 1 field, [IWFCOD = 0]                                                                
+         2 = Yes, use CSUMM prog. winds as initial guess field [IWFCOD = 1]                                                          
+         3 = Yes, use winds from MM4.DAT file as Step 1 field [IWFCOD = 0]                                                           
+         4 = Yes, use winds from MM4.DAT file as initial guess field [IWFCOD = 1]                                                    
+         5 = Yes, use winds from MM4.DAT file as observations [IWFCOD = 1]                                                           
+         13 = Yes, use winds from MM5/3D.DAT file as Step 1 field [IWFCOD = 0]                                                       
+         14 = Yes, use winds from MM5/3D.DAT file as initial guess field [IWFCOD = 1]                                                
+         15 = Yes, use winds from MM5/3D.DAT file as observations [IWFCOD = 1]                                                       
+                                                                                                                                     
+        Timestep (hours) of the prognostic                                                                                           
+        model input data   (ISTEPPG)          Default: 1      ! ISTEPPG =  1   !                                                     
+                                                                                                                                     
+        Use coarse CALMET fields as initial guess fields (IGFMET)                                                                    
+        (overwrites IGF based on prognostic wind fields if any)                                                                      
+                                              Default: 0      ! IGFMET =  0  !                                                       
+                                                                                                                                     
+     RADIUS OF INFLUENCE PARAMETERS                                                                                                  
+                                                                                                                                     
+        Use varying radius of influence       Default: F      ! LVARY =  F !                                                         
+        (if no stations are found within RMAX1,RMAX2,                                                                                
+         or RMAX3, then the closest station will be used)                                                                            
+                                                                                                                                     
+        Maximum radius of influence over land                                                                                        
+        in the surface layer (RMAX1)          No default      ! RMAX1 =  12. ! ** 3 x mm5 **                                         
+                                              Units: km                                                                              
+        Maximum radius of influence over land                                                                                        
+        aloft (RMAX2)                         No default      ! RMAX2 =  12. ! ** 3 x mm5 **                                         
+                                              Units: km                                                                              
+        Maximum radius of influence over water                                                                                       
+        (RMAX3)                               No default      ! RMAX3 =  20. ! ** 4 x mm5 **                                         
+                                                                                                                                     
+                                                                                                                                     
+     OTHER WIND FIELD INPUT PARAMETERS                                                                                               
+                                                                                                                                     
+        Minimum radius of influence used in                                                                                          
+        the wind field interpolation (RMIN)   Default: 0.1    ! RMIN = 0.1 !                                                         
+                                              Units: km                                                                              
+        Radius of influence of terrain                                                                                               
+        features (TERRAD)                     No default      ! TERRAD = 4. ! ** mm5 size **                                         
+                                                                                                                                     
+                                              Units: km                                                                              
+        Relative weighting of the first                                                                                              
+        guess field and observations in the                                                                                          
+        SURFACE layer (R1)                    No default      ! R1 = 2. ! ** 1/2 mm5 **                                              
+        (R1 is the distance from an           Units: km                                                                              
+        observational station at which the                                                                                           
+        observation and first guess field are                                                                                        
+        equally weighted)                                                                                                            
+                                                                                                                                     
+        Relative weighting of the first                                                                                              
+        guess field and observations in the                                                                                          
+        layers ALOFT (R2)                     No default      ! R2 = 2. ! ** 1/2 mm5 **                                              
+        (R2 is applied in the upper layers    Units: km                                                                              
+        in the same manner as R1 is used in                                                                                          
+        the surface layer).                                                                                                          
+                                                                                                                                     
+        Relative weighting parameter of the                                                                                          
+        prognostic wind field data (RPROG)    No default      ! RPROG = 0. !                                                         
+        (Used only if IPROG = 1)              Units: km                                                                              
+        ------------------------                                                                                                     
+                                                                                                                                     
+        Maximum acceptable divergence in the                                                                                         
+        divergence minimization procedure                                                                                            
+        (DIVLIM)                              Default: 5.E-6  ! DIVLIM= 5.0E-06 !                                                    
+                                                                                                                                     
+        Maximum number of iterations in the                                                                                          
+        divergence min. procedure (NITER)     Default: 50     ! NITER =  50  !                                                       
+                                                                                                                                     
+        Number of passes in the smoothing                                                                                            
+        procedure (NSMTH(NZ))                                                                                                        
+        NOTE: NZ values must be entered                                                                                              
+             Default: 2,(mxnz-1)*4                                                                                                   
+                                                                                                                                     
+        ! NSMTH =  1 ,  2 ,  2 ,  3 ,  3 ,  4 ,  4 ,  4 ,  4 ,  4  !                                                                 
+                                                                                                                                     
+        Maximum number of stations used in                                                                                           
+        each layer for the interpolation of                                                                                          
+        data to a grid point (NINTR2(NZ))                                                                                            
+        NOTE: NZ values must be entered       Default: 99.                                                                           
+                                                                                                                                     
+ 	! NINTR2 =  99,  99,  99,  99,  99,  99,  99,  99,  99,  99  !                                                                     
+                                                                                                                                     
+        Critical Froude number (CRITFN)       Default: 1.0    ! CRITFN = 1. !                                                        
+                                                                                                                                     
+        Empirical factor controlling the                                                                                             
+        influence of kinematic effects                                                                                               
+        (ALPHA)                               Default: 0.1    ! ALPHA = 0.1 !                                                        
+                                                                                                                                     
+        Multiplicative scaling factor for                                                                                            
+        extrapolation of surface observations                                                                                        
+        to upper layers (FEXTR2(NZ))          Default: NZ*0.0                                                                        
+        ! FEXTR2 = 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. !                                                                          
+        (Used only if IEXTRP = 3 or -3)                                                                                              
+                                                                                                                                     
+                                                                                                                                     
+     BARRIER INFORMATION                                                                                                             
+                                                                                                                                     
+        Number of barriers to interpolation                                                                                          
+        of the wind fields (NBAR)             Default: 0      ! NBAR =  0  !                                                         
+                                                                                                                                     
+        Level (1 to NZ) up to which barriers                                                                                         
+        apply (KBAR)                          Default: NZ     ! KBAR =  10  !                                                        
+                                                                                                                                     
+        THE FOLLOWING 4 VARIABLES ARE INCLUDED                                                                                       
+        ONLY IF NBAR > 0                                                                                                             
+        NOTE: NBAR values must be entered     No defaults                                                                            
+              for each variable               Units: km                                                                              
+                                                                                                                                     
+           X coordinate of BEGINNING                                                                                                 
+           of each barrier (XBBAR(NBAR))      ! XBBAR = 0. !                                                                         
+           Y coordinate of BEGINNING                                                                                                 
+           of each barrier (YBBAR(NBAR))      ! YBBAR = 0. !                                                                         
+                                                                                                                                     
+           X coordinate of ENDING                                                                                                    
+           of each barrier (XEBAR(NBAR))      ! XEBAR = 0. !                                                                         
+           Y coordinate of ENDING                                                                                                    
+           of each barrier (YEBAR(NBAR))      ! YEBAR = 0. !                                                                         
+                                                                                                                                     
+                                                                                                                                     
+     DIAGNOSTIC MODULE DATA INPUT OPTIONS                                                                                            
+                                                                                                                                     
+        Surface temperature (IDIOPT1)         Default: 0      ! IDIOPT1 =  0  !                                                      
+           0 = Compute internally from                                                                                               
+               hourly surface observations                                                                                           
+           1 = Read preprocessed values from                                                                                         
+               a data file (DIAG.DAT)                                                                                                
+                                                                                                                                     
+           Surface met. station to use for                                                                                           
+           the surface temperature (ISURFT)   No default     ! ISURFT = 98 ! SeaTac                                                  
+           (Must be a value from 1 to NSSTA)                                                                                         
+           (Used only if IDIOPT1 = 0)                                                                                                
+           --------------------------                                                                                                
+                                                                                                                                     
+        Domain-averaged temperature lapse                                                                                            
+        rate (IDIOPT2)                        Default: 0     ! IDIOPT2 =  0  !                                                       
+           0 = Compute internally from                                                                                               
+               twice-daily upper air observations                                                                                    
+           1 = Read hourly preprocessed values                                                                                       
+               from a data file (DIAG.DAT)                                                                                           
+                                                                                                                                     
+           Upper air station to use for                                                                                              
+           the domain-scale lapse rate (IUPT) No default     ! IUPT   =  1  !                                                        
+           (Must be a value from 1 to NUSTA)                                                                                         
+           (Used only if IDIOPT2 = 0)                                                                                                
+           --------------------------                                                                                                
+                                                                                                                                     
+           Depth through which the domain-scale                                                                                      
+           lapse rate is computed (ZUPT)      Default: 200.  ! ZUPT = 200. !                                                         
+           (Used only if IDIOPT2 = 0)         Units: meters                                                                          
+           --------------------------                                                                                                
+                                                                                                                                     
+        Domain-averaged wind components                                                                                              
+        (IDIOPT3)                             Default: 0     ! IDIOPT3 =  0  !                                                       
+           0 = Compute internally from                                                                                               
+               twice-daily upper air observations                                                                                    
+           1 = Read hourly preprocessed values                                                                                       
+               a data file (DIAG.DAT)                                                                                                
+                                                                                                                                     
+           Upper air station to use for                                                                                              
+           the domain-scale winds (IUPWND)    Default: -1    ! IUPWND = -1  !                                                        
+           (Must be a value from -1 to NUSTA)                                                                                        
+           (Used only if IDIOPT3 = 0)                                                                                                
+           --------------------------                                                                                                
+                                                                                                                                     
+           Bottom and top of layer through                                                                                           
+           which the domain-scale winds                                                                                              
+           are computed                                                                                                              
+           (ZUPWND(1), ZUPWND(2))        Defaults: 1., 1000. ! ZUPWND= 1., 1000. !                                                   
+           (Used only if IDIOPT3 = 0)    Units: meters                                                                               
+           --------------------------                                                                                                
+                                                                                                                                     
+        Observed surface wind components                                                                                             
+        for wind field module (IDIOPT4)  Default: 0     ! IDIOPT4 =  0  !                                                            
+           0 = Read WS, WD from a surface                                                                                            
+               data file (SURF.DAT)                                                                                                  
+           1 = Read hourly preprocessed U, V from                                                                                    
+               a data file (DIAG.DAT)                                                                                                
+                                                                                                                                     
+        Observed upper air wind components                                                                                           
+        for wind field module (IDIOPT5)  Default: 0     ! IDIOPT5 =  0  !                                                            
+           0 = Read WS, WD from an upper                                                                                             
+               air data file (UP1.DAT, UP2.DAT, etc.)                                                                                
+           1 = Read hourly preprocessed U, V from                                                                                    
+               a data file (DIAG.DAT)                                                                                                
+                                                                                                                                     
+        LAKE BREEZE INFORMATION                                                                                                      
+                                                                                                                                     
+           Use Lake Breeze Module  (LLBREZE)                                                                                         
+                                            Default: F      ! LLBREZE = F !                                                          
+                                                                                                                                     
+            Number of lake breeze regions (NBOX)            ! NBOX =  0  !                                                           
+                                                                                                                                     
+         X Grid line 1 defining the region of interest                                                                               
+                                                         ! XG1 = 0. !                                                                
+         X Grid line 2 defining the region of interest                                                                               
+                                                         ! XG2 = 0. !                                                                
+         Y Grid line 1 defining the region of interest                                                                               
+                                                         ! YG1 = 0. !                                                                
+         Y Grid line 2 defining the region of interest                                                                               
+                                                         ! YG2 = 0. !                                                                
+                                                                                                                                     
+          X Point defining the coastline (Straight line)                                                                             
+                    (XBCST)  (KM)   Default: none    ! XBCST = 0. !                                                                  
+                                                                                                                                     
+          Y Point defining the coastline (Straight line)                                                                             
+                    (YBCST)  (KM)   Default: none    ! YBCST = 0. !                                                                  
+                                                                                                                                     
+          X Point defining the coastline (Straight line)                                                                             
+                    (XECST)  (KM)   Default: none    ! XECST = 0. !                                                                  
+                                                                                                                                     
+          Y Point defining the coastline (Straight line)                                                                             
+                    (YECST)  (KM)   Default: none    ! YECST = 0. !                                                                  
+                                                                                                                                     
+                                                                                                                                     
+        Number of stations in the region     Default: none ! NLB =  0 !                                                              
+        (Surface stations + upper air stations)                                                                                      
+                                                                                                                                     
+        Station ID's  in the region   (METBXID(NLB))                                                                                 
+        (Surface stations first, then upper air stations)                                                                            
+          ! METBXID =  0 !                                                                                                           
+                                                                                                                                     
+ !END!                                                                                                                               
+                                                                                                                                     
+                                                                                                                                     
+ -------------------------------------------------------------------------------                                                     
+                                                                                                                                     
+ INPUT GROUP: 6 -- Mixing Height, Temperature and Precipitation Parameters                                                           
+ --------------                                                                                                                      
+                                                                                                                                     
+     EMPIRICAL MIXING HEIGHT CONSTANTS                                                                                               
+                                                                                                                                     
+        Neutral, mechanical equation                                                                                                 
+        (CONSTB)                              Default: 1.41   ! CONSTB = 1.41 !                                                      
+        Convective mixing ht. equation                                                                                               
+        (CONSTE)                              Default: 0.15   ! CONSTE = 0.15 !                                                      
+        Stable mixing ht. equation                                                                                                   
+        (CONSTN)                              Default: 2400.  ! CONSTN = 2400.!                                                      
+        Overwater mixing ht. equation                                                                                                
+        (CONSTW)                              Default: 0.16   ! CONSTW = 0.16 !                                                      
+        Absolute value of Coriolis                                                                                                   
+        parameter (FCORIOL)                   Default: 1.E-4  ! FCORIOL = 1.0E-04!                                                   
+                                              Units: (1/s)                                                                           
+                                                                                                                                     
+     SPATIAL AVERAGING OF MIXING HEIGHTS                                                                                             
+                                                                                                                                     
+        Conduct spatial averaging                                                                                                    
+        (IAVEZI)  (0=no, 1=yes)               Default: 1      ! IAVEZI =  1  !                                                       
+                                                                                                                                     
+        Max. search radius in averaging                                                                                              
+        process (MNMDAV)                      Default: 1      ! MNMDAV =  1  !                                                       
+                                              Units: Grid                                                                            
+                                                     cells                                                                           
+        Half-angle of upwind looking cone                                                                                            
+        for averaging (HAFANG)                Default: 30.    ! HAFANG = 30. !                                                       
+                                              Units: deg.                                                                            
+        Layer of winds used in upwind                                                                                                
+        averaging (ILEVZI)                    Default: 1      ! ILEVZI =  1  !                                                       
+        (must be between 1 and NZ)                                                                                                   
+                                                                                                                                     
+                                                                                                                                     
+     CONVECTIVE MIXING HEIGHT OPTIONS:                                                                                               
+        Method to compute the convective                                                                                             
+        mixing height(IMIHXH)                 Default: 1      ! IMIXH =  -1  !                                                       
+            1: Maul-Carson for land and water cells                                                                                  
+           -1: Maul-Carson for land cells only -                                                                                     
+               OCD mixing height overwater                                                                                           
+            2: Batchvarova and Gryning for land and water cells                                                                      
+           -2: Batchvarova and Gryning for land cells only                                                                           
+               OCD mixing height overwater                                                                                           
+                                                                                                                                     
+        Threshold buoyancy flux required to                                                                                          
+        sustain convective mixing height growth                                                                                      
+        overland (THRESHL)                    Default: 0.0    ! THRESHL = 0.0 !                                                      
+        (expressed as a heat flux             units: W/m3                                                                            
+         per meter of boundary layer)                                                                                                
+                                                                                                                                     
+                                                                                                                                     
+        Threshold buoyancy flux required to                                                                                          
+        sustain convective mixing height growth                                                                                      
+        overwater (THRESHW)                   Default: 0.05   ! THRESHW = 0.05 !                                                     
+        (expressed as a heat flux             units: W/m3                                                                            
+         per meter of boundary layer)                                                                                                
+                                                                                                                                     
+                                                                                                                                     
+        Option for overwater lapse rates used                                                                                        
+        in convective mixing height growth                                                                                           
+        (ITWPROG)                             Default: 0      ! ITWPROG =  2  !                                                      
+        0 : use SEA.DAT lapse rates and deltaT (or assume neutral                                                                    
+            conditions if missing)                                                                                                   
+        1 : use prognostic lapse rates (only if IPROG>2)                                                                             
+            and SEA.DAT deltaT (or neutral if missing)                                                                               
+        2 : use prognostic lapse rates and prognostic delta T                                                                        
+            (only if iprog>12 and 3D.DAT version# 2.0 or higher)                                                                     
+                                                                                                                                     
+        Land Use category ocean in 3D.DAT datasets                                                                                   
+        (ILUOC3D)                             Default: 16     ! ILUOC3D =  16  !                                                     
+        Note: if 3D.DAT from MM5 version 3.0, iluoc3d = 16                                                                           
+              if MM4.DAT,           typically iluoc3d = 7                                                                            
+                                                                                                                                     
+                                                                                                                                     
+     OTHER MIXING HEIGHT VARIABLES                                                                                                   
+                                                                                                                                     
+        Minimum potential temperature lapse                                                                                          
+        rate in the stable layer above the                                                                                           
+        current convective mixing ht.         Default: 0.001  ! DPTMIN = 0.001 !                                                     
+        (DPTMIN)                              Units: deg. K/m                                                                        
+        Depth of layer above current conv.                                                                                           
+        mixing height through which lapse     Default: 200.   ! DZZI = 200.   !                                                      
+        rate is computed (DZZI)               Units: meters                                                                          
+                                                                                                                                     
+        Minimum overland mixing height        Default:  50.   ! ZIMIN = 50.   !                                                      
+        (ZIMIN)                               Units: meters                                                                          
+        Maximum overland mixing height        Default: 3000.  ! ZIMAX = 3000. !                                                      
+        (ZIMAX)                               Units: meters                                                                          
+        Minimum overwater mixing height       Default:   50.  ! ZIMINW = 50.  !                                                      
+        (ZIMINW) -- (Not used if observed     Units: meters                                                                          
+        overwater mixing hts. are used)                                                                                              
+        Maximum overwater mixing height       Default: 3000.  ! ZIMAXW = 3000.!                                                      
+        (ZIMAXW) -- (Not used if observed     Units: meters                                                                          
+        overwater mixing hts. are used)                                                                                              
+                                                                                                                                     
+                                                                                                                                     
+     OVERWATER SURFACE FLUXES METHOD and PARAMETERS                                                                                  
+           (ICOARE)                           Default: 10      ! ICOARE =  0   !                                                     
+            0: original deltaT method (OCD)                                                                                          
+           10: COARE with no wave parameterization (jwave=0, Charnock)                                                               
+           11: COARE with wave option jwave=1 (Oost et al.)                                                                          
+               and default wave properties                                                                                           
+          -11: COARE with wave option jwave=1 (Oost et al.)                                                                          
+               and observed wave properties (must be in SEA.DAT files)                                                               
+           12: COARE with wave option 2 (Taylor and Yelland)                                                                         
+                and default wave properties                                                                                          
+          -12: COARE with wave option 2 (Taylor and Yelland)                                                                         
+               and observed wave properties (must be in SEA.DAT files)                                                               
+                                                                                                                                     
+           Note:  When ICOARE=0, similarity wind profile stability PSI functions                                                     
+                  based on Van Ulden and Holtslag (1985) are substituted for                                                         
+                  later formulations used with the COARE module, and temperatures                                                    
+                  used for surface layer parameters are obtained from either the                                                     
+                  nearest surface station temperature or prognostic model 2D                                                         
+                  temperatures (if ITPROG=2).                                                                                        
+                                                                                                                                     
+           Coastal/Shallow water length scale (DSHELF)                                                                               
+           (for modified z0 in shallow water)                                                                                        
+           ( COARE fluxes only)                                                                                                      
+                                           Default : 0.        ! DSHELF = 0. !                                                       
+                                           units: km                                                                                 
+                                                                                                                                     
+            COARE warm layer computation (IWARM)               ! IWARM =  0   !                                                      
+            1: on - 0: off (must be off if SST measured with                                                                         
+            IR radiometer)                 Default: 0                                                                                
+                                                                                                                                     
+            COARE cool skin layer computation (ICOOL)          ! ICOOL =  0   !                                                      
+            1: on - 0: off (must be off if SST measured with                                                                         
+            IR radiometer)                 Default: 0                                                                                
+                                                                                                                                     
+                                                                                                                                     
+     TEMPERATURE PARAMETERS                                                                                                          
+                                                                                                                                     
+        3D temperature from observations or                                                                                          
+        from prognostic data? (ITPROG)        Default:0        ! ITPROG =  2  !                                                      
+                                                                                                                                     
+           0 = Use Surface and upper air stations                                                                                    
+               (only if NOOBS = 0)                                                                                                   
+           1 = Use Surface stations (no upper air observations)                                                                      
+               Use MM5/3D for upper air data                                                                                         
+               (only if NOOBS = 0,1)                                                                                                 
+           2 = No surface or upper air observations                                                                                  
+               Use MM5/3D for surface and upper air data                                                                             
+               (only if NOOBS = 0,1,2)                                                                                               
+                                                                                                                                     
+        Interpolation type                                                                                                           
+        (1 = 1/R ; 2 = 1/R**2)                Default:1         ! IRAD =  1  !                                                       
+                                                                                                                                     
+        Radius of influence for temperature                                                                                          
+        interpolation (TRADKM)                Default: 500.     ! TRADKM = 500. !                                                    
+                                              Units: km                                                                              
+                                                                                                                                     
+        Maximum Number of stations to include                                                                                        
+        in temperature interpolation (NUMTS)  Default: 5        ! NUMTS = 5  !                                                       
+                                                                                                                                     
+        Conduct spatial averaging of temp-                                                                                           
+        eratures (IAVET)  (0=no, 1=yes)       Default: 1        ! IAVET =  1  !                                                      
+        (will use mixing ht MNMDAV,HAFANG                                                                                            
+         so make sure they are correct)                                                                                              
+                                                                                                                                     
+        Default temperature gradient          Default: -.0098   ! TGDEFB = -0.0098 !                                                 
+        below the mixing height over          Units: K/m                                                                             
+        water (TGDEFB)                                                                                                               
+                                                                                                                                     
+        Default temperature gradient          Default: -.0045   ! TGDEFA = -0.0045 !                                                 
+        above the mixing height over          Units: K/m                                                                             
+        water (TGDEFA)                                                                                                               
+                                                                                                                                     
+        Beginning (JWAT1) and ending (JWAT2)                                                                                         
+        land use categories for temperature                    ! JWAT1 =  55  !                                                      
+        interpolation over water -- Make                       ! JWAT2 =  55  !                                                      
+        bigger than largest land use to disable                                                                                      
+                                                                                                                                     
+    PRECIP INTERPOLATION PARAMETERS                                                                                                  
+                                                                                                                                     
+        Method of interpolation (NFLAGP)      Default: 2       ! NFLAGP =  2  !                                                      
+         (1=1/R,2=1/R**2,3=EXP/R**2)                                                                                                 
+        Radius of Influence  (SIGMAP)         Default: 100.0   ! SIGMAP  = 12.  !  mm5 pseudo prec mesh size                         
+         (0.0 => use half dist. btwn          Units: km                                                                              
+          nearest stns w & w/out                                                                                                     
+          precip when NFLAGP = 3)                                                                                                    
+        Minimum Precip. Rate Cutoff (CUTP)    Default: 0.01    ! CUTP = 0.01 !                                                       
+         (values < CUTP = 0.0 mm/hr)          Units: mm/hr                                                                           
+ !END!                                                                                                                               
+
+ -------------------------------------------------
+ NOTICE: Starting year in control file sets the
+         expected century for the simulation.  All
+         YY years are converted to YYYY years in
+         the range:          1955         2054
+ -------------------------------------------------
+
+
+
+
+ Grid origin coordinates: (SW corner of cell 1,1)
+   XMAP0 =    -50.00000      (km)
+   YMAP0 =    -102.0000      (km)
+  N.Lat0 =     48.04908      (deg)
+  E.Lon0 =    -121.6961      (deg)
+  W.Lon0 =     121.6961      (deg)
+
+    NO SURFACE STATIONS - noobs MUST BE = 2 
+
+      NO UPPER AIR STATIONS - noobs MUST BE >= 1
+
+      NO PRECIPITATION STATIONS
+
+
+  Input group no. 1 -- General run parameters
+        Run starting date -- year: 2005
+                            month:    1
+                              day:    1
+                       Julian day:    1
+                             hour:    1
+                   Base time zone:    8
+
+               Run length (hours):   24
+
+                         Run type:    1 (0=winds only, 1=winds + other met. variables)
+     Complete met fields computed:    T
+
+                    TEST mode run:    2 (1=yes, 2=no)
+                 Regulatory check:    0 (0=none, 1=USEPA)
+
+
+  Input group no. 2 -- Grid parameters
+           No. horizontal grid cells:       26 x   26
+            Horizontal grid size (m):     4000.
+            Reference coordinates of  
+        SW corner of grid cell (1,1): ( -50000.,-102000.)
+       N.Latitude SW corner of (1,1):   48.05
+      W.Longitude SW corner of (1,1):  121.70
+                      Map Projection: LCC     
+                       NIMA Datum ID: NWS-84  
+                           NIMA Date: 02-21-2003  
+       False Easting at proj. origin:        0.000
+      False Northing at proj. origin:        0.000
+          N.Latitude at proj. origin:   49.00
+         W.Longitude at proj. origin:  121.00
+              Standard N.Latitude #1:   30.00
+              Standard N.Latitude #2:   60.00
+
+            No. vertical grid cells:       10
+     Vertical cell face heights (m):      0.0    20.0    72.8   109.3   146.0   294.3   444.8   753.0  1317.1  2368.9  3874.3
+            Cell center heights (m):     10.0    46.4    91.0   127.7   220.2   369.6   598.9  1035.1  1843.0  3121.6
+
+
+  Input group no. 3 -- Output options
+           Meteorological fields save in disk file ? (LSAVE) =     T
+                              Format of output file (IFORMO) =     1   (1=CALMET, 2=MESOPAC II)
+                    Meteorological fields printed ? (LPRINT) =     F
+                                     Print interval (IPRINF) =    12
+     Input met. data and internal parameters printed ? (LDB) =     F
+      Time steps for which LDB parameters printed (NN1, NN2) =     1 to     1
+     Distance to the coast printed in grd file? (LDBCST) =     F
+
+
+           Control variables for printing of 3-D fields
+                    (used only if LPRINT = .TRUE.)
+                         (0=not printed, 1=printed)
+                     LEVEL   U,V    W    TEMP
+
+                       1      1     0     1
+                       2      0     0     0
+                       3      0     0     0
+                       4      0     0     0
+                       5      0     0     0
+                       6      0     0     0
+                       7      0     0     0
+                       8      0     0     0
+                       9      0     0     0
+                      10      0     0     0
+
+           Control variables for printing of other met. fields
+                    (used only if LPRINT = .TRUE.)
+                       VARIABLE                     PRINTED (0=no, 1=yes)
+                       PGT stability class             1
+                       Friction velocity (u*)          0
+                       Monin-Obukhov length (L)        0
+                       Mixing height (zi)              1
+                       Convective velocity scale (w*)  0
+                       Precipitation rate              1
+
+                       Sensible heat flux (Qh)         0
+                       Convective mixing ht            0
+
+
+  Input group no. 4 -- Meteorological data options
+        MM4/5 only flag (NOOBS):    2
+           No. surface stations:    0     Format type:    2
+        No. rawinsonde stations:    0
+     No. precipitation stations:   -1     Format type:    2
+     (if NPSTA = -1: precipitation read from MM5)
+         No. overwater stations:    0
+                                          (Format type 1=unformatted, 2=formatted)
+
+      Gridded cloud data option:    3     (0=CLOUD.DAT not used,
+                                           1=CLOUD.DAT created as OUTPUT,
+                                           2=CLOUD.DAT read as INPUT,
+                                           3=CLOUD computed from prognostic RH at 850mb)
+
+
+  Input group no. 5 -- Wind field parameters
+                                   Wind field code =        1 (0 = objective analysis, 1 = diagnostic)
+     Varying radius of influence           (LVARY) =          F
+     Radius of influence - land - surface  (rmax1) =       12.0 (km)
+     Radius of influence - land - aloft    (rmax2) =       12.0 (km)
+     Radius of influence - water           (rmax3) =       20.0 (km)
+     Radius of influence - minimum          (rmin) =        0.1 (km)
+     Radius of influence - terrain        (terrad) =        4.0 (km)
+     Weighting parameter - surface            (r1) =        2.0
+     Weighting parameter - aloft              (r2) =        2.0
+
+     Maximum no. stations used in interpolation at one grid point in each level (nintr2):
+            99  99  99  99  99  99  99  99  99  99
+
+     Gridded prognostic model results used as input = 14
+       0 = no
+       1 = Use CSUMM model winds as Step 1 inputs
+       2 = Use CSUMM model winds as initial guess field
+       3 = Use MM4.DAT file winds as Step 1 inputs
+       4 = Use MM4.DAT file winds as initial guess field
+       5 = Use MM4.DAT file winds as "observations"
+      13 = Use MM5.DAT file winds as Step 1 inputs
+      14 = Use MM5.DAT file winds as initial guess field
+      15 = Use MM5.DAT file winds as "observations"
+     Weighting parameter for prognostic data  (rprog) =        0.0 (km)
+
+
+     Prognostic model output timestep (hours):   1
+
+     Use coarse CALMET fields as IGF:   0
+       0 = no
+       1 = yes
+
+
+  LAKE BREEZE parameters
+     Utilize the Lake Breeze Module of CALMET (LLBREZE) = F
+     Number of regions (NBOX)  =          0
+
+
+ divlim,niter =    4.9999999E-06           50
+ nsmth             1            2            2            3            3 
+            4            4            4            4            4
+ iextrp =             1  rmin2 =    -1.000000      fextr2 =     0.000000     
+    0.000000        0.000000        0.000000        0.000000     
+    0.000000        0.000000        0.000000        0.000000     
+    0.000000        0.000000        0.000000    
+ bias =     0.000000        0.000000        0.000000        0.000000     
+    0.000000        0.000000        0.000000        0.000000     
+    0.000000        0.000000    
+ critfn,terrad,ifradj,ikine,alpha,iobr =     1.000000        4.000000     
+            1            0   0.1000000                0
+ islope,icalm            1            0
+ nzprn2,ipr0,ipr1,ipr2,ipr3,ipr4,ipr5,ipr6,ipr7,ipr8,ioutd =             1 
+            0            0            0            0            0            0 
+            0            0            0            0
+
+     Specification for diagnostic wind module data input
+
+                       Surface temperature: 0 (0=computed internally, 1=preprocessed values input)
+          Domain-averaged temp. lapse rate: 0 (0=computed internally, 1=preprocessed values input)
+           Domain-averaged wind components: 0 (0=computed internally, 1=preprocessed values input)
+                   Surface wind components: 0 (0=computed internally, 1=preprocessed values input)
+                 Upper air wind components: 0 (0=computed internally, 1=preprocessed values input)
+
+      Prognostic data used for domain-averaged temp. lapse rate  
+      Depth through which domain-averaged temp. lapse rate is computed (ZUPT): 
+     200.0000    
+
+      Upper air station no. used for domain-averaged wind components (IUPWND): 
+            -1
+      (IUPWND = -1 to use all stations -- i.e., spatially-variable initial 
+       guess field)
+      Depth through which domain-averaged wind components are computed:  
+    1.000000      TO     1000.000    
+
+
+  Input group no. 6 -- Mixing height, temperature, radiation and precipitation parameters
+      Neutral mechanical mix. ht. constant (constb) =     1.4100
+         Convective mixing height constant (conste) =     0.1500
+             Stable mixing height constant (constn) =  2400.0000
+          Overwater mixing height constant (constw) =     0.1600
+     Absolute value of Coriolis parameter (fcoriol) =  1.000E-04 (1/s)
+
+       Minimum pot. temp. lapse rate in layer above
+                     current mixing height (dptmin) =     0.0010 (deg. K/m)
+        Depth of layer above mixing height used to 
+                          compute lapse rate (dzzi) =   200.0000 (m)
+          Precip interp. option:    2
+      Rad. Inf. for Precip (km):    12.0000
+      Min. Prec. cutoff (mm/hr):     0.0100
+
+-----Convective Mixing Height options-----
+      Method used to compute mixing height (imixh)  -1
+        1 = Maul-Carson for land and water cells
+       -1 = Maul-Carson for land cells only; OCD overwater
+        2 = Batchvarova and Gryning for land and water cells
+       -2 = Batchvarova and Gryning for land cells only;OCD overwater
+
+      Threshold buoyancy fluxes required to sustain convective
+      mixing height growth (in W/m3):
+        Overland  (THRESHL) =  0.000
+        Overwater (THRESHW) =  0.050
+      Overwater lapse rates used in conv. mix.hgt growth:  2
+        0 : SEA.DAT lapse rates and deltaT (neutral if missing)
+        1 : progn. lapse rates & SEA.DAT deltaT (neutral if mis.)
+        2 : progn.lapse rates and progn. deltaT
+
+      LU category in progn. datasets (ILUOC3d):  16
+
+-----Overwater surface fluxes-----
+      Method used to compute overwater fluxes (icoare)   0
+         0 = original deltaT method (OCD)
+        10 = COARE with no wave parameterization
+        11 = COARE with wave option jwave=1 (Oost et al.)
+       -11 = COARE with wave option jwave=1 and obs. wave prop.
+        12 = COARE with wave option jwave=2 (Taylor and Yelland)
+       -11 = COARE with wave option jwave=2 and obs. wave prop.
+
+           (internal ipsifcn set to             1 )
+           (internal isfcmet set to             1 )
+
+
+----- Other Mixing Height Parameters-----
+             Maximum overland mixing height (zimax) =  3000.0000 (m)
+             Minimum overland mixing height (zimin) =    50.0000 (m)
+      Minimum computed overwater mixing ht (ziminw) =    50.0000 (m)
+      Maximum computed overwater mixing ht (zimaxw) =  3000.0000 (m)
+
+        Spatial averaging of mixing hts. ? (iavezi) =          1 (0=no, 1=yes)
+      Max. search radius in mixing ht ave. (mnmdav) =          1 (grid cells)
+                 Half-angle of upwind cone (hafang) =    30.0000 (deg.)
+        Level of winds used in upwind ave. (ilevzi) =          1
+
+-----Temperature parameters-----
+
+     Temperature interpolation type (1=1/R;2=1/R**2)=          1
+
+     Radius of influence - temperature interpolation=      500.0 (km)
+
+     3-D temperature option- ITPROG = 2
+     0= Temperature from surface and upper air observations
+     1= Temperature from surface obs. and prognostic data 
+     2= Temperature from prognostic data only
+
+     Spatial averaging of temperature ? (iavet)     =          1 (0=no, 1=yes)
+
+     Default T gradient below mix. ht. over water   =    -0.0098 (K/m)
+
+     Default T gradient above mix. ht. over water   =    -0.0045 (K/m)
+
+
+  Beginning land use       Ending land use for water interpolation 
+
+            55                   55
+
+
+ Radiation parameters
+     Turbidity coefficient 1 (ha1)  =     990.00 (W/m**2)
+     Turbidity coefficient 2 (ha2)  =     -30.00 (W/m**2)
+     Cloudiness coefficient 1 (hb1) =    -0.7500
+     Cloudiness coefficient 2 (hb2) =     3.4000
+     Net radiation coefficient 1 (hc1) =   5.3100E-13 (W/m**2/K**6)
+     Net radiation coefficient 2 (hc2) =      60.00(W/m**2)
+     Net radiation coefficient 3 (hc3) =     0.1200
+
+
+ ----------------------------------------------------------------------------------------------------------------------------------
+          INPUT FILES
+
+ Default Name     Unit No.     File Name and Path
+ ------------     --------     ------------------
+   CALMET.INP        15        calmet.2005.01.inp                                                                                                                  
+      GEO.DAT         8        geo/geo.4km.dat                                                                                                                     
+     SURF.DAT        10        surf.dat                                                                                                                            
+
+     MM51.DAT        20        ../calmm5/monthly/2005.01.4km.m3d                                                                                                   
+
+
+ ----------------------------------------------------------------------------------------------------------------------------------
+          OUTPUT FILES
+
+ Default Name     Unit No.     File Name and Path
+ ------------     --------     ------------------
+   CALMET.LST        16        calmet.2005.01.out                                                                                                                  
+   CALMET.DAT         7        calmet.2005.01.met                                                                                                                  
+
+
+
+
+GEO.DAT File Header ----------
+
+GEO.DAT         2.0             Header structure with coordinate parameters                     
+   2
+Produced by MAKEGEO Version: 2.29  Level: 070327                                
+geo4km.dat file - CALMIP Test case, 100km by 100km, origin at 49N, 121W         
+LCC     
+49.0N           121.0W          30.0N           60.0N           
+    0.000000        0.000000    
+NWS-84  02-21-2003  
+      26      26     -50.000    -102.000       4.000       4.000
+KM  
+
+
+
+
+ New land use categories entered
+     No. categories (nlu) =    14
+     Range of land use categories corresponding to WATER =    50 to    55
+     New land use categories:    10   20  -20   30   40   51   54   55   60   61   62   70   80   90
+
+ Land use categories                                                   
+
+ Multiply all values by 10 **  -2
+
+  26 I 4000  4000  4000  4000  4000  4000  4000  4000  7000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  25 I 4000  4000  4000  4000  4000  4000  4000  7000  7000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  24 I 4000  4000  4000  4000  4000  4000  4000  7000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  23 I 4000  4000  4000  4000  4000  4000  7000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  22 I 4000  4000  4000  4000  7000  7000  9000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  21 I 4000  9000  9000  4000  4000  7000  7000  7000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  20 I 4000  4000  4000  4000  4000  7000  7000  7000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  19 I 4000  4000  4000  4000  7000  7000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  18 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  17 I 4000  4000  4000  9000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  16 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  15 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  14 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  9000  4000  4000  4000  4000  7000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  13 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  7000  9000  4000  7000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  12 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  7000  4000  7000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  11 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  10 I 4000  4000  4000  4000  4000  4000  4000  7000  4000  4000  4000  7000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   9 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  7000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   8 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  7000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   7 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  9000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   6 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   5 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  7000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   4 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   3 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  7000  4000  4000  4000  4000  4000  7000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   2 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  9000  4000  4000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   1 I 4000  4000  4000  4000  4000  4000  4000  4000  4000  4000  9000  7000  7000  4000  4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+     -----------------------------------------------------------------------------------------------------------------------
+          1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20
+
+ Land use categories                                                   
+
+ Multiply all values by 10 **  -2
+
+  26 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  25 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  24 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  23 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  22 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  21 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  20 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  19 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  18 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  17 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  16 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  15 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  14 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  13 I 4000  4000  4000  4000  4000  3000
+     I    +     +     +     +     +     +
+  12 I 4000  3000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  11 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+  10 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+   9 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+   8 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+   7 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+   6 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+   5 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+   4 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+   3 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+   2 I 4000  4000  4000  4000  4000  4000
+     I    +     +     +     +     +     +
+   1 I 4000  4000  3000  3000  3000  4000
+     I    +     +     +     +     +     +
+     -----------------------------------
+         21    22    23    24    25    26
+
+
+ Factor to convert user TERRAIN HEIGHT units to meters (HTFAC) =     1.0000
+
+ Terrain heights (user units)                                          
+
+ Multiply all values by 10 **   0
+
+  26 I 1559  1241  1475  1614  1539  1001  1358  1635  1890  1544  1032   702  1500  1598  1897  1732  1737  1680  1662  1592
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  25 I 1485  1375  1216  1611  1390  1000  1635  2040  1772  1502   883   809  1299  1320  1865  1713  1820  1715  1635  1414
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  24 I 1000  1356  1495  1372  1402  1174  1636  1635  1290  1102  1099   692  1139  1530  1723  1485  1830  1841  1623  1513
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  23 I  966  1126  1532  1384  1230  1451  1490  1216  1504  1436  1318   751   944  1198  1207  1409  1844  1792  1520  1674
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  22 I 1303  1505  1477  1429  1457  1495  1811  1447  1155  1638  1594   954   996  1712  1529  1664  1786  1709  1797  1843
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  21 I 1160  1582  1404  1067   800  1325  1720  1539  1195   915  1040   759  1193  1215  1619  1673  1634  1725  1925  1899
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  20 I  671   912   783  1104  1285  1417  1314  1689  1303  1421  1233   631  1305  1773  1478  1666  1405  1804  1859  1968
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  19 I  321   340   608  1583  1497  1428   957  1186  1367   900  1121   703  1068  1513  1500  1199  1471  1679  1920  1909
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  18 I  312  1018  1099  1410  1052  1169  1426   730   886   961   665  1389  1119  1070  1128  1731  1776  1803  1770  1797
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  17 I  422  1277  1403  1663   750  1153   954   424   843  1704  1414   916  1308  1746  1345  1478  1926  1732  1638  1371
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  16 I  577  1010  1151  1028   895   595   585  1364   947  1669  1373   902  1533  1597  1676  1453  1739  1786  1696  1618
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  15 I  894  1154  1061  1094   626   354  1024  1585  1303  1542  1782  1278  1392  1711  1893  1574  1640  1903  1772  1464
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  14 I  718   954  1176   948   302   659  1110  1067  1089  1659  2140  1458  1431  1890  1718  1954  1521  1937  1699  1891
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  13 I  192   714   712   277   259   444   720   726  1236  1625  1631  1991  1777  1962  1558  1833  1789  1718  1841  1934
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  12 I  307    89   151   213   883  1138  1326  1283   700   898  1464  1644  1778  1684  1820  1295  1489  1514  1875  1710
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  11 I  857   414   322  1001   854  1130  1418  1378   980  1178  1203  1718  1378  1081  1008  1396  1481  1761  1905  1748
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  10 I  880   624   265  1078  1212  1211  1291  1784  1289  1539  1330  1856  1341  1444  1387  1011  1627  1767  1798  1925
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   9 I  906   546   208   367   656  1106  1454  1251  1562  1526  1473  1905  1517  1512  1039  1049   880   859  1340  1690
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   8 I  743   707   241   254   412   987  1465  1034  1494  1108  1505  1923  1567  1180  1357  1770  1429  1006   730  1749
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   7 I  335   389   163   619   754   674   998  1218  1222  1453  1267  1525  1783  1326  1706  1721  1811  1622   797  1078
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   6 I  214   172   601   754  1142   732   679   625   775  1046  1673  1794  1834  1576  2041  1937  1917  2051  1461   650
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   5 I 1191   733   407   676  1191  1223  1325  1216  1521  1039  1263  1213  1651  1804  1838  1597  1523  1633  1466   529
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   4 I 1124  1008   791   520   467   760   914  1317  1518  1437  1562  1177  1325  1888  2011  2004  1909  1671  1291   981
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   3 I 1025   844  1161  1102   560  1107  1264  1152  1158  1651  2046  1637  1332  1856  1746  1883  1969  1661  2045  1759
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   2 I  942  1039   853  1168  1103   618   975  1240  1578  1540  2425  1666  1723  1899  1441  1536  1867  1503  2000  2111
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   1 I  522   695   929   810  1121   978  1276  1073  1654  1646  2129  2025  2028  1786  1677  1184  1730  1541  1855  1763
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+     -----------------------------------------------------------------------------------------------------------------------
+          1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20
+
+ Terrain heights (user units)                                          
+
+ Multiply all values by 10 **   0
+
+  26 I 1397  1746  1882  2083  1796  2034
+     I    +     +     +     +     +     +
+  25 I 1492  1810  1987  2087  1852  2074
+     I    +     +     +     +     +     +
+  24 I 1802  1619  1875  2152  1994  2084
+     I    +     +     +     +     +     +
+  23 I 1975  1713  1711  2003  2112  2013
+     I    +     +     +     +     +     +
+  22 I 2122  1948  1686  1811  2122  1832
+     I    +     +     +     +     +     +
+  21 I 1997  1946  1769  1661  1970  2050
+     I    +     +     +     +     +     +
+  20 I 1697  1812  1700  1737  1814  1901
+     I    +     +     +     +     +     +
+  19 I 2001  1495  1397  2034  1891  1463
+     I    +     +     +     +     +     +
+  18 I 1626  1279  1866  1974  1664  1275
+     I    +     +     +     +     +     +
+  17 I 1105  1048  1442  1561  1470  1170
+     I    +     +     +     +     +     +
+  16 I 1495  1132  1099  1255  1517  1278
+     I    +     +     +     +     +     +
+  15 I 1552  1080  1009   773  1239  1084
+     I    +     +     +     +     +     +
+  14 I 1826  1649  1604  1092   770  1022
+     I    +     +     +     +     +     +
+  13 I 1859  2143  1831  1402  1024   679
+     I    +     +     +     +     +     +
+  12 I 1784  1962  1700  1334  1189   851
+     I    +     +     +     +     +     +
+  11 I 1295  1389  1849  1308  1171  1050
+     I    +     +     +     +     +     +
+  10 I 1711  1282  1227  1338   923   865
+     I    +     +     +     +     +     +
+   9 I 1953  1709  1264   983   902   994
+     I    +     +     +     +     +     +
+   8 I 1844  1896  1714  1572  1267  1165
+     I    +     +     +     +     +     +
+   7 I 1872  2048  2069  1912  1639  1295
+     I    +     +     +     +     +     +
+   6 I 1332  1815  2159  2036  2205  1509
+     I    +     +     +     +     +     +
+   5 I  787  1770  1795  2088  2102  1534
+     I    +     +     +     +     +     +
+   4 I  582  1086  1426  2101  2067  1583
+     I    +     +     +     +     +     +
+   3 I 1196   541  1660  2017  1985  1891
+     I    +     +     +     +     +     +
+   2 I 1714   601  1416  1668  1649  1719
+     I    +     +     +     +     +     +
+   1 I 1891  1184   621   975  1074  1348
+     I    +     +     +     +     +     +
+     -----------------------------------
+         21    22    23    24    25    26
+
+ Gridded surface roughness length field (m)                            
+
+ Multiply all values by 10 **  -4
+
+  26 I 2805  3129  2322  2671  2115  8180  4883  4123   600  6082  2319  3299  3201  4786  1788  3932  4690  7546  9032  9168
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  25 I 2058  2681  3752  2583  4892  8990  3012   835  1077  4928  1481  3429  4322  6711  1769  4924  3456  6936  7891  8931
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  24 I 6319  2214  2281  5534  3128  7145  2683  1280  2751  5249  3895   579  6428  4902  3579  7094  5255  4120  7128  9534
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  23 I 6937  6319  2309  3793  5278  2726  1141  2927  4531  6040  6355   799  4532  6419  8870  8556  4387  4056  6226  8257
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  22 I 3207  2628  1515  1509  1015   787   587  1167  4900  2448  3992  1107  3076  3194  6457  7706  4195  4534  4644  4521
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  21 I 2964  1158   829  2606  2108  1049   630   686  2835  5108  3555   560  6474  5315  6694  5085  7169  7454  3453  3526
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  20 I 6117  5900  4516  4613  2451  1309   983   659  1737  4048  4410   823  4658  1496  6996  3128  7572  6419  5251  2632
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  19 I 4781   786  2584  2553  1073  1284  2298  2978  1713  6211  4051  2323  4438  3929  3579  5092  5962  4271  4022  3053
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  18 I  913  8208  8118  3812  2063  5042  1660  5193  2270  3726  2419  5773  5594  7614  8574  5192  4284  4902  4104  4182
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  17 I 1723  7382  4039   880  5247  5998  4920  6417  7155  2050  2556  8996  6229  3391  7775  5777  2888  3568  3869  3788
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  16 I 4485  7251  7791  5406  4879  8052  7922  4553  7750  2668  1843  7241  5264  4071  4617  5127  3702  4145  5829  4212
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  15 I 5685  6479  7889  8970  8004  7084  8299  2007  5991  2194  1810  3971  3515  1852  1616  4946  4450  2183  3304  3601
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  14 I 4480  5087  6149  6714  7001  6566  7658  3006  3505  1489   523  1552  5567  1827  2911  1316  6267  2999  3291  3896
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  13 I 4753  5797  7503  6514  4746  5756  5956  6177  6189  1885  1014   718  2136   729  1587  1649  1462  3193  2771  2180
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  12 I 5930  3753  4808  4911  6024  6053  3404  5735  5331  4460  4284  1514   881  1552  1368  2636  2010  3466  3051  2096
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  11 I 5587  6422  5664  6457  8950  6192  3223  4228  7604  6790  5031  1329  1435  3923  3725  4539  5006  3987  2682  2074
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  10 I 6828  4906  4073  5606  5956  7355  5609   881  2725  4141  5165   944  2095  4031  5131  3711  1381  1980  2396  2130
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   9 I 6757  8223  5437  6964  7100  6700  3017  3129  1739  1974  2639   708  1925  2038  3551  5464  4385  3484  2848  3854
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   8 I 6605  7964  6004  4158  6028  8157  4218  6708  3197  4552  4200   808  1974  3665  6131  3505  3940  4845  3415  3702
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   7 I 7010  6242  4898  5964  7145  8173  8979  7173  4613  4055  2919  1885  1320  3971  3012  1935  3026  2803   507  5022
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   6 I 7653  4210  5495  7940  6532  7970  7004  7067  8142  6891  3512  1943  1798  3285  1771  2128  2050  2301  1949  1109
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   5 I 3157  7442  7152  8859  5173  6297  6673  8944  4575  8180  6134  6792  4498  2895  1207  2332  2582  2562  4108   414
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   4 I 1943  5660  7067  6835  8323  7883  7680  6822  4969  2686  3656  8943  8863  3755  1428  1564  2799  6006  5705  4996
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   3 I 4007  6803  5052  6613  7576  5762  5991  7141  9140  3248  1141  3751  8723  2458  2443  2378  1266  4450  2110  3622
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   2 I 6471  4971  6264  7086  6917  8824  6514  5275  4280  4792   584  2563  3762  1529  5031  5315  1879  6568  2549  1871
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   1 I 8470  8251  5729  6864  5689  7813  4491  6082  3072  3826   665   693  1054  1899  1783  8229  4173  4465  3166  6496
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+     -----------------------------------------------------------------------------------------------------------------------
+          1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20
+
+ Gridded surface roughness length field (m)                            
+
+ Multiply all values by 10 **  -4
+
+  26 I 6354  8641  7729  3395  9102  5170
+     I    +     +     +     +     +     +
+  25 I 9069  4562  6242  2644  6792  3418
+     I    +     +     +     +     +     +
+  24 I 9085  7041  6334  2401  6714  5476
+     I    +     +     +     +     +     +
+  23 I 3773  7014  4868  3658  3371  4079
+     I    +     +     +     +     +     +
+  22 I 2052  4220  3341  5299  3688  7411
+     I    +     +     +     +     +     +
+  21 I 1355  3347  1465  4509  3590  4809
+     I    +     +     +     +     +     +
+  20 I 2241  2981  1633  4247  4429  6957
+     I    +     +     +     +     +     +
+  19 I 1662  2112  2559  4170  3830  8206
+     I    +     +     +     +     +     +
+  18 I 2788  3306  5932  3611  4711  5457
+     I    +     +     +     +     +     +
+  17 I 3905  5865  4335  3816  3842  4884
+     I    +     +     +     +     +     +
+  16 I 5251  4998  3916  4703  4335  4108
+     I    +     +     +     +     +     +
+  15 I 5723  5829  5417  3596  4157  3684
+     I    +     +     +     +     +     +
+  14 I 2629  6711  5864  5009  3394  3566
+     I    +     +     +     +     +     +
+  13 I 4374  1893  4220  6229  5393  1259
+     I    +     +     +     +     +     +
+  12 I 2981  1042  3059  5646  5131  2067
+     I    +     +     +     +     +     +
+  11 I 6155  3975  2642  5559  4725  3313
+     I    +     +     +     +     +     +
+  10 I 4611  8347  5190  4700  5177  2855
+     I    +     +     +     +     +     +
+   9 I 2160  3134  7483  4172  3391  4143
+     I    +     +     +     +     +     +
+   8 I 4811  4761  6577  9059  5509  4501
+     I    +     +     +     +     +     +
+   7 I 2549  3255  3617  4593  6490  5283
+     I    +     +     +     +     +     +
+   6 I 4956  4241  1608  3703  3612  5315
+     I    +     +     +     +     +     +
+   5 I 1934  3796  1849  2191  2697  5251
+     I    +     +     +     +     +     +
+   4 I  343  3235  4113  3198  2633  5509
+     I    +     +     +     +     +     +
+   3 I 3609   289  4401  3442  4606  5562
+     I    +     +     +     +     +     +
+   2 I 2203   236  3737  3511  2855  3232
+     I    +     +     +     +     +     +
+   1 I 2972  1389   241   889  1356  3133
+     I    +     +     +     +     +     +
+     -----------------------------------
+         21    22    23    24    25    26
+
+ USER-INPUT albedo field                                               
+
+ Multiply all values by 10 **  -4
+
+  26 I 2100  2000  2100  2100  2100  1100  1400  1600  3100  1300  1200  1300  1600  1400  2200  1600  1400  1100  1100  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  25 I 2400  2000  1700  2100  1400  1000  1700  3700  3000  1400  1200  1100  1500  1200  2100  1400  1700  1200  1100  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  24 I 1200  2300  2300  1400  1800  1200  1800  2500  1800  1300  1500  1000  1200  1400  1500  1200  1400  1500  1200  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  23 I 1200  1300  2500  1700  1400  1800  2300  1800  1500  1300  1200  1100  1300  1200  1100  1100  1500  1500  1200  1100
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  22 I 2000  2400  2900  2800  2600  3400  4800  2600  1400  2000  1600  1400  1100  1600  1200  1100  1500  1400  1400  1400
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  21 I 2100  4000  4000  1800  1900  2700  3900  3500  1700  1300  1600  1200  1200  1300  1200  1400  1200  1200  1600  1600
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  20 I 1300  1400  1500  1500  2000  2500  2600  3400  2100  1500  1400  1100  1500  2700  1200  1700  1100  1200  1400  1700
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  19 I 1100  1100  1100  2400  2600  2500  1800  1800  2100  1300  1500  1100  1200  1700  1600  1300  1300  1400  1500  1700
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  18 I 1100  1100  1100  1500  1800  1400  2200  1300  1700  1400  1100  1400  1300  1100  1100  1400  1500  1400  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  17 I 1100  1200  1600  3900  1400  1300  1300  1100  1200  2500  2000  1100  1300  1700  1100  1300  1800  1600  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  16 I 1400  1200  1100  1300  1400  1100  1100  1500  1100  2300  2400  1200  1400  1500  1400  1400  1500  1500  1300  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  15 I 1400  1300  1100  1100  1100  1100  1100  2200  1300  2100  2800  1800  1800  2300  2600  1500  1500  1900  1600  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  14 I 1500  1400  1300  1200  1200  1200  1100  1700  1600  3000  5800  2200  1400  2600  1800  2500  1300  1700  1600  1700
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  13 I 1300  1300  1200  1100  1300  1300  1300  1200  1300  2400  3300  4300  2700  3600  2200  2300  2200  1600  1700  1900
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  12 I 1200  1300  1200  1400  1300  1200  1500  1300  1300  1400  1600  2700  3200  2500  2600  1800  2000  1600  1600  1800
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  11 I 1400  1200  1300  1300  1100  1300  1500  1300  1100  1200  1400  2500  2100  1500  1500  1400  1400  1500  1800  1800
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  10 I 1200  1500  1500  1400  1300  1200  1300  3100  1900  1600  1400  3100  2000  1500  1400  1600  2400  2000  1900  1900
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   9 I 1300  1100  1200  1200  1200  1200  1800  1700  2500  2100  1800  3800  2200  1900  1500  1300  1400  1500  1700  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   8 I 1300  1200  1100  1500  1300  1100  1400  1200  1900  1600  1600  3700  2400  1500  1300  1600  1500  1300  1300  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   7 I 1200  1300  1200  1300  1200  1100  1100  1200  1400  1500  1600  2600  3300  1500  1800  2000  1800  1700  1300  1300
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   6 I 1200  1500  1400  1200  1300  1100  1200  1100  1100  1200  1700  2100  2300  1700  2500  2200  2000  1900  1800  1200
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   5 I 1700  1200  1200  1100  1400  1300  1200  1100  1400  1100  1300  1200  1500  1900  2700  1900  1800  1800  1500  1200
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   4 I 2000  1300  1200  1200  1100  1100  1200  1200  1400  1700  1500  1100  1100  1800  2400  2300  1900  1300  1300  1100
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   3 I 1500  1200  1400  1200  1100  1300  1300  1200  1100  1800  3400  1600  1100  1900  1800  2000  2500  1400  1900  1600
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   2 I 1200  1400  1300  1200  1200  1000  1200  1400  1500  1500  5200  2000  1700  2200  1500  1300  2100  1200  1800  2000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   1 I 1100  1100  1300  1200  1300  1100  1500  1300  1800  1600  4600  3700  3200  2200  2100  1100  1500  1400  1600  1200
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+     -----------------------------------------------------------------------------------------------------------------------
+          1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20
+
+ USER-INPUT albedo field                                               
+
+ Multiply all values by 10 **  -4
+
+  26 I 1200  1100  1100  1600  1000  1300
+     I    +     +     +     +     +     +
+  25 I 1000  1400  1200  1700  1200  1500
+     I    +     +     +     +     +     +
+  24 I 1000  1100  1200  1700  1200  1300
+     I    +     +     +     +     +     +
+  23 I 1500  1100  1400  1500  1600  1500
+     I    +     +     +     +     +     +
+  22 I 2000  1500  1600  1300  1600  1200
+     I    +     +     +     +     +     +
+  21 I 2200  1600  2100  1400  1600  1400
+     I    +     +     +     +     +     +
+  20 I 1800  1700  2000  1400  1400  1200
+     I    +     +     +     +     +     +
+  19 I 2000  1800  1700  1500  1600  1100
+     I    +     +     +     +     +     +
+  18 I 1700  1500  1300  1600  1400  1300
+     I    +     +     +     +     +     +
+  17 I 1500  1300  1500  1600  1500  1400
+     I    +     +     +     +     +     +
+  16 I 1300  1300  1400  1400  1400  1400
+     I    +     +     +     +     +     +
+  15 I 1300  1300  1300  1400  1400  1500
+     I    +     +     +     +     +     +
+  14 I 1700  1200  1300  1300  1500  1500
+     I    +     +     +     +     +     +
+  13 I 1500  2000  1500  1200  1300  1900
+     I    +     +     +     +     +     +
+  12 I 1700  2200  1600  1300  1300  1700
+     I    +     +     +     +     +     +
+  11 I 1200  1500  1700  1300  1400  1500
+     I    +     +     +     +     +     +
+  10 I 1400  1100  1300  1400  1300  1600
+     I    +     +     +     +     +     +
+   9 I 1900  1600  1100  1400  1500  1400
+     I    +     +     +     +     +     +
+   8 I 1400  1400  1200  1100  1300  1400
+     I    +     +     +     +     +     +
+   7 I 1800  1600  1500  1400  1200  1300
+     I    +     +     +     +     +     +
+   6 I 1400  1500  2000  1600  1600  1300
+     I    +     +     +     +     +     +
+   5 I 1400  1500  1900  1800  1700  1300
+     I    +     +     +     +     +     +
+   4 I 1300  1500  1400  1600  1700  1300
+     I    +     +     +     +     +     +
+   3 I 1400  1400  1400  1600  1400  1300
+     I    +     +     +     +     +     +
+   2 I 1900  1400  1500  1600  1600  1600
+     I    +     +     +     +     +     +
+   1 I 1700  1400  1500  2200  2000  1600
+     I    +     +     +     +     +     +
+     -----------------------------------
+         21    22    23    24    25    26
+
+ USER-INPUT Bowen ratio field                                          
+
+ Multiply all values by 10 **  -3
+
+  26 I  940   950   960   950   930   990  1000   980   850  1000   830   910   990  1000   980  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  25 I  930   960   980   960   990   990   990   860   920  1000   770   860  1000  1000   980  1000   990   990  1000   990
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  24 I  990   950   950   990   990  1000   990   960   990  1000  1000   600  1000  1000  1000  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  23 I  980   990   930   980  1000   990   990   980  1000  1000  1000   660   970  1000  1000  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  22 I  960   910   900   930   970   900   750   960  1000   980   990   800   860  1000  1000  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  21 I  950   790   820   990   990   950   850   890  1000  1000   990   640  1000  1000  1000  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  20 I 1000   990   980   990   980   970   970   890   980   990   980   660   950   920  1000   990  1000  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  19 I  910   650   830   930   960   970   990   990   980  1000  1000   830   950   970   990  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  18 I  670  1000  1000   990   960   990   960   990   980   960   830   990  1000  1000  1000  1000   990  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  17 I  770  1000   990   830  1000  1000   980   980  1000   920   960  1000  1000   990  1010  1000   990  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  16 I  970  1000  1000  1000  1000  1000   990   990  1000   940   950  1000   990  1000  1000  1010  1000  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  15 I 1000  1000  1000  1000  1000   980  1000   970   990   970   900   970   980   950   940   990  1000  1000  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  14 I 1000  1000  1000  1000   990   990  1000   980  1000   900   640   960  1000   930  1000   970  1000  1000  1000   990
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  13 I  970  1000  1000   970   970   990  1000   950   990   950   870   790   910   880   980   980   970   980  1010  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  12 I  980   920   940   980  1000   980   970  1000   980  1000   990   930   910   950   950   990   990   990  1000   990
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  11 I 1000   970   980  1000  1000   990   940   950  1000  1000  1000   910   950  1000  1000  1000  1000  1000   990  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  10 I 1000  1000   980  1000  1000   990  1000   910   980   990  1000   920   990  1000  1000   990   960   990   990   990
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   9 I 1000  1000   960   990  1000   990   980   990   950   980   980   820   980  1000  1000   990   980   990  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   8 I 1000  1000   960   980   990  1000   980  1000   980   980   990   860   950   970  1000  1000  1000   980   930  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   7 I 1000  1000   960  1000   990   990  1000  1000  1000  1000   980   930   870  1000   990   990   990  1000   650   980
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   6 I 1000  1000   990  1000  1000   990   990   990   990  1000   990   980   950   980   940   970   990  1000   970   750
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   5 I  990  1000   990  1000  1000   990   990  1000   970   990  1000  1000  1000   970   950   980  1000  1000  1000   590
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   4 I  980  1000  1000   980   990  1000  1000   990   990   960   980  1000  1000   980   940   980   990  1000  1000   940
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   3 I 1000  1000   990  1000   980  1000  1000  1000  1000   980   870  1000  1000   990   990   980   950  1000   990  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   2 I 1000  1000  1000  1000  1000   990  1000  1000   980   990   710   980   990   980   990  1000   990  1000  1000   990
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   1 I  990  1000  1000  1000  1000  1000   990  1000   980   990   780   870   900   970   980  1000  1000   990  1000  1000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+     -----------------------------------------------------------------------------------------------------------------------
+          1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20
+
+ USER-INPUT Bowen ratio field                                          
+
+ Multiply all values by 10 **  -3
+
+  26 I  990   990  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+  25 I 1000  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+  24 I 1000   980  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+  23 I 1000   990  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+  22 I  990  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+  21 I  990  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+  20 I 1000  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+  19 I 1000  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+  18 I 1000   990  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+  17 I 1000  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+  16 I 1000   980   990  1000  1000  1000
+     I    +     +     +     +     +     +
+  15 I 1000  1010   990   970  1000  1000
+     I    +     +     +     +     +     +
+  14 I 1000  1000  1000   990   980  1000
+     I    +     +     +     +     +     +
+  13 I 1000  1000  1000  1000   990   960
+     I    +     +     +     +     +     +
+  12 I 1000  1000  1000  1000  1000   980
+     I    +     +     +     +     +     +
+  11 I 1000  1000  1000  1000  1000   980
+     I    +     +     +     +     +     +
+  10 I  990  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+   9 I 1000  1000   990   990   980   990
+     I    +     +     +     +     +     +
+   8 I 1000  1000  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+   7 I 1000  1000   990  1000  1000  1000
+     I    +     +     +     +     +     +
+   6 I 1000  1000   990  1000  1000  1000
+     I    +     +     +     +     +     +
+   5 I  890  1000   990  1000   990  1000
+     I    +     +     +     +     +     +
+   4 I  590   990  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+   3 I  950   600  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+   2 I 1000   560  1000  1000  1000  1000
+     I    +     +     +     +     +     +
+   1 I 1000   830   600   990  1000  1000
+     I    +     +     +     +     +     +
+     -----------------------------------
+         21    22    23    24    25    26
+
+ USER-INPUT soil heat flux parameter field                             
+
+ Multiply all values by 10 **  -4
+
+  26 I 1600  1600  1500  1500  1800  1600  1500  1600  2100  1500  3000  2300  1500  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  25 I 1600  1600  1500  1500  1500  1500  1500  1600  1500  1500  3500  2700  1500  1500  1500  1500  1500  1600  1500  1600
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  24 I 1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  4900  1500  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  23 I 1600  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  4400  1700  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  22 I 1500  1600  1500  1500  1500  1500  1500  1500  1500  1500  1500  3200  2700  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  21 I 1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  4500  1500  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  20 I 1500  1500  1600  1500  1500  1500  1500  1600  1600  1500  1600  4300  1700  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  19 I 2200  4500  2900  1500  1500  1500  1600  1500  1500  1500  1500  3000  2000  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  18 I 4300  1500  1500  1500  1800  1500  1700  1600  1700  1900  3000  1500  1500  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  17 I 3500  1500  1500  1500  1500  1500  1700  1700  1500  1600  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  16 I 1700  1500  1500  1500  1500  1500  1600  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  15 I 1500  1500  1500  1500  1500  1700  1500  1500  1600  1600  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  14 I 1500  1500  1500  1500  1600  1600  1500  1600  1500  1500  1500  1600  1500  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  13 I 1800  1500  1500  1800  1800  1600  1500  1800  1600  1500  1600  1600  1500  1500  1500  1500  1600  1700  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  12 I 1700  2200  2000  1600  1500  1700  1800  1500  1700  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  11 I 1500  1700  1600  1500  1500  1600  1900  1900  1500  1500  1500  1800  1800  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  10 I 1500  1500  1700  1500  1500  1500  1500  1600  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   9 I 1500  1500  1800  1600  1500  1500  1600  1600  1500  1500  1600  1700  1500  1500  1500  1600  1600  1600  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   8 I 1500  1500  1800  1600  1600  1500  1700  1500  1500  1500  1500  1500  1500  1700  1500  1500  1500  1700  2100  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   7 I 1500  1500  1800  1500  1500  1600  1500  1500  1500  1500  1600  1500  1500  1500  1500  1500  1500  1500  4500  1700
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   6 I 1500  1700  1500  1500  1500  1600  1600  1600  1500  1500  1500  1500  1600  1500  1500  1500  1500  1500  1700  3600
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   5 I 1500  1500  1600  1500  1500  1500  1600  1500  1700  1600  1500  1500  1500  1600  1500  1600  1500  1500  1500  5000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   4 I 1500  1500  1500  1600  1600  1500  1500  1600  1600  1800  1600  1500  1500  1500  1700  1500  1500  1500  1500  2000
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   3 I 1500  1500  1600  1500  1600  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1600  1500  1600  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   2 I 1500  1500  1500  1500  1500  1600  1500  1500  1600  1500  1500  1500  1500  1600  1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   1 I 1600  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1500  1600  1500  1500
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+     -----------------------------------------------------------------------------------------------------------------------
+          1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20
+
+ USER-INPUT soil heat flux parameter field                             
+
+ Multiply all values by 10 **  -4
+
+  26 I 1600  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+  25 I 1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+  24 I 1500  1700  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+  23 I 1500  1600  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+  22 I 1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+  21 I 1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+  20 I 1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+  19 I 1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+  18 I 1500  1600  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+  17 I 1500  1600  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+  16 I 1500  1700  1600  1500  1500  1500
+     I    +     +     +     +     +     +
+  15 I 1500  1500  1700  1700  1500  1500
+     I    +     +     +     +     +     +
+  14 I 1500  1500  1500  1600  1600  1500
+     I    +     +     +     +     +     +
+  13 I 1500  1500  1500  1500  1600  1800
+     I    +     +     +     +     +     +
+  12 I 1500  1500  1500  1500  1500  1700
+     I    +     +     +     +     +     +
+  11 I 1500  1500  1500  1500  1500  1700
+     I    +     +     +     +     +     +
+  10 I 1600  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+   9 I 1500  1500  1500  1600  1600  1600
+     I    +     +     +     +     +     +
+   8 I 1500  1500  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+   7 I 1500  1500  1600  1500  1500  1500
+     I    +     +     +     +     +     +
+   6 I 1500  1500  1600  1500  1500  1500
+     I    +     +     +     +     +     +
+   5 I 2500  1500  1600  1500  1600  1500
+     I    +     +     +     +     +     +
+   4 I 5000  1600  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+   3 I 2000  4900  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+   2 I 1500  5300  1500  1500  1500  1500
+     I    +     +     +     +     +     +
+   1 I 1500  3000  4900  1600  1500  1500
+     I    +     +     +     +     +     +
+     -----------------------------------
+         21    22    23    24    25    26
+
+ USER-INPUT anthropogenic heat flux field                              
+
+ GRID NOT PRINTED -- all values zero
+
+ USER-INPUT Leaf area index field                                      
+
+ Multiply all values by 10 **  -3
+
+  26 I 4190  4400  3750  4050  3800  6610  5400  5060  1190  5890  5190  5240  4510  5380  3140  4920  5320  6380  6780  6810
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  25 I 3530  4100  4830  3960  5430  6800  4340  1330  1920  5420  4680  5770  5140  6120  3150  5420  4630  6250  6480  6820
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  24 I 6020  3610  3660  5680  4410  6280  4040  2350  4120  5610  4930  4010  6070  5440  4750  6270  5570  5040  6260  6920
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  23 I 6210  5990  3680  4830  5590  4100  2150  4270  5230  5880  6010  4220  5490  6030  6740  6660  5170  5050  5960  6580
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  22 I 4430  4030  2700  2690  1840  1240   460  2190  5440  3830  4990  3840  5520  4490  6050  6420  5080  5260  5300  5240
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  21 I 4270  2040  1310  4030  3590  1940   660   920  4210  5560  4730  3590  6050  5610  6120  5520  6270  6350  4640  4690
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  20 I 5930  5800  5330  5300  3850  2420  1770   880  3170  5000  5300  4250  5500  2740  6220  4430  6420  6030  5580  4070
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  19 I 6050  4280  5390  3870  1950  2350  3800  4300  3050  5940  5030  5150  5640  4960  4740  5540  5880  5140  5000  4370
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  18 I 4410  6580  6560  4890  3750  5500  3120  5640  3900  5150  5220  5800  5690  6410  6600  5560  5130  5430  5060  5090
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  17 I 5000  6330  5000  1430  5590  5890  5590  6200  6310  3490  3970  6780  5950  4580  6350  5800  4230  4720  4920  4880
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  16 I 5380  6290  6460  5650  5420  6510  6600  5260  6440  3990  3200  6310  5570  5010  5300  5440  4810  5060  5810  5110
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  15 I 5710  6010  6470  6770  6520  6390  6620  3370  5920  3630  3090  4900  4660  3220  2870  5370  5150  3610  4540  4710
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  14 I 5160  5450  5930  6130  6210  6130  6420  4390  4680  2640   140  2920  5700  3120  4240  2410  5890  4310  4510  4800
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  13 I 5540  5760  6360  6190  5490  5790  5830  5950  5960  3220  1870   990  3480  1020  2890  2930  2740  4560  4050  3580
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  12 I 6010  5290  5650  5410  5830  6040  4860  5780  5700  5230  5100  2740  1490  2790  2490  4070  3440  4650  4400  3590
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  11 I 5640  6200  5820  6000  6750  6010  4880  5460  6420  6180  5490  2780  2930  4950  4840  5260  5480  4960  4080  3550
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+  10 I 6090  5380  5120  5670  5850  6350  5710  1570  4090  5020  5540  1630  3520  4990  5530  4830  2560  3410  3830  3560
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   9 I 6100  6560  5950  6270  6250  6150  4380  4460  3030  3370  4090  1120  3310  3480  4760  5780  5330  4810  4240  4900
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   8 I 6050  6470  6110  5100  5950  6540  5240  6130  4440  5280  5070  1240  3320  4970  5920  4670  4970  5580  5240  4800
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   7 I 6210  5910  5630  5730  6250  6670  6760  6260  5290  5000  4380  3210  2370  4950  4320  3360  4310  4190  3300  5660
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   6 I 6330  4760  5640  6470  6030  6560  6300  6330  6590  6180  4660  3340  3200  4530  3060  3500  3450  3680  3630  4240
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   5 I 4400  6340  6310  6730  5490  6000  6150  6750  5440  6610  5920  6150  5220  4290  2220  3870  4020  3990  5060  3390
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   4 I 3340  5730  6200  6260  6640  6480  6430  6240  5500  4380  4860  6760  6740  4770  2770  2800  4110  5860  5760  5970
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   3 I 4990  6170  5530  6100  6500  5760  5850  6250  6800  4440  1980  4760  6710  3860  3880  3740  2450  5210  3550  4750
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   2 I 6040  5490  5950  6240  6200  6800  6080  5580  5210  5340   400  3900  4770  2810  5470  5600  3240  6070  3960  3230
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+   1 I 6720  6610  5790  6170  5770  6450  5220  5870  4350  4850   710   880  1880  3270  3150  6570  5070  5270  4470  6040
+     I    +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +     +
+     -----------------------------------------------------------------------------------------------------------------------
+          1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20
+
+ USER-INPUT Leaf area index field                                      
+
+ Multiply all values by 10 **  -3
+
+  26 I 6090  6710  6440  4640  6790  5570
+     I    +     +     +     +     +     +
+  25 I 6800  5300  5980  4090  6160  4660
+     I    +     +     +     +     +     +
+  24 I 6790  6400  6010  3880  6130  5670
+     I    +     +     +     +     +     +
+  23 I 4850  6340  5430  4790  4600  5030
+     I    +     +     +     +     +     +
+  22 I 3450  5080  4640  5620  4780  6350
+     I    +     +     +     +     +     +
+  21 I 2510  4550  2760  5280  4740  5410
+     I    +     +     +     +     +     +
+  20 I 3690  4310  2990  5140  5200  6200
+     I    +     +     +     +     +     +
+  19 I 3030  3600  4050  5070  4850  6560
+     I    +     +     +     +     +     +
+  18 I 4190  4660  5830  4740  5310  5650
+     I    +     +     +     +     +     +
+  17 I 4960  5830  5120  4800  4900  5440
+     I    +     +     +     +     +     +
+  16 I 5590  5600  5000  5350  5180  5060
+     I    +     +     +     +     +     +
+  15 I 5740  5750  5670  4730  5090  4820
+     I    +     +     +     +     +     +
+  14 I 4040  6130  5830  5490  4580  4640
+     I    +     +     +     +     +     +
+  13 I 5160  3260  5110  5970  5740  2630
+     I    +     +     +     +     +     +
+  12 I 4330  2010  4410  5760  5550  3690
+     I    +     +     +     +     +     +
+  11 I 5940  4980  4090  5720  5370  4750
+     I    +     +     +     +     +     +
+  10 I 5360  6610  5600  5360  5550  4270
+     I    +     +     +     +     +     +
+   9 I 3560  4450  6340  5050  4670  5120
+     I    +     +     +     +     +     +
+   8 I 5380  5360  6090  6780  5710  5300
+     I    +     +     +     +     +     +
+   7 I 3980  4510  4800  5290  6070  5610
+     I    +     +     +     +     +     +
+   6 I 5470  5110  2970  4800  4760  5610
+     I    +     +     +     +     +     +
+   5 I 4340  4860  3340  3650  4160  5600
+     I    +     +     +     +     +     +
+   4 I 2940  4640  5100  4500  4060  5710
+     I    +     +     +     +     +     +
+   3 I 5190  2450  5210  4660  5310  5720
+     I    +     +     +     +     +     +
+   2 I 3610  2370  4860  4700  4270  4540
+     I    +     +     +     +     +     +
+   1 I 4290  4060  2140  1840  2640  4470
+     I    +     +     +     +     +     +
+     -----------------------------------
+         21    22    23    24    25    26
+
+
+ Information read from 3D.DAT file
+     Dataset Name:    3D.DAT      
+     Dataset Version: 2.1         
+     Dataset Title:   Header Structure with Comment Lines                             
+     First line of comments:         uced by CALMM5 Version: 2.7     , Level: 061030                                                                                     
+
+     MM5 physics options: 
+         Hydrostatic:            1
+         Moisture scheme:        7
+         Convection scheme:      6
+         Boundary layer scheme:  5
+         Radiation scheme        3
+         Soil scheme:            1
+         Analysis FDDA:          0
+         Observation FDDA:       0
+
+     MM5 surface variable options: 
+         Ground temperature:     1
+         PBL:                    1
+         Sensible heat flux:     1
+         Latent heat flux:       1
+         Frictional velocity:    1
+         Downward SW radiation:  1
+         Downward LW radiation:  1
+         Soil temp at layer 1:   1
+         Soil temp at layer 2:   1
+         Soil temp at layer 3:   1
+         Soil temp at layer 4:   1
+         Soil temp at layer 5:   1
+         Soil temp at layer 6:  25
+
+     MM5 output fields (1 = YES; 0 = NO): 
+      Pressure, height,T,Wind speed and direction:  1
+                                Vertical velocity:  1
+                        RH and vapor mixing ratio:  1
+                     Cloud and rain mixing ratios:  1
+                       Ice and Snow mixing ratios:  0
+                                          Graupel:  0
+
+     Date/time (YYYYMMDDHH) of MM5 data: 
+                       Start = 2005 1 1 1 (GMT)
+                   No. hours =  768
+     Extraction Subdomain in MM5 file: 
+                 No. X cells =   26
+                 No. Y cells =   26
+                 No. layers  =   31
+
+                 Beginning X =   92
+                 Beginning Y =  169
+                 Beginning Z =    1
+                    Ending X =  117
+                    Ending Y =  194
+                    Ending Z =   31
+
+      Latitude range :   48.0491  -    48.9814
+      Longitude range:  -121.7084 -  -120.2916
+
+     MM5 half-sigma levels
+     Level     Sigma
+
+       1      0.9975
+       2      0.9925
+       3      0.9875
+       4      0.9825
+       5      0.9750
+       6      0.9650
+       7      0.9550
+       8      0.9450
+       9      0.9350
+      10      0.9250
+      11      0.9150
+      12      0.9050
+      13      0.8900
+      14      0.8700
+      15      0.8450
+      16      0.8150
+      17      0.7850
+      18      0.7550
+      19      0.7250
+      20      0.6950
+      21      0.6600
+      22      0.6200
+      23      0.5800
+      24      0.5400
+      25      0.5000
+      26      0.4600
+      27      0.4200
+      28      0.3800
+      29      0.3400
+      30      0.3000
+      31      0.2600
+ STOP in RDHD53
+ There are no true offshore 3D.DAT gridpoints
+ Option ITWPROG=2 is not possible
+
+      Lat./Lon./Elev. of First Cell:   48.0491 -121.6961   719
+      Lat./Lon./Elev. of Last  Cell:   48.9793 -120.2916  1991
+
+
+  LAST DAY/HOUR PROCESSED:
+     Year: 2005  Month:  1   Day:  2   Julian day:   2   Hour:  0
+
+
+  End of run -- Clock time: 15:46:52
+                      Date: 05-27-2009
+
+        Elapsed clock time:       10.0 (seconds)
+
+                  CPU time:       10.0 (seconds)

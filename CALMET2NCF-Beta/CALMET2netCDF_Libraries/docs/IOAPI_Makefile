@@ -1,0 +1,235 @@
+#.........................................................................
+# VERSION "@(#)$Header$"
+#      EDSS/Models-3 I/O API Version 3.
+#.........................................................................
+# COPYRIGHT
+#       (C) 1992-2002 MCNC and Carlie J. Coats, Jr., and
+#       (C) 2003-2004 by Baron Advanced Meteorological Systems.
+#       Distributed under the GNU Lesser PUBLIC LICENSE version 2.1
+#       See file "LGPL.txt" for conditions of use.
+#.........................................................................
+#  Environment Variables:
+#
+#       BIN     machine/OS/compiler/mode type. Shows up as suffix
+#               for "$(IODIR)/Makeinclude.$(BIN)" to determine compilation
+#               flags, and in $(OBJDIR) and $(INSTALL) to determine
+#               binary directories
+#
+#       INSTALL installation-directory root, used for "make install":
+#               "libioapi.a" and the tool executables will be installed
+#               in $(INSTALL)/$(BIN)
+#.........................................................................
+#  Directories:
+#
+#       $(BASEDIR)  is the root directory for the I/O API library source,
+#                   the M3Tools and M3Test source,the  HTML documentation,
+#                   and the (machine/compiler/flag-specific) binary
+#                   object/library/executable directories.
+#       $(HTMLDIR)  is the web documentation
+#       $(IODIR)    is the I/O API library source
+#       $(TOOLDIR)  is the "M3TOOLS" source
+#       $(TESTDIR)  is the "IOTESTS" source and binaries
+#       $(OBJDIR)   is the current machine/compiler/flag-specific
+#                   build-directory
+#       $(INSTALL)  installation-directory root, used for "make install":
+#                   "libioapi.a" and the tool executables will be installed
+#                   in $(INSTALL)/$(BIN)
+#       object/library/executable directory
+#.........................................................................
+# Note On Library Versions and configuration:
+#
+#       Environment variable "BIN" specifies library version up to
+#       link- and compile-flag compatibility.  Dependecies upon machine,
+#       OS, and compiler are found in file "Makeinclude.$(BIN)".
+#
+#       IN PARTICULAR, pay attention to the notes for various versions
+#       that may be built for Linux x86 with the Portland Group
+#       compilers:  see comments in $(IODIR)/include 'MAKEINCLUDE'.Linux2_x86pg
+#.........................................................................
+# Special Make-targets
+#
+#       configure:  "Makefile"s, with the definitions indicated below.
+#       all:      OBJDIR, FIXDIR, libioapi.a, and executables, with
+#                 coupling mode enabled
+#       [no]cpl:  OBJDIR, FIXDIR, libioapi.a, and executables, with
+#                 coupling mode en[dis]abled
+#       f77:      OBJDIR, FIXDIR, libioapi.a, and F77-based executables
+#       nocpl77:  OBJDIR, FIXDIR, libioapi.a, and F77-based executables,
+#                 with coupling mode disabled
+#       lib:      OBJDIR, FIXDIR, libioapi.a
+#       clean:    remove .o's, libioapi.a, and executables from OBJDIR
+#       rmexe:    remove executables from OBJDIR
+#       relink:   rebuild executables from OBJDIR
+#       install:  copy "libioapi.a" and executables to $(INSTDIR)
+#       dirs:     make OBJDIR and FIXDIR directories
+#       fix:      FIXDIR and extended-fixed-source INCLUDE-files
+#       gtar:     GZipped tar-file of the source and docs
+#       nametest: test of name-mangling compatibility (requires that
+#                 libnetcdf.a be manually placed into $(OBJDIR))
+#
+######################################################################
+
+VERSION = 3.0
+
+#      ----------   Definitions for "make configure"  ------------------
+#
+#  VERSIONING DEFINITIONS:  the preprocessor definitions in $(IOAPIDEFS)
+#  (below) govern I/O API behavior; versions with distinct combinations
+#  of these options are NOT library- nor object-compatible and should
+#  be built in *distinct*  $(OBJDIR)s:
+#
+#       Defining IOAPICPL turns on PVM-enabled "coupling mode" and
+#       requires "libpvm3.a" for linking.
+#
+#       Defining IOAPI_NO_STDOUT suppresses WRITEs to the screen in
+#       routines INIT3(), M3MSG2(), M3MESG(), M3PARAG(), and M3ABORT().
+#       This also helps control the "double-printed-message" behavior
+#       caused by recent SGI compilers.
+#
+#       Defining IO_360 creates the 360-day "global climate" version
+#       of the library.
+#
+#       Defining BIN3_DEBUG turns on trace-messages for native-binary
+#       mode routines.
+
+BASEDIR    = $(CALMET2NETCDFHOME)/ioapi-30/2011-11-30
+INSTALL    = ${CALMET2NETCDFHOME}/ioapi-30/2011-11-30/mingw_x86gfortran
+LIBINST    = $(INSTALL)/$(BIN)
+BININST    = $(INSTALL)/$(BIN)
+
+CPLMODE    = nocpl
+IOAPIDEFS  =
+PVMINCL    = /dev/null
+
+#               ****   Variants   ****
+#
+# CPLMODE  = nocpl              #  turn off PVM coupling mode
+# IOAPIDEFS=                    #  for "nocpl"
+# PVMINCL  = /dev/null          #  for "nocpl"
+# PVM_ROOT = <for "cpl":  root for PVM installation>
+# PVM_ARCH = <for "cpl":  PVM machine/compiler type; may need to override>
+# BIN      = <I/O AIP machine/compiler-type for $(IODIR)/Makeinclude.*>
+# INSTALL  = <installation base-directory>
+# LIBINST  = $(INSTALL)/lib
+# BININST  = $(INSTALL)/bin
+
+# Edit-command used by "make configure"  to customize the "*/Makefile*"
+
+SEDCMD = \
+-e 's|IOAPI_BASE|$(BASEDIR)|' \
+-e 's|LIBINSTALL|$(LIBINST)|' \
+-e 's|BININSTALL|$(BININST)|' \
+-e 's|IOAPI_DEFS|$(IOAPIDEFS)|' \
+-e 's|MAKEINCLUDE|include $(IODIR)/Makeinclude.$(BIN)|' \
+-e 's|PVMINCLUDE|include  $(PVMINCL)|'
+
+
+#      ----------   I/O API Build System directory definitions  --------
+
+IODIR      = $(BASEDIR)/ioapi
+FIXDIR     = $(IODIR)/fixed_src
+HTMLDIR    = $(BASEDIR)/HTML
+TESTDIR    = $(BASEDIR)/iotests
+TOOLDIR    = $(BASEDIR)/m3tools
+NOTDIR     = $(BASEDIR)/notcdf
+OBJDIR     = $(BASEDIR)/$(BIN)
+#
+#
+#      ----------------------   TOP-LEVEL TARGETS:   ------------------
+#
+all:  dirs fix
+	(cd $(IODIR)   ; make all)
+	(cd $(NOTDIR)  ; make all)
+	(cd $(TOOLDIR) ; make all)
+	(cd $(TESTDIR) ; make all)
+
+cpl:  dirs fix
+	(cd $(IODIR)   ; make -f Makefile.cpl all)
+	(cd $(NOTDIR)  ; make all)
+	(cd $(TOOLDIR) ; make -f Makefile.cpl all)
+	(cd $(TESTDIR) ; make -f Makefile.cpl all)
+
+nocpl:  dirs fix
+	(cd $(IODIR)   ; make -f Makefile.nocpl all)
+	(cd $(NOTDIR)  ; make all)
+	(cd $(TOOLDIR) ; make -f Makefile.nocpl all)
+	(cd $(TESTDIR) ; make -f Makefile.nocpl all)
+
+f77:  dirs fix
+	(cd $(IODIR)   ; make -f Makefile.f77only all)
+	(cd $(NOTDIR)  ; make all)
+	(cd $(TOOLDIR) ; make f77)
+
+f77cpl:  dirs fix
+	(cd $(IODIR)   ; make -f Makefile.cpl.f77only all)
+	(cd $(NOTDIR)  ; make all)
+	(cd $(TOOLDIR) ; make -f Makefile.cpl f77)
+
+f77nocpl:  dirs fix
+	(cd $(IODIR)   ; make -f Makefile.nocpl.f77only all)
+	(cd $(NOTDIR)  ; make all)
+	(cd $(TOOLDIR) ; make -f Makefile.nocpl f77)
+
+configure:
+	(cd $(IODIR)   ;  sed $(SEDCMD) < Makefile.$(CPLMODE).sed > Makefile.$(CPLMODE) ; cp  Makefile.$(CPLMODE) Makefile )
+	(cd $(NOTDIR)  ;  sed $(SEDCMD) < Makefile.sed            > Makefile )
+	(cd $(TOOLDIR) ;  sed $(SEDCMD) < Makefile.$(CPLMODE).sed > Makefile.$(CPLMODE) ; cp  Makefile.$(CPLMODE) Makefile )
+	(cd $(TESTDIR) ;  sed $(SEDCMD) < Makefile.$(CPLMODE).sed > Makefile.$(CPLMODE) ; cp  Makefile.$(CPLMODE) Makefile )
+
+clean:
+	(cd $(IODIR)   ; make clean)
+	(cd $(NOTDIR)  ; make clean)
+	(cd $(TOOLDIR) ; make clean)
+	(cd $(TESTDIR) ; make clean)
+
+relink:
+	(cd $(TOOLDIR) ; make -i rmexe; make)
+	(cd $(TESTDIR) ; make -i rmexe; make)
+
+install: $(LIBINST) $(BININST)
+	echo "Installing I/O API and M3TOOLS in $(INSTALL)"
+	(cd $(IODIR)   ; make install)
+	(cd $(NOTDIR)  ; make install)
+	(cd $(TOOLDIR) ; make install)
+
+SGI:
+	(BIN = IRIX6n32     ; make -f Makefile.f77only all)
+	(BIN = IRIX6n32f90  ; make all)
+	(BIN = IRIX64       ; make -f Makefile.f77only all)
+	(BIN = IRIX64f90    ; make all)
+
+Sun:
+	(BIN = SunOS5     ; make -f Makefile.f77only all)
+	(BIN = SunOS5f90  ; make all)
+
+dirs: $(OBJDIR) $(FIXDIR)
+
+fix:
+	(cd $(IODIR)   ; make fixed_src)
+
+gtar:
+	cd $(BASEDIR); date > VERSION.txt; \
+gtar cvfz ioapi-$(VERSION).tar.gz --dereference -X $(BASEDIR)/exclude \
+Makefile*  VERSION.txt exclude ioapi HTML m3tools iotests notcdf
+	if ( test ${USER} == 'coats' ) ; then Mail -s "New I/O API version" zac@unc.edu < VERSION.txt ; fi
+
+lib:  dirs
+	(cd $(IODIR)   ; make all)
+
+not:  dirs
+	(cd $(NOTDIR)  ; make all)
+
+nametest:  lib $(OBJDIR)/libnetcdf.a
+
+$(FIXDIR):
+	mkdir -p $(FIXDIR)
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(LIBINST): $(INSTALL)
+	cd $(INSTALL); mkdir -p $(LIBINST)
+
+$(BININST): $(INSTALL)
+	cd $(INSTALL); mkdir -p $(BININST)
+

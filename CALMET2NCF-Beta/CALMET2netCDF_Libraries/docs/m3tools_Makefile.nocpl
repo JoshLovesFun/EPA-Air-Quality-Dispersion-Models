@@ -1,0 +1,281 @@
+#
+#.........................................................................
+# Version "@(#)$Header$"
+# EDSS/Models-3 M3TOOLS
+# Copyright (C) 1992-2002 MCNC and Carlie J. Coats, Jr., and
+# (C) 2003-2009 Baron Advanced Meteorological Systems, LLC.
+# Distributed under the GNU GENERAL PUBLIC LICENSE version 2
+# See file "GPL.txt" for conditions of use.
+#.........................................................................
+#  Environment Variables:
+#       BIN     machine/OS/compiler/mode type. Shows up as suffix
+#               for "Makeinclude.${BIN}" to determine compilation
+#               flags, and in ${OBJDIR} and $(INSTALL) to determine
+#               binary directories
+#       INSTALL installation-directory root, used for "make install":
+#               "libioapi.a" and the tool executables will be installed
+#               in $(INSTALL)/${BIN}
+#.........................................................................
+#  Directories:
+#       ${BASEDIR}  is the root directory for the I/O API library source,
+#                   the M3Tools and M3Test source,the  HTML documentation,
+#                   and the (machine/compiler/flag-specific) binary
+#                   object/library/executable directories.
+#       $(SRCDIR)   is the source directory for the M3TOOLS
+#       $(IODIR)    is the source directory for the I/O API library
+#       ${OBJDIR}   is the current machine/compiler/flag-specific
+#                   build-directory
+#       $(F90DIR)   is the current machine/compiler/flag-specific
+#                   build-directory for F90-based programs (SGI & Sun)
+#.........................................................................
+#
+#       ---------------     Definitions:   -------------------------
+
+.SUFFIXES: .m4 .c .F .f
+
+BASEDIR = ${CALMET2NETCDFHOME}/ioapi-30/2011-11-30
+SRCDIR  = ${BASEDIR}/m3tools
+IODIR   = ${BASEDIR}/ioapi
+OBJDIR  = ${BASEDIR}/${BIN}
+F90DIR  = ${BASEDIR}/${BIN}f90
+
+# Architecture dependent stuff
+# Assumes FC is an f90 (otherwise, "make f77").
+
+include $(IODIR)/Makeinclude.mingw_x86gfortran
+
+
+FFLAGS =  -I$(IODIR) $(DEFINEFLAGS) $(FOPTFLAGS) $(ARCHFLAGS)
+
+LDFLAGS = -I$(IODIR) $(DEFINEFLAGS) $(ARCHFLAGS)
+
+LIBS = -L$(OBJDIR) -lioapi -lnetcdf $(OMPLIBS) $(ARCHLIB) $(ARCHLIBS)
+
+VPATH = $(OBJDIR)
+
+VPATH = ${OBJDIR}
+
+
+fSRC = \
+m3agmask.f m3agmax.f m3combo.f  m3cple.f   m3diff.f   m3edhdr.f  \
+m3fake.f   m3interp.f m3pair.f  m3stat.f   m3tproc.f  m3tshift.f \
+m3wndw.f   m3xtract.f m3merge.f mtxblend.f mtxbuild.f mtxcple.f  \
+airs2m3.f  aggvars.f  agmask.f  agmax.f    bcwndw.f   mtxcalc.f  \
+datshift.f factor.f   fills.f   gregdate.f juldate.f  kfxtract.f \
+presterp.f projtool   sfcmet.f  selmrg2d.f statb.f    statc.f    \
+statg.f    stati.f    statm.f   stats.f    utmtool.f  vertot.f   \
+m3hdr.f    vertintegral.f
+
+FSRC= \
+bcstep.F   cdiffstep.F diffstep.F fakestep.F latlon.F    pairstep.F  \
+presz.F    statbdry.F  statcust.F statgrid.F statiddat.F statspars.F \
+statstep.F tshift.F    verstep.F  wndwstep.F xtstep.F
+
+ESRC= $(IODIR)/CONST3.EXT  $(IODIR)/FDESC3.EXT  \
+      $(IODIR)/IODECL3.EXT $(IODIR)/NETCDF.EXT  \
+      $(IODIR)/PARMS3.EXT
+
+OBJ = $(fSRC:.f=.o) $(FSRC:.F=.o)
+
+F77EXE = \
+bcwndw   datshift factor   gregdate juldate  kfxtract  \
+latlon   m3diff   m3edhdr  m3fake   m3pair   m3stat    \
+m3tshift m3wndw   m3xtract presz    utmtool  vertot
+
+F90EXE = airs2m3  dayagg   m3agmax  m3agmask m3cple    \
+m3combo  m3interp m3merge  m3tproc  mtxblend mtxbuild  \
+mtxcalc  mtxcple  presterp projtool selmrg2d m3hdr     \
+vertintegral
+
+EXE = $(F77EXE)  $(F90EXE)
+
+
+#      ----------------------   TOP-LEVEL TARGETS:   ------------------
+
+all: $(EXE)
+
+f77: $(F77EXE)
+
+f90: $(F90EXE)
+
+clean:
+	cd ${OBJDIR}; rm $(EXE) $(OBJ)
+
+install: $(INSTDIR)
+	echo "Installing M3TOOLS in ${INSTDIR}"
+	cd ${OBJDIR}; cp $(EXE) $(INSTDIR)
+
+rmexe:
+	cd ${OBJDIR}; rm $(EXE)
+
+relink:
+	make -i rmexe ; make all
+
+links:
+	ln -s      $(F90DIR)/dayagg   $(F90DIR)/m3agmax  \
+$(F90DIR)/m3agmask $(F90DIR)/m3cple   $(F90DIR)/m3combo  \
+$(F90DIR)/m3merge  $(F90DIR)/m3tproc  $(F90DIR)/mtxblend \
+$(F90DIR)/mtxbuild $(F90DIR)/mtxcalc  $(F90DIR)/mtxcple  \
+$(F90DIR)/presterp $(F90DIR)/selmrg2d                       ${OBJDIR}
+
+gzip:
+	cd ${OBJDIR}/..; gtar cvfzh  ${BIN}.tar.gz     \
+${BIN}/libioapi.a ${BIN}/libnetcdf.a ${BIN}/libpvm3.a \
+${BIN}/airs2m3    ${BIN}/bcwndw     ${BIN}/datshift   ${BIN}/factor  \
+${BIN}/gregdate   ${BIN}/kfxtract   ${BIN}/latlon     ${BIN}/m3diff  \
+${BIN}/m3edhdr    ${BIN}/m3fake     ${BIN}/m3pair     ${BIN}/m3stat  \
+${BIN}/m3tshift   ${BIN}/m3wndw     ${BIN}/m3xtract   ${BIN}/presz   \
+${BIN}/utmtool    ${BIN}/vertot     ${BIN}/dayagg     ${BIN}/m3cple  \
+${BIN}/m3agmax    ${BIN}/m3agmask   ${BIN}/m3combo    ${BIN}/m3merge \
+${BIN}/mtxblend   ${BIN}/mtxbuild   ${BIN}/mtxcalc    ${BIN}/mtxcple \
+${BIN}/presterp   ${BIN}/selmrg2d   ${BIN}/ncgen      ${BIN}/ncdump
+
+flags:
+	echo "BIN=${BIN}"
+	echo "FFLAGS=$(FFLAGS)"
+	echo "LDFLAGS=$(LDFLAGS)"
+	echo "LIBS=$(LIBS)"
+	echo "ARCHFLAGS=$(ARCHFLAGS)"
+	echo "ARCHLIB=$(ARCHLIB)"
+	echo "ARCHLIBS=$(ARCHLIBS)"
+	echo "OMPFLAGS=$(OMPFLAGS)"
+	echo "OMPLIBS=$(OMPLIBS)"
+	echo "FOPTFLAGS=$(FOPTFLAGS)"
+	echo "COPTFLAGS=$(COPTFLAGS)"
+	echo "PARFLAGS=$(PARFLAGS)"
+	echo "PVM_ROOT=$(PVM_ROOT)"
+	echo "PVMLIBS=$(PVMLIBS)"
+
+
+
+#      -----------------------   RULES:   -------------------------
+
+%.o : %.mod        #  Disable "gmake"s obnoxious implicit Modula-2 rule !!
+
+.F.o:
+	cd ${OBJDIR}; $(FC) $(FPPFLAGS) $(FFLAGS) -c $(SRCDIR)/$<
+
+
+.f.o:
+	cd ${OBJDIR}; $(FC) $(FFLAGS) -c $(SRCDIR)/$<
+
+
+#  ---------------------------  $(EXE) Program builds:  -----------------
+
+
+airs2m3:  airs2m3.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+bcwndw: bcwndw.o  bcstep.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+datshift:  datshift.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+dayagg: dayagg.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+factor:  factor.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+gregdate: gregdate.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+juldate:  juldate.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+kfxtract: kfxtract.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+latlon:  latlon.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3agmask:  m3agmask.o agmask.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3agmax:  m3agmax.o agmax.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3combo: m3combo.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3cple: m3cple.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3diff:  m3diff.o diffstep.o cdiffstep.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3edhdr:  m3edhdr.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3fake: m3fake.o fakestep.o fills.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3hdr:  m3hdr.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3interp: m3interp.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3merge: m3merge.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3pair:  m3pair.o pairstep.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3stat: m3stat.o statbdry.o statcust.o statgrid.o statiddat.o statspars.o \
+        statb.o  statc.o statg.o stati.o statm.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3tproc:  m3tproc.o aggvars.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3tshift:  m3tshift.o  tshift.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3wndw: m3wndw.o  wndwstep.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m3xtract:  m3xtract.o  xtstep.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+m4cple: m4cple.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+mtxblend: mtxblend.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+mtxbuild: mtxbuild.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+mtxcalc: mtxcalc.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+mtxcple: mtxcple.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+presterp: presterp.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+presz:  presz.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+projtool: projtool.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+selmrg2d:  selmrg2d.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+sfcmet:  sfcmet.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+utmtool: utmtool.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+vertintegral:  vertintegral.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+vertot:  vertot.o  verstep.o
+	cd ${OBJDIR}; $(FC) ${LFLAGS} $^ ${LIBS} -o $@
+
+

@@ -1,0 +1,17 @@
+Input MM5 or WRF   |mm5
+Start Extracting   |2005 01 01 01
+Stop  Extracting   |2005 01 01 02
+Output Time Zone   |-8
+P-G Calc Method    |1
+Re-calc PBL Depth? |F
+Min, Max PBL Depth |50.0 3000.0
+I-range to Extract |92 117
+J-range to Extract |169 194
+Num Output Layers  |10
+Layer Mapping      |1,2,3,4,6,8,12,15,19,23
+Useful Info File   |calmip_mm5.grid.txt
+Output Filename    |calmip_mm5.met
+Num MM5/WRF files  |3
+mmout_d3.2004123112.f20.0000
+mmout_d3.2004123112.f21.0000
+mmout_d3.2004123112.f22.0000

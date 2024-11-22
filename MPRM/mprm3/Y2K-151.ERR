@@ -1,0 +1,21 @@
+         5 JB I00 DEFINE: BLANK CARD FOUND, SKIP TO NEXT IMAGE   
+        13 JB I00 DEFINE: BLANK CARD FOUND, SKIP TO NEXT IMAGE   
+        14 JB I19  SETUP: ENCOUNTERED END OF "JOB/RUN CARD"      
+         0 JB I10   TEST: SUMMARY: NO SF-EXT CARD, NULL EXTRACT  
+         0 JB I11   TEST: SUMMARY: NO SF-IQA CARD, NULL QA       
+         0 JB I12   TEST: SUMMARY: NO SF-OQA CARD, NULL MERGE    
+         0 JB I10   TEST: SUMMARY: NO OS-EXT CARD, NULL EXTRACT  
+         0 JB I11   TEST: SUMMARY: NO OS-IQA CARD, NULL QA       
+         0 JB I12   TEST: SUMMARY: NO OS-OQA CARD, NULL MERGE    
+         0 UA I30  UAEXT: **** UPPER AIR EXTRACTION ****         
+        16 UA I39 GETMIX: END-OF-FILE, END-OF-DATA               
+         0 UA I30  UAEXT:   0 SDGS AND   16 MIXING HTS EXTRACTED 
+     35912 UA Q37 INTECK: LB:         50 UAM1:         22        
+     35912 UA           : ON  99/12/25/12                        
+     36212 UA Q37 INTECK: LB:         50 UAM1:         25        
+     36212 UA           : ON  99/12/28/12                        
+     36312 UA Q37 INTECK: LB:         50 UAM1:         20        
+     36312 UA           : ON  99/12/29/12                        
+     36512 UA Q37 INTECK: LB:         50 UAM1:         26        
+     36512 UA           : ON  99/12/31/12                        
+        17 UA I39 UAQASM: EOF AFTER UA REPORT #  16 (NORMAL)     

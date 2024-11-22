@@ -1,0 +1,99 @@
+1
+         METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS [MPRM (dated 99349)]
+
+                         DECEMBER 15, 1999     14:23:10
+
+                STAGE 1 EXTRACTION AND QA OF METEOROLOGICAL DATA
+
+
+             ********************************************************
+             ***             JOB TERMINATED NORMALLY              ***
+             ********************************************************
+
+                  STATUS REPORT PRIOR TO BEGINNING PROCESSOR RUN
+
+
+ 1.  REPORT FILE NAMES
+
+      ERROR MESSAGES: Y2K-151.ERR                                     
+      SUMMARY OF RUN: Y2K-151.RPT                                     
+
+
+ 2.  UPPER AIR DATA  
+
+      SITE ID    LATITUDE(DEG.)   LONGITUDE(DEG.)
+        13723       36.05N            79.57W
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           EXTRACT AND QUALITY ASSESSMENT              
+
+          EXTRACT INPUT -    OPEN: Y2K-151.MET                                     
+          EXTRACT OUTPUT-    OPEN: Y2K-151.IQA                                     
+          QA OUTPUT     -    OPEN: Y2K-151.OQA                                     
+
+          THE EXTRACT DATES ARE:    STARTING: DEC 24, 1999
+                                      ENDING: JAN  8, 2000
+
+
+ 3.  NWS SURFACE DATA
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           NONE - NO DATA TO BE PROCESSED ON THIS PATH 
+
+
+
+ 4.  ON-SITE DATA    
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           NONE - NO DATA TO BE PROCESSED ON THIS PATH 
+
+
+
+                      **** MPRM MESSAGE SUMMARY TABLE ****
+
+         0- 9   10-19   20-29   30-39   40-49   50-59   60-69   70-79   TOTAL
+       ----------------------------------------------------------------------
+
+    JB
+      E    0       0       0       0       0       0       0       0       0
+      W    0       0       0       0       0       0       0       0       0
+      I    2       7       0       0       0       0       0       0       9
+
+    UA
+      E    0       0       0       0       0       0       0       0       0
+      W    0       0       0       0       0       0       0       0       0
+      I    0       0       0       4       0       0       0       0       4
+      Q    0       0       0       4       0       0       0       0       4
+       ----------------------------------------------------------------------
+           2       7       0       8       0       0       0       0      17
+
+        ****   WARNING MESSAGES ****
+
+               ---  NONE  ---
+
+
+        ****    ERROR MESSAGES  ****
+
+               ---  NONE  ---
+
+
+
+             ********************************************************
+             ***             JOB TERMINATED NORMALLY              ***
+             ********************************************************
+
+
+                        **** SUMMARY OF THE QA AUDIT ****
+
+
+   MIXING HTS         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       UAM1      16        0      4      0     75.00    -9999.0,   50.0, 2500.0
+       UAM2      16        0      0      0    100.00    -9999.0,   50.0, 4500.0
+     THERE IS NO AUDIT TRAIL FOR    SOUNDINGS
+
+     THIS CONCLUDES THE AUDIT TRAIL

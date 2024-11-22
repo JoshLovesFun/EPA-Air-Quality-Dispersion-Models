@@ -1,0 +1,174 @@
+FILE:  DEC15Y2K.LOG
+
+The following files document Y2K compliance testing of MPRM (dated
+99349) conducted on December 15, 1999:
+
+
+LF90     EER     41,040    08-01-97    Lahey Fortran error file
+STAGE1N2 EXE    625,956    12-15-99    stage 1 and 2 Executable
+STAGE3   EXE    576,052    12-15-99    Stage 3 Executable
+
+Y2K-131  MET    118,584    12-07-99    Surface data (CD-144 format)
+Y2K-131  INP        276    12-07-99    Command file for QA of CD-144 data
+Y2K-131  RPT      4,905    12-15-99    Report file from QA of CD-144 data
+Y2K-131  ERR      2,479    12-15-99    Error file from QA of CD-144 data
+Y2K-131  OQA     54,403    12-15-99    Output from QA of CD-144 data
+
+Y2K-132  MET     10,080    12-03-99    Surface data (SCRAM format)
+Y2K-132  INP        276    12-07-99    Command file for QA of SCRAM data
+Y2K-132  RPT      4,905    12-15-99    Report file from QA of SCRAM data
+Y2K-132  ERR      3,417    12-15-99    Error file from QA of SCRAM data
+Y2K-132  OQA     54,403    12-15-99    Output from QA of SCRAM data
+
+Y2K-134  MET    197,593    12-03-99    Surface data (SAMSON format)
+Y2K-134  INP        275    12-06-99    Command file for QA of SAMSON data
+Y2K-134  RPT      4,952    12-15-99    Report file from QA of SAMSON data
+Y2K-134  ERR      4,556    12-15-99    Error file from QA of SAMSON data
+Y2K-134  OQA     54,403    12-15-99    Output from QA of SAMSON data
+
+Y2K-141  MET    114,576    12-03-99    On-site data
+Y2K-141  INP        355    12-07-99    Command file for QA of on-site data
+Y2K-141  RPT      3,670    12-15-99    Report file from QA of on-site data
+Y2K-141  ERR     31,557    12-15-99    Error file from QA of on-site data
+Y2K-141  OQA     26,608    12-15-99    Output from QA of on-site data
+
+Y2K-151  MET        712    12-03-99    Mixing heights
+Y2K-151  INP        294    12-07-99    Command file for QA of mixing heights
+Y2K-151  RPT      3,450    12-15-99    Report file from QA of mixing heights
+Y2K-151  ERR      1,407    12-15-99    Error file from QA of mixing heights
+Y2K-151  OQA      1,093    12-15-99    Output from QA of mixing heights
+
+Y2K-161  MET     10,836    12-03-99    Precipitation data (3240FB format)
+
+Y2K-234  INP        312    12-07-99    Command file for Stage 2 (merge)
+Y2K-234  RPT      4,192    12-15-99    Report file from merge
+Y2K-234  ERR      1,072    12-15-99    Error file from merge
+Y2K-234  MRG     57,637    12-15-99    Output from merge
+
+Y2K-334  INP        363    12-07-99    Command file for Stage 3 processing
+Y2K-334  RPT      4,691    12-15-99    Report file from Stage 3 (NWS)
+Y2K-334  ERR        964    12-15-99    Error file from Stage 3 (NWS)
+Y2K-334  MET     16,850    12-15-99    Output from Stage 3 (NWS)
+
+Y2K-336  INP        367    12-08-99    Command file for Stage 3 processing
+Y2K-336  RPT      5,183    12-15-99    Report file from Stage 3 (on-site)
+Y2K-336  ERR      1,366    12-15-99    Error file from Stage 3 (on-site)
+Y2K-336  MET     16,850    12-15-99    Output from Stage 3 (onsite)
+
+
+The following has been extracted from the Stage 1 Extraction and QA
+report files (Y2K-131, Y2K-132, Y2K-134, Y2K-141, and Y2K-151):
+
+
+         METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS [MPRM (dated 99349)]
+
+                         DECEMBER 15, 1999     14:22:22
+
+                STAGE 1 EXTRACTION AND QA OF METEOROLOGICAL DATA
+
+
+                        **** SUMMARY OF THE QA AUDIT ****
+
+ Y2K-131.MET (CD-144FB data)
+
+ SURFACE DATA         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       SLVP     336        0      0      0    100.00    -9999.0, 9000.0,10999.0
+       PRES     336        1      0      0     99.70    -9999.0, 9000.0,10999.0
+       CLHT     336        0      0      0    100.00    -9999.0,    0.0,  300.0
+       TS       336        0      0      0    100.00       99.0,    0.0,   10.0
+         KC     336        0      0      0    100.00       99.0,    0.0,   10.0
+       HZVS     336        0      0      0    100.00    -9999.0,    0.0, 1640.0
+       TMPD     336        0      0      0    100.00    -9999.0, -300.0,  350.0
+       WD16     336        0      0      0    100.00    -9999.0,    0.0,   36.0
+       WIND     336        0      0      0    100.00    -9999.0,    0.0,  500.0
+
+
+ Y2K-132.MET (SCRAM data)
+
+ SURFACE DATA         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       SLVP     336      336      0      0      0.00    -9999.0, 9000.0,10999.0
+       PRES     336      336      0      0      0.00    -9999.0, 9000.0,10999.0
+       CLHT     336        1      0      0     99.70    -9999.0,    0.0,  300.0
+       TS       336        1      0      0     99.70       99.0,    0.0,   10.0
+         KC     336        1      0      0     99.70       99.0,    0.0,   10.0
+       HZVS     336      336      0      0      0.00    -9999.0,    0.0, 1640.0
+       TMPD     336        1      0      0     99.70    -9999.0, -300.0,  350.0
+       WD16     336        1      0      0     99.70    -9999.0,    0.0,   36.0
+       WIND     336        1      0      0     99.70    -9999.0,    0.0,  500.0
+
+ Y2K-134.MET (SAMSON data)
+
+ SURFACE DATA         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       SLVP     336      336      0      0      0.00    -9999.0, 9000.0,10999.0
+       PRES     336        0      0      0    100.00    -9999.0, 9000.0,10999.0
+       CLHT     336        1      0      0     99.70    -9999.0,    0.0,  300.0
+       TS       336        0      0      0    100.00       99.0,    0.0,   10.0
+         KC     336        0      0      0    100.00       99.0,    0.0,   10.0
+       HZVS     336        1      0      0     99.70    -9999.0,    0.0, 1640.0
+       TMPD     336        0      0      0    100.00    -9999.0, -300.0,  350.0
+       WD16     336        1      0      0     99.70    -9999.0,    0.0,   36.0
+       WIND     336        1      0      0     99.70    -9999.0,    0.0,  500.0
+
+
+
+ Y2K-134.MET (On-site data)
+
+ SITE VECTORS         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+     10.00 M
+       SA       336        0      0     29     91.37       99.0,    0.0,   35.0
+       TT       336        0      0      2     99.40       99.0,  -30.0,   35.0
+       WD       336        2      0      0     99.40      999.0,    0.0,  360.0
+       WS       336        2      0      0     99.40      999.0,    0.0,   50.0
+
+
+
+ Y2K-134.MET (Mixing height data)
+
+   MIXING HTS         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       UAM1      16        0      4      0     75.00    -9999.0,   50.0, 2500.0
+       UAM2      16        0      0      0    100.00    -9999.0,   50.0, 4500.0
+
+
+The following has been extracted from the report file for the Stage 2
+merge of NWS (upper-air and surface data) and on-site data (Y2K-234.RPT):
+
+
+
+         METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS [MPRM (dated 99349)]
+
+                         DECEMBER 15, 1999     14:23:27
+
+                        STAGE 2  MERGE METEOROLOGICAL DATA      
+
+
+                   ***** DAILY OUTPUT STATISTICS *****
+
+               MO/DA 12/25 12/26 12/27 12/28 12/29 12/30 12/31  1/ 1  1/ 2  1/ 3
+ NWS  UPPER AIR  SDGS   0     0     0     0     0     0     0     0     0     0
+ NCDC MIXING  HEIGHTS   6     6     6     6     6     6     6     6     6     6
+ NWS SFC OBSERVATIONS  24    24    24    24    24    24    24    24    24    24
+ ON-SITE OBSERVATIONS  24    24    24    24    24    24    24    24    24    24
+
+               MO/DA  1/ 4  1/ 5  1/ 6  1/ 7
+ NWS  UPPER AIR  SDGS   0     0     0     0
+ NCDC MIXING  HEIGHTS   6     6     6     6
+ NWS SFC OBSERVATIONS  24    24    24    24
+ ON-SITE OBSERVATIONS  24    24    24    24
+
+      UPPER AIR OBS. READ:   16
+      SURFACE OBS. READ:    336
+      ON-SITE OBS. READ:    336
+
+                   ***** MERGE PROCESS COMPLETED *****
+
+

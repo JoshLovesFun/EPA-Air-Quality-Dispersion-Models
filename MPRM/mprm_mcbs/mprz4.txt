@@ -1,0 +1,80 @@
+                          Model Change Bulletin
+
+                                  MCB#4                          8-15-96
+
+                            MPRM (dated 96225)
+
+
+     This Model Change Bulletin implements changes to the Meteorological
+Processor for Regulatory Models (MPRM) associated with the August 1995
+revision of Appendix W to 40 CFR Part 51.  The enhancements include the
+addition of algorithms to calculate boundary layer parameters which are used
+in the revised Industrial Source Complex model (ISC) to estimate deposition
+velocity and plume depletion.  Other enhancements include processing of
+hourly precipitation data (for use in wet deposition calculations),
+processing of National Weather Service (NWS) surface data which are now
+available on CD-ROM, and coding to implement the Solar Radiation Delta-T
+(SRDT) method of stability classification.
+
+     These changes constitute MPRM (dated 96225).  With this bulletin the
+source code and executables for MPRM (dated 96225) are being made available
+for downloading from the 'Model Related Programs' area of SCRAM.  MPRM
+(dated 96225) replaces MPRM (dated 93140) and the Beta version [MPBV02
+(dated 95261)].  These old versions are obsolete and, with this bulletin,
+will no longer be available on SCRAM.  All copies of such should be
+discarded.
+
+     Details regarding the revised MPRM can be found in the revised MPRM
+User's Guide (EPA-454/B-96-002).  The user's guide is available for
+downloading from the 'Model Related Programs' area on the main SCRAM menu
+under User's Guides.
+
+     The enhancements are summarized in the following:
+
+1.   Algorithms for Boundary Layer Parameters - Estimates of two boundary
+     layer parameters (the friction velocity and Monin-Obukhov length) are
+     required in the revised ISC short-term model (ISCST3) for use in
+     deposition and plume depletion calculations.  The friction velocity
+     (u*) is a measure of the stress due to wind shear at the earth's
+     surface.  The Monin-Obukhov length (L) is a stability parameter that
+     relates the friction velocity to the transfer of heat.  The
+     computations require user specified surface characteristics including
+     albedo, Bowen ratio, and roughness length.  The surface characteristics
+     are allowed to vary with time of year and/or wind direction (sector).
+
+2.   Processing of Hourly Precipitation Data - Hourly precipitation data
+     are required in ISCST3 for use in estimating wet deposition.  To support
+     wet deposition estimates, MPRM has been enhanced to accommodate
+     processing of TD-3240 precipitation data files available from the
+     National Climatic Data Center (NCDC).
+
+3.   Processing of CD-ROM Surface Data - NCDC now provides solar and surface
+     meteorological data (including hourly precipitation) on CD-ROM.  Data
+     for first order stations for 1961 - 1990 are available on a set of three
+     CD-ROMs, collectively referred to as the SAMSON data.  MPRM has been
+     enhanced to accommodate processing of SAMSON data.
+
+4.   Estimating Stability Using the SRDT Method - The Solar Radiation
+     Delta-T (SRDT) method of stability classification is based on site
+     specific measurements of wind speed in combination with solar radiation
+     during the day, and low-level vertical temperature difference at night.
+     The algorithm implemented in MPRM (dated 96225) is identical to that
+     implemented and tested in MPBV02 (dated 95261).
+
+
+                           *****************
+                           *   IMPORTANT   *
+                           *****************
+
+    This program will henceforth be identified by its name and a Julian date,
+i.e.: MPRM (dated 96225).  Future changes to this program will be identified
+by an updated Julian date found at the beginning of the program source code
+and followed by a reference to a SCRAM BBS Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this BBS.  In the future, notification of changes (MCBs) to this program will
+be made in the SCRAM ALERTS section of this BBS immediately following the
+LOGON procedure.
+
+
+

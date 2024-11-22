@@ -1,0 +1,49 @@
+
+
+
+                          Model Change Bulletin
+
+                                  MCB#5                          06/04/99
+
+                            MPRM (dated 99155)
+
+
+     This Model Change Bulletin implements changes to the Meteorological
+Processor for Regulatory Models (MPRM) associated with the gas dry
+deposition algorithm incorporated into the ISCST3 model (dated 99155).
+
+     These changes constitute MPRM (dated 99155).  With this bulletin the
+source code and executables for MPRM (dated 99155) are being made available
+for downloading from the 'Models / Related Programs' area of SCRAM.  MPRM
+(dated 99155) replaces MPRM (dated 96225) and the draft gas dry deposition
+version [GDMPRDFT (dated 96248)].  These old versions are obsolete and,
+with this bulletin, will no longer be available on SCRAM.
+
+     Details regarding the revisions to the user interface for MPRM can be
+found in the Addendum to the MPRM User's Guide (EPA-454/B-96-002).  The
+user's guide addendum is available for downloading from the 'User's
+Guide / Related Programs' area of SCRAM.
+
+     The modifications to MPRM are summarized in the following:
+
+1.   Additional Parameters for Gas Dry Deposition - MPRM has been modified
+     to process additional parameters for use in the gas dry deposition
+     algorithm of the ISCST3 model (dated 99155).  The ISCGASD and ISCGASW
+     model options require the additional input of lead area index (LAI)
+     on the surface characteristics card in Stage 3.  The incoming short-
+     wave radiation and LAI are also included on each record of the output
+     meteorological file.
+
+
+                           *****************
+                           *   IMPORTANT   *
+                           *****************
+
+    This program will henceforth be identified by its name and a Julian date,
+i.e.: MPRM (dated 99155).  Future changes to this program will be identified
+by an updated Julian date found at the beginning of the program source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the SCRAM ALERTS section of this website.

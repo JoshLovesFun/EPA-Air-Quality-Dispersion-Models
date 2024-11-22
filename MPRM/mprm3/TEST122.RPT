@@ -1,0 +1,122 @@
+1
+         METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS [MPRM (dated 99349)]
+
+                         DECEMBER 15, 1999     14:10:52
+
+                STAGE 1 EXTRACTION AND QA OF METEOROLOGICAL DATA
+
+
+             ********************************************************
+             ***             JOB TERMINATED NORMALLY              ***
+             ********************************************************
+
+                  STATUS REPORT PRIOR TO BEGINNING PROCESSOR RUN
+
+
+ 1.  REPORT FILE NAMES
+
+      ERROR MESSAGES: TEST122.ERR                                     
+      SUMMARY OF RUN: TEST122.RPT                                     
+
+
+ 2.  UPPER AIR DATA  
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           NONE - NO DATA TO BE PROCESSED ON THIS PATH 
+
+
+
+ 3.  NWS SURFACE DATA
+
+      SITE ID    LATITUDE(DEG.)   LONGITUDE(DEG.)
+       992415       45.67N           118.85W
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           EXTRACT AND QUALITY ASSESSMENT              
+
+          EXTRACT INPUT -    OPEN: 24155-94.DAT                                    
+          EXTRACT OUTPUT-    OPEN: IQASF.122                                       
+          QA OUTPUT     -    OPEN: OQASF.122                                       
+
+          THE EXTRACT DATES ARE:    STARTING: NOV  1, 1994
+                                      ENDING: NOV 30, 1994
+
+
+ 4.  ON-SITE DATA    
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           NONE - NO DATA TO BE PROCESSED ON THIS PATH 
+
+
+
+                      **** MPRM MESSAGE SUMMARY TABLE ****
+
+         0- 9   10-19   20-29   30-39   40-49   50-59   60-69   70-79   TOTAL
+       ----------------------------------------------------------------------
+
+    JB
+      E    0       0       0       0       0       0       0       0       0
+      W    0       0       0       0       0       0       0       0       0
+      I    0       7       0       0       0       0       0       0       7
+
+    SF
+      E    0       0       0       0       0       0       0       0       0
+      W    0       0       0       0       0       0       0       0       0
+      I    0       0       0       0       4       0       0       0       4
+      Q    0       0       0       0       0       0       0       0       0
+       ----------------------------------------------------------------------
+           0       7       0       0       4       0       0       0      11
+
+        ****   WARNING MESSAGES ****
+
+               ---  NONE  ---
+
+
+        ****    ERROR MESSAGES  ****
+
+               ---  NONE  ---
+
+
+
+             ********************************************************
+             ***             JOB TERMINATED NORMALLY              ***
+             ********************************************************
+
+
+                        **** SUMMARY OF THE QA AUDIT ****
+
+
+ SURFACE DATA         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       SLVP     720        0      0      0    100.00    -9999.0, 9000.0,10999.0
+       PRES     720        1      0      0     99.86    -9999.0, 9000.0,10999.0
+       CLHT     720        0      0      0    100.00    -9999.0,    0.0,  300.0
+       TS       720        0      0      0    100.00       99.0,    0.0,   10.0
+         KC     720        0      0      0    100.00       99.0,    0.0,   10.0
+       PW       720        0      0      0    100.00       99.0,    0.0,   92.0
+         TH     720        0      0      0    100.00       99.0,    0.0,   92.0
+       HZVS     720        0      0      0    100.00    -9999.0,    0.0, 1640.0
+       TMPD     720        0      0      0    100.00    -9999.0, -300.0,  350.0
+       WD16     720        0      0      0    100.00    -9999.0,    0.0,   36.0
+       WIND     720        0      0      0    100.00    -9999.0,    0.0,  500.0
+
+ NOTE: TEST VALUES MATCH INTERNAL SCALING APPLIED TO VARIABLES
+       (SEE APPENDIX C OF THE USER'S GUIDE)
+
+
+     THE FOLLOWING CHECKS WERE ALSO PERFORMED FOR THE SURFACE QA                
+       OF   720 REPORTS, THERE WERE                                             
+             30 CALM WIND CONDITIONS (WS=0, WD=0)                               
+              0 ZERO WIND SPEEDS WITH NONZERO WIND DIRECTIONS                   
+              0 DEW-POINT GREATER THAN DRY BULB TEMPERATURES                    
+             13 PRECIPITATION & WEATHER MISMATCH                                
+     THE TIMES OF THESE OCCURRENCES CAN BE FOUND IN THE MESSAGE FILE            
+      WITH QUALIFIERS CLM, ZNZ, DTT & PPT (RESP.)                               
+                                                                                
+                                                                                
+
+     THIS CONCLUDES THE AUDIT TRAIL

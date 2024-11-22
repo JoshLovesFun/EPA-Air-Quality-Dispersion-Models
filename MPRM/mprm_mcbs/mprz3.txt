@@ -1,0 +1,161 @@
+
+                      Model Change Bulletin
+
+                              MCB#3                     5/20/93
+
+                       MPRM (dated 93140)
+
+     This Model Change Bulletin is to notify users of changes
+made to correct problems and provide enhancements to the
+Meteorological Processor for Regulatory Models, MPRM (dated
+90045).  The revisions are summarized in the following.
+
+     These revisions constitute MPRM (dated 93140) and completely
+replace MPRM (dated 90045).  With this bulletin, the source codes
+and executables for MPRM (dated 93140) are being made available
+for downloading from the File Transfer Section of SCRAM.  MPRM
+(dated 90045) is obsolete and, with this bulletin, will no longer
+be available on SCRAM.  All copies of such should be discarded.
+
+     Users of MPRM are referred to a companion WordPerfect 5.1
+document (MPRMSUP.WPF) which provides supplemental information
+and necessary revisions to the MPRM User's Guide.
+
+     For tracking purposes, modifications have been assigned
+identifying labels (B001, B002, etc. for 'bugs', and E001, E002,
+etc. for enhancements).  This labeling convention is retained in
+the following.
+
+
+1.   Calms Processing - B001 - In MPRM (dated 90045), the last
+     valid wind direction (LWD) in subroutines WS10S and WS1NWS
+     (in MP4XFOR.FOR) was set too early resulting in erroneous
+     data in the output file.  Necessary corrections were made in
+     subroutines WS1OS and WS1NWS.
+
+
+2.   Missing Data - B002 and B003 - In processing on-site data
+     with MPRM (dated 90045), missing wind directions are
+     erroneously treated as calms (i.e., the wind speed is set to
+     1 m/s and the wind direction is set to the last valid wind
+     direction value).  This is correct only if the wind speed is
+     less than the threshold (OSCALM). Otherwise, the missing
+     value indicator for wind direction (default value 999)
+     should be retained through stage 3 processing.  In the
+     latter case (problem B003), the wind speed is set correctly,
+     but the wind direction and flow vectors are not.  These
+     problems required an extensive re-write of subroutine WS1OS. 
+     Also, several variable names were changed to improve
+     clarity.  In particular, WDIR was changed to WFDIR, since it
+     is really the flow direction, not the wind direction; and
+     LWD was changed to LFD, since once again, it is the last
+     flow direction that is saved, not the last wind direction.
+
+3.  Stability Classification - B004 - With MPRM (dated 90045),
+     stability class estimates using on-site wind speed and sigma
+     theta do not verify with hand calculation for some cases.
+     This problem was traced to an incorrect assignment of the
+     array elements for albedo and roughness in subroutine ROUGH. 
+     The code was corrected by changing OSSFC(  ,  ,  1) to
+     OSSFC(  ,  ,  3), since roughness is the 3rd element of the
+     array, not the 1st.
+
+4.   Conversion of on-site ceiling height - B005 - MPRM (dated
+     90045) does not correctly convert on-site ceiling height to
+     the nearest 100's of feet.  This problem was traced to
+     subroutine OS1PGT in MP4XFOR.FOR.  The statement 'CLHT =
+     SFOBS(HR0124,33)' was corrected to read 'CLHT =
+     OSSOBS(HR0124,33)'.
+
+5.   Extraction of upper air data -B006 - With MPRM (dated
+     90045), extraction of upper air data from a TD5600 file, may
+     result in a SUBSCRIPT OUT OF RANGE error.  This problem was
+     traced to an error in subroutine GETSDG.  The statement
+     'IF(SDGPOS .GT. NCHB1) THEN ...' was corrected to read
+     'IF(SDGPOS + NCHLEV .GE. NCHB1) THEN...'.
+
+6.   Decoding overpunch characters -B007 - In MPRM (dated 90045),
+     an invalid blank overpunch is incorrectly treated as a valid
+     blank - this affects processing of temperature (wet-bulb,
+     dry-bulb, and dew-point), wind speed, and cloud cover.  This
+     problem was traced to subroutine SFLEVS.  Necessary changes
+     were made such that invalid blank overpunches retain the
+     initial assignment for overpunch variables (-99999) and,
+     thus, are reported as missing.
+
+7.   QA procedure for wind shear -B009 - In MPRM (dated 90045)
+     there was some uncertainty that the QA of directional wind
+     shear would accommodate traverses through 360 degrees.  This
+     required review of the code in subroutine UAQASM.  It was
+     concluded that this would not be a problem so long as the
+     wind directions lie in the range of 0 to 360 degrees.  New
+     code was added to ensure that this is the case. 
+
+8.   Action item for PG Stability - B011 - In MPRM (dated 90045),
+     the action item for estimating the PG stability using on-
+     site wind speed and NWS observations of cloud amount and
+     ceiling height 'WNDNWS' does not match what is specified in
+     the user's guide (TABLE 4-1) and output in stage 3 'WNDWXX'. 
+     This required changes to the MASTER and MP1 INCLUDE files. 
+     All references to WNDNWS in these files were replaced by
+     WNDWXX to conform to the user's guide.
+
+9.  Need for upper air data in STAGE 3 - B014 - In MPRM (dated
+     90045), STAGE 3 processing for climatological models (e.g.,
+     STAR), which do not require mixing height data, proceeds
+     normally without the UA pathway if the surface data are
+     provided via the OS pathway.  However, processing is
+     terminated if these data are provided via the SF pathway. 
+     To get around this, users of MPRM (dated 90045) had to
+     provide a "dummy" UA file in order to use SF pathway data in
+     climatological models.  This problem was traced to
+     subroutine MRPATH.  Necessary corrections were made to
+     accommodate situations in which no UA pathway data are used,
+     regardless of the source of surface meteorological data.
+
+10.  INCLUDE Files - E001 - All INCLUDE files were given a '.INC'
+     extension.  This facilitates compile operations by allowing
+     use of a wildcard.
+
+11.  Leading blanks - E002 - MPRM (dated 90045) incorrectly
+     interprets leading blank fields as missing.  For example
+     '_20' in the three column ceiling height field is
+     interpreted as missing because the leading column is blank
+     instead of zero.  This problem was traced to the
+     interpretation of overpunch fields in the CD144 format for
+     NWS surface data.  The default interpretation of leading
+     blanks as missing was changed for NWS ceiling height,
+     temperature, and wind speed.  Leading blanks for these
+     variables are now processed correctly as leading zeros. 
+     (see also item 6 - B007).
+
+12.  Missing Data Reports -E003 - Audit reports from MPRM (dated
+     90045) do not include the date and time for missing data -
+     thus, users were forced to conduct a manual search for
+     records with missing data.  The MPRM code was revised such
+     that the date and time associated with each missing data
+     item are included in the QA audit report file.  This fix is
+     similar to the "trace" option available on the MP pathway.
+
+13.  SCRAM Data - E009 - With MPRM (dated 90045), NWS surface
+     data downloaded from SCRAM must be processed through the on-
+     site (OS) pathway.  This is because SCRAM files, which are
+     shortened versions of the standard CD144 file, have a
+     different format than the CD144 format required by the
+     surface (SF) pathway.  A new option 'SCRAMFB' was added to
+     subroutine IN2CRD and a new section was added to subroutine
+     SFEXT to enable direct processing of SCRAM data through the
+     SF pathway.
+
+14. ASCII Data for ISCST2 -E011 - Code was added to provide a
+     formatted (ASCII) meteorological data file for use with
+     ISCST2.  The format of this file is described on page 3-53
+     of the ISC2 users guide.  A new label 'ISC2STA' was added to
+     the list of dispersion models supported by MPRM to
+     accommodate this new output file.
+
+15.  Direct input of stability -E012 - Code was added to STAGE 3
+     to bypass stability class processing and allow use of input
+     stability class.  To invoke this enhancement, a new option
+     'USERIN' was included in the MP pathway under the keyword
+     VBL.

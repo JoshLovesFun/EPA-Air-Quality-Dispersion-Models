@@ -1,0 +1,47 @@
+                    Model Change Bulletin              
+              
+                            MCB#2                 2/14/90
+
+                      MPRM (dated 90045)
+
+
+
+        This Model Change Bulletin is formal notification of the corrections
+to the Meteorological Processor for Regulatory Models (MPRM). This version
+replaces all previous versions of MPRM for regulatory use.
+
+         REVISION TO METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS
+
+        In September, 1988 version 1.1 of a Meteorological Processor for 
+Regulatory Models was made available.  In January, 1990 in the course of 
+following up on an inquiry from a user of the processor, an error was 
+discovered in the FORTRAN coding.  National Weather Service (NWS) hourly 
+observations of wind direction and speed were being handled improperly.  As 
+a result of the error, calm wind conditions, encoded within the NWS 
+observation as zero wind speed and zero wind direction, were being treated 
+by the processor as missing data.  This forced users to perform the calm 
+wind adjustment procedures themselves. 
+
+        The processor encodes missing wind speeds as -9 and missing wind 
+directions as -99.  Whereas, calm winds are adjusted such that the wind 
+speed is set to 1 m s-1 and the wind direction is set equal to the last 
+valid wind direction.  
+
+        The FORTRAN code was easily corrected to affect proper treatment of 
+NWS calm wind conditions.  The FORTRAN changes only affected one subroutine 
+WS1NWS.  To reflect that a change had been made to the model, the model 
+version number was changed from 1.1 to 1.2.  Changing the version number 
+required updating FORTRAN code in a file named MASTER.FOR.  
+
+        It is anticipated that future upgrades may occur to MPRM.  In order 
+to allow orderly recording of such events, a new section was added to the 
+MPRM user's guide entitled, Revision History.  The purpose of this section 
+is to record when revisions occur and to briefly indicate the nature of the 
+revision.  Other minor edits were made in other sections of the user's 
+guide to account for the version number change and the revised organization 
+names.  No text changes of a technical nature were required. 
+
+        For those who have copies of the MPRM files, you need only to download 
+DISK1 and DISK2 for the new PC executables, and DISK3 and DISK4 for the new 
+code listings.  
+

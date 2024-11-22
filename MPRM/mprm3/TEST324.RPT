@@ -1,0 +1,389 @@
+1
+         METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS [MPRM (dated 99349)]
+
+                         DECEMBER 15, 1999     14:12:41
+
+                STAGE-3 PROCESSING OF MERGED METEOROLOGICAL DATA 
+
+                        ********************************
+                        *** JOB TERMINATED NORMALLY  ***
+                        ********************************
+
+
+
+     1. FILENAMES AS DETERMINED DURING SETUP
+
+        TEST324.RPT                                      OPENED   SUCCESSFULLY
+        TEST324.ERR                                      OPENED   SUCCESSFULLY
+        MERGE.223                                        OPENED   SUCCESSFULLY
+        TEST324.OUT                                      OPENED   SUCCESSFULLY
+
+
+     2. DISPERSION MODEL DEFINED DURING SETUP:   ISCSTWET
+
+
+     3. PROCESSING OPTIONS SELECTED DURING SETUP
+        PROCESS        SCHEME
+
+        WIND           ONSITE
+        TEMPERATURE    ONSITE
+        MIXING HEIGHTS NWSWXX
+        STABILITY      TTDIFF
+
+
+     4. STABILITY METHODS USED
+
+           NWSWXX     0
+           ONSITE     0
+           SESITE     0
+           SASITE     0
+           WNDWXX     0
+           TTDIFF   719
+           USERIN     0
+
+
+     5. PROCESSING ASSUMPTIONS 
+
+        WIND SPEED/TURB. MEASUREMENT HEIGHT (M):   10.00
+        STACK HEIGHT (M)                           10.00
+        TEMPERATURE HEIGHT (M)                      2.00
+
+
+     6. LOCATIONS SPECIFIED IN SETUP 
+
+         DATA      SITE     LONGITUDE   LATITUDE
+        PATHWAY     ID      (DEGREES)   (DEGREES)
+
+          UA        24157    117.53W      47.63N
+          SF       992415    118.85W      45.67N
+          OS       LAFAYE    122.60W      45.50N
+
+        *****************************************
+        * LONGITUDE AND LATITUDE FOR PROCESSING *
+        *         122.60      45.50             *
+        *****************************************
+
+
+     7. OUTPUT FILE NAMES.
+
+        ERROR REPORT FILE:        TEST324.ERR                                     
+        MET DATA FOR MODELING:    TEST324.OUT                                     
+        HEADER ON OUTPUT FILE:       24157        94    992415        94
+
+
+     8. SUMMARY OF DATA PROCESSING RESULTS 
+
+        VARIABLE            # VALID  # MISSING 
+
+        STABILITY              719        1
+        WIND SPEED             673        1           46 (Calms)
+        WIND DIRECTION         719        1
+        RURAL MIXING HEIGHT    719        1
+        URBAN MIXING HEIGHT    719        1
+        TEMPERATURE            719        1         5.16 (Average)
+
+
+     9. DISTRIBUTION OF WIND SPEEDS
+
+      WS CLASS    1       2       3       4       5       6
+      # HOURS    235.    265.    138.     31.      4.      0.
+      AVERAGE    1.38    2.42    4.07    6.38    9.05    0.00
+
+
+     10. RURAL STABILITY CATEGORY RESULTS  (# HOURS)
+
+             A       B       C      DD      DN      EF
+             0      20      41     213     205     240
+
+
+     11. SURFACE CHARACTERISTICS USED
+
+ Month Sector  Albedo   Bowen   z0(meas) z0(appl)  Min. L    Cg    Anth Heat   LAI   
+ -----------------------------------------------------------------------------------
+     1     1   0.5000   1.5000   0.1500   0.5000   2.0000   0.1500   0.0000   3.0000
+     2     1   0.5000   1.5000   0.1500   0.5000   2.0000   0.1500   0.0000   3.0000
+     3     1   0.1200   0.7000   0.1500   1.0000   2.0000   0.1500   0.0000   3.0000
+     4     1   0.1200   0.7000   0.1500   1.0000   2.0000   0.1500   0.0000   3.0000
+     5     1   0.1200   0.7000   0.1500   1.0000   2.0000   0.1500   0.0000   3.0000
+     6     1   0.1200   0.3000   0.1500   1.3000   2.0000   0.1500   0.0000   3.0000
+     7     1   0.1200   0.3000   0.1500   1.3000   2.0000   0.1500   0.0000   3.0000
+     8     1   0.1200   0.3000   0.1500   1.3000   2.0000   0.1500   0.0000   3.0000
+     9     1   0.1200   1.0000   0.1500   0.8000   2.0000   0.1500   0.0000   3.0000
+    10     1   0.1200   1.0000   0.1500   0.8000   2.0000   0.1500   0.0000   3.0000
+    11     1   0.1200   1.0000   0.1500   0.8000   2.0000   0.1500   0.0000   3.0000
+    12     1   0.5000   1.5000   0.1500   0.5000   2.0000   0.1500   0.0000   3.0000
+
+     1     2   0.3500   1.5000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+     2     2   0.3500   1.5000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+     3     2   0.1400   1.0000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+     4     2   0.1400   1.0000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+     5     2   0.1400   1.0000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+     6     2   0.1600   2.0000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+     7     2   0.1600   2.0000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+     8     2   0.1600   2.0000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+     9     2   0.1800   2.0000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+    10     2   0.1800   2.0000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+    11     2   0.1800   2.0000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+    12     2   0.3500   1.5000   0.1500   1.0000  50.0000   0.2700   0.0000   3.0000
+
+
+                      **** MPRM MESSAGE SUMMARY TABLE ****
+
+         0- 9   10-19   20-29   30-39   40-49   50-59   60-69   70-79   TOTAL
+       ----------------------------------------------------------------------
+
+    JB
+      E    0       0       0       0       0       0       0       0       0
+      W    0       0       0       0       0       0       0       0       0
+      I    2       0       0       0       0       0       0       0       2
+
+    OS
+      E    0       0       0       0       0       0       0       0       0
+      W    0       2       0       0       0       0       0       0       2
+      I    0       0       0       0       0       0       0       0       0
+
+    MP
+      E    0       0       0       0       0       0       0       0       0
+      W    0       0       0       0       0       0       0     229     229
+      I    1       1       0       0       0       0       0       2       4
+      T    0       0       0       0       0       0       0       0       0
+       ----------------------------------------------------------------------
+           3       3       0       0       0       0       0     231     237
+
+        ****   WARNING MESSAGES ****
+         0 OS W15 AUTCHK: MHGT NOT INPUT: AUDIT & TRACE DISABLED                
+         0 OS W15 AUTCHK: SE   NOT INPUT: AUDIT & TRACE DISABLED                
+       305 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94305/13                  
+       305 MP W76 DEPMET: NET RAD'N SUSPECT  (  -62.) ON 94305/18               
+       305 MP W76 DEPMET: NET RAD'N SUSPECT  (  -73.) ON 94305/19               
+       305 MP W76 DEPMET: NET RAD'N SUSPECT  (  -78.) ON 94305/20               
+       305 MP W76 DEPMET: NET RAD'N SUSPECT  (  -52.) ON 94305/21               
+       305 MP W76 DEPMET: NET RAD'N SUSPECT  (  -73.) ON 94305/22               
+       305 MP W76 DEPMET: NET RAD'N SUSPECT  (  -78.) ON 94305/23               
+       305 MP W76 DEPMET: NET RAD'N SUSPECT  (  -78.) ON 94305/24               
+       306 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94306/01               
+       306 MP W78  SUBST: NO PRESSURE; USING 1013.25 ON 94306/02                
+       306 MP W76 DEPMET: NET RAD'N SUSPECT  (  -57.) ON 94306/18               
+       306 MP W76 DEPMET: NET RAD'N SUSPECT  (  -79.) ON 94306/20               
+       306 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94306/21               
+       306 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94306/22               
+       307 MP W76 DEPMET: NET RAD'N SUSPECT  (  -53.) ON 94307/01               
+       307 MP W76 DEPMET: NET RAD'N SUSPECT  (  -69.) ON 94307/02               
+       307 MP W76 DEPMET: NET RAD'N SUSPECT  (  -69.) ON 94307/03               
+       307 MP W76 DEPMET: NET RAD'N SUSPECT  (  -69.) ON 94307/05               
+       307 MP W76 DEPMET: NET RAD'N SUSPECT  (  -53.) ON 94307/06               
+       307 MP W76 DEPMET: NET RAD'N SUSPECT  (  -62.) ON 94307/08               
+       307 MP W76 DEPMET: NET RAD'N SUSPECT  (  -52.) ON 94307/09               
+       307 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94307/09                  
+       307 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94307/10                  
+       307 MP W76 DEPMET: NET RAD'N SUSPECT  (  -51.) ON 94307/18               
+       307 MP W76 DEPMET: NET RAD'N SUSPECT  (  -51.) ON 94307/19               
+       308 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94308/09                  
+       308 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94308/10                  
+       308 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94308/11                  
+       308 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94308/13                  
+       309 MP W76 DEPMET: NET RAD'N SUSPECT  (  -52.) ON 94309/03               
+       309 MP W76 DEPMET: NET RAD'N SUSPECT  (  -52.) ON 94309/04               
+       309 MP W76 DEPMET: NET RAD'N SUSPECT  (  -74.) ON 94309/05               
+       309 MP W76 DEPMET: NET RAD'N SUSPECT  (  -79.) ON 94309/06               
+       309 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94309/07               
+       309 MP W76 DEPMET: NET RAD'N SUSPECT  (  -60.) ON 94309/08               
+       310 MP W76 DEPMET: NET RAD'N SUSPECT  (  -55.) ON 94310/17               
+       310 MP W76 DEPMET: NET RAD'N SUSPECT  (  -78.) ON 94310/19               
+       310 MP W76 DEPMET: NET RAD'N SUSPECT  (  -78.) ON 94310/20               
+       310 MP W76 DEPMET: NET RAD'N SUSPECT  (  -67.) ON 94310/22               
+       310 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94310/23               
+       310 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94310/24               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -73.) ON 94311/01               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -62.) ON 94311/02               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -62.) ON 94311/03               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -68.) ON 94311/04               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -57.) ON 94311/05               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -68.) ON 94311/06               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -68.) ON 94311/07               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -55.) ON 94311/08               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -53.) ON 94311/16               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -81.) ON 94311/17               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -81.) ON 94311/18               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -82.) ON 94311/19               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94311/20               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94311/21               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94311/22               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94311/23               
+       311 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94311/24               
+       312 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94312/01               
+       312 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94312/02               
+       312 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94312/03               
+       312 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94312/04               
+       312 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94312/05               
+       312 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94312/06               
+       312 MP W76 DEPMET: NET RAD'N SUSPECT  (  -79.) ON 94312/07               
+       312 MP W76 DEPMET: NET RAD'N SUSPECT  (  -69.) ON 94312/08               
+       315 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94315/10                  
+       315 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94315/11                  
+       315 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94315/12                  
+       315 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94315/13                  
+       315 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94315/14                  
+       316 MP W76 DEPMET: NET RAD'N SUSPECT  (  -77.) ON 94316/17               
+       316 MP W76 DEPMET: NET RAD'N SUSPECT  (  -77.) ON 94316/18               
+       316 MP W76 DEPMET: NET RAD'N SUSPECT  (  -77.) ON 94316/19               
+       316 MP W76 DEPMET: NET RAD'N SUSPECT  (  -72.) ON 94316/20               
+       316 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94316/21               
+       316 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94316/22               
+       316 MP W76 DEPMET: NET RAD'N SUSPECT  (  -72.) ON 94316/23               
+       316 MP W76 DEPMET: NET RAD'N SUSPECT  (  -62.) ON 94316/24               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -73.) ON 94317/01               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94317/02               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94317/03               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94317/04               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -65.) ON 94317/16               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -66.) ON 94317/17               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -76.) ON 94317/18               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -50.) ON 94317/21               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94317/22               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -78.) ON 94317/23               
+       317 MP W76 DEPMET: NET RAD'N SUSPECT  (  -62.) ON 94317/24               
+       318 MP W76 DEPMET: NET RAD'N SUSPECT  (  -51.) ON 94318/01               
+       318 MP W76 DEPMET: NET RAD'N SUSPECT  (  -57.) ON 94318/02               
+       318 MP W76 DEPMET: NET RAD'N SUSPECT  (  -52.) ON 94318/06               
+       318 MP W76 DEPMET: NET RAD'N SUSPECT  (  -52.) ON 94318/07               
+       319 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94319/14                  
+       319 MP W76 DEPMET: NET RAD'N SUSPECT  (  -72.) ON 94319/18               
+       319 MP W76 DEPMET: NET RAD'N SUSPECT  (  -82.) ON 94319/19               
+       319 MP W76 DEPMET: NET RAD'N SUSPECT  (  -77.) ON 94319/20               
+       319 MP W76 DEPMET: NET RAD'N SUSPECT  (  -50.) ON 94319/21               
+       320 MP W76 DEPMET: NET RAD'N SUSPECT  (  -68.) ON 94320/20               
+       320 MP W76 DEPMET: NET RAD'N SUSPECT  (  -63.) ON 94320/21               
+       320 MP W76 DEPMET: NET RAD'N SUSPECT  (  -52.) ON 94320/22               
+       321 MP W76 DEPMET: NET RAD'N SUSPECT  (  -68.) ON 94321/02               
+       321 MP W76 DEPMET: NET RAD'N SUSPECT  (  -58.) ON 94321/03               
+       321 MP W76 DEPMET: NET RAD'N SUSPECT  (  -79.) ON 94321/04               
+       321 MP W76 DEPMET: NET RAD'N SUSPECT  (  -63.) ON 94321/05               
+       321 MP W76 DEPMET: NET RAD'N SUSPECT  (  -52.) ON 94321/06               
+       321 MP W76 DEPMET: NET RAD'N SUSPECT  (  -57.) ON 94321/20               
+       321 MP W76 DEPMET: NET RAD'N SUSPECT  (  -52.) ON 94321/21               
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -64.) ON 94322/03               
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -58.) ON 94322/04               
+       322 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94322/11                  
+       322 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94322/12                  
+       322 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94322/13                  
+       322 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94322/14                  
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -73.) ON 94322/16               
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -74.) ON 94322/17               
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -68.) ON 94322/18               
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -63.) ON 94322/19               
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -63.) ON 94322/20               
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -68.) ON 94322/21               
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -68.) ON 94322/22               
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -69.) ON 94322/23               
+       322 MP W76 DEPMET: NET RAD'N SUSPECT  (  -69.) ON 94322/24               
+       323 MP W76 DEPMET: NET RAD'N SUSPECT  (  -63.) ON 94323/01               
+       323 MP W76 DEPMET: NET RAD'N SUSPECT  (  -69.) ON 94323/02               
+       323 MP W76 DEPMET: NET RAD'N SUSPECT  (  -74.) ON 94323/04               
+       323 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94323/10                  
+       323 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94323/12                  
+       323 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94323/13                  
+       323 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94323/14                  
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94324/04               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94324/05               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94324/06               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94324/07               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -76.) ON 94324/08               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -57.) ON 94324/15               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94324/17               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94324/18               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -73.) ON 94324/19               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -74.) ON 94324/20               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94324/21               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -80.) ON 94324/22               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -80.) ON 94324/23               
+       324 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94324/24               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -80.) ON 94325/01               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -69.) ON 94325/02               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94325/05               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94325/06               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -80.) ON 94325/07               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -81.) ON 94325/08               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -52.) ON 94325/09               
+       325 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94325/10                  
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94325/17               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94325/18               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94325/19               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94325/20               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94325/21               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94325/22               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94325/23               
+       325 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94325/24               
+       326 MP W75 SFSTAB:  1 HOURS HAVE 0 FOR PG CATEGORY                       
+       326 MP W72 ZI1NWS:  1 HOURS HAVE MISSING ZI VALUES                       
+       326 MP W74  WS1OS:  1 HOURS HAVE MISSING WS VALUES                       
+       326 MP W74  WS1OS:  1 HOURS HAVE MISSING WD VALUES                       
+       326 MP W73  TT1OS:  1 HOURS HAVE MISSING TT VALUES                       
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94326/01               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94326/02               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94326/03               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94326/04               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94326/05               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94326/06               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94326/07               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -79.) ON 94326/08               
+       326 MP W78  SUBST: ON-SITE TEMP MISSING  ON 94326/16                     
+       326 MP W78  SUBST: ON-SITE WINDS MISSING  ON 94326/16                    
+       326 MP W71 DEPMET: NO SFC VARS CALCULATED ON 94326/16                    
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -79.) ON 94326/17               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -85.) ON 94326/18               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -80.) ON 94326/19               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -80.) ON 94326/20               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -79.) ON 94326/21               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -74.) ON 94326/22               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -74.) ON 94326/23               
+       326 MP W76 DEPMET: NET RAD'N SUSPECT  (  -63.) ON 94326/24               
+       327 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94327/10                  
+       327 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94327/14                  
+       328 MP W76 DEPMET: NET RAD'N SUSPECT  (  -50.) ON 94328/09               
+       329 MP W76 DEPMET: NET RAD'N SUSPECT  (  -57.) ON 94329/20               
+       329 MP W76 DEPMET: NET RAD'N SUSPECT  (  -63.) ON 94329/21               
+       329 MP W76 DEPMET: NET RAD'N SUSPECT  (  -74.) ON 94329/22               
+       329 MP W76 DEPMET: NET RAD'N SUSPECT  (  -79.) ON 94329/23               
+       329 MP W76 DEPMET: NET RAD'N SUSPECT  (  -79.) ON 94329/24               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -74.) ON 94330/01               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -63.) ON 94330/02               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -63.) ON 94330/03               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -58.) ON 94330/04               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -53.) ON 94330/15               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -51.) ON 94330/16               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -72.) ON 94330/17               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -73.) ON 94330/18               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -73.) ON 94330/19               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -78.) ON 94330/20               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94330/21               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94330/22               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -83.) ON 94330/23               
+       330 MP W76 DEPMET: NET RAD'N SUSPECT  (  -73.) ON 94330/24               
+       331 MP W76 DEPMET: NET RAD'N SUSPECT  (  -61.) ON 94331/17               
+       331 MP W76 DEPMET: NET RAD'N SUSPECT  (  -67.) ON 94331/18               
+       331 MP W76 DEPMET: NET RAD'N SUSPECT  (  -73.) ON 94331/19               
+       331 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94331/20               
+       331 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94331/21               
+       331 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94331/22               
+       331 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94331/23               
+       331 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94331/24               
+       332 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94332/01               
+       332 MP W76 DEPMET: NET RAD'N SUSPECT  (  -84.) ON 94332/02               
+       332 MP W76 DEPMET: NET RAD'N SUSPECT  (  -68.) ON 94332/03               
+       332 MP W76 DEPMET: NET RAD'N SUSPECT  (  -65.) ON 94332/16               
+       332 MP W76 DEPMET: NET RAD'N SUSPECT  (  -61.) ON 94332/17               
+       332 MP W76 DEPMET: NET RAD'N SUSPECT  (  -67.) ON 94332/19               
+       332 MP W76 DEPMET: NET RAD'N SUSPECT  (  -56.) ON 94332/20               
+       333 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94333/10                  
+       333 MP W76 DEPMET: NET RAD'N SUSPECT  (  -58.) ON 94333/24               
+       334 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94334/10                  
+       334 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94334/11                  
+       334 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94334/12                  
+       334 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94334/13                  
+       334 MP W76 DEPMET: NET RAD'N < 0 DURING DAY ON 94334/14                  
+
+        ****    ERROR MESSAGES  ****
+
+               ---  NONE  ---
+

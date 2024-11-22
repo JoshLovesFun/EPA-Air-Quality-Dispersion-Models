@@ -1,0 +1,106 @@
+1
+         METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS [MPRM (dated 99349)]
+
+                         DECEMBER 15, 1999     14:11:14
+
+                STAGE 1 EXTRACTION AND QA OF METEOROLOGICAL DATA
+
+
+             ********************************************************
+             ***             JOB TERMINATED NORMALLY              ***
+             ********************************************************
+
+                  STATUS REPORT PRIOR TO BEGINNING PROCESSOR RUN
+
+
+ 1.  REPORT FILE NAMES
+
+      ERROR MESSAGES: TEST123.ERR                                     
+      SUMMARY OF RUN: TEST123.RPT                                     
+
+
+ 2.  UPPER AIR DATA  
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           NONE - NO DATA TO BE PROCESSED ON THIS PATH 
+
+
+
+ 3.  NWS SURFACE DATA
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           NONE - NO DATA TO BE PROCESSED ON THIS PATH 
+
+
+
+ 4.  ON-SITE DATA    
+
+      SITE ID    LATITUDE(DEG.)   LONGITUDE(DEG.)
+        99999       45.50N           122.60W
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           EXTRACT AND QUALITY ASSESSMENT              
+
+          EXTRACT OUTPUT-    OPEN: LAF-OS.MET                                      
+          QA OUTPUT     -    OPEN: OQAOS.123                                       
+
+          THE EXTRACT DATES ARE:    STARTING: NOV  1, 1994
+                                      ENDING: NOV 30, 1994
+
+
+                      **** MPRM MESSAGE SUMMARY TABLE ****
+
+         0- 9   10-19   20-29   30-39   40-49   50-59   60-69   70-79   TOTAL
+       ----------------------------------------------------------------------
+
+    JB
+      E    0       0       0       0       0       0       0       0       0
+      W    0       0       0       0       0       0       0       0       0
+      I    2       7       0       0       0       0       0       0       9
+
+    OS
+      E    0       0       0       0       0       0       0       0       0
+      W    0       2       0       0       0       0       0       0       2
+      I    0       0       0       0       0       0       0       0       0
+      Q    0       0       0       0       0      43       0       0      43
+       ----------------------------------------------------------------------
+           2       9       0       0       0      43       0       0      54
+
+        ****   WARNING MESSAGES ****
+         0 OS W15 AUTCHK: MHGT NOT INPUT: AUDIT & TRACE DISABLED                
+         0 OS W15 AUTCHK: SE   NOT INPUT: AUDIT & TRACE DISABLED                
+
+        ****    ERROR MESSAGES  ****
+
+               ---  NONE  ---
+
+
+
+             ********************************************************
+             ***             JOB TERMINATED NORMALLY              ***
+             ********************************************************
+
+
+                        **** SUMMARY OF THE QA AUDIT ****
+
+
+ SITE SCALARS         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       INSO     720        0      0      0    100.00     9999.0,    0.0,  700.0
+       DT01     720        0      8     20     96.11     -999.0,  -10.0,    5.0
+
+
+ SITE VECTORS         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+     20.00 M
+       SA       720        1      0     15     97.78       99.0,    0.0,   50.0
+       TT       720        1      0      0     99.86       99.0,  -30.0,   35.0
+       WD       720        1      0      0     99.86      999.0,    0.0,  360.0
+       WS       720        1      0      0     99.86      999.0,    0.0,   50.0
+
+     THIS CONCLUDES THE AUDIT TRAIL

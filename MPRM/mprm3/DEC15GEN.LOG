@@ -1,0 +1,292 @@
+FILE:  DEC15GEN.LOG
+
+The following files document general testing of MPRM (dated 99349)
+conducted on December 15, 1999:
+
+
+STAGE1N2 EXE    625,956    12-15-99    Stage 1 and 2 Executable
+STAGE3   EXE    576,052    12-15-99    Stage 3 Executable
+LF90     EER     41,040    08-01-97    Lahey Fortran error file
+
+
+24157-94 MIX      2,835    10-23-95    Mixing Heights
+24155-94 DAT    120,048    08-12-96    Surface Data (CD-144 format)
+LAF-OS   MET    112,728    12-05-95    On-site Data
+24155-94 PPP      5,172    01-11-96    Precipitation Data (TD-3240FB)
+
+24155-94 001      3,454    01-30-96    Altered Surface Data (with missing data)
+24155-94 SAV      2,143    01-30-96    Un-altered Surface Data
+
+TEST121  INP        276    12-05-95    Command file for QA of mixing heights
+TEST121  RPT      3,450    12-15-99    Report file from QA of mixing heights
+TEST121  ERR        737    12-15-99    Error file from QA of mixing heights
+OQAUA    121      1,541    12-15-99    Output from QA of mixing heights
+
+TEST122  INP        363    12-14-99    Command file for QA of NWS data
+TEST122  RPT      5,067    12-15-99    Report file from QA of NWS data
+TEST122  ERR      3,685    12-15-99    Error file from QA of NWS data
+OQASF    122    116,098    12-15-99    Output from QA of NWS data
+
+TEST123  INP        484    08-08-96    Command file for QA of on-site data
+TEST123  RPT      4,032    12-15-99    Report file from QA of on-site data
+TEST123  ERR      6,499    12-15-99    Error file from QA of on-site data
+OQAOS    123     56,601    12-15-99    Output from QA of on-site data
+
+TEST222  INP        242    01-29-96    Command file for merge of NWS data
+TEST222  RPT      4,045    12-15-99    Report file from merge of NWS data
+TEST222  ERR        804    12-15-99    Error file from merge of NWS data
+MERGE    222     87,316    12-15-99    Output from merge of NWS data
+
+TEST223  INP        288    01-29-96    Command file for on-site merge
+TEST223  RPT      4,782    12-15-99    Report file from on-site merge
+TEST223  ERR      1,005    12-15-99    Error file from on-site merge
+MERGE    223    121,021    12-15-99    Output from on-site merge
+
+TEST322  INP        218    01-29-96    Command file for Stage 3 (NWS only)
+TEST322  RPT     20,457    12-15-99    Report file from Stage 3 (NWS only)
+TEST322  ERR     13,024    12-15-99    Error file from Stage 3 (NWS only)
+TEST322  OUT     63,410    12-15-99    Output from Stage 3 (NWS only)
+
+TEST323  INP        429    06-08-99    Command file for Stage 3 (On-site Dry)
+TEST323  RPT     24,637    12-15-99    Report file from Stage 3 (On-site Dry)
+TEST323  ERR     16,240    12-15-99    Error file from Stage 3 (On-site Dry)
+TEST323  OUT     55,490    12-15-99    Output from Stage 3 (On-site Dry)
+
+TEST324  INP        966    06-08-99    Command file for Stage 3 (On-site Wet)
+TEST324  RPT     25,589    12-15-99    Report file from Stage 3 (On-site Wet)
+TEST324  ERR     16,173    12-15-99    Error file from Stage 3 (On-site Wet)
+TEST324  OUT     63,410    12-15-99    Output from Stage 3 (On-site Wet)
+
+
+
+The following has been extracted from the Stage 1 Extraction and QA
+report files (TEST121.RPT, TEST122.RPT, & TEST123.RPT):
+
+         METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS [MPRM (dated 99349)]
+
+                         DECEMBER 15, 1999     14:10:40
+
+                STAGE 1 EXTRACTION AND QA OF METEOROLOGICAL DATA
+
+
+                        **** SUMMARY OF THE QA AUDIT ****
+
+   MIXING HTS         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       UAM1      32        0      0      0    100.00    -9999.0,   50.0, 2500.0
+       UAM2      32        0      0      0    100.00    -9999.0,   50.0, 4500.0
+
+
+
+ SURFACE DATA         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       SLVP     720        0      0      0    100.00    -9999.0, 9000.0,10999.0
+       PRES     720        1      0      0     99.86    -9999.0, 9000.0,10999.0
+       CLHT     720        0      0      0    100.00    -9999.0,    0.0,  300.0
+       TS       720        0      0      0    100.00       99.0,    0.0,   10.0
+         KC     720        0      0      0    100.00       99.0,    0.0,   10.0
+       PW       720        0      0      0    100.00       99.0,    0.0,   92.0
+         TH     720        0      0      0    100.00       99.0,    0.0,   92.0
+       HZVS     720        0      0      0    100.00    -9999.0,    0.0, 1640.0
+       TMPD     720        0      0      0    100.00    -9999.0, -300.0,  350.0
+       WD16     720        0      0      0    100.00    -9999.0,    0.0,   36.0
+       WIND     720        0      0      0    100.00    -9999.0,    0.0,  500.0
+
+
+
+ SITE SCALARS         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       INSO     720        0      0      0    100.00     9999.0,    0.0,  700.0
+       DT01     720        0      8     20     96.11     -999.0,  -10.0,    5.0
+
+
+ SITE VECTORS         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+     20.00 M
+       SA       720        1      0     15     97.78       99.0,    0.0,   50.0
+       TT       720        1      0      0     99.86       99.0,  -30.0,   35.0
+       WD       720        1      0      0     99.86      999.0,    0.0,  360.0
+       WS       720        1      0      0     99.86      999.0,    0.0,   50.0
+
+
+
+     THE FOLLOWING CHECKS WERE ALSO PERFORMED FOR THE SURFACE QA                
+       OF   720 REPORTS, THERE WERE                                             
+             30 CALM WIND CONDITIONS (WS=0, WD=0)                               
+              0 ZERO WIND SPEEDS WITH NONZERO WIND DIRECTIONS                   
+              0 DEW-POINT GREATER THAN DRY BULB TEMPERATURES                    
+             13 PRECIPITATION & WEATHER MISMATCH                                
+     THE TIMES OF THESE OCCURRENCES CAN BE FOUND IN THE MESSAGE FILE            
+      WITH QUALIFIERS CLM, ZNZ, DTT & PPT (RESP.)                               
+                                                                                
+     THIS CONCLUDES THE AUDIT TRAIL
+
+
+Note, a special CD-144 surface file was created to test QA processing
+procedures for missing data.  The special file, called 24155-94.001, was
+created by altering selected fields in the first 12 records of the surface
+file for station 24155.  The QA report for the modified surface data file
+provided below includes summary statistics for the missing data.
+
+
+                        **** SUMMARY OF THE QA AUDIT ****
+
+
+ SURFACE DATA         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+       SLVP     720        0      0      0    100.00    -9999.0, 9000.0,10999.0
+       PRES     720        4      0      0     99.44    -9999.0, 9000.0,10999.0
+       CLHT     720       10      0      0     98.61    -9999.0,    0.0,  300.0
+       TS       720        2      0      0     99.72       99.0,    0.0,   10.0
+         KC     720        1      0      0     99.86       99.0,    0.0,   10.0
+       PW       720        0      0      0    100.00       99.0,    0.0,   92.0
+         TH     720        0      0      0    100.00       99.0,    0.0,   92.0
+       HZVS     720        0      0      0    100.00    -9999.0,    0.0, 1640.0
+       TMPD     720        0      0      0    100.00    -9999.0, -300.0,  350.0
+       WD16     720        5      0      0     99.31    -9999.0,    0.0,   36.0
+       WIND     720        4      0      0     99.44    -9999.0,    0.0,  500.0
+
+
+The dates and times for the missing data are listed in the Stage 1 error
+report file.  The following has been extracted from the error report for the
+extraction and QA of the NWS surface and precipitation data (TEST122.ERR):
+
+
+         0 SF I49  SFEXT:  720 HLY WX &  720 PRECIP OBS EXTRACTED
+     30502 SF     SFQASM: CLHT MISSING ON  94/11/01/02           
+     30502 SF PPT SFQASM: WEATHER WITHOUT PRECIP ON 94/11/01/02  
+     30503 SF     SFQASM: CLHT MISSING ON  94/11/01/03           
+     30504 SF     SFQASM: CLHT MISSING ON  94/11/01/04           
+     30504 SF PPT SFQASM: PRECIP WITHOUT WEATHER ON 94/11/01/04  
+     30505 SF     SFQASM: CLHT MISSING ON  94/11/01/05           
+     30505 SF PPT SFQASM: PRECIP WITHOUT WEATHER ON 94/11/01/05  
+     30506 SF     SFQASM: CLHT MISSING ON  94/11/01/06           
+     30507 SF     SFQASM: CLHT MISSING ON  94/11/01/07           
+     30507 SF     SFQASM: WD16 MISSING ON  94/11/01/07           
+     30508 SF     SFQASM: CLHT MISSING ON  94/11/01/08           
+     30508 SF     SFQASM: WD16 MISSING ON  94/11/01/08           
+     30508 SF     SFQASM: WIND MISSING ON  94/11/01/08           
+     30508 SF PPT SFQASM: PRECIP WITHOUT WEATHER ON 94/11/01/08  
+     30509 SF     SFQASM: PRES MISSING ON  94/11/01/09           
+     30509 SF     SFQASM: CLHT MISSING ON  94/11/01/09           
+     30509 SF     SFQASM: WD16 MISSING ON  94/11/01/09           
+     30509 SF     SFQASM: WIND MISSING ON  94/11/01/09           
+     30509 SF PPT SFQASM: PRECIP WITHOUT WEATHER ON 94/11/01/09  
+     30510 SF     SFQASM: PRES MISSING ON  94/11/01/10           
+     30510 SF     SFQASM: CLHT MISSING ON  94/11/01/10           
+     30510 SF     SFQASM: TSKC MISSING ON  94/11/01/10           
+     30510 SF     SFQASM: WD16 MISSING ON  94/11/01/10           
+     30510 SF     SFQASM: WIND MISSING ON  94/11/01/10           
+     30510 SF PPT SFQASM: PRECIP WITHOUT WEATHER ON 94/11/01/10  
+     30511 SF     SFQASM: PRES MISSING ON  94/11/01/11           
+     30511 SF     SFQASM: CLHT MISSING ON  94/11/01/11           
+     30511 SF     SFQASM: TSKC MISSING ON  94/11/01/11           
+     30511 SF     SFQASM: TSKC MISSING ON  94/11/01/11           
+     30511 SF     SFQASM: WD16 MISSING ON  94/11/01/11           
+     30511 SF     SFQASM: WIND MISSING ON  94/11/01/11           
+     30602 SF     SFQASM: PRES MISSING ON  94/11/02/02
+
+
+
+The following has been extracted from the report file for the Stage 2
+merge of NWS (upper-air and surface data) and on-site data (TEST223.RPT):
+
+
+         METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS [MPRM (dated 99349)]
+
+                         DECEMBER 15, 1999     14:11:47
+
+                        STAGE 2  MERGE METEOROLOGICAL DATA      
+
+
+                   ***** DAILY OUTPUT STATISTICS *****
+               MO/DA 11/ 1 11/ 2 11/ 3 11/ 4 11/ 5 11/ 6 11/ 7 11/ 8 11/ 9 11/10
+ NWS  UPPER AIR  SDGS   0     0     0     0     0     0     0     0     0     0
+ NCDC MIXING  HEIGHTS   6     6     6     6     6     6     6     6     6     6
+ NWS SFC OBSERVATIONS  24    24    24    24    24    24    24    24    24    24
+ ON-SITE OBSERVATIONS  24    24    24    24    24    24    24    24    24    24
+
+               MO/DA 11/11 11/12 11/13 11/14 11/15 11/16 11/17 11/18 11/19 11/20
+ NWS  UPPER AIR  SDGS   0     0     0     0     0     0     0     0     0     0
+ NCDC MIXING  HEIGHTS   6     6     6     6     6     6     6     6     6     6
+ NWS SFC OBSERVATIONS  24    24    24    24    24    24    24    24    24    24
+ ON-SITE OBSERVATIONS  24    24    24    24    24    24    24    24    24    24
+
+               MO/DA 11/21 11/22 11/23 11/24 11/25 11/26 11/27 11/28 11/29 11/30
+ NWS  UPPER AIR  SDGS   0     0     0     0     0     0     0     0     0     0
+ NCDC MIXING  HEIGHTS   6     6     6     6     6     6     6     6     6     6
+ NWS SFC OBSERVATIONS  24    24    24    24    24    24    24    24    24    24
+ ON-SITE OBSERVATIONS  24    24    24    24    24    24    24    24    24    24
+
+
+      UPPER AIR OBS. READ:   32
+      SURFACE OBS. READ:    720
+      ON-SITE OBS. READ:    720
+
+
+
+The following tests of Stage 3 processing were conducted:
+
+    TEST322   Processing for ISCSTWET using all NWS data with default
+              surface characteristics.
+
+    TEST323   Processing for ISCSTDRY using on-site data with user
+              specified surface characteristics.  On-site stability
+              is based on sigma-theta.
+
+    TEST324   Processing for ISCSTWET using on-site data with user
+              specified surface characteristics which vary by sector
+              and season.  On-site stability is based on the SRDT
+              method.
+
+
+     The test cases provided with this release of MPRM include an
+example (TEST324.INP) in which surface characteristics are given by
+season of the year for two different downwind land-use types
+(deciduous forest, and urban).  Values used for the surface parameters
+in this example were taken from the tables provided in the addendum to
+the user's guide.  The following is taken from the input file for this
+test case:
+
+
+OS  STA
+OS  LOC  LAFAYE  122.60W  45.50N  0
+OS  SFC  SETUP  SEASON  2
+OS  SFC  SECTORS  1    0   180
+OS  SFC  SECTORS  2  180   360
+OS  SFC  VALUES   1   1  0.50  1.50  0.15  0.50   2.00  0.15  0.0  3.0
+OS  SFC  VALUES   2   1  0.12  0.70  0.15  1.00   2.00  0.15  0.0  3.0
+OS  SFC  VALUES   3   1  0.12  0.30  0.15  1.30   2.00  0.15  0.0  3.0
+OS  SFC  VALUES   4   1  0.12  1.00  0.15  0.80   2.00  0.15  0.0  3.0
+OS  SFC  VALUES   1   2  0.35  1.50  0.15  1.00  50.00  0.27  0.0  3.0
+OS  SFC  VALUES   2   2  0.14  1.00  0.15  1.00  50.00  0.27  0.0  3.0
+OS  SFC  VALUES   3   2  0.16  2.00  0.15  1.00  50.00  0.27  0.0  3.0
+OS  SFC  VALUES   4   2  0.18  2.00  0.15  1.00  50.00  0.27  0.0  3.0
+OS  FIN
+
+
+The following has been extracted from the report files for the Stage 3
+test cases:
+
+
+         METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS [MPRM (dated 99349)]
+
+                         DECEMBER 15, 1999     14:12:41
+
+                STAGE-3 PROCESSING OF MERGED METEOROLOGICAL DATA 
+
+
+     10. RURAL STABILITY CATEGORY RESULTS  (# HOURS)
+
+             A       B       C      DD      DN      EF
+   TEST322   0      12      38     225     248     197
+
+   TEST323  39      40     151      44     240     205
+
+   TEST324   0      20      41     213     205     240
+

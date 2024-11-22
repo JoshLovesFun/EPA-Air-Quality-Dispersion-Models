@@ -1,0 +1,123 @@
+
+
+                                  README.TXT                     12-15-99
+
+                               MPRM (dated 99349)
+
+
+    The Meteorological Processor for Regulatory Models [MPRM (dated 99349)]
+implements changes to MPRM necessary for Y2K compliance.  These changes
+are incidental to the meteorological processing algorithms in MPRM;
+consequently, users of MPRM should see little difference from past
+versions other than, where necessary, the 'year' is reported as a
+4-digit integer instead of a 2-digit integer.  MPRM (dated 99349) has
+been tested using constructed meteorological files for the period
+December 1999 through January 2000.  Test case files for Y2K compliance
+(identified as Y2K-nnn.*) are archived with the general test case files
+(identified as TESTnnn.*) in MPRM3.ZIP.  Documentation for the Y2K test
+cases is provided in the text file: DEC15Y2K.LOG;  the general test cases
+are documented in DEC15GEN.LOG.
+
+
+    Details regarding the revised MPRM can be found in the Addendum to the
+MPRM User's Guide (EPA-454/B-96-002).  The user's guide and the addendum are
+available for downloading from the 'User's Guides / Related Programs' area
+on the SCRAM main menu.  The user's guide is also available from NTIS
+(document No. PB96-180518).  This documentation was not updated for
+MPRM (dated 99349).  This file (MPRM.RME) provides update information.
+
+
+    As provided on SCRAM, MPRM is comprised of six compressed format 'ZIP'
+files.  The software to expand (unzip) these files 'PKUNZIP.EXE' is available
+from the Systems Utilities area of SCRAM.  The six ZIP files are:
+
+
+    SCRAM Web File     Contents
+    -------------------------------------------------------------
+    MPRM1.ZIP          STAGE1N2.EXE Lahey LF90, version 4.50i, executable
+                       file, FL90.EER error file, and the MPRM readme
+                       file, MPRM.RME.
+
+    MPRM2.ZIP          STAGE3.EXE Lahey LF90, version 4.50i, executable
+                       file, FL90.EER error file, and the MPRM readme
+                       file, MPRM.RME.
+
+    MPRM3.ZIP          Test case files:   TESTnnn.*  (General)
+                                          Y2k-nnn.*  (Y2K Compliance)
+                       DEC15GEN.LOG general test case documentation file
+                       DEC15Y2K.LOG Y2K test case documentation file
+
+    MPRM4.ZIP          Source code files, Lahey Fortran batch files
+
+    MPRMD.ZIP          MPRM User's Guide - Revised (EPA-454/B-96-002).
+                       The user's guide is a WordPerfect 5.1 document.
+
+    MPRMADD.ZIP        Addendum to the MPRM User's Guide
+
+
+    The instructions provided in the following assume that the reader has
+completed the initial learning curve for the Meteorological Processor for
+Regulatory Models (MPRM) and has had some experience in using MPRM for
+processing on-site meteorological data.
+
+PROCESSING FOR GAS DRY DEPOSITION
+
+    Processing of meteorological data for use in modeling gas dry deposition
+takes place in Stage 3 of the MPRM processor.  The on-site surface parameters
+required can be entered in Stage 2 or Stage 3 (the Stage 3 option is
+recommended).  Default values, which are used if none are provided, are as
+follows:
+
+               Albedo                                  0.25
+               Bowen Ratio                             0.70
+               Roughness (measurement site)            0.15 m
+               Roughness (application site)            0.15 m
+               Minimum M-O Length                      2.00 m
+               Surface Heat Flux (fraction of net)     0.15
+               Anthropogenic Heat Flux                 0.00
+               Leaf Area Index (LAI)                   3.00
+
+    The general test case files provided with this release of MPRM
+include an example (TEST324.INP) in which surface characteristics are
+given by season of the year for two different downwind land-use types
+(deciduous forest, and urban). Values used for the surface parameters in
+this example were taken from the tables provided in the addendum to the
+user's guide.
+
+    Processing of meteorological data for use in modeling gas dry deposition
+is activated by specifying 'ISCGASD' for dry deposition only, and 'ISCGASW'
+for dry and wet deposition in the input record for model option in Stage 3.
+
+
+EXAMPLE TEST CASES
+
+    Example test cases for exercising various features in MPRM are provided
+as follows:
+
+     TEST322   Processing for ISCSTWET using NWS mixing heights and surface
+               data with default surface characteristics.
+
+     TEST323   Processing for ISCSTDRY using on-site data with user specified
+               surface characteristics.  On-site stability is based on
+               sigma-theta.
+
+     TEST324   Processing for ISCSTWET using on-site data with user specified
+               surface characteristics which vary by sector and season.
+               On-site stability is based on the SRDT method.
+
+    Experienced users of MPRM should note that command line piping
+(i.e., STAGE3 < TEST001.INP) is not used in MPRM (dated 99349);  the
+executables, STAGE1N2 and STAGE3 now prompt the user for an input file.
+
+
+     Questions or comments related to the implementation of MPRM should be
+directed to:
+
+
+                    Desmond T. Bailey, Meteorologist
+                    Environmental Protection Agency (MD-14)
+                    Research Triangle Park, NC  27711
+
+                    Phone:    (919) 541-5248
+                    Fax:      (919) 541-0044
+                    EMAIL:    BAILEY.DESMOND@EPA.GOV

@@ -1,0 +1,100 @@
+1
+         METEOROLOGICAL PROCESSOR FOR REGULATORY MODELS [MPRM (dated 99349)]
+
+                         DECEMBER 15, 1999     14:22:35
+
+                STAGE 1 EXTRACTION AND QA OF METEOROLOGICAL DATA
+
+
+             ********************************************************
+             ***             JOB TERMINATED NORMALLY              ***
+             ********************************************************
+
+                  STATUS REPORT PRIOR TO BEGINNING PROCESSOR RUN
+
+
+ 1.  REPORT FILE NAMES
+
+      ERROR MESSAGES: Y2K-141.ERR                                     
+      SUMMARY OF RUN: Y2K-141.RPT                                     
+
+
+ 2.  UPPER AIR DATA  
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           NONE - NO DATA TO BE PROCESSED ON THIS PATH 
+
+
+
+ 3.  NWS SURFACE DATA
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           NONE - NO DATA TO BE PROCESSED ON THIS PATH 
+
+
+
+ 4.  ON-SITE DATA    
+
+      SITE ID    LATITUDE(DEG.)   LONGITUDE(DEG.)
+        99999       35.52N            78.47W
+
+     THE PROCESS(ES) MPRM ANTICIPATES TO PERFORM ARE:
+
+           EXTRACT AND QUALITY ASSESSMENT              
+
+          EXTRACT OUTPUT-    OPEN: Y2K-141.MET                                     
+          QA OUTPUT     -    OPEN: Y2K-141.OQA                                     
+
+          THE EXTRACT DATES ARE:    STARTING: DEC 25, 1999
+                                      ENDING: JAN  7, 2000
+
+
+                      **** MPRM MESSAGE SUMMARY TABLE ****
+
+         0- 9   10-19   20-29   30-39   40-49   50-59   60-69   70-79   TOTAL
+       ----------------------------------------------------------------------
+
+    JB
+      E    0       0       0       0       0       0       0       0       0
+      W    0       0       0       0       0       0       0       0       0
+      I    2       7       0       0       0       0       0       0       9
+
+    OS
+      E    0       0       0       0       0       0       0       0       0
+      W    0       2       0       0       0       0       0       0       2
+      I    0       0       0       0       0       0       0       0       0
+      Q    0       0       0       0       0     230       0       0     230
+       ----------------------------------------------------------------------
+           2       9       0       0       0     230       0       0     241
+
+        ****   WARNING MESSAGES ****
+         0 OS W15 AUTCHK: MHGT NOT INPUT: AUDIT & TRACE DISABLED                
+         0 OS W15 AUTCHK: SE   NOT INPUT: AUDIT & TRACE DISABLED                
+
+        ****    ERROR MESSAGES  ****
+
+               ---  NONE  ---
+
+
+
+             ********************************************************
+             ***             JOB TERMINATED NORMALLY              ***
+             ********************************************************
+
+
+                        **** SUMMARY OF THE QA AUDIT ****
+     THERE IS NO AUDIT TRAIL FOR SITE SCALARS
+
+
+ SITE VECTORS         |------VIOLATION SUMMARY------|   |-----TEST VALUES-----|
+               TOTAL     #     LOWER  UPPER      %      MISSING   LOWER   UPPER
+               # OBS  MISSING  BOUND  BOUND  ACCEPTED     FLAG    BOUND   BOUND
+     10.00 M
+       SA       336        0      0     29     91.37       99.0,    0.0,   35.0
+       TT       336        0      0      2     99.40       99.0,  -30.0,   35.0
+       WD       336        2      0      0     99.40      999.0,    0.0,  360.0
+       WS       336        2      0      0     99.40      999.0,    0.0,   50.0
+
+     THIS CONCLUDES THE AUDIT TRAIL

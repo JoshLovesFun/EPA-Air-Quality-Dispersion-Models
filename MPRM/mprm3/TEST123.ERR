@@ -1,0 +1,97 @@
+         9 JB I00 DEFINE: BLANK CARD FOUND, SKIP TO NEXT IMAGE   
+        12 JB I00 DEFINE: BLANK CARD FOUND, SKIP TO NEXT IMAGE   
+        21 JB I19  SETUP: FOUND "END OF FILE" ON DEVICE DEVIN  5 
+         0 JB I10   TEST: SUMMARY: NO UA-EXT CARD, NULL EXTRACT  
+         0 JB I11   TEST: SUMMARY: NO UA-IQA CARD, NULL QA       
+         0 JB I12   TEST: SUMMARY: NO UA-OQA CARD, NULL MERGE    
+         0 JB I10   TEST: SUMMARY: NO SF-EXT CARD, NULL EXTRACT  
+         0 JB I11   TEST: SUMMARY: NO SF-IQA CARD, NULL QA       
+         0 JB I12   TEST: SUMMARY: NO SF-OQA CARD, NULL MERGE    
+         0 OS W15 AUTCHK: MHGT NOT INPUT: AUDIT & TRACE DISABLED 
+         0 OS W15 AUTCHK: SE   NOT INPUT: AUDIT & TRACE DISABLED 
+     30613 OS Q58 REALCK: UB:       5.00 DT01:       9.44        
+     30613 OS           : ON 94/11/02/13                         
+     30713 OS Q58 REALCK: UB:      50.00 SA  :      52.00        
+     30713 OS           : ON 94/11/03/13, LEVEL: 1               
+     30824 OS Q58 REALCK: UB:      50.00 SA  :      57.10        
+     30824 OS           : ON 94/11/04/24, LEVEL: 1               
+     30914 OS Q58 REALCK: UB:      50.00 SA  :      59.60        
+     30914 OS           : ON 94/11/05/14, LEVEL: 1               
+     30922 OS Q58 REALCK: UB:       5.00 DT01:       5.00        
+     30922 OS           : ON 94/11/05/22                         
+     30923 OS Q58 REALCK: UB:       5.00 DT01:       6.11        
+     30923 OS           : ON 94/11/05/23                         
+     30924 OS Q58 REALCK: UB:       5.00 DT01:       7.22        
+     30924 OS           : ON 94/11/05/24                         
+     31001 OS Q58 REALCK: UB:       5.00 DT01:       9.44        
+     31001 OS           : ON 94/11/06/01                         
+     31002 OS Q58 REALCK: UB:       5.00 DT01:       5.00        
+     31002 OS           : ON 94/11/06/02                         
+     31120 OS Q58 REALCK: UB:       5.00 DT01:       5.00        
+     31120 OS           : ON 94/11/07/20                         
+     31123 OS Q58 REALCK: UB:       5.00 DT01:       5.56        
+     31123 OS           : ON 94/11/07/23                         
+     31124 OS Q58 REALCK: UB:       5.00 DT01:       5.56        
+     31124 OS           : ON 94/11/07/24                         
+     31201 OS Q58 REALCK: UB:       5.00 DT01:       5.00        
+     31201 OS           : ON 94/11/08/01                         
+     31202 OS Q58 REALCK: UB:       5.00 DT01:       5.56        
+     31202 OS           : ON 94/11/08/02                         
+     31319 OS Q58 REALCK: UB:       5.00 DT01:       5.56        
+     31319 OS           : ON 94/11/09/19                         
+     31320 OS Q58 REALCK: UB:       5.00 DT01:       5.56        
+     31320 OS           : ON 94/11/09/20                         
+     31321 OS Q58 REALCK: UB:       5.00 DT01:       6.11        
+     31321 OS           : ON 94/11/09/21                         
+     31722 OS Q58 REALCK: UB:       5.00 DT01:       7.22        
+     31722 OS           : ON 94/11/13/22                         
+     31811 OS Q58 REALCK: UB:      50.00 SA  :      57.30        
+     31811 OS           : ON 94/11/14/11, LEVEL: 1               
+     31812 OS Q58 REALCK: UB:      50.00 SA  :      62.00        
+     31812 OS           : ON 94/11/14/12, LEVEL: 1               
+     31813 OS Q58 REALCK: UB:      50.00 SA  :      52.50        
+     31813 OS           : ON 94/11/14/13, LEVEL: 1               
+     31916 OS Q58 REALCK: UB:      50.00 SA  :      51.20        
+     31916 OS           : ON 94/11/15/16, LEVEL: 1               
+     32111 OS Q58 REALCK: UB:      50.00 SA  :      50.00        
+     32111 OS           : ON 94/11/17/11, LEVEL: 1               
+     32201 OS Q58 REALCK: UB:       5.00 DT01:       5.56        
+     32201 OS           : ON 94/11/18/01                         
+     32205 OS Q58 REALCK: UB:      50.00 SA  :      50.10        
+     32205 OS           : ON 94/11/18/05, LEVEL: 1               
+     32210 OS Q58 REALCK: UB:      50.00 SA  :      54.90        
+     32210 OS           : ON 94/11/18/10, LEVEL: 1               
+     32306 OS Q58 REALCK: UB:      50.00 SA  :      53.90        
+     32306 OS           : ON 94/11/19/06, LEVEL: 1               
+     32402 OS Q58 REALCK: UB:       5.00 DT01:       5.00        
+     32402 OS           : ON 94/11/20/02                         
+     32404 OS Q58 REALCK: UB:       5.00 DT01:       5.00        
+     32404 OS           : ON 94/11/20/04                         
+     32422 OS Q58 REALCK: UB:       5.00 DT01:       5.00        
+     32422 OS           : ON 94/11/20/22                         
+     32505 OS Q58 REALCK: UB:      50.00 SA  :      54.10        
+     32505 OS           : ON 94/11/21/05, LEVEL: 1               
+     32506 OS Q58 REALCK: UB:      50.00 SA  :      60.40        
+     32506 OS           : ON 94/11/21/06, LEVEL: 1               
+     32507 OS Q58 REALCK: UB:      50.00 SA  :      60.50        
+     32507 OS           : ON 94/11/21/07, LEVEL: 1               
+     32513 OS Q57 REALCK: LB:     -10.00 DT01:     -13.89        
+     32513 OS           : ON 94/11/21/13                         
+     32514 OS Q57 REALCK: LB:     -10.00 DT01:     -24.44        
+     32514 OS           : ON 94/11/21/14                         
+     32515 OS Q57 REALCK: LB:     -10.00 DT01:     -26.67        
+     32515 OS           : ON 94/11/21/15                         
+     32611 OS Q57 REALCK: LB:     -10.00 DT01:     -18.89        
+     32611 OS           : ON 94/11/22/11                         
+     32612 OS Q57 REALCK: LB:     -10.00 DT01:     -26.67        
+     32612 OS           : ON 94/11/22/12                         
+     32613 OS Q57 REALCK: LB:     -10.00 DT01:     -28.89        
+     32613 OS           : ON 94/11/22/13                         
+     32614 OS Q57 REALCK: LB:     -10.00 DT01:     -21.11        
+     32614 OS           : ON 94/11/22/14                         
+     32615 OS Q57 REALCK: LB:     -10.00 DT01:     -12.78        
+     32615 OS           : ON 94/11/22/15                         
+     32616 OS Q58 REALCK: UB:       5.00 DT01:      50.00        
+     32616 OS           : ON 94/11/22/16                         
+     32702 OS Q58 REALCK: UB:      50.00 SA  :      56.70        
+     32702 OS           : ON 94/11/23/02, LEVEL: 1               

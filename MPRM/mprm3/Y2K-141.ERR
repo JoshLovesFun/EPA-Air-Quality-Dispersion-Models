@@ -1,0 +1,471 @@
+         5 JB I00 DEFINE: BLANK CARD FOUND, SKIP TO NEXT IMAGE   
+        15 JB I00 DEFINE: BLANK CARD FOUND, SKIP TO NEXT IMAGE   
+        16 JB I19  SETUP: ENCOUNTERED END OF "JOB/RUN CARD"      
+         0 JB I10   TEST: SUMMARY: NO UA-EXT CARD, NULL EXTRACT  
+         0 JB I11   TEST: SUMMARY: NO UA-IQA CARD, NULL QA       
+         0 JB I12   TEST: SUMMARY: NO UA-OQA CARD, NULL MERGE    
+         0 JB I10   TEST: SUMMARY: NO SF-EXT CARD, NULL EXTRACT  
+         0 JB I11   TEST: SUMMARY: NO SF-IQA CARD, NULL QA       
+         0 JB I12   TEST: SUMMARY: NO SF-OQA CARD, NULL MERGE    
+         0 OS W15 AUTCHK: MHGT NOT INPUT: AUDIT & TRACE DISABLED 
+         0 OS W15 AUTCHK: SE   NOT INPUT: AUDIT & TRACE DISABLED 
+     35901 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35901 OS           : ON 99/12/25/01                         
+     35902 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35902 OS           : ON 99/12/25/02                         
+     35903 OS Q58 REALCK: UB:      35.00 SA  :     999.00        
+     35903 OS           : ON 99/12/25/03, LEVEL: 1               
+     35903 OS Q58 REALCK: UB:      35.00 TT  :     999.00        
+     35903 OS           : ON 99/12/25/03, LEVEL: 1               
+     35903 OS Q58 REALCK: UB:      35.00 DP  :     999.00        
+     35903 OS           : ON 99/12/25/03, LEVEL: 1               
+     35904 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35904 OS           : ON 99/12/25/04                         
+     35905 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35905 OS           : ON 99/12/25/05                         
+     35906 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35906 OS           : ON 99/12/25/06                         
+     35907 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35907 OS           : ON 99/12/25/07                         
+     35913 OS Q58 REALCK: UB:      35.00 SA  :      42.40        
+     35913 OS           : ON 99/12/25/13, LEVEL: 1               
+     35914 OS Q58 REALCK: UB:      35.00 SA  :      54.50        
+     35914 OS           : ON 99/12/25/14, LEVEL: 1               
+     35918 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35918 OS           : ON 99/12/25/18                         
+     35919 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35919 OS           : ON 99/12/25/19                         
+     35920 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35920 OS           : ON 99/12/25/20                         
+     35921 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35921 OS           : ON 99/12/25/21                         
+     35922 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35922 OS           : ON 99/12/25/22                         
+     35923 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35923 OS           : ON 99/12/25/23                         
+     35924 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     35924 OS           : ON 99/12/25/24                         
+     36001 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36001 OS           : ON 99/12/26/01                         
+     36002 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36002 OS           : ON 99/12/26/02                         
+     36003 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36003 OS           : ON 99/12/26/03                         
+     36004 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36004 OS           : ON 99/12/26/04                         
+     36005 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36005 OS           : ON 99/12/26/05                         
+     36006 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36006 OS           : ON 99/12/26/06                         
+     36007 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36007 OS           : ON 99/12/26/07                         
+     36008 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36008 OS           : ON 99/12/26/08                         
+     36018 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36018 OS           : ON 99/12/26/18                         
+     36019 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36019 OS           : ON 99/12/26/19                         
+     36020 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36020 OS           : ON 99/12/26/20                         
+     36021 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36021 OS           : ON 99/12/26/21                         
+     36022 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36022 OS           : ON 99/12/26/22                         
+     36023 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36023 OS           : ON 99/12/26/23                         
+     36024 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36024 OS           : ON 99/12/26/24                         
+     36101 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36101 OS           : ON 99/12/27/01                         
+     36102 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36102 OS           : ON 99/12/27/02                         
+     36103 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36103 OS           : ON 99/12/27/03                         
+     36104 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36104 OS           : ON 99/12/27/04                         
+     36105 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36105 OS           : ON 99/12/27/05                         
+     36106 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36106 OS           : ON 99/12/27/06                         
+     36107 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36107 OS           : ON 99/12/27/07                         
+     36108 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36108 OS           : ON 99/12/27/08                         
+     36113 OS Q58 REALCK: UB:      35.00 SA  :      51.10        
+     36113 OS           : ON 99/12/27/13, LEVEL: 1               
+     36118 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36118 OS           : ON 99/12/27/18                         
+     36119 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36119 OS           : ON 99/12/27/19                         
+     36120 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36120 OS           : ON 99/12/27/20                         
+     36121 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36121 OS           : ON 99/12/27/21                         
+     36122 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36122 OS           : ON 99/12/27/22                         
+     36123 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36123 OS           : ON 99/12/27/23                         
+     36124 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36124 OS           : ON 99/12/27/24                         
+     36201 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36201 OS           : ON 99/12/28/01                         
+     36202 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36202 OS           : ON 99/12/28/02                         
+     36203 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36203 OS           : ON 99/12/28/03                         
+     36204 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36204 OS           : ON 99/12/28/04                         
+     36204 OS Q58 REALCK: UB:      35.00 SA  :      37.40        
+     36204 OS           : ON 99/12/28/04, LEVEL: 1               
+     36205 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36205 OS           : ON 99/12/28/05                         
+     36206 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36206 OS           : ON 99/12/28/06                         
+     36207 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36207 OS           : ON 99/12/28/07                         
+     36210 OS Q58 REALCK: UB:      35.00 SA  :      35.30        
+     36210 OS           : ON 99/12/28/10, LEVEL: 1               
+     36218 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36218 OS           : ON 99/12/28/18                         
+     36219 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36219 OS           : ON 99/12/28/19                         
+     36219 OS Q58 REALCK: UB:      35.00 SA  :      49.10        
+     36219 OS           : ON 99/12/28/19, LEVEL: 1               
+     36220 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36220 OS           : ON 99/12/28/20                         
+     36221 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36221 OS           : ON 99/12/28/21                         
+     36222 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36222 OS           : ON 99/12/28/22                         
+     36223 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36223 OS           : ON 99/12/28/23                         
+     36224 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36224 OS           : ON 99/12/28/24                         
+     36224 OS Q58 REALCK: UB:      35.00 SA  :      55.20        
+     36224 OS           : ON 99/12/28/24, LEVEL: 1               
+     36301 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36301 OS           : ON 99/12/29/01                         
+     36302 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36302 OS           : ON 99/12/29/02                         
+     36303 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36303 OS           : ON 99/12/29/03                         
+     36304 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36304 OS           : ON 99/12/29/04                         
+     36305 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36305 OS           : ON 99/12/29/05                         
+     36306 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36306 OS           : ON 99/12/29/06                         
+     36307 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36307 OS           : ON 99/12/29/07                         
+     36308 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36308 OS           : ON 99/12/29/08                         
+     36318 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36318 OS           : ON 99/12/29/18                         
+     36319 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36319 OS           : ON 99/12/29/19                         
+     36320 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36320 OS           : ON 99/12/29/20                         
+     36321 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36321 OS           : ON 99/12/29/21                         
+     36322 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36322 OS           : ON 99/12/29/22                         
+     36323 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36323 OS           : ON 99/12/29/23                         
+     36324 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36324 OS           : ON 99/12/29/24                         
+     36401 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36401 OS           : ON 99/12/30/01                         
+     36402 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36402 OS           : ON 99/12/30/02                         
+     36403 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36403 OS           : ON 99/12/30/03                         
+     36404 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36404 OS           : ON 99/12/30/04                         
+     36405 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36405 OS           : ON 99/12/30/05                         
+     36406 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36406 OS           : ON 99/12/30/06                         
+     36407 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36407 OS           : ON 99/12/30/07                         
+     36416 OS Q58 REALCK: UB:      35.00 SA  :     999.00        
+     36416 OS           : ON 99/12/30/16, LEVEL: 1               
+     36416 OS Q58 REALCK: UB:      35.00 TT  :     999.00        
+     36416 OS           : ON 99/12/30/16, LEVEL: 1               
+     36416 OS Q58 REALCK: UB:      35.00 DP  :     999.00        
+     36416 OS           : ON 99/12/30/16, LEVEL: 1               
+     36418 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36418 OS           : ON 99/12/30/18                         
+     36419 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36419 OS           : ON 99/12/30/19                         
+     36420 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36420 OS           : ON 99/12/30/20                         
+     36421 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36421 OS           : ON 99/12/30/21                         
+     36422 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36422 OS           : ON 99/12/30/22                         
+     36423 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36423 OS           : ON 99/12/30/23                         
+     36424 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36424 OS           : ON 99/12/30/24                         
+     36501 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36501 OS           : ON 99/12/31/01                         
+     36502 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36502 OS           : ON 99/12/31/02                         
+     36503 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36503 OS           : ON 99/12/31/03                         
+     36504 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36504 OS           : ON 99/12/31/04                         
+     36505 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36505 OS           : ON 99/12/31/05                         
+     36506 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36506 OS           : ON 99/12/31/06                         
+     36507 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36507 OS           : ON 99/12/31/07                         
+     36518 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36518 OS           : ON 99/12/31/18                         
+     36519 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36519 OS           : ON 99/12/31/19                         
+     36520 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36520 OS           : ON 99/12/31/20                         
+     36521 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36521 OS           : ON 99/12/31/21                         
+     36522 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36522 OS           : ON 99/12/31/22                         
+     36523 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36523 OS           : ON 99/12/31/23                         
+     36524 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+     36524 OS           : ON 99/12/31/24                         
+       101 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       101 OS           : ON  0/01/01/01                         
+       101 OS Q58 REALCK: UB:      35.00 SA  :      35.00        
+       101 OS           : ON  0/01/01/01, LEVEL: 1               
+       102 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       102 OS           : ON  0/01/01/02                         
+       103 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       103 OS           : ON  0/01/01/03                         
+       104 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       104 OS           : ON  0/01/01/04                         
+       105 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       105 OS           : ON  0/01/01/05                         
+       106 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       106 OS           : ON  0/01/01/06                         
+       107 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       107 OS           : ON  0/01/01/07                         
+       118 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       118 OS           : ON  0/01/01/18                         
+       119 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       119 OS           : ON  0/01/01/19                         
+       120 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       120 OS           : ON  0/01/01/20                         
+       121 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       121 OS           : ON  0/01/01/21                         
+       122 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       122 OS           : ON  0/01/01/22                         
+       123 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       123 OS           : ON  0/01/01/23                         
+       124 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       124 OS           : ON  0/01/01/24                         
+       201 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       201 OS           : ON  0/01/02/01                         
+       202 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       202 OS           : ON  0/01/02/02                         
+       203 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       203 OS           : ON  0/01/02/03                         
+       204 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       204 OS           : ON  0/01/02/04                         
+       205 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       205 OS           : ON  0/01/02/05                         
+       206 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       206 OS           : ON  0/01/02/06                         
+       207 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       207 OS           : ON  0/01/02/07                         
+       207 OS Q58 REALCK: UB:      35.00 SA  :      41.00        
+       207 OS           : ON  0/01/02/07, LEVEL: 1               
+       212 OS Q58 REALCK: UB:      35.00 SA  :      49.00        
+       212 OS           : ON  0/01/02/12, LEVEL: 1               
+       213 OS Q58 REALCK: UB:      35.00 SA  :      43.50        
+       213 OS           : ON  0/01/02/13, LEVEL: 1               
+       214 OS Q58 REALCK: UB:      35.00 SA  :      43.20        
+       214 OS           : ON  0/01/02/14, LEVEL: 1               
+       215 OS Q58 REALCK: UB:      35.00 SA  :      36.90        
+       215 OS           : ON  0/01/02/15, LEVEL: 1               
+       218 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       218 OS           : ON  0/01/02/18                         
+       219 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       219 OS           : ON  0/01/02/19                         
+       220 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       220 OS           : ON  0/01/02/20                         
+       221 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       221 OS           : ON  0/01/02/21                         
+       222 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       222 OS           : ON  0/01/02/22                         
+       223 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       223 OS           : ON  0/01/02/23                         
+       224 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       224 OS           : ON  0/01/02/24                         
+       224 OS Q58 REALCK: UB:      35.00 SA  :      35.30        
+       224 OS           : ON  0/01/02/24, LEVEL: 1               
+       301 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       301 OS           : ON  0/01/03/01                         
+       302 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       302 OS           : ON  0/01/03/02                         
+       303 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       303 OS           : ON  0/01/03/03                         
+       303 OS Q58 REALCK: UB:      35.00 SA  :      41.60        
+       303 OS           : ON  0/01/03/03, LEVEL: 1               
+       304 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       304 OS           : ON  0/01/03/04                         
+       305 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       305 OS           : ON  0/01/03/05                         
+       306 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       306 OS           : ON  0/01/03/06                         
+       307 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       307 OS           : ON  0/01/03/07                         
+       313 OS Q58 REALCK: UB:      35.00 SA  :      52.00        
+       313 OS           : ON  0/01/03/13, LEVEL: 1               
+       314 OS Q58 REALCK: UB:      35.00 SA  :      35.90        
+       314 OS           : ON  0/01/03/14, LEVEL: 1               
+       318 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       318 OS           : ON  0/01/03/18                         
+       319 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       319 OS           : ON  0/01/03/19                         
+       320 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       320 OS           : ON  0/01/03/20                         
+       321 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       321 OS           : ON  0/01/03/21                         
+       322 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       322 OS           : ON  0/01/03/22                         
+       323 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       323 OS           : ON  0/01/03/23                         
+       324 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       324 OS           : ON  0/01/03/24                         
+       401 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       401 OS           : ON  0/01/04/01                         
+       402 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       402 OS           : ON  0/01/04/02                         
+       403 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       403 OS           : ON  0/01/04/03                         
+       404 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       404 OS           : ON  0/01/04/04                         
+       405 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       405 OS           : ON  0/01/04/05                         
+       406 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       406 OS           : ON  0/01/04/06                         
+       407 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       407 OS           : ON  0/01/04/07                         
+       418 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       418 OS           : ON  0/01/04/18                         
+       419 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       419 OS           : ON  0/01/04/19                         
+       420 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       420 OS           : ON  0/01/04/20                         
+       421 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       421 OS           : ON  0/01/04/21                         
+       422 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       422 OS           : ON  0/01/04/22                         
+       423 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       423 OS           : ON  0/01/04/23                         
+       423 OS Q58 REALCK: UB:      35.00 SA  :      37.50        
+       423 OS           : ON  0/01/04/23, LEVEL: 1               
+       424 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       424 OS           : ON  0/01/04/24                         
+       424 OS Q58 REALCK: UB:      35.00 SA  :      57.10        
+       424 OS           : ON  0/01/04/24, LEVEL: 1               
+       501 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       501 OS           : ON  0/01/05/01                         
+       501 OS Q58 REALCK: UB:      35.00 SA  :      37.50        
+       501 OS           : ON  0/01/05/01, LEVEL: 1               
+       502 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       502 OS           : ON  0/01/05/02                         
+       503 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       503 OS           : ON  0/01/05/03                         
+       504 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       504 OS           : ON  0/01/05/04                         
+       505 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       505 OS           : ON  0/01/05/05                         
+       506 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       506 OS           : ON  0/01/05/06                         
+       513 OS Q58 REALCK: UB:      35.00 SA  :      49.20        
+       513 OS           : ON  0/01/05/13, LEVEL: 1               
+       514 OS Q58 REALCK: UB:      35.00 SA  :      59.60        
+       514 OS           : ON  0/01/05/14, LEVEL: 1               
+       515 OS Q58 REALCK: UB:      35.00 SA  :      37.50        
+       515 OS           : ON  0/01/05/15, LEVEL: 1               
+       518 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       518 OS           : ON  0/01/05/18                         
+       519 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       519 OS           : ON  0/01/05/19                         
+       520 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       520 OS           : ON  0/01/05/20                         
+       521 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       521 OS           : ON  0/01/05/21                         
+       522 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       522 OS           : ON  0/01/05/22                         
+       523 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       523 OS           : ON  0/01/05/23                         
+       524 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       524 OS           : ON  0/01/05/24                         
+       601 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       601 OS           : ON  0/01/06/01                         
+       602 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       602 OS           : ON  0/01/06/02                         
+       603 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       603 OS           : ON  0/01/06/03                         
+       604 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       604 OS           : ON  0/01/06/04                         
+       605 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       605 OS           : ON  0/01/06/05                         
+       606 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       606 OS           : ON  0/01/06/06                         
+       607 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       607 OS           : ON  0/01/06/07                         
+       607 OS Q58 REALCK: UB:      35.00 SA  :      41.30        
+       607 OS           : ON  0/01/06/07, LEVEL: 1               
+       618 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       618 OS           : ON  0/01/06/18                         
+       619 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       619 OS           : ON  0/01/06/19                         
+       620 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       620 OS           : ON  0/01/06/20                         
+       621 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       621 OS           : ON  0/01/06/21                         
+       622 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       622 OS           : ON  0/01/06/22                         
+       623 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       623 OS           : ON  0/01/06/23                         
+       624 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       624 OS           : ON  0/01/06/24                         
+       701 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       701 OS           : ON  0/01/07/01                         
+       702 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       702 OS           : ON  0/01/07/02                         
+       703 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       703 OS           : ON  0/01/07/03                         
+       704 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       704 OS           : ON  0/01/07/04                         
+       705 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       705 OS           : ON  0/01/07/05                         
+       706 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       706 OS           : ON  0/01/07/06                         
+       706 OS Q58 REALCK: UB:      35.00 SA  :      36.30        
+       706 OS           : ON  0/01/07/06, LEVEL: 1               
+       707 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       707 OS           : ON  0/01/07/07                         
+       711 OS Q58 REALCK: UB:      35.00 SA  :      46.30        
+       711 OS           : ON  0/01/07/11, LEVEL: 1               
+       718 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       718 OS           : ON  0/01/07/18                         
+       719 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       719 OS           : ON  0/01/07/19                         
+       720 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       720 OS           : ON  0/01/07/20                         
+       721 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       721 OS           : ON  0/01/07/21                         
+       722 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       722 OS           : ON  0/01/07/22                         
+       723 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       723 OS           : ON  0/01/07/23                         
+       724 OS Q57 REALCK: LB:       0.00 INSO:       0.00        
+       724 OS           : ON  0/01/07/24                         
+       724 OS Q58 REALCK: UB:      35.00 SA  :      36.10        
+       724 OS           : ON  0/01/07/24, LEVEL: 1               

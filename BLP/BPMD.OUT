@@ -1,0 +1,254 @@
+
+                     BLP              (DATED 99176)                                                                       06/25/99
+                                                                                                                          15:56:00
+
+           BLP -- MULTIPLE BUOYANT LINE AND POINT SOURCE DISPERSION MODEL     SCRAM VERSION (DATED 99176)                 06/25/99
+                                                                                                                          15:56:00
+**********************************************************************************************************************************
+
+
+BLP TEST CASE WITH PMD FILE - LCOMPR = .TRUE.                                   
+ &GEN NLINES=2,NPTS=3,NREC=0,LINPUT=F,LUTMS=F,LPART=T,LDOWNW=T,LSHEAR=T,
+LTRANS=T,TCOR=90.0000,LCOMPR=T /
+ &RISE L=500.000,HB=20.0000,WB=15.0000,WM=2.00000,FPRIME=300.000,DX=
+10.0000 /
+ &RCEPT RXBEG=-4000.00000000000,RYBEG=-900.000000000000,RXEND=
+4000.00000000000,RYEND=1100.00000000000,RDX=1000.00,RDY=2000.00 /
+ &METIN ZMEAS=7.00000,DTHTA=0.200000E-01,0.350000E-01,PEXP=0.100000,
+0.150000,0.200000,0.250000,0.300000,0.300000,IDSURF=94823,IYSURF=64,
+IDUPER=94823,IYUPER=64,IDELS=5,IRU=1,IDAYS=1,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,LMETIN=F,LMETOT=F /
+ &CALC CRIT=0.200000E-01,TERAN=0.500000,0.500000,0.500000,0.500000,
+0.300000,0.300000,DECFAC=0.00000,XBACKG=0.00000,CONST2=2.60000,CONST3=
+34.4900,MAXIT=14 /
+ &OUTPUT IPCL=1,1,0,0,0,0,0,0,0,0,1,IPCP=1,1,1,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,1 /
+           BLP -- MULTIPLE BUOYANT LINE AND POINT SOURCE DISPERSION MODEL     SCRAM VERSION (DATED 99176)                 06/25/99
+                                                                                                                          15:56:00
+**********************************************************************************************************************************
+
+
+BLP TEST CASE WITH PMD FILE - LCOMPR = .TRUE.                                   
+
+
+
+TOTAL NUMBER OF DAYS INCLUDED IN THIS RUN:   1
+
+(0=NOT INCLUDED,1=INCLUDED)
+
+
+1000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000
+
+0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000
+
+0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   0000000000
+
+0000000000   0000000000   0000000000   0000000000   0000000000   0000000000   000000
+
+
+
+TOTAL NUMBER OF SOURCES:   5
+
+           LINE SOURCES:   2
+          POINT SOURCES:   3
+
+
+PARTIAL CONCENTRATIONS REQUESTED FOR ANY LINE OR POINT SOURCES ? YES
+
+POINT SOURCE BUILDING DOWNWASH OPTION REQUESTED ? YES
+
+VERTICAL WIND SHEAR (IN PLUME RISE) REQUESTED ? YES
+
+TRANSITIONAL POINT SOURCE PLUME RISE REQUESTED ? YES
+
+OUTPUT OF METEOROLOGICAL DATA REQUESTED ? NO 
+
+OPTION TO COMPRESS OUTPUT CONCENTRATION ARRAYS REQUESTED ? YES
+
+
+
+PARAMETERS USED IN THE LINE SOURCE PLUME RISE CALCULATIONS
+
+BUILDING DIMENSIONS:  HEIGHT =   20.00 (M)
+                       WIDTH =   15.00 (M)
+                      LENGTH =  500.00 (M)
+
+         BUILDING SEPARATION =   10.00 (M)
+
+      LINE SOURCE SEPARATION =   25.00 (M)
+
+           LINE SOURCE WIDTH =    2.00 (M)
+
+BUOYANCY FLUX PER LINE (FPRIME) =   300.0 (M**4/S**3)
+           BLP -- MULTIPLE BUOYANT LINE AND POINT SOURCE DISPERSION MODEL     SCRAM VERSION (DATED 99176)                 06/25/99
+                                                                                                                          15:56:00
+**********************************************************************************************************************************
+
+
+METEOROLOGICAL PARAMETERS
+
+
+MEAN WIND SPEED MEASUREMENT HEIGHT =  7.0 (M)
+
+WIND SPEED POWER LAW EXPONENTS (STABILITIES 1-6) =  0.10  0.15  0.20  0.25  0.30  0.30
+
+VERTICAL POTENTIAL TEMPERATURE GRADIENT =  0.020 DEG K/M  (STABILITY 5)     0.035 DEG K/M  (STABILITY 6)
+
+METEOROLOGICAL DATA -- PREPROCESSOR FORMAT
+
+STABILITY CLASS VARIATION RESTRICTED TO 5 CLASSES/HOUR
+
+ MIXING HEIGHTS USED: 1  (1=RURAL,2=URBAN)
+  SURFACE STATION ID: 94823     YEAR: 64
+UPPER AIR STATION ID: 94823     YEAR: 64
+
+
+
+
+COMPUTATIONAL PARAMETERS
+
+
+CONVERGENCE THRESHOLD FOR LINE SOURCE CALCULATIONS =  0.020
+
+MAXIMUM NUMBER OF ITERATIONS IN LINE SOURCE CALCULATIONS = 14
+
+FINAL NEUTRAL PLUME RISE CONSTANT (CONST3) = 34.49
+
+BACKGROUND CONCENTRATION =     0.00 (MICROGRAMS/M**3)
+
+POLLUTANT DECAY FACTOR =  0.00000E+00  (1/SEC)
+
+TERRAIN ADJUSTMENT FACTORS (STABILITIES 1-6) =  0.50  0.50  0.50  0.50  0.30  0.30
+           BLP -- MULTIPLE BUOYANT LINE AND POINT SOURCE DISPERSION MODEL     SCRAM VERSION (DATED 99176)                 06/25/99
+                                                                                                                          15:56:00
+**********************************************************************************************************************************
+
+
+RECEPTOR LOCATIONS GENERATED FROM USER DEFINED RECEPTOR RECTANGLE
+
+
+
+          RECEPTOR NETWORK DEFINED BY THE FOLLOWING RECTANGLE
+
+          (   -4000.0,    1100.0)     (    4000.0,    1100.0)
+
+          (   -4000.0,    -900.0)     (    4000.0,    -900.0)
+
+          X GRID SPACING = 1000.00
+
+          Y GRID SPACING = 2000.00
+
+SOURCE AND RECEPTOR LOCATIONS SPECIFIED IN SCS COORDINATES -- TCOR =  90.00 DEGREES
+           BLP -- MULTIPLE BUOYANT LINE AND POINT SOURCE DISPERSION MODEL     SCRAM VERSION (DATED 99176)                 06/25/99
+                                                                                                                          15:56:00
+**********************************************************************************************************************************
+
+
+LINE SOURCE PARAMETERS
+
+
+
+NUMBER OF LINES:    2
+
+LINE NUMBER    X START      Y START         X END         Y END           Q          HEIGHT     ELEVATION
+                 (M)          (M)            (M)           (M)        (GM/SEC)         (M)         (M)
+     1              0.0           0.0         500.0           0.0        50.00        20.00        0.0
+     2              0.0          12.0         500.0          12.0        50.00        20.00        0.0
+
+
+
+SOURCE CONTRIBUTIONS FROM THE FOLLOWING LINE SOURCES ARE AVAILABLE: 
+
+(0=NOT AVAILABLE; 1=AVAILABLE)
+
+LINE SOURCE NUMBER     AVAILABILITY
+
+        1                   1
+
+        2                   1
+
+     1 -  2                 1
+           BLP -- MULTIPLE BUOYANT LINE AND POINT SOURCE DISPERSION MODEL     SCRAM VERSION (DATED 99176)                 06/25/99
+                                                                                                                          15:56:00
+**********************************************************************************************************************************
+
+
+POINT SOURCE PARAMETERS
+
+
+
+NUMBER OF POINTS:    3
+
+POINT NUMBER        X              Y           Q          HEIGHT    DIAM.    EXIT VEL.    STACK TEMP.   ELEVATION
+                   (M)            (M)      (GM/SEC)         (M)      (M)       (M/S)        (DEG K)        (M)
+      1             125.0            7.0      50.00        45.00     1.00       4.00         425.0         0.0
+      2             275.0            7.0      50.00        45.00     1.00       4.00         425.0         0.0
+      3             350.0            7.0      50.00        45.00     1.00       4.00         425.0         0.0
+
+
+
+SOURCE CONTRIBUTIONS FROM THE FOLLOWING POINT SOURCES ARE AVAILABLE: 
+
+(0=NOT AVAILABLE; 1=AVAILABLE)
+
+POINT SOURCE NUMBER     AVAILABILITY
+
+         1                   1
+
+         2                   1
+
+         3                   1
+
+      1 -  3                 1
+
+THE SOURCE RECTANGLE IS DEFINED BY THE FOLLOWING POINTS (IN SCS COORDINATES):
+
+(      0.00,     12.00)          (    500.00,     12.00)
+
+(      0.00,      0.00)          (    500.00,      0.00)
+           BLP -- MULTIPLE BUOYANT LINE AND POINT SOURCE DISPERSION MODEL     SCRAM VERSION (DATED 99176)                 06/25/99
+                                                                                                                          15:56:00
+**********************************************************************************************************************************
+
+
+
+RECEPTOR NO.           LOCATION                   RECEPTOR NO.           LOCATION
+               X                Y                                X                Y
+    1          -4000.           -900.              10              0.           1100.
+    2          -4000.           1100.              11           1000.           -900.
+    3          -3000.           -900.              12           1000.           1100.
+    4          -3000.           1100.              13           2000.           -900.
+    5          -2000.           -900.              14           2000.           1100.
+    6          -2000.           1100.              15           3000.           -900.
+    7          -1000.           -900.              16           3000.           1100.
+    8          -1000.           1100.              17           4000.           -900.
+    9              0.           -900.              18           4000.           1100.
+
+
+
+
+NUMBER OF POSSIBLE RECEPTOR LOCATIONS =    18
+
+NUMBER OF ACTUAL RECEPTOR LOCATIONS =    18
+
+
+GENERATED RECEPTOR LOCATIONS IN SCS COORDINATES
+
+
+
+
+
+
+
+                              LAST DAY PROCESSED =   1

@@ -1,0 +1,432 @@
+ 
+                           Model Change Bulletin               
+               
+                                   MCB#2                      3/22/90 
+ 
+                             BLP (dated 90081)
+
+      BLP is an acronym for an air dispersion model that consists of three
+programs, BLP, BLPSUM, and POSTBLP. The following changes are grouped by
+program. The first set of changes are for BLP followed in succession by
+POSTBLP and then BLPSUM changes.
+
+BLP Changes
+
+     In subroutine Cubic of BLP, a bug was detected and fixed, and the arc
+cosine function name ARCOS was changed to the more standard ACOS name.
+Otherwise the main body of the source code remains unchanged for both BLP and
+its post-processor, POSTBLP. The program headers and the title write and
+comment statements of both programs have been modified to reflect the fix in
+BLP and to indicate that these two programs are SCRAM BBS versions. 
+
+     For the sake of brevity and clarity, the length of the sequence
+identifiers in the following list of changes for BLP have been shortened by
+deleting the BL of BLP, or XX of XXX in each case. This reduces the confusion
+caused by 80 column lines wrapping around to the next line and appearing as if
+the end of each of the previous lines is the beginning of the next line. Each
+of the two deleted characters should be reinserted in their appropriate place
+in columns 72 and 73.
+
+     The following is a list of changes made to BLP:
+
+
+1.  Whenever the source code is changed, the SCRAM BBS header is also changed.
+    The following two lines in the header were changed from: 
+ 
+C                          BLP (DATED 82102)                            P00010
+C             *** SEE BLP MODEL CHANGE BULLETIN MCB#1 ***               P00061
+ 
+to:
+ 
+C                          BLP (DATED 90081)                            P00010
+C             *** SEE BLP MODEL CHANGE BULLETIN MCB#2 ***               P00061
+
+2.  Various statements used in writing BLP titles and version numbers to a
+    printout have also been modified. The following non consecutive lines have
+    been changed or commented out:
+
+C      BLP   VERSION 4.1  LEVEL 820412     MAIN                         P00120
+      COMMON/QA/VERSON,LEVEL                                            P00450
+ 1234 FORMAT ('1',21X,'BLP               (DATED 82102) '/)              P00510
+      VERSON=4.1                                                        P00560
+      LEVEL=820412                                                      P00570
+C      BLP   VERSION 4.1  LEVEL 820412     INPUT                        P01740
+      COMMON/QA/VERSON,LEVEL                                            P02020
+      WRITE(6,1400)VERSON,LEVEL                                         P02270
+     1 'SOURCE DISPERSION MODEL     VERSION ',F4.1,3X,'LEVEL ',I6/      P02290
+      WRITE(6,1400)VERSON,LEVEL                                         P04270
+      WRITE(6,1400)VERSON,LEVEL                                         P04800
+      WRITE(6,1400)VERSON,LEVEL                                         P05200
+      WRITE(6,1400)VERSON,LEVEL                                         P05560
+      WRITE(6,1400)VERSON,LEVEL                                         P05860
+C      BLP   VERSION 4.1  LEVEL 810105     RECEPT                       P07310
+      COMMON/QA/VERSON,LEVEL                                            P07410
+      WRITE(6,1400)VERSON,LEVEL                                         P08040
+     1 'SOURCE DISPERSION MODEL     VERSION ',F4.1,3X,'LEVEL ',I6/      P08060
+C      BLP   VERSION 4.1  LEVEL 820412     OUTITL                       P08350
+C      BLP   VERSION 4.1  LEVEL 800212     MET                          P08550
+      COMMON/QA/VERSON,LEVEL                                            P08630
+      WRITE(6,1400)VERSON,LEVEL                                         P09270
+     1 'SOURCE DISPERSION MODEL     VERSION ',F4.1,3X,'LEVEL ',I6/      P09290
+C      BLP   VERSION 4.1  LEVEL 800212     COORD                        P09480
+C      BLP   VERSION 4.1  LEVEL 820412     CONTRB                       P10620
+C      BLP   VERSION 4.1  LEVEL 800909     GAUSS                        P15140
+C      BLP   VERSION 4.1  LEVEL 800212     SORT                         P15890
+C      BLP   VERSION 4.1  LEVEL 820412     OUTPUT                       P16320
+C      BLP   VERSION 4.1  LEVEL 800212     PTRISE                       P16740
+C      BLP   VERSION 4.1  LEVEL 800212     CUBIC                        P17500
+C      BLP   VERSION 4.1  LEVEL 800212     WSC                          P17770
+C      BLP   VERSION 4.1  LEVEL 800212     LENG                         P18130
+C      BLP   VERSION 4.1  LEVEL 800212     RISE                         P18660
+C      BLP   VERSION 4.1  LEVEL 800909     ZRISE                        P19130
+C      BLP   VERSION 4.1  LEVEL 800212     INTRSE                       P19440
+C      BLP   VERSION 4.1  LEVEL 800212     DBTSIG                       P19720
+C      BLP   VERSION 4.1  LEVEL 800212     SIGMAY                       P20490
+C      BLP   VERSION 4.1  LEVEL 800212     XVZ                          P20700
+C      BLP   VERSION 4.1  LEVEL 800212     XVY                          P21340
+C      BLP   VERSION 4.1  LEVEL 800212     BLOCK DATA                   P21510
+C      BLP   VERSION 4.1  LEVEL 820412     COMPRS                       P21880
+C      BLP   VERSION 4.1  LEVEL 820412     OUT                          P22220
+ 
+to:
+
+C                                                                       P00120
+C     COMMON/QA/VERSON,LEVEL                                            P00450
+ 1234 FORMAT ('1',21X,'BLP               (DATED 90081) '/)              P00510
+C     VERSON=4.1                                                        P00560
+C     LEVEL=820412                                                      P00570
+C                                                                       P01740
+C     COMMON/QA/VERSON,LEVEL                                            P02020
+      WRITE(6,1400)                                                     P02270
+     1 'SOURCE DISPERSION MODEL     SCRAM VERSION (DATED 90081)' /      P02290
+      WRITE(6,1400)                                                     P04270
+      WRITE(6,1400)                                                     P04800
+      WRITE(6,1400)                                                     P05200
+      WRITE(6,1400)                                                     P05560
+      WRITE(6,1400)                                                     P05860
+C                                                                       P07310
+C     COMMON/QA/VERSON,LEVEL                                            P07410
+      WRITE(6,1400)                                                     P08040
+     1 'SOURCE DISPERSION MODEL     SCRAM VERSION (DATED 90081)' /      P08060
+C                                                                       P08350
+C                                                                       P08550
+C     COMMON/QA/VERSON,LEVEL                                            P08630
+      WRITE(6,1400)                                                     P09270
+     1 'SOURCE DISPERSION MODEL     SCRAM VERSION (DATED 90081)' /      P09290
+C                                                                       P09480
+C                                                                       P10620
+C                                                                       P15140
+C                                                                       P15890
+C                                                                       P16320
+C                                                                       P16740
+C                                                                       P17500
+C                                                                       P17770
+C                                                                       P18130
+C                                                                       P18660
+C                                                                       P19130
+C                                                                       P19440
+C                                                                       P19720
+C                                                                       P20490
+C                                                                       P20700
+C                                                                       P21340
+C                                                                       P21510
+C                                                                       P21880
+C                                                                       P22220
+ 
+3.  Two additional lines of code were inserted between two lines indentified
+    by sequence identifiers BLP17540 (P17540) and BLP17550 (P17550).  The code 
+    needs to be changed from:
+
+C                                                                       P17540
+      DATA ONE/1.0/                                                     P17550
+
+to:
+
+C                                                                       P17540
+      IMPLICIT  DOUBLE PRECISION (A-H,O-Z)                              X17545
+      REAL A,B,C,Z                                                      X17547
+      DATA ONE/1.0/                                                     P17550
+
+4.  A line of code designated as XXX17655 (X17655) was added just before the
+    line identified as BLP17660 (P17660). The code needs to be changed from:
+
+      SGN=SIGN(ONE,BSV)                                                 P17660
+
+to:
+
+      IF(BSV .EQ. 0) GO TO 45                                           X17655
+      SGN=SIGN(ONE,BSV)                                                 P17660
+
+5.  Four additional lines of code were inserted between the lines identified
+    by sequence identifiers BLP17690 (P17690) and BLP17700 (P17700). The code
+    needs to be changed from:
+
+      RETURN                                                            P17690
+50    CM=2.*SQRT(-AP3)                                                  P17700
+
+to:
+
+      RETURN                                                            P17690
+   45 CONTINUE                                                          X17691
+C     BSV (& BPP) = 0.0                                                 X17692
+      Z=APP-A3                                                          X17693
+      RETURN                                                            X17694
+50    CM=2.*SQRT(-AP3)                                                  P17700
+
+
+6.  In the following lines of code, the intrinsic function name, ARCOS, was
+    changed from:
+
+      ALPHA=ARCOS(BP/(AP3*CM))/3.                                       P17710
+
+to the more standard name, ACOS:
+
+      ALPHA=ACOS(BP/(AP3*CM))/3.                                        P17710
+
+
+POSTBLP Changes
+
+
+     The old header in POSTBLP was changed to a SCRAM BBS type header and an
+old version title line, PBP00120 (P00120) was deleted. Also various statements
+used in writing POSTBLP titles and version numbers to a printout have also
+been modified. Note that the first two characters, PB, of each sequence
+identifier have been dropped due to the 80 column wrap around problem
+discussed above. These two charaters need to be reinserted once the files have
+been downloaded and dearchived. 
+
+
+1.  The old header was changed from:
+
+C***********************************************************************P00005
+C                                                                       P00006
+C                         POSTBLP (DATED 82102)                         P00010
+C                                                                       P00060
+C***********************************************************************P00070
+C                                                                       P00080
+C      POSTBLP -- MULTIPLE BUOYANT LINE AND POINT SOURCE                P00090
+C                 DISPERSION MODEL (BLP) POST-PROCESSOR                 P00100
+C                                                                       P00110
+C      POSTBLP   VERSION 2.1  LEVEL 820412     MAIN                     P00120
+
+to:
+
+C***********************************************************************P00005
+C                                                                       P00006
+C                        POSTBLP (DATED 90081)                          P00010
+C                                                                       P00060
+C             *** SEE BLP MODEL CHANGE BULLETIN MCB#2 ***               P00061
+C                                                                       P00062
+C    ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS BULLETIN BOARD     P00063
+C                                                                       P00064
+C                             919-541-5742                              P00065
+C                                                                       P00066
+C***********************************************************************P00070
+C                                                                       P00080
+C      POSTBLP -- MULTIPLE BUOYANT LINE AND POINT SOURCE                P00090
+C                 DISPERSION MODEL (BLP) POST-PROCESSOR                 P00100
+C                                                                       P00110
+
+2.  The next 44 non consecutive lines of code were used to print POSTBLP
+    titles and version numbers. The lines of code have been either commented
+    out or modified so that only a SCRAM BBS program date is printed. In
+    several cases, comments were deleted. The original lines of code were
+    changed from:
+
+
+      COMMON/QA/VERSON,LEVEL                                            P00580
+ 1250 FORMAT ('1',21X,'POSTBLP               (DATED 82102) '/)          P00850
+      VERSON=2.1                                                        P00930
+      LEVEL=820412                                                      P00940
+      WRITE(6,1400)VERSON,LEVEL                                         P00950
+1400  FORMAT('1',40X,'BLP POSTPROCESSOR   VERSION ',F4.1,3X,'LEVEL ',I6/P00960
+      WRITE(6,1400)VERSON,LEVEL                                         P01160
+      WRITE(6,1400)VERSON,LEVEL                                         P02060
+      WRITE(6,1400)VERSON,LEVEL                                         P02580
+      WRITE(6,1400)VERSON,LEVEL                                         P02700
+      WRITE(6,1400)VERSON,LEVEL                                         P03160
+      WRITE(6,1400)VERSON,LEVEL                                         P03400
+      WRITE(6,1400)VERSON,LEVEL                                         P03610
+      WRITE(6,1400)VERSON,LEVEL                                         P04100
+      WRITE(6,1400)VERSON,LEVEL                                         P08290
+      WRITE(6,1400)VERSON,LEVEL                                         P08660
+      WRITE(6,1400)VERSON,LEVEL                                         P08840
+      WRITE(6,1400)VERSON,LEVEL                                         P08980
+      WRITE(6,1400)VERSON,LEVEL                                         P09160
+      WRITE(6,1400)VERSON,LEVEL                                         P09300
+      WRITE(6,1400)VERSON,LEVEL                                         P09410
+      WRITE(6,1400)VERSON,LEVEL                                         P09520
+      WRITE(6,1400)VERSON,LEVEL                                         P09680
+      WRITE(6,1400)VERSON,LEVEL                                         P09820
+      WRITE(6,1400)VERSON,LEVEL                                         P10080
+      WRITE(6,1400)VERSON,LEVEL                                         P10250
+      WRITE(6,1400)VERSON,LEVEL                                         P10420
+      WRITE(6,1400)VERSON,LEVEL                                         P10640
+      WRITE(6,1400)VERSON,LEVEL                                         P10810
+      WRITE(6,1400)VERSON,LEVEL                                         P10990
+      WRITE(6,1400)VERSON,LEVEL                                         P11170
+      WRITE(6,1400)VERSON,LEVEL                                         P11360
+      WRITE(6,1400)VERSON,LEVEL                                         P11460
+      WRITE(6,1400)VERSON,LEVEL                                         P11600
+      WRITE(6,1400)VERSON,LEVEL                                         P11750
+C      POSTBLP   VERSION 2.1  LEVEL 820412     GETDAT                   P11900
+C      POSTBLP   VERSION 2.1  LEVEL 820412     OUTDAT                   P12870
+      COMMON/QA/VERSON,LEVEL                                            P12900
+      WRITE(6,1400)VERSON,LEVEL                                         P12920
+1400  FORMAT('1',40X,'BLP POSTPROCESSOR   VERSION ',F4.1,3X,'LEVEL ',I6/P12930
+C      POSTBLP   VERSION 2.1  LEVEL 820412     FREQ                     P13430
+C      POSTBLP   VERSION 2.1  LEVEL 800212     FRQOUT                   P14050
+C      POSTBLP   VERSION 2.1  LEVEL 820412     BLOCK DATA               P14280
+C      POSTBLP   VERSION 2.1  LEVEL 820412     XSCALE                   P14480
+C      POSTBLP   VERSION 2.1  LEVEL 820412     RDXPND                   P14610
+
+
+to:
+
+C     COMMON/QA/VERSON,LEVEL                                            P00580
+ 1250 FORMAT ('1',21X,'POSTBLP               (DATED 90081) '/)          P00850
+C     VERSON=2.1                                                        P00930
+C     LEVEL=820412                                                      P00940
+      WRITE(6,1400)                                                     P00950
+1400  FORMAT('1',43X,'BLP POSTPROCESSOR  SCRAM VERSION (DATED 90081)'  /P00960
+      WRITE(6,1400)                                                     P01160
+      WRITE(6,1400)                                                     P02060
+      WRITE(6,1400)                                                     P02580
+      WRITE(6,1400)                                                     P02700
+      WRITE(6,1400)                                                     P03160
+      WRITE(6,1400)                                                     P03400
+      WRITE(6,1400)                                                     P03610
+      WRITE(6,1400)                                                     P04100
+      WRITE(6,1400)                                                     P08290
+      WRITE(6,1400)                                                     P08660
+      WRITE(6,1400)                                                     P08840
+      WRITE(6,1400)                                                     P08980
+      WRITE(6,1400)                                                     P09160
+      WRITE(6,1400)                                                     P09300
+      WRITE(6,1400)                                                     P09410
+      WRITE(6,1400)                                                     P09520
+      WRITE(6,1400)                                                     P09680
+      WRITE(6,1400)                                                     P09820
+      WRITE(6,1400)                                                     P10080
+      WRITE(6,1400)                                                     P10250
+      WRITE(6,1400)                                                     P10420
+      WRITE(6,1400)                                                     P10640
+      WRITE(6,1400)                                                     P10810
+      WRITE(6,1400)                                                     P10990
+      WRITE(6,1400)                                                     P11170
+      WRITE(6,1400)                                                     P11360
+      WRITE(6,1400)                                                     P11460
+      WRITE(6,1400)                                                     P11600
+      WRITE(6,1400)                                                     P11750
+C                                                                       P11900
+C                                                                       P12870
+C     COMMON/QA/VERSON,LEVEL                                            P12900
+      WRITE(6,1400)                                                     P12920
+1400  FORMAT('1',43X,'BLP POSTPROCESSOR  SCRAM VERSION (DATED 90081)'  /P12930
+C                                                                       P13430
+C                                                                       P14050
+C                                                                       P14280
+C                                                                       P14480
+C                                                                       P14610
+
+
+BLPSUM Changes
+
+     The third program, BLPSUM, in the BLP model was updated with a SCRAM BBS
+header and comments. In some cases, comments were deleted but the lines were
+left. Two variables used for identifying and printing the version and level
+number were commented out. The following non consecutive lines were changed
+from:
+
+C***********************************************************************S00005
+C                                                                       S00006
+C                         BLPSUM (DATED 82102)                          S00010
+C                                                                       S00060
+C***********************************************************************S00070
+C                                                                       S00080
+C      BLPSUM   VERSION 1.0  LEVEL 820412     MAIN                      S00110
+ 1234 FORMAT ('1',21X,'BLPSUM               (DATED 82102) '/)           S00400
+      VERSON=1.0                                                        S00450
+      LEVEL=820412                                                      S00460
+      WRITE(6,1400)VERSON,LEVEL                                         S00470
+1400  FORMAT('1',45X,'BLPSUM  VERSION ',F4.1,3X,'LEVEL ',I6/            S00480
+      WRITE(6,1400)VERSON,LEVEL                                         S01620
+      WRITE(6,1400)VERSON,LEVEL                                         S02000
+      WRITE(6,1400)VERSON,LEVEL                                         S03680
+C      BLPSUM   VERSION 1.0  LEVEL 820412     OUTPT                     S03790
+C      BLPSUM   VERSION 1.0  LEVEL 820412     OUT                       S03940
+C      BLPSUM   VERSION 1.0  LEVEL 820412     GETDAT                    S04020
+C      BLPSUM   VERSION 1.0  LEVEL 820412     XSCALE                    S04800
+C      BLPSUM   VERSION 1.0  LEVEL 820412     RDXPND                    S04920
+C      BLPSUM   VERSION 1.0  LEVEL 820412     COMPRS                    S05120
+C      BLPSUM   VERSION 1.0  LEVEL 820412     XWRT2                     S05460
+C      BLPSUM   VERSION 1.0  LEVEL 820412     XWRT                      S05660
+
+to:
+
+C***********************************************************************S00005
+C                                                                       S00006
+C                        BLPSUM (DATED 90081)                           S00010
+C                                                                       S00060
+C             *** SEE BLP MODEL CHANGE BULLETIN MCB#1 ***               S00061
+C                                                                       S00062
+C    ON THE SUPPORT CENTER FOR REGULATORY AIR MODELS BULLETIN BOARD     S00063
+C                                                                       S00064
+C                            919-541-5742                               S00065
+C                                                                       S00066
+C***********************************************************************S00070
+C                                                                       S00080
+C                                                                       S00110
+ 1234 FORMAT ('1',21X,'BLPSUM               (DATED 90081) '/)           S00400
+C     VERSON=1.0                                                        S00450
+C     LEVEL=820412                                                      S00460
+      WRITE(6,1400)                                                     S00470
+1400  FORMAT('1',48X,'BLPSUM  SCRAM BBS VERSION DATED 90081'/           S00480
+      WRITE(6,1400)                                                     S01620
+      WRITE(6,1400)                                                     S02000
+      WRITE(6,1400)                                                     S03680
+C                                                                       S03790
+C                                                                       S03940
+C                                                                       S04020
+C                                                                       S04800
+C                                                                       S04920
+C                                                                       S05120
+C                                                                       S05460
+C                                                                       S05660
+
+Again, notice that the sequence identifiers were shortened to save space. The
+identifiers for BLPSUM need to have a BP added in columns 72 and 73 when the
+program is stored.
+
+
+
+
+*****************************************************************************
+*                                                                           *
+*                                                                           *
+*            AMENDMENT #1 to Model Change Bulletin #2         MAY 11, 1993  *
+*                                                                           *
+*                                                                           *
+*****************************************************************************
+
+
+     Several changes have been made to the BLP readme file and other files to:
+
+        1)  Provide the user with information on BLPSUM input file structure,
+        variable definitions, and execution lines.
+
+        2)  Correct and revamp the batch files
+
+        3)  Add a test case for using binary meteorological data with BLP
+
+        4)  Change the archival compression method from .ARC to .ZIP
+
+        5)  Provide definitions for variables not listed in the July 1980
+        BLP user's guide.
+
+        6)  Generally edit and shorten the README file.
+
+
+     See the BLP.RME file in the archival package, BLP.ZIP, for details on
+running BLP.
+

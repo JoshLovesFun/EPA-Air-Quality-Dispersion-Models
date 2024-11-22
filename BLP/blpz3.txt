@@ -1,0 +1,43 @@
+ 
+                           Model Change Bulletin               
+               
+                                   MCB#3                        11/19/99 
+ 
+                             BLP (dated 99176)
+
+    This Model Change Bulletin documents changes made to the Bouyant Line and 
+Point (BLP) Source dispersion model (see Code Changes below).   The BLP model
+consists of three programs: BLP, BLPSUM, and POSTBLP.
+
+    The BLP User's Guide and Addendum were scanned to a TIF format, converted 
+to an Adobe Acrobat 3.0 format, and then posted to SCRAM.
+
+
+CODE CHANGES
+
+    Changes from BLP (dated 90081) include the following:
+
+1.  BLP was changed to read ISCST type meteorological data in ASCII format.  
+    Conversion of meteorological data to a binary format is no longer needed
+    and is no longer supported in the model.
+
+2.  A command line interface was added to the programs so that Input and Output
+    filenames could be read from a MS-DOS prompt without having to use the "<" 
+    and ">" file redirection symbols.  See the BLP.RME file for further 
+    details.
+
+3.  Comments annotating the changes to the source codes were added.
+
+
+                           *****************
+                           *   IMPORTANT   *
+                           *****************
+
+    This program will henceforth be identified by its name and a Julian date,
+i.e.: BLP (dated 99176).  Future changes to this model will be identified
+by an updated Julian date found at the beginning of the model source code
+and followed by a reference to a SCRAM Model Change Bulletin (MCB#n)
+which will explain the nature and content of the changes.  All Model Change
+Bulletins for this program will always be available for back reference on
+this website.  In the future, notification of changes (MCBs) to this program
+will be made in the SCRAM ALERTS section of this website.

@@ -1,0 +1,245 @@
+                              README FILE
+
+                           BLP (dated 99176)                  6/25/99
+
+
+    BLP is a name given to an air pollutant dispersion model that consists
+of three computer programs, one of which is called BLP (for Buoyant Line
+and Point source).  The other two programs are a postprocessor called POSTBLP
+and a merging program called BLPSUM, which merges two BLP output files into
+one file for input to POSTBLP.  The BLP model and associated programs have
+been compiled and executed on an IBM-PC compatible using the Lahey Fortran 90
+compiler (LF90 version 4.5i).
+
+
+SETUP INSTRUCTIONS
+
+     To facilitate compiling and executing BLP, all programs, along with their
+respective supporting files, should be placed in a single subdirectory.
+The following is a list of the files in the BLP.ZIP file:
+
+
+  Filename           Purpose
+
+  BLP.EXE            BLP executable code for a PC
+  BLP.RME            BLP readme file
+  BLP.FOR            BLP program source code
+  BLP1.INP           Test Case 1 input file to BLP
+  BLP1.OUT           Test case 1 output file from BLP in text format
+  BLP1.UNF           Test case 1 unformatted output from BLP to be used as
+                     input to both POSTBLP and BLPSUM
+  BLP2.INP           Test case 2 input file to BLP
+  BLP2.OUT           Test case 2 output file from BLP in text format
+  BLP2.UNF           Test case 2 unformatted output from BLP to be used as
+                     input to BLPSUM
+  BPMD.BAT           Batch file for processing BLP with a preprocessed
+                     meteorological file
+  BPMD.INP           Input file to BLP for the preprocessed meteorological
+                     test case
+  BPMD.OUT           Output text file from BLP - preproc. met. test case
+  BPMD.UNF           Unformatted output from BLP - preproc. met. test case
+  POST1.BAT          Batch file for processing and postprocessing test case 1
+  POSTB.BAT          Batch file for processing and summing test cases 1 and 2,
+                     and then postprocessing the summation results
+  PREPFILE.ASC       ASCII-formatted preprocessed meteorological data file
+                     for use with the BPMD.BAT test case (1964 Pittsburgh, PA)
+  LF90BLP.BAT        Batch file to compile and link the BLP program using
+                     the Lahey LF90 compiler
+
+
+  BLPSUM.EXE         BLPSUM executable code for a PC
+  BLPSUM.FOR         BLPSUM program source code
+  BLPSUM.INP         Input file to BLPSUM for merging the data in the
+                     output files BLP1.UNF and BLP2.UNF - test case 2        
+  BLPSUM.OUT         Output text file from BLPSUM - test case 2
+  BLPSUM.UNF         Unformatted output from BLPSUM - used as input to
+                     POSTBLP
+  LF90BLPS.BAT       Batch file to compile and link the BLPSUM program using
+                     the Lahey LF90 compiler
+
+
+  PBLP1.INP          Input file to POSTBLP for post processing BLP1.UNF
+  PBLP1.OUT          Output text file from POSTBLP from test case 1
+  PBLPB.INP          Input file to POSTBLP for post processing the BLP1.UNF and 
+                     the BLP2.UNF output from BLPSUM
+  PBLPB.OUT          Output text file from POSTBLP from test case 2
+  POSTBLP.EXE        POSTBLP executable code for a PC
+  POSTBLP.FOR        POSTBLP program source code
+  LF90PBLP.BAT       Batch file to compile and link the POSTBLP program using
+                     the Lahey LF90 compiler
+
+
+USER'S GUIDE
+
+     Adobe Acrobat version of the BLP user's guide and its addendum are 
+available on SCRAM.  The BLP user's guide is also available from NTIS and 
+covers the technical features and user's instructions for BLP and POSTBLP.  
+The BLP user's guide's NTIS number is PB84-164642.  BLPSUM is not mentioned 
+in the user's guide.
+
+
+BLPSUM INSTRUCTIONS
+
+     BLPSUM was written after the user's guide was published.  The program was
+designed to combine two unformatted BLP output data sets (*.UNF) for input into
+POSTBLP.  The same input variables used in BLP and POSTBLP were used in BLPSUM;
+sometimes with a slight variation in spelling such as IJCOD1 instead of IJCODE. 
+
+
+     The BLPSUM input format is:
+
+Input #1:  Title  (Up to 80 alphanumeric characters on first line only)
+
+Input #2:  Namelist - INPUT
+
+Variable  Default   Description   
+
+IJCOD1      999     Coded integer specifying the concentration output from the
+                    first input file. (See page 3-18 of the user's guide -
+                    IJCODE).
+
+IJCOD2      999     Coded integer specifying the concentration output from the
+                    second input file.
+
+ISCOD1       0      Array containing up to 62 integers specifying the source
+                    contributions to be summed from input file 1. (See page
+                    3-21 of the user's guide - ISCODE).                         
+    
+ISCOD2       0      Array containing up to 62 integers specifying the source
+                    contributions to be summed from input file 2. 
+
+NSUM1        0      Number of source contributions specified in 'ISCODn' to be
+                    summed from input file 1.  (See NSUM on page 3-21 of the
+                    user's guide).
+
+NSUM2        0      Number of source contributions specified in 'ISCODn' to be
+                    summed from input file 2.  (See NSUM on page 3-21 of the
+                    user's guide).
+
+LSUM      .FALSE.   Control variable for source contribution summing option.
+                    (See page 3-21 of the user's guide).
+
+LSCALE    .FALSE.   If true, scaling and background factors, ASCALn and
+                    BSCALn, are read.
+
+LCOMPR    .FALSE.   If true, data in the *.UNF files are compressed to save
+                    space.  LCOMPR is read in through the *.UNF files.
+
+
+Input #3: (Only if LSCALE is .TRUE)
+
+ISCAL1              Source identification code for contribution to be scaled
+                    for contribution from input file 1.
+
+ASCAL1      1.0     Contribution scaling factor (0.0 to 1.0)
+
+BSCAL1      0.0     Background concentration.
+
+ISCAL2              Source identification code for contribution to be scaled
+                    for contribution from input file 2.
+
+ASCAL2      1.0     Contribution scaling factor (0.0 to 1.0)
+
+BSCAL2      0.0     Background concentration.
+
+
+Other variable definitions:
+               
+     Some of the variables used in the three BLP programs were not defined in
+the user's guide and are defined as follows:
+
+Variable  Default   Definition
+
+ASCALE      1.0     Factor used to scale concentrations by source
+BSCALE      0.0     Background concentration by source
+LDCALM    .FALSE.   If true, hours of wind speeds <= 1.0 m/s are treated 
+                    as missing data.
+
+LPRT      .FALSE.   If true, outputs a table of hours eliminated that had a
+                    wind speed <= 1.0 m/s.
+MINN        N/A     MINN is the minimum number of non-missing hours of data
+                    needed to calculate a NAVG.  Must be greater than or equal
+                    to 1 and less than or equal to NAVG.  
+NAVG        N/A     user specified averaging time in hours.
+
+
+NAMELISTs
+
+    The use of NAMELIST I/O is now part of the Fortran 90 standard.  However,
+there are some differences between the way NAMELIST data are written as output
+for the Lahey LF90 compiler versus the MICROSOFT Fortran compiler used for the
+previous version of the programs.  Also, the standard NAMELIST input does
+allow coding repeated input values, such as 3*1, 47*0, which was not supported
+by the MICROSOFT Fortran compiler.
+
+    The standard NAMELIST input syntax uses a '/' symbol to specify the
+end of each NAMELIST input stream.
+
+
+COMPILING INSTRUCTIONS
+
+    To facilitate recompiling the BLP, POSTBLP, and BLPSUM programs, a batch
+file is provided for each file that can be used to compile and link the
+program using the Lahey LF90 compiler.
+
+
+METEOROLOGICAL DATA
+
+    Meteorological data can be entered into BLP as a either a separate
+preprocessed input file (PMD) or as hourly meteorological data in text format
+at the end of the input run stream (up to 24 hours).  The PMD file is now an
+ASCII-formatted data file in the default format used by the ISCST3 model, as
+generated by the PCRAMMET and MPRM meteorological preprocessors.  The PMD used
+in the test case is the 1964 Pittsburgh, PA meteorological data used as input
+with a number of model test cases, and is included in the BLP.ZIP file.
+
+
+EXECUTION LINES
+
+    The current versions of BLP, POSTBLP, and BLPSUM no longer use the DOS
+redirection symbols, '<' and '>'. The input and output filenames are placed
+on the command line with the program name without the redirection symbols.
+The order of the filenames is important, and is provided below:
+
+BLP execution lines:
+
+  With a PDM: 
+
+     BLP input_file output_file concen_file metdata_file
+
+  Without a PDM: 
+
+     BLP input_file output_file concen_file
+
+BLPSUM execution line:
+
+     BLPSUM input_file output_file conc1_inp conc2_inp concen_out
+
+POSTBLP execution line
+
+     POSTBLP input_file output_file concen_file
+
+BLP is programmed to open unit 5 as the runstream input file, and unit 6 as
+the printed output file.  Unit 20 is opened for the unformatted concentration
+data output.  If a PMD file is used, it is opened as unit 2.
+
+     Unformatted concentration output from two BLP runs can be combined using
+BLPSUM.  The unformatted output from BLP or BLPSUM is used as input in POSTBLP.
+
+
+TEST CASES
+
+    Of the 3 BLP test cases, only one is designed to test BLP with a PMD.  The
+other two are designed to: 1) test BLP with the meteorological data included in
+the input run stream,  2) then use the output from both runs as input to
+BLPSUM, and 3) use the output of test case one and BLPSUM as respective, but
+separate, inputs to POSTBLP.  Three *.BAT files have been written for running
+the test cases.  The output files generated by the batch files use *TST.OUT
+as a naming convention.  These files may be compared to the *.OUT files
+included in the BLP.ZIP file.
+
+    All three test cases execute within a few seconds on a Pentium-class
+PC or higher.
+
+    Questions concerning the BLP model should be directed to Peter Eckhoff
+at fax (919) 541-0044, or via EMAIL eckhoff.peter@epa.gov .

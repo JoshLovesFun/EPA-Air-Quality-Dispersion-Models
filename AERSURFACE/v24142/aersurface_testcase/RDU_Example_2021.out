@@ -1,0 +1,59 @@
+** AERSURFACE Output File, Version 24142                          11/19/24 **
+**                                                                13:12:15 **
+
+** Sample control file – for demonstration purposes only
+
+CO STARTING
+   TITLEONE  Sample AERSURFACE Control File
+   TITLETWO  RDU - Met Tower, 2021 NLCD
+
+** Using default options for OPTIONS keyword and parameters
+   OPTIONS   PRIMARY  ZORAD
+
+   DEBUGOPT  GRID  TIFF
+
+   CENTERLL  35.892300   -78.781900   NAD83
+
+   DATAFILE  NLCD2021  "RDU_2021_NLCD_LC.tiff"
+   DATAFILE  CNPY2021  "RDU_2021_NLCD_Can.tiff"
+   DATAFILE  MPRV2021  "RDU_2021_NLCD_Imp.tiff"
+
+** Use default 1 km radius
+   ZORADIUS  1.0
+
+   CLIMATE   AVERAGE  SNOW   NONARID
+
+** Get monthly values for three sectors
+** Vary AP/Non-AP sectors
+   FREQ_SECT   MONTHLY    3  VARYAP
+
+**        index  start    end
+   SECTOR   1    30.00   60.00   NONAP
+   SECTOR   2    60.00  225.00   AP
+   SECTOR   3   225.00   30.00   NONAP
+
+** Reassign months with continuous snow cover in January
+   SEASON   WINTERNS   12 2 3
+   SEASON   WINTERWS   1
+   SEASON   SPRING     4 5
+   SEASON   SUMMER     6 7 8
+   SEASON   AUTUMN     9 10 11
+
+   RUNORNOT  RUN
+CO FINISHED
+
+OU STARTING
+   SFCCHAR    "rdu_2021_lc_can_imp_zorad_sfc.txt"
+   NLCDGRID   "rdu_2021_lc_can_imp_zorad_lc_grid.txt"
+   CNPYGRID   "rdu_2021_lc_can_imp_zorad_can_grid.txt"
+   MPRVGRID   "rdu_2021_lc_can_imp_zorad_imp_grid.txt"
+OU FINISHED
+
+**********************************************
+*** AERSURFACE SETUP Finished Successfully ***
+**********************************************
+
+
+***************************************************
+*** AERSURFACE Processing Finished Successfully ***
+***************************************************

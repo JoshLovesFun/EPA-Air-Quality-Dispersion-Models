@@ -9,7 +9,7 @@ Every effort has been made to ensure that the code of the models provided here i
 
 The main branch of this repository is strictly an archive of the models. As such, while pull requests are allowed, they will **NEVER** be merged into the main branch and will be closed. The primary reason for this is to ensure the accuracy and integrity of the model archives. The main branch of this repository will be updated only when the EPA releases new versions of the models.
 
-> **Note:** This repository does not include the PDF documentation associated with each model version. These documents will be stored in a separate repository:  
+> **Note:** This repository does not include the PDF documentation associated with each model version. These documents are stored in a separate repository:  
 > [**Repository for Model Documentation**](https://github.com/JoshLovesFun/EPA-Air-Quality-Dispersion-Models-Documentation)
 
 ## Contribution Guidelines

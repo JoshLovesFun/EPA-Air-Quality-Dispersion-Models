@@ -1,0 +1,53 @@
+job
+  messages  aermet_st2.msg
+  report    aermet_st2.rpt
+
+upperair
+  qaout     alb92-93.oqa
+
+surface
+  qaout     14737.oqa
+
+onsite
+  qaout     mcospfl.oqa
+
+metprep
+   xdates    1992/5/1 to 1993/5/19
+   location  000001   40.79n  75.14w  5
+
+** no nws substitution
+** norand
+
+   nws_hgt   wind  6.1
+   output    aermet.sfc
+   profile   aermet.pfl
+
+   freq_sect  monthly  2
+   sector     1  260  180
+   sector     2  180  260 
+
+   site_char      1  1  0.15  1.00  0.10
+   site_char      2  1  0.40  1.30  0.10
+   site_char      3  1  0.40  0.50  0.10
+   site_char      4  1  0.15  0.30  0.20
+   site_char      5  1  0.15  0.50  0.20
+   site_char      6  1  0.15  0.40  0.30
+   site_char      7  1  0.15  0.30  0.30
+   site_char      8  1  0.15  0.40  0.30
+   site_char      9  1  0.15  0.80  0.20
+   site_char     10  1  0.15  2.00  0.20
+   site_char     11  1  0.15  0.40  0.20
+   site_char     12  1  0.15  1.00  0.10
+
+   site_char      1  2  0.15  1.00  0.30
+   site_char      2  2  0.40  1.30  0.30
+   site_char      3  2  0.40  0.50  0.30
+   site_char      4  2  0.15  0.30  0.50
+   site_char      5  2  0.15  0.50  0.50
+   site_char      6  2  0.15  0.40  0.60
+   site_char      7  2  0.15  0.30  0.60
+   site_char      8  2  0.15  0.40  0.60
+   site_char      9  2  0.15  0.80  0.50
+   site_char     10  2  0.15  2.00  0.50
+   site_char     11  2  0.15  0.40  0.50
+   site_char     12  2  0.15  1.00  0.30

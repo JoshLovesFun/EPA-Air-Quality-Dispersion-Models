@@ -1,0 +1,84 @@
+** AERMAP - VERSION 18081                                              06/16/23
+**                                                                     11:09:05
+
+DOMCNV/CHKEXT:
+
+TYPDEM = "LAT"
+
+        Domain                   LAT          LONG                         UTM-N (m)     UTM-E (m)   ZONE   NADA
+                                        (neg. for West long.)
+  NE corner coordinates:      146998.55    -270128.09 seconds            4520000.0000   497000.0000    18     1
+  SW corner coordinates:      146673.76    -270639.58 seconds            4510000.0000   485000.0000    18     1
+  NE corner coordinates:      40.832930    -75.035581 decimal deg.
+  SW corner coordinates:      40.742712    -75.177662 decimal deg.
+
+
+       Checking domain corner  1 relative to DEM file: NEWARK-W.DEM
+
+                                  LAT (sec)      LONG (sec)      LAT (deg)      LONG (deg)    NAD
+       DEM corner Lat/Lon:       147600.00      -270000.00       41.000000      -75.000000     1
+    Domain corner Lat/Lon:       146673.76      -270639.58       40.742712      -75.177662     1
+       DEM corner Lat/Lon:       144000.00      -273600.00       40.000000      -76.000000     1
+  
+Domain corner  1 Inside DEM file     1: NEWARK-W.DEM
+                                  LAT (sec)      LONG (sec)      LAT (deg)      LONG (deg)    NAD
+       DEM corner Lat/Lon:       147600.00      -270000.00       41.000000      -75.000000     1
+    Domain corner Lat/Lon:       146673.76      -270639.58       40.742712      -75.177662     1
+       DEM corner Lat/Lon:       144000.00      -273600.00       40.000000      -76.000000     1
+  
+  
+       Checking domain corner  2 relative to DEM file: NEWARK-W.DEM
+
+                                  LAT (sec)      LONG (sec)      LAT (deg)      LONG (deg)    NAD
+       DEM corner Lat/Lon:       147600.00      -270000.00       41.000000      -75.000000     1
+    Domain corner Lat/Lon:       146998.55      -270639.58       40.832930      -75.177662     1
+       DEM corner Lat/Lon:       144000.00      -273600.00       40.000000      -76.000000     1
+  
+Domain corner  2 Inside DEM file     1: NEWARK-W.DEM
+                                  LAT (sec)      LONG (sec)      LAT (deg)      LONG (deg)    NAD
+       DEM corner Lat/Lon:       147600.00      -270000.00       41.000000      -75.000000     1
+    Domain corner Lat/Lon:       146998.55      -270639.58       40.832930      -75.177662     1
+       DEM corner Lat/Lon:       144000.00      -273600.00       40.000000      -76.000000     1
+  
+  
+       Checking domain corner  3 relative to DEM file: NEWARK-W.DEM
+
+                                  LAT (sec)      LONG (sec)      LAT (deg)      LONG (deg)    NAD
+       DEM corner Lat/Lon:       147600.00      -270000.00       41.000000      -75.000000     1
+    Domain corner Lat/Lon:       146998.55      -270128.09       40.832930      -75.035581     1
+       DEM corner Lat/Lon:       144000.00      -273600.00       40.000000      -76.000000     1
+  
+Domain corner  3 Inside DEM file     1: NEWARK-W.DEM
+                                  LAT (sec)      LONG (sec)      LAT (deg)      LONG (deg)    NAD
+       DEM corner Lat/Lon:       147600.00      -270000.00       41.000000      -75.000000     1
+    Domain corner Lat/Lon:       146998.55      -270128.09       40.832930      -75.035581     1
+       DEM corner Lat/Lon:       144000.00      -273600.00       40.000000      -76.000000     1
+  
+  
+       Checking domain corner  4 relative to DEM file: NEWARK-W.DEM
+
+                                  LAT (sec)      LONG (sec)      LAT (deg)      LONG (deg)    NAD
+       DEM corner Lat/Lon:       147600.00      -270000.00       41.000000      -75.000000     1
+    Domain corner Lat/Lon:       146673.76      -270128.09       40.742712      -75.035581     1
+       DEM corner Lat/Lon:       144000.00      -273600.00       40.000000      -76.000000     1
+  
+Domain corner  4 Inside DEM file     1: NEWARK-W.DEM
+                                  LAT (sec)      LONG (sec)      LAT (deg)      LONG (deg)    NAD
+       DEM corner Lat/Lon:       147600.00      -270000.00       41.000000      -75.000000     1
+    Domain corner Lat/Lon:       146673.76      -270128.09       40.742712      -75.035581     1
+       DEM corner Lat/Lon:       144000.00      -273600.00       40.000000      -76.000000     1
+  
+  
+From INITER_DEM:
+
+Information on Direct Access Files Within User-specified Domain:
+
+No. of DEM Files =      2
+
+Direct Access File for DEM File No.      1 Contains     171 Profiles.
+
+ XBASE, YBASE and NODES for First Profile:     -270639.0000     144000.0000    108
+ XBASE, YBASE and NODES for Last  Profile:     -270129.0000     144000.0000    108
+
+Direct Access File for DEM File No.      2 Contains       0 Profiles.
+

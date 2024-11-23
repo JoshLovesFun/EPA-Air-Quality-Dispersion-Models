@@ -1,0 +1,18 @@
+** AERMAP - VERSION 18081                                              06/15/23
+**                                                                     11:20:40
+**  MARTIN'S CREEK AERMAP RUN
+** 
+** A total of       2  DEM files were used
+** A total of       7  receptors were processed
+** DOMAINXY  485000  4510000  18  497000   4520000  18
+** ANCHORXY  495510   513680   495510   4513680 18  1
+** TERRHGTS  PROVIDED
+  
+RE ELEVUNIT METERS
+   DISCCART     495510.00    513680.00     353.60     353.60
+   DISCCART     493900.00    513200.00     376.70     376.70
+   DISCCART     492700.00    513440.00     370.30     370.30
+   DISCCART     492440.00    511190.00     340.20     340.20
+   DISCCART     495400.00    515180.00     356.60     356.60
+   DISCCART     495300.00    513880.00     365.80     365.80
+   DISCCART     496430.00    514500.00     341.40     341.40

@@ -1,0 +1,123 @@
+  
+    ************ Error Message List *************
+  
+    PW     --- Pathway                           
+    Code   --- Error Type + Error Code           
+    L#     --- The Line Number Where Error Occurs
+    ModNam --- Module Name In Which Error Occurs 
+    Hints  --- Hints For The Possible Solution   
+    *********************************************
+  
+PW CODE    L#      MODNAM                       ERROR MESSAGES                      HINTS
+-- ---- ------- ------------- -------------------------------------------------- ------------
+  
+CO W361      10       COCARD: Multiyear PERIOD/ANNUAL values for NO2/SO2 require MULTYEAR Opt
+CO W362      10       COCARD: Multiyear 1h NO2/SO2 processing not applicable for     3-hr Ave
+CO W362      10       COCARD: Multiyear 1h NO2/SO2 processing not applicable for    24-hr Ave
+SO W320      29        PPARM: Input Parameter May Be Out-of-Range for Parameter            QS
+SO W320      30        PPARM: Input Parameter May Be Out-of-Range for Parameter            QS
+SO W320      31        PPARM: Input Parameter May Be Out-of-Range for Parameter            QS
+SO W320      32        PPARM: Input Parameter May Be Out-of-Range for Parameter            QS
+SO W320      33        PPARM: Input Parameter May Be Out-of-Range for Parameter            QS
+SO W320      34        PPARM: Input Parameter May Be Out-of-Range for Parameter            QS
+SO W320      35        PPARM: Input Parameter May Be Out-of-Range for Parameter            QS
+SO W320      36        PPARM: Input Parameter May Be Out-of-Range for Parameter            QS
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX W403     577       PFLCNV: Turbulence data is being used w/o ADJ_U* option       SigA Data
+MX I440     969       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992050602
+MX W320    1178       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX W320    1179       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX W320    1186       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX W320    1187       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX I440    1705       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992050922
+MX I440    1721       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992050924
+MX I440    1729       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051001
+MX I440    1737       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051002
+MX I440    1769       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051006
+MX I440    1777       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051007
+MX I440    1785       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051008
+MX I440    1793       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051009
+MX I440    1817       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051012
+MX I440    1833       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051014
+MX I440    1841       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051015
+MX I440    1865       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051018
+MX I440    1905       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051023
+MX I440    1913       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051024
+MX I440    1921       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051101
+MX I440    1937       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051103
+MX I440    1945       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051104
+MX I440    1953       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992051105
+MX I440    4905       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992052614
+MX I440    7249       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060719
+MX I440    7257       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060720
+MX I440    7265       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060721
+MX I440    7273       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060722
+MX I440    7281       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060723
+MX I440    7289       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060724
+MX I440    7297       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060801
+MX I440    7305       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060802
+MX I440    7313       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060803
+MX I440    7321       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060804
+MX I440    7329       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060805
+MX I440    7337       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060806
+MX I440    7345       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060807
+MX I440    7353       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992060808
+MX I460    7953  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1992061111
+MX I460    7961  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1992061112
+MX I440   22145       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992082409
+MX I440   25009       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992090807
+MX W320   25347       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX W320   25403       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX I440   28817       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992092803
+MX I460   29249  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1992093009
+MX I460   29257  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1992093010
+MX I460   29265  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1992093011
+MX I460   29273  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1992093012
+MX I440   32625       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101723
+MX I440   32633       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101724
+MX I440   32641       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101801
+MX I440   32665       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101804
+MX I440   32673       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101805
+MX I440   32681       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101806
+MX I440   32689       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101807
+MX I440   32697       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101808
+MX I440   32809       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101822
+MX I440   32817       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101823
+MX I440   32833       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101901
+MX I440   32849       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992101903
+MX W320   35931       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX W320   35939       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX I460   38673  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1992111811
+MX I440   39329       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992112121
+MX W320   39584       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX W320   39592       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX I440   40681       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992112822
+MX I440   40721       CHKCLM: Calm Hour Identified in Meteorology Data File at     1992112903
+MX W320   42810       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX W320   43179       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX I460   44057  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1992121612
+MX I460   44065  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1992121613
+MX I460   46361  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1992122812
+MX I460   55281  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1993021223
+MX I460   55289  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1993021224
+MX I460   55297  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1993021301
+MX I460   56697  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1993022008
+MX I460   57113  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1993022212
+MX I440   63193       CHKCLM: Calm Hour Identified in Meteorology Data File at     1993032604
+MX I460   64585  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1993040210
+MX I460   64593  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1993040211
+MX I460   64601  SET_METDATA: Missing Hour Identified in Meteor. Data File at      1993040212
+MX I440   72785       CHKCLM: Calm Hour Identified in Meteorology Data File at     1993051503
+MX W320   73187       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS
+MX W320   73195       HRQEXT: Input Parameter May Be Out-of-Range for Parameter          HRTS

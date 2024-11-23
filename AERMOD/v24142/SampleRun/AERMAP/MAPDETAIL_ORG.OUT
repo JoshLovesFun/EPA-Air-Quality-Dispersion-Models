@@ -1,0 +1,146 @@
+** AERMAP - VERSION 18081                                              06/16/23
+**                                                                     11:09:05
+
+ From DEMCHK:
+
+***********************
+ OPENING FILE: 
+
+   DEM File #:         1
+   DEM File Name: NEWARK-W.DEM
+
+   Partial analysis of file structure using first    10240 characters.
+
+     Number of bytes read:         1026
+     File Type:            Delimited File - DOS or UNIX      
+
+                                             Length    File            
+ File Name (w/o path up to 40 characters)     Read     Type     Binary?
+
+ NEWARK-W.DEM                                  1026  Delimited    NO 
+
+
+  Attempt to read file using USGS Record Type A format.
+
+    File:        NEWARK-W.DEM
+    Map Name:    NEWARK - W                       NJ,PA  
+    Addtl Data:          NK18-11W                        
+    Filler:                                                             
+    Process Code: 
+    Filler:       
+    Sectional Indicator:          
+    Mapping Center origin Code:    
+    DEM Level Code:         1  :DEM-1
+    Elevation Pattern:      1  :regular
+    Planimetric Ref. Sys:   0  :Geographic (lat/lon)
+    Coordinate Zone:        0
+    Map Projection Params:
+            0.0000      0.0000      0.0000      0.0000      0.0000
+            0.0000      0.0000      0.0000      0.0000      0.0000
+            0.0000      0.0000      0.0000      0.0000      0.0000
+    Coordinate Units:    3  :arc-seconds
+    Elevation Units:     2  :meters
+    Number of map sides: 4
+    SW Corner Easting  or Lon:  -273600.0000  :arc-seconds
+    SW Corner Northing or Lat:   144000.0000  :arc-seconds
+    NW Corner Easting  or Lon:  -273600.0000  :arc-seconds
+    NW Corner Northing or Lat:   147600.0000  :arc-seconds
+    NE Corner Easting  or Lon:  -270000.0000  :arc-seconds
+    NE Corner Northing or Lat:   147600.0000  :arc-seconds
+    SE Corner Easting  or Lon:  -270000.0000  :arc-seconds
+    SE Corner Northing or Lat:   144000.0000  :arc-seconds
+    Elevation - Min:         0.00  :meters
+    Elevation - Max:       619.00  :meters
+    CClockwise angle:        0.00  :feet       
+    Accuracy elevation code:  1  :See record type C for info
+    Spatial Res. X:      3.0000  :arc-seconds
+    Spatial Res. Y:      3.0000  :arc-seconds
+    Spatial Res. Z:      1.0000  :meters
+    Number of Rows:             1
+    Number of Profiles/Row:  1201
+    Largest Primary Contour Interval:    0
+    Contour Unit:                        0  :N.A.  
+    Smallest Primary Contour Interval:   0
+    Contour Unit:                        0  :N.A.  
+    Data Source Date:           0  :YYMM
+    Data Insp/Rev Date:         0  :YYMM
+    Insp/Rev. Flag:           
+    Data Validation Flg:        0
+    Suspect & Void area flag:   0  :none                  
+    Vertical Datum:             0  :N.A.                                           
+    Horizontal Datum:           1  :North American Datum of 1927            
+    Data Edition:               0
+    Percent Void:               0  :If greater than zero, please refer to USGS Standards for Digital Elevation Models
+ 
+ CLOSING THE FILE.
+
+***********************
+ OPENING FILE: 
+
+   DEM File #:         2
+   DEM File Name: NEWARK-E.DEM
+
+   Partial analysis of file structure using first    10240 characters.
+
+     Number of bytes read:         1026
+     File Type:            Delimited File - DOS or UNIX      
+
+                                             Length    File            
+ File Name (w/o path up to 40 characters)     Read     Type     Binary?
+
+ NEWARK-E.DEM                                  1026  Delimited    NO 
+
+
+  Attempt to read file using USGS Record Type A format.
+
+    File:        NEWARK-E.DEM
+    Map Name:    NEWARK - E                       NJ,PA,N
+    Addtl Data:  Y       NK18-11E                        
+    Filler:                                                             
+    Process Code: 
+    Filler:       
+    Sectional Indicator:          
+    Mapping Center origin Code:    
+    DEM Level Code:         1  :DEM-1
+    Elevation Pattern:      1  :regular
+    Planimetric Ref. Sys:   0  :Geographic (lat/lon)
+    Coordinate Zone:        0
+    Map Projection Params:
+            0.0000      0.0000      0.0000      0.0000      0.0000
+            0.0000      0.0000      0.0000      0.0000      0.0000
+            0.0000      0.0000      0.0000      0.0000      0.0000
+    Coordinate Units:    3  :arc-seconds
+    Elevation Units:     2  :meters
+    Number of map sides: 4
+    SW Corner Easting  or Lon:  -270000.0000  :arc-seconds
+    SW Corner Northing or Lat:   144000.0000  :arc-seconds
+    NW Corner Easting  or Lon:  -270000.0000  :arc-seconds
+    NW Corner Northing or Lat:   147600.0000  :arc-seconds
+    NE Corner Easting  or Lon:  -266400.0000  :arc-seconds
+    NE Corner Northing or Lat:   147600.0000  :arc-seconds
+    SE Corner Easting  or Lon:  -266400.0000  :arc-seconds
+    SE Corner Northing or Lat:   144000.0000  :arc-seconds
+    Elevation - Min:         0.00  :meters
+    Elevation - Max:       396.00  :meters
+    CClockwise angle:        0.00  :feet       
+    Accuracy elevation code:  1  :See record type C for info
+    Spatial Res. X:      3.0000  :arc-seconds
+    Spatial Res. Y:      3.0000  :arc-seconds
+    Spatial Res. Z:      1.0000  :meters
+    Number of Rows:             1
+    Number of Profiles/Row:  1201
+    Largest Primary Contour Interval:    0
+    Contour Unit:                        0  :N.A.  
+    Smallest Primary Contour Interval:   0
+    Contour Unit:                        0  :N.A.  
+    Data Source Date:           0  :YYMM
+    Data Insp/Rev Date:         0  :YYMM
+    Insp/Rev. Flag:           
+    Data Validation Flg:        0
+    Suspect & Void area flag:   0  :none                  
+    Vertical Datum:             0  :N.A.                                           
+    Horizontal Datum:           1  :North American Datum of 1927            
+    Data Edition:               0
+    Percent Void:               0  :If greater than zero, please refer to USGS Standards for Digital Elevation Models
+ 
+ CLOSING THE FILE.

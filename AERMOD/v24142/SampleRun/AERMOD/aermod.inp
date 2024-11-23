@@ -1,0 +1,162 @@
+CO STARTING
+   TITLEONE  Phase II Evaluation of AERMOD : Martin's Creek 1992-93
+   TITLETWO  Terrain Option 2
+   MODELOPT  dfault  conc
+   AVERTIME  1  3  24  period
+   POLLUTID  SO2
+   RUNORNOT  run
+   ERRORFIL  ERRORS.OUT
+**   debugopt  meteor model
+CO FINISHED
+
+SO STARTING
+   ELEVUNIT  meters
+** The digit '4' was removed from the y-coordinate         
+**                          X        Y        Z  
+**                        ------   ------   ------ 
+   LOCATION  MC12  point  491010   515910   73.2     
+   LOCATION  MC3   point  491123   516030   73.2
+   LOCATION  MC4   point  491190   516068   73.2   
+   LOCATION  ED1   point  493350   528370   91.4    
+   LOCATION  ED2   point  493350   528370   91.4    
+   LOCATION  HL2   point  494050   521040   103.6   
+   LOCATION  WC1   point  498950   518500   173.7  
+   LOCATION  WC2   point  498950   518500   173.7  
+
+
+** Point Source       QS     HS     TS    VS   DS
+** Parameters:      -----   ----   ----  ----  ---
+   SRCPARAM  MC12    0.0    182.9  0.0   0.0   5.3
+   SRCPARAM  MC3     0.0    182.9  0.0   0.0   6.9
+   SRCPARAM  MC4     0.0    182.9  0.0   0.0   6.9
+   SRCPARAM  ED1     0.0    121.9  0.0   0.0   3.1
+   SRCPARAM  ED2     0.0    121.9  0.0   0.0   3.6
+   SRCPARAM  HL2     0.0     59.4  0.0   0.0   2.7
+   SRCPARAM  WC1     0.0     76.2  0.0   0.0   1.87
+   SRCPARAM  WC2     0.0     76.2  0.0   0.0   1.87
+ 
+   HOUREMIS  aermod.emi MC12 MC3 MC4 ED1 ED2 HL2 WC1 WC2
+
+** Building Data
+   BUILDHGT MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDHGT MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDHGT MC12        0.00    0.00    0.00    0.00   90.00   90.00
+   BUILDHGT MC12       90.00   90.00   90.00    0.00    0.00    0.00
+   BUILDHGT MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDHGT MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDWID MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDWID MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDWID MC12        0.00    0.00    0.00    0.00  200.09  203.00
+   BUILDWID MC12      199.74  190.42  175.30    0.00    0.00    0.00
+   BUILDWID MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDWID MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDLEN MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDLEN MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDLEN MC12        0.00    0.00    0.00    0.00  137.89  161.00
+   BUILDLEN MC12      179.22  191.99  198.93    0.00    0.00    0.00
+   BUILDLEN MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDLEN MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   XBADJ    MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   XBADJ    MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   XBADJ    MC12        0.00    0.00    0.00    0.00 -421.05 -451.00
+   XBADJ    MC12     -467.24 -469.29 -457.08    0.00    0.00    0.00
+   XBADJ    MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   XBADJ    MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   YBADJ    MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   YBADJ    MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   YBADJ    MC12        0.00    0.00    0.00    0.00  136.72   73.50
+   YBADJ    MC12        8.05  -57.65 -121.60    0.00    0.00    0.00
+   YBADJ    MC12        0.00    0.00    0.00    0.00    0.00    0.00
+   YBADJ    MC12        0.00    0.00    0.00    0.00    0.00    0.00
+
+
+   BUILDHGT MC3        90.00   90.00    0.00    0.00    0.00    0.00
+   BUILDHGT MC3         0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDHGT MC3         0.00   90.00   90.00   90.00   90.00   90.00
+   BUILDHGT MC3        90.00   90.00    0.00    0.00    0.00    0.00
+   BUILDHGT MC3         0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDHGT MC3         0.00   90.00    0.00    0.00    0.00   90.00
+   BUILDWID MC3       199.74  190.42    0.00    0.00    0.00    0.00
+   BUILDWID MC3         0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDWID MC3         0.00  194.65  183.56  191.10  200.09  203.00
+   BUILDWID MC3       199.74  190.42    0.00    0.00    0.00    0.00
+   BUILDWID MC3         0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDWID MC3         0.00  194.65    0.00    0.00    0.00  203.00
+   BUILDLEN MC3       179.22  191.99    0.00    0.00    0.00    0.00
+   BUILDLEN MC3         0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDLEN MC3         0.00  129.72  100.63  110.59  137.89  161.00
+   BUILDLEN MC3       179.22  191.99    0.00    0.00    0.00    0.00
+   BUILDLEN MC3         0.00    0.00    0.00    0.00    0.00    0.00
+   BUILDLEN MC3         0.00  129.72    0.00    0.00    0.00  161.00
+   XBADJ    MC3       151.96  129.31    0.00    0.00    0.00    0.00
+   XBADJ    MC3         0.00    0.00    0.00    0.00    0.00    0.00
+   XBADJ    MC3         0.00 -275.72 -282.01 -300.78 -320.76 -331.00
+   XBADJ    MC3      -331.18 -321.30    0.00    0.00    0.00    0.00
+   XBADJ    MC3         0.00    0.00    0.00    0.00    0.00    0.00
+   XBADJ    MC3         0.00  146.00    0.00    0.00    0.00  170.00
+   YBADJ    MC3        72.55  113.40    0.00    0.00    0.00    0.00
+   YBADJ    MC3         0.00    0.00    0.00    0.00    0.00    0.00
+   YBADJ    MC3         0.00  138.42   99.70   57.96   14.45  -29.50
+   YBADJ    MC3       -72.55 -113.40    0.00    0.00    0.00    0.00
+   YBADJ    MC3         0.00    0.00    0.00    0.00    0.00    0.00
+   YBADJ    MC3         0.00 -138.42    0.00    0.00    0.00   29.50
+
+   BUILDHGT MC4        90.00    0.00    0.00    0.00    0.00    0.00
+   BUILDHGT MC4         0.00    0.00    0.00    0.00    0.00   90.00
+   BUILDHGT MC4        90.00   90.00   90.00   90.00   90.00   90.00
+   BUILDHGT MC4        90.00    0.00    0.00    0.00    0.00    0.00
+   BUILDHGT MC4         0.00    0.00    0.00    0.00    0.00   90.00
+   BUILDHGT MC4        90.00   90.00    0.00   90.00   90.00   90.00
+   BUILDWID MC4       199.74    0.00    0.00    0.00    0.00    0.00
+   BUILDWID MC4         0.00    0.00    0.00    0.00    0.00  198.93
+   BUILDWID MC4       199.82  194.65  183.56  191.10  200.09  203.00
+   BUILDWID MC4       199.74    0.00    0.00    0.00    0.00    0.00
+   BUILDWID MC4         0.00    0.00    0.00    0.00    0.00  198.93
+   BUILDWID MC4       199.82  194.65    0.00  191.10  200.09  203.00
+   BUILDLEN MC4       179.22    0.00    0.00    0.00    0.00    0.00
+   BUILDLEN MC4         0.00    0.00    0.00    0.00    0.00  175.30
+   BUILDLEN MC4       154.86  129.72  100.63  110.59  137.89  161.00
+   BUILDLEN MC4       179.22    0.00    0.00    0.00    0.00    0.00
+   BUILDLEN MC4         0.00    0.00    0.00    0.00    0.00  175.30
+   BUILDLEN MC4       154.86  129.72    0.00  110.59  137.89  161.00
+   XBADJ    MC4       102.91    0.00    0.00    0.00    0.00    0.00
+   XBADJ    MC4         0.00    0.00    0.00    0.00    0.00 -277.47
+   XBADJ    MC4      -287.95 -289.67 -282.60 -287.98 -294.97 -293.00
+   XBADJ    MC4      -282.12    0.00    0.00    0.00    0.00    0.00
+   XBADJ    MC4         0.00    0.00    0.00    0.00    0.00  102.17
+   XBADJ    MC4       133.08  159.95    0.00  177.39  157.08  132.00
+   YBADJ    MC4       131.93    0.00    0.00    0.00    0.00    0.00
+   YBADJ    MC4         0.00    0.00    0.00    0.00    0.00  135.78
+   YBADJ    MC4       100.76   62.67   22.68  -18.00  -58.13  -96.50
+   YBADJ    MC4      -131.93    0.00    0.00    0.00    0.00    0.00
+   YBADJ    MC4         0.00    0.00    0.00    0.00    0.00 -135.78
+   YBADJ    MC4      -100.76  -62.67    0.00   18.00   58.13   96.50
+
+   SRCGROUP  ALL
+SO FINISHED
+
+
+RE STARTING
+
+   INCLUDED ..\aermap\aermap.REC
+
+RE FINISHED
+
+ME STARTING
+   SURFFILE  ..\aermet\aermet.sfc   free
+   PROFFILE  ..\aermet\aermet.pfl   free
+   SURFDATA  14737  1992  Allentown
+   SITEDATA  00001  1992  Martin_Crk
+   UAIRDATA  14735  1992  Abany
+   PROFBASE  73.2
+**   startend  92 7 9 20  92 7 9 20
+ME FINISHED
+
+
+OU STARTING
+
+   RECTABLE  allave first-second
+   MAXTABLE  allave    400
+   SUMMFILE  aermod.sum
+
+OU FINISHED

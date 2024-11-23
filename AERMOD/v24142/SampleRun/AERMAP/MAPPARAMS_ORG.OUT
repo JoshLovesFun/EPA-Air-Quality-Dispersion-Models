@@ -1,0 +1,140 @@
+** AERMAP - VERSION 18081                                              06/16/23
+**                                                                     11:09:05
+
+  
+ MAP PARAMETERS
+
+ TYPDAT:  DEM 
+
+ From CNRCNV:
+
+ DEM File #:         1
+ DEM File Name: NEWARK-W.DEM
+
+ Horizontal Datum: North American Datum of 1927            
+
+ Corner Coordinates of DEM Data:
+
+ Decimal Degrees (negative for West longitude):
+            SW Corner     NW Corner     NE Corner     SE Corner
+   Lon:    -76.000000    -76.000000    -75.000000    -75.000000
+   Lat:     40.000000     41.000000     41.000000     40.000000
+
+ Arc-seconds (negative for West longitude):
+            SW Corner     NW Corner     NE Corner     SE Corner
+   Lon:   -273600.000   -273600.000   -270000.000   -270000.000
+   Lat:    144000.000    147600.000    147600.000    144000.000
+
+ Meters:
+                 SW Corner     NW Corner     NE Corner     SE Corner
+   Easting:     414637.296    415895.602    500000.000    500000.000
+   Northing:   4428026.039   4539026.702   4538545.162   4427547.180
+   UTM Zone:   18 based on SW corner
+
+ DEM File #:         2
+ DEM File Name: NEWARK-E.DEM
+
+ Horizontal Datum: North American Datum of 1927            
+
+ Corner Coordinates of DEM Data:
+
+ Decimal Degrees (negative for West longitude):
+            SW Corner     NW Corner     NE Corner     SE Corner
+   Lon:    -75.000000    -75.000000    -74.000000    -74.000000
+   Lat:     40.000000     41.000000     41.000000     40.000000
+
+ Arc-seconds (negative for West longitude):
+            SW Corner     NW Corner     NE Corner     SE Corner
+   Lon:   -270000.000   -270000.000   -266400.000   -266400.000
+   Lat:    144000.000    147600.000    147600.000    144000.000
+
+ Meters:
+                 SW Corner     NW Corner     NE Corner     SE Corner
+   Easting:     500000.000    500000.000    584104.398    585362.704
+   Northing:   4427547.180   4538545.162   4539026.702   4428026.039
+   UTM Zone:   18 based on SW corner
+  
+
+ From CHKADJ      
+
+ DEM File #:      1
+ NEWARK - W                       NJ,PA   <-- Raw header data segment
+ NEWARK - W                               <-- Refined header data segment
+   DEM Level Code:   DEM-1
+   Planimetric Ref: Geographic Coordinates   
+     North-South Node separation:   3.0000  arc-seconds
+     East-West Node separation:     3.0000  arc-seconds
+   UTM/State Zone #  18
+   Horizontal Datum: North American Datum of 1927            
+   Num. of Profiles:  1201
+
+   Original elevation units of nodes: meters     
+   Min. Elevation:      0.0 meters
+   Max. Elevation:    619.0 meters
+   SW Corner Lat/Lon (deg.):       40.00000     -76.00000
+   SW Corner Lat/Lon (sec.):     144000.000   -273600.000
+   Latitude Range =  1.0000 Deg.;  Longitude Range =  1.0000 Deg.
+   Writing corner coords; UTM then Dec.Deg (negative for West longitude):
+     Southwest Corner        Northwest Corner        Northeast Corner        Southeast Corner
+     Easting    Northing     Easting    Northing     Easting    Northing     Easting    Northing 
+     414637.30  4428026.04   415895.60  4539026.70   500000.00  4538545.16   500000.00  4427547.18
+     Latitude   Longitude    Latitude   Longitude    Latitude   Longitude    Latitude   Longitude
+     40.0000    -76.0000     41.0000    -76.0000     41.0000    -75.0000     40.0000    -75.0000
+
+  
+
+ DEM File #:      2
+ NEWARK - E                       NJ,PA,N <-- Raw header data segment
+ NEWARK - E                               <-- Refined header data segment
+   DEM Level Code:   DEM-1
+   Planimetric Ref: Geographic Coordinates   
+     North-South Node separation:   3.0000  arc-seconds
+     East-West Node separation:     3.0000  arc-seconds
+   UTM/State Zone #  18
+   Horizontal Datum: North American Datum of 1927            
+   Num. of Profiles:  1201
+
+   Original elevation units of nodes: meters     
+   Min. Elevation:      0.0 meters
+   Max. Elevation:    396.0 meters
+   SW Corner Lat/Lon (deg.):       40.00000     -75.00000
+   SW Corner Lat/Lon (sec.):     144000.000   -270000.000
+   Latitude Range =  1.0000 Deg.;  Longitude Range =  1.0000 Deg.
+   Writing corner coords; UTM then Dec.Deg (negative for West longitude):
+     Southwest Corner        Northwest Corner        Northeast Corner        Southeast Corner
+     Easting    Northing     Easting    Northing     Easting    Northing     Easting    Northing 
+     500000.00  4427547.18   500000.00  4538545.16   584104.40  4539026.70   585362.70  4428026.04
+     Latitude   Longitude    Latitude   Longitude    Latitude   Longitude    Latitude   Longitude
+     40.0000    -75.0000     41.0000    -75.0000     41.0000    -74.0000     40.0000    -74.0000
+
+  
+
+
+MAP ADJACENCY (Based on +/- 45 arc-seconds)
+
+ No. Base Map Name               Adjacent map names and relative geographic location to Base Map.
+                                 NOTE: Adjacency for NED files, Mixed DEMs, non-standard DEMs, 
+                                       and AK DEMs may not be exact.
+
+  1  NEWARK - W                  NW:    No Map Present            N:    No Map Present           NE:    No Map Present         
+                                  W:    No Map Present            C: NEWARK - W                   E: NEWARK - E                
+                                 SW:    No Map Present            S:    No Map Present           SE:    No Map Present         
+
+  2  NEWARK - E                  NW:    No Map Present            N:    No Map Present           NE:    No Map Present         
+                                  W: NEWARK - W                   C: NEWARK - E                   E:    No Map Present         
+                                 SW:    No Map Present            S:    No Map Present           SE:    No Map Present         
+
+
+
+MAPNAME ARRAY (Based on +/- 0.03 degrees)
+
+  Mapnames are laid out in relative geographical positions.
+  "Grid" resolution is based on Lat/Lon extent of first file.
+  Relative positions are based on SE corner coordinates relative to full grid of maps.
+  Look for "No Map Present" within the field of interest.
+  This may indicate missing files or files with errant data in their header records.
+  NOTE: Adjacency for NED files, Mixed DEMs, non-standard DEMs, and AK DEMs may not be exact.
+        Higher resolution maps may overwrite lower resolution maps that overlap.
+
+ NEWARK - W                  NEWARK - E                
+  
